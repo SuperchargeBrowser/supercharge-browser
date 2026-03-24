@@ -1,0 +1,96 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.superchargebrowser.com/#organization",
+      "name": "SuperchargeBrowser",
+      "url": "https://www.superchargebrowser.com",
+      "logo": "https://www.superchargebrowser.com/logo.png",
+      "description": "Chrome extensions for tab suspension, ad blocking, vertical tabs, and workspaces. Zero telemetry, 100% local. Featured & Verified Publisher on Chrome Web Store.",
+      "email": "support@superchargebrowser.com",
+      "sameAs": [
+        "https://x.com/SuperchargeExt",
+        "https://www.linkedin.com/company/superchargebrowser/",
+        "https://github.com/SuperchargeBrowser"
+      ],
+      "foundingDate": "2025",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Helsinki, Finland"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.superchargebrowser.com/performance/#software",
+      "name": "SuperchargePerformance",
+      "description": "Tab suspender + ad blocker + RAM dashboard for Chrome. Suspends inactive tabs using chrome.tabs.discard(), blocks trackers with 186,000+ declarativeNetRequest rules from 22 sources. Zero telemetry, 100% local.",
+      "applicationCategory": "BrowserExtension",
+      "operatingSystem": "Chrome 146+, Windows, macOS, Linux, ChromeOS",
+      "url": "https://www.superchargebrowser.com/performance/",
+      "installUrl": "https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@id": "https://www.superchargebrowser.com/#organization"
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2026-03-22",
+      "softwareVersion": "1.2.2",
+      "featureList": [
+        "Tab suspension via chrome.tabs.discard()",
+        "186,000+ declarativeNetRequest blocking rules",
+        "RAM savings dashboard",
+        "Cookie consent auto-dismissal",
+        "Link preloading",
+        "Script control (3 tiers)",
+        "Font optimization",
+        "Stop autoplay",
+        "Safe Mode auto-recovery",
+        "14 auto-protected web apps",
+        "Per-site feature whitelist"
+      ],
+      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.superchargebrowser.com/navigation/#software",
+      "name": "SuperchargeNavigation",
+      "description": "Vertical tabs + named workspaces + command bar + session time-travel for Chrome. Uses Chrome's side panel API. 50 auto-snapshots every 5 minutes. Alt+K command bar. Zero telemetry, 100% local.",
+      "applicationCategory": "BrowserExtension",
+      "operatingSystem": "Chrome 146+, Windows, macOS, Linux, ChromeOS",
+      "url": "https://www.superchargebrowser.com/navigation/",
+      "installUrl": "https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@id": "https://www.superchargebrowser.com/#organization"
+      },
+      "datePublished": "2026-03-13",
+      "dateModified": "2026-03-22",
+      "softwareVersion": "1.0.0",
+      "featureList": [
+        "Vertical tab sidebar (Chrome side panel API)",
+        "Named workspaces with tab isolation",
+        "Session time-travel (50 auto-snapshots, 5-min intervals)",
+        "Alt+K command bar (tabs, bookmarks, history, web search)",
+        "Alt+G smart tab grouping by domain",
+        "Shift+Click Glance/Peek preview",
+        "Super Drag (drag links to open in bg/fg)",
+        "Tab deduplication",
+        "Rocker gestures",
+        "Tab lock",
+        "Bulk actions",
+        "Session restore",
+        "Tab notes"
+      ],
+      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local."
+    }
+  ]
+}
