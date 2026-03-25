@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-03-23
+> Last updated: 2026-03-25
 > For a summary index, see /llms.txt
 
 ## Products
@@ -1040,11 +1040,16 @@ A: SuperchargeNavigation checks the navigating tab's URL against the URLs of all
 
 URL: https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/
 Category: comparison | Extension: performance | Updated: 2026-03-22
-Description: Chrome killed MV2 in mid-2025. Three extensions survived the transition well. Which one blocks most, uses least RAM, and fits your setup.
+Description: Chrome killed MV2 in mid-2025. Most ad blockers migrated to MV3 but the gaps between them grew. Which blocks most, uses least RAM, and fits your setup?
+
+> **Key takeaways**
+> - **Chrome killed MV2 in mid-2025**, and the gap between ad blockers widened during the migration to MV3.
+> - **uBlock Origin (v1.70.0)** kept cosmetic filtering and dynamic rules. Lite runs with zero background processes.
+> - Pick based on **whether you need deep coverage, zero overhead, or tab memory control** alongside blocking.
 
 You open Chrome, navigate to a news site, and the page loads slower than it should — three ad scripts blocking the render, a consent popup, and a tracker from a data broker you've never heard of. Picking the right extension for Chrome in 2026 means understanding one thing first: Manifest V2 died in mid-2025, and the landscape shifted.
 
-Three extensions came through the transition intact. Here's what each one actually does, where each falls short, and which setup fits your situation.
+Most ad blockers migrated to MV3, but the transition widened the gap between them. Here's how the top options compare, where each falls short, and which setup fits your situation.
 
 ## What Changed in Mid-2025
 
@@ -1060,15 +1065,15 @@ Chrome 138 disabled Manifest V2 extensions for standard users. The `webRequest` 
 
 The practical impact: MV3 blockers can't inspect response bodies or run arbitrary logic per request. For most users most of the time, this doesn't matter — the best MV3 blockers handle >95% of what MV2 handled (Chrome 146, March 2026). For power users who built complex dynamic rules, the gap is real.
 
-## The Three Extensions That Survived Well
+## The Top MV3 Ad Blockers (March 2026)
 
-As of March 2026:
+Most major ad blockers now run on MV3 — uBlock Origin, uBlock Origin Lite, AdGuard, Ghostery, Adblock Plus, and others. The three with the most meaningful differences for power users:
 
 - **uBlock Origin** — v1.70.0, updated March 11, 2026. gorhill migrated the full extension to MV3. Cosmetic filtering, dynamic per-site rules, and the network request logger are all present.
 - **uBlock Origin Lite** — v2026.315, updated March 15, 2026. Same developer, purely declarative. Zero background service worker.
 - **AdGuard for Chrome** — MV3 version live on CWS. Free core with a paid tier that adds DNS-level blocking and popup blocking across more sites.
 
-All three use the same underlying filter list sources (EasyList, EasyPrivacy, uBlock filter lists). The differences are architectural and scope.
+These three use the same underlying filter list sources (EasyList, EasyPrivacy, uBlock filter lists). The differences are architectural and scope.
 
 ## Head-to-Head Comparison
 
@@ -1129,7 +1134,7 @@ It runs alongside uBlock Origin without conflict. They solve different problems.
 
 #### FAQ
 Q: What is the best ad blocker for Chrome in 2026?
-A: As of March 2026, uBlock Origin (v1.70.0, updated March 11 2026) has the deepest filter list coverage on Chrome. uBlock Origin Lite is the zero-overhead option. AdGuard adds DNS-level protection. SuperchargePerformance combines ad blocking (186K+ DNR rules, 3 tiers), cosmetic filtering, and tab suspension in a single extension — broader scope, slightly narrower filter depth than uBlock Origin.
+A: As of March 2026, most major ad blockers work on Chrome MV3 — uBlock Origin, AdGuard, Ghostery, Adblock Plus, and others. uBlock Origin (v1.70.0) has the deepest filter coverage. uBlock Origin Lite is the zero-overhead option. AdGuard adds DNS-level protection. SuperchargePerformance combines ad blocking (186K+ DNR rules) with tab suspension in a single extension.
 
 Q: Does uBlock Origin still work on Chrome 146 in 2026?
 A: Yes. As of March 2026, uBlock Origin is available on the Chrome Web Store at version 1.70.0, updated March 11, 2026. Chrome disabled Manifest V2 extensions in mid-2025, but gorhill migrated uBlock Origin to MV3. It works on Chrome 146 alongside uBlock Origin Lite.
@@ -1150,6 +1155,11 @@ A: As of March 2026, uBlock Origin Lite uses near-zero memory because it has no 
 URL: https://www.superchargebrowser.com/library/best-tab-organizer-chrome-2026/
 Category: comparison | Extension: navigation | Updated: 2026-03-22
 Description: Tab chaos costs focus. Compare the top 5 Chrome tab organizers on workspaces, privacy, and price — with CWS-verified data updated March 2026.
+
+> **Key takeaways**
+> - Chrome's built-in tab tools still won't save a session when you have **40 tabs open and nothing labeled**.
+> - **OneTab collapses everything in one click** but destroys your session layout. Workona syncs across devices but requires a paid plan.
+> - SuperchargeNavigation gives named workspaces, Alt+K keyboard search, and **50 auto-snapshots free** with no account.
 
 You open Chrome, start working, and forty minutes later you have 30 tabs spread across three windows. Half of them are reference material you're scared to close. The other half are things you'll "get back to." Nothing is labeled. Nothing is grouped. Finding anything requires scanning every tab title in a strip too narrow to read them.
 
@@ -1195,7 +1205,7 @@ The feature set is strong for team use: Slack integration, Google Drive resource
 
 Two things to factor in before installing. First, Workona requires an account — your tab data lives on their servers, which is the mechanism that enables cross-device sync. Second, the extension was last updated January 15, 2025. Over 14 months without an update isn't disqualifying for a mature product, but it's a gap worth watching if you're adopting it as a core workflow tool.
 
-Pricing: free tier with limited spaces; paid plans for unlimited workspaces and team features at approximately $8/month (verify current pricing at workona.com).
+Pricing: free tier with limited spaces; paid plans for unlimited workspaces and team features (verify current pricing at workona.com).
 
 ## Local-First Workspaces Without a Subscription
 
@@ -1241,7 +1251,7 @@ For people managing 2–3 project contexts with 5–10 tabs each, tab groups plu
 | Cross-device sync | No | Yes (cloud) | Chrome native sync + workspace export/import | Via Google account |
 | Account required | No | Yes | No | No |
 | Data storage | Local | Cloud (Workona servers) | Local only | Local / Google account |
-| Price | Free | Free tier + ~$8/mo | Free (no paid tier) | Built-in |
+| Price | Free | Free tier + paid plan | Free (no paid tier) | Built-in |
 | Last updated | March 2026 | January 2025 | 2026 | Chrome 146 |
 
 ## How to Choose
@@ -1279,6 +1289,11 @@ A: As of March 2026, Workona (Tab Manager by Workona) is on version 3.1.33, last
 URL: https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-22
 Description: Chrome eating 4GB with 15 tabs? Extensions may be the problem. Use Chrome Task Manager to find the culprits and cut memory usage in minutes.
+
+> **Key takeaways**
+> - AI writing assistants and coupon finders inject scripts into every tab. **Their memory cost multiplies with tab count.**
+> - Open **Chrome Task Manager (Shift+Esc)**, sort by Memory Footprint, and look for extension rows above 50 MB.
+> - **Chrome Memory Saver can't touch extension memory.** Disabling or uninstalling is the only real fix.
 
 Chrome is eating 4GB of RAM with 15 tabs open. You close half the tabs. Still 3GB. The problem isn't your tabs — it's your extensions.
 
@@ -1406,6 +1421,11 @@ URL: https://www.superchargebrowser.com/library/chrome-native-memory-saver-revie
 Category: review | Extension: performance | Updated: 2026-03-22
 Description: Chrome Memory Saver helps, but waits for RAM pressure instead of acting on a timer. Here is what it does, what it skips, and when you need more.
 
+> **Key takeaways**
+> - **Memory Saver waits for RAM pressure**. At 30 tabs, Chrome may already hit 3 GB before it suspends a single one.
+> - **No configurable timer, no ad blocking, no per-tab dashboard** — it's intentionally minimal.
+> - Fine under 10 tabs. Above that, you're **reacting to a crisis** instead of preventing one.
+
 Chrome's built-in Memory Saver freezes background tabs to free RAM — the same basic idea as sleeping tabs in Edge or a third-party tab suspender. For someone with fewer than 10 tabs, it's completely adequate. But if you've ever opened Chrome after a weekend and watched it claw back 8GB of RAM from 50 tabs it somehow held onto, you've already found the limits of what Memory Saver does. This review is about what it actually does, where it stops, and when you need something more.
 
 ## What Chrome Memory Saver Actually Does
@@ -1497,6 +1517,11 @@ A: Google's official claim is up to 40% less memory in Maximum mode. The percent
 URL: https://www.superchargebrowser.com/library/chrome-session-manager-extension/
 Category: comparison | Extension: navigation | Updated: 2026-03-22
 Description: Chrome's built-in restore is all-or-nothing. 4 session manager extensions compared — manual saves, auto-snapshots, and workspace recovery for 2026.
+
+> **Key takeaways**
+> - Accidentally close a 23-tab research window and it's gone. **Chrome's built-in restore is all-or-nothing**, with no undo.
+> - **Session Buddy** handles simple manual saves well. Tab Session Manager auto-saves on a configurable timer.
+> - SuperchargeNavigation goes furthest: **5-minute auto-snapshots, a time-travel slider, named workspaces** — local, no account.
 
 You close a window by accident. Not a single tab — the whole window, 23 tabs deep into a research thread you had spent two hours building. Chrome's Ctrl+Shift+T can reopen the last closed tab. But a window? Gone. And Chrome's session restore after a restart brings back everything from the last session indiscriminately — you cannot recover just that window, from just that moment, without also resurrecting 60 other tabs you had deliberately closed.
 
@@ -1621,6 +1646,11 @@ A: All data stored in chrome.storage.local is permanently deleted when an extens
 URL: https://www.superchargebrowser.com/library/chrome-tab-groups-complete-guide/
 Category: guide | Extension: navigation | Updated: 2026-03-22
 Description: Create, name, color, save, and restore Chrome tab groups. Covers sync gaps, restart behavior, and when workspaces handle what tab groups can't.
+
+> **Key takeaways**
+> - Chrome tab groups **vanish on restart unless you right-click the group header and save them**. Most users never do.
+> - Groups are **labels on a shared strip**. They don't hide other projects or isolate contexts.
+> - Tab groups handle color-coding and collapsing. **For real context isolation, you need workspaces.**
 
 Chrome has had tab groups since 2020 — six years of the same feature, and most users still don't know how to save them. That's not a user failure. The Save group option hides behind a right-click menu that most people never open after creating their first group. The result: well-organized sessions that vanish on the next restart, and hours of tab re-gathering that shouldn't be necessary.
 
@@ -1780,6 +1810,11 @@ URL: https://www.superchargebrowser.com/library/fix-chrome-slow-loading-pages/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-22
 Description: Chrome pages loading slowly? The real cause is rarely what you think. Ranked diagnosis from network waterfall to tracker requests, with targeted fixes.
 
+> **Key takeaways**
+> - Tracker and ad requests **fire before content renders, adding 400–1,200 ms per page**. Not your connection, not Chrome's fault.
+> - Open **DevTools Network tab (F12)**, sort by Start Time. 15+ third-party requests firing early means blocking them is the top fix.
+> - **DNS latency, slow origin servers, and extension content scripts** are the next ranked causes if blocking trackers doesn't help.
+
 You click a link. The tab spins. Three seconds pass before anything appears. Chrome feels broken — except your internet works fine on other apps. The frustrating part is that slow page loading and high memory usage look similar from the outside but have completely different root causes. Treating the wrong one wastes time and changes nothing.
 
 Page load speed depends on how many requests fire before the browser can render content, how many background tabs are competing for CPU, and whether DNS resolution adds round-trip latency. Memory pressure is a separate problem. This guide works through the real causes in order of frequency.
@@ -1914,6 +1949,11 @@ URL: https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-22
 Description: WindowServer spiking CPU on Mac? Chrome, Spotlight, Time Machine, and display scaling all trigger it. Diagnose and fix each cause step by step.
 
+> **Key takeaways**
+> - Cursor stutters, Chrome's numbers look fine? **WindowServer is compositing every animation from background tabs**, even hidden ones.
+> - Suspending background tabs **eliminates their GPU load entirely**. WindowServer has nothing to composite for a discarded tab.
+> - If WindowServer stays high after closing Chrome, check **Spotlight indexing, Time Machine, or display scaling** on an external monitor.
+
 WindowServer high CPU has several causes: Chrome's GPU rendering is the most common, but Spotlight indexing, Time Machine backups, and display scaling on external monitors can each push it above 50% on their own. If the spike happens even when Chrome is closed, check those first. When Chrome is open and WindowServer climbs, the culprit is almost always background tab rendering.
 
 Your Mac's mouse cursor stutters, windows drag slowly, and everything feels laggy — but Chrome's own process numbers look reasonable. Open **Activity Monitor**, click the CPU tab, and search for "WindowServer." If it's above 15–20% while Chrome is open, Chrome's background tabs are the cause. Animations, carousels, and CSS transitions in background tabs force WindowServer to generate new frames continuously, even when you're not looking at those tabs.
@@ -1998,6 +2038,11 @@ A: It causes higher fan speeds, battery drain, and thermal throttling, but it wi
 URL: https://www.superchargebrowser.com/library/how-to-enable-vertical-tabs-chrome/
 Category: guide | Extension: navigation | Updated: 2026-03-22
 Description: Chrome 146 shipped vertical tabs on March 18, 2026 — but they're hidden behind a flag. Two steps to turn them on, plus what's still missing.
+
+> **Key takeaways**
+> - Chrome 146 shipped vertical tabs on March 18, but **they're flag-only and don't turn on automatically.**
+> - **Two steps:** `chrome://flags/#vertical-tabs` → Enabled → relaunch → Settings > Appearance > Tab strip position → Left.
+> - Native version has **no workspaces, no session recovery, and no keyboard tab search**. Extensions fill those gaps.
 
 You have 30 tabs open and every one of them is a tiny favicon you have to hover to identify. Chrome 146 finally has a fix for this — vertical tabs shipped on March 18, 2026, moving the tab bar to a left sidebar where every tab gets a readable title. The feature Firefox users have had for years through Sidebery is now native in Chrome. Two steps to turn it on, and a few gaps worth knowing before you decide whether the built-in version is enough.
 
@@ -2118,6 +2163,11 @@ A: As of March 2026, Chrome vertical tabs are still flag-only in Chrome 146 and 
 URL: https://www.superchargebrowser.com/library/stop-chrome-overheating-windows/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-22
 Description: Chrome making your Windows laptop hot? Diagnose the CPU load in seconds, suspend background tabs, and block the scripts keeping your fans spinning.
+
+> **Key takeaways**
+> - **20 background tabs run simultaneously in separate processes**, including ones you haven't touched in an hour.
+> - Press **Shift+Esc**, sort by CPU, end any renderer process above 15%. CPU drops within seconds.
+> - Suspending idle tabs **removes their renderer processes entirely**, breaking the heat loop at its source.
 
 The fan kicks in within 30 seconds of opening Chrome. The keyboard gets warm. Task Manager shows CPU climbing past 50% — and all you have open is a few news tabs and Gmail. The laptop is not struggling because the sites are demanding. It is struggling because Chrome is running all of them simultaneously, in separate processes, including the ones you last looked at 40 minutes ago.
 
@@ -2243,6 +2293,11 @@ URL: https://www.superchargebrowser.com/library/tree-style-tab-chrome-alternativ
 Category: comparison | Extension: navigation | Updated: 2026-03-22
 Description: TST is Firefox-only. Chrome has no true equivalent—but Chrome 146 native vtabs plus the right extension gets surprisingly close. Here's what works.
 
+> **Key takeaways**
+> - **Tree Style Tab requires Firefox's sidebar API.** Chrome's extension API has no equivalent surface to replace the tab strip.
+> - **Forest** attempts automatic parent-child hierarchy on Chrome but has a paywall and reported tree instability issues.
+> - Chrome 146 vertical tabs are a **flat list only**. Workspaces plus domain auto-grouping solve the same chaos differently.
+
 If Tree Style Tab is what made Firefox feel irreplaceable, switching to Chrome feels like losing a limb. The hierarchical view — new tabs indenting under their parent, branches collapsing with a click, a visual trail of where you've been — is something no other browser has matched. Users have been asking Google to add it since 2009. The thread is still open.
 
 Chrome 146 shipped native vertical tabs in March 2026. They're flat. No hierarchy, no parent-child indenting, no collapsible branches. The gap is real. But the picture is more nuanced than "Chrome has nothing" — there are a few options worth knowing — and one clear answer about what you will and won't get.
@@ -2363,6 +2418,11 @@ URL: https://www.superchargebrowser.com/library/ublock-origin-chrome-alternative
 Category: guide | Extension: performance | Updated: 2026-03-22
 Description: uBlock Origin works on Chrome 146 — gorhill migrated it to MV3. If yours stopped, here's how to reinstall, plus what changed and what didn't.
 
+> **Key takeaways**
+> - **uBlock Origin v1.70.0 is live on the Chrome Web Store** as of March 11, 2026 — gorhill migrated it to MV3.
+> - If your copy stopped during the MV2 transition, **uninstall and reinstall from CWS**. It is not gone or replaced.
+> - For tab suspension and RAM management alongside blocking, **add SuperchargePerformance**. The two are complementary.
+
 If uBlock Origin stopped working in Chrome during 2025, the MV2-to-MV3 transition was the cause — Chrome disabled Manifest V2 extensions starting with Chrome 138. But the story has moved on. gorhill migrated uBlock Origin to MV3, and as of March 2026, the full extension is back on the Chrome Web Store at version 1.70.0 (updated March 11, 2026). If your copy is still broken, uninstall it and reinstall from CWS.
 
 ## What Happened During the MV2 Transition
@@ -2437,6 +2497,11 @@ A: Yes. Zero telemetry, zero outbound network requests, MV3-native, and carries 
 URL: https://www.superchargebrowser.com/library/ublock-origin-lite-vs-full-chrome/
 Category: comparison | Extension: performance | Updated: 2026-03-22
 Description: Both uBO and uBOL work on Chrome 146. One is full-featured, the other is lightweight and declarative. Which one fits your setup — and when you need more.
+
+> **Key takeaways**
+> - MV2's death created two uBlock Origin listings. **Both are live on Chrome 146 as of March 2026.**
+> - **Full (v1.70.0)** keeps cosmetic filtering and dynamic rules via a service worker. Lite runs with zero background processes.
+> - Choose Full for **maximum blocking coverage**, Lite for the lightest possible overhead with no background activity.
 
 You used to install uBlock Origin and forget about it. Then Chrome killed Manifest V2 in mid-2025, and suddenly there were warnings, disabled extensions, and a confusing second listing called "uBlock Origin Lite." Many users assumed the original was gone for good. It wasn't — gorhill migrated uBlock Origin to MV3, and as of March 2026 both versions are on the Chrome Web Store side by side.
 
@@ -2539,6 +2604,11 @@ A: SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources,
 URL: https://www.superchargebrowser.com/library/vimium-alternative-chrome/
 Category: comparison | Extension: navigation | Updated: 2026-03-22
 Description: Vimium survived MV3 — v2.4.2 works on Chrome 146. But it covers pages, not sessions. What to add for workspaces, tab search, and session recovery.
+
+> **Key takeaways**
+> - **Vimium v2.4.2 is on the Chrome Web Store as of March 2026**, MV3, fully functional. It didn't die with MV2.
+> - **Vimium C** is an independent fork with per-site key maps, CJK URL search, and 8 global browser shortcuts.
+> - Neither covers the **session layer**. Add SuperchargeNavigation for workspaces, snapshots, and cross-context tab search.
 
 If you searched "Vimium alternative" expecting bad news — Vimium is actually fine. The original extension migrated to Manifest V3 and is on the Chrome Web Store at version 2.4.2 (updated March 10, 2026). It works on Chrome 146. The `f` hint labels, vomnibar, `j`/`k` scrolling — all intact.
 
@@ -2647,6 +2717,11 @@ A: Vimium is page-scoped — it helps you navigate the current page and switch t
 URL: https://www.superchargebrowser.com/library/zen-browser-vs-chrome-extensions/
 Category: comparison | Extension: navigation | Updated: 2026-03-22
 Description: Zen Browser is excellent — but it's Firefox-based. If Chrome extensions lock you in, here's how to get vertical tabs, workspaces, and more.
+
+> **Key takeaways**
+> - Zen is polished and well-designed: vertical tabs, isolated workspaces, a **4-pane split view Chrome can't match.**
+> - It's **Firefox-based**, so every Chrome Web Store extension you rely on stops working the moment you switch.
+> - Chrome 146 vtabs plus SuperchargeNavigation **closes most of the gap**. Only the 4-pane grid and nested tab folders have no equivalent.
 
 You opened Zen Browser once and understood immediately. Tabs on the left. Workspaces that actually isolate your projects. A split view that tiles four tabs into a grid. The whole interface felt like someone had taken Chrome's tab problem seriously, then rebuilt the browser around the answer.
 
@@ -2775,6 +2850,11 @@ URL: https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrom
 Category: guide | Extension: navigation | Updated: 2026-03-18
 Description: Ranked guide to vertical tab extensions for Chrome in 2026, including Chrome's native vertical tabs feature, Firefox options, and workspace managers.
 
+> **Key takeaways**
+> - Chrome 146 ships native vertical tabs, but they're a **flat list with no workspaces or session recovery**.
+> - **Vertical Tabs by nicedoc.io leads by install count** (~100K users) for pure sidebar replacement in Chrome.
+> - SuperchargeNavigation is the **only option pairing vertical tabs with named workspaces**, 50 snapshots, and Alt+K.
+
 The horizontal tab bar was designed for 5-10 tabs. At 50+, you're working with truncated titles, no visual hierarchy, and constant hunting. Vertical tab managers move that list to a sidebar where full titles, favicons, and group structures are actually readable.
 
 Chrome 146 (March 12, 2026) shipped native vertical tabs in the stable channel — available via `chrome://flags`. It's a clean sidebar with tab group support, but no workspaces or session recovery. Here's where each option stands in 2026.
@@ -2891,11 +2971,14 @@ URL: https://www.superchargebrowser.com/library/chrome-workspaces-extension/
 Category: comparison | Extension: navigation | Updated: 2026-03-18
 Description: Chrome has no native workspaces. Tab groups are labels, not contexts. Five options compared — from free local-first to cloud-synced paid tiers.
 
+> **Key takeaways**
+> - **Chrome 146 still has no workspaces.** Tab groups are labels on a shared strip, not isolated contexts.
+> - **Workona** is right for cloud sync or team features, but requires an account and a paid plan.
+> - **SuperchargeNavigation gives unlimited local workspaces**, session time-travel, and Alt+K command bar free with no account.
+
 Chrome has no workspaces. As of Chrome 146 in March 2026, the browser ships vertical tabs, tab groups, and Memory Saver — but nothing that creates named, isolated tab contexts that persist across restarts. If you have been searching for chrome workspaces, you are looking for functionality that requires an extension.
 
 What follows is a breakdown of what workspace isolation actually means, how the options compare, and when each one fits.
-
-> **Key takeaway:** Chrome has no native workspaces. Three extensions fill the gap — the deciding factor is cloud sync vs local-first storage.
 
 ## What "Workspaces" Actually Means
 
@@ -2941,7 +3024,7 @@ The tradeoff is usability. Switching profiles means switching Chrome windows. Th
 | Keyboard navigation | No | No | Partial | No | Yes (Alt+K command bar) |
 | Data storage | Local browser | Local browser | Cloud (account required) | Cloud (account required) | 100% local, no account |
 | Free tier | Full (built-in) | Full (built-in) | Limited workspaces | Limited | Full (no paid tier) |
-| Paid tier | N/A | N/A | $7.50/mo | $4.50/mo | Free |
+| Paid tier | N/A | N/A | Paid plan | Paid plan | Free |
 | Account required | No | No | Yes | Yes | No |
 | Session time-travel | No | No | No | No | Yes (50 snapshots, 5-min intervals) |
 | Vertical tabs | Chrome 146 native | Chrome 146 native | No | No | Yes (side panel) |
@@ -2957,7 +3040,7 @@ Workona is the most established workspace manager for Chrome with over 800,000 u
 
 Where Workona goes beyond tab management: it includes built-in notes, task lists, and a resources panel per workspace. If you need a workspace that holds not just tabs but also associated notes and to-dos, Workona is the only option here that addresses that use case natively.
 
-Where Workona requires compromise: an account is mandatory. Workspace data syncs to Workona's cloud servers. Your browsing context — tab URLs, workspace names, session history — lives on a third-party server. The free tier caps the number of workspaces. Beyond the free limit, the cost is $7.50/month. There are no vertical tabs, no session time-travel, and no keyboard command bar that searches across workspaces.
+Where Workona requires compromise: an account is mandatory. Workspace data syncs to Workona's cloud servers. Your browsing context — tab URLs, workspace names, session history — lives on a third-party server. The free tier caps the number of workspaces. Beyond the free limit, a paid subscription is required. There are no vertical tabs, no session time-travel, and no keyboard command bar that searches across workspaces.
 
 **Workona is the right choice if:** you need cloud sync to access the same workspaces on multiple devices, or you want notes and tasks integrated into your workspace alongside tabs.
 
@@ -2967,7 +3050,7 @@ Toby's model is different from the others in this comparison. Toby is a saved ta
 
 This is session archiving, not context switching. Toby does not create an active workspace you switch into — it creates a saved set you restore from. There is no concept of being "in" a Toby collection the way you are in a Workona workspace or a SuperchargeNavigation workspace.
 
-Toby's free tier is limited, and full functionality requires a $4.50/month subscription. An account and cloud sync are required.
+Toby's free tier is limited, and full functionality requires a paid subscription. An account and cloud sync are required.
 
 **Toby is the right choice if:** you want to bookmark organized tab sets for later reference, not switch between live project contexts during the workday.
 
@@ -3007,7 +3090,7 @@ The right choice depends on whether cross-device sync or local privacy is the hi
 
 If you only have 5 or fewer distinct projects and you need to access workspaces from multiple computers, the cloud sync in Workona's free tier may be enough, and the account requirement may not be a concern.
 
-If you have outgrown 5 workspaces or do not want to pay $7.50/month, and you are managing multiple active projects primarily on one machine, SuperchargeNavigation is the stronger option — more workspace features, no account, no cost for the workspace functionality itself.
+If you have outgrown 5 workspaces or do not want to pay a subscription, and you are managing multiple active projects primarily on one machine, SuperchargeNavigation is the stronger option — more workspace features, no account, no cost for the workspace functionality itself.
 
 If you are primarily looking for a way to archive and restore tab sets rather than maintain live project contexts, Toby's collection model fits that workflow more directly than the workspace-switching model.
 
@@ -3052,11 +3135,14 @@ URL: https://www.superchargebrowser.com/library/focus-mode-chrome/
 Category: guide | Extension: navigation | Updated: 2026-03-18
 Description: Chrome has no native focus mode as of 2026. Workspace isolation hides every tab except the ones relevant to your current task. One extension does it.
 
+> **Key takeaways**
+> - Collapsing tab groups still leaves labels visible — **Ctrl+Tab cycles every tab regardless.** That's labeling, not focus.
+> - **Workspaces replace your entire tab context**: switch to one and all other tabs vanish from view and from Ctrl+Tab.
+> - Create a "Deep Work" workspace with 5–8 relevant tabs and **everything outside it disappears until you choose to look.**
+
 Chrome has no focus mode. If you want to work on a single project without every other open tab competing for your attention, the browser gives you nothing built in to accomplish that. The result is familiar: 30 tabs across five projects, all visible, all tempting, all contributing to the cognitive overhead of getting anything done.
 
 The fix is workspace isolation — switching to a context where you see only the tabs relevant to your current task. Everything else stays hidden until you choose to look at it.
-
-> **Key takeaway:** Collapsing a tab group hides titles. Ctrl+Tab still cycles every tab. A workspace swap removes them entirely.
 
 ## Why Chrome Has No Real Focus Mode
 
@@ -3197,11 +3283,14 @@ URL: https://www.superchargebrowser.com/library/onetab-alternative/
 Category: comparison | Extension: both | Updated: 2026-03-18
 Description: OneTab closes your tabs and has no search. Four alternatives compared by use case: RAM savings, tab organization, session recovery, or all three.
 
+> **Key takeaways**
+> - OneTab's core problem: **saved lists can vanish after a Chrome update** with no recovery path. Single local store, no versioning.
+> - A tab suspender keeps tabs in the bar at **~5–10 MB each** without closing them. No destruction/restore cycle required.
+> - **Named workspaces** replace the flat URL dump with persistent, searchable contexts that survive restarts and crashes.
+
 Most people who search for a OneTab alternative have already made the decision. They've had a list disappear. They've opened OneTab with 60 saved tabs and had no way to find the one URL they needed. They've closed their browser and come back to a flat list with no context about what any of it was. The decision to leave is usually made before the search begins.
 
 This guide is for those users. It covers what people actually use OneTab for, where each alternative wins, and the honest cases where OneTab is still the simpler choice.
-
-> **Key takeaway:** OneTab closes tabs into a flat list with no search. A suspender drops them to ~5MB without closing. Workspaces keep them alive, named, and searchable.
 
 ## Why People Leave OneTab
 
@@ -3327,11 +3416,14 @@ URL: https://www.superchargebrowser.com/library/separate-work-personal-tabs-chro
 Category: guide | Extension: navigation | Updated: 2026-03-18
 Description: Chrome Profiles, tab groups, and windows all fall short. Named workspaces give you real separation — one click, no context bleed, survives restarts.
 
+> **Key takeaways**
+> - Tab groups label tabs but **hide nothing**. All groups stay visible in the same tab bar simultaneously.
+> - One click to switch workspaces hides every unrelated tab instantly, **with no identity overhead of a separate Chrome Profile.**
+> - Create Work and Personal workspaces in SuperchargeNavigation — both **persist across restarts** and take under 2 minutes to set up.
+
 The problem is not that you have too many tabs. It is that your tabs are all in the same place. YouTube is next to Jira. Your shopping cart is next to the pull request you are supposed to be reviewing. Your partner's birthday gift is visible to everyone in the screen-share you just started.
 
 Mixing work and personal tabs is not a discipline failure. It is a browser design failure. Chrome puts everything in a single, undifferentiated strip — and every workaround it offers has a catch.
-
-> **Key takeaway:** Chrome Profiles separate everything — overkill for tabs. Workspaces separate only your tabs: one click, nothing bleeds, survives restarts.
 
 ## The Real Cost of Mixed Tabs
 
@@ -3489,13 +3581,16 @@ URL: https://www.superchargebrowser.com/library/tab-suspender-ad-blocker-chrome/
 Category: comparison | Extension: performance | Updated: 2026-03-18
 Description: Two extensions for ad blocking and tab suspension means two permission grants and zero shared logic. One extension does both with 186K blocking rules.
 
+> **Key takeaways**
+> - Two separate extensions means **two whitelists that drift out of sync** and two background service workers.
+> - Blocking ads cuts active tab weight to **~100 MB**. Suspension then drops idle tabs to ~5 MB. The fixes are additive.
+> - **One extension** can do both using the same `declarativeNetRequest` API dedicated ad blockers use.
+
 Most people solving Chrome's memory problem reach for two extensions: one to suspend idle tabs, one to block ads.
 
 That setup works. But it carries overhead most users do not think about — two permission grants, two service workers, and savings that never compound because the extensions have no awareness of each other.
 
 SuperchargePerformance is the only Chrome extension that combines tab suspension and ad blocking in a single install.
-
-> **Key takeaway:** Ads blocked: ~200MB → ~100MB per tab. Suspended: ~100MB → ~5MB. One extension, one whitelist, compounding savings.
 
 ## The Two-Extension Problem
 
@@ -3650,13 +3745,10 @@ URL: https://www.superchargebrowser.com/library/too-many-tabs-chrome/
 Category: guide | Extension: both | Updated: 2026-03-18
 Description: 30 tabs = 3-5GB of RAM. Chrome slows down, fans spin, you can't find anything. The fix is two-sided: free the memory, then organize what's left.
 
-Your laptop fan is screaming. Chrome is using 4GB of RAM. You need the tab with that one article from this morning, but the tab bar is a row of identical favicons and you have no idea which one it is. So you open a new tab and search for it again.
-
-This is the "too many tabs" problem, and it is actually two problems. A memory problem — Chrome allocates 80–300MB per tab and does not free it proactively (measured via Chrome Task Manager). And an organization problem — Chrome's tab bar collapses into uselessness above 20 tabs.
-
-This guide fixes both.
-
-> **Key takeaway:** A 5-minute tab suspender keeps 30 tabs under 1GB vs 3–5GB without. Workspaces fix the "can't find anything" half.
+> **Key takeaways**
+> - **30 tabs hits 3–5 GB of RAM**. Chrome allocates 80–300 MB per tab and frees nothing proactively.
+> - A **timer-based suspender** keeps 30 tabs under 1 GB. Named workspaces stop project contexts bleeding together.
+> - Memory fix and organization fix are **independent** — install one, both, or neither depending on your symptom.
 
 ## What Actually Happens at 30, 50, and 100 Tabs
 
@@ -3817,6 +3909,11 @@ URL: https://www.superchargebrowser.com/library/restore-tab-scrolling-chrome/
 Category: guide | Extension: navigation | Updated: 2026-03-16
 Description: Chrome 144 killed the scrollable tab strip. While Google rebuilds it, here are alternatives that actually go beyond what tab scrolling offered.
 
+> **Key takeaways**
+> - Chrome 144 removed `#scrollable-tabstrip` with no replacement. **It has not returned as of Chrome 146.**
+> - Fastest workaround: **Alt+Scroll** cycles tabs from anywhere on the page — no cursor precision required, no narrow strip to target.
+> - For 60+ tabs, **Alt+K** to search by name is faster than any scrolling. Type a fragment of the title and jump directly there.
+
 You had 60 tabs open. You could scroll through them. Then Chrome 144 shipped in January 2026 and the `#scrollable-tabstrip` flag disappeared without warning. Now those 60 tabs are 60 identical favicons you have to hover one by one to identify.
 
 If this happened to you, you probably found the Chromium bug tracker thread with hundreds of other users asking the same question. Google's response: tab scrolling will come back in a redesigned form, sometime in H1 2026. No version number, no date.
@@ -3959,6 +4056,11 @@ URL: https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in
 Category: guide | Extension: navigation | Updated: 2026-03-14
 Description: Arc stopped development in 2025. If you're staying on Chrome, here's the closest you can get to Arc's workflow without switching browsers.
 
+> **Key takeaways**
+> - **The Browser Company stopped Arc development in May 2025** and pivoted to Dia, an AI-first product acquired by Atlassian for $610M.
+> - **Most of Arc's core workflow maps directly onto Chrome**: vertical tabs, named workspaces, command bar, Shift+Click peek previews.
+> - **Little Arc mini windows have no Chrome equivalent** — everything else is covered by Chrome 146 plus SuperchargeNavigation.
+
 Arc Browser changed how a lot of people think about tabs. The sidebar, Spaces, the Command Bar — these were not incremental improvements. They were a fundamentally different way to use a browser. When The Browser Company announced in May 2025 that Arc was entering maintenance mode, the reaction from users was not indifference. It was grief.
 
 This article is for those users: people who used Arc daily, loved what it built, and now need an arc browser alternative for Chrome that does not require giving up years of configured extensions.
@@ -4054,6 +4156,11 @@ A: For users who want to stay on Chrome, SuperchargeNavigation replicates the mo
 URL: https://www.superchargebrowser.com/library/chrome-146-vertical-tabs-vs-extensions/
 Category: comparison | Extension: navigation | Updated: 2026-03-14
 Description: Chrome 146 shipped native vertical tabs. Here is what the built-in version does, what it lacks, and when you still need an extension.
+
+> **Key takeaways**
+> - **Chrome 146 ships vertical tabs free**: a collapsible sidebar with tab group integration, available via chrome://flags.
+> - Native tabs have **no workspaces, no session recovery**, and no keyboard search across tabs or history.
+> - The native sidebar works fine for **one project context**. Switch between 3+ daily and you'll need an extension.
 
 Chrome 146 shipped native vertical tabs on March 12, 2026. If you've been waiting for Google to solve the tab bar problem before reaching for an extension, this is the release that answers the question. The short version: native vertical tabs are good, they're free, and for a certain class of user they will be enough. For another class of user, they stop short of what matters.
 
@@ -4198,6 +4305,11 @@ URL: https://www.superchargebrowser.com/library/chrome-ad-blocker-saves-ram/
 Category: guide | Extension: performance | Updated: 2026-03-14
 Description: Most ad blockers only block ads. Most tab suspenders only save RAM. Here is why combining both in one extension saves more memory than either alone.
 
+> **Key takeaways**
+> - **Blocking ads and trackers cuts per-tab RAM by 40–80 MB.** Scripts that never load can't consume memory.
+> - Tab suspension frees the rest: a suspended tab drops to **~5 MB regardless** of how heavy it was.
+> - Combined across 20 tabs, the two approaches can **save over 2 GB**. Most people treat them as separate problems.
+
 Ad blockers and tab suspenders are usually installed separately and thought of as solving separate problems. They're not. Blocking ads and trackers is a RAM-saving tool — scripts that don't load can't consume memory. And tab suspension works better when the tabs being suspended aren't already bloated with third-party scripts. The two compound.
 
 Here is why the two belong together, what the combined RAM impact looks like in practice, and where a single extension handling both wins over two separate ones.
@@ -4310,6 +4422,11 @@ URL: https://www.superchargebrowser.com/library/privacy-extensions-that-collect-
 Category: guide | Extension: both | Updated: 2026-03-14
 Description: Fake AI extensions stole 900K users' chat data in 2026. Here is how to verify an extension is safe, and what zero telemetry actually means.
 
+> **Key takeaways**
+> - **900,000 people installed fake AI assistant extensions** in early 2026. They worked perfectly while silently exporting chat data.
+> - **Permissions granted at install persist through every future update**, including after silent ownership transfers to bad actors.
+> - Verify an extension in 60 seconds: **DevTools → service worker → Network tab**. Zero outbound requests means zero telemetry.
+
 900,000 people installed what looked like AI assistants. ChatGPT. Claude. Copilot. Gemini. Every extension worked exactly as advertised. Every extension was also silently exporting conversation data to external servers. They were removed in March 2026 — after the downloads.
 
 The pattern they exploited is not new: the most effective way to get access to sensitive browser data is to build an extension that people *want* to install. Privacy tools, ad blockers, and AI assistants are the highest-trust categories — which makes them the most valuable attack surface.
@@ -4415,6 +4532,11 @@ A: Zero telemetry means the extension makes no outbound network requests. No ana
 URL: https://www.superchargebrowser.com/library/tab-suspender-vs-chrome-memory-saver/
 Category: comparison | Extension: performance | Updated: 2026-03-14
 Description: Chrome Memory Saver waits for system pressure. A tab suspender acts on a timer. Here are the real differences in RAM savings, and when each approach wins.
+
+> **Key takeaways**
+> - Memory Saver waits for system pressure. At 30 tabs, that can mean **2.5 GB already consumed** before it acts.
+> - A **timer-based suspender** acts after 5 minutes of inactivity regardless of system state, keeping Chrome under 800 MB.
+> - Memory Saver Maximum is enough at 10 tabs. At **30+ tabs**, the reactive vs. proactive gap is decisive.
 
 Chrome Memory Saver and a tab suspender extension do the same job through the same mechanism. The difference is timing. Memory Saver waits until your system signals memory pressure — then discards. A timer-based suspender acts after 5 minutes of inactivity, regardless of system state. At 10 tabs, that timing gap barely matters. At 30 tabs, it can be the difference between 2.5GB and 800MB (measured via Chrome Task Manager).
 
@@ -4555,6 +4677,11 @@ URL: https://www.superchargebrowser.com/library/cluster-tab-manager-alternative/
 Category: comparison | Extension: navigation | Updated: 2026-03-12
 Description: Cluster Tab Manager was removed from Chrome when MV2 was disabled. Here are the best free MV3 alternatives for tab and workspace management in 2026.
 
+> **Key takeaways**
+> - **Cluster was permanently removed when Chrome disabled MV2 in mid-2025.** All saved workspace data was deleted.
+> - Last updated **2019**, website offline. No MV3 migration is coming from the developer.
+> - SuperchargeNavigation is the closest free replacement: **named workspaces, MV3-native, local storage, no account**.
+
 Cluster Tab Manager stopped working when Chrome disabled Manifest V2 extensions. The developer hadn't touched it since 2019, the website is offline, and there's no MV3 migration coming.
 
 The frustrating part: your saved window layouts are gone too. `chrome.storage.local` is cleared when an extension is removed, which means the workspace data you built up over years went with it. That's the bad news. The workflow itself doesn't have to disappear — several modern alternatives offer named workspace management on Chrome's current extension platform.
@@ -4587,13 +4714,13 @@ Cluster's core value was straightforward: save your current window arrangement, 
 | Named workspaces | Yes | Yes | Yes, unlimited |
 | Tab view | Popup window list | New tab page overlay | Side panel vertical tabs |
 | Keyboard navigation | None | Limited | Alt+K command palette |
-| Price | Free (dead) | Free tier + ~$8/month | 100% free |
+| Price | Free (dead) | Free tier + paid plan | 100% free |
 | MV3 status | MV2 (removed) | MV3 (active) | MV3 (active) |
 | Data storage | Local | Cloud (account required) | Local (no account) |
 | Cross-device sync | No | Yes | Via Chrome's native sync + manual export/import |
 | Last updated | 2019 | 2026 | 2026 |
 
-Note on Workona pricing: approximately $8/month based on published plans as of early 2026 — verify current pricing at workona.com before subscribing.
+Note on Workona pricing: verify current pricing at workona.com before subscribing.
 
 ## SuperchargeNavigation as a Cluster Replacement
 
@@ -4616,7 +4743,7 @@ Note: SuperchargeNavigation does not support cross-device sync. If you need work
 
 ## Bottom Line
 
-Cluster is permanently gone and the data is unrecoverable. SuperchargeNavigation is the closest free replacement: named workspaces, MV3, local storage, no account. Workona is the right answer if you need cross-device sync or team collaboration — but at $96/year, it's a meaningful cost step up from what Cluster was.
+Cluster is permanently gone and the data is unrecoverable. SuperchargeNavigation is the closest free replacement: named workspaces, MV3, local storage, no account. Workona is the right answer if you need cross-device sync or team collaboration — but it's a paid subscription, a meaningful cost step up from what Cluster was.
 
 ## Related Articles
 
@@ -4643,6 +4770,11 @@ A: For a free, unlimited workspace manager with vertical tabs and keyboard navig
 URL: https://www.superchargebrowser.com/library/disable-efficiency-mode-specific-tabs-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
 Description: Chrome Efficiency Mode throttles all background tabs. Learn how to protect specific tabs from throttling while still saving power elsewhere in Chrome.
+
+> **Key takeaways**
+> - Chrome's Efficiency Mode **drops JS timer resolution from 1 ms to 1,000 ms** in every background tab. No per-tab override exists.
+> - **Audible tabs and WebRTC connections** are auto-exempt. Everything else gets throttled the moment you switch away.
+> - **Four workarounds:** disable globally, move to a visible window, play silent audio, or whitelist the domain in a tab suspender.
 
 Your real-time dashboard stops updating when you switch away from it. Your crypto ticker freezes. The music player stutters. Chrome's Efficiency Mode is throttling those tabs because Chrome has no idea they need to stay active — it treats all background tabs the same. There is no per-tab toggle. Here are the workarounds available in Chrome 146 when you need specific tabs to stay fully active.
 
@@ -4737,6 +4869,11 @@ URL: https://www.superchargebrowser.com/library/fix-chrome-checkerboard-glitch-s
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
 Description: White or gray squares flashing when you scroll in Chrome? Fix this GPU rasterization issue without reinstalling Chrome.
 
+> **Key takeaways**
+> - White squares when scrolling mean **the compositor scrolled past tiles the GPU hasn't painted yet**. Not a Chrome bug.
+> - Outdated GPU drivers slow the rasterizer. **Update drivers first**, then verify rasterization is on at chrome://gpu.
+> - Background video tabs consume **shared VRAM**, leaving less for the active page. Close them to recover rasterizer headroom.
+
 You scroll down a page and briefly get a grid of white or gray squares where the content should be. It loads a moment later, but the flicker is annoying and gets worse on image-heavy pages. This is **checkerboarding** — Chrome divides pages into tiles and paints them onto the GPU. When the compositor scrolls faster than the raster threads can paint, unpainted tiles show as blank squares. The faster you scroll, the more tiles you outrun.
 
 ## Quick Diagnosis
@@ -4825,6 +4962,11 @@ A: Sometimes. Disabling hardware acceleration forces Chrome to use CPU-based ras
 URL: https://www.superchargebrowser.com/library/fix-miro-memory-crash-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
 Description: Miro throwing memory warnings or crashing in Chrome? Free RAM from background tabs and prevent WebGL crashes on large whiteboards.
+
+> **Key takeaways**
+> - Miro crashes mid-workshop not because the board is too large. **Your other tabs are consuming the RAM Miro needs.**
+> - Go to **`chrome://discards/`** and discard idle tabs before a session. Freeing 10 tabs typically recovers 1 GB or more.
+> - A proactive **Miro reload every 2–3 hours** clears detached DOM nodes that accumulate silently and bloat memory over time.
 
 Miro boards are infinite, but system RAM is not. You're mid-workshop, scrolling through a board with 200 sticky notes and a dozen embedded diagrams, and Chrome shows "Reloading..." — or worse, the tab just crashes. Large boards accumulate substantial WebGL texture memory and DOM nodes, and Chrome's background tab throttling can also disconnect Miro's WebSocket when you switch away and come back.
 
@@ -4920,6 +5062,11 @@ A: Miro uses the same WebGL rendering engine regardless of browser. The memory c
 URL: https://www.superchargebrowser.com/library/fix-service-worker-high-cpu-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
 Description: Service worker processes draining your CPU in Chrome? Identify and stop background script overload from web apps and extensions.
+
+> **Key takeaways**
+> - A service worker with a polling loop **pins CPU indefinitely after you close the tab**. The tab closing doesn't stop it.
+> - Go to **`chrome://serviceworker-internals/`**, find workers with Status: Running, click Stop then Unregister to kill them.
+> - **Forgotten MV3 extensions** each run their own service worker. Disable any extension you no longer actively use.
 
 You close a tab and the CPU stays pinned. Chrome Task Manager shows "Service Worker: https://example.com" burning 15% CPU — but that site is not even open. Service workers are background JavaScript processes installed by websites to handle push notifications, offline caching, and background sync. Unlike regular page scripts, they persist after you close the tab. A buggy or deliberately aggressive one can run indefinitely without you knowing it is there.
 
@@ -5034,6 +5181,11 @@ URL: https://www.superchargebrowser.com/library/fix-twitch-source-stutter-chrome
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
 Description: Twitch stuttering at Source quality in Chrome even on a fast PC? Fix frame drops caused by Chrome's rendering pipeline and background tab competition.
 
+> **Key takeaways**
+> - Twitch Source stutter is a **frame-pacing problem, not a bandwidth problem**. Your internet speed is not the issue.
+> - Twitch's **1–3 second live buffer** has zero recovery window. One 50 ms main thread delay causes three visible dropped frames.
+> - Suspend background tabs to eliminate CPU interference, then **disable Low Latency mode** to expand the buffer to 3–8 seconds.
+
 Your internet is fast, your PC handles games fine, but Twitch at Source quality stutters. The stream quality is not the problem — your bandwidth is not the problem. This is a **frame pacing** issue. Chrome's video decoder has a 16.6ms deadline to decode and present each frame at 60fps. When background tabs steal CPU time or trigger a main thread delay, frames miss that deadline. The result is a stutter even on hardware that should handle this easily.
 
 ## Quick Diagnosis
@@ -5123,6 +5275,11 @@ A: Twitch runs with 1-3 seconds of live buffer (vs YouTube's 10-30 seconds of pr
 URL: https://www.superchargebrowser.com/library/fix-webgpu-device-lost-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
 Description: Fix the WebGPU Device Lost error in Chrome caused by GPU memory limits, driver timeouts, or background tab GPU contention. Step-by-step guide.
+
+> **Key takeaways**
+> - WebGPU Device Lost is **not hardware failure**. It's a timeout when the GPU doesn't respond within the OS's 2-second TDR limit.
+> - Three causes: **driver TDR event, VRAM exhaustion from background tabs, or a compute shader exceeding the timeout threshold.**
+> - **Update GPU drivers first.** If it persists, close background video tabs to free VRAM before launching the WebGPU workload.
 
 You are running a WebGPU demo, a 3D app, or an in-browser AI model, and the page crashes with "WebGPU Device Lost" in the console. It means Chrome's GPU process dropped its connection to the graphics card — either the driver timed out (a Windows TDR event), VRAM ran out, or a compute shader took longer than the OS allows. It is not hardware failure. It is a timeout or resource exhaustion problem, and it is usually fixable.
 
@@ -5215,6 +5372,11 @@ A: Chrome 130 added automatic device recovery via Dawn, Chrome's WebGPU backend.
 URL: https://www.superchargebrowser.com/library/fix-youtube-stutter-high-end-pc-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
 Description: Fix YouTube video stuttering and frame drops in Chrome on powerful hardware. Covers GPU acceleration, codecs, and extensions.
+
+> **Key takeaways**
+> - YouTube stuttering on a powerful PC is **almost never a hardware problem**. Your GPU is almost certainly fast enough.
+> - Ranked by frequency: **extension interference, outdated GPU drivers, Chrome falling back to software video decoding.**
+> - Test in a **clean Chrome profile** first (`--user-data-dir=/tmp/chrome-test`). If stutter disappears, an extension is the culprit.
 
 Your GPU handles AAA games at 4K, but YouTube at Source quality stutters in Chrome. The problem isn't your hardware — it's a frame pacing issue where background tabs steal the CPU time Chrome needs to decode each frame on schedule.
 
@@ -5323,6 +5485,11 @@ URL: https://www.superchargebrowser.com/library/great-suspender-alternative/
 Category: comparison | Extension: performance | Updated: 2026-03-12
 Description: The Great Suspender was removed for malware in 2021. Its forks migrated to MV3 — but volunteer-maintained. Compare them to a full MV3 tab suspender.
 
+> **Key takeaways**
+> - The original Great Suspender was **removed from Chrome Web Store for malware in 2021**. Its MV3 forks still work but rely on volunteers.
+> - Forks show a custom suspension page. **`chrome.tabs.discard()` suspends invisibly** and never breaks the back button.
+> - **Active maintenance matters**: Chrome ships every 4 weeks, and a fork unupdated for 12 months accumulates silent failures.
+
 If you used The Great Suspender for years and are looking for a tab suspender that works on current Chrome versions, this page covers what happened to the original, the state of its forks, and how SuperchargePerformance compares as a replacement.
 
 ## What Happened to The Great Suspender
@@ -5415,6 +5582,11 @@ URL: https://www.superchargebrowser.com/library/session-buddy-alternative-local-
 Category: comparison | Extension: performance | Updated: 2026-03-12
 Description: Session Buddy is a free session recovery tool but has no workspaces or tab groups. See how local-first alternatives compare for crash recovery in 2026.
 
+> **Key takeaways**
+> - Session Buddy has **no automatic saves**. A crash between manual checkpoints loses everything since the last click.
+> - **Tab suspension state persists across restarts** by default, giving you crash recovery without remembering to save.
+> - For **named workspaces and tab groups** Session Buddy never offered, SuperchargeNavigation is the right tool.
+
 Session Buddy is a free, actively maintained session save and recovery tool for Chrome. If you're looking for an alternative, it's usually for one of three reasons: you want crash recovery that happens automatically without remembering to save, you need workspaces and tab groups that Session Buddy doesn't offer, or you want tighter privacy guarantees. The right answer depends on which of those is driving the search.
 
 ## Feature Comparison
@@ -5502,6 +5674,11 @@ URL: https://www.superchargebrowser.com/library/toby-alternative/
 Category: comparison | Extension: navigation | Updated: 2026-03-11
 Description: Toby switched to a paid subscription model in 2024-2025. Here are the best free alternatives with no item limits and local storage.
 
+> **Key takeaways**
+> - Toby was free until 2024. Then came a **60-item limit, mandatory account, and reports of collections disappearing.**
+> - **Local-only tools** store nothing on remote servers. The exit is clear if you hit the limit or lost data.
+> - SuperchargeNavigation is **unlimited, local-only, and free**: no account, no item cap, no cloud dependency.
+
 Toby was good — clean card grid, easy to organize, completely free. Then in 2024-2025 it introduced a 60-item limit on the free tier and made account creation mandatory. Users with hundreds of saved tabs hit the limit immediately, and some reported collections disappearing after the login prompt appeared. Here's what to move to if you've decided to leave.
 
 ## What Changed with Toby
@@ -5511,7 +5688,7 @@ Toby was good — clean card grid, easy to organize, completely free. Then in 20
 | 60-item free tier limit | Saved tabs beyond 60 locked unless you pay |
 | Mandatory account creation | Local collections required a login to access |
 | Reported data loss | Multiple users reported collections vanishing after login prompts |
-| Price | Approximately $4-6/month for unlimited access |
+| Price | Paid subscription for unlimited access |
 | Storage model | Cloud-dependent — tabs inaccessible if Toby's servers are slow |
 
 Toby's current rating on the Chrome Web Store is approximately 4.0 stars, with recent reviews focused on the subscription transition.
@@ -5529,7 +5706,7 @@ Toby's current rating on the Chrome Web Store is approximately 4.0 stars, with r
 | Named workspaces | Limited | Yes | Yes, unlimited |
 | Session time-travel | No | No | Yes (50 auto-snapshots) |
 | Tab search | No | No | Yes (Alt+K) |
-| Price | Free (60 items) | ~$4-6/month | Free |
+| Price | Free (60 items) | Paid subscription | Free |
 | Data stays on device | No | No | Yes |
 
 ## Three Groups Leaving Toby
@@ -5591,6 +5768,11 @@ A: No cross-device sync. For users leaving Toby because of cloud sync failures, 
 URL: https://www.superchargebrowser.com/library/fix-high-memory-usage/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-10
 Description: Chrome Task Manager showing high memory usage? Find which tabs and processes are consuming the most RAM and reduce usage step by step.
+
+> **Key takeaways**
+> - One ad-heavy tab can spawn **10+ Subframe processes**. The RAM isn't in your tabs, it's in the processes they spawned.
+> - **Shift+Esc → sort by Memory** reveals GPU Process bloat, heavy extensions, and Subframes that tab count won't show you.
+> - Kill Subframe processes, restart the GPU Process, then discard idle tabs. **Three steps** that usually recover 1–2 GB immediately.
 
 Open Chrome Task Manager with `Shift + Esc` and you will see the full picture: every tab, extension, iframe, and service worker runs in its own process. The design improves stability — one crashed tab cannot bring down the browser — but the memory cost accumulates fast. Twenty tabs can reach 3–4 GB before it becomes noticeable (measured via Chrome Task Manager). Here's how to find what's actually driving the number up.
 
@@ -5691,6 +5873,11 @@ URL: https://www.superchargebrowser.com/library/fix-chatgpt-network-error-chrome
 Category: troubleshooting | Extension: performance | Updated: 2026-03-08
 Description: ChatGPT showing a Network Error mid-generation in Chrome? Fix WebSocket disconnects caused by tab suspension and background throttling.
 
+> **Key takeaways**
+> - ChatGPT's mid-generation "Network Error" is **Chrome discarding the tab and killing the WebSocket**. Not a ChatGPT outage.
+> - When Chrome discards the tab, the server sees a **dropped heartbeat** and terminates the stream. The response is gone when you reload.
+> - Fix it by adding **chatgpt.com and chat.openai.com** to chrome://settings/performance → "Always keep these sites active".
+
 You switch tabs while ChatGPT is generating a long response, come back a minute later, and find a red "Network Error" mid-sentence. The response is gone and you have to reload. This is not a ChatGPT outage — it is Chrome's Memory Saver discarding the tab while you were away, which kills the WebSocket connection streaming the response. The AI server sees the connection drop and terminates the generation.
 
 ## Quick Diagnosis
@@ -5775,6 +5962,11 @@ A: Yes. Any AI chat interface using WebSocket or Server-Sent Events for real-tim
 URL: https://www.superchargebrowser.com/library/fix-chrome-memory-leaks-macos-tahoe/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-08
 Description: Chrome leaking RAM on macOS Tahoe? Diagnose WindowServer CPU spikes and unified memory drain, then fix the leak step by step.
+
+> **Key takeaways**
+> - Normal Chrome usage plateaus. A leak **keeps climbing for hours**: a process holding RAM it should have released long ago.
+> - On **unified memory Macs**, every leaked MB shrinks the pool for both CPU and GPU. Crashes arrive faster than on PCs.
+> - Open Chrome Task Manager (Shift+Esc), sort by Memory, watch for anything still growing. **GPU Process above 500 MB: restart it first.**
 
 Your Mac's fans are screaming, Activity Monitor shows Chrome eating 8 GB, and you've only got Gmail and Slack open. That's a memory leak — not just high usage, but a process holding RAM it should have released long ago.
 
@@ -5874,6 +6066,11 @@ URL: https://www.superchargebrowser.com/library/fix-chrome-out-of-memory/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-08
 Description: Fix Chrome STATUS_ACCESS_VIOLATION and Out of Memory crashes. Identify which tab is exhausting RAM and prevent the renderer from crashing.
 
+> **Key takeaways**
+> - Figma, Miro, and dashboards routinely use **500 MB to 2 GB per tab**. Chrome crashes without warning once a renderer hits the ceiling.
+> - **V8 heap** doesn't shrink gracefully under pressure. The OS terminates the renderer process, losing all unsaved work.
+> - **Make room before it crashes**: discard idle tabs at chrome://discards/, and reload Figma proactively if it approaches 3.5 GB.
+
 You're mid-session in Figma or a data dashboard, and suddenly: "Aw, Snap!" with an Out of Memory message. The renderer process for that tab exhausted available RAM — or hit V8's per-process memory ceiling. Modern single-page apps can use 500 MB to 2 GB per tab. When system RAM is saturated across multiple processes, Chrome terminates the renderer rather than allow an OS-level crash.
 
 ## Quick Diagnosis
@@ -5971,6 +6168,11 @@ URL: https://www.superchargebrowser.com/library/prevent-chrome-suspending-opencl
 Category: troubleshooting | Extension: performance | Updated: 2026-03-08
 Description: Stop Chrome from killing the OpenClaw Web UI background tab. Keep the local AI agent's WebSocket connection alive without disabling Memory Saver globally.
 
+> **Key takeaways**
+> - OpenClaw's WebSocket connects to a local backend. When Chrome discards the tab, **that connection drops silently with no error.**
+> - Fastest fix: add `localhost` to **Chrome's "Always keep these sites active"** list at `chrome://settings/performance`.
+> - Local LLMs increase memory pressure until **Chrome overrides its own exception list**. An extension-level whitelist is more reliable.
+
 You switch away from the OpenClaw Web UI to do something else, come back, and the tab has reloaded. Your session context is gone and the agent has disconnected from the backend. OpenClaw's web UI maintains a WebSocket connection to a local Node.js backend. When Chrome discards the background tab, that connection drops silently — no error until you return and find a blank reload screen. This happens because Chrome treats localhost tabs the same as any other background tab: expendable under memory pressure.
 
 ## Quick Diagnosis
@@ -6057,6 +6259,11 @@ A: Yes. Any local AI tool that runs a web UI over localhost — Open WebUI, LM S
 URL: https://www.superchargebrowser.com/library/speed-up-4gb-chromebook/
 Category: guide | Extension: performance | Updated: 2026-03-08
 Description: Make Chrome fast on a 4GB Chromebook. Reduce tab memory, disable heavy extensions, control Android app overhead, and stop the lag in 2026.
+
+> **Key takeaways**
+> - Disabling the Android subsystem (Play Store) if you don't use it **frees roughly 1 GB**. Single largest fix on any 4 GB Chromebook.
+> - Each active tab consumes **100–300 MB**. Suspending idle ones keeps Chrome under zRAM territory entirely.
+> - Audit extensions, disable Android subsystem, then suspend tabs. **Those three steps** eliminate most lag.
 
 Your Chromebook was fine two years ago and now it freezes when you have more than five tabs open. Nothing has changed — except the web. Modern sites are heavier, and ChromeOS reserves memory for both the browser and the Android subsystem, leaving less than you think for actual browsing. When you hit the limit, ChromeOS starts swapping to slow eMMC storage and everything grinds to a halt.
 
@@ -6170,6 +6377,11 @@ URL: https://www.superchargebrowser.com/library/stop-chrome-reloading-framer-fig
 Category: troubleshooting | Extension: performance | Updated: 2026-03-08
 Description: Prevent Chrome from discarding Framer and Figma tabs and losing unsaved work. Fix aggressive Memory Saver behavior for design tool tabs.
 
+> **Key takeaways**
+> - Figma and Framer tabs get discarded when memory tightens. **Chrome has no idea they take 45 seconds to reload.**
+> - Add `figma.com` and `framer.com` to **"Always keep active"** at `chrome://settings/performance`. Takes 30 seconds.
+> - Suspending other idle tabs **removes the memory pressure** that triggers discards in the first place.
+
 You switch back to your Figma tab after working in another app for an hour and watch it reload from scratch. Thirty seconds of spinner, then you are back to an empty canvas that has to reload your file. Any undo history is gone. Chrome's Memory Saver discarded the tab while you were away — it has no idea that Figma takes 45 seconds to reinitialize and that you had unsaved state. To Chrome, it is just another background tab using a lot of RAM.
 
 ## Quick Diagnosis
@@ -6264,6 +6476,11 @@ URL: https://www.superchargebrowser.com/library/vs-mcafee-web-boost/
 Category: comparison | Extension: performance | Updated: 2026-03-08
 Description: McAfee Web Boost focuses on speed boost features. SuperchargePerformance combines tab suspension, ad blocking, and autoplay control in one extension.
 
+> **Key takeaways**
+> - McAfee Web Boost does one thing: **block autoplay videos**. It's bundled with a paid security suite.
+> - SuperchargePerformance blocks autoplay at **two levels**: one preserving YouTube and Meet, one blocking everything.
+> - **Tab suspension, ad blocking, and a RAM dashboard** come alongside. Want autoplay blocking, you get the rest too.
+
 McAfee Web Boost shows up in speed-related Chrome searches primarily because autoplay blocking is one of the faster wins in browser performance. SuperchargePerformance also blocks autoplay — but as one of 11 features in a broader performance tool. The comparison is less about which is better at autoplay blocking and more about whether you need just that, or a full browser performance setup.
 
 ## Feature Comparison
@@ -6334,6 +6551,11 @@ URL: https://www.superchargebrowser.com/library/vs-onetab/
 Category: comparison | Extension: performance | Updated: 2026-03-07
 Description: OneTab closes tabs and loses your session layout. SuperchargePerformance suspends them in place — same RAM savings, tabs stay in your bar. Full 2026 comparison.
 
+> **Key takeaways**
+> - OneTab frees memory by **closing tabs into a URL list**. Your session layout is gone until you manually restore each one.
+> - SuperchargePerformance suspends tabs in place: **same near-zero memory footprint**, every tab stays visible in the bar.
+> - **No list to manage, no session context lost.** Click a suspended tab and it reloads in place.
+
 If you've ever closed 40 tabs with OneTab and then spent ten minutes hunting for the one URL you actually needed — that's the core tradeoff. OneTab collapses your tabs into a saved URL list and closes them. SuperchargePerformance keeps every tab in the tab bar while freeing its memory via Chrome's discard API. Same RAM savings, completely different session experience.
 
 ## Feature Comparison
@@ -6402,6 +6624,11 @@ A: Both approaches free memory from background tabs, but through different mecha
 URL: https://www.superchargebrowser.com/library/fix-aw-snap-crash/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-06
 Description: Chrome's 'Aw, Snap!' error means a renderer process died. Fix the memory exhaustion and extension conflicts behind it with these steps.
+
+> **Key takeaways**
+> - Reloading an "Aw, Snap!" restarts the renderer but **doesn't fix the cause**. It will crash again without treatment.
+> - Many tabs crashing = memory pressure. One site only = site bug. **Started after an extension install = extension conflict**.
+> - Open **Incognito (Ctrl+Shift+N)** to rule out extensions in 30 seconds — if it doesn't crash there, an extension is the culprit.
 
 A tab just died. Chrome shows the "Aw, Snap!" page, and reloading it makes it work again — until it happens again. Reloading restarts the renderer but does not fix the underlying cause. The three most common causes are memory exhaustion, extension conflicts, and GPU driver instability.
 
@@ -6498,6 +6725,11 @@ URL: https://www.superchargebrowser.com/library/vs-great-suspender/
 Category: comparison | Extension: performance | Updated: 2026-03-06
 Description: The Great Suspender was removed from Chrome Web Store for malware in 2021. Compare its surviving forks against the modern MV3 alternative.
 
+> **Key takeaways**
+> - 2 million users trusted The Great Suspender. Its new owner **silently introduced malware** and Google pulled it.
+> - **The Marvellous Suspender v8.1.3 is on MV3 and working**, but volunteer-maintained with no business model.
+> - SuperchargePerformance uses **Chrome's native discard API**: no custom suspension page, no back-button issues.
+
 The Great Suspender had over 2 million users before Google pulled it for malware (Chrome Web Store, pre-removal). Community forks cleaned up the code and migrated to MV3 — The Marvellous Suspender (v8.1.3, Dec 2025) is active on the Chrome Web Store. But forks are volunteer-maintained, and the feature gap between a fork and a purpose-built MV3 tab suspender has widened since the original went down.
 
 ## What Happened to The Great Suspender
@@ -6569,7 +6801,12 @@ A: Both free RAM from inactive tabs, but the mechanism differs. The Great Suspen
 
 URL: https://www.superchargebrowser.com/library/vs-workona/
 Category: comparison | Extension: navigation | Updated: 2026-03-05
-Description: Workona charges ~$8/month for cloud-synced workspaces. SuperchargeNavigation offers unlimited local workspaces free. Full 2026 comparison for Chrome.
+Description: Workona requires a paid plan for full workspaces. SuperchargeNavigation offers unlimited local workspaces free. Full 2026 comparison.
+
+> **Key takeaways**
+> - Workona stores tab data on their servers and charges a subscription. **That's the price of cross-device sync.**
+> - **SuperchargeNavigation gives unlimited workspaces**, session snapshots, and Alt+K command bar free, all stored locally.
+> - If you work across multiple machines, Workona has the edge. Otherwise, **you're paying for infrastructure you don't need**.
 
 Workona and SuperchargeNavigation both solve the "too many projects, too many tabs" problem, but from completely different directions. Workona is built for teams — cloud-synced, Slack-integrated, subscription-priced. SuperchargeNavigation is built for the person who wants workspaces without a monthly bill, an account, or their tab data sitting on someone else's server.
 
@@ -6588,7 +6825,7 @@ Workona and SuperchargeNavigation both solve the "too many projects, too many ta
 | Session time-travel rewind | Yes (5-min snapshots, up to 50) | No |
 | Quick search (tabs + bookmarks + history) | Yes (Alt+K) | Limited |
 | Export/import workspaces | Yes (JSON) | Yes |
-| Price | Free (no PRO tier) | ~$8/month (free tier available) |
+| Price | Free (no PRO tier) | Free tier + paid plan |
 | Last major update | Active (2026) | January 2025 |
 
 ## Architecture Differences
@@ -6605,7 +6842,7 @@ SuperchargeNavigation makes zero outbound network requests. History and bookmark
 
 ## Workona's Pricing Context
 
-Workona's free tier limits workspace count. The paid plan at approximately $8/month ($96/year) is priced for team use — if you're managing workspaces solo, that's a meaningful recurring cost for tab organization.
+Workona's free tier limits workspace count. The paid plan is priced for team use — if you're managing workspaces solo, that's a meaningful recurring cost for tab organization.
 
 SuperchargeNavigation has no PRO tier as of March 2026. All features are free.
 
@@ -6626,13 +6863,13 @@ SuperchargeNavigation is the better choice if:
 
 ## Bottom Line
 
-Workona makes sense if you need workspaces available across multiple machines or in a team context, and the $96/year fits your setup. If neither of those applies — if you're working solo on one machine and want workspaces without the subscription and cloud dependency — SuperchargeNavigation covers the same workflow for free.
+Workona makes sense if you need workspaces available across multiple machines or in a team context, and the paid subscription fits your setup. If neither of those applies — if you're working solo on one machine and want workspaces without the subscription and cloud dependency — SuperchargeNavigation covers the same workflow for free.
 
 For related comparisons, see [SuperchargePerformance vs Auto Tab Discard](/library/vs-auto-tab-discard/) and [SuperchargePerformance vs OneTab](/library/vs-onetab/).
 
 #### FAQ
 Q: Is Workona free?
-A: Workona has a free tier with limited workspaces. Advanced workspace management and integrations require a paid plan at approximately $8/month. SuperchargeNavigation offers unlimited workspaces with no subscription and no account required.
+A: Workona has a free tier with limited workspaces. Advanced workspace management and integrations require a paid plan (check workona.com for current pricing). SuperchargeNavigation offers unlimited workspaces with no subscription and no account required.
 
 Q: Does Workona work offline?
 A: Workona stores data in the cloud and requires an account. If you lose internet connectivity, some features may not work. SuperchargeNavigation stores everything locally in chrome.storage.local — no internet required, no account needed.
@@ -6650,6 +6887,11 @@ A: No. SuperchargeNavigation is local-only as of March 2026. Workspaces are stor
 URL: https://www.superchargebrowser.com/library/fix-chrome-battery-drain/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-04
 Description: Chrome draining your laptop battery too fast? Stop background tab scripts and block trackers to get hours more battery life in 2026.
+
+> **Key takeaways**
+> - Hidden tabs run JS timers that **block the CPU from entering C-states**. Power consumption stays 60–90% higher than true idle.
+> - Chrome's Energy Saver reduces frame rate but doesn't stop background JS execution. **Suspending tabs does** — it kills the renderer entirely.
+> - Enable Energy Saver first, then sort **Chrome Task Manager by CPU** and end anything above 10% while you're not watching it.
 
 You plugged in at 100% this morning and you're at 40% by noon with Chrome open. The culprit is almost always background tabs — even when hidden, web apps like Slack, Gmail, or news sites keep running JavaScript timers. These scripts force your CPU to wake up repeatedly, preventing the processor from entering low-power idle states (C-states on Intel/AMD, efficiency cores on Apple Silicon).
 
@@ -6733,6 +6975,11 @@ A: Yes. Suspended tabs use near-zero CPU and memory. If you typically have 15+ t
 URL: https://www.superchargebrowser.com/library/fix-chrome-memory-leaks-windows-11/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-04
 Description: Chrome leaking RAM on Windows 11? Identify zombie processes and leaky extensions in Chrome Task Manager and reclaim memory step by step.
+
+> **Key takeaways**
+> - Close a dozen tabs and Chrome still shows **6 GB** an hour later. That's a leak (the memory was never released).
+> - Three culprits: **zombie renderer processes**, extension background pages, and the GPU Process holding VRAM after video tabs close.
+> - **Shift+Esc → sort by Memory → watch what keeps climbing.** End Process on the GPU row reclaims 500 MB+ in seconds.
 
 You closed a dozen tabs an hour ago and Chrome is still using 6 GB of RAM. Welcome to the memory leak. Unlike normal high usage, a leak means memory grows continuously — processes that should have released RAM after you closed a tab are holding onto it indefinitely.
 
@@ -6834,6 +7081,11 @@ URL: https://www.superchargebrowser.com/library/keep-chatgpt-running-background-
 Category: troubleshooting | Extension: performance | Updated: 2026-03-03
 Description: Chrome killing your ChatGPT session mid-generation? 3 fixes to keep ChatGPT alive in background tabs — works for Claude, Gemini, and DeepSeek too.
 
+> **Key takeaways**
+> - Background tab throttling **breaks ChatGPT's WebSocket keep-alive**. Chrome kills the heartbeat and the generation dies mid-response.
+> - Fastest fix: add `chatgpt.com` and `chat.openai.com` to **Chrome's "Always keep these sites active"** at `chrome://settings/performance`.
+> - Under RAM pressure, **Chrome overrides its own exception list**. An extension whitelist is more reliable. Same fix for Claude, Gemini, DeepSeek.
+
 You send a long prompt to ChatGPT, switch tabs to do something else while it generates, and come back to a red "Network Error" — or worse, the tab has fully reloaded and your prompt is gone. Chrome throttles JavaScript timers in background tabs to save battery. When the tab is throttled hard enough, the WebSocket keep-alive signal fails. The AI server detects the missed heartbeat, assumes you disconnected, and stops the generation. The fix is straightforward: tell Chrome not to treat the AI tab like a disposable background tab.
 
 ## Quick Diagnosis
@@ -6927,6 +7179,11 @@ URL: https://www.superchargebrowser.com/library/stop-chrome-overheating-macbook/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-03
 Description: Chrome overheating your MacBook? Reduce CPU load from background tabs and block ad scripts to keep fans quiet during everyday browsing.
 
+> **Key takeaways**
+> - **Background tabs keep running JavaScript and ad scripts even when hidden.** Each open tab is a separate CPU process.
+> - Open **Activity Monitor**, search "Chrome Helper", sort by CPU. Any process above 20% is your heat source.
+> - Suspending idle tabs terminates their **renderer processes entirely**, dropping CPU and heat immediately.
+
 Your MacBook's fans are spinning at full speed, you're not running anything intensive, and Chrome has been open all day. Open **Activity Monitor**, search for "Google Chrome Helper (Renderer)", and sort by **% CPU** — you will likely see one or more processes consuming 30–80% CPU from tabs you are not even looking at.
 
 ## Quick Diagnosis
@@ -7012,6 +7269,11 @@ URL: https://www.superchargebrowser.com/library/vs-auto-tab-discard/
 Category: comparison | Extension: performance | Updated: 2026-03-02
 Description: Auto Tab Discard suspends tabs — nothing else. SuperchargePerformance adds ad blocking, script control, and a RAM savings dashboard. Which should you install?
 
+> **Key takeaways**
+> - Both extensions call **the same `chrome.tabs.discard()` API**. Per-tab RAM savings from suspension are identical.
+> - **Auto Tab Discard** is open-source and does one thing cleanly. SuperchargePerformance adds blocking, script control, and a RAM dashboard.
+> - If **tab suspension alone is enough**, Auto Tab Discard covers it. Otherwise, SuperchargePerformance has the extras.
+
 Both extensions call the exact same Chrome API — `chrome.tabs.discard()` — so the per-tab memory savings are identical. Auto Tab Discard does that one thing cleanly. SuperchargePerformance does the same thing and keeps going: ad blocking, tracker blocking, script control, memory metrics. Whether the additional features are useful to you is the whole decision.
 
 ## Feature Comparison
@@ -7088,6 +7350,11 @@ URL: https://www.superchargebrowser.com/library/vs-fasterweb/
 Category: comparison | Extension: performance | Updated: 2026-03-01
 Description: FasterWeb focuses on link preloading. SuperchargePerformance combines preloading with ad blocking and tab suspension. 2026 comparison for Chrome.
 
+> **Key takeaways**
+> - FasterWeb bets on **speculative preloading**: fetching the next page before you click it.
+> - **Blocking saves time on every single page load.** Preloading only helps when you actually click the predicted link.
+> - SuperchargePerformance includes preloading too, but also **strips the ads and trackers** slowing the current page down.
+
 Preloading and blocking are two different answers to the same question: why does browsing feel slow? FasterWeb bets on preloading — fetching pages before you click them. SuperchargePerformance bets that removing the bloat before it loads is more effective than getting a head start on downloading it. Both are valid strategies; they just solve different parts of the problem.
 
 ## How Each Approach Works
@@ -7162,6 +7429,11 @@ URL: https://www.superchargebrowser.com/library/vs-adguard/
 Category: comparison | Extension: performance | Updated: 2026-02-24
 Description: AdGuard wins on filter depth. SuperchargePerformance adds tab suspension and memory tools on top of MV3 blocking. Which is the right Chrome ad blocker for you?
 
+> **Key takeaways**
+> - **AdGuard wins on filter depth**: more lists, more granular control, if blocking coverage is your only goal.
+> - SuperchargePerformance ships **186K+ DNR rules** but bundles them with tab suspension, preloading, and a RAM dashboard.
+> - Choose based on whether you need a dedicated blocker or **a full performance tool with blocking built in**.
+
 AdGuard and SuperchargePerformance both block ads, but they're optimizing for different things. AdGuard wants maximum blocking coverage across every filter list it can get. SuperchargePerformance ships 186,000+ DNR rules from 22 open-source filter sources (compiled March 2026) and wants your browser to be faster and lighter overall — blocking is one part of that, alongside tab suspension, memory management, and preloading. If ad blocking is your only goal, that difference matters.
 
 ## Feature Comparison
@@ -7231,6 +7503,11 @@ A: SuperchargePerformance offers a free core with optional PRO features availabl
 URL: https://www.superchargebrowser.com/library/fix-utility-network-service-high-cpu/
 Category: troubleshooting | Extension: performance | Updated: 2026-02-23
 Description: Chrome's Utility: Network Service spiking CPU? Diagnose the root cause and reduce background network load in a few targeted steps.
+
+> **Key takeaways**
+> - Chrome's Network Service is a **single process routing all TLS, DNS, and HTTP traffic** for every open tab simultaneously.
+> - One ad-heavy page fires **20–50 concurrent header-bidding HTTPS requests** in milliseconds, each needing a full TLS handshake.
+> - Suspend idle tabs to stop background polling. **Blocking ads** prevents those requests from hitting the network stack entirely.
 
 Task Manager is showing a Chrome process called "Utility: Network Service" burning 30% CPU and you have no idea what it is. This is Chrome's dedicated network process — it handles all TLS decryption, HTTP parsing, DNS resolution, and data transfer for every open tab. Everything your tabs download flows through it. It spikes when background tabs are hammering the network: ad bidding requests, auto-playing video, polling APIs, service worker syncs.
 
@@ -7318,6 +7595,11 @@ A: Open Chrome Task Manager (Shift+Esc) and sort by Network. Tabs with the highe
 URL: https://www.superchargebrowser.com/library/fix-chrome-status-breakpoint-error/
 Category: troubleshooting | Extension: performance | Updated: 2026-02-22
 Description: Troubleshoot STATUS_BREAKPOINT errors in Chrome. Fix memory pressure, GPU driver conflicts, and extension issues causing this crash.
+
+> **Key takeaways**
+> - **STATUS_BREAKPOINT is not a virus.** It means a renderer process hit an unexpected internal state and crashed.
+> - Ranked by frequency: **GPU driver timeouts, extension conflicts, and unstable XMP/EXPO RAM overclocks** — not malware.
+> - Start with **Incognito mode** to rule out extensions, then update GPU drivers. On gaming rigs, also disable XMP/EXPO.
 
 `STATUS_BREAKPOINT` is one of those Chrome crash codes that sounds alarming but usually has a mundane cause. It means a renderer process hit an unexpected internal state and terminated — most often a GPU driver timeout, an extension conflict, or (on gaming rigs with overclocked RAM) an unstable XMP/EXPO memory profile causing intermittent memory errors.
 
@@ -7409,6 +7691,11 @@ URL: https://www.superchargebrowser.com/library/prevent-chrome-ssd-wear-mac/
 Category: troubleshooting | Extension: performance | Updated: 2026-02-20
 Description: Chrome writes gigabytes per day to your MacBook SSD via swap and cache. Here's how to diagnose and reduce excessive disk writes before it's too late.
 
+> **Key takeaways**
+> - Your Mac SSD accumulates **gigabytes of Chrome writes daily**: swap, cache, and session-state saves every 30 seconds.
+> - On M-series MacBooks **the SSD is soldered to the logic board**. There is no replacement option when TBW runs out.
+> - Suspending inactive tabs eliminates their RAM footprint and produces **zero disk I/O** until you click them again.
+
 Activity Monitor is showing "Swap Used" in the gigabytes and you are wondering how bad it is. On M-series MacBooks, the SSD is soldered to the logic board — there is no replacement option. Chrome's multi-process architecture eats RAM aggressively: each tab gets its own renderer process, web apps like Figma or Notion add their own heap on top, and with 20+ tabs open you can exhaust 16 GB. When that happens, macOS starts writing RAM contents to the SSD continuously. Those writes accumulate against a finite TBW (terabytes written) limit.
 
 ## Quick Diagnosis
@@ -7498,6 +7785,11 @@ A: Suspended tabs perform zero disk I/O — no cache updates, no IndexedDB write
 URL: https://www.superchargebrowser.com/library/fix-mac-system-memory-high-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-02-16
 Description: macOS Activity Monitor showing System memory at 10 GB or more with Chrome open? This guide explains why and shows how to reduce it.
+
+> **Key takeaways**
+> - macOS logs Chrome's GPU compositing memory under **"System"**, not under Chrome, so the cause looks invisible in Activity Monitor.
+> - Discarding inactive tabs **removes their GPU allocations entirely**, unlike compression which still keeps them in the System pool.
+> - **Yellow Memory Pressure?** Go to `chrome://discards/` and discard idle tabs. This often returns the gauge to green immediately.
 
 You open Activity Monitor expecting to blame Chrome directly, but Chrome's number looks reasonable — it's the "System" category that's eating 10 GB. This is a common source of confusion. macOS accounts for GPU buffers, kernel caches, and hardware-acceleration memory under System rather than attributing it to the Chrome process. The more tabs Chrome has open with hardware acceleration active, the larger that System figure grows.
 
@@ -7599,6 +7891,11 @@ URL: https://www.superchargebrowser.com/library/fix-dwm-exe-high-gpu-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-02-15
 Description: Desktop Window Manager spiking GPU usage while Chrome is open? Fix the dwm.exe overload from Chrome's hardware-accelerated background tabs.
 
+> **Key takeaways**
+> - **Close Chrome and dwm.exe drops instantly.** That's your confirmation Chrome is the source of GPU contention.
+> - Background tabs submit GPU frames to dwm.exe **continuously, even when minimized**. Animations run whether you see them or not.
+> - Suspend background tabs to stop frame submissions at the source. **Disable hardware acceleration** only if driver updates don't help.
+
 You open Task Manager to check why your game is dropping frames, and there it is: `dwm.exe` sitting at 30–60% GPU usage while Chrome is open. Close Chrome and it disappears. `dwm.exe` is Windows' display compositor — it handles all window transparency, animations, and the final frame sent to your display. When Chrome background tabs run animations or video with hardware acceleration, they continuously submit GPU frames to `dwm.exe` for compositing, even when Chrome is minimized behind your game.
 
 ## Quick Diagnosis
@@ -7694,6 +7991,11 @@ A: High dwm.exe GPU usage increases power consumption and can cause frame drops 
 URL: https://www.superchargebrowser.com/library/fix-google-sheets-calculation-lag/
 Category: troubleshooting | Extension: performance | Updated: 2026-02-13
 Description: Google Sheets showing 'Calculation Pending' or freezing mid-formula in Chrome? Fix the memory and CPU bottlenecks causing spreadsheet lag.
+
+> **Key takeaways**
+> - "Calculation Pending" means Chrome's **single JavaScript thread is blocked**. Sheets can't render a new frame while computing.
+> - **Volatile formulas (NOW, TODAY, OFFSET)** recalculate on every single edit. One edit triggers 20 recalculations if you have 20 of them.
+> - Discard background tabs and eliminate volatile formulas first. If lag persists with no other tabs, **the fix is in the spreadsheet** itself.
 
 You type a value, hit Enter, and Sheets freezes for 10 seconds with "Calculation Pending." Then you scroll, and it freezes again. Google Sheets runs entirely as a JavaScript application — when a spreadsheet contains complex formulas, large datasets, or many conditional formatting rules, Chrome's main JavaScript thread stalls while processing the dependency graph. The frozen UI is Chrome unable to render a new frame while Sheets is computing.
 
@@ -7800,6 +8102,11 @@ URL: https://www.superchargebrowser.com/library/fix-chrome-not-enough-memory-err
 Category: troubleshooting | Extension: performance | Updated: 2026-02-12
 Description: Chrome blocking new tabs with a memory error? Reclaim RAM from background tabs and adjust Windows virtual memory to fix it in minutes.
 
+> **Key takeaways**
+> - This isn't a Chrome crash. **The OS refused Chrome's memory request** because the Commit Limit (RAM + pagefile) is exhausted.
+> - On 8 GB Windows systems, suspending **10–15 idle tabs typically recovers 1–2 GB**. Go to chrome://discards/ right now.
+> - **Discord, Slack, and Spotify** each run a full Chromium instance. Closing them frees hundreds of MB from the shared Commit pool.
+
 You try to open a new tab and Chrome just refuses — no crash, no Aw Snap, just an error page blocking the load. This is different from an "Aw, Snap!" crash. Chrome actively blocked the new page because the operating system has reached its **Commit Limit** — the sum of physical RAM plus the pagefile. Chrome asked the OS for memory to render the new page and got a hard refusal.
 
 This is common on 8 GB Windows 11 systems, where the OS itself reserves a significant chunk of RAM before Chrome opens a single tab.
@@ -7898,6 +8205,11 @@ URL: https://www.superchargebrowser.com/library/fix-chrome-100-disk-usage-window
 Category: troubleshooting | Extension: performance | Updated: 2026-02-11
 Description: Chrome hitting 100% disk usage on Windows? Identify the cause in Task Manager and stop the constant read/write loop with these targeted fixes.
 
+> **Key takeaways**
+> - On HDDs, Chrome's constant disk writes **saturate the I/O queue at 100%** before anything else can run. The PC freezes.
+> - **Disabling speculative preloading** (chrome://settings/performance) drops write rate immediately with zero downsides.
+> - If disk stays high after that, **RAM is exhausted** and Chrome is paging to disk on every tab switch. Close or suspend tabs.
+
 Your PC is frozen, Task Manager shows Disk at 100%, and `chrome.exe` is the top entry. Everything takes 10 seconds to respond. This locks up because the disk queue is full and Windows is waiting for it to drain before it can do anything else. The two main causes are **page file swapping** (Chrome has exhausted RAM and Windows is writing overflow to disk) and **cache writing** (Chrome continuously caching video chunks, images, and page data to `%localappdata%\Google\Chrome\User Data`).
 
 ## Quick Diagnosis
@@ -7989,6 +8301,11 @@ A: Open Chrome Task Manager (Shift+Esc) and look for tabs or extensions with hig
 URL: https://www.superchargebrowser.com/library/fix-figma-out-of-memory-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-02-10
 Description: Figma crashing with Out of Memory in Chrome? Free RAM from background tabs and manage Chrome's per-process memory limit for large design files.
+
+> **Key takeaways**
+> - Figma crashes when its WebGL renderer approaches **Chrome's ~3.5–4 GB per-tab limit**, not because the file is "too big."
+> - Other open tabs compete for the same RAM pool. **Discarding them at `chrome://discards/`** gives Figma the headroom it needs.
+> - Figma **auto-saves aggressively**, so a proactive reload when memory hits 3 GB loses nothing and resets the heap.
 
 You're deep in a complex Figma file and Chrome kills the tab — Out of Memory. Figma runs entirely in the browser using WebGL for rendering. Large component libraries, files with hundreds of frames, or projects with heavy embedded images push per-tab memory toward Chrome's process limits. When background tabs are competing for the same system RAM, Figma runs out of headroom and the renderer gets terminated.
 
@@ -8087,6 +8404,11 @@ URL: https://www.superchargebrowser.com/library/fix-antimalware-service-high-cpu
 Category: troubleshooting | Extension: performance | Updated: 2026-02-06
 Description: Antimalware Service Executable spiking CPU while Chrome runs? Reduce the conflict between Windows Defender and Chrome's background file I/O.
 
+> **Key takeaways**
+> - **MsMpEng.exe scans every file Chrome writes** (cache, IndexedDB, session data), intercepting each write at the kernel level.
+> - Excluding **Chrome's cache folder** (not chrome.exe itself) breaks the scan loop without removing malware protection on downloads.
+> - Fewer background tabs = **fewer disk writes = less Defender scanning**. Close idle tabs or suspend them to cut CPU at the source.
+
 Your CPU is at 100% and Task Manager shows two culprits: `chrome.exe` and `MsMpEng.exe` (Antimalware Service Executable) fighting each other for the top spot. This is not a coincidence. Windows Defender scans files as they are written to disk, and Chrome writes continuously — cache updates, IndexedDB state, session data, speculative preloading. Each write triggers a real-time scan. The more background tabs you have open, the worse it gets.
 
 ## Quick Diagnosis
@@ -8178,6 +8500,11 @@ A: Open Task Manager (Ctrl+Shift+Esc), go to the Details tab, and sort by CPU. I
 URL: https://www.superchargebrowser.com/library/fix-status-access-violation/
 Category: troubleshooting | Extension: performance | Updated: 2026-01-27
 Description: Fix the STATUS_ACCESS_VIOLATION crash in Chrome. Identify whether an extension conflict, corrupt profile, or GPU driver is causing the error.
+
+> **Key takeaways**
+> - **STATUS_ACCESS_VIOLATION (0xC0000005) is a crash, not a security breach.** A process accessed memory outside its range.
+> - Three causes in order of frequency: **corrupt Chrome profile**, extension code injection conflict, GPU driver bug under load.
+> - Test in Incognito first to rule out extensions. If it crashes on startup, **reset the profile** at `%LOCALAPPDATA%\Google\Chrome\User Data\`.
 
 Chrome crashed with `STATUS_ACCESS_VIOLATION` — error code `0xC0000005`. Despite the alarming name, this is a crash, not a security breach. It means a Chrome process attempted to write to a memory address it does not have permission to access. The most common causes are a buggy extension injecting code before the DOM is ready, a corrupt Chrome user profile, or a GPU driver conflict under heavy tab load.
 
