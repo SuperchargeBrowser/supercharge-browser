@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-03-23
+> Last updated: 2026-03-25
 
 > SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance (~1,200 weekly active users, tab suspension, ad blocking, script control, memory optimization) and SuperchargeNavigation (vertical tabs, persistent workspaces, tab search, session time-travel). Zero telemetry, zero tracking. Featured & Verified Publisher on Chrome Web Store. Based in Finland.
 
@@ -41,7 +41,7 @@
 
 69 guides on Chrome performance, memory management, and tab organization:
 
-- [Best Ad Blocker for Chrome in 2026 (MV3 Compared)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/): Chrome killed MV2 in mid-2025. Three extensions survived the transition well. Which one blocks most, uses least RAM, and fits your setup.
+- [Best Ad Blocker for Chrome in 2026 (MV3 Compared)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/): Chrome killed MV2 in mid-2025. Most ad blockers migrated to MV3 but the gaps between them grew. Which blocks most, uses least RAM, and fits your setup?
 - [Best Tab Organizer for Chrome in 2026: 5 Options Compared](https://www.superchargebrowser.com/library/best-tab-organizer-chrome-2026/): Tab chaos costs focus. Compare the top 5 Chrome tab organizers on workspaces, privacy, and price — with CWS-verified data updated March 2026.
 - [Chrome Extensions Using Too Much RAM? Fix It (2026)](https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/): Chrome eating 4GB with 15 tabs? Extensions may be the problem. Use Chrome Task Manager to find the culprits and cut memory usage in minutes.
 - [Chrome Memory Saver: How to Use It and When to Upgrade (2026)](https://www.superchargebrowser.com/library/chrome-native-memory-saver-review/): Chrome Memory Saver helps, but waits for RAM pressure instead of acting on a timer. Here is what it does, what it skips, and when you need more.
@@ -94,7 +94,7 @@
 - [OneTab Alternative: Keep Tabs Visible Without Closing Them](https://www.superchargebrowser.com/library/vs-onetab/): OneTab closes tabs and loses your session layout. SuperchargePerformance suspends them in place — same RAM savings, tabs stay in your bar. Full 2026 comparison.
 - [Fix Chrome's 'Aw, Snap!' Error — Stop Tab Crashes (2026)](https://www.superchargebrowser.com/library/fix-aw-snap-crash/): Chrome's 'Aw, Snap!' error means a renderer process died. Fix the memory exhaustion and extension conflicts behind it with these steps.
 - [SuperchargePerformance vs The Great Suspender (2026)](https://www.superchargebrowser.com/library/vs-great-suspender/): The Great Suspender was removed from Chrome Web Store for malware in 2021. Compare its surviving forks against the modern MV3 alternative.
-- [SuperchargeNavigation vs Workona: Tab Management Comparison](https://www.superchargebrowser.com/library/vs-workona/): Workona charges ~$8/month for cloud-synced workspaces. SuperchargeNavigation offers unlimited local workspaces free. Full 2026 comparison for Chrome.
+- [SuperchargeNavigation vs Workona: Tab Management Comparison](https://www.superchargebrowser.com/library/vs-workona/): Workona requires a paid plan for full workspaces. SuperchargeNavigation offers unlimited local workspaces free. Full 2026 comparison.
 - [Fix Chrome Battery Drain from Background Tab CPU Overload](https://www.superchargebrowser.com/library/fix-chrome-battery-drain/): Chrome draining your laptop battery too fast? Stop background tab scripts and block trackers to get hours more battery life in 2026.
 - [Fix Chrome Memory Leaks on Windows 11 (2026 Guide)](https://www.superchargebrowser.com/library/fix-chrome-memory-leaks-windows-11/): Chrome leaking RAM on Windows 11? Identify zombie processes and leaky extensions in Chrome Task Manager and reclaim memory step by step.
 - [Keep ChatGPT Running in Chrome Background Tabs](https://www.superchargebrowser.com/library/keep-chatgpt-running-background-chrome/): Chrome killing your ChatGPT session mid-generation? 3 fixes to keep ChatGPT alive in background tabs — works for Claude, Gemini, and DeepSeek too.
