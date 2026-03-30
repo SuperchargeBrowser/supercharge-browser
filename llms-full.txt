@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-03-28
+> Last updated: 2026-03-30
 > For a summary index, see /llms.txt
 
 ## Products
@@ -13,7 +13,7 @@
 - 12 toggleable features, all configurable per-site
 - Zero telemetry, zero tracking, zero data collection
 - Version: 1.2.2 (March 2026)
-- Weekly active users: ~1,200 (Chrome Web Store)
+- Weekly active users: ~2,400 (Chrome Web Store)
 - Install: https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
 
 ### SuperchargeNavigation
@@ -1051,6 +1051,1016 @@ A: SuperchargeNavigation checks the navigating tab's URL against the URLs of all
 ---
 
 ## Library Articles
+
+### AI Tab Organizer vs Tab Manager: 6 TESTED (2026)
+
+URL: https://www.superchargebrowser.com/library/ai-tab-organizer-vs-tab-manager-chrome/
+Category: comparison | Extension: navigation | Updated: 2026-03-30
+Description: 6 AI tab organizers tested on CWS vs real tab managers. AI groups by content. You work by project. That gap costs more than you think. Real comparison inside.
+
+> **Key takeaways**
+> - **Chrome's built-in "Organize Similar Tabs" is free and uses on-device AI.** Try it before installing anything else.
+> - **AI organizers group by content. You work by project.** That mismatch is why groups rarely survive real workflows.
+> - **Most AI organizers send tab URLs to remote LLM APIs and forget everything on restart.** For persistent sessions, use a tab manager.
+
+The Chrome Web Store has a new tab organizer category. Six AI-powered extensions launched or updated in the first quarter of 2026 alone: Tab-Pilot, Tabaroo, ATO (AI Tab Organizer, v2.7.5, updated March 14), Tab Manager AI, AI Tab Organizer by jkainmm, and Chrome's own built-in "Organize Similar Tabs" feature. Every one of them promises to solve the 40-tabs-open problem with AI grouping.
+
+Some of them deliver on that promise, under specific conditions. The conditions matter.
+
+## What AI Tab Organizers Actually Do
+
+The core mechanic is the same across all six: the extension reads your open tab URLs (and sometimes page titles or content), sends them to a language model (typically OpenAI's API, a local model, or a proprietary backend), and gets back suggested group names. The extension then creates Chrome tab groups using those suggestions.
+
+For a single cleanup session, this works. Open 40 research tabs, run the organizer, get groups like "Python docs," "Stack Overflow threads," "Design references." Visually, the chaos contracts into a few labeled clusters.
+
+The problems surface when you try to use this for day-to-day work.
+
+**Session persistence is zero.** Every AI tab organizer tested as of March 2026 creates Chrome's native tab groups: color-labeled clusters in the tab strip. Close Chrome. Reopen. The groups are gone unless you have "Continue where you left off" enabled, and even then you get the raw tabs back without the groups. The AI's work evaporates.
+
+**API costs add up.** Tab-Pilot and several others require an OpenAI API key, putting real costs on each organization pass. Light users might pay pennies. Heavy users with 50+ tabs who want live re-grouping pay materially more. Tabaroo bundles its own backend, so there's no separate API key. The tradeoff: you're trusting their server with your tab list.
+
+**Grouping by topic is not grouping by project.** This is the structural issue. A tab showing a bank transfer confirmation, a Figma mockup, and a competitor pricing page might all be open for the same client project. An AI organizer groups them as "Finance," "Design," and "SaaS." Three groups where you needed one. The AI sees content. It cannot see context.
+
+Latency is the final annoyance: API calls take 1–4 seconds for a typical 20-tab set. Not a dealbreaker for occasional use, but disruptive if you want live reorganization.
+
+## Chrome's Built-In Tab Organizer — Free, No Extension
+
+Before installing anything, test Chrome's native option: right-click any tab and select **"Organize Similar Tabs."**
+
+Chrome 146 (March 2026) uses on-device AI. No API key, no external network request, no extension required. It analyzes open tabs by content similarity and suggests groups with names and emoji. You can accept, edit, or dismiss each suggestion.
+
+The on-device approach means zero privacy exposure. Your tab URLs stay on your machine. The tradeoff is accuracy. On-device models are less capable than GPT-4 class APIs, and the groupings reflect that. You get broader, blunter categories.
+
+For a one-time "my tabs are a disaster and I need them sorted right now" scenario, try Chrome's built-in first. It costs nothing, requires no install, and works in 10 seconds. The limitations are the same as every other AI organizer: no workspace saving, no session recovery, groups disappear on restart.
+
+## Full Comparison: AI Organizers vs. Chrome Built-In vs. Tab Managers
+
+| Feature | AI Organizer (e.g. ATO, Tab-Pilot) | Chrome Built-In | Tab Manager (e.g. SuperchargeNavigation) |
+|---|---|---|---|
+| Auto-groups tabs | Yes | Yes | Optional (Alt+G by domain) |
+| Grouping logic | LLM topic classification | On-device content similarity | User-defined workspaces |
+| Session persistence | No — groups lost on restart | No | Yes — named workspaces survive restarts |
+| Session recovery | No | No | Yes — 50 auto-snapshots, 5-min intervals |
+| API key required | Often (OpenAI etc.) | No | No |
+| Privacy | Tab URLs sent to remote LLM | On-device, no external request | 100% local, zero telemetry |
+| Keyboard search | No | No | Yes (Alt+K — tabs, bookmarks, history) |
+| Tab preview | No | No | Yes (Shift+Click peek) |
+| Cost | Free to paid (API costs extra) | Free | Free |
+| Works offline | No | Yes | Yes |
+| Account required | Often | No | No |
+| Group by project context | No — by content only | No — by content only | Yes — you define the context |
+
+## The Privacy Problem with AI Tab Organizers
+
+Every open tab tells something about you. A medical research tab. A job listing. A competitor's pricing page. A personal finance tool. When an AI tab organizer groups those tabs, it reads them first.
+
+Extensions using remote LLM APIs (OpenAI, Anthropic, proprietary backends) transmit your tab URLs to servers outside your browser. Some extensions also send page titles. A few attempt to send page content for better accuracy. Check the privacy policy before installing any of them. The phrase "we send tab data to our AI service to provide grouping functionality" is the disclosure to look for.
+
+Chrome's built-in "Organize Similar Tabs" sidesteps this entirely by processing on-device. No data leaves your machine. That's a meaningful architectural difference, not a marketing distinction.
+
+Extensions like SuperchargeNavigation take the same local-only approach in a different direction: your workspace data, tab list, and session snapshots live in `chrome.storage.local`. There are no external requests, no account, nothing transmitted anywhere. You can verify this by opening the extension's service worker in DevTools and watching the Network tab. It stays empty.
+
+If the tab list you're organizing contains anything sensitive, the remote API question isn't theoretical.
+
+## Why Context Beats Content Similarity
+
+The core mismatch is this: AI tab organizers solve a classification problem: "what is this page about?" They do not solve a workflow problem: "what am I trying to accomplish?"
+
+Consider a typical work session: you have tabs for your project management tool, a Slack thread you need to reference, two Google Docs, a competitor's site you're benchmarking, and Stack Overflow with a bug fix you're mid-way through. An AI organizer sees: "Productivity," "Communication," "Writing," "Research," "Development." Five groups. You needed one. The project you're working on.
+
+The reason project-based tab managers work for daily use is that *you* supply the context. You create a workspace called "Client X launch" and put the relevant tabs there. The tabs' content is irrelevant to the organizational logic. What matters is that you know why they're grouped.
+
+Named workspaces in tools like SuperchargeNavigation encode your intent. An AI organizer can only infer content. For a researcher running a single deep-dive session with 50 topically homogeneous tabs, content inference is useful. For a knowledge worker managing 3–4 active projects simultaneously, it misses the point.
+
+## When Each Approach Makes Sense
+
+**Use Chrome's built-in "Organize Similar Tabs"** if your tab problem is a one-time visual cleanup and you have no other organization system in place. It's free, instant, private, and requires nothing. If the groupings look useful, keep them. If not, dismiss them. Zero cost either way.
+
+**Use an AI tab organizer** if you do focused research sessions with many topically similar tabs (academic research, market analysis, competitive review) and you want auto-labeling without manual group creation. Know going in that groups won't persist across sessions. Factor in API costs if the extension requires your own key. Check the privacy policy before authorizing access to your tab list.
+
+Dedicated tab managers cover everything else: recurring projects with persistent sessions, multiple daily context switches, recovering yesterday's tab state, or finding a specific tab faster than scanning the tab strip. The keyboard command bar (Alt+K in SuperchargeNavigation searches open tabs, bookmarks, and history simultaneously) and workspace snapshots are things AI organizers don't address at all.
+
+You can also combine both. An AI organizer handles visual grouping within a session; a tab manager handles what persists when the session ends. They operate at different layers and don't conflict.
+
+The AI tab organizer category is growing fast on the Chrome Web Store. The tools are real, they do what they say, and some users benefit from them. The gap between the marketing ("AI solves your tab chaos") and the product reality ("AI sorts your tabs into temporary groups by topic") is worth understanding before you install something that routes your browsing activity through a third-party LLM API.
+
+#### FAQ
+Q: Do AI tab organizers actually work in Chrome?
+A: As of March 2026, AI tab organizers like ATO (v2.7.5) and Tab-Pilot can auto-group tabs by topic similarity using LLM APIs. They work for one-time cleanup sessions. They do not save sessions, persist groups across restarts, or understand project context — they classify page content, not your workflow.
+
+Q: Does Chrome have a built-in AI tab organizer?
+A: Yes. As of Chrome 146 (March 2026), Chrome includes 'Organize Similar Tabs' — right-click any tab to access it. Chrome suggests group names and emoji using on-device AI. It's free, requires no extension, and needs no API key. Limitations: it groups by content similarity only, doesn't save sessions, and creates no persistent workspaces.
+
+Q: Do AI tab organizers send your URLs to external servers?
+A: Most do. Extensions that use OpenAI, Anthropic, or other remote LLM APIs transmit your open tab URLs — and in some cases page titles or content — to those third-party servers to generate group suggestions. Local-model options exist but are rare. Always check the extension's privacy policy before installing.
+
+Q: What is the difference between an AI tab organizer and a tab manager?
+A: AI tab organizers classify tabs by content similarity and suggest or create tab groups automatically. Tab managers handle the workflow layer: named workspaces, session saving and recovery, keyboard search, and persistent state across browser restarts. They solve different problems — AI organizers handle visual clutter; tab managers handle context switching and session continuity.
+
+Q: Which is better for daily workflow, AI tab organizers or tab managers?
+A: As of March 2026, tab managers win for daily use. AI organizers are useful for one-time cleanup or researchers with many topically similar tabs. For work that involves multiple projects, recurring sessions, or frequent context switching, the lack of session persistence in AI organizers is a hard limitation.
+
+---
+
+### FIX Chrome HTTPS Warning in Chrome 147 — 5 Fixes (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-147-https-first-warning-fix/
+Category: troubleshooting | Extension: general | Updated: 2026-03-30
+Description: Chrome 147 blocks HTTP sites with a scary warning. 95% of sites are safe — learn why you're seeing it and how to get past it in under 60 seconds.
+
+> **Key takeaways**
+> - **Chrome 147 warns before loading HTTP sites.** Not a virus. New security feature rolling out April 7, 2026.
+> - **95% of public websites already use HTTPS.** The warning only triggers on old, unmaintained, or local-network sites.
+> - **Click "Continue to [site] (unsafe)" to proceed once.** To disable permanently, go to Settings > Privacy and security > Security.
+
+You clicked a bookmark or typed a URL and Chrome stopped you cold. Full-page warning. Orange padlock with an X. "Your connection is not private" vibes, but different. It says something about the site not supporting a secure connection. Nothing crashed. Your internet works. The site you wanted to visit is probably fine.
+
+Chrome 147, releasing April 7, 2026, enables HTTPS-First mode automatically for anyone using Enhanced Safe Browsing, roughly one billion Chrome users. Chrome now upgrades every navigation to HTTPS first and shows a warning page before falling back to HTTP. The feature is well-intentioned. The rollout was also guaranteed to cause a wave of confused support tickets.
+
+## Quick Diagnosis
+
+Match your symptom to the right fix before spending time on the wrong one:
+
+| What you see | Likely cause | Fix to use |
+|---|---|---|
+| Warning on a specific old website | That site never added HTTPS | [Fix 1: Click through (one-time)](#fix-1-click-through-for-one-site) |
+| Warning on your router admin page | Router uses a private IP, but you typed a domain name | [Fix 2: Use IP address directly](#fix-2-use-the-ip-address-for-local-devices) |
+| Warnings on many sites suddenly | Chrome 147 just updated + Enhanced Safe Browsing is on | [Fix 3: Disable HTTPS-First globally](#fix-3-disable-https-first-mode-globally) |
+| Work intranet now blocked | Intranet uses a public domain without HTTPS | [Fix 4: IT-side certificate or exemption](#fix-4-corporate-intranet-fix) |
+| Warning only in Chrome, not other browsers | Chrome updated to 147 before other browsers | [Fix 5: Check Chrome version + rollback path](#fix-5-verify-your-chrome-version) |
+
+## Fix 1: Click Through for One Site
+
+The fastest path. Chrome's warning page has a small text link at the bottom right.
+
+1. On the warning page, look for **"Advanced"** or scroll down to find **"Continue to [site name] (unsafe)"**.
+2. Click it. Chrome loads the HTTP site for this session.
+3. The next time you visit that URL, Chrome will warn you again unless you add a permanent exception (covered in Fix 3).
+
+Use this when you recognize the site and trust it: a specific old tool, a local hobbyist page, or an internal app your team knows is safe. Do not click through on unknown sites asking for logins or payments.
+
+## Fix 2: Use the IP Address for Local Devices
+
+Router admin panels and some network-attached devices use HTTP on their local IP address. Chrome 147 exempts private IP ranges entirely, but only when you navigate to the IP directly. Typing a hostname that resolves to a local IP can still trigger the check.
+
+1. Find your router's local IP address. On Windows: open Command Prompt, run `ipconfig`, look for **Default Gateway**. On macOS: open Terminal, run `netstat -nr | grep default`.
+2. Common addresses: `192.168.1.1`, `192.168.0.1`, `10.0.0.1`.
+3. Type that IP directly into Chrome's address bar: `http://192.168.1.1`
+4. Chrome skips the HTTPS warning for private network addresses.
+
+Bookmark the IP address for future access. This requires zero setting changes and works permanently.
+
+## Fix 3: Disable HTTPS-First Mode Globally
+
+If warnings are appearing on multiple sites and you want Chrome to stop asking entirely:
+
+1. Open Chrome and go to `chrome://settings/security`
+2. Scroll down to the **Advanced** section.
+3. Find **"Always use secure connections"** and toggle it **off**.
+4. No restart needed. Takes effect immediately on the next navigation.
+
+This restores pre-Chrome 147 behavior. Chrome will still show the padlock indicator for HTTP sites, but it will not block navigation or show a full-page warning.
+
+Consider this setting if you regularly use internal tools, legacy web apps, or HTTP-based developer servers. For general public browsing, leaving the feature on provides real protection on the minority of sites that never added HTTPS.
+
+## Fix 4: Corporate Intranet Fix
+
+If your company intranet is now blocked and you cannot disable Chrome settings yourself (managed devices), there are two paths.
+
+**Option A — Ask IT to add HTTPS.** A self-signed certificate plus adding it to the corporate trust store is a day of IT work, not a project. This also fixes the issue for all employees simultaneously.
+
+**Option B — Use Chrome's managed policy.** Chrome supports the `HttpsOnlyMode` policy that IT can set to `allowed` (show warning, user can click through) rather than `force_enabled`. Managed Chrome deployments can also use `HttpAllowlist` to whitelist specific intranet domains. Your IT team can push these via Group Policy (Windows) or a configuration profile (macOS).
+
+**Option C — Navigate by IP address.** Same approach as Fix 2. If the intranet server is on a private IP range, navigating by IP bypasses the HTTPS check entirely.
+
+## Fix 5: Verify Your Chrome Version
+
+Chrome 147 ships April 7, 2026. The stable channel rolls out gradually over two weeks, so not everyone sees it on day one. If you see the warnings but others on the same network do not, you are likely on a faster-updating channel.
+
+1. Open `chrome://settings/help` to see your current version.
+2. Chrome 147.x.x.x means HTTPS-First is active for your profile if Enhanced Safe Browsing is on.
+3. Chrome 154 (October 2026) is the full rollout to all users, regardless of Safe Browsing setting.
+
+There is no supported downgrade path for Chrome stable. Disabling HTTPS-First mode (Fix 3) is the practical alternative to waiting for a version rollback.
+
+## Understanding What Changed and Why
+
+Chrome's HTTPS-First mode is not a bug. It was announced in the Chromium blog and has been in testing since Chrome 94 for manually opted-in users. The April 2026 expansion to Enhanced Safe Browsing users is the first large-scale automatic rollout.
+
+The numbers behind it: 95% of page loads in Chrome already use HTTPS. The 5% that remain on HTTP include old personal sites, legacy internal tools, and some older e-commerce platforms that never migrated. HTTPS-First mode targets the fraction of that 5% that handles sensitive data over plaintext: login forms, checkout pages, admin panels.
+
+For the vast majority of HTTP sites users will encounter (static pages, old documentation, archived content), the risk is theoretical rather than active. Someone on the same network would need to be actively intercepting traffic to exploit an unencrypted connection. The Chrome warning does not distinguish between "static read-only page" and "login form." It fires on any HTTP URL.
+
+The timeline: Chrome 147 affects Enhanced Safe Browsing users (roughly 1 billion). Chrome 154 in October 2026 is the full rollout to all Chrome users. If you are on a managed enterprise device, your IT policy likely controls whether the feature applies to you at all.
+
+## Browser Performance and Security Together
+
+Chrome's HTTPS-First mode adds a layer of network security. A different layer worth pairing it with is reducing what Chrome loads in the first place. SuperchargePerformance blocks trackers and ad scripts using 186K+ rules from 22 sources before they reach your browser. Many of the scripts that would run on HTTP pages get blocked regardless of whether the connection is encrypted. Free core, no account required, zero telemetry.
+
+If your main concern after reading this is just the warning itself on a specific old site you trust, Fix 1 or Fix 3 handles it in under a minute. The extension is worth considering if you want to reduce overall browser overhead across every site you visit.
+
+#### FAQ
+Q: What is Chrome's HTTPS-First mode and when does it turn on?
+A: As of March 2026, Chrome 147 (releasing April 7, 2026) enables HTTPS-First mode automatically for users who have Enhanced Safe Browsing turned on. Chrome attempts HTTPS before loading any public site and shows a warning page before allowing access to HTTP-only URLs. Full rollout to all Chrome users is scheduled for Chrome 154 in October 2026.
+
+Q: Is the Chrome HTTPS warning dangerous? Should I click through?
+A: The warning means the site does not support HTTPS encryption. Your connection is not encrypted, which matters most for sites where you enter data. For a static read-only page on a known local tool or router admin panel, clicking through is generally safe. For any site asking for a password or payment, the risk is real and you should not proceed.
+
+Q: How do I permanently disable the Chrome HTTPS-First warning?
+A: As of April 2026, go to Chrome Settings > Privacy and security > Security, then scroll to Advanced and toggle off 'Always use secure connections'. This disables HTTPS-First mode entirely. You can also click 'Continue to site' on any individual warning page without changing the global setting.
+
+Q: Does Chrome's HTTPS warning affect local network devices like routers?
+A: No. As of March 2026, Chrome exempts private network addresses from HTTPS-First mode. Addresses in 192.168.x.x, 10.x.x.x, 172.16-31.x.x, and localhost ranges load without a warning. Only public internet addresses trigger the check.
+
+Q: Will HTTPS-First mode break my work intranet or internal web apps?
+A: Possibly, if your intranet uses a public domain (not a private IP or .internal TLD). In that case IT needs to either add HTTPS to the internal server or you can disable HTTPS-First mode in Chrome settings. Local-IP-based intranets are exempt and unaffected.
+
+---
+
+### STOP Extensions Stealing Your AI Chats: 5 Checks (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-extensions-stealing-ai-chats/
+Category: guide | Extension: general | Updated: 2026-03-30
+Description: 900K users had ChatGPT & DeepSeek chats exfiltrated in 2026. How Prompt Poaching works, how to audit your extensions, and red flags before installing.
+
+> **Key takeaways**
+> - **900,000 users had AI conversations stolen** by two extensions removed from the Chrome Web Store in early 2026.
+> - **"Prompt Poaching" hides exfiltration inside a working AI assistant.** Users never see anything wrong.
+> - **A 5-step DevTools audit catches it in under 3 minutes.** Open the extension's service worker and watch the Network tab.
+
+Your private AI conversations might already be on a server you've never heard of. Not hypothetically. In December 2025, two Chrome extensions with a combined 900,000 users were quietly sending every ChatGPT and DeepSeek conversation to an attacker-controlled server. Every 30 minutes, while users had no idea anything was wrong. The extensions worked perfectly. That was the point.
+
+## What Happened: The 900,000-User Attack
+
+OX Security discovered the attack in late 2025 and disclosed it in early 2026. Two extensions were impersonating AITOPIA, a legitimate extension developer on the Chrome Web Store: "Chat GPT for Chrome with GPT-5, Claude Sonnet & DeepSeek AI" (600,000 installs) and "AI Sidebar with Deepseek, ChatGPT, Claude and more" (300,000 installs).
+
+Both extensions worked as described. You could open a chat interface, interact with AI, get responses. The surface layer was real. Running underneath: a background script that read full conversation content from the page DOM and transmitted it to a command-and-control server at 30-minute intervals. Chrome tab URLs were exfiltrated alongside the chat data.
+
+The consent mechanism was cynical. During installation, users were prompted to agree to "anonymous analytics collection." Most people click through that. The data being sent was anything but anonymous: it was the complete text of their AI conversations.
+
+Both extensions were removed from the Chrome Web Store after OX Security's disclosure. By then, 900,000 accounts had been exposed for weeks to months.
+
+| | Extension A | Extension B |
+|---|---|---|
+| Name | Chat GPT for Chrome with GPT-5, Claude Sonnet & DeepSeek AI | AI Sidebar with Deepseek, ChatGPT, Claude and more |
+| Install count (at removal) | ~600,000 | ~300,000 |
+| Impersonated | AITOPIA (legitimate extension) | AITOPIA (legitimate extension) |
+| Data exfiltrated | Full chat content + all tab URLs | Full chat content + all tab URLs |
+| Exfiltration frequency | Every 30 minutes | Every 30 minutes |
+| Consent framing | "Anonymous analytics" | "Anonymous analytics" |
+| CWS status | Removed (early 2026) | Removed (early 2026) |
+
+The AITOPIA impersonation detail matters. Someone who searched for AITOPIA-branded tools, saw something that looked right, and installed it had done what they were supposed to do: verify the source. The attack exploited the fact that CWS search returns results by popularity and keyword matching, not by verified publisher identity alone.
+
+## How Prompt Poaching Works
+
+Secure Annex, who named the technique, describes it as a multi-layer deception. Understanding the layers explains why it's so hard to spot from the inside.
+
+The extension's visible behavior is completely legitimate. It connects to AI APIs, renders chat interfaces, stores preferences locally. Users get a real product. This isn't a fake extension masquerading as functionality. It's a real extension with a hidden payload.
+
+The exfiltration code is structurally separate from the visible functionality. In both 2026 cases, a background script ran on a timer independent of user actions. Every 30 minutes, regardless of whether the user was actively chatting, the script swept the DOM of any open AI chat tabs and packaged the content. The payload went to a domain registered specifically for the attack, not a recognizable ad analytics endpoint that might trigger suspicion.
+
+The "analytics consent" framing is deliberate. Broad, vaguely-worded consent buried in an onboarding flow is legally useful (claimed consent) and psychologically effective (users feel they agreed to something, even if they didn't understand what). Extensions that ask for analytics permission during install and then send conversation content can argue users consented. A weak argument, but it complicates enforcement.
+
+What makes this attack class persistent:
+
+1. **Permissions survive updates.** Once you grant `<all_urls>` or host permissions for specific AI chat domains, those permissions persist through every future update. The developer can add exfiltration code to a subsequent update without triggering a new permission request.
+
+2. **60% of Chrome extensions haven't been updated in over 12 months.** A legitimate, unmaintained extension with broad permissions is an attractive acquisition target. Buy it, push an update with exfiltration code, collect data from users who vetted the extension months or years ago.
+
+3. **The Chrome Web Store review process is not comprehensive.** Malicious behavior disguised in otherwise-functional extensions can pass initial review. The 2026 extensions were removed after external disclosure, not caught by Google proactively.
+
+## How to Audit Your Extensions in 5 Steps
+
+This works for any extension, not just AI tools. It takes under 3 minutes per extension.
+
+**Step 1: Open the extension's service worker.**
+
+Go to `chrome://extensions` and enable Developer Mode (toggle in the top right). Find the extension you want to audit and click "service worker" or "background page." This opens a DevTools panel connected to the extension's background context.
+
+**Step 2: Clear the Network tab and start monitoring.**
+
+In the DevTools panel, go to the Network tab. Press the red circle (record) button if it isn't already active. Clear existing requests with the no-entry icon. You want a clean baseline.
+
+**Step 3: Use an AI chatbot normally.**
+
+Open ChatGPT, Claude, DeepSeek, or whichever AI tool you normally use. Send a few messages. Have a real conversation, including phrases you'd never want shared. Let the page sit for a few minutes.
+
+**Step 4: Inspect what requests fired.**
+
+Look at what appeared in the Network tab. A legitimate AI assistant extension should send requests to the AI provider's own API domain (api.openai.com, api.anthropic.com, etc.) and nowhere else. If you see requests to domains you don't recognize, especially domains that aren't the AI provider's own infrastructure, that warrants investigation.
+
+**Step 5: Check request payloads.**
+
+Click on any suspicious request and look at the request body in the Payload tab. Legitimate requests to AI APIs will contain your messages in an expected API format. Requests to unknown domains containing conversation text are a strong signal of exfiltration.
+
+An extension with zero telemetry will show no unexpected outbound requests. Zero requests to third parties is verifiable. You can confirm it yourself rather than trusting any claim the developer makes.
+
+## Red Flags Before You Install
+
+Prevention is more practical than auditing after the fact. These patterns are common to AI extensions that turn out to be data collection tools.
+
+| Signal | What it means |
+|---|---|
+| Requests `<all_urls>` permission | Extension can read all pages you visit, not just AI chat domains |
+| Vague "analytics" consent during onboarding | Common framing for exfiltration consent |
+| Developer is anonymous or has no verifiable web presence | No accountability if something goes wrong |
+| Extension name closely resembles a well-known tool | Name spoofing is common in impersonation attacks |
+| Privacy policy uses "aggregate data" or "third-party partners" | Disclosure language for data sharing |
+| Extension was recently published with high initial ratings | Fake reviews are used to surface new malicious extensions |
+| No Featured badge | Google reviews Featured extensions for policy compliance — not a guarantee, but a bar |
+| Extension requests permissions unrelated to its stated function | A tab manager that wants access to all URLs doesn't need it |
+
+The permission check is the fastest signal. When Chrome shows you the installation permission prompt, read it. `<all_urls>` plus the ability to read page content is a combination that gives any extension access to everything you see in the browser — including AI chat conversations.
+
+## The Broader Pattern in 2026
+
+The Prompt Poaching attacks are not isolated. The same quarter saw 287 extensions found leaking user data, reported by The Register in February 2026. Separate from that, 36 extensions were compromised in a supply chain attack — the extensions themselves were legitimate, but their upstream dependencies or update servers were hijacked. CVE-2026-0628 allowed low-privilege extensions to inject code into Chrome's native Gemini panel, gaining access to context those extensions never should have had.
+
+These incidents share a common thread: the Chrome extension model gives installed software significant access to browser context, and that access can be exploited in ways that aren't visible to the user during normal operation.
+
+The 52% figure from Incogni's research (more than half of AI-powered Chrome extensions collect user data) isn't shocking in this context. It's structural. Extensions that wrap AI chat interfaces need broad host permissions to function. Those same permissions enable data collection. The difference between a legitimate extension that uses those permissions for its stated purpose and one that uses them for exfiltration is invisible from the user's side without a DevTools audit.
+
+## Fewer Extensions, Better Hygiene
+
+Every extension you install is a trust decision that persists until you reverse it. The safest approach to AI chat privacy is the simplest: use AI tools directly in their own tabs rather than through an extension layer. ChatGPT, Claude, and DeepSeek all work in a browser tab without a sidebar extension. The extension layer adds convenience. It also adds an attack surface.
+
+If you do use AI extensions, the checklist above (permissions audit, DevTools network monitor, developer verification) takes under 5 minutes total and catches the pattern that affected 900,000 users in 2026.
+
+Separately from AI chat risks, the extensions you already have installed shape your browser's exposure to tracking and data collection. SuperchargePerformance blocks 186,000+ tracking, advertising, and analytics rules from 22 verified open-source blocklists. That includes the category of analytics endpoints that exfiltration attacks often route data through. It runs 100% locally, has zero telemetry, requires no account, and carries the Featured badge on the Chrome Web Store — meaning Google has reviewed it for policy compliance. SuperchargeNavigation, the companion extension for tab and workspace management, uses the same architecture: everything local, nothing transmitted, no external dependencies.
+
+Neither extension requires trusting any claim about data handling. The zero telemetry is verifiable in DevTools the same way the audit steps above are.
+
+## What to Do If You Had Either Affected Extension
+
+If you installed either of the removed extensions — "Chat GPT for Chrome with GPT-5, Claude Sonnet & DeepSeek AI" or "AI Sidebar with Deepseek, ChatGPT, Claude and more" — there are a few concrete steps worth taking.
+
+Remove the extension immediately if it's still installed. On Chrome 146, go to `chrome://extensions` and click Remove. This stops any ongoing exfiltration, though it doesn't affect data already sent.
+
+Review your AI chat history. ChatGPT, Claude, and DeepSeek all maintain conversation history in your account. Look for any sessions that seem unusual or that you don't recognize, as a sign that account access may have been shared.
+
+Check for account access you didn't grant. Any service where you used AI tools while the malicious extension was active should be reviewed. API keys in particular: if your ChatGPT API key was visible in any chat session, rotate it.
+
+If you granted the "anonymous analytics" consent during installation, consider whether any conversations contained sensitive professional or personal information. The data was sent to a server you have no visibility into. Treat those conversations as compromised.
+
+The 900,000-user figure is large enough that this isn't a niche concern. If you've installed AI assistant extensions in the past six months, running the 5-step audit above is worth the three minutes it takes.
+
+#### FAQ
+Q: Can Chrome extensions read my ChatGPT or Claude conversations?
+A: As of March 2026, yes — if an extension requests broad host permissions (such as access to all URLs or specifically to chatgpt.com, claude.ai, or deepseek.com), it can read the full text content of those pages, including your conversation history. The two extensions removed in early 2026 used exactly this approach: they captured DOM content from AI chat pages and exfiltrated it to external servers every 30 minutes.
+
+Q: What is Prompt Poaching?
+A: Prompt Poaching is the name Secure Annex researchers applied to the attack pattern where a Chrome extension silently harvests AI chatbot conversation content. The extension performs its advertised function normally while a background script reads chat content from the page DOM and sends it to an attacker-controlled server at regular intervals — typically every 20-30 minutes.
+
+Q: How do I check if an extension is stealing my AI conversations?
+A: As of March 2026, open chrome://extensions, enable Developer Mode, then click 'service worker' on each suspicious extension. In the DevTools Network tab, use an AI chatbot and watch for outbound requests to domains you don't recognize. A legitimate AI assistant extension should only make requests to the AI provider's own API, not to third-party analytics or C2 servers.
+
+Q: Which Chrome extensions were caught stealing AI conversations in 2026?
+A: As of March 2026, OX Security identified two extensions removed from the Chrome Web Store: 'Chat GPT for Chrome with GPT-5, Claude Sonnet & DeepSeek AI' (600K installs) and 'AI Sidebar with Deepseek, ChatGPT, Claude and more' (300K installs). Both impersonated the legitimate AITOPIA extension. Users who installed either extension should revoke any consent they granted and check their AI chat session history for unusual access patterns.
+
+Q: Is it safe to use AI extensions in Chrome?
+A: As of March 2026, AI extensions vary widely in trustworthiness. The risk is real — 52% of AI-powered Chrome extensions collect user data according to Incogni research. The safest approach is to use AI tools directly in their own tabs (chatgpt.com, claude.ai) without any sidebar or assistant extension. If you need an AI extension, verify the developer identity, check permissions, and monitor network activity in DevTools before trusting it with sensitive conversations.
+
+---
+
+### Chrome Split View Disappeared? 4 FIXES That Work (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-split-view-disappeared-fix/
+Category: troubleshooting | Extension: navigation | Updated: 2026-03-30
+Description: Chrome Split View vanishes after updates due to flag resets or managed policies. Re-enable it in 30 seconds via chrome://flags — exact steps inside.
+
+> **Key takeaways**
+> - **Split View is an experimental flag, and Chrome updates reset it.** That is why it disappears.
+> - **Go to `chrome://flags/#side-by-side-browsing`, set to Enabled, relaunch.** Under 30 seconds.
+> - **Hard-capped at two tabs, 50/50, no session persistence.** For anything more, workspaces are the right tool.
+
+You used Chrome's new split view yesterday. You opened a second tab right next to the first one, worked with both visible at once, thought "finally." Then Chrome updated overnight, and today the right-click menu has no Split view option at all.
+
+It did not get removed. Chrome updated and reset its experimental flags. Split View was one of them. Getting it back takes 30 seconds.
+
+## What Chrome Split View Actually Is
+
+Chrome Split View — officially controlled by the `#side-by-side-browsing` flag — creates a tiled layout with two tabs visible simultaneously in the same Chrome window. Each half is an independent, fully functional tab. You can scroll one while the other stays put, interact with both, and resize focus by clicking into either pane.
+
+It shipped in Chrome 145 (February 2026) and works on Windows, macOS, and Linux. Not on ChromeOS or mobile as of March 2026.
+
+| Feature | Chrome Split View |
+|---|---|
+| Platforms | Windows, macOS, Linux |
+| Minimum Chrome version | 145 |
+| Max tabs in split | 2 |
+| Custom split ratios | No — 50/50 only |
+| Works with pinned tabs | No |
+| Persists across sessions | No |
+| Flag required | Yes — `#side-by-side-browsing` |
+
+Two limitations stand out: the fixed 50/50 split and no session persistence. Each time you open Chrome, you start over. Keep these in mind before depending on it as a workflow staple.
+
+## Why Split View Disappears After Updates
+
+Chrome's flag system is explicitly marked experimental. The flags at `chrome://flags` are not saved settings. They are overrides layered on top of Chrome's defaults. When Chrome updates, the browser often resets experimental overrides to prevent incompatible old flags from causing crashes on new code.
+
+Split View (`#side-by-side-browsing`) sits in this experimental tier. Any major Chrome update can flip it back to Default, which on most builds means disabled.
+
+Three other causes produce the same symptom:
+
+**Flag interference.** If you have other layout or tab-strip flags enabled, conflicts can suppress Split View even when the flag reads "Enabled." Resetting all flags (`chrome://flags → Reset all`) and re-enabling only Split View usually resolves this.
+
+**Managed device policy.** Work and school devices run Chrome Policy, which can lock or hide experimental flags entirely. The flag page will either be blank or show a message about administrator control.
+
+**Chrome not updated.** Split View does not exist in Chrome 144 or earlier. If a botched update left Chrome on an older version, the option does not exist yet.
+
+## Fix 1: Re-enable Via Chrome Flags
+
+This resolves 90% of cases. The flag simply reset during an update.
+
+1. Type `chrome://flags/#side-by-side-browsing` in the address bar and press Enter. Chrome jumps directly to the flag.
+2. Click the dropdown next to **Side by side browsing** and change it from **Default** to **Enabled**.
+3. Click **Relaunch** at the bottom of the screen. Chrome restarts in a few seconds.
+4. Right-click any tab. **Split view** should appear in the menu.
+
+To use it: right-click a tab and select **Split view**, or drag a tab to the left or right edge of the Chrome window until a split indicator appears, then release.
+
+## Fix 2: Check for Managed Device Restrictions
+
+If `chrome://flags` shows a banner reading "Some settings are managed by your organization" or the flags page is blank, Chrome Policy is in effect.
+
+1. Go to `chrome://policy` to see every active policy applied to your Chrome.
+2. Look for entries referencing `FlagsDisabled`, `URLBlocklist`, or any flag-level overrides.
+3. If `#side-by-side-browsing` appears in a disabled list, the flag is blocked by your IT administrator.
+
+On managed devices, the fix requires your IT department to allow the flag or deploy a policy enabling it. You cannot override Chrome Policy from the browser UI.
+
+If Split View matters for your workflow and your device is managed, the quickest workaround is a workspace extension that achieves side-by-side viewing without flag dependencies.
+
+## Fix 3: Update Chrome to the Latest Version
+
+Split View arrived in Chrome 145. If your Chrome is older, the flag does not exist regardless of what you enter in the address bar.
+
+1. Go to `chrome://settings/help` or click the three-dot menu → **Help** → **About Google Chrome**.
+2. Chrome checks for updates automatically when you open this page.
+3. If an update is available, it downloads and shows a **Relaunch** button. Click it.
+4. After restarting, go back to `chrome://flags/#side-by-side-browsing` and enable the flag.
+
+Chrome 146 is the current stable version as of March 2026. If you were on 144 or earlier, updating and enabling the flag is the full fix.
+
+## Fix 4: Reset All Chrome Flags
+
+Flag conflicts are less common but real. If Fix 1 did not work (you enabled the flag, relaunched, and Split View still does not appear), other experimental flags may be interfering.
+
+1. Go to `chrome://flags`.
+2. Click **Reset all** in the top-right corner of the page.
+3. Chrome resets every experimental override to default. Click **Relaunch**.
+4. After restarting, go back to `chrome://flags/#side-by-side-browsing` and enable Split View again.
+
+This clears any conflicting flags. The downside is losing any other experimental features you had enabled. You will need to re-enable them individually afterward.
+
+## When Split View Is Not Enough
+
+Split View solves one specific problem: two tabs, side by side, right now. It does not solve session management, context switching between projects, or working with more than two things at once.
+
+The 50/50 fixed split and no session persistence are real constraints. Every time Chrome opens, you rebuild the split. There is no way to say "my research context is always split; my work context is always full-width."
+
+SuperchargeNavigation takes a different approach. Named workspaces let you define separate tab contexts (Work, Research, Personal, Client A) and switch between them instantly. Each workspace remembers its tabs. The Alt+K command bar searches every tab across every workspace from the keyboard in under two seconds. Shift+Click opens any link in a peek panel without leaving your current context. 50 automatic snapshots mean a bad restart does not cost you a session.
+
+Where Chrome Split View handles two tabs in the moment, workspaces handle ongoing parallel projects. They're not the same tool solving the same problem. Split View is useful for quick side-by-side comparisons; workspaces are for people who keep multiple distinct projects running all week.
+
+Everything runs locally. No data leaves your browser, no account needed.
+
+## Which Fix Applies to You
+
+| Your situation | What to do |
+|---|---|
+| Split View worked before a Chrome update | Fix 1: re-enable the flag |
+| `chrome://flags` shows "managed by your organization" | Fix 2: contact IT or use a workspace extension |
+| Chrome is version 144 or earlier | Fix 3: update Chrome first, then enable the flag |
+| Flag is enabled but Split View still missing | Fix 4: reset all flags, then re-enable |
+| Need more than 2 tabs side by side, or session persistence | SuperchargeNavigation workspaces |
+
+If you hit Fix 1 and it works, save yourself 10 minutes next update: bookmark `chrome://flags/#side-by-side-browsing` so you can re-enable it in one click when Chrome resets it again.
+
+#### FAQ
+Q: Why did Chrome Split View disappear after an update?
+A: As of March 2026 (Chrome 146), Split View is controlled by a feature flag (#side-by-side-browsing). Chrome updates occasionally reset experimental flags to their default state, which disables the feature. Re-enabling the flag at chrome://flags/#side-by-side-browsing restores it immediately without restarting Chrome.
+
+Q: How do I enable Chrome Split View?
+A: Go to chrome://flags/#side-by-side-browsing, set the flag to Enabled, and click Relaunch. Once active, right-click any tab and select Split view to open it alongside the current tab. Requires Chrome 145 or later.
+
+Q: Does Chrome Split View work on all platforms?
+A: As of March 2026, Chrome Split View is available on Windows, macOS, and Linux running Chrome 145 or later. It is not available on ChromeOS or mobile. Managed devices (school or work Chromebooks) may have the flag blocked by policy.
+
+Q: What are the limitations of Chrome Split View?
+A: Chrome Split View is fixed at 50/50 — no custom split ratios. Only two tabs can be shown at once. Pinned tabs cannot be split. It does not persist across sessions; you must set up the split each time. For multi-tab workflows or named contexts, a workspace extension is more practical.
+
+Q: Can I use Split View on a managed work or school device?
+A: Possibly not. IT administrators can block experimental flags via Chrome policies. If chrome://flags shows a message like 'This setting is managed by your organization', Split View cannot be enabled without admin approval. Check with your IT department.
+
+---
+
+### How to DISABLE Chrome AI Features & Gemini (2026)
+
+URL: https://www.superchargebrowser.com/library/disable-chrome-ai-features-gemini/
+Category: guide | Extension: general | Updated: 2026-03-30
+Description: Chrome 146 ships 5+ AI features on by default. Step-by-step guide to turning off Gemini sidebar, AI Overview, page content sharing, and AI Mode flags.
+
+> **Key takeaways**
+> - **Chrome 146 enables 5+ AI features by default.** Gemini sidebar, page content sharing, and AI Mode flags are all on unless you turn them off.
+> - **Page content sharing is a separate toggle from the Gemini sidebar.** Disabling Gemini alone does not stop tab text from being sent to Google.
+> - **AI Overview has no Chrome setting.** Change it in Google Search preferences or use a CWS extension like "Bye Bye Google AI."
+
+Chrome opened a browser window one day and the Gemini icon was just there. No permission prompt. No announcement in the UI. Just an AI assistant sitting in the toolbar with access to every page you load. If you didn't ask for it, or if you care what gets sent to Google's servers, these are the exact steps to remove it.
+
+## What Chrome's AI Features Actually Do
+
+Before touching settings, it helps to know what each feature sends where. Chrome 146 (March 2026) ships five AI-driven features, most enabled by default for qualifying accounts:
+
+| Feature | What it sends to Google | Where to disable |
+|---------|------------------------|-----------------|
+| Gemini sidebar | Tab URL + page text (when triggered) | `chrome://settings` → Gemini toggle |
+| Page content sharing | Active tab text, on every AI interaction | `chrome://settings` → AI features |
+| Tab summarization | Page text when you click Summarize | Part of Gemini sidebar — same toggle |
+| Auto Browse (US-only) | Full browsing session context | Requires AI Pro/Ultra subscription; disable Gemini |
+| AI Mode in Google Search | Your search query + inferred context | Google Search settings + `chrome://flags` |
+
+Auto Browse is the most invasive: it feeds a live session context to Gemini across your entire browsing window. As of March 2026 it requires a paid Google AI Pro or Ultra subscription and is only available in the US. If you are outside the US, it won't appear. The other four features may still be active.
+
+The CVE-2026-0628 vulnerability (disclosed and patched in early 2026) demonstrated that a malicious extension could hijack the Gemini panel's elevated permissions to request camera, microphone, and file access on behalf of the AI session. The patch landed, but the architecture illustrates why giving a side panel AI access to your page content is a meaningful attack surface, not just a privacy preference.
+
+## Disable the Gemini Sidebar
+
+The Gemini sidebar is the most visible AI addition to Chrome. It appears as a small icon in the toolbar (US, CA, IN, NZ only; English-US Chrome; 18+; gradual rollout). If you don't see it, your account hasn't been included yet.
+
+1. Open `chrome://settings` in the address bar
+2. Type **Gemini** in the search box, or navigate to **You and Google** → **Gemini in Chrome**
+3. Toggle **Gemini in Chrome** to off
+4. Confirm the dialog if prompted
+
+The toolbar icon disappears immediately. Tab summarization, the "Help me write" inline prompt, and Auto Browse all stop working. They depend on the Gemini toggle.
+
+If the Gemini toggle doesn't appear in your settings, either your Chrome version is below 121, your account region doesn't qualify, or the feature hasn't rolled out to your profile yet. In that case there is nothing to disable. The feature isn't active.
+
+## Disable Page Content Sharing
+
+This step is separate and easy to miss. Turning off the Gemini sidebar doesn't automatically revoke the page content sharing permission. Chrome stores these as independent settings.
+
+1. Go to `chrome://settings`
+2. Navigate to **You and Google** → **AI features**
+3. Find **Page content sharing** (or **Sharing content with AI features**)
+4. Toggle it off
+
+With this off, no AI feature in Chrome, including any future ones Google adds, can read your active tab's text. The toggle covers the entire AI features system, not just Gemini.
+
+If you are signing into a shared or work machine, also check that the same toggle isn't overridden by an enterprise policy. Go to `chrome://policy` and search for `GenAI`. Any entries there mean an administrator has set the value and your change will be overridden on restart.
+
+## Disable AI Overview in Google Search
+
+AI Overview is where Chrome stops being able to help you. This is a Google Search product setting, not a Chrome setting. There is no `chrome://settings` entry that removes it.
+
+**Method 1: Google Search settings (most reliable)**
+
+1. Go to [google.com](https://www.google.com) and search for anything
+2. Click **Settings** (bottom-right on desktop, or the gear icon)
+3. Select **Search settings**
+4. Find **AI Overview and suggestions**
+5. Select **Don't show AI Overviews and suggestions**
+6. Scroll down and click **Save**
+
+The setting persists across sessions when you're signed into your Google account. On mobile, the path is Search → Settings → AI Overview.
+
+**Method 2: CWS extension**
+
+Two extensions specifically target AI Overview removal:
+
+- **Disable AI Mode & AI Overview** — available on CWS, blocks the AI Overview element via CSS injection and URL parameter modification
+- **Bye Bye Google AI** — similar approach, adds `&udm=14` to search URLs which switches Google to the "Web" results view without AI Overviews
+
+Both are lightweight content scripts with no server communication. The `udm=14` parameter is the most reliable technical approach: it instructs Google to return traditional web results.
+
+**What you can't remove:** Even with the Search setting off, Google occasionally injects AI-generated content for certain query types in some regions. The extension approach is more consistent.
+
+## Disable AI Mode and Experimental AI Flags
+
+Chrome's AI Mode in Google Search (a more aggressive AI-first search layout currently in early rollout) can be targeted specifically through `chrome://flags`:
+
+1. Open `chrome://flags` in the address bar
+2. Search for **AI**. You'll see a list of experimental features.
+3. Key flags to disable:
+
+| Flag name | What it does | Recommended setting |
+|-----------|-------------|---------------------|
+| `#enable-ai-mode` | Enables AI Mode in Google Search | Disabled |
+| `#summarization-api-for-gemini-nano` | On-device Gemini Nano summarization | Disabled |
+| `#optimization-guide-on-device-model` | Downloads a local AI model in the background | Disabled |
+| `#compose` | "Help me write" inline text prompts | Disabled |
+| `#history-embeddings` | AI-powered search of your browsing history | Disabled |
+
+4. Click **Relaunch** at the bottom of the page to apply changes
+
+A note on `#optimization-guide-on-device-model`: when this is enabled, Chrome downloads a Gemini Nano model file (roughly 1.7GB) to your local storage in the background. If you've noticed unexplained disk writes or Chrome using unexpected storage, this flag is the likely cause. Disabling it and restarting Chrome stops the download and allows you to reclaim the space from `chrome://settings/storage`.
+
+Not all flags appear in all Chrome versions or channels. Flags reset on some Chrome updates. Check after major version upgrades.
+
+## Disable Page Content Sharing for Specific AI Features
+
+Beyond the main toggle, Chrome's AI features settings page has granular sub-controls that are worth reviewing even if you keep some features on:
+
+1. Go to `chrome://settings/syncSetup` → **AI features** (or directly at `chrome://settings#privacy`)
+2. Review each item under the **AI features** section:
+
+| Setting | What to know |
+|---------|-------------|
+| Help me write | Sends selected text + surrounding context to Google |
+| Tab organizer | Sends all open tab titles to group them |
+| Theme creation | Sends your text prompt + browsing context |
+| Compare products | Sends product page URLs and structured data |
+| Lens overlay | Sends screenshots of your screen content |
+
+Disable any you don't actively use. The cumulative data surface across all these features is larger than the Gemini sidebar alone.
+
+## Nuclear Option: Chrome Policies for Full AI Lockdown
+
+For shared family machines, kiosk setups, or privacy-focused environments where the individual toggles might get re-enabled by other users or Chrome updates, policy-level controls are more durable.
+
+**Windows (Registry or GPO):**
+
+1. Download the Chrome ADMX templates from Google's policy page
+2. Add the templates to your Group Policy editor
+3. Navigate to **Computer Configuration** → **Administrative Templates** → **Google** → **Google Chrome** → **AI features**
+4. Set **Generative AI settings** to **Disabled (2)**
+
+Or directly in the registry at `HKLM\Software\Policies\Google\Chrome`:
+- `GenAILocalFoundationalModelSettings` = `1` (disable on-device model)
+- `CreateThemesSettings` = `1` (disable AI theme creation)
+
+**macOS (plist):**
+
+Place a `com.google.Chrome.plist` file in `/Library/Managed Preferences/` with:
+```xml
+<key>GenAILocalFoundationalModelSettings</key>
+<integer>1</integer>
+```
+
+**Chrome://policy verification:**
+
+After applying any policy, go to `chrome://policy` and confirm the values appear under "Machine Policies." If they show as user-level only, the policy isn't fully locked. Other user profiles on the machine can still override them.
+
+Policy-level settings survive Chrome updates and profile resets, unlike flags.
+
+## What You Lose (and What You Don't)
+
+The one practical loss: **Help me write** in form fields is a feature some users rely on heavily. If you disable AI features globally but want that specific one, re-enable only the "Help me write" toggle in `chrome://settings` → AI features while keeping page content sharing and the Gemini sidebar off.
+
+AI Overview in Search is the most disruptive to disable if you rely on Google for research. The results page layout changes noticeably. The traditional web results view (`udm=14`) shows cleaner organic results, which many users find more useful for navigating to sources directly.
+
+## A Different Approach to Focused Browsing
+
+If the underlying frustration isn't Gemini specifically but the general drift toward a browser that tries to do your thinking for you, with tabs cluttered with suggestions, side panels filling up, and constant ambient UI, that's a different problem than a single AI toggle can fix.
+
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) takes the opposite approach to AI-driven browsing: named workspaces that separate your contexts (work, research, personal), an Alt+K command bar for navigating without touching the mouse, and Shift+Click to peek at a link without leaving your current tab. The side panel is used for workspace switching, not AI chat. Zero telemetry. 100% local. No account required.
+
+If your goal is a browser that responds exactly to what you direct it to do, rather than one that anticipates and injects, workspace-based navigation is worth considering alongside the AI disabling steps above.
+
+Most users only need to disable page content sharing (the biggest privacy gap) and leave the rest alone. For a full AI-free Chrome, work through sections 2–5 above. The whole process takes under 10 minutes.
+
+#### FAQ
+Q: How do I disable the Gemini sidebar in Chrome?
+A: As of March 2026, go to chrome://settings, search for 'Gemini', and toggle off 'Gemini in Chrome'. This removes the Gemini icon from the toolbar and disables the side panel AI chat feature. The setting is only visible in Chrome 121+ and only appears if your account region (US, CA, IN, or NZ) qualifies for the feature.
+
+Q: Does disabling Gemini in Chrome settings stop page content from being sent to Google?
+A: As of March 2026, disabling the Gemini toggle in chrome://settings prevents the sidebar from reading your active tab's content. However, Chrome has a separate 'Page content sharing' toggle that controls whether AI features can access your browsing content — disable that independently at chrome://settings/#privacy under 'AI features'.
+
+Q: Can I fully disable AI Overview in Google Search from Chrome?
+A: As of March 2026, you cannot fully remove AI Overview from Google Search through a Chrome setting. The most reliable method is to go to Google Search settings (search anything → Settings → Search settings → AI Overview and suggestions) and select 'Don't show AI Overviews and suggestions'. Alternatively, install a Chrome extension like 'Bye Bye Google AI' or 'Disable AI Mode & AI Overview'.
+
+Q: What is Chrome's page content sharing and is it on by default?
+A: As of March 2026, page content sharing is a Chrome AI setting that allows features like Gemini sidebar to read the text content of your active tab and send it to Google's servers for processing. It is enabled by default when Gemini in Chrome is on. Disable it at chrome://settings under 'You and Google' → 'AI features' → 'Page content sharing'.
+
+Q: Is there a way to block all Chrome AI features at once?
+A: As of March 2026, the most complete method is Chrome enterprise policies. Set GenAILocalFoundationalModelSettings=1 and CreateThemesSettings=1 via a GPO or JSON policy file at the system level. For personal machines without enterprise MDM, you must disable each feature individually: Gemini sidebar, page content sharing, AI Overview (via Google Search settings), and AI Mode flags in chrome://flags.
+
+---
+
+### STOP Chrome Freezing on Windows 11: 9 Fixes (2026)
+
+URL: https://www.superchargebrowser.com/library/fix-chrome-freezing-windows-11/
+Category: troubleshooting | Extension: performance | Updated: 2026-03-30
+Description: Chrome hanging with 'Not Responding' on Windows 11? GPU drivers and tab overload are the usual culprits. 9 tested fixes — no reinstall needed.
+
+> **Key takeaways**
+> - **Chrome freezing on Windows 11 is almost never a Chrome bug.** GPU driver conflicts and Efficiency Mode throttling are the two most common causes.
+> - **Press Shift+Esc to open Chrome Task Manager before the window locks.** Sort by CPU to find the hung process.
+> - **GPU drivers are the top fix after any Windows 11 update.** Update first before trying anything else.
+
+Your Chrome window goes gray. The title bar reads "Not Responding." The cursor turns into a spinning circle. You cannot click anything, cannot close tabs, and force-quitting means losing everything. This is a freeze, not a crash. Chrome is alive but stuck waiting on something it cannot get.
+
+As of March 2026, the most common trigger is a GPU driver conflict between Chrome 146 and the Windows 11 update released that month. DWM.exe (Desktop Window Manager) competes with Chrome for GPU resources, and when they deadlock, Chrome hangs. Separately, Windows 11's Efficiency Mode throttles background Chrome processes. If a tab tries to respond while throttled, the internal timeout fires and the whole window locks.
+
+## Quick Diagnosis
+
+Match your symptom to the most likely fix before working through all nine:
+
+| Symptom | Likely cause | Fix to try first |
+|---------|-------------|-----------------|
+| Freezes started after a Windows Update | GPU driver regression | [Fix 5: Update GPU Drivers](#fix-5-update-gpu-drivers) |
+| Freezes when scrolling or switching tabs | Hardware acceleration bug | [Fix 2: Disable Hardware Acceleration](#fix-2-disable-hardware-acceleration) |
+| Freeze lasts 5–30 seconds then recovers | Windows Efficiency Mode throttle | [Fix 4: Disable Efficiency Mode](#fix-4-disable-windows-efficiency-mode-for-chrome) |
+| High CPU/disk in Task Manager before freeze | Specific tab or extension | [Fix 1: Chrome Task Manager](#fix-1-check-chrome-task-manager-for-the-hung-process) |
+| Freezes only on specific websites | Shader cache corruption | [Fix 3: Clear GPU and Shader Cache](#fix-3-clear-gpu-cache-and-shader-cache) |
+| Freezes after installing a new extension | Extension conflict | [Fix 6: Disable Conflicting Extensions](#fix-6-disable-conflicting-extensions) |
+| Freeze is permanent, need to force-quit | Corrupt user profile | [Fix 7: Reset Chrome Profile](#fix-7-reset-chrome-profile) |
+| Windows Defender scan visible in Task Manager | Defender I/O hang | [Fix 8: Defender Exclusion](#fix-8-add-chrome-to-windows-defender-exclusions) |
+| 20+ tabs open, freezes on switch | Memory exhaustion | [Fix 9: Reduce Active Tab Count](#fix-9-reduce-active-tab-count) |
+
+## Fix 1: Check Chrome Task Manager for the Hung Process
+
+Chrome has its own Task Manager that shows individual tab and extension processes. This is the fastest way to identify what is causing the freeze. Open it before Chrome fully locks, while you still can.
+
+1. Press **Shift+Esc** while Chrome is in focus to open the Chrome Task Manager.
+2. Click the **CPU** column header to sort by CPU usage descending.
+3. Look for any process showing unusually high CPU (above 50%). That is your freeze source.
+4. Click that process and select **End Process** to kill only that tab without losing everything else.
+5. Also check `chrome://crashes` in the address bar. If Chrome has been logging hangs silently, you will see them here.
+
+If Chrome is already unresponsive when you try this, open **Windows Task Manager** (Ctrl+Shift+Esc), find all `chrome.exe` processes, and identify which has the highest CPU or disk usage. End that specific process. Chrome will show a "Restore" prompt for the killed tab.
+
+## Fix 2: Disable Hardware Acceleration
+
+Hardware acceleration lets Chrome use your GPU for rendering. When there is a driver conflict, which is common after Windows 11 updates, this causes freezes during scroll, video playback, or tab switching.
+
+1. Open Chrome and navigate to `chrome://settings/system`
+2. Toggle off **Use graphics acceleration when available**
+3. Click **Relaunch** to restart Chrome
+4. Test Chrome for 30 minutes under normal usage
+
+If freezes stop, your GPU driver has a conflict with Chrome's rendering pipeline. Proceed to Fix 5 (GPU driver update) and then re-enable hardware acceleration. You want it on for performance once the driver is correct.
+
+Note: with hardware acceleration off, video rendering falls back to CPU. YouTube and Google Meet will use more CPU than normal. This is a diagnostic and temporary fix, not a permanent setting.
+
+## Fix 3: Clear GPU Cache and Shader Cache
+
+Chrome compiles GPU shaders and stores them locally to speed up rendering. A corrupt shader cache entry can cause Chrome to hang every time it renders the same element. That is why some freezes happen consistently on specific sites.
+
+1. Close Chrome completely (make sure no chrome.exe processes remain in Task Manager)
+2. Press **Win+R**, type `%localappdata%\Google\Chrome\User Data`, and press Enter
+3. Delete the **GPUCache** folder
+4. Navigate one level up to `User Data\Default\` and delete the **ShaderCache** folder
+5. Reopen Chrome. It will rebuild both caches from scratch.
+
+Expect a slightly slower first page load as shaders rebuild. Normal behavior, clears up after one or two navigations.
+
+Alternatively: navigate to `chrome://settings/clearBrowserData`, switch to the **Advanced** tab, check **Cached images and files**, and click **Clear data**. This is less thorough than manual deletion but requires no file system access.
+
+## Fix 4: Disable Windows Efficiency Mode for Chrome
+
+Windows 11 introduced Efficiency Mode to reduce background app power consumption. It works by lowering the CPU thread priority for processes it considers background tasks. The problem: when Chrome needs CPU time to complete a tab render or extension operation while throttled, the operation times out internally. The freeze typically lasts 5–30 seconds and then resolves on its own.
+
+To disable Efficiency Mode specifically for Chrome:
+
+1. Open **Windows Task Manager** (Ctrl+Shift+Esc)
+2. Click the **Details** tab
+3. Right-click any `chrome.exe` process
+4. If you see **Efficiency mode: On**, click it to toggle off
+
+The toggle applies per-session, not permanently. For a permanent fix, use the **Power & sleep settings** panel:
+
+1. Open **Settings > System > Power & sleep > Additional power settings**
+2. Select **High performance** or **Balanced** (avoid **Power saver**)
+3. If on a laptop, also check **Settings > System > Power > Battery saver** and ensure it does not activate below 50%.
+
+## Fix 5: Update GPU Drivers
+
+Outdated or newly regressed GPU drivers are the single most common cause of Chrome freezing on Windows 11 in 2026. Chrome 146 changed how it communicates with the GPU for hardware-accelerated compositing, and drivers from 2024 or early 2025 often do not handle this correctly.
+
+**For NVIDIA GPUs:**
+1. Open **NVIDIA GeForce Experience** or visit [nvidia.com/drivers](https://www.nvidia.com/Download/index.aspx)
+2. Download the latest Game Ready or Studio driver
+3. Run the installer and select **Custom installation > Clean install**
+4. Restart Windows after installation completes
+
+**For AMD GPUs:**
+1. Open **AMD Software: Adrenalin Edition** or visit [amd.com/support](https://www.amd.com/support)
+2. Check for driver updates and install the latest
+3. Restart after installation
+
+**For Intel integrated graphics:**
+1. Open **Device Manager** (Win+X > Device Manager)
+2. Expand **Display adapters**, right-click your Intel GPU
+3. Select **Update driver > Search automatically for drivers**
+4. Or visit [intel.com/content/www/us/en/download-center](https://www.intel.com/content/www/us/en/download-center/) for manual download
+
+After updating, re-enable hardware acceleration (Fix 2 step 2) and test.
+
+## Fix 6: Disable Conflicting Extensions
+
+Extensions run in Chrome's main browser process. A poorly written extension that enters an infinite loop or makes repeated network calls can block Chrome's event loop, causing the entire window to become unresponsive.
+
+The 30-second test: open a new **Incognito window** (Ctrl+Shift+N). Extensions are disabled by default in Incognito. Use Chrome normally for a few minutes. If Chrome does not freeze in Incognito, an extension is the cause.
+
+To find the specific extension:
+
+1. Navigate to `chrome://extensions/`
+2. Toggle off all extensions
+3. Re-enable them one at a time, testing for a few minutes each
+4. When the freeze returns, you have found the culprit
+5. Check if an update is available for that extension, or remove it
+
+Extensions that are most likely to cause freezes: VPNs that intercept network requests, screen recorders, and any extension that has not been updated since Chrome 144 or earlier.
+
+## Fix 7: Reset Chrome Profile
+
+A corrupt Chrome profile can cause persistent, unexplainable freezes, particularly freezes that happen within seconds of Chrome opening, before any tabs fully load. The profile stores your preferences, cached login sessions, and extension settings locally.
+
+A profile reset preserves your bookmarks and history but removes extensions, saved passwords (export them first), and custom settings.
+
+1. Navigate to `chrome://settings/` and click **Reset settings** in the left sidebar
+2. Select **Restore settings to their original defaults**
+3. Click **Reset settings** to confirm
+
+If you want to start fresh without losing your Google account sync data:
+
+1. Close Chrome
+2. Navigate to `%localappdata%\Google\Chrome\User Data\`
+3. Rename the **Default** folder to **Default.old**
+4. Reopen Chrome. It creates a new Default folder and prompts you to sign in.
+5. Sign into your Google account to restore bookmarks and passwords from sync
+
+If Chrome stops freezing with the new profile, the issue was in your profile data, most likely a corrupt extension state file or preferences database.
+
+## Fix 8: Add Chrome to Windows Defender Exclusions
+
+Windows Defender's real-time protection scans file writes as they happen. Chrome writes constantly: cache files, IndexedDB updates, session state, cookies. On systems with mechanical HDDs or slow SSDs, this scanning creates I/O contention: Chrome writes a file, Defender scans it before Chrome can confirm the write, and Chrome's next operation blocks waiting for the disk to free up. The result looks identical to a Chrome freeze.
+
+Adding Chrome's data directory to Defender's exclusion list eliminates this scanning overhead:
+
+1. Open **Windows Security** from the Start menu
+2. Go to **Virus & threat protection > Virus & threat protection settings**
+3. Scroll to **Exclusions** and click **Add or remove exclusions**
+4. Click **Add an exclusion > Folder**
+5. Add: `%localappdata%\Google\Chrome\User Data`
+6. Click **Select Folder**
+
+This exclusion removes real-time scanning for Chrome's own data directory only. It does not affect scanning of downloads or other directories. If you are uncomfortable with this, the alternative is upgrading to a faster SSD. The core issue is scan latency, not a Defender bug.
+
+## Fix 9: Reduce Active Tab Count
+
+Each active Chrome tab is a renderer process that consumes 70–180 MB of RAM. On a machine with 8 GB of RAM running Windows 11, 20+ active tabs can exhaust physical memory. Once Chrome starts paging to disk, every tab switch triggers a disk read and the browser freezes for several seconds waiting for the page to load from the page file.
+
+The threshold varies by machine, but if you regularly freeze at high tab counts, this is the cause:
+
+1. Press **Shift+Esc** inside Chrome to open the Chrome Task Manager
+2. Sort by **Memory** column. Any tab above 500 MB is a candidate for closing.
+3. Close tabs you are not actively working with
+4. For reference tabs you want to keep accessible, bookmark them or use a read-later service
+
+Chrome's built-in Memory Saver (at `chrome://settings/performance`) will auto-discard background tabs to reduce pressure, but it uses heuristics that are sometimes too aggressive and can discard tabs you were about to use.
+
+## Preventing Freezes with Automatic Tab Suspension
+
+Most freeze patterns come back to the same root: too many active tabs keeping Chrome's processes saturated. Every active tab runs JavaScript timers, renders animations, and writes to disk, even the ones behind other tabs. When that load spikes, Chrome can hang.
+
+SuperchargePerformance uses `chrome.tabs.discard()` to suspend inactive tabs automatically, dropping their RAM footprint to near zero without closing them. Suspended tabs produce no CPU load and no disk writes. Switching back to a suspended tab reloads it, the same as Chrome's built-in Memory Saver, but with more precise control over which tabs are protected.
+
+14 apps are auto-protected from suspension: Figma, Notion, Slack, and similar tools where losing state would be disruptive. Everything else goes idle automatically after a configurable period. The result is lower steady-state RAM, less disk I/O, and fewer of the memory-pressure hangs described in Fix 9.
+
+If your freezes match Fixes 1, 3, 4, or 5, the problem is environmental (drivers, Windows settings, cache) rather than tab count. Fix those directly first.
+
+## If Nothing Works
+
+If Chrome still freezes after all nine fixes:
+
+- **Try the Chrome Canary channel** ([google.com/chrome/canary/](https://www.google.com/chrome/canary/)). If Canary does not freeze, the issue is in your stable Chrome version and will likely be patched in the next update.
+- **Check `chrome://gpu`** for any fields showing "Software only, hardware acceleration unavailable." This confirms a driver-level incompatibility.
+- **Run `sfc /scannow`** in an elevated Command Prompt. Corrupted Windows system files can cause GPU pipeline failures that Chrome surfaces as freezes.
+- **Test a new Windows user account.** If Chrome runs fine there, the issue is in your user profile at the OS level, not Chrome itself.
+
+If X → use Y: GPU driver just updated and Chrome started freezing → roll back the driver. Freezes only on video sites → disable hardware acceleration permanently and block video preload. Freezes after Chrome auto-updates → check `chrome://settings/help` to see if a newer stable version is available or downgrade temporarily.
+
+#### FAQ
+Q: Why does Chrome freeze on Windows 11 but not crash?
+A: As of March 2026, the most common cause is a GPU driver conflict introduced by Chrome 146 combined with Windows 11 updates from early 2026. The browser process hangs waiting for a GPU response that never arrives — Chrome stays open but stops accepting input. This is distinct from an 'Aw, Snap!' crash, which kills individual tabs.
+
+Q: How do I tell which tab or process is causing Chrome to hang?
+A: Press Shift+Esc inside Chrome to open the Chrome Task Manager before Chrome fully locks up. Sort by CPU column. Any tab showing high CPU with a spinning indicator is the culprit. If Chrome is already unresponsive, open Windows Task Manager (Ctrl+Shift+Esc) and look for chrome.exe entries with high CPU or disk usage.
+
+Q: Does Windows 11 Efficiency Mode cause Chrome to freeze?
+A: Yes. Windows 11 applies Efficiency Mode to background apps, which throttles CPU threads for chrome.exe processes. When Chrome tries to complete a GPU or disk operation while throttled, the operation can time out internally and the browser appears to hang. Disabling Efficiency Mode for Chrome specifically resolves this for many users.
+
+Q: Will reinstalling Chrome fix freezing on Windows 11?
+A: Rarely. Reinstalling does not update GPU drivers, change Windows power settings, or clear the shader cache — which are the most common freeze causes in 2026. Try the GPU driver update and shader cache clear first. A profile reset (not full reinstall) resolves corrupt-profile freezes without losing your extensions or history.
+
+---
+
+### Chrome Muted Tabs Pausing? 4 FIXES That Work (2026)
+
+URL: https://www.superchargebrowser.com/library/fix-chrome-muted-tabs-pausing-background/
+Category: troubleshooting | Extension: performance | Updated: 2026-03-30
+Description: Chrome 145 broke muted tab playback — streams pause when you switch tabs. Still present in Chrome 146. 4 tested workarounds, fastest takes 10 seconds.
+
+> **Key takeaways**
+> - **Chrome 145 made muted media eligible for background suspension.** Streams pause when you switch tabs.
+> - **Right-click the tab and select Mute Site.** This mutes at the Chrome level, not the media player, so playback continues.
+> - **Still present in Chrome 146. No flag, no confirmed fix timeline.** Mute Site is the permanent workaround.
+
+You mute a Twitch stream to skip an ad, switch to another tab, come back, and the stream is paused. You unmute and resume, mute again, switch tabs. Paused again. This started with Chrome 145, reported widely in mid-March 2026 after PiunikaWeb broke the story. YouTube, Twitch, and Twitter/X are the most-affected sites. The root cause is a Chrome media engagement scoring change that treats muted elements as idle candidates for background suspension.
+
+## Why Chrome 145 Broke Muted Playback
+
+Chrome uses a media engagement score to decide which background tabs deserve to keep their audio context alive. In Chrome 145, Google changed the scoring logic: a muted media element now scores significantly lower than an audible one. Low score = eligible for suspension when the tab loses focus.
+
+Before this change, Chrome's heuristic was roughly "if something is playing, keep it alive." After, it became "if something is playing *and audible*, keep it alive." Muted streams fell into the same bucket as truly idle tabs.
+
+There is no flag at `chrome://flags` to revert this. The workarounds below operate at a different layer: either muting at the browser level instead of the player level, or keeping the video visible enough that Chrome treats it as active.
+
+## Fix 1: Use "Mute Site" Instead of the Player Mute Button
+
+This is the fastest fix and works on every affected site. The difference matters: muting via the video player tells Chrome "this media is muted," which triggers the new scoring rule. Muting via Chrome's site mute tells Chrome nothing about the media state. The video element stays technically unmuted from Chrome's perspective.
+
+1. While the video is playing (with audio on), **right-click the tab** in the tab bar
+2. Select **Mute Site**
+3. Switch to another tab
+
+The stream continues playing silently. When you return, right-click the tab and select **Unmute Site** to restore audio.
+
+This works because Chrome's site mute operates at the audio output layer. It suppresses the audio signal but does not change the media element's `muted` property that Chrome's engagement scoring reads.
+
+## Fix 2: Set Volume to 1% Instead of Muting
+
+Counter-intuitive but effective. Chrome's media engagement checks whether the media element is muted, not whether the volume is low. A volume of 1% reads as unmuted to the scoring system.
+
+1. Start the stream normally
+2. Drag the player volume slider to its **lowest non-zero position** (1%)
+3. Switch tabs
+
+At 1% volume, the audio is inaudible in practice but the media element remains technically active, keeping the engagement score high enough to prevent suspension.
+
+Works on YouTube, Twitch, and Twitter. The main drawback: if you switch to a quieter environment, you may forget the sound is on at all. Set a mental reminder or pin the tab so it is visible.
+
+## Fix 3: Use Picture-in-Picture
+
+Picture-in-picture keeps a small video overlay floating over your other tabs. Chrome treats PiP windows as foreground media regardless of which tab is active, with no engagement score issue.
+
+**On YouTube:**
+1. Right-click the video **twice** (the second right-click shows the browser's native context menu)
+2. Select **Picture in picture**
+
+**On Twitch:**
+1. Click the settings gear icon in the player
+2. Select **Popout Player** (opens in a separate window, achieving a similar effect)
+3. Or right-click the video → **Picture in picture** if available
+
+The stream continues in a small overlay while you work. Move it to a corner. The overlay persists across tab switches and window focus changes.
+
+Downside: the overlay takes up screen space. For monitoring streams passively, Fix 1 or Fix 2 is less intrusive.
+
+## Fix 4: Check chrome://flags for Background Tab Throttling
+
+This does not directly address the muted tab pause but can reduce aggressive background suspension behavior on some Chrome versions.
+
+1. Navigate to `chrome://flags`
+2. Search for **"throttle"**
+3. Look for **"Throttle non-visible cross-origin iframes"** or **"Intensive Wake Up Throttling"**
+4. If present, set to **Disabled**
+5. Click **Relaunch**
+
+As of Chrome 146, there is no flag specifically targeting muted media suspension. If a relevant flag appears in a future Chrome release, this is where to find it. For now, this step is low-yield. Treat Fix 1 as your primary solution.
+
+## When Google Will Fix This
+
+No confirmed timeline. The behavior change shipped in Chrome 145 (early March 2026) and the Google Community thread has been active since mid-March with no official response or Chromium bug marked as fixed. Chrome 147 is due in April. There is no indication this is scheduled for that release.
+
+The Mute Site method (Fix 1) is robust enough that most users will not need to wait for a Chrome fix. It is a permanent workaround with no meaningful side effects.
+
+| Fix | Works on | Time to set up | Drawbacks |
+|-----|---------|----------------|-----------|
+| Mute Site (right-click tab) | All sites | 10 seconds | Must remember to unmute at tab level |
+| Volume at 1% | All sites | 5 seconds | Easy to forget audio is on |
+| Picture-in-Picture | YouTube, most sites | 15 seconds | Takes screen space |
+| chrome://flags throttling | Chrome-level | 2 minutes | No targeted flag exists yet |
+
+## Keeping Background Tabs Active Automatically
+
+If muted stream pausing is part of a broader pattern (tabs reloading on return, background apps disconnecting, video stuttering on tab switch), the underlying issue is Chrome's background suspension being too aggressive across the board.
+
+SuperchargePerformance auto-protects 14 apps including YouTube and Twitch. The extension only passes truly idle tabs to `chrome.tabs.discard()`. Tabs with active media are excluded automatically. You do not have to configure anything per-site. No data collection, no account, free to use.
+
+For the specific muted tab pause introduced in Chrome 145, Fix 1 (Mute Site) is the direct solution. No extension needed. The extension matters if you want broader protection: keeping background tabs from reloading, reducing RAM across 40+ idle tabs, and not having to manually protect each streaming site you use.
+
+If you are only affected by the muted stream pause: use Mute Site, done. If your background tabs are generally unreliable: that is a different problem with a different fix.
+
+#### FAQ
+Q: Why do muted tabs pause when I switch away in Chrome?
+A: As of March 2026, Chrome 145 changed how media engagement scoring works. A muted media element now scores lower, which makes it eligible for Chrome's background suspension system. When you switch tabs, Chrome pauses the muted stream instead of letting it play silently.
+
+Q: Does this affect both YouTube and Twitch?
+A: Yes. The Chrome 145 change affects any tab with muted media — YouTube, Twitch, Twitter/X video, and other streaming sites. The pause happens when you navigate away from the tab.
+
+Q: Is there a Chrome flag to disable muted tab pausing?
+A: No. As of Chrome 146 (March 2026), there is no chrome://flags entry to disable this behavior. The only working approaches are the Mute Site method, lowering volume to 1%, picture-in-picture, or using an extension that auto-protects media tabs.
+
+Q: When will Google fix muted tabs pausing in Chrome?
+A: As of March 2026, Google has not confirmed a fix or timeline. The issue was reported after Chrome 145 shipped (March 2026) and remains present in Chrome 146. Workarounds are the only available solution for now.
+
+---
 
 ### 6 BEST Chrome Extensions to Reduce RAM (2026, Tested)
 
@@ -6094,11 +7104,11 @@ A: Chrome 130 added automatic device recovery via Dawn, Chrome's WebGPU backend.
 
 ---
 
-### FIX YouTube Stuttering on High-End PC in Chrome: 5 Fixes (2026)
+### FIX YouTube Stuttering in Chrome: 6 Tested Fixes (2026)
 
 URL: https://www.superchargebrowser.com/library/fix-youtube-stutter-high-end-pc-chrome/
 Category: troubleshooting | Extension: performance | Updated: 2026-03-12
-Description: YouTube stuttering on a high-end PC in Chrome usually means VP9/AV1 software decode or a GPU driver conflict, not a hardware problem. 6 fixes, ranked by impact.
+Description: YouTube stuttering in Chrome? VP9/AV1 software decode or GPU driver conflict, not your hardware. 6 fixes ranked by impact — most resolve it in minutes.
 
 YouTube stuttering on high-end PCs in Chrome is almost never a hardware problem. The most common causes are extension interference, outdated GPU drivers, and Chrome falling back to software video decoding for VP9 or AV1. Forcing hardware decode via flags or testing in a clean profile resolves most cases.
 

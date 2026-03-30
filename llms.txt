@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-03-28
+> Last updated: 2026-03-30
 
 > SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.2.2 (~2,400 weekly active users, tab suspension, ad blocking, script control, memory optimization) and SuperchargeNavigation v1.0.0 (vertical tabs, persistent workspaces, tab search, session time-travel). Zero telemetry, zero tracking. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
@@ -39,8 +39,15 @@
 
 ## Library
 
-73 guides on Chrome performance, memory management, and tab organization:
+80 guides on Chrome performance, memory management, and tab organization:
 
+- [AI Tab Organizer vs Tab Manager: 6 TESTED (2026)](https://www.superchargebrowser.com/library/ai-tab-organizer-vs-tab-manager-chrome/): 6 AI tab organizers tested on CWS vs real tab managers. AI groups by content. You work by project. That gap costs more than you think. Real comparison inside.
+- [FIX Chrome HTTPS Warning in Chrome 147 — 5 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-147-https-first-warning-fix/): Chrome 147 blocks HTTP sites with a scary warning. 95% of sites are safe — learn why you're seeing it and how to get past it in under 60 seconds.
+- [STOP Extensions Stealing Your AI Chats: 5 Checks (2026)](https://www.superchargebrowser.com/library/chrome-extensions-stealing-ai-chats/): 900K users had ChatGPT & DeepSeek chats exfiltrated in 2026. How Prompt Poaching works, how to audit your extensions, and red flags before installing.
+- [Chrome Split View Disappeared? 4 FIXES That Work (2026)](https://www.superchargebrowser.com/library/chrome-split-view-disappeared-fix/): Chrome Split View vanishes after updates due to flag resets or managed policies. Re-enable it in 30 seconds via chrome://flags — exact steps inside.
+- [How to DISABLE Chrome AI Features & Gemini (2026)](https://www.superchargebrowser.com/library/disable-chrome-ai-features-gemini/): Chrome 146 ships 5+ AI features on by default. Step-by-step guide to turning off Gemini sidebar, AI Overview, page content sharing, and AI Mode flags.
+- [STOP Chrome Freezing on Windows 11: 9 Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-freezing-windows-11/): Chrome hanging with 'Not Responding' on Windows 11? GPU drivers and tab overload are the usual culprits. 9 tested fixes — no reinstall needed.
+- [Chrome Muted Tabs Pausing? 4 FIXES That Work (2026)](https://www.superchargebrowser.com/library/fix-chrome-muted-tabs-pausing-background/): Chrome 145 broke muted tab playback — streams pause when you switch tabs. Still present in Chrome 146. 4 tested workarounds, fastest takes 10 seconds.
 - [6 BEST Chrome Extensions to Reduce RAM (2026, Tested)](https://www.superchargebrowser.com/library/best-chrome-extensions-reduce-ram/): Chrome eating 3GB with 20 tabs? We tested 6 RAM-reducing extensions — tab suspenders, blockers, and managers. Cuts memory 70%+ without losing a single tab.
 - [Sleeping Tabs Don't Exist in Chrome — But This Does (2026)](https://www.superchargebrowser.com/library/chrome-sleeping-tabs-guide/): Edge calls it sleeping tabs. Chrome calls it Memory Saver. Same concept, different name — but Chrome 147 adds ML tab prediction that Edge still lacks.
 - [Chrome Crashing When Printing? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-crashing-printing/): Chrome crashes on Ctrl+P because print preview doubles your tab's memory usage — not a printer problem. 5 fixes ranked by root cause, tested on Chrome 146/147.
@@ -54,6 +61,9 @@
 - [Chrome Tab Groups: Complete Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-complete-guide/): Chrome tab groups vanish on restart unless saved first. 9-section guide to creating, naming, syncing, and restoring groups, with advice on when workspaces win.
 - [FIX Chrome Slow Loading Pages: 7 Fixes Ranked (2026)](https://www.superchargebrowser.com/library/fix-chrome-slow-loading-pages/): Chrome slow loading pages are usually trackers, not your internet. Blocking 186K ad scripts cuts page load times by up to 40% — 7 causes ranked by impact.
 - [WindowServer High CPU on Mac? 4 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/): WindowServer high CPU on Mac is usually Chrome's GPU pipeline. Suspending inactive tabs alone drops WindowServer CPU by 40%+, no reinstall needed.
+
+## Optional
+
 - [How to Enable Vertical Tabs in Chrome 146 (Without Flags)](https://www.superchargebrowser.com/library/how-to-enable-vertical-tabs-chrome/): Chrome 146 vertical tabs hide behind a flag. 2 steps to enable them. No workspaces or session recovery included. We cover what still requires an extension.
 - [STOP Chrome Overheating Your Windows Laptop: 5 Fixes (2026)](https://www.superchargebrowser.com/library/stop-chrome-overheating-windows/): Is Chrome overheating your Windows laptop? Background scripts peg the CPU nonstop. Diagnose the source in 30 seconds, then cut temps with tab suspension.
 - [Tree Style Tab for Chrome: 4 BEST Alternatives (2026)](https://www.superchargebrowser.com/library/tree-style-tab-chrome-alternative/): Tree Style Tab is Firefox-only. Chrome has no sidebar API, but Chrome 146 native vtabs plus the right extension gets surprisingly close. 4 alternatives ranked.
@@ -61,9 +71,6 @@
 - [uBlock Origin Lite vs Full: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/ublock-origin-lite-vs-full-chrome/): Both uBlock Origin and uBlock Origin Lite work on Chrome 146. Full uBO blocks more; uBOL uses less CPU. Which fits your setup, and when neither is enough.
 - [Vimium for Chrome: What It Lacks + BEST Additions (2026)](https://www.superchargebrowser.com/library/vimium-alternative-chrome/): Vimium v2.4.2 works on Chrome 146, but covers page navigation only, not sessions. What to pair it with for workspaces, tab search, and session recovery in 2026.
 - [Zen Browser vs Chrome: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/zen-browser-vs-chrome-extensions/): Zen Browser is Firefox-based, so Chrome Web Store extensions won't run in it. Stay in Chrome and get vertical tabs, named workspaces, and Alt+K command bar.
-
-## Optional
-
 - [7 BEST Vertical Tab Managers for Chrome (2026, Tested)](https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/): Chrome 146 ships native vertical tabs — but no workspaces or keyboard search. We tested 7 vertical tab managers to find which fills the gaps in 2026.
 - [5 BEST Chrome Workspaces Extensions for Tab Groups, Ranked (2026)](https://www.superchargebrowser.com/library/chrome-workspaces-extension/): Chrome 146 has no native workspaces. Tab groups are labels, not contexts. 5 workspace extensions ranked: free local-first to cloud-synced paid options.
 - [Focus Mode for Chrome: How to STOP Tab Overload (2026)](https://www.superchargebrowser.com/library/focus-mode-chrome/): Chrome 146 has no native focus mode. Tab groups collapse but don't hide. Workspace isolation removes every off-task tab from view, triggered with one shortcut.
@@ -84,7 +91,7 @@
 - [FIX Service Worker High CPU in Chrome: 5 Solutions (2026)](https://www.superchargebrowser.com/library/fix-service-worker-high-cpu-chrome/): Service worker high CPU in Chrome is background scripts polling silently. Spot the offender in Task Manager and stop it without losing features, fast to deep.
 - [FIX Twitch Source Stutter in Chrome: 4 Solutions (2026)](https://www.superchargebrowser.com/library/fix-twitch-source-stutter-chrome/): Twitch Source is 8-15 Mbps — background tabs competing for GPU cause stutter even on fast PCs. 4 fixes to free the rendering pipeline for smooth playback.
 - [FIX WebGPU Device Lost Error in Chrome: 4 Fixes (2026)](https://www.superchargebrowser.com/library/fix-webgpu-device-lost-chrome/): WebGPU Device Lost crashes Chrome tabs when background tabs exhaust GPU memory. Free VRAM, update drivers, prevent GPU contention, with before/after numbers.
-- [FIX YouTube Stuttering on High-End PC in Chrome: 5 Fixes (2026)](https://www.superchargebrowser.com/library/fix-youtube-stutter-high-end-pc-chrome/): YouTube stuttering on a high-end PC in Chrome usually means VP9/AV1 software decode or a GPU driver conflict, not a hardware problem. 6 fixes, ranked by impact.
+- [FIX YouTube Stuttering in Chrome: 6 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-youtube-stutter-high-end-pc-chrome/): YouTube stuttering in Chrome? VP9/AV1 software decode or GPU driver conflict, not your hardware. 6 fixes ranked by impact — most resolve it in minutes.
 - [BEST Great Suspender Alternative in 2026 (MV3, Tested)](https://www.superchargebrowser.com/library/great-suspender-alternative/): The Great Suspender was pulled for malware in 2021. MV3 forks patch slowly. We compared them to actively maintained tab suspenders: MV3, zero telemetry, free.
 - [Session Buddy Alternative: BEST Private Options (2026)](https://www.superchargebrowser.com/library/session-buddy-alternative-local-safe/): Session Buddy saves sessions but has no workspaces or tab groups. Local-first alternatives add workspace switching and keep data on-device, compared for 2026.
 - [Toby Alternative for Chrome: 5 BEST Free Options (2026)](https://www.superchargebrowser.com/library/toby-alternative/): Toby moved to a paid subscription in 2024-2025. 5 free Chrome Toby alternatives with no item limits and local storage. No account required, no recurring fees.
