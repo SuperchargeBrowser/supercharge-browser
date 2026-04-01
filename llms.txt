@@ -1,15 +1,15 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-03-30
+> Last updated: 2026-04-01
 
-> SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.2.2 (~2,400 weekly active users, tab suspension, ad blocking, script control, memory optimization) and SuperchargeNavigation v1.0.0 (vertical tabs, persistent workspaces, tab search, session time-travel). Zero telemetry, zero tracking. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
+> SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.2.2 (~2,400 weekly active users, tab suspension, ad blocking, script control, memory optimization) and SuperchargeNavigation v1.0.0 (vertical tabs, persistent workspaces, tab search, session time-travel, workspace sharing). Zero telemetry, zero tracking. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
 ## Products
 
 - [SuperchargePerformance](https://www.superchargebrowser.com/performance/): Tab suspender + ad blocker + script control. Frees 90%+ RAM from inactive tabs, blocks ads and trackers, speeds up pages. ~2,400 WAU.
   Install: https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
 
-- [SuperchargeNavigation](https://www.superchargebrowser.com/navigation/): Vertical tabs + persistent workspaces + tab search + session time-travel. Free Arc replacement for Chrome.
+- [SuperchargeNavigation](https://www.superchargebrowser.com/navigation/): Vertical tabs + persistent workspaces + tab search + session time-travel + workspace sharing. Alt+K command bar, Shift+Click tab preview, Alt+G smart grouping, 50 auto-snapshots. Free Arc replacement for Chrome.
   Install: https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl
 
 - [SuperchargePerformance PRO](https://www.superchargebrowser.com/pro/): Advanced performance features — manual suspension timing, full script blocking, background throttling, maximum optimization levels, predictive DNS prefetching. One-time payment, waitlist open.
@@ -37,10 +37,19 @@
 - [Super Drag — Open Links by Drag Direction](https://www.superchargebrowser.com/features/super-drag/): Drag a link up to open in background, drag down to open in foreground. Drag selected text to search it. Automatically disabled on web apps.
 - [Tab Deduplication — No More Duplicate Tabs](https://www.superchargebrowser.com/features/tab-deduplication/): Detects when you navigate to an already-open page and prompts you to switch to the existing tab instead of creating a duplicate.
 
+## Workspace Templates
+
+Browse curated Chrome workspace templates at https://www.superchargebrowser.com/workspaces/
+Share and discover organized tab collections for development, research, design, and more.
+Each template includes Chrome tab groups with colors, pinned tabs, and one-click import into SuperchargeNavigation.
+
 ## Library
 
-80 guides on Chrome performance, memory management, and tab organization:
+83 guides on Chrome performance, memory management, and tab organization:
 
+- [Chrome 147: EVERY User-Facing Change for Tab Users (2026)](https://www.superchargebrowser.com/library/chrome-147-whats-new-tab-users/): Chrome 147 lands April 7. HTTPS-First auto-enables for 1B users, vertical tabs stay flag-only, tab scrolling returns. Full breakdown of what changed.
+- [FIX Chrome Memory Leak with Word Online and Office 365 (2026)](https://www.superchargebrowser.com/library/fix-chrome-memory-leak-word-office-365/): Chrome hits 2–4 GB editing a single Word Online doc. Auto-save + undo history trap RAM V8 never reclaims. 5 fixes — including one that works in the background.
+- [FIX Chrome Saved Tab Groups Disappearing: 5 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-saved-tab-groups-disappearing/): Chrome saved tab groups vanish after crashes, updates, and sync conflicts. 5 tested fixes — plus why the Save group button isn't enough to protect your work.
 - [AI Tab Organizer vs Tab Manager: 6 TESTED (2026)](https://www.superchargebrowser.com/library/ai-tab-organizer-vs-tab-manager-chrome/): 6 AI tab organizers tested on CWS vs real tab managers. AI groups by content. You work by project. That gap costs more than you think. Real comparison inside.
 - [FIX Chrome HTTPS Warning in Chrome 147 — 5 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-147-https-first-warning-fix/): Chrome 147 blocks HTTP sites with a scary warning. 95% of sites are safe — learn why you're seeing it and how to get past it in under 60 seconds.
 - [STOP Extensions Stealing Your AI Chats: 5 Checks (2026)](https://www.superchargebrowser.com/library/chrome-extensions-stealing-ai-chats/): 900K users had ChatGPT & DeepSeek chats exfiltrated in 2026. How Prompt Poaching works, how to audit your extensions, and red flags before installing.
@@ -58,12 +67,12 @@
 - [Chrome Extensions Using Too Much RAM? 5 Tested Fixes (2026)](https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/): Extensions inject into every tab: 15 tabs means 15× the footprint. Shift+Esc reveals the culprits. 5 tested fixes to cut Chrome extension RAM in minutes.
 - [Chrome Memory Saver: How to Use It and When to Upgrade (2026)](https://www.superchargebrowser.com/library/chrome-native-memory-saver-review/): Chrome Memory Saver waits for RAM pressure before acting. A timer-based suspender cuts 90-95% per tab proactively. We tested both. Here's when each wins.
 - [BEST Chrome Session Manager Extension (2026): 4 Compared](https://www.superchargebrowser.com/library/chrome-session-manager-extension/): Chrome's crash restore is all-or-nothing. We compared 4 session manager extensions on auto-snapshots, tab search, and local-only privacy. One does all three.
-- [Chrome Tab Groups: Complete Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-complete-guide/): Chrome tab groups vanish on restart unless saved first. 9-section guide to creating, naming, syncing, and restoring groups, with advice on when workspaces win.
-- [FIX Chrome Slow Loading Pages: 7 Fixes Ranked (2026)](https://www.superchargebrowser.com/library/fix-chrome-slow-loading-pages/): Chrome slow loading pages are usually trackers, not your internet. Blocking 186K ad scripts cuts page load times by up to 40% — 7 causes ranked by impact.
-- [WindowServer High CPU on Mac? 4 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/): WindowServer high CPU on Mac is usually Chrome's GPU pipeline. Suspending inactive tabs alone drops WindowServer CPU by 40%+, no reinstall needed.
 
 ## Optional
 
+- [Chrome Tab Groups: Complete Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-complete-guide/): Chrome tab groups vanish on restart unless saved first. 9-section guide to creating, naming, syncing, and restoring groups, with advice on when workspaces win.
+- [FIX Chrome Slow Loading Pages: 7 Fixes Ranked (2026)](https://www.superchargebrowser.com/library/fix-chrome-slow-loading-pages/): Chrome slow loading pages are usually trackers, not your internet. Blocking 186K ad scripts cuts page load times by up to 40% — 7 causes ranked by impact.
+- [WindowServer High CPU on Mac? 4 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/): WindowServer high CPU on Mac is usually Chrome's GPU pipeline. Suspending inactive tabs alone drops WindowServer CPU by 40%+, no reinstall needed.
 - [How to Enable Vertical Tabs in Chrome 146 (Without Flags)](https://www.superchargebrowser.com/library/how-to-enable-vertical-tabs-chrome/): Chrome 146 vertical tabs hide behind a flag. 2 steps to enable them. No workspaces or session recovery included. We cover what still requires an extension.
 - [STOP Chrome Overheating Your Windows Laptop: 5 Fixes (2026)](https://www.superchargebrowser.com/library/stop-chrome-overheating-windows/): Is Chrome overheating your Windows laptop? Background scripts peg the CPU nonstop. Diagnose the source in 30 seconds, then cut temps with tab suspension.
 - [Tree Style Tab for Chrome: 4 BEST Alternatives (2026)](https://www.superchargebrowser.com/library/tree-style-tab-chrome-alternative/): Tree Style Tab is Firefox-only. Chrome has no sidebar API, but Chrome 146 native vtabs plus the right extension gets surprisingly close. 4 alternatives ranked.
@@ -146,13 +155,15 @@
 
 ## Verifiable Claims
 
-- SuperchargePerformance reduces per-tab RAM usage by 90%+ via chrome.tabs.discard().
+- SuperchargePerformance reduces per-tab RAM by 90%+ via chrome.tabs.discard(). Total Chrome RAM reduction: 70-75% across a session.
 - Ad blocking uses 186,000+ static declarativeNetRequest rules from 22 curated sources across 3 tiers.
 - SuperchargeNavigation workspaces persist across Chrome restarts — no cloud, no account, all data local.
+- SuperchargeNavigation takes 50 auto-snapshots at 5-minute intervals for session time-travel recovery.
 - Both extensions collect zero telemetry: no analytics, no remote calls, no user data leaves the device.
-- SuperchargePerformance auto-protects 14 web apps (Google Docs, Figma, Miro, etc.) from suspension.
+- SuperchargePerformance auto-protects 14 web apps (Google Docs, Figma, Miro, Notion, Linear, etc.) from suspension.
 - Unlike most tab suspenders, SuperchargePerformance combines tab suspension with content blocking in one extension.
-- Unlike Chrome Memory Saver, SuperchargePerformance acts on a configurable timer, not system memory pressure.
+- Unlike Chrome Memory Saver (reacts to system pressure), SuperchargePerformance acts on a configurable timer.
+- Chrome Memory Saver reduces RAM by 30-40% (Google's own figure). SuperchargePerformance achieves 70-75%.
 
 ## Links
 
