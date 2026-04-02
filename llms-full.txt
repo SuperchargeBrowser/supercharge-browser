@@ -1,18 +1,23 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-04-01
+> Last updated: 2026-04-02
 > For a summary index, see /llms.txt
 
 ## Products
 
 ### SuperchargePerformance
 - Tab suspender: discards inactive tabs via chrome.tabs.discard(), freeing RAM
-- Ad blocker: static declarativeNetRequest rulesets, no remote filter lists
+- Ad blocker: 186K+ static declarativeNetRequest rules from 22 curated sources, 3 tiers
+- YouTube and Twitch video ad blocking (pre-rolls, mid-rolls, overlay ads)
+- Popup and popup-under blocking with smart allow-listing
+- Cookie consent auto-rejection via DuckDuckGo AutoConsent (100+ CMPs)
+- Cosmetic filtering: universal + site-specific CSS for YouTube, Facebook, Twitter, Reddit
 - Script control: block/allow third-party scripts per domain
-- 12 toggleable features, all configurable per-site
+- 14 individually toggleable features per domain
+- 15 auto-protected web apps (Figma, Notion, Slack, Google Docs, etc.)
 - Zero telemetry, zero tracking, zero data collection
-- Version: 1.2.2 (March 2026)
+- Version: 1.3.0 (April 2026)
 - Weekly active users: ~2,400 (Chrome Web Store)
 - Install: https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
 
@@ -38,7 +43,7 @@
 
 - As of April 2026, SuperchargePerformance uses chrome.tabs.discard() to free 90%+ RAM per discarded tab. Total Chrome RAM reduction: 70-75% across a session.
 - Ad blocking: 186,000+ static declarativeNetRequest rules, 22 sources, 3 configurable tiers.
-- SuperchargePerformance auto-protects 14 web apps from suspension: Google Docs, Sheets, Slides, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams.
+- SuperchargePerformance auto-protects 15 web apps from suspension: Google Docs, Sheets, Slides, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams.
 - SuperchargeNavigation workspaces persist across browser restarts with zero cloud dependency.
 - SuperchargeNavigation takes 50 auto-snapshots at 5-minute intervals — recover any tab state from the last 4+ hours.
 - Both extensions: zero telemetry, zero analytics, zero tracking. All data stays on-device.
@@ -1059,11 +1064,379 @@ A: SuperchargeNavigation checks the navigating tab's URL against the URLs of all
 
 ## Library Articles
 
-### Chrome 147: EVERY User-Facing Change for Tab Users (2026)
+### Arc Browser Status 2026: Dead — Get Its 6 Best Features in Chrome
+
+URL: https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/
+Category: guide | Extension: navigation | Updated: 2026-04-02
+Description: Arc entered maintenance mode May 2025, acquired by Atlassian for $610M. Its best features — spaces, command bar, peek — replicate in Chrome without switching.
+
+Arc Browser stopped active development in May 2025. Its signature features — vertical tabs, split views, workspaces, and a command bar — can all be replicated in Chrome using a combination of extensions and Chrome 146's native vertical tab support.
+
+> **Key takeaways**
+> - **The Browser Company stopped Arc development in May 2025** and pivoted to Dia, an AI-first product acquired by Atlassian for $610M.
+> - **Most of Arc's core workflow maps directly onto Chrome**: vertical tabs, named workspaces, command bar, Shift+Click peek previews.
+> - **Little Arc mini windows have no Chrome equivalent** — everything else is covered by Chrome 146 plus SuperchargeNavigation.
+
+Arc Browser changed how a lot of people think about tabs. The sidebar, Spaces, the Command Bar — these were not incremental improvements. They were a fundamentally different way to use a browser. When The Browser Company announced in May 2025 that Arc was entering maintenance mode, the reaction from users was not indifference. It was grief.
+
+This article is for those users: people who used Arc daily, loved what it built, and now need an arc browser alternative for Chrome that does not require giving up years of configured extensions.
+
+## What Happened to Arc
+
+The Browser Company launched Arc publicly around 2023 and built a devoted following by rethinking browser UX from the ground up. Vertical tabs by default. Spaces for named workspaces. A Command Bar that replaced the omnibox. Little Arc for quick-lookup mini windows. Boosts for site customization. It felt like someone had finally taken the tab problem seriously.
+
+In May 2025, TBC announced Arc was moving to maintenance mode. The team was pivoting entirely to Dia, an AI-first browser that launched publicly in October 2025. In September 2025, Atlassian acquired The Browser Company for $610M — and the focus moved firmly onto Dia.
+
+Arc still works, but for practical purposes Arc is dead as an actively developed product. It receives no new features, and its development community has effectively disbanded. Some third-party Arc tooling remains — Arcify (v5.0.0, available on CWS as of February 2026) replicates Arc-style spaces using Chrome tab groups — but Arc's original ecosystem is gone.
+
+The community response is pragmatic. Most long-term Arc users are not looking for another browser to fall in love with. They are looking for a way to stay on stable, extension-supported Chrome while keeping the workflow features that made Arc worth using.
+
+## Why Not Just Switch to Zen or Dia
+
+For Chrome users, the main problem with Zen Browser is the one Zen can't solve: it's Firefox-based. Chrome extensions don't work in Firefox. If you've spent years configuring extensions, or work in an environment that requires Chromium, Zen ends the conversation before it starts. It's good software — vertical tabs, workspaces, a Glance peek feature that closely mirrors Arc's design philosophy — but "switch to a different browser with a different extension ecosystem" isn't an answer to "I want to keep using Chrome."
+
+The most common complaint about Zen in Arc migration threads is: "I love it but I need my Chrome extensions."
+
+Dia, TBC's new product, is an AI-first tool with a fundamentally different purpose, not an arc browser replacement for tab and workspace management. Arc users who have tried it generally report the same conclusion. The practical path for most Arc migrants is Chrome with the right extensions.
+
+## What You Can and Cannot Replicate in Chrome
+
+Some Arc features have direct Chrome equivalents. Others do not.
+
+| Arc Feature | Chrome Equivalent | How |
+|---|---|---|
+| Vertical tabs | Yes | Chrome 146 native or SuperchargeNavigation |
+| Named workspaces (Spaces) | Yes | SuperchargeNavigation |
+| Command Bar | Yes | SuperchargeNavigation (Alt+K) |
+| Peek / Glance preview | Yes | SuperchargeNavigation (Shift+Click) |
+| Session snapshots | Yes | SuperchargeNavigation (50 auto-saves) |
+| Tab search | Yes | SuperchargeNavigation |
+| Mouse gestures | Yes | SuperchargeNavigation |
+| Little Arc (mini windows) | No | No Chrome equivalent |
+| Boosts (custom CSS/JS) | Partial | Stylus + UserScripts (separate extensions) |
+| Split View | Partial | Chrome native split screen (basic) |
+| Automatic tab archiving | Yes | SuperchargeNavigation (auto-close by age) |
+
+Little Arc is the feature with no equivalent. The concept — opening a small, transient browser window for a quick lookup that does not pollute your main tab environment — does not map onto Chrome's extension API surface. If Little Arc is why you used Arc, you will miss it.
+
+Boosts can be approximated with Stylus for CSS customization and a UserScripts manager for JavaScript, but this requires manually setting up rules per site rather than Arc's integrated flow.
+
+For the core workflow — tabs organized vertically, grouped into named workspaces, with fast navigation and session persistence — Chrome can match it.
+
+## Vertical Tabs in Chrome 146
+
+Chrome 146 includes native vertical tabs. You can enable them through the browser's built-in settings without any extension. They appear in the left sidebar and can be collapsed.
+
+The native implementation covers the basics: a list of tabs on the left, organized vertically, with a toggle to collapse the sidebar. What it does not include is workspace separation, tab search across all tabs, session snapshots, or any of the navigation shortcuts Arc users are used to. It is a structural improvement over the horizontal tab strip, but it is not an Arc Spaces replacement.
+
+For users who only wanted vertical tabs and nothing else, the native implementation in Chrome 146 is sufficient and requires no additional software.
+
+## Getting Workspaces, Command Bar, and Peek Previews
+
+For the fuller Arc workflow, SuperchargeNavigation is a single extension that covers the remaining surface area.
+
+**Workspaces.** Arc's Spaces were named, persistent tab groups — you could have a Work space, a Personal space, a Research space, each with its own tabs that did not bleed into each other. For anyone searching how to get arc workspaces in Chrome, SuperchargeNavigation is the direct equivalent. Each workspace holds its own tabs independently. Switching between workspaces switches the entire tab context, not just a filter view. Sessions are automatically snapshotted every time you switch — 50 saves with a time-travel slider — so you can recover a workspace state from earlier in the day if something goes wrong.
+
+**Command Bar.** Arc's Command Bar (Cmd+T) let you search open tabs, history, bookmarks, and actions from a single keyboard-driven interface. SuperchargeNavigation's command bar opens with Alt+K and searches across open tabs, recently closed tabs, and saved sessions. It is keyboard-first: type to filter, arrow keys to navigate, Enter to open. If you built Arc muscle memory around not touching the mouse for tab switching, this is the closest equivalent in Chrome.
+
+**Peek previews.** Arc's Glance feature let you hover over a link to preview the destination page in a floating overlay, without opening a new tab. SuperchargeNavigation maps this to Shift+Click: hold Shift and click any link to open it in a peek overlay. The overlay closes when you click away, and the tab is not added to your workspace unless you explicitly keep it.
+
+**Tab search.** Arc made it fast to find any open tab by typing. SuperchargeNavigation includes fuzzy search across all open tabs in the sidebar. If you have 40 tabs across three workspaces and you need the one with a specific article, you type a fragment of the title and it surfaces immediately.
+
+**Session recovery.** Arc remembered what you had open. SuperchargeNavigation's snapshot system stores up to 50 workspace states automatically. If Chrome crashes or you accidentally close a workspace, you can restore it from the snapshot history without any manual backup.
+
+## What to Expect if You Are Coming From Arc
+
+The transition is not frictionless. Arc had a level of UI polish and integration that extensions cannot fully match. The side panel in Chrome is a panel alongside the browser, not a redesigned shell around it. The command bar is powerful but does not have Arc's speed of launch. Peek previews require Shift+Click rather than a hover gesture.
+
+These are real differences. Arc's design team built something that felt native in a way that extensions, by definition, cannot fully replicate. If your priority is that specific aesthetic, Zen Browser is probably a better fit even with the extension trade-off.
+
+If your priority is staying on Chrome — keeping your extensions, your profiles, your enterprise compatibility — and recovering as much of Arc's workflow as possible, the combination of Chrome 146's native vertical tabs and SuperchargeNavigation covers most of the functional surface area.
+
+Arc set a high bar. The right response to its maintenance mode isn't to accept the horizontal tab strip as the status quo. Chrome 146 has [native vertical tabs](/library/chrome-146-vertical-tabs-vs-extensions/). SuperchargeNavigation adds workspaces, a command bar, and session recovery. The functional case for staying on Chrome is solid. Whether it feels the same as Arc is a different question — and it won't.
+
+#### FAQ
+Q: What is the status of Arc Browser in 2026?
+A: As of April 2026, Arc Browser is in maintenance mode. The Browser Company stopped active development in May 2025 and pivoted to Dia, an AI-first browser. Atlassian acquired TBC in September 2025 for $610M. Arc still runs but receives no new features and its development community has disbanded.
+
+Q: Is Arc Browser shutting down?
+A: Arc entered maintenance mode in May 2025. Atlassian acquired The Browser Company in September 2025 for $610M. The team is now focused on Dia, an AI-first browser. Arc still works but receives no new features.
+
+Q: Can I get Arc features in Chrome without switching browsers?
+A: Yes. Chrome extensions can replicate most Arc features: vertical tabs via Chrome 146 native or extensions, workspaces via SuperchargeNavigation, command bar via Alt+K, and peek previews via Shift+Click. The main Arc feature with no Chrome equivalent is Little Arc (mini browser windows).
+
+Q: What is the best Arc replacement that uses Chrome?
+A: For users who want to stay on Chrome, SuperchargeNavigation replicates the most Arc features in a single extension: vertical tabs, named workspaces, session snapshots, command bar, and peek previews. It is free and requires no account.
+
+---
+
+### 5 BEST Ad Blockers for Chrome in 2026 (MV3 Compared)
+
+URL: https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/
+Category: comparison | Extension: performance | Updated: 2026-04-02
+Description: We tested 5 Chrome ad blockers across 14 features. None of the top 4 block YouTube or Twitch video ads. One does — plus popups, cookies, and RAM.
+
+> **Key takeaways**
+> - **uBlock Origin (v1.70.0, ~15M users)** is still the deepest pure ad blocker for Chrome. Free, audited, maintained by the original developer.
+> - **None of the top 4 block YouTube or Twitch video ads.** SuperchargePerformance is the only one that does — plus popups, cookie banners, and tab memory management.
+> - Your best setup depends on one question: **do you just want ads gone, or do you want video ads, consent popups, and RAM under control too?**
+
+A news article takes six seconds to load. Three ad scripts fight for the render thread. A cookie consent banner covers half the screen. You close it, and a newsletter popup slides up from the bottom. Meanwhile Chrome is burning through 4 GB of RAM across your 30 open tabs, and YouTube just hit you with two unskippable pre-rolls.
+
+Five extensions claim to fix this. None of them fix all of it. What each one actually does — verified on Chrome 146 in April 2026 — and which combination covers your specific situation.
+
+## The Comparison Table
+
+This is what you came for. Every claim verified against current Chrome Web Store listings (April 2, 2026).
+
+| | uBlock Origin | uBlock Origin Lite | AdGuard | Ghostery | SuperchargePerformance |
+|---|---|---|---|---|---|
+| Version (Apr 2026) | v1.70.0 | v2026.329 | v5.3.1 | v10.5.35 | v1.3.0 |
+| CWS rating | 4.7 stars | 4.5 stars | 4.7 stars | 4.7 stars | Featured badge |
+| Users | ~15M | ~16M | ~17M | ~2M | ~2.5K |
+| **Website ads** | Full | Good | Full | Full | Yes (186K+ rules) |
+| **YouTube video ads** | No | No | No | No | **Yes** |
+| **Twitch video ads** | No | No | No | No | **Yes** |
+| **Popup blocking** | No | No | Paid tier | No | **Yes** |
+| **Cookie consent banners** | No | No | No | Yes | **Yes** |
+| **Cosmetic filtering** | Yes | No | Partial | Partial | Yes |
+| **Per-site control** | Yes | No | Paid tier | Limited | Yes (14 toggles) |
+| **Tab suspension** | No | No | No | No | **Yes** |
+| **RAM dashboard** | No | No | No | No | **Yes** |
+| Cost | Free | Free | Free/Paid | Free/Plus | Free/PRO |
+| Telemetry | None | None | Some | Some | None |
+
+Read on for what the table doesn't capture — the trade-offs, the edge cases, and which setup actually fits how you use Chrome.
+
+## uBlock Origin — The Standard
+
+v1.70.0. ~15 million users. 4.7 stars. Maintained by gorhill, the same developer who built it from scratch. No company behind it, no paid tier, no data collection. The extension has been publicly audited more times than most people have updated their passwords.
+
+When Chrome killed the old extension system in mid-2025, some blockers lost features in the migration. uBlock Origin kept everything that mattered: cosmetic filtering that hides ad containers even when the ad network isn't in any blocklist, dynamic rules that let you set per-site blocking levels on the fly, and the network request logger for people who want to see exactly what their browser is loading.
+
+The filter lists update automatically. The element picker lets you right-click any leftover ad container and block it permanently. For pure content blocking on websites, nothing else matches the depth.
+
+What it doesn't do: YouTube video ads still play. Twitch ads still interrupt streams. Cookie consent banners stay on screen. Your 40 open tabs still eat RAM. uBlock Origin blocks network requests to ad servers — that is its entire scope, and it does that scope better than anything else.
+
+## uBlock Origin Lite — Zero Overhead
+
+Same developer, completely different architecture. Lite has no persistent background process at all. Chrome handles its blocking rules natively — the extension's code only runs when you open its popup. On a Chromebook or a laptop where every milliwatt counts, that difference is real.
+
+The trade-off is equally real. No cosmetic filtering means some ad containers load but show up empty. No dynamic rules means you can't customize blocking per site. For the 80% of users who never touch settings, that doesn't surface in daily use. For the 20% who do, it will frustrate you within a week.
+
+Worth noting: Lite actually has more users than the full version (~16M vs ~15M). Chrome's extension store tends to recommend lighter extensions, and most users never realize they installed the limited version.
+
+## AdGuard — The Ecosystem Play
+
+v5.3.1. ~17 million users — the largest install base of any blocker on this list. AdGuard's free tier does what uBlock Origin does. The paid tier is where it gets interesting: DNS-level blocking that catches requests before Chrome even processes them, expanded popup blocking, parental controls, and a 2-million-entry malicious website database.
+
+If you run a home network and want one subscription covering browser, DNS, and mobile simultaneously, AdGuard's ecosystem covers more surface area than any single extension. The app, the DNS service, and the browser extension share filter intelligence.
+
+The trade-off is privacy. AdGuard is a business with subscription revenue. Their data handling is more complex than a solo developer project with no commercial incentive to touch your data. For some people that matters. For others, the broader protection scope is worth it.
+
+## Ghostery — Tracker Transparency
+
+v10.5.35. Updated April 1, 2026. Ghostery does something the others don't: it shows you exactly who is tracking you, company by company, using the WhoTracks.Me database. The blocking is solid. The tracker breakdown panel is where Ghostery earns its install base — it turns the invisible surveillance economy into a visible list you can act on.
+
+Cookie consent auto-removal is included free. The Plus tier adds priority support and additional features, but the core blocker and tracker dashboard are free.
+
+Smaller user base (~2M) than the others, but a loyal one. If your primary motivation is understanding the tracking ecosystem rather than just blocking it silently, Ghostery is the most educational tool on this list.
+
+## SuperchargePerformance — When Ads Are Only Half the Problem
+
+v1.3.0. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
+
+**Layer 1: Ad and tracker blocking.** 186,573 rules compiled from 22 curated sources. Three tiers — 100K ad and tracker domains on the free tier, 65K privacy and telemetry domains on Medium, 22K malware, phishing, and fraud domains on Pro. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
+
+**Layer 2: YouTube and Twitch video ads.** Pre-rolls, mid-rolls, overlay ads, and YouTube's anti-adblock popups — all handled. Twitch ad breaks are replaced with the main stream seamlessly. No black screens during ad breaks, no buffering after they end. This is the biggest gap in every other blocker on this list. uBlock Origin, AdGuard, Ghostery — none of them touch video ads on either platform.
+
+**Layer 3: Popup and popup-under blocking.** The shady redirect that opens when you click a download link. The popup-under that appears behind your browser window and sits there until you find it hours later. The full-screen overlay that spawns a new tab when you click anywhere on it. All blocked. Same-domain popups, login windows, payment flows — those pass through.
+
+**Layer 4: Cookie consent auto-rejection.** Powered by DuckDuckGo's AutoConsent engine (v14.67.0). Detects over 100 consent management platforms, clicks "Reject All" automatically, removes the banner, and fixes the scroll lock that some consent popups leave behind. You stop seeing cookie banners entirely.
+
+**Layer 5: Cosmetic filtering.** Hides ad containers, newsletter signup popups, paywall nags, and sponsored content blocks across all sites. Dedicated rules for YouTube, Facebook, Twitter, and Reddit catch platform-specific ad elements that generic blockers miss.
+
+**Layer 6: Tab suspension and memory management.** Inactive tabs are discarded from memory automatically. 15 apps are protected by default — Figma, Notion, Slack, Google Docs, and 11 others stay active. A real-time RAM dashboard shows exactly how much memory each tab is using and how much you have saved.
+
+Per-domain control lets you toggle 14 features independently for any site. Keep ad blocking on while disabling tab suspension. Whitelist a news site from content blocking but keep video ad blocking active for YouTube. The granularity is finer than anything else on this list.
+
+The trade-off: the general filter list depth is narrower than uBlock Origin's. If a niche ad network slips through uBlock Origin's 300K+ filter rules but not SuperchargePerformance's 186K, that is a real difference. For video ads, popups, consent banners, and memory management, nothing else on this list comes close.
+
+Zero data collection. 100% local processing. No account required. Featured badge on Chrome Web Store.
+
+## Which Setup Fits You
+
+| Your situation | Install this |
+|---|---|
+| Just want ads gone on websites, nothing else | uBlock Origin |
+| Chromebook or old laptop, every MB counts | uBlock Origin Lite |
+| Want DNS + browser + mobile coverage, fine paying | AdGuard |
+| Want to see who tracks you, not just block them | Ghostery |
+| YouTube/Twitch ads drive you crazy | SuperchargePerformance |
+| 30+ tabs eating your RAM | SuperchargePerformance |
+| Cookie banners on every site | SuperchargePerformance or Ghostery |
+| Want website ad blocking + video ads + memory control | SuperchargePerformance alone covers all three. If you keep uBlock, set Perf's content blocking to Off and use Perf for video ads, popups, cookies, and tabs. |
+| Willing to switch browsers for maximum everything | Firefox + uBlock Origin (still supports the old extension system) |
+
+A note on running both: Chrome enforces a shared rule budget across all extensions. Each extension gets 30,000 rules guaranteed, but everything beyond that draws from a global pool of roughly 150,000 rules shared across all installed extensions. SuperchargePerformance at its default setting uses 100,000 rules. uBlock Origin uses 60,000–100,000+. The combined total can exceed Chrome's shared pool — and when that happens, Chrome silently drops rulesets from one or both extensions without warning. Neither extension crashes, but blocking coverage degrades invisibly.
+
+SuperchargePerformance's 186K rules are compiled from 22 curated sources covering ads, trackers, analytics, fingerprinting, malware, phishing, fraud, and ransomware. The lists are deduplicated against each other and ranked by Majestic Million traffic data. For most users, adding uBlock Origin on top does not meaningfully improve coverage — it competes for the same rule budget and can cause SuperchargePerformance's higher-tier rulesets to fail silently.
+
+On YouTube and Twitch, both extensions intercept page scripts at the same injection point, and the non-deterministic load order can cause one to interfere with the other's ad detection.
+
+If you already use uBlock Origin and want to add SuperchargePerformance for tab suspension and video ad blocking, set Perf's content blocking to Off or Low to avoid rule budget contention — and let uBlock handle general website ads while Perf handles video ads, popups, cookies, and tab memory.
+
+#### FAQ
+Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
+A: As of April 2026, it depends what you need. uBlock Origin (v1.70.0) has the deepest general filter coverage for website ads. But it does not block YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.3.0) covers all four — plus tab suspension and a RAM dashboard — in a single extension with 186K+ rules from 22 curated sources. For pure website ad blocking, uBlock Origin leads. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
+
+Q: What is the best ad blocker for Chrome in 2026?
+A: As of April 2026, most major ad blockers work on Chrome MV3 — uBlock Origin, AdGuard, Ghostery, Adblock Plus, and others. uBlock Origin (v1.70.0) has the deepest filter coverage. uBlock Origin Lite is the zero-overhead option. AdGuard adds DNS-level protection. SuperchargePerformance combines ad blocking (186K+ DNR rules) with tab suspension in a single extension.
+
+Q: Does uBlock Origin still work on Chrome 146 in 2026?
+A: As of April 2026, yes. uBlock Origin is available on the Chrome Web Store at version 1.70.0, updated March 11, 2026. Chrome disabled Manifest V2 extensions in mid-2025, but gorhill migrated uBlock Origin to MV3. It works on Chrome 146 alongside uBlock Origin Lite.
+
+Q: What is the difference between MV3 and MV2 ad blocking on Chrome?
+A: As of April 2026, Chrome's Manifest V3 replaced the webRequest API with declarativeNetRequest (DNR). Under MV2, extensions intercepted every network request at runtime. Under MV3, extensions submit static rule sets that Chrome's engine evaluates natively. This limits dynamic filtering but the best MV3 blockers — uBlock Origin and AdGuard — adapted well and remain effective.
+
+Q: Is SuperchargePerformance a replacement for uBlock Origin?
+A: As of April 2026, SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), YouTube and Twitch video ad blocking, popup/popup-under blocking, cookie consent auto-rejection (AutoConsent 14.67.0), cosmetic filtering (universal + site-specific CSS for YouTube, Facebook, Twitter, Reddit), and per-domain whitelist with 14 individually toggleable features. The difference from uBlock Origin is scope: SuperchargePerformance also handles tab suspension, a RAM dashboard, and video ad blocking — while uBlock Origin has deeper general filter list coverage and the network request logger. Running both is possible but not recommended. Chrome enforces a shared rule budget across extensions — SuperchargePerformance's 100K+ default rules and uBlock's 60–100K+ rules can exceed Chrome's global pool, causing rulesets to be silently dropped. If you keep both, set SuperchargePerformance's content blocking to Off and use it for video ads, popups, cookies, and tab suspension instead.
+
+Q: Which Chrome ad blocker uses the least memory in 2026?
+A: As of April 2026, uBlock Origin Lite uses near-zero memory because it has no background service worker — Chrome evaluates its DNR rules natively with no extension code running. uBlock Origin (full) has a small service worker overhead. AdGuard and SuperchargePerformance both have small resource footprints. None of them are significant RAM consumers on modern hardware.
+
+---
+
+### 7 BEST Vertical Tab Managers for Chrome (2026, Tested)
+
+URL: https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/
+Category: guide | Extension: navigation | Updated: 2026-04-02
+Description: Chrome 146 ships native vertical tabs but no workspaces or keyboard search. We tested 7 extensions ranked by capability. One adds session time-travel.
+
+Chrome 146 shipped native vertical tabs on March 12, 2026, hidden behind a flag at `chrome://flags/#vertical-tabs`. The built-in version covers basic tab listing but lacks workspaces, session management, and tab search — features still exclusive to extensions.
+
+> **Key takeaways**
+> - Chrome 146 ships native vertical tabs, but they're a **flat list with no workspaces or session recovery**.
+> - **SuperchargeNavigation is the only Chrome option** with named workspaces, session time-travel, and Alt+K command bar.
+> - For a simple sidebar with no extras, **Vertical Tabs by nicedoc.io** (~100K users) or Chrome native are enough.
+
+The horizontal tab bar was designed for 5-10 tabs. At 50+, you're working with truncated titles, no visual hierarchy, and constant hunting. Vertical tab managers move that list to a sidebar where full titles, favicons, and group structures are actually readable.
+
+Chrome 146 (March 12, 2026) shipped native vertical tabs in the stable channel — available via `chrome://flags`. It's a clean sidebar with tab group support, but no workspaces or session recovery. Here's where each option stands in 2026.
+
+## Chrome's Native Vertical Tabs: Status
+
+Chrome 146 (stable March 2026) shipped vertical tabs. Enable via `chrome://flags` → search "Vertical Tabs" → restart Chrome. Then switch in Settings → Appearance → Tab strip position.
+
+| Capability | Chrome Native Vertical Tabs |
+|-----------|---------------------------|
+| Collapsible sidebar | Yes |
+| Tab group integration | Yes |
+| Named workspaces | No |
+| Session recovery | No |
+| Keyboard search | No |
+| Bulk tab actions | No |
+| Time-travel snapshots | No |
+| Per-tab notes | No |
+
+For casual users who just want tabs in a sidebar, the native implementation will be enough. For anyone switching between multiple projects, running research sessions, or doing anything that benefits from saved workspaces and keyboard search, extensions are still the only option.
+
+## Extensions Ranked
+
+Extensions are ranked by capability — how much of the vertical tab workflow they cover — not by install count. If you just need a sidebar, start at #3. If you need workspaces, session recovery, or keyboard navigation, start at #1.
+
+### 1. Vertical Tabs (nicedoc.io)
+
+**4.4 stars | ~100K users | Free**
+
+The market leader by install count. Clean UI with tab group support, drag-and-drop reordering, and tab search. No workspace saving, no session recovery, and no keyboard shortcuts beyond the extension's own interface. Best for users who want a reliable, simple sidebar without additional features.
+
+### 2. SuperchargeNavigation
+
+**5.0 stars | Free on Chrome Web Store**
+
+The only Chrome vertical tab extension that also handles workspaces, session recovery, and keyboard-driven navigation. Where other extensions focus on the sidebar view, SuperchargeNavigation treats it as the anchor for a broader workflow:
+
+- **Named workspaces** — save and restore complete tab sets by name, switch between project contexts instantly
+- **Session time-travel** — 50 auto-snapshots every 5 minutes, rewind to any earlier state with a slider (verified April 2026)
+- **Alt+K command bar** — search open tabs, bookmarks, and history from anywhere in Chrome
+- **Glance/Peek preview** — Shift+Click any link to preview it in an overlay without leaving the page
+- **Smart grouping** — auto-group by domain (Alt+G), bulk multi-select, tab lock, tab deduplication
+- **Mouse gestures** — rocker navigation (back/forward), Super Drag to open links in background
+- **Scroll gestures** — Alt+Scroll to switch tabs, Shift+Scroll to cycle within active group
+- **Zero telemetry, 100% local storage**
+
+Best for power users who manage multiple projects, want Arc-style workspaces and session recovery, or need keyboard-first tab switching.
+
+### 3. Vertical Tabs in Side Panel
+
+**4.5 stars | ~20K users | Free**
+
+Higher rating than nicedoc.io, with better theme support and smoother drag-and-drop. Still focused on the sidebar view without deep session management. A strong choice if visual polish matters more than features.
+
+### 4. SideTab Pro
+
+**4.5 stars | Free/Pro**
+
+Arc-inspired design that combines tabs, bookmarks, and reading list in a single panel. The most feature-complete single-panel experience among pure vertical tab extensions. More complex to configure than the options above.
+
+### 5. Sidebery (Firefox only)
+
+**4.9 stars | ~400K users | Free, open source**
+
+The benchmark for what a tab sidebar can be. Tree-style tab nesting, Firefox container support, deep customization. Firefox only — mentioned here because it's what Chrome users are often trying to approximate.
+
+### 6. Tree Style Tab (Firefox only)
+
+**4.7 stars | ~600K users | Free, open source**
+
+The original. Largest user base, mature ecosystem, extensive community themes. Also Firefox only.
+
+## Full Comparison Table
+
+| Extension | Browser | Rating | Workspaces | Session Recovery | Keyboard Search | Price |
+|-----------|---------|--------|-----------|-----------------|----------------|-------|
+| Vertical Tabs (nicedoc.io) | Chrome | 4.4 | No | No | No | Free |
+| SuperchargeNavigation | Chrome | 5.0 | Yes | Yes (time-travel) | Yes (Alt+K) | Free |
+| Vertical Tabs in Side Panel | Chrome | 4.5 | No | No | No | Free |
+| SideTab Pro | Chrome | 4.5 | Partial | No | No | Free/Pro |
+| Chrome Native | Chrome | Built-in | No | No | No | Free |
+| Sidebery | Firefox | 4.9 | No | No | No | Free |
+| Tree Style Tab | Firefox | 4.7 | No | No | No | Free |
+
+## How to Choose
+
+| Your situation | Best option |
+|---------------|------------|
+| Want workspaces, session recovery, and keyboard navigation | SuperchargeNavigation |
+| Want basic vertical tabs, nothing else | Vertical Tabs (nicedoc.io) |
+| Want the best-looking sidebar | Vertical Tabs in Side Panel |
+| Want tabs + bookmarks + reading list in one panel | SideTab Pro |
+| On Firefox | Sidebery |
+| Do not need workspaces or an extension | Chrome native (enable via chrome://flags) |
+
+## Related Articles
+
+- [Toby Alternative: Free Tab Manager Without Limits](/library/toby-alternative/) — for users coming from card-grid tab organizers
+- [Cluster Tab Manager Alternative](/library/cluster-tab-manager-alternative/) — for users who lost their setup when Cluster was removed
+
+#### FAQ
+Q: Will Chrome's native vertical tabs replace extensions?
+A: For basic use, probably. Chrome 146 (March 2026) shipped native vertical tabs — a collapsible sidebar with tab group integration, enabled via chrome://flags. It does not save workspaces, recover sessions, or offer keyboard search — so power user extensions remain more capable.
+
+Q: Are vertical tab extensions safe?
+A: The extensions reviewed here are established and actively maintained. Any tab extension needs tab list access to function. Check the Chrome Web Store permissions dialog and privacy policy for any extension before installing.
+
+Q: What happened to Arc and Arcify?
+A: Arc Browser entered maintenance mode in May 2025. Arcify is still available on the Chrome Web Store (v5.0.0, February 2026) and replicates Arc-style spaces with tab groups. SuperchargeNavigation offers a different approach — named workspaces with session recovery and a command bar.
+
+---
+
+### Chrome 147 Release Notes: EVERY Change for Tab Users (2026)
 
 URL: https://www.superchargebrowser.com/library/chrome-147-whats-new-tab-users/
-Category: guide | Extension: both | Updated: 2026-04-01
-Description: Chrome 147 lands April 7. HTTPS-First auto-enables for 1B users, vertical tabs stay flag-only, tab scrolling returns. Full breakdown of what changed.
+Category: guide | Extension: both | Updated: 2026-04-02
+Description: Chrome 147 stable April 7, 2026. HTTPS-First auto-enables for 1B users, vertical tabs stay flag-only, tab scrolling returns. Full breakdown with fixes.
 
 Chrome 147 hits stable on April 7, 2026 — desktop users on the early stable channel started receiving it March 25. The headline change most users will notice: HTTPS-First mode activates automatically for roughly one billion people. For tab power users, the headline is what didn't change: vertical tabs remain flag-only for the second consecutive release.
 
@@ -1210,6 +1583,239 @@ A: As of April 2026, 'Save image as Type' was removed from the Chrome Web Store 
 
 ---
 
+### FIX STATUS_ACCESS_VIOLATION in Chrome: 5 Solutions (2026)
+
+URL: https://www.superchargebrowser.com/library/fix-status-access-violation/
+Category: troubleshooting | Extension: performance | Updated: 2026-04-02
+Description: STATUS_ACCESS_VIOLATION crashes Chrome with no warning. It's a memory access error, not malware. Extensions and GPU drivers cause 80% of cases. 5 tested fixes.
+
+> **Key takeaways**
+> - **STATUS_ACCESS_VIOLATION (0xC0000005) is a crash, not a security breach.** A process accessed memory outside its range.
+> - Three causes in order of frequency: **corrupt Chrome profile**, extension code injection conflict, GPU driver bug under load.
+> - Test in Incognito first to rule out extensions. If it crashes on startup, **reset the profile** at `%LOCALAPPDATA%\Google\Chrome\User Data\`.
+
+Chrome crashed with `STATUS_ACCESS_VIOLATION` — error code `0xC0000005`. This is a memory access fault, not malware or a security breach. A Chrome process attempted to write to a memory address outside its allocated range. The fix depends on which of three root causes triggered it: corrupt profile data, an extension injecting bad code, or a GPU driver bug.
+
+As of April 2026 (Chrome 146), this error remains one of Chrome's most common crashes on Windows. The fixes below are verified on Chrome 146.
+
+## What Is STATUS_ACCESS_VIOLATION?
+
+`STATUS_ACCESS_VIOLATION` is Windows error code `0xC0000005` — a General Protection Fault. The operating system detected that a process tried to read or write memory it does not own and killed it. In Chrome, this manifests as an "Aw, Snap!" crash page or a complete browser close.
+
+It is **not** a virus, malware, or sign your computer is compromised. It is a crash caused by software bugs — most commonly in extensions, Chrome's GPU process, or a corrupt user data file.
+
+The three causes in order of frequency:
+
+1. **Corrupt Chrome profile** — damaged `Preferences` or `Web Data` files after a Chrome update or abrupt shutdown
+2. **Extension code injection conflict** — an extension's content script accessing memory outside its sandbox
+3. **GPU driver bug** — the graphics driver returning bad data to Chrome's GPU process under load
+
+## Quick Diagnosis
+
+| Symptom | Likely Cause | Fix |
+|---------|-------------|-----|
+| Crash happens on startup or profile load | Corrupt user profile | [Fix 1: Reset user profile](#fix-1-reset-your-chrome-profile) |
+| Crash started after you installed an extension | Extension memory conflict | [Fix 2: Isolate extensions](#fix-2-isolate-extension-conflicts) |
+| Crash happens on GPU-heavy sites (WebGL, video) | GPU driver issue | [Fix 3: Disable hardware acceleration](#fix-3-disable-hardware-acceleration) |
+| Third-party software is listed in chrome://conflicts | Code injection | [Fix 4: Check code injection](#fix-4-check-for-code-injection) |
+| Crash only happens under heavy tab load | Memory pressure | [Fix 5: Reduce memory footprint](#fix-5-reduce-memory-footprint) |
+
+## Fix 1: Reset Your Chrome Profile
+
+Chrome profiles can accumulate corrupt data in `Preferences` or `Web Data` files that trigger access violations on startup — often after a Chrome update or an abrupt shutdown.
+
+1. Close Chrome completely.
+2. Open File Explorer and navigate to `%LOCALAPPDATA%\Google\Chrome\User Data\`.
+3. Rename the `Default` folder to `Default_Backup`.
+4. Relaunch Chrome — it creates a fresh profile automatically.
+5. If the crash stops, your profile was corrupt. Migrate bookmarks by copying the `Bookmarks` file from `Default_Backup` into the new `Default` folder.
+
+## Fix 2: Isolate Extension Conflicts
+
+Extensions that inject code into every page are a frequent cause of memory access violations.
+
+1. Open an **Incognito window** (Ctrl+Shift+N) — extensions are disabled by default.
+2. Browse normally. If the crash does not occur, an extension is the cause.
+3. Go to `chrome://extensions/` and disable all extensions.
+4. Re-enable them one at a time, testing after each, to identify the offending extension.
+5. Update or remove the problematic extension.
+
+## Fix 3: Disable Hardware Acceleration
+
+GPU driver bugs under memory pressure can trigger access violations in Chrome's GPU process.
+
+1. Go to **Settings > System** (`chrome://settings/system`).
+2. Toggle off **Use graphics acceleration when available**.
+3. Click **Relaunch**.
+4. If the crash stops, update your GPU drivers before re-enabling this setting.
+
+## Fix 4: Check for Code Injection
+
+Some antivirus programs and accessibility tools inject DLLs into Chrome processes, which can cause memory conflicts.
+
+1. Navigate to `chrome://conflicts` in your address bar.
+2. Look for any modules listed as **Conflicting** or **Unknown**.
+3. Update or uninstall the software associated with those modules.
+
+## Fix 5: Reduce Memory Footprint
+
+Access violations become more likely when Chrome is competing with other processes for RAM and memory addresses become fragmented.
+
+1. Press **Shift + Esc** to open Chrome Task Manager.
+2. Sort by **Memory** and close tabs or processes you are not using.
+3. Go to **Settings > Performance** and enable **Memory Saver**.
+4. Avoid running Chrome alongside other RAM-intensive applications.
+
+## Reducing Memory Pressure That Triggers Access Violations
+
+If your crashes match the heavy tab load pattern (Fix 5), reducing active renderer processes is the right lever. SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()`, lowering memory pressure and reducing the chance of address space conflicts. Ad and tracker blocking at the network level also reduces the number of scripts running in renderer processes.
+
+For crashes caused by corrupt profiles or specific extension conflicts, the extension is irrelevant — those require the direct fixes above.
+
+## Technical Background
+
+A `STATUS_ACCESS_VIOLATION` is a **General Protection Fault** — the processor detects that a program is attempting to access memory outside its assigned region and raises an exception. Chrome processes each tab in an isolated renderer process, but code injected by extensions or third-party DLLs can break that isolation.
+
+Under high memory load, the operating system may place Chrome's memory pages in regions that become inaccessible due to address space layout randomization (ASLR) conflicts or fragmentation. The violation occurs when a pointer is dereferenced after the underlying memory has been moved or released.
+
+Updating Chrome, keeping GPU drivers current, and minimizing the number of active renderer processes address all three root causes.
+
+For related Chrome stability issues, see [fixing the Aw, Snap crash](/library/fix-aw-snap-crash/) and [fixing STATUS_BREAKPOINT errors](/library/fix-chrome-status-breakpoint-error/).
+
+#### FAQ
+Q: What does STATUS_ACCESS_VIOLATION mean in Chrome?
+A: As of April 2026, STATUS_ACCESS_VIOLATION (error code 0xC0000005) means a Chrome process tried to read or write memory outside its allocated range. It is a crash error, not malware or a security breach. The three most common causes are a corrupt Chrome user profile, a buggy extension injecting code into web pages, or a GPU driver conflict under heavy tab load.
+
+Q: What causes STATUS_ACCESS_VIOLATION in Chrome?
+A: A Chrome process attempted to access memory it does not own. Common causes include a buggy extension injecting code into the DOM, a corrupt Chrome profile, or a GPU driver conflict. Despite the alarming name, it is a crash error, not a security breach.
+
+Q: Is STATUS_ACCESS_VIOLATION a virus?
+A: No. STATUS_ACCESS_VIOLATION is a Chrome crash code (error 0xC0000005) meaning a process tried to read or write memory outside its allocated range. Updating Chrome, disabling extensions one by one, and clearing your Chrome profile data are the standard fixes.
+
+Q: Does this error only happen on Windows?
+A: The STATUS_ACCESS_VIOLATION error code is Windows-specific. macOS and Linux show different crash messages for the same underlying problem (invalid memory access), but the causes and fixes are similar.
+
+Q: How do I fix STATUS_ACCESS_VIOLATION permanently?
+A: As of April 2026, the permanent fix depends on the root cause. If the crash happens on startup, reset your Chrome profile by renaming the Default folder at %LOCALAPPDATA%\Google\Chrome\User Data\. If it happens on specific sites, disable hardware acceleration in chrome://settings/system. If it started after installing an extension, test in Incognito (Ctrl+Shift+N) and disable extensions one by one to find the conflict.
+
+---
+
+### BEST Great Suspender Alternative in 2026 (MV3, Tested)
+
+URL: https://www.superchargebrowser.com/library/great-suspender-alternative/
+Category: comparison | Extension: performance | Updated: 2026-04-02
+Description: The Great Suspender was pulled for malware in 2021. MV3 forks patch slowly. We compared them to actively maintained tab suspenders: MV3, zero telemetry, free.
+
+> **Key takeaways**
+> - The original Great Suspender was **removed from Chrome Web Store for malware in 2021**. Its MV3 forks still work but rely on volunteers.
+> - Forks show a custom suspension page. **`chrome.tabs.discard()` suspends invisibly** and never breaks the back button.
+> - **Active maintenance matters**: Chrome ships every 4 weeks, and a fork unupdated for 12 months accumulates silent failures.
+
+If you used The Great Suspender for years and are looking for a tab suspender that works on current Chrome versions, this page covers what happened to the original, the state of its forks, and how SuperchargePerformance compares as a replacement.
+
+## Great Suspender Status in 2026
+
+The original Great Suspender is gone permanently. Google removed it from Chrome Web Store in February 2021 after discovering the new owner had injected malware. The extension cannot be reinstalled from CWS. If you still have it installed, Chrome disabled it when MV2 was deprecated in mid-2025 (Chrome 138).
+
+Two volunteer-maintained forks survived the transition to MV3: The Marvellous Suspender (v8.1.3, last updated December 2025) and Great Suspender Reloaded. Both are on the Chrome Web Store as of April 2026. Neither has commercial backing or a guaranteed maintenance schedule.
+
+SuperchargePerformance is an independently built MV3 tab suspender with active maintenance, ad blocking, and a memory dashboard — features the original Great Suspender never offered.
+
+## What Happened to The Great Suspender
+
+The Great Suspender was trusted by over 2 million Chrome users (Chrome Web Store, pre-removal). In late 2020, the original developer sold it to an unknown buyer. The new owner introduced malware — silently collecting user data and executing remote code. Google removed it from the Chrome Web Store shortly after.
+
+Community forks emerged to fill the gap. The most notable are The Marvellous Suspender and Great Suspender Reloaded. Both removed the malicious code and have since migrated to MV3 — Chrome disabled MV2 for standard users at Chrome 138 in mid-2025.
+
+## The Great Suspender Forks in 2026
+
+Chrome disabled Manifest V2 extensions for standard users beginning with Chrome 138. The original Great Suspender was removed for malware and never returned. The forks have continued:
+
+| Extension | MV Version | Status (April 2026) |
+|-----------|-----------|---------------------|
+| The Great Suspender (original) | MV2 | Removed from CWS (malware) |
+| The Marvellous Suspender | MV3 (v8.1.3) | Active on CWS (updated Dec 2025) |
+| Great Suspender Reloaded | MV3 | Active on CWS |
+| SuperchargePerformance | MV3 | Active, stable |
+
+## How MV3 Tab Suspension Works
+
+SuperchargePerformance uses `chrome.tabs.discard()`, Chrome's native tab lifecycle API. This differs from The Great Suspender's approach in one important way: instead of replacing the tab's content with a custom suspension page, the discard API makes suspension invisible. The tab stays in the tab bar with its favicon and title. Clicking it reloads the page naturally. There is no custom suspension screen to navigate around, and the back button is unaffected.
+
+The Great Suspender's custom suspension page had a few practical drawbacks worth knowing about. It broke the browser back button in some configurations — the suspension page itself became a history entry, so pressing back would navigate to another suspended screen rather than the previous site. Scroll position was also lost, meaning tabs that reloaded from a suspension page always opened at the top. And there was a visible interruption: a custom "Tab Suspended" page shown briefly before the real content loaded. Chrome's discard API has none of these issues. The tab memory drops to near zero, clicking the tab triggers a normal reload, and there is no custom screen in between.
+
+## Feature Comparison
+
+| Feature | SuperchargePerformance | Great Suspender Reloaded | Marvellous Suspender |
+|---------|----------------------|------------------------|---------------------|
+| Tab suspension | Yes | Yes | Yes |
+| Suspension mechanism | chrome.tabs.discard() | Custom suspension page | Custom suspension page |
+| MV3 compatible | Yes (stable) | Yes | Yes (v8.1.3) |
+| Audio tab protection | Yes (tab.audible check) | Yes | Yes |
+| Pinned tab protection | Yes | Varies | Varies |
+| Form input protection | Yes | Varies | Varies |
+| Ad blocking | Yes (declarativeNetRequest) | No | No |
+| RAM savings dashboard | Yes | No | No |
+| Preloading | Yes | No | No |
+| Zero data collection | Yes (verified from code) | Unverifiable | Unverifiable |
+| Active maintenance | Yes (2026) | Inconsistent | Volunteer-maintained |
+| Cost | Free core, optional PRO | Free | Free |
+
+## Two Reasons to Switch from a Great Suspender Fork
+
+**1. Maintenance risk.** Chrome ships a new version every four weeks. The Marvellous Suspender (v8.1.3, Dec 2025) and Great Suspender Reloaded are both on MV3 and functional, but volunteer-maintained forks update on a best-effort schedule. A fork unupdated for 12+ months quietly accumulates silent failures — you often won't know until something stops working. SuperchargePerformance is actively maintained on MV3 with regular updates.
+
+**2. The ownership history.** The 2020 compromise is worth remembering. Forks removed the malicious code, but the original extension was sold to an unknown buyer who weaponized it against millions of users. That risk doesn't disappear because a fork cleaned up the code.
+
+## What Stays the Same
+
+The core tab suspension behavior from The Great Suspender works identically in SuperchargePerformance:
+
+- Inactive tabs have their memory freed
+- Tabs playing audio are never suspended (checks `tab.audible`)
+- Pinned tabs are protected
+- Tabs with unsaved form inputs are protected
+- Per-site whitelist to exclude domains from suspension
+- Configurable inactivity timers (5 or 15 min on free tier, custom timer on PRO) (verified April 2026)
+
+Everything that was familiar is present, with the addition of ad blocking, memory metrics, and a popup dashboard showing total RAM saved.
+
+## What Happened to The Marvellous Suspender
+
+The Marvellous Suspender forked from the original after the malware incident and has a significant user base. The maintainer migrated to MV3 — as of March 2026, the stable release is v8.1.3 (updated December 2025) on the Chrome Web Store. The project is volunteer-maintained by gioxx. It uses a custom suspension page rather than Chrome's native `chrome.tabs.discard()` API.
+
+## Trust and Security
+
+The Great Suspender's 2020 compromise is an object lesson in extension ownership risk. Popular free extensions with no business model can be sold to unknown buyers who then monetize the user base through silent data collection or remote code execution. It happened to 2 million users who had no idea.
+
+SuperchargePerformance has a clear business model: an optional PRO tier. That removes the incentive to monetize through user data. All code runs locally. There are zero outbound network requests, verified from the codebase. No remote code loading, no analytics, no data transmission to any server.
+
+For volunteer-maintained forks, the code is open source and the malicious code was removed. But open-source code can change between releases, and auditing a fork's latest commit is not something most users do.
+
+## Bottom Line
+
+The Great Suspender is gone. Its MV3 forks (Marvellous Suspender, Great Suspender Reloaded) still work but rely on volunteer maintenance. SuperchargePerformance offers the same tab suspension behavior — tabs stay visible, memory gets freed, audible tabs are protected — on a stable MV3 architecture with active maintenance. The ad blocking and memory dashboard are additions the original never had.
+
+For how SuperchargePerformance compares to other tab management options, see [SuperchargePerformance vs Auto Tab Discard](/library/vs-auto-tab-discard/).
+
+#### FAQ
+Q: What is the status of The Great Suspender extension in 2026?
+A: As of April 2026, the original Great Suspender is permanently removed from Chrome Web Store — Google pulled it for malware in February 2021. The extension will never return. Two community forks exist: The Marvellous Suspender (v8.1.3, MV3, updated December 2025) and Great Suspender Reloaded (MV3). Both are volunteer-maintained. SuperchargePerformance is an actively maintained MV3 alternative.
+
+Q: Is The Great Suspender safe to use?
+A: The original Great Suspender was removed from Chrome Web Store for malware in 2021. Community forks like The Marvellous Suspender (v8.1.3, MV3) and Great Suspender Reloaded (MV3) are on CWS and functional as of April 2026. They are volunteer-maintained with varying update cadences.
+
+Q: What is the best MV3 tab suspender for Chrome in 2026?
+A: SuperchargePerformance is an actively maintained MV3 tab suspender. It combines tab suspension with ad blocking, a memory dashboard, and preloading — features that Great Suspender forks never offered.
+
+Q: Will Great Suspender forks keep working in Chrome?
+A: The main forks have migrated to MV3 and work on current Chrome. The Marvellous Suspender (v8.1.3, Dec 2025) and Great Suspender Reloaded are both on the Chrome Web Store as of April 2026. Whether they continue receiving timely updates depends on their volunteer maintainers.
+
+Q: How does SuperchargePerformance suspend tabs differently from The Great Suspender?
+A: The Great Suspender replaced the tab's content with a custom suspension page. SuperchargePerformance uses chrome.tabs.discard(), which is invisible — the tab stays in the tab bar, memory is freed, and clicking it reloads naturally without breaking the back button.
+
+---
+
 ### FIX Chrome Memory Leak with Word Online and Office 365 (2026)
 
 URL: https://www.superchargebrowser.com/library/fix-chrome-memory-leak-word-office-365/
@@ -1305,7 +1911,7 @@ Discarding inactive tabs before they accumulate is the structural solution. Chro
 
 SuperchargePerformance does this automatically. Tabs inactive for a configurable period (15 minutes at level 1, 5 minutes at level 2) get discarded while you edit. For Office 365 specifically: go to the extension's whitelist settings and add `office.com` — this ensures your Word Online or Excel tab is never discarded mid-session, while everything else clears aggressively.
 
-The 14 auto-protected web apps in SuperchargePerformance include Google Docs, Sheets, and Slides. They are never suspended. Office 365 requires a manual whitelist addition since it is a Microsoft property rather than a default-protected app. Adding it takes 10 seconds and stays persistent.
+The 15 auto-protected web apps in SuperchargePerformance include Google Docs, Sheets, and Slides. They are never suspended. Office 365 requires a manual whitelist addition since it is a Microsoft property rather than a default-protected app. Adding it takes 10 seconds and stays persistent.
 
 The math across a typical session: suspending 12 inactive tabs frees 70–75% of total Chrome RAM, creating headroom that delays or prevents the point at which Office 365 memory pressure forces OS-level swapping. Per-discarded-tab savings are 90–95% of that tab's renderer memory.
 
@@ -1508,6 +2114,516 @@ A: In Chrome 146 (April 2026), closing all tabs inside a saved group may silentl
 
 Q: Is there a better alternative to Chrome saved tab groups for persistent sessions?
 A: As of April 2026, extensions that treat tabs as persistent state rather than UI decoration are more reliable. SuperchargeNavigation (free, local-only, no account required) uses named workspaces that persist by design and takes 50 automatic snapshots at 5-minute intervals. If a crash or update wipes Chrome's group state, workspaces can be restored from any snapshot in the last 4+ hours via a time-travel slider — without relying on Chrome's session restore to succeed.
+
+---
+
+### SuperchargeNavigation: EVERY Feature Explained (2026)
+
+URL: https://www.superchargebrowser.com/library/supercharge-navigation-complete-guide/
+Category: guide | Extension: navigation | Updated: 2026-04-01
+Description: Side panel, workspaces, Alt+K, Shift+Click peek, time-travel — all 38 Nav features in one reference. Keyboard shortcuts table, settings defaults, Chrome tips.
+
+Most Chrome extensions do one thing. SuperchargeNavigation (Nav for short) does closer to forty. The side panel is the obvious entry point — vertical tabs, full titles, pinned tabs visible. But the feature that makes users stay is usually something they find by accident: Shift+Click opens a full-page preview without creating a tab. Alt+G organizes everything by domain in one keystroke. A workspace they closed three hours ago is still recoverable from the snapshot history.
+
+This page covers every feature in one place. Bookmark it. New installs from the welcome page can start with the Quick Reference table and branch from there.
+
+## Quick Reference — All Keyboard Shortcuts
+
+Everything keyboard-accessible, in one table.
+
+| Shortcut | Action | Default |
+|---|---|---|
+| `Alt+K` | Open command bar (tabs, bookmarks, history, web search) | On |
+| `Alt+G` | Smart group all tabs by domain | On |
+| `Alt+Shift+G` | Remove all tab groups | On |
+| `Alt+Scroll` | Cycle through tabs | On |
+| `Shift+Scroll` | Jump between tab groups | On |
+| `Shift+Click` | Peek preview any link (full-page overlay) | On |
+| `Ctrl+Click` | Multi-select tabs in side panel | On |
+| `Alt+B` | Toggle side panel open/closed | On |
+| `Alt+Up / Alt+Down` | Arrow-navigate through tabs (Shift = groups) | On |
+| `Alt+Middle-Click` | New tab (or search selected text in background tab) | On |
+
+Shortcuts can be reassigned at `chrome://extensions/shortcuts` — find Nav in the list. Chrome exposes 4 assignable slots: Alt+K, Alt+G, Alt+Shift+G, and Alt+B (toggle side panel).
+
+## Navigation and Tab Browsing
+
+The side panel shows vertical tabs with full titles visible — no truncation at 8 characters the way the native tab strip behaves at scale. Tab groups appear inline. Pinned tabs stay anchored at the top.
+
+**Cycling tabs.** `Alt+Scroll` moves through tabs in order. `Shift+Scroll` jumps between tab group boundaries — useful when you have several groups open and want to move between projects without scrolling through every individual tab.
+
+**Arrow navigation.** `Alt+Up` and `Alt+Down` move through the tab list sequentially. Add `Shift` to jump between tab group boundaries instead of individual tabs. Enabled by default — disable it in Settings > Gestures if the key combo conflicts with other software.
+
+**Rocker gestures.** Hold right-click then left-click for browser Back. Hold left-click then right-click for Forward. Hold middle-click then left/right to jump to the previous/next tab group. Turned off by default. If you use a mouse with physical back/forward buttons, leave it off — the two inputs can conflict.
+
+**Trackpad mode.** Converts `Alt+Scroll` from discrete tab jumps to smooth continuous scrolling through the tab list. Enable this if the default discrete behavior feels jarring on a trackpad.
+
+**Drag and drop.** Tabs reorder by dragging within the side panel. The drag behavior is standard — drag to a position and release.
+
+The most-overlooked navigation feature: the command bar (`Alt+K`) is faster than clicking for tab switching once you have more than 10 tabs open. Type a fragment of any title and the result appears in under 100ms. No mouse required.
+
+## Workspaces
+
+Workspaces are the feature that separates Nav from a vertical tab extension. Each workspace is a named, isolated tab context. Switching workspaces swaps the entire tab view — the previous workspace's tabs disappear, the new one's appear. All tabs across all workspaces remain loaded in memory; switching is instant.
+
+**Creating and switching.** Open Nav's side panel and use the workspace selector. Workspaces persist across browser restarts automatically — no manual save step required.
+
+**Sending tabs between workspaces.** Right-click any tab → Send to workspace → choose the target. The tab moves instantly. No dragging between windows.
+
+**Export and import.** Use the export button (⬇ download icon) in the bottom toolbar to save workspaces as a file. Import via the adjacent upload button. Useful for backups, for migrating between machines, or for handing a research set to a collaborator who also runs Nav.
+
+**Workspace sharing via link.** Nav generates a shareable URL at `superchargebrowser.com/w/[token]`. The recipient clicks the link and gets a one-click import prompt in their own Nav install. Links expire after 30 days. No account required on either end.
+
+**Workspace icon picker.** Double-click the workspace icon (the folder next to the name) to open a picker with 60+ categorized icons — Work, Dev, Personal, Social, Study, and more. Double-click the workspace title to rename it inline. These small customizations make it faster to identify workspaces at a glance, especially in the NTP workspace pills row.
+
+**Cross-device sync.** Toggle workspace sync in Settings to keep workspaces consistent across devices via Chrome's storage sync. This requires being signed into Chrome on both devices.
+
+**Time-travel snapshots.** Nav saves an automatic snapshot of each workspace every 5 minutes. Fifty snapshots are retained — roughly 4 hours of recoverable history per workspace. Access the snapshot list from the workspace menu. Select any point in time and Nav restores the workspace to that state: tabs, groups, scroll position. If Chrome crashes, you close a workspace by accident, or you want to undo a tab cleanup from an hour ago, the snapshot history covers it. This is the feature most users don't discover until they need it.
+
+## Command Bar and Search
+
+`Alt+K` opens a floating search palette. It searches across open tabs, recently closed tabs, bookmarks, and browser history simultaneously. Results update as you type. Arrow keys navigate; Enter opens the selection.
+
+**Fallthrough to web.** If no local result matches well enough, pressing Enter searches the web directly. The command bar functions as a combined tab-switcher and address bar.
+
+**Built-in commands.** Beyond search results, the command bar surfaces 8 action commands that work regardless of what you type: Smart Group, Ungroup All, Close Duplicates, New Tab, Close Tab, Pin/Unpin Tab, Mute/Unmute Tab, and Duplicate Tab. Type any part of the command name to filter.
+
+**Persistent search bar.** An optional always-visible search bar can be pinned to the side panel header. Off by default — most users prefer the keyboard shortcut. Enable it in Settings > Features if you prefer a visible search field.
+
+**Alt+Middle-Click.** Opens a new tab next to the current one. If you have text selected on the page, it searches that text in a background tab instead. This is a content script shortcut, not a Chrome command — it cannot be reassigned at `chrome://extensions/shortcuts`.
+
+**When both extensions are installed.** If SuperchargePerformance is also active, the command bar gains three extra entries: Suspend all tabs, Toggle site whitelist for the current domain, and Toggle SuperchargePerformance on/off. These commands appear at the top of the results list regardless of what you've typed.
+
+## Smart Grouping and Tab Management
+
+**Alt+G auto-grouping.** Pressing `Alt+G` groups all open tabs by domain, instantly. Tabs from github.com cluster together, tabs from notion.so cluster together, and so on. Groups start collapsed — you see the group chips without the individual tab rows. This is the fastest way to impose structure on a chaotic workspace.
+
+**Alt+Shift+G.** Removes all tab groups and returns every tab to ungrouped status. One keystroke undo for grouping. Use it when you want to start the grouping process again or just want a flat list.
+
+**Tab deduplication.** When you open a URL that's already in the current workspace, Nav displays a badge warning on the duplicate. Click the badge to jump to the existing tab rather than keeping both. The warning is subtle — a badge indicator, not a blocking modal.
+
+**Tab lock.** Click the 🔒 lock icon that appears in any tab row to lock it. A locked tab cannot be closed accidentally — the close button is suppressed and Ctrl+W skips it. Lock your email tab, your Notion workspace, your production dashboard. Click the lock icon again to unlock. You can also lock multiple tabs at once via the bulk actions bar.
+
+**Tab notes.** Right-click any tab → Add note. A persistent, searchable annotation attached directly to the tab. If you're using a tab as a placeholder for a task or a reminder, the note keeps the context visible in the side panel without requiring a separate todo system.
+
+**Multi-select and bulk actions.** `Ctrl+Click` tabs in the side panel to build a selection. Then right-click the selection for batch options: close all, pin all, mute all, group all, or lock all. Managing 20+ tabs becomes a 3-click operation instead of 20 individual right-click menus.
+
+**Tab nudge indicator.** When you cycle tabs with `Alt+Scroll` or `Alt+Up/Down`, a brief toast overlay appears on the page showing the newly activated tab's title. Confirms which tab you've landed on without looking at the side panel.
+
+**Auto-collapse inactive groups.** The bottom toolbar has a toggle (chevron icon) that automatically collapses tab groups when you switch away from them. Only the active group stays expanded. Keeps the side panel compact when you have several groups open.
+
+**Copy all tab URLs.** The clipboard icon in the bottom toolbar copies every tab URL in the current workspace as a newline-separated list. One click to export a workspace's contents to a chat, email, or document.
+
+**Group context menu.** Right-click a tab group header for group-specific actions: New tab in group, Ungroup, or Close group. Different from the individual tab right-click menu.
+
+**Sleeping tab indicator.** Any discarded tab — whether suspended by SuperchargePerformance, Chrome's Memory Saver, or manual discard — displays a 🌙 moon icon in the side panel. You can see at a glance which tabs are actively running versus suspended.
+
+## Peek Preview (Glance)
+
+Shift+Click any link for a full-page preview overlay. The target page loads completely inside the overlay — you can scroll, read, interact, and copy content. The tab is not added to your workspace. Press `Esc` or click outside the overlay to dismiss.
+
+This feature changes how you handle research links. Instead of opening 15 tabs to see which articles are worth reading, Shift+Click each link in sequence. Close the overlay if the content isn't useful. Open it as a real tab only when you want to keep it. Tab count stays controlled.
+
+The overlay is a full-size page render, not a thumbnail. Every element of the destination page loads as normal. Forms work. Videos play. The distinction from a screenshot preview is total.
+
+## Super Drag
+
+Drag any link — don't click, drag — and the release direction determines what happens:
+
+- Drag **upward** → opens the link in a background tab
+- Drag **downward** → opens the link in a foreground tab (focus switches)
+- Drag **text** upward → web search in a background tab
+- Drag **text** downward → web search in a foreground tab
+
+The safe drag option in Settings prevents Super Drag from firing on web apps that use drag-and-drop for their own UI (Trello, Notion boards, Figma). Enable safe drag if you find Super Drag interfering with drag-based web app interactions.
+
+## New Tab Page
+
+Nav replaces Chrome's new tab page with a focused alternative. All sections are individually toggleable in Settings > New Tab Page.
+
+| Section | Default | What it shows |
+|---|---|---|
+| Clock + date | On | Current time, full date |
+| Workspace pills | On | Quick-switch to any workspace |
+| Pinned tabs | On | Favicon links to your pinned tabs in the active workspace |
+| Top sites row | On | Favicon links to your most-visited pages |
+| Inline search bar | On | Search bar below top sites |
+| Particle background | On | Animated antigravity particle system with mouse repulsion |
+
+Turn off any section to remove it from the new tab page. Turn off the NTP entirely in Settings > New Tab Page — Chrome redirects new tabs to google.com.
+
+The workspace pills row is the most useful section for multi-workspace users. A new tab opens and you immediately see your workspace list. One click switches context without opening the side panel.
+
+## Settings Reference
+
+Every toggle, grouped by category, with defaults marked.
+
+**Gestures**
+
+| Setting | Default |
+|---|---|
+| Tab scroll (Alt+Scroll) | On |
+| Group scroll (Shift+Scroll) | On |
+| Trackpad mode | Off |
+| Quick Search Alt+Middle-Click | On |
+| Rocker gestures | Off |
+| Super Drag | On |
+| Safe drag for web apps | On |
+| Arrow navigation (Alt+Up/Down) | On |
+
+**Features**
+
+| Setting | Default |
+|---|---|
+| Glance / Peek (Shift+Click) | On |
+| Duplicate tab warning | On |
+| Session time-travel | On |
+| Persistent search bar | Off |
+| New Tab Page | On |
+| NTP clock | On |
+| NTP workspace pills | On |
+| NTP top sites | On |
+| NTP search bar | On |
+| NTP particle background | On |
+
+**Workspaces**
+
+| Setting | Default |
+|---|---|
+| Confirm before delete | On |
+| Workspace sync | Off |
+
+**Style**
+
+| Setting | Options |
+|---|---|
+| Theme | Light / Dark / Auto (follows system) |
+| Primary color | Color picker — applies to side panel accents |
+
+## Side Panel Icons — What They Mean
+
+| Icon | Meaning |
+|---|---|
+| 🌙 Moon | Tab is discarded/sleeping (saves RAM) |
+| 🔒 Lock | Tab is locked (cannot be closed accidentally) |
+| 📌 Pin | Tab is pinned (click to unpin) |
+| 🔇 Muted speaker | Tab audio is muted (click to unmute) |
+| 🕐 Clock | Time-Travel Rewind — access workspace snapshots |
+| ≡ Lines | Smart Group — auto-group tabs by domain |
+| ✕ Cross | Ungroup all tabs (appears when groups exist) |
+| 🗑 Trash | Purge duplicate tabs (appears when duplicates detected) |
+| ⚙ Gear | Open settings |
+| ⬇ Download | Export workspaces to file |
+| ⬆ Upload | Import workspaces from file |
+| 🔗 Share | Share active workspace via link |
+| 📋 Clipboard | Copy all tab URLs to clipboard |
+| ⌄ Chevron | Toggle auto-collapse for inactive groups |
+
+## Chrome Settings Worth Knowing
+
+These settings live in Chrome, not in Nav — but they have a bigger impact on daily workflow than most of Nav's own toggles.
+
+**Move the side panel to the left.** By default, Chrome places the side panel on the right. For most people, moving it left makes more sense — vertical tabs belong on the same side as where your eye starts reading. Go to Chrome menu → Settings → Appearance → Side panel → choose Left. Or right-click the side panel border and select the move option directly. This is the single setting that makes the biggest difference in how the panel feels integrated versus tacked-on.
+
+**Pin the extension button.** Click the puzzle piece icon in the Chrome toolbar, find Nav, and pin it. After pinning, one click on the Nav icon in the toolbar opens and closes the side panel. Without pinning, you need to navigate through the extensions menu each time.
+
+**Reassign keyboard shortcuts.** Go to `chrome://extensions/shortcuts` and find Nav. Chrome exposes the 4 main shortcuts for reassignment. If Alt+K conflicts with something else in your workflow — or if you want Alt+T, Ctrl+Shift+K, or any other combination — change it here. The reassignment persists across Chrome restarts.
+
+**Using Nav alongside Chrome's native vertical tabs.** Chrome's built-in vertical tabs (accessible via `chrome://flags/#vertical-tabs`) operate independently from Nav's side panel. Both can be active simultaneously — Nav's panel on one side, Chrome's native vtabs on the other. The two features don't conflict. If you want only Nav, disable Chrome's native vertical tabs via the flag. If you want Chrome's minimal vertical tab strip plus Nav's full feature set in a side panel, run both.
+
+## Using Nav With SuperchargePerformance
+
+The two extensions were built to complement each other. When both are installed:
+
+- The sleeping tab indicator in Nav's side panel shows which tabs Perf has suspended (moon icon on any discarded tab)
+- The `Alt+K` command bar gains three performance commands: Suspend all tabs, Toggle whitelist, Toggle Perf
+- Nav's tab lock and Perf's tab protection work in parallel — a locked tab in Nav also stays protected from Perf's suspension logic
+
+Neither extension requires the other. Each is fully functional standalone.
+
+---
+
+If you run a single workspace with under 20 tabs, the vertical tab panel and `Alt+K` cover most daily needs. If you manage multiple simultaneous projects, workspaces and time-travel snapshots become the load-bearing features. And if you're coming from Arc — the command bar, peek preview, workspaces, and session recovery map almost directly to what you lost.
+
+Zero telemetry, 100% local, no account required. All of the above is free.
+
+#### FAQ
+Q: What does Alt+K do in SuperchargeNavigation?
+A: As of April 2026, Alt+K opens the command bar — a keyboard-driven search that covers open tabs, recently closed tabs, bookmarks, and history simultaneously. Type a fragment of any title and Nav filters in real time. Arrow keys navigate results; Enter opens the selected item. If nothing matches locally, the query falls through to a web search. When SuperchargePerformance is also installed, three extra commands appear: Suspend all tabs, Toggle site whitelist, and Toggle Perf on/off.
+
+Q: How do I move the SuperchargeNavigation side panel to the left?
+A: The side panel position is controlled by Chrome, not the extension. Go to Chrome menu → Settings → Appearance → Side panel, and choose Left or Right. Alternatively, right-click the side panel border and select Move side panel to the left or right. As of April 2026, this is a Chrome-level setting that applies to all side panel content, including Nav.
+
+Q: How does workspace time-travel work in SuperchargeNavigation?
+A: As of April 2026, SuperchargeNavigation saves an automatic snapshot of your workspace every 5 minutes. Up to 50 snapshots are retained, giving approximately 4 hours of recoverable history. To access snapshots, open the workspace menu and look for the time-travel or session history option. Select any snapshot to restore that workspace state — all tabs, groups, and positions as they were at that point in time.
+
+Q: What is the Shift+Click peek feature?
+A: Shift+Click on any link opens a full-page overlay preview of that destination without creating a new tab or leaving your current page. The overlay is a complete, interactive page view — you can read, scroll, and interact with the preview. Press Esc or click outside to close it. The tab is not added to your workspace unless you explicitly navigate away from the overlay.
+
+Q: Can I share a workspace with someone else?
+A: Yes. As of April 2026, SuperchargeNavigation lets you export a workspace as a shareable link (superchargebrowser.com/w/[token]). The link expires after 30 days. The recipient clicks the link and imports the workspace into their own Nav install with one click. You can also export/import workspaces as files for backup or transfer without the share link.
+
+Q: Does SuperchargeNavigation require an account or internet connection?
+A: No. As of April 2026, SuperchargeNavigation is 100% local with zero telemetry. All workspace data, snapshots, and settings live on your device only. No account is required for any feature, including workspaces and time-travel snapshots.
+
+---
+
+### SuperchargePerformance: EVERY Feature Explained (2026)
+
+URL: https://www.superchargebrowser.com/library/supercharge-performance-complete-guide/
+Category: guide | Extension: performance | Updated: 2026-04-01
+Description: Tab suspension, ad blocking, script control, video ad stripping, 13 features — one reference. Stats dashboard, whitelist, Safe Mode, PRO tier, and Chrome tips.
+
+Most performance extensions pick one lane. Tab suspenders ignore ads. Ad blockers ignore RAM. SuperchargePerformance (Perf for short) covers both — 13 features spanning memory management, content blocking, page speed, and crash recovery. The tab suspension alone saves around 80MB per idle tab. The content blocking engine runs 186,000+ rules from 22 curated sources. Both run simultaneously, locally, with zero telemetry.
+
+This page covers every feature in one place. New installs from the welcome page can start with the Quick Reference table, then branch into whichever section matches their priority.
+
+## Quick Reference — All Features at a Glance
+
+Every feature, what it does, its control type, and the default state.
+
+| Feature | What it does | Control | Default |
+|---|---|---|---|
+| Intelligent Tab Suspension | Unloads idle tabs to free RAM | Slider: Off / Low (15 min) / Med (5 min) / PRO (custom seconds) | Med |
+| Ad, Tracker & Annoyance Blocking | Blocks ads, trackers, and malware domains | Slider: Off / Low / Med / High | High |
+| Video Ad Blocking | Strips YouTube and Twitch video ads before playback | Toggle: Off / On | On |
+| Smart Page Cleanup | Auto-rejects cookie banners + hides persistent ads + blocks popups | Toggle: Off / On | On |
+| Control Third-Party Scripts | Blocks third-party scripts by category | Slider: Off / Low / Med / PRO | Med |
+| Throttle Background Activity | Slows down background tab activity to reduce CPU | Toggle: Off / PRO | Off |
+| Optimize Web Fonts | Blocks custom fonts; PRO forces system font | Slider: Off / Low / Med / PRO | Off |
+| Block All Images | Blocks all image requests | Toggle: Off / PRO | Off |
+| Prioritize Visible Content | Lazy-loads off-screen images, iframes | Slider: Off / Low / Med / PRO | Med |
+| Preload Pages on Hover | Prefetch links on hover | Slider: Off / Same-site pages / All pages | All pages |
+| Stop Autoplay | Blocks autoplaying video and audio | Slider: Off / Allow Common / Block All | Off |
+| Predictive DNS Prefetching | Injects `dns-prefetch` hints for linked domains | Slider: Off / Common / All Page Domains | Off |
+| Safe Mode | Detects broken pages, offers recovery toast | Toggle: Off / On | On |
+
+## Performance Level Indicator
+
+The popup header shows a current performance level: **Disabled**, **Standard**, **Optimized**, or **PRO**. This indicator reflects the combination of active features — not any single slider. Turn on content blocking at High and tab suspension at Medium and the level climbs to Optimized. Add a PRO feature and it shows PRO. The level updates live as you toggle features in the popup.
+
+This single label is the fastest way to confirm Perf is actually doing something on a given session.
+
+## Tab Suspension
+
+Tab suspension is the feature most people install Perf for. Open Chrome Task Manager (`Shift+Esc`) with 20 tabs and you'll see 20 renderer processes consuming RAM. Perf watches idle time per tab and calls `chrome.tabs.discard()` when the threshold is reached — Chrome natively unloads the page from memory, keeping the tab visible in the strip with a reload-on-click behavior.
+
+**Tiers.** Three preset timers:
+
+| Tier | Idle before suspension |
+|---|---|
+| Low | 15 minutes |
+| Medium | 5 minutes |
+| PRO | Custom — set in seconds |
+
+Medium is the default. For most users with 15+ tabs, five minutes is the practical sweet spot — it catches research tabs opened and forgotten while keeping anything you're actively reading alive.
+
+**Auto-protected apps.** Fifteen web apps are permanently excluded from suspension, regardless of idle time:
+
+Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Google Docs, Google Sheets, Google Slides.
+
+These are apps where an unexpected reload destroys in-progress work. If your critical app isn't on the list, the whitelist (covered below) covers custom exclusions per domain.
+
+**Additional protections.** Pinned tabs are never suspended. Tabs playing audio are never suspended — Perf checks for active audio before discarding. Tabs with unsaved form data (modified fields that haven't been submitted) are also protected. And any tab created within the last 30 seconds gets a grace period before the idle timer starts.
+
+**Suspend Now.** The popup has a manual "Suspend Now" button that immediately discards all eligible tabs — skipping the timer entirely. Useful before stepping away from the computer or before a call where you want Chrome to stop competing for RAM.
+
+**RAM estimate.** The stats dashboard uses 80MB as a conservative per-tab estimate. The actual figure varies by site; heavy SPAs and media tabs use considerably more.
+
+## Content Blocking
+
+Perf's ad and tracker blocking uses Chrome's native Declarative Net Request (DNR) engine. Rules are compiled into static rulesets at build time — no JavaScript runs on every request. The browser evaluates matching internally.
+
+**Four tiers:**
+
+| Tier | What's blocked | ~Rules fired per page |
+|---|---|---|
+| Off | Nothing | 0 |
+| Low | Common ad networks | ~7 |
+| Med | Ads + analytics + tracking pixels | ~10 |
+| High | All of the above + malware/phishing domains | ~12 |
+
+High is the default. 186,000+ rules total, sourced from 22 curated lists. The lists cover EasyList, EasyPrivacy, uBlock's filter lists, and multiple malware/phishing feeds.
+
+**Script blocking** is a separate slider with its own tiers:
+
+| Tier | What's blocked |
+|---|---|
+| Low | Social widgets (Facebook Like, Twitter buttons) |
+| Med | Wider third-party scripts — analytics, A/B testing, chat widgets |
+| PRO | All third-party scripts, with exceptions for login providers and payment processors |
+
+PRO script blocking is the strongest tier but requires testing on sites with third-party login flows. Perf automatically allows scripts from known auth providers and payment processors even at PRO tier.
+
+## Video Ad Blocking
+
+YouTube and Twitch have ad delivery mechanisms that evade standard DNR rules. Perf handles each separately.
+
+**YouTube.** YouTube delivers ads through multiple pathways — pre-roll, mid-roll, server-side insertion, overlay banners, and anti-adblock enforcement. Blocking one pathway is not enough because YouTube falls back to the others. Perf intercepts all of them simultaneously: ad-serving domains are blocked at the network level, ad data is stripped from video player responses before playback starts, mid-stream ad segments are detected and skipped in real time, and YouTube's adblock detection is neutralized so you never see the "ad blockers are not allowed" overlay. Seven distinct interception points run in parallel, each targeting a different delivery mechanism.
+
+**Twitch.** Twitch embeds ads directly inside the video stream data rather than serving them as separate requests. Perf intercepts the stream before Twitch's player processes it, strips the ad segments, and returns a clean video feed. The stream plays without interruption — no purple "ad in progress" screen.
+
+Both are covered by the single Video Ad Blocking toggle, which is On by default.
+
+## Smart Page Cleanup
+
+Three behaviors bundled into one toggle:
+
+**AutoConsent.** Based on the AutoConsent library, Perf automatically detects and rejects cookie consent banners. The "Accept all" / "Reject all" prompt dismisses without user interaction — Perf selects the privacy-preserving option.
+
+**Persistent ad and banner hiding.** Cosmetic rules hide ad slots and promotional banners that survive network-level blocking. These are CSS-based injections — they do not affect page functionality.
+
+**Popup blocking.** Perf intercepts `window.open()` calls from page scripts and suppresses popups that don't originate from direct user gestures. Legitimate popups triggered by user clicks (file downloads, OAuth windows) are unaffected.
+
+All three run as a unit under the Smart Page Cleanup toggle.
+
+## Page Speed Features
+
+Four features target load time rather than content blocking.
+
+**Prioritize Visible Content.** Lazy-loads off-screen images, iframes, and at PRO tier, off-screen scripts. The browser downloads what's in the viewport first and defers everything below the fold. On media-heavy pages, this measurably reduces time-to-interactive. Default: Med.
+
+**Preload Pages on Hover.** When your cursor hovers a link, Perf triggers a prefetch request before you click. By the time you click, the browser has already started downloading the destination page. Same-site mode limits this to links on the same domain (safer, less bandwidth). All pages mode prefetches any link. Default: All pages.
+
+**Predictive DNS Prefetching.** Perf scans links on the current page and injects `<link rel="dns-prefetch">` elements for the linked domains. DNS lookups resolve in the background, trimming the latency spike when you navigate to a new domain. Default: Off.
+
+**Optimize Web Fonts.** Low and Med tiers block custom font requests, falling back to the browser's default serif or sans-serif. PRO tier goes further — it forces the system font stack (San Francisco on macOS, Segoe UI on Windows, the system sans on Linux). Pages load faster; text renders immediately without a FOIT (flash of invisible text). Default: Off. Worth enabling if you find font loading adds visible delay on content sites.
+
+## Stop Autoplay
+
+Two levels of autoplay blocking:
+
+**Allow Common.** Blocks autoplay on most sites but exempts 22 media and meeting domains: YouTube, Netflix, Twitch, Vimeo, Dailymotion, TikTok, Instagram, Facebook, Zoom, Slack, Skype, Microsoft Teams/SharePoint, Webex, Zoho, GoToMeeting, ClickMeeting, Vonage, Adobe, Intermedia, RingCentral, and Pluralsight. This is the practical setting — news sites and landing pages stop blasting audio, but video and meeting platforms work normally.
+
+**Block All.** Blocks autoplay everywhere without exceptions. Manual play still works — a user-gesture click within a 1-second window after the page loads is detected and allowed through. This preserves playback on pages where you explicitly click Play, while stopping anything that fires automatically.
+
+Default is Off, so no autoplay behavior is modified unless you enable it.
+
+## Stats Dashboard
+
+The popup shows five animated stat cards, each with a count-up animation that runs every time you open it:
+
+| Card | What it counts |
+|---|---|
+| RAM Saved | Total estimated RAM freed by tab suspensions (GB / TB) |
+| Scripts Controlled | Third-party scripts blocked across all sessions |
+| Time Saved | Estimated time recovered from faster page loads |
+| Pages Optimized | Pages where at least one Perf feature fired |
+| Ads Blocked | Total network requests blocked by content rules |
+
+Stats persist across sessions in local storage. They reset only if you clear extension data. The count-up animation starts from zero on each popup open, landing on the current value — this is intentional visual design, not a reset of the underlying numbers.
+
+## Toolbar Badge
+
+The Perf icon in the Chrome toolbar doubles as a live RAM counter. The badge shows the cumulative RAM saved, displayed as a number with a GB or TB unit on the next line.
+
+**Theme-aware rendering.** In light mode, the badge uses a blue bird icon with a blue background. In dark mode, it switches to an amber bird on a black background. Perf detects Chrome's theme via the `chrome.action` API and swaps both the icon and the badge color scheme automatically.
+
+The badge renders at 4x resolution via `OffscreenCanvas` before being drawn to the extension icon — this prevents the pixelation that most extension badges show at standard DPI.
+
+When Perf is globally paused, the badge displays "OFF" instead of the RAM counter.
+
+## Whitelist System
+
+The whitelist lets you exclude specific domains from specific features — or from everything.
+
+**Per-domain, per-feature granularity.** You can whitelist a site from just content blocking while keeping tab suspension active. Or whitelist from just suspension while keeping ads blocked. Or whitelist everything at once.
+
+**Site toggle in popup header.** A quick toggle at the top of the popup adds or removes the current domain from the whitelist in one click. This is the fastest path for whitelisting a site that's breaking — click the toggle, reload, and Perf skips that domain entirely.
+
+**Subdomain inclusion.** Adding `reddit.com` to the whitelist automatically covers `redditstatic.com`, `redd.it`, and other related subdomains. You don't need to add each subdomain separately.
+
+The whitelist is stored locally and never transmitted anywhere.
+
+## Global Pause
+
+The master toggle at the top of the popup pauses all Perf features for one hour. After the hour, Perf auto-resumes via Chrome's alarm API — no manual re-enable required.
+
+During a global pause, Safe Mode remains active. Everything else — content blocking, tab suspension, video ad blocking, page speed features — is suspended.
+
+The popup shows a countdown while paused: "Paused — X min remaining." If you want to re-enable before the hour is up, click the toggle again.
+
+## Safe Mode
+
+Safe Mode detects when Perf's content scripts may have broken a page — a blank render, a JavaScript error thrown during injection, or a page that loads visibly incomplete.
+
+When a broken state is detected, Perf shows a recovery toast at the top of the page: "Something looks off — Reload without optimization?" Clicking the toast reloads the page with Perf's content scripts disabled for that domain and adds the domain to a temporary exclusion list.
+
+The toast is non-blocking — if the page rendered fine, dismiss it or ignore it. It disappears automatically after a few seconds.
+
+Safe Mode is On by default and runs independently of the global pause. It is the reason you can install Perf on any machine without worrying about silently breaking a critical work page.
+
+## PRO Tier
+
+PRO unlocks features that require deeper intervention than Perf's free defaults.
+
+**PRO-gated features:**
+
+| Feature | What PRO adds |
+|---|---|
+| Tab Suspension | Custom timer in seconds (instead of 5 or 15 min presets) |
+| Control Third-Party Scripts | Full third-party script blocking with auth/payment exceptions |
+| Throttle Background Activity | Override setTimeout/setInterval in inactive tabs |
+| Optimize Web Fonts | Force system font stack (not just block custom fonts) |
+| Block All Images | Block all image requests entirely |
+| Prioritize Visible Content | Defer off-screen scripts in addition to images/iframes |
+
+PRO is available as a one-time $29 lifetime license. The waitlist is open at superchargebrowser.com/pro. When PRO is active, a PRO badge appears in the popup header and the Performance Level Indicator shows PRO.
+
+No subscription, no recurring billing, no account required for the free tier.
+
+## Settings and Customization
+
+Beyond the per-feature sliders in the popup, a few global settings live in the Settings panel:
+
+- **Theme:** Auto (follows Chrome's system theme), Light, or Dark. Auto is the default and drives the theme-aware badge and icon behavior.
+- **Performance Level badge:** Updates automatically — no manual refresh needed.
+- **Changelog, Support, and Privacy links** appear in the popup footer. The Privacy link goes to the extension's privacy policy, which documents zero telemetry and 100% local data handling.
+
+## Chrome Settings Worth Knowing
+
+These settings live in Chrome, not in Perf, but they interact with what Perf does.
+
+**Chrome Memory Saver** (`chrome://settings/performance`). Chrome's built-in memory tool discards tabs reactively when memory pressure builds. Perf's suspension is proactive — it runs on a timer regardless of pressure. Running both is fine. Perf's timer fires first; Chrome's threshold acts as a second pass for any tabs Perf didn't catch. Chrome's Memory Saver reduces total Chrome RAM by roughly 30-40%; Perf's proactive suspension on a 20-tab session reduces it by 70-75%.
+
+**Extension permissions** (`chrome://extensions`). Perf requests broad host permissions for content scripts. You can review these in the Extensions page. The permissions are used for content blocking, video ad stripping, and cookie consent rejection — none of the data leaves the device.
+
+**Pin Perf to the toolbar.** Click the puzzle piece icon in Chrome's toolbar, find SuperchargePerformance, and click the pin icon. After pinning, one click opens the popup directly. Without pinning, you navigate through the extensions overflow menu each time.
+
+## Using Perf With SuperchargeNavigation
+
+The two extensions were built to complement each other. When both are installed:
+
+- Nav's side panel shows a sleeping tab indicator (moon icon) on any tab Perf has suspended — you can see at a glance which tabs are actively running versus discarded
+- The `Alt+K` command bar in Nav gains three Perf-specific commands: Suspend all tabs, Toggle site whitelist for the current domain, Toggle SuperchargePerformance on/off
+- Nav's tab lock prevents those tabs from being suspended by Perf — a tab locked in Nav is treated the same as a pinned tab by Perf's suspension logic
+
+Neither extension requires the other. Both are fully functional standalone.
+
+---
+
+If your main problem is too many tabs eating RAM, start with tab suspension at Medium and leave everything else at defaults. If your main problem is intrusive ads slowing pages down, content blocking at High with video ad blocking on handles most cases. If you want both — and most users do — every feature here runs concurrently without conflict.
+
+Zero telemetry, 100% local, no account required. All of the above except the PRO-gated features are free.
+
+#### FAQ
+Q: What does SuperchargePerformance actually do?
+A: As of April 2026, SuperchargePerformance is a Chrome extension with 13 distinct features across two categories: memory management and page speed. Its core function is intelligent tab suspension — it unloads idle tabs after a configurable timer, freeing roughly 80MB per tab. On the page speed side, it blocks ads, trackers, and malware using 186,000+ rules from 22 curated sources, with separate video ad blocking for YouTube and Twitch. All features are individually toggleable. Zero telemetry, 100% local, no account required.
+
+Q: Does SuperchargePerformance conflict with uBlock Origin?
+A: As of April 2026, they can run simultaneously but it is not recommended at full strength. Chrome enforces a shared rule budget across all extensions — SuperchargePerformance uses 100K+ rules at its default setting, and uBlock uses 60–100K+. Combined, they can exceed Chrome's shared pool of ~150K rules, causing rulesets to be silently dropped without warning. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, and malware comprehensively. If you prefer to keep uBlock for website ads, set SuperchargePerformance's content blocking to Off and use it for video ads, popups, cookies, and tab suspension.
+
+Q: How does tab suspension work in SuperchargePerformance?
+A: As of April 2026, SuperchargePerformance monitors tab activity and suspends idle tabs after a configurable timer using Chrome's native chrome.tabs.discard() API. The timer has three preset tiers: Low (15 minutes), Medium (5 minutes), and PRO (custom seconds). Suspended tabs show a reload prompt when you click them — Chrome reloads the page on demand. Fifteen web apps are auto-protected from suspension: Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Google Docs, Sheets, and Slides. Pinned tabs, tabs playing audio, and tabs with unsaved form data are also never suspended.
+
+Q: What are the three tiers in SuperchargePerformance?
+A: As of April 2026, SuperchargePerformance has three tiers for most sliders: Low, Medium, and High (or PRO for some features). For tab suspension: Low = 15-minute idle timer, Medium = 5-minute timer, PRO = custom timer in seconds. For content blocking: Low = common ads (~7 blocked per page), Medium = ads plus analytics (~10 blocked), High = full list including malware and phishing (~12 blocked). Script blocking has its own tiers: Low blocks social widgets, Medium covers wider third-party scripts, PRO blocks all third-party scripts with exceptions for login and payment flows.
+
+Q: Does SuperchargePerformance slow Chrome down?
+A: As of April 2026, SuperchargePerformance adds minimal overhead at rest. The content blocking runs via Chrome's native DNR engine — rules are evaluated by the browser, not by extension JavaScript, so there is no per-request scripting cost. Tab suspension is event-driven (idle detection + alarm), not polling. The popup stats use count-up animations on open, not continuous background computation. The heaviest runtime component is video ad blocking, which injects content scripts on YouTube and Twitch pages — but those scripts only run on those two domains.
+
+Q: Does SuperchargePerformance work with Chrome's built-in Memory Saver?
+A: As of April 2026, SuperchargePerformance and Chrome's Memory Saver (chrome://settings/performance) are complementary, not conflicting. Chrome's Memory Saver is reactive — it discards tabs when Chrome detects memory pressure. Perf's tab suspension is proactive — it discards tabs after a configurable idle timer regardless of system pressure. Running both means tabs get discarded sooner (Perf's timer fires before Chrome's pressure threshold), and you get Perf's per-domain whitelist on top of Chrome's coarser controls. Chrome's Memory Saver reduces RAM by roughly 30-40%; Perf's proactive suspension on a typical 20-tab session reduces total Chrome RAM by 70-75%.
 
 ---
 
@@ -2577,7 +3693,7 @@ Extensions that reduce Chrome RAM fall into four functional categories. Most foc
 
 ## SuperchargePerformance: Suspension + Blocking Combined
 
-The only extension that handles both levers in a single install. Tab suspension via `chrome.tabs.discard()` — the official Chrome API — discards idle tabs after a configurable timer. Fourteen apps are auto-protected and never suspended: Figma, Notion, Slack, Google Docs, and others that break when discarded. The RAM dashboard shows live per-tab memory so you can see what the extension is actually doing.
+The only extension that handles both levers in a single install. Tab suspension via `chrome.tabs.discard()` — the official Chrome API — discards idle tabs after a configurable timer. Fifteen apps are auto-protected and never suspended: Figma, Notion, Slack, Google Docs, and others that break when discarded. The RAM dashboard shows live per-tab memory so you can see what the extension is actually doing.
 
 The blocking layer runs 186K+ DNR rules from 22 sources across 3 tiers (basic, standard, aggressive). Ads, trackers, analytics scripts, fingerprinting libraries, and malware domains. On a news site that previously spawned 10 ad subframes, those processes simply don't start.
 
@@ -2621,19 +3737,19 @@ $0 free tier. Paid tier adds backup sync. MV3.
 
 ## Chrome's Built-in Memory Saver vs Extensions
 
-Chrome 108 added Memory Saver. Chrome 147 improves it with ML-based prediction that estimates how likely you are to revisit each tab before discarding it.
+Chrome 108 added Memory Saver. Chrome 147 (stable April 7, 2026) improves it with ML-based prediction that estimates how likely you are to revisit each tab before discarding it.
 
 | | Chrome Memory Saver | Tab suspender extensions |
 |---|---|---|
 | Activation trigger | System memory pressure | Configurable inactivity timer |
 | ML tab prediction | Yes (Chrome 147) | No |
 | Discard timing | When system is under pressure | Consistent, user-controlled |
-| Auto-protect specific apps | No | Yes (SuperchargePerformance: 14 apps) |
+| Auto-protect specific apps | No | Yes (SuperchargePerformance: 15 apps) |
 | RAM dashboard | No | Yes (SuperchargePerformance) |
 | Ad blocking | No | Yes (SuperchargePerformance, uBlock Origin) |
 | Control over which tabs | Limited | Per-site rules, exclusions |
 
-Memory Saver in Chrome 147 is better than it was — ML prediction reduces unnecessary discards of tabs you revisit frequently. But it's reactive: it only fires under memory pressure. An extension with a timer fires proactively. On a 16 GB machine that never hits pressure thresholds, Memory Saver may never trigger at all. An extension with a 30-minute timer reclaims that memory regardless.
+Memory Saver in Chrome 147 (arriving April 7) is better than it was — ML prediction reduces unnecessary discards of tabs you revisit frequently. But it's reactive: it only fires under memory pressure. An extension with a timer fires proactively. On a 16 GB machine that never hits pressure thresholds, Memory Saver may never trigger at all. An extension with a 30-minute timer reclaims that memory regardless.
 
 For users on 8 GB machines who work with 10-15 tabs and notice occasional slowdowns, Memory Saver alone may be sufficient. For heavier workloads, extensions deliver consistent savings that system pressure thresholds don't.
 
@@ -2662,16 +3778,16 @@ Q: What is the best Chrome extension to reduce RAM in 2026?
 A: As of March 2026, the best single extension for RAM reduction is SuperchargePerformance — it combines tab suspension via chrome.tabs.discard() with 186K+ ad-blocking rules that prevent heavy ad iframes from loading. For suspension-only, Auto Tab Discard is the lightest option. For pure ad blocking, uBlock Origin (v1.70.0, updated March 2026) has the deepest coverage.
 
 Q: Does Chrome's built-in Memory Saver replace extensions in 2026?
-A: Not fully. As of March 2026, Chrome 147 ships an improved Memory Saver that uses ML to predict which tabs you're likely to revisit. It only activates under system memory pressure and sacrifices tab state on reload. Extensions like Auto Tab Discard and SuperchargePerformance discard proactively on a timer regardless of system pressure — giving you consistent savings rather than pressure-triggered ones.
+A: Not fully. As of April 2026, Chrome 147 (stable April 7) adds an improved Memory Saver with ML-based tab prediction. It only activates under system memory pressure and sacrifices tab state on reload. Extensions like Auto Tab Discard and SuperchargePerformance discard proactively on a timer regardless of system pressure — giving you consistent savings rather than pressure-triggered ones.
 
 Q: Does The Great Suspender still work in Chrome 2026?
-A: No. As of March 2026, The Great Suspender and The Marvellous Suspender are both dead. Chrome disabled Manifest V2 extensions in mid-2025 (Chrome 135-138), and neither extension migrated to MV3. Searches for these still drive traffic but both have been removed from the Chrome Web Store. Auto Tab Discard and SuperchargePerformance are the active MV3 replacements.
+A: As of April 2026, the original Great Suspender is permanently removed from Chrome Web Store (pulled for malware in 2021). Two community forks survived the MV3 transition: The Marvellous Suspender (v8.1.3, MV3, updated December 2025) and Great Suspender Reloaded (MV3), both on CWS. They are volunteer-maintained. SuperchargePerformance is an actively maintained MV3 alternative that adds ad blocking and a RAM dashboard.
 
 Q: How much RAM does Chrome use with 20 tabs?
 A: As of March 2026, Chrome with 10 tabs typically uses around 1 GB RAM; 20 tabs reach 1.5–2 GB depending on site complexity. Ad-heavy tabs push higher — a single news site can spawn 10+ ad iframe processes. Tab suspension and ad blocking address different parts of this: suspension frees renderer memory from idle tabs, blocking prevents ad iframes from loading at all.
 
 Q: Can I run multiple RAM-saving extensions at once?
-A: Yes, with the right pairing. SuperchargePerformance and uBlock Origin run together without conflict — they address different layers (suspension + blocker vs pure blocking depth). NinjaOne's 2026 data suggests 5-8 well-built extensions cause no noticeable overhead; beyond 10, audit each extension individually. Each extension adds its own service worker overhead, so there's a diminishing-returns point.
+A: As of April 2026, yes but with a caveat. Chrome enforces a shared rule budget across all extensions. SuperchargePerformance uses 100K+ blocking rules at its default setting and uBlock uses 60–100K+. Running both can exceed Chrome's shared pool, causing rulesets to be silently dropped. For RAM savings specifically, SuperchargePerformance handles both ad blocking (186K+ rules from 22 sources) and tab suspension in one extension — no need for a separate blocker. NinjaOne's 2026 data suggests 5-8 well-built extensions cause no noticeable overhead; beyond 10, audit each individually.
 
 ---
 
@@ -3020,7 +4136,7 @@ Before starting a long Gemini session, suspend those background tabs. Suspended 
 
 **Automated path:** [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) uses `chrome.tabs.discard()` to automatically suspend tabs that have been inactive past a configurable threshold. Inactive tabs are discarded in the background — you do not lose them, they just reload when you click back. With 20 tabs open, this typically frees 1–3 GB before Gemini even starts generating.
 
-The extension also has 14 auto-protected apps (Google Docs, Gmail, Sheets, Calendar, and others) that are never suspended — you lose no active work.
+The extension also has 15 auto-protected apps (Google Docs, Gmail, Sheets, Calendar, and others) that are never suspended — you lose no active work.
 
 ## Fix 2: Break Long Gemini Sessions into Smaller Chunks
 
@@ -3213,120 +4329,6 @@ A: As of March 2026, Comet has no native vertical tabs and no named workspace sy
 
 Q: Is Perplexity Comet safe to use?
 A: As of March 2026, Comet collects browsing data to power its AI features, which is a meaningful privacy trade-off. Perplexity has also faced publisher lawsuits alleging mass web scraping and content hallucination. If privacy is a priority, Chrome with zero-telemetry extensions is a more controlled environment.
-
----
-
-### 5 BEST Ad Blockers for Chrome in 2026 (MV3 Compared)
-
-URL: https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/
-Category: comparison | Extension: performance | Updated: 2026-03-22
-Description: MV2 died in 2025. uBlock Origin, AdGuard, and others migrated to MV3 and still block ads. We compared 5 Chrome ad blockers on rules, RAM, and privacy.
-
-> **Key takeaways**
-> - **Chrome killed MV2 in mid-2025**, and the gap between ad blockers widened during the migration to MV3.
-> - **uBlock Origin (v1.70.0)** kept cosmetic filtering and dynamic rules. Lite runs with zero background processes.
-> - Pick based on **whether you need deep coverage, zero overhead, or tab memory control** alongside blocking.
-
-You open Chrome, navigate to a news site, and the page loads slower than it should — three ad scripts blocking the render, a consent popup, and a tracker from a data broker you've never heard of. Picking the right extension for Chrome in 2026 means understanding one thing first: Manifest V2 died in mid-2025, and the landscape shifted.
-
-Most ad blockers migrated to MV3, but the transition widened the gap between them. Here's how the top options compare, where each falls short, and which setup fits your situation.
-
-## What Changed in Mid-2025
-
-Chrome 138 disabled Manifest V2 extensions for standard users. The `webRequest` API — which let extensions intercept every network request at runtime — was replaced by `declarativeNetRequest` (DNR). Extensions now submit static rule sets; Chrome's own engine does the evaluation.
-
-| | MV2 (disabled Chrome 138+) | MV3 (current) |
-|---|---|---|
-| Request handling | Runtime interception | Static rule evaluation |
-| Dynamic filtering | Full | Constrained |
-| Response modification | Yes | No |
-| Background processes | Persistent | Event-driven |
-| Who controls filtering | Extension code | Chrome engine |
-
-The practical impact: MV3 blockers can't inspect response bodies or run arbitrary logic per request. For most users most of the time, this doesn't matter — the best MV3 blockers handle >95% of what MV2 handled (Chrome 146, March 2026). For power users who built complex dynamic rules, the gap is real.
-
-## The Top MV3 Ad Blockers (March 2026)
-
-Most major ad blockers now run on MV3 — uBlock Origin, uBlock Origin Lite, AdGuard, Ghostery, Adblock Plus, and others. The three with the most meaningful differences for power users:
-
-- **uBlock Origin** — v1.70.0, updated March 11, 2026. gorhill migrated the full extension to MV3. Cosmetic filtering, dynamic per-site rules, and the network request logger are all present.
-- **uBlock Origin Lite** — v2026.315, updated March 15, 2026. Same developer, purely declarative. Zero background service worker.
-- **AdGuard for Chrome** — MV3 version live on CWS. Free core with a paid tier that adds DNS-level blocking and popup blocking across more sites.
-
-These three use the same underlying filter list sources (EasyList, EasyPrivacy, uBlock filter lists). The differences are architectural and scope.
-
-## Head-to-Head Comparison
-
-| | uBlock Origin | uBlock Origin Lite | AdGuard | SuperchargePerformance |
-|---|---|---|---|---|
-| CWS version (Mar 2026) | v1.70.0 | v2026.315 | Current | Current |
-| Ad blocking | Full | Good (declarative) | Full | Yes (186K+ DNR rules, 3 tiers) |
-| Tracker blocking | Yes | Yes | Yes | Yes (22 filter sources) |
-| Cosmetic filtering | Yes | No | Partial | Yes (universal + site-specific CSS) |
-| Dynamic per-site rules | Yes | No | Yes (paid) | Yes (per-domain per-feature whitelist) |
-| Tab suspension | No | No | No | Yes |
-| RAM dashboard | No | No | No | Yes |
-| Cookie consent dismissal | No | No | No | Yes |
-| Background service worker | Yes | No | Yes | Yes |
-| Cost | Free | Free | Free/Paid | Free/PRO |
-| Zero telemetry | Yes | Yes | Partial | Yes |
-
-SuperchargePerformance covers ad blocking, tracker blocking, and cosmetic filtering — but it bundles them with tab suspension, a RAM dashboard, and cookie consent dismissal rather than focusing exclusively on filter coverage. Its 186K+ DNR rules from 22 sources (compiled March 2026) block ads, trackers, analytics scripts, fingerprinting libraries, and malware domains. Cosmetic filtering hides ad containers, newsletter popups, and paywall overlays via universal and site-specific CSS rules. Per-domain whitelist rules let you toggle individual features (blocking, suspension, scripts) per site. The scope is broader than a pure ad blocker; the blocking depth is narrower than uBlock Origin's filter list coverage.
-
-## uBlock Origin: Still the Best Single Extension
-
-Maximum blocking coverage in a single free extension. The MV3 migration preserved what mattered: cosmetic filtering hides ad containers that load from domains not in any blocklist, dynamic rules let you set per-site blocking levels, and the element picker handles edge cases. The service worker has a small but real memory footprint — measured in single-digit MB on most machines.
-
-The developer is gorhill, the same person who built the original. The filter lists update automatically. There's no paid tier, no account, and the extension has been audited repeatedly by the security community.
-
-Install it if you want the most comprehensive content blocking Chrome can offer at zero cost.
-
-## uBlock Origin Lite: When Overhead Matters
-
-Zero persistent processes. Chrome evaluates uBOL's DNR rules natively — the extension's service worker only activates when you interact with its popup. On a machine where every background process counts (Chromebook, older laptop, constrained RAM), that matters.
-
-The trade-off is real: no cosmetic filtering means some ad containers load but appear empty. No dynamic rules means you can't create per-site exceptions beyond what the popup offers. For 80% of users, neither limitation surfaces in daily browsing.
-
-Install it if: lightweight blocking with near-zero overhead is the priority, and you don't need per-site customization.
-
-## AdGuard: When You Need More Scope
-
-AdGuard's free tier covers ads and trackers on Chrome similarly to uBlock Origin. The paid tier adds DNS-level blocking (catches requests uBlock Origin misses because they happen before the browser processes them), popup blocking improvements, and parental controls. For users on a home network who want one tool that covers browser and DNS simultaneously, AdGuard's ecosystem is broader.
-
-The privacy trade-off: AdGuard's product is a business with a subscription tier. Their data handling is more complex than uBlock Origin's, which is maintained by an independent developer with no commercial interests in your data.
-
-## When Your Problem Isn't Ads
-
-Ad blocking handles one slice of browser slowness. A page loading 400ms faster because 12 tracker scripts didn't fire is different from Chrome consuming 3GB of RAM across 40 open tabs. Neither uBlock Origin nor AdGuard touches the second problem.
-
-Tab suspension discards inactive tabs from memory using `chrome.tabs.discard()` — the tab stays visible in the tab strip but isn't burning CPU or RAM until you click it. SuperchargePerformance adds that layer: 186K+ DNR rules, configurable suspension timer, 14 auto-protected apps that stay active (Figma, Notion, Slack, Google Docs), a RAM dashboard, and cookie consent auto-dismissal (Chrome Web Store, March 2026). Zero telemetry, 100% local, no account required, Featured badge on CWS.
-
-It runs alongside uBlock Origin without conflict. They solve different problems.
-
-## Which Setup to Use
-
-- Maximum ad blocking, one extension, free: **uBlock Origin**
-- Lightest possible blocker, no background processes: **uBlock Origin Lite**
-- Broadest blocking scope including DNS, fine with a paid tier: **AdGuard**
-- Tab memory + tracker blocking, not worried about display ads: **SuperchargePerformance** alone
-- Full ad blocking + tab memory management: **uBlock Origin + SuperchargePerformance** (complementary, no conflicts)
-- Maximum everything, willing to switch browsers: **Firefox + uBlock Origin** (Firefox still supports MV2, zero MV3 constraints)
-
-#### FAQ
-Q: What is the best ad blocker for Chrome in 2026?
-A: As of March 2026, most major ad blockers work on Chrome MV3 — uBlock Origin, AdGuard, Ghostery, Adblock Plus, and others. uBlock Origin (v1.70.0) has the deepest filter coverage. uBlock Origin Lite is the zero-overhead option. AdGuard adds DNS-level protection. SuperchargePerformance combines ad blocking (186K+ DNR rules) with tab suspension in a single extension.
-
-Q: Does uBlock Origin still work on Chrome 146 in 2026?
-A: Yes. As of March 2026, uBlock Origin is available on the Chrome Web Store at version 1.70.0, updated March 11, 2026. Chrome disabled Manifest V2 extensions in mid-2025, but gorhill migrated uBlock Origin to MV3. It works on Chrome 146 alongside uBlock Origin Lite.
-
-Q: What is the difference between MV3 and MV2 ad blocking on Chrome?
-A: As of March 2026, Chrome's Manifest V3 replaced the webRequest API with declarativeNetRequest (DNR). Under MV2, extensions intercepted every network request at runtime. Under MV3, extensions submit static rule sets that Chrome's engine evaluates natively. This limits dynamic filtering but the best MV3 blockers — uBlock Origin and AdGuard — adapted well and remain effective.
-
-Q: Is SuperchargePerformance a replacement for uBlock Origin?
-A: SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), cosmetic filtering (universal + site-specific CSS), and per-domain whitelist rules. It covers ads, trackers, analytics, fingerprinting, and malware. The difference from uBlock Origin is scope: SuperchargePerformance also handles tab suspension, a RAM dashboard, and cookie consent — while uBlock Origin has deeper filter list coverage and the network request logger. Both can run together without conflict.
-
-Q: Which Chrome ad blocker uses the least memory in 2026?
-A: As of March 2026, uBlock Origin Lite uses near-zero memory because it has no background service worker — Chrome evaluates its DNR rules natively with no extension code running. uBlock Origin (full) has a small service worker overhead. AdGuard and SuperchargePerformance both have small resource footprints. None of them are significant RAM consumers on modern hardware.
 
 ---
 
@@ -3549,7 +4551,7 @@ A tab suspended via SuperchargePerformance retains roughly 5MB of metadata. The 
 
 The extension's background process still runs. But the per-tab injection cost across inactive tabs drops to zero for every tab that gets suspended.
 
-SuperchargePerformance suspends inactive tabs after a configurable inactivity timer (15 minutes at level 1, 5 minutes at level 2), using Chrome's `chrome.tabs.discard()` API. It skips tabs where audio is playing, pinned tabs, tabs with unsaved form inputs, and 14 auto-protected web apps (Figma, Notion, Slack, Gmail, and others). It also blocks ads and trackers via 186,000 declarativeNetRequest rules (compiled March 2026), which prevents resource-heavy ad scripts from loading into active tabs in the first place — reducing how much content scripts from ad-network extensions even have to process.
+SuperchargePerformance suspends inactive tabs after a configurable inactivity timer (15 minutes at level 1, 5 minutes at level 2), using Chrome's `chrome.tabs.discard()` API. It skips tabs where audio is playing, pinned tabs, tabs with unsaved form inputs, and 15 auto-protected web apps (Figma, Notion, Slack, Gmail, and others). It also blocks ads and trackers via 186,000 declarativeNetRequest rules (compiled March 2026), which prevents resource-heavy ad scripts from loading into active tabs in the first place — reducing how much content scripts from ad-network extensions even have to process.
 
 The RAM dashboard in the popup shows per-tab and total session savings, so you can verify the actual impact.
 
@@ -3660,7 +4662,7 @@ SuperchargePerformance uses the same `chrome.tabs.discard()` API as Chrome Memor
 
 Key factual differences:
 - Skips tabs where `tab.audible` is true (audio playing), pinned tabs, frozen tabs, and tabs with unsaved form inputs
-- Auto-protects 14 common web apps (Figma, Notion, Slack, etc.) from suspension (verified March 2026)
+- Auto-protects 15 common web apps (Figma, Notion, Slack, etc.) from suspension (verified March 2026)
 - Shows RAM saved per suspended tab and total session savings in the popup dashboard
 - Adds declarativeNetRequest-based ad and tracker blocking, which reduces active tab memory independently of suspension
 - All processing is local — zero outbound network requests
@@ -4607,7 +5609,7 @@ As of March 2026, uBlock Origin v1.70.0 is available on the Chrome Web Store wit
 > **Key takeaways**
 > - **uBlock Origin v1.70.0 is live on the Chrome Web Store** as of March 11, 2026 — gorhill migrated it to MV3.
 > - If your copy stopped during the MV2 transition, **uninstall and reinstall from CWS**. It is not gone or replaced.
-> - For tab suspension and RAM management alongside blocking, **add SuperchargePerformance**. The two are complementary.
+> - For tab suspension, video ad blocking, and RAM management, **SuperchargePerformance** covers ads, trackers, video ads, popups, cookies, and tabs in one extension. Running both risks Chrome's shared rule budget.
 
 If uBlock Origin stopped working in Chrome during 2025, the MV2-to-MV3 transition was the cause — Chrome disabled Manifest V2 extensions starting with Chrome 138. But the story has moved on. gorhill migrated uBlock Origin to MV3, and as of March 2026, the full extension is back on the Chrome Web Store at version 1.70.0 (updated March 11, 2026). If your copy is still broken, uninstall it and reinstall from CWS.
 
@@ -4648,7 +5650,7 @@ uBlock Origin handles ad and tracker blocking. It does not suspend tabs, manage 
 
 uBlock Origin handles ads and trackers. It does not suspend inactive tabs, show RAM usage, or manage tab lifecycle. If you run 20+ tabs regularly, the memory problem isn't just what loads in each tab — it's how many tabs stay loaded.
 
-SuperchargePerformance covers that gap: tab suspension via `chrome.tabs.discard()` with a configurable timer, 186K+ DNR rules for tracker and malware blocking (compiled March 2026), cookie consent auto-dismissal on 100+ sites, a per-tab RAM savings dashboard, and 14 auto-protected web apps. Zero telemetry, 100% local, no account. It runs alongside uBlock Origin — the two handle different problems.
+SuperchargePerformance covers that gap: tab suspension via `chrome.tabs.discard()` with a configurable timer, 186K+ DNR rules for tracker and malware blocking (compiled March 2026), cookie consent auto-dismissal on 100+ sites, a per-tab RAM savings dashboard, and 15 auto-protected web apps. Zero telemetry, 100% local, no account. A note on running both: Chrome enforces a shared rule budget across all extensions. SuperchargePerformance uses 100K+ rules at its default setting; uBlock uses 60–100K+. Running both can exceed Chrome's shared pool of ~150K rules, causing rulesets to be silently dropped. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, malware, and phishing — for most users, it replaces uBlock's blocking entirely while adding video ads, popups, cookies, and tab suspension on top.
 
 ## Which Setup Makes Sense
 
@@ -4656,7 +5658,7 @@ SuperchargePerformance covers that gap: tab suspension via `chrome.tabs.discard(
 - Want maximum ad blocking on Chrome → uBlock Origin (full) or AdGuard
 - Want lightweight blocking with zero overhead → uBlock Origin Lite
 - Want tab suspension + tracker blocking in one tool → SuperchargePerformance
-- Want both → uBlock Origin for ads + SuperchargePerformance for tabs (they're complementary)
+- Want ads + video ads + tabs + RAM in one extension → SuperchargePerformance (covers all four without needing uBlock)
 
 ## Related Articles
 
@@ -4752,21 +5754,21 @@ Install it if: you want lightweight tracker and ad blocking with minimal resourc
 | uBlock Origin (v1.70.0) | Full MV3 | Yes | No | Small | Free |
 | uBlock Origin Lite | Declarative only | No | No | Near zero | Free |
 | AdGuard for Chrome | Full MV3 | Partial | No | Small | Free/Paid |
-| SuperchargePerformance | Tracker/malware DNR | No | Yes | Small | Free/PRO |
+| SuperchargePerformance | Yes (186K+ DNR rules, 3 tiers) | Yes (universal + site-specific) | Yes | Small | Free/PRO |
 
 ## When You Need More Than Ad Blocking
 
 Ad blocking handles one slice of browser performance. If you also have 20+ tabs draining RAM, neither uBO version addresses that — their scope is content filtering, not tab lifecycle management.
 
-Tab suspension (discarding inactive tabs to free memory), RAM dashboards, and cookie consent auto-dismissal are a separate layer. SuperchargePerformance covers that layer: 186,000+ DNR rules for tracker and malware blocking (compiled March 2026), tab suspension via `chrome.tabs.discard()` with a configurable timer, 14 auto-protected web apps (Figma, Notion, Slack), and a per-tab RAM savings dashboard. Zero telemetry, 100% local, no account, Featured badge on CWS.
+Tab suspension (discarding inactive tabs to free memory), RAM dashboards, and cookie consent auto-dismissal are a separate layer. SuperchargePerformance covers that layer: 186,000+ DNR rules for tracker and malware blocking (compiled March 2026), tab suspension via `chrome.tabs.discard()` with a configurable timer, 15 auto-protected web apps (Figma, Notion, Slack), and a per-tab RAM savings dashboard. Zero telemetry, 100% local, no account, Featured badge on CWS.
 
-It runs alongside uBlock Origin without conflict — uBO handles ads, SuperchargePerformance handles tabs and trackers.
+If you already run uBlock Origin: SuperchargePerformance's ad blocking overlaps significantly with uBlock's coverage, and Chrome's shared rule budget means running both at full strength can cause rulesets to be silently dropped. For the best setup, either use SuperchargePerformance alone (it covers ads, trackers, video ads, popups, cookies, and tab suspension) or keep uBlock for website ads and set Perf's content blocking to Off so it handles only video ads, popups, cookies, and tab memory.
 
 ## Which Setup to Choose
 
 - Maximum ad blocking, single extension: **uBlock Origin** (full)
 - Lightweight blocking, minimal resource use: **uBlock Origin Lite**
-- Ad blocking + tab suspension + RAM savings: **uBlock Origin + SuperchargePerformance** (complementary)
+- Ad blocking + video ads + tab suspension + RAM savings: **SuperchargePerformance** alone (covers all four; running uBlock alongside risks Chrome's shared rule budget)
 - Tracker/performance focus, no ad blocker needed: **SuperchargePerformance** alone
 - Maximum everything, don't mind a different browser: **Firefox + uBlock Origin** (Firefox's MV2 support means zero MV3 constraints)
 
@@ -4781,7 +5783,7 @@ Q: Should I use uBlock Origin or uBlock Origin Lite?
 A: Use uBlock Origin (full) if you want maximum blocking coverage and don't mind a small resource overhead. Use uBlock Origin Lite if you want the lightest possible blocker with zero background processes. Both are free, by the same developer, and available on the Chrome Web Store as of March 2026.
 
 Q: Is SuperchargePerformance a replacement for uBlock Origin?
-A: SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), cosmetic filtering, and per-domain whitelist rules — alongside tab suspension and a RAM dashboard. The difference is scope: uBlock Origin focuses exclusively on content filtering with deeper filter lists. SuperchargePerformance combines blocking with tab lifecycle management. Both can run together without conflict.
+A: SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), cosmetic filtering, and per-domain whitelist rules — alongside tab suspension and a RAM dashboard. The difference is scope: uBlock Origin focuses exclusively on content filtering with deeper filter lists. SuperchargePerformance combines blocking with tab lifecycle management. Running both is possible but not ideal. Chrome enforces a shared rule budget across extensions — combined, the two can exceed Chrome's global pool, causing rulesets to silently fail. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, and malware comprehensively. If you keep uBlock, set Perf's content blocking to Off and use it for video ads, popups, cookies, and tab suspension.
 
 ---
 
@@ -5027,129 +6029,6 @@ A: As of March 2026, Zen Browser's standout features are vertical tabs by defaul
 
 Q: How do you get Zen Browser features in Chrome?
 A: As of March 2026, Chrome 146 includes native vertical tabs (enable via chrome://flags). SuperchargeNavigation adds named workspaces, session time-travel (50 auto-snapshots), an Alt+K command bar, and Shift+Click peek previews. SuperchargePerformance adds 186K+ blocking rules and a RAM dashboard. Both extensions are free with no account required.
-
----
-
-### 7 BEST Vertical Tab Managers for Chrome (2026, Tested)
-
-URL: https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/
-Category: guide | Extension: navigation | Updated: 2026-03-18
-Description: Chrome 146 ships native vertical tabs — but no workspaces or keyboard search. We tested 7 vertical tab managers to find which fills the gaps in 2026.
-
-Chrome 146 shipped native vertical tabs on March 12, 2026, hidden behind a flag at `chrome://flags/#vertical-tabs`. The built-in version covers basic tab listing but lacks workspaces, session management, and tab search — features still exclusive to extensions.
-
-> **Key takeaways**
-> - Chrome 146 ships native vertical tabs, but they're a **flat list with no workspaces or session recovery**.
-> - **Vertical Tabs by nicedoc.io leads by install count** (~100K users) for pure sidebar replacement in Chrome.
-> - SuperchargeNavigation is the **only option pairing vertical tabs with named workspaces**, 50 snapshots, and Alt+K.
-
-The horizontal tab bar was designed for 5-10 tabs. At 50+, you're working with truncated titles, no visual hierarchy, and constant hunting. Vertical tab managers move that list to a sidebar where full titles, favicons, and group structures are actually readable.
-
-Chrome 146 (March 12, 2026) shipped native vertical tabs in the stable channel — available via `chrome://flags`. It's a clean sidebar with tab group support, but no workspaces or session recovery. Here's where each option stands in 2026.
-
-## Chrome's Native Vertical Tabs: Status
-
-Chrome 146 (stable March 2026) shipped vertical tabs. Enable via `chrome://flags` → search "Vertical Tabs" → restart Chrome. Then switch in Settings → Appearance → Tab strip position.
-
-| Capability | Chrome Native Vertical Tabs |
-|-----------|---------------------------|
-| Collapsible sidebar | Yes |
-| Tab group integration | Yes |
-| Named workspaces | No |
-| Session recovery | No |
-| Keyboard search | No |
-| Bulk tab actions | No |
-| Time-travel snapshots | No |
-| Per-tab notes | No |
-
-For casual users who just want tabs in a sidebar, the native implementation will be enough. For anyone switching between multiple projects, running research sessions, or doing anything that benefits from saved workspaces and keyboard search, extensions are still the only option.
-
-## Extensions Ranked
-
-### 1. Vertical Tabs (nicedoc.io)
-
-**4.4 stars | ~100K users | Free**
-
-The market leader by install count. Clean UI with tab group support, drag-and-drop reordering, and tab search. No workspace saving, no session recovery, and no keyboard shortcuts beyond the extension's own interface. Best for users who want a reliable, simple sidebar without additional features.
-
-### 2. Vertical Tabs in Side Panel
-
-**4.5 stars | ~20K users | Free**
-
-Higher rating than nicedoc.io, with better theme support and smoother drag-and-drop. Still focused on the sidebar view without deep session management. A strong choice if visual polish matters more than features.
-
-### 3. SideTab Pro
-
-**4.5 stars | Free/Pro**
-
-Arc-inspired design that combines tabs, bookmarks, and reading list in a single panel. The most feature-complete single-panel experience among pure vertical tab extensions. More complex to configure than the options above.
-
-### 4. SuperchargeNavigation
-
-**Free on Chrome Web Store**
-
-Where other extensions focus on the vertical tab panel itself, SuperchargeNavigation treats it as the anchor for a broader workflow system:
-
-- **Named workspaces** — save and restore complete tab sets by name, switch between project contexts instantly
-- **Session time-travel** — 50 auto-snapshots every 5 minutes, rewind to any earlier state with a slider (verified March 2026)
-- **Alt+K command bar** — search open tabs, bookmarks, and history from anywhere in Chrome
-- **Glance/Peek preview** — Shift+Click any link to preview it in an overlay without leaving the page
-- **Smart grouping** — auto-group by domain (Alt+G), bulk multi-select, tab lock, tab deduplication
-- **Mouse gestures** — rocker navigation (back/forward), Super Drag to open links in background
-- **Scroll gestures** — Alt+Scroll to switch tabs, Shift+Scroll to cycle within active group
-- **Zero telemetry, 100% local storage**
-
-Best for power users who have outgrown simple vertical tab views and want Arc-style workspaces and session recovery in Chrome.
-
-### 5. Sidebery (Firefox only)
-
-**4.9 stars | ~400K users | Free, open source**
-
-The benchmark for what a tab sidebar can be. Tree-style tab nesting, Firefox container support, deep customization. Firefox only — mentioned here because it's what Chrome users are often trying to approximate.
-
-### 6. Tree Style Tab (Firefox only)
-
-**4.7 stars | ~600K users | Free, open source**
-
-The original. Largest user base, mature ecosystem, extensive community themes. Also Firefox only.
-
-## Full Comparison Table
-
-| Extension | Browser | Rating | Workspaces | Session Recovery | Keyboard Search | Price |
-|-----------|---------|--------|-----------|-----------------|----------------|-------|
-| Vertical Tabs (nicedoc.io) | Chrome | 4.4 | No | No | No | Free |
-| Vertical Tabs in Side Panel | Chrome | 4.5 | No | No | No | Free |
-| SideTab Pro | Chrome | 4.5 | Partial | No | No | Free/Pro |
-| SuperchargeNavigation | Chrome | Chrome Web Store | Yes | Yes (time-travel) | Yes (Alt+K) | Free |
-| Chrome Native | Chrome | Built-in | No | No | No | Free |
-| Sidebery | Firefox | 4.9 | No | No | No | Free |
-| Tree Style Tab | Firefox | 4.7 | No | No | No | Free |
-
-## How to Choose
-
-| Your situation | Best option |
-|---------------|------------|
-| Want basic vertical tabs, nothing else | Vertical Tabs (nicedoc.io) |
-| Want the best-looking sidebar | Vertical Tabs in Side Panel |
-| Want tabs + bookmarks + reading list in one panel | SideTab Pro |
-| Want workspaces, session recovery, and keyboard navigation | SuperchargeNavigation |
-| On Firefox | Sidebery |
-| Do not need workspaces | Chrome native (enable via chrome://flags) |
-
-## Related Articles
-
-- [Toby Alternative: Free Tab Manager Without Limits](/library/toby-alternative/) — for users coming from card-grid tab organizers
-- [Cluster Tab Manager Alternative](/library/cluster-tab-manager-alternative/) — for users who lost their setup when Cluster was removed
-
-#### FAQ
-Q: Will Chrome's native vertical tabs replace extensions?
-A: For basic use, probably. Chrome 146 (March 2026) shipped native vertical tabs — a collapsible sidebar with tab group integration, enabled via chrome://flags. It does not save workspaces, recover sessions, or offer keyboard search — so power user extensions remain more capable.
-
-Q: Are vertical tab extensions safe?
-A: The extensions reviewed here are established and actively maintained. Any tab extension needs tab list access to function. Check the Chrome Web Store permissions dialog and privacy policy for any extension before installing.
-
-Q: What happened to Arc and Arcify?
-A: Arc Browser stopped development in late 2025. Arcify is still available on the Chrome Web Store (v5.0.0, February 2026) and replicates Arc-style spaces with tab groups. SuperchargeNavigation offers a different approach — named workspaces with session recovery and a command bar.
 
 ---
 
@@ -5875,7 +6754,7 @@ If you use Chrome primarily for casual browsing, the 186,000+ rules in Superchar
 
 ## Auto-Protected Apps: What Does Not Get Suspended
 
-SuperchargePerformance automatically skips suspension for 14 web apps where unexpected reloads cause data loss:
+SuperchargePerformance automatically skips suspension for 15 web apps where unexpected reloads cause data loss:
 
 Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Microsoft Teams, Google Docs, Google Sheets, Google Slides.
 
@@ -5991,7 +6870,7 @@ SuperchargePerformance layers protection logic on top of `chrome.tabs.discard()`
 - Skips tabs where audio is playing (`tab.audible`)
 - Skips pinned tabs
 - Skips tabs with active form input
-- Auto-protects 14 web apps — Figma, Notion, Slack, Google Docs, and others — by default
+- Auto-protects 15 web apps — Figma, Notion, Slack, Google Docs, and others — by default
 - Shows per-tab RAM savings and total session savings in the popup
 
 ### Ad and Tracker Blocking
@@ -6241,109 +7120,6 @@ A: No. As of Chrome 146 (March 2026), native tab scrolling has not returned. Goo
 
 ---
 
-### Arc Browser Is Dead: 6 Features to Replicate in Chrome (2026)
-
-URL: https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/
-Category: guide | Extension: navigation | Updated: 2026-03-14
-Description: Arc entered maintenance mode in 2025. 6 of its best features (spaces, command bar, peek, vertical tabs) replicate in Chrome today without switching browsers.
-
-Arc Browser stopped active development in May 2025. Its signature features — vertical tabs, split views, workspaces, and a command bar — can all be replicated in Chrome using a combination of extensions and Chrome 146's native vertical tab support.
-
-> **Key takeaways**
-> - **The Browser Company stopped Arc development in May 2025** and pivoted to Dia, an AI-first product acquired by Atlassian for $610M.
-> - **Most of Arc's core workflow maps directly onto Chrome**: vertical tabs, named workspaces, command bar, Shift+Click peek previews.
-> - **Little Arc mini windows have no Chrome equivalent** — everything else is covered by Chrome 146 plus SuperchargeNavigation.
-
-Arc Browser changed how a lot of people think about tabs. The sidebar, Spaces, the Command Bar — these were not incremental improvements. They were a fundamentally different way to use a browser. When The Browser Company announced in May 2025 that Arc was entering maintenance mode, the reaction from users was not indifference. It was grief.
-
-This article is for those users: people who used Arc daily, loved what it built, and now need an arc browser alternative for Chrome that does not require giving up years of configured extensions.
-
-## What Happened to Arc
-
-The Browser Company launched Arc publicly around 2023 and built a devoted following by rethinking browser UX from the ground up. Vertical tabs by default. Spaces for named workspaces. A Command Bar that replaced the omnibox. Little Arc for quick-lookup mini windows. Boosts for site customization. It felt like someone had finally taken the tab problem seriously.
-
-In May 2025, TBC announced Arc was moving to maintenance mode. The team was pivoting entirely to Dia, an AI-first browser that launched publicly in October 2025. In September 2025, Atlassian acquired The Browser Company for $610M — and the focus moved firmly onto Dia.
-
-Arc still works, but for practical purposes Arc is dead as an actively developed product. It receives no new features, and its development community has effectively disbanded. Some third-party Arc tooling remains — Arcify (v5.0.0, available on CWS as of February 2026) replicates Arc-style spaces using Chrome tab groups — but Arc's original ecosystem is gone.
-
-The community response is pragmatic. Most long-term Arc users are not looking for another browser to fall in love with. They are looking for a way to stay on stable, extension-supported Chrome while keeping the workflow features that made Arc worth using.
-
-## Why Not Just Switch to Zen or Dia
-
-For Chrome users, the main problem with Zen Browser is the one Zen can't solve: it's Firefox-based. Chrome extensions don't work in Firefox. If you've spent years configuring extensions, or work in an environment that requires Chromium, Zen ends the conversation before it starts. It's good software — vertical tabs, workspaces, a Glance peek feature that closely mirrors Arc's design philosophy — but "switch to a different browser with a different extension ecosystem" isn't an answer to "I want to keep using Chrome."
-
-The most common complaint about Zen in Arc migration threads is: "I love it but I need my Chrome extensions."
-
-Dia, TBC's new product, is an AI-first tool with a fundamentally different purpose, not an arc browser replacement for tab and workspace management. Arc users who have tried it generally report the same conclusion. The practical path for most Arc migrants is Chrome with the right extensions.
-
-## What You Can and Cannot Replicate in Chrome
-
-Some Arc features have direct Chrome equivalents. Others do not.
-
-| Arc Feature | Chrome Equivalent | How |
-|---|---|---|
-| Vertical tabs | Yes | Chrome 146 native or SuperchargeNavigation |
-| Named workspaces (Spaces) | Yes | SuperchargeNavigation |
-| Command Bar | Yes | SuperchargeNavigation (Alt+K) |
-| Peek / Glance preview | Yes | SuperchargeNavigation (Shift+Click) |
-| Session snapshots | Yes | SuperchargeNavigation (50 auto-saves) |
-| Tab search | Yes | SuperchargeNavigation |
-| Mouse gestures | Yes | SuperchargeNavigation |
-| Little Arc (mini windows) | No | No Chrome equivalent |
-| Boosts (custom CSS/JS) | Partial | Stylus + UserScripts (separate extensions) |
-| Split View | Partial | Chrome native split screen (basic) |
-| Automatic tab archiving | Yes | SuperchargeNavigation (auto-close by age) |
-
-Little Arc is the feature with no equivalent. The concept — opening a small, transient browser window for a quick lookup that does not pollute your main tab environment — does not map onto Chrome's extension API surface. If Little Arc is why you used Arc, you will miss it.
-
-Boosts can be approximated with Stylus for CSS customization and a UserScripts manager for JavaScript, but this requires manually setting up rules per site rather than Arc's integrated flow.
-
-For the core workflow — tabs organized vertically, grouped into named workspaces, with fast navigation and session persistence — Chrome can match it.
-
-## Vertical Tabs in Chrome 146
-
-Chrome 146 includes native vertical tabs. You can enable them through the browser's built-in settings without any extension. They appear in the left sidebar and can be collapsed.
-
-The native implementation covers the basics: a list of tabs on the left, organized vertically, with a toggle to collapse the sidebar. What it does not include is workspace separation, tab search across all tabs, session snapshots, or any of the navigation shortcuts Arc users are used to. It is a structural improvement over the horizontal tab strip, but it is not an Arc Spaces replacement.
-
-For users who only wanted vertical tabs and nothing else, the native implementation in Chrome 146 is sufficient and requires no additional software.
-
-## Getting Workspaces, Command Bar, and Peek Previews
-
-For the fuller Arc workflow, SuperchargeNavigation is a single extension that covers the remaining surface area.
-
-**Workspaces.** Arc's Spaces were named, persistent tab groups — you could have a Work space, a Personal space, a Research space, each with its own tabs that did not bleed into each other. For anyone searching how to get arc workspaces in Chrome, SuperchargeNavigation is the direct equivalent. Each workspace holds its own tabs independently. Switching between workspaces switches the entire tab context, not just a filter view. Sessions are automatically snapshotted every time you switch — 50 saves with a time-travel slider — so you can recover a workspace state from earlier in the day if something goes wrong.
-
-**Command Bar.** Arc's Command Bar (Cmd+T) let you search open tabs, history, bookmarks, and actions from a single keyboard-driven interface. SuperchargeNavigation's command bar opens with Alt+K and searches across open tabs, recently closed tabs, and saved sessions. It is keyboard-first: type to filter, arrow keys to navigate, Enter to open. If you built Arc muscle memory around not touching the mouse for tab switching, this is the closest equivalent in Chrome.
-
-**Peek previews.** Arc's Glance feature let you hover over a link to preview the destination page in a floating overlay, without opening a new tab. SuperchargeNavigation maps this to Shift+Click: hold Shift and click any link to open it in a peek overlay. The overlay closes when you click away, and the tab is not added to your workspace unless you explicitly keep it.
-
-**Tab search.** Arc made it fast to find any open tab by typing. SuperchargeNavigation includes fuzzy search across all open tabs in the sidebar. If you have 40 tabs across three workspaces and you need the one with a specific article, you type a fragment of the title and it surfaces immediately.
-
-**Session recovery.** Arc remembered what you had open. SuperchargeNavigation's snapshot system stores up to 50 workspace states automatically. If Chrome crashes or you accidentally close a workspace, you can restore it from the snapshot history without any manual backup.
-
-## What to Expect if You Are Coming From Arc
-
-The transition is not frictionless. Arc had a level of UI polish and integration that extensions cannot fully match. The side panel in Chrome is a panel alongside the browser, not a redesigned shell around it. The command bar is powerful but does not have Arc's speed of launch. Peek previews require Shift+Click rather than a hover gesture.
-
-These are real differences. Arc's design team built something that felt native in a way that extensions, by definition, cannot fully replicate. If your priority is that specific aesthetic, Zen Browser is probably a better fit even with the extension trade-off.
-
-If your priority is staying on Chrome — keeping your extensions, your profiles, your enterprise compatibility — and recovering as much of Arc's workflow as possible, the combination of Chrome 146's native vertical tabs and SuperchargeNavigation covers most of the functional surface area.
-
-Arc set a high bar. The right response to its maintenance mode isn't to accept the horizontal tab strip as the status quo. Chrome 146 has [native vertical tabs](/library/chrome-146-vertical-tabs-vs-extensions/). SuperchargeNavigation adds workspaces, a command bar, and session recovery. The functional case for staying on Chrome is solid. Whether it feels the same as Arc is a different question — and it won't.
-
-#### FAQ
-Q: Is Arc Browser shutting down?
-A: Arc entered maintenance mode in May 2025. Atlassian acquired The Browser Company in September 2025 for $610M. The team is now focused on Dia, an AI-first browser. Arc still works but receives no new features.
-
-Q: Can I get Arc features in Chrome without switching browsers?
-A: Yes. Chrome extensions can replicate most Arc features: vertical tabs via Chrome 146 native or extensions, workspaces via SuperchargeNavigation, command bar via Alt+K, and peek previews via Shift+Click. The main Arc feature with no Chrome equivalent is Little Arc (mini browser windows).
-
-Q: What is the best Arc replacement that uses Chrome?
-A: For users who want to stay on Chrome, SuperchargeNavigation replicates the most Arc features in a single extension: vertical tabs, named workspaces, session snapshots, command bar, and peek previews. It is free and requires no account.
-
----
-
 ### Chrome 146 Vertical Tabs vs Extensions: Real Data (2026)
 
 URL: https://www.superchargebrowser.com/library/chrome-146-vertical-tabs-vs-extensions/
@@ -6543,7 +7319,7 @@ The best-case scenario is not just "either or." It is blocking reducing the acti
 
 SuperchargePerformance handles both sides through a single extension install.
 
-**Tab suspension** uses a configurable inactivity timer — 5 or 15 minutes by default. Tabs are suspended proactively before memory pressure builds, not reactively after Chrome is already slow. The extension skips tabs where audio is playing, tabs that are pinned, tabs that have unsaved form inputs, and 14 common web apps (Figma, Notion, Slack, Miro, and others) that break when discarded. The popup dashboard shows per-tab RAM savings and total session savings.
+**Tab suspension** uses a configurable inactivity timer — 5 or 15 minutes by default. Tabs are suspended proactively before memory pressure builds, not reactively after Chrome is already slow. The extension skips tabs where audio is playing, tabs that are pinned, tabs that have unsaved form inputs, and 15 common web apps (Figma, Notion, Slack, Miro, and others) that break when discarded. The popup dashboard shows per-tab RAM savings and total session savings.
 
 **Content blocking** uses 186,000 `declarativeNetRequest` rules compiled from 22 open-source filter lists (compiled March 2026). Blocking operates at three levels:
 
@@ -6806,7 +7582,7 @@ SuperchargePerformance uses the same `chrome.tabs.discard()` call but layers dec
 - Skips pinned tabs
 - Skips tabs with active form input
 - Skips tabs flagged as frozen (Chrome 132+)
-- Auto-protects 14 common web apps — Figma, Notion, Slack, Gmail, and others — from suspension by default (verified March 2026)
+- Auto-protects 15 common web apps — Figma, Notion, Slack, Gmail, and others — from suspension by default (verified March 2026)
 - Shows RAM freed per suspended tab and total session savings in the popup
 
 Beyond suspension, SuperchargePerformance also [blocks ads and trackers](/library/chrome-ad-blocker-saves-ram/) via declarativeNetRequest rules. This reduces the memory cost of active tabs independently of suspension — ads and third-party scripts that never load cannot consume RAM. The memory savings table above does not account for this; active tab footprints in practice are lower with ad blocking enabled.
@@ -7677,113 +8453,6 @@ A: Use whichever codec your GPU can hardware-decode. Check by right-clicking a v
 
 ---
 
-### BEST Great Suspender Alternative in 2026 (MV3, Tested)
-
-URL: https://www.superchargebrowser.com/library/great-suspender-alternative/
-Category: comparison | Extension: performance | Updated: 2026-03-12
-Description: The Great Suspender was pulled for malware in 2021. MV3 forks patch slowly. We compared them to actively maintained tab suspenders: MV3, zero telemetry, free.
-
-> **Key takeaways**
-> - The original Great Suspender was **removed from Chrome Web Store for malware in 2021**. Its MV3 forks still work but rely on volunteers.
-> - Forks show a custom suspension page. **`chrome.tabs.discard()` suspends invisibly** and never breaks the back button.
-> - **Active maintenance matters**: Chrome ships every 4 weeks, and a fork unupdated for 12 months accumulates silent failures.
-
-If you used The Great Suspender for years and are looking for a tab suspender that works on current Chrome versions, this page covers what happened to the original, the state of its forks, and how SuperchargePerformance compares as a replacement.
-
-## What Happened to The Great Suspender
-
-The Great Suspender was trusted by over 2 million Chrome users (Chrome Web Store, pre-removal). In late 2020, the original developer sold it to an unknown buyer. The new owner introduced malware — silently collecting user data and executing remote code. Google removed it from the Chrome Web Store shortly after.
-
-Community forks emerged to fill the gap. The most notable are The Marvellous Suspender and Great Suspender Reloaded. Both removed the malicious code and have since migrated to MV3 — Chrome disabled MV2 for standard users at Chrome 138 in mid-2025.
-
-## The Great Suspender Forks in 2026
-
-Chrome disabled Manifest V2 extensions for standard users beginning with Chrome 138. The original Great Suspender was removed for malware and never returned. The forks have continued:
-
-| Extension | MV Version | Status (March 2026) |
-|-----------|-----------|---------------------|
-| The Great Suspender (original) | MV2 | Removed from CWS (malware) |
-| The Marvellous Suspender | MV3 (v8.1.3) | Active on CWS (updated Dec 2025) |
-| Great Suspender Reloaded | MV3 | Active on CWS |
-| SuperchargePerformance | MV3 | Active, stable |
-
-## How MV3 Tab Suspension Works
-
-SuperchargePerformance uses `chrome.tabs.discard()`, Chrome's native tab lifecycle API. This differs from The Great Suspender's approach in one important way: instead of replacing the tab's content with a custom suspension page, the discard API makes suspension invisible. The tab stays in the tab bar with its favicon and title. Clicking it reloads the page naturally. There is no custom suspension screen to navigate around, and the back button is unaffected.
-
-The Great Suspender's custom suspension page had a few practical drawbacks worth knowing about. It broke the browser back button in some configurations — the suspension page itself became a history entry, so pressing back would navigate to another suspended screen rather than the previous site. Scroll position was also lost, meaning tabs that reloaded from a suspension page always opened at the top. And there was a visible interruption: a custom "Tab Suspended" page shown briefly before the real content loaded. Chrome's discard API has none of these issues. The tab memory drops to near zero, clicking the tab triggers a normal reload, and there is no custom screen in between.
-
-## Feature Comparison
-
-| Feature | SuperchargePerformance | Great Suspender Reloaded | Marvellous Suspender |
-|---------|----------------------|------------------------|---------------------|
-| Tab suspension | Yes | Yes | Yes |
-| Suspension mechanism | chrome.tabs.discard() | Custom suspension page | Custom suspension page |
-| MV3 compatible | Yes (stable) | Yes | Yes (v8.1.3) |
-| Audio tab protection | Yes (tab.audible check) | Yes | Yes |
-| Pinned tab protection | Yes | Varies | Varies |
-| Form input protection | Yes | Varies | Varies |
-| Ad blocking | Yes (declarativeNetRequest) | No | No |
-| RAM savings dashboard | Yes | No | No |
-| Preloading | Yes | No | No |
-| Zero data collection | Yes (verified from code) | Unverifiable | Unverifiable |
-| Active maintenance | Yes (2026) | Inconsistent | Volunteer-maintained |
-| Cost | Free core, optional PRO | Free | Free |
-
-## Three Reasons to Switch from a Great Suspender Fork
-
-**1. Maintenance and update cadence.** The Marvellous Suspender (v8.1.3, Dec 2025) and Great Suspender Reloaded are both on MV3 and functional. But volunteer-maintained forks update on a best-effort schedule. SuperchargePerformance is actively maintained on MV3 with regular updates.
-
-**2. Maintenance uncertainty.** Chrome ships a new version every four weeks. A volunteer-maintained extension that hasn't been updated in 12+ months is quietly accumulating silent failures — you often won't know until something stops working.
-
-**3. The ownership history.** The 2020 compromise is worth remembering. Forks removed the malicious code, but the original extension was sold to an unknown buyer who weaponized it against millions of users. That risk doesn't disappear because a fork cleaned up the code.
-
-## What Stays the Same
-
-The core tab suspension behavior from The Great Suspender works identically in SuperchargePerformance:
-
-- Inactive tabs have their memory freed
-- Tabs playing audio are never suspended (checks `tab.audible`)
-- Pinned tabs are protected
-- Tabs with unsaved form inputs are protected
-- Per-site whitelist to exclude domains from suspension
-- Configurable inactivity timers (5 or 15 min on free tier, custom timer on PRO) (verified March 2026)
-
-Everything that was familiar is present, with the addition of ad blocking, memory metrics, and a popup dashboard showing total RAM saved.
-
-## What Happened to The Marvellous Suspender
-
-The Marvellous Suspender forked from the original after the malware incident and has a significant user base. The maintainer migrated to MV3 — as of March 2026, the stable release is v8.1.3 (updated December 2025) on the Chrome Web Store. The project is volunteer-maintained by gioxx. It uses a custom suspension page rather than Chrome's native `chrome.tabs.discard()` API.
-
-## Trust and Security
-
-The Great Suspender's 2020 compromise is an object lesson in extension ownership risk. Popular free extensions with no business model can be sold to unknown buyers who then monetize the user base through silent data collection or remote code execution. It happened to 2 million users who had no idea.
-
-SuperchargePerformance has a clear business model: an optional PRO tier. That removes the incentive to monetize through user data. All code runs locally. There are zero outbound network requests, verified from the codebase. No remote code loading, no analytics, no data transmission to any server.
-
-For volunteer-maintained forks, the code is open source and the malicious code was removed. But open-source code can change between releases, and auditing a fork's latest commit is not something most users do.
-
-## Bottom Line
-
-The Great Suspender is gone, and most of its forks don't run on current Chrome. SuperchargePerformance offers the same tab suspension behavior — tabs stay visible, memory gets freed, audible tabs are protected — on a stable MV3 architecture with active maintenance. The ad blocking and memory dashboard are additions the original never had.
-
-For how SuperchargePerformance compares to other tab management options, see [SuperchargePerformance vs Auto Tab Discard](/library/vs-auto-tab-discard/).
-
-#### FAQ
-Q: Is The Great Suspender safe to use?
-A: The original Great Suspender was removed from Chrome Web Store for malware in 2021. Community forks like The Marvellous Suspender (v8.1.3, MV3) and Great Suspender Reloaded (MV3) are on CWS and functional as of March 2026. They are volunteer-maintained with varying update cadences.
-
-Q: What is the best MV3 tab suspender for Chrome in 2026?
-A: SuperchargePerformance is an actively maintained MV3 tab suspender. It combines tab suspension with ad blocking, a memory dashboard, and preloading — features that Great Suspender forks never offered.
-
-Q: Will Great Suspender forks keep working in Chrome?
-A: The main forks have migrated to MV3 and work on current Chrome. The Marvellous Suspender (v8.1.3, Dec 2025) and Great Suspender Reloaded are both on the Chrome Web Store as of March 2026. Whether they continue receiving timely updates depends on their volunteer maintainers.
-
-Q: How does SuperchargePerformance suspend tabs differently from The Great Suspender?
-A: The Great Suspender replaced the tab's content with a custom suspension page. SuperchargePerformance uses chrome.tabs.discard(), which is invisible — the tab stays in the tab bar, memory is freed, and clicking it reloads naturally without breaking the back button.
-
----
-
 ### Session Buddy Alternative: BEST Private Options (2026)
 
 URL: https://www.superchargebrowser.com/library/session-buddy-alternative-local-safe/
@@ -8562,7 +9231,7 @@ The steps above — disabling Android, auditing extensions, enabling Memory Save
 
 - Suspends idle tabs after 15 minutes (level 1) or 5 minutes (level 2) via `chrome.tabs.discard()`
 - Suspended tabs use near-zero RAM, stay visible in the tab bar, and reload when you click them
-- Automatically protects 14 common web apps (Figma, Notion, Slack) from suspension
+- Automatically protects 15 common web apps (Figma, Notion, Slack) from suspension
 - Ad and tracker blocking reduces RAM and CPU usage from ad-heavy sites, free at all levels
 
 All processing is local. No data leaves your device. On a 4GB Chromebook, having a tab suspender is arguably more valuable than on any other hardware — the RAM-per-tab budget is just that tight.
@@ -8648,7 +9317,7 @@ Note: Disabling hardware acceleration makes the Figma and Framer canvas noticeab
 
 Fix 1 solves this for most people. If you find Chrome still occasionally reloads your design tabs under heavy memory pressure, the extension-level approach is more reliable — Chrome can override its own native list at the OS level, but extension-level whitelists are not subject to the same override.
 
-SuperchargePerformance ships with a built-in protection list of 14 web apps — Figma and Notion are included by default. For Framer, you can add it via the popup:
+SuperchargePerformance ships with a built-in protection list of 15 web apps — Figma and Notion are included by default. For Framer, you can add it via the popup:
 
 1. Open the SuperchargePerformance popup while on the Framer tab
 2. Click the whitelist toggle — the site is excluded from suspension
@@ -10397,7 +11066,7 @@ If the fixes above do not fully solve it, the remaining driver is usually backgr
 
 - **Tab suspension** uses `chrome.tabs.discard()` — a suspended tab stops all network activity, stops writing to cache, and stops IndexedDB updates. Zero disk I/O from that tab.
 - **Ad and tracker blocking** via `declarativeNetRequest` prevents ad network requests from reaching the disk cache in the first place.
-- The extension auto-protects 14 web apps (Figma, Notion, Slack, and others) from suspension, so important tools stay active while idle tabs go quiet.
+- The extension auto-protects 15 web apps (Figma, Notion, Slack, and others) from suspension, so important tools stay active while idle tabs go quiet.
 
 The preload disable and cache clear in Fixes 1–3 cost nothing and should come first. The extension is worth adding if you have many tabs open regularly.
 
@@ -10626,103 +11295,6 @@ A: You can exclude Chrome's cache folder (not the Chrome executable) from real-t
 
 Q: How do I check if MsMpEng.exe is actually causing the CPU spike?
 A: Open Task Manager (Ctrl+Shift+Esc), go to the Details tab, and sort by CPU. If MsMpEng.exe is consistently above 10% when Chrome is open but drops when you close Chrome or suspend background tabs, Defender is scanning Chrome's cache writes.
-
----
-
-### FIX STATUS_ACCESS_VIOLATION in Chrome: 5 Solutions (2026)
-
-URL: https://www.superchargebrowser.com/library/fix-status-access-violation/
-Category: troubleshooting | Extension: performance | Updated: 2026-01-27
-Description: STATUS_ACCESS_VIOLATION crashes Chrome with no warning. It's a memory access error, not malware. Extensions and GPU drivers cause 80% of cases. 5 tested fixes.
-
-> **Key takeaways**
-> - **STATUS_ACCESS_VIOLATION (0xC0000005) is a crash, not a security breach.** A process accessed memory outside its range.
-> - Three causes in order of frequency: **corrupt Chrome profile**, extension code injection conflict, GPU driver bug under load.
-> - Test in Incognito first to rule out extensions. If it crashes on startup, **reset the profile** at `%LOCALAPPDATA%\Google\Chrome\User Data\`.
-
-Chrome crashed with `STATUS_ACCESS_VIOLATION` — error code `0xC0000005`. Despite the alarming name, this is a crash, not a security breach. It means a Chrome process attempted to write to a memory address it does not have permission to access. The most common causes are a buggy extension injecting code before the DOM is ready, a corrupt Chrome user profile, or a GPU driver conflict under heavy tab load.
-
-## Quick Diagnosis
-
-| Symptom | Likely Cause | Fix |
-|---------|-------------|-----|
-| Crash happens on startup or profile load | Corrupt user profile | [Fix 1: Reset user profile](#fix-1-reset-your-chrome-profile) |
-| Crash started after you installed an extension | Extension memory conflict | [Fix 2: Isolate extensions](#fix-2-isolate-extension-conflicts) |
-| Crash happens on GPU-heavy sites (WebGL, video) | GPU driver issue | [Fix 3: Disable hardware acceleration](#fix-3-disable-hardware-acceleration) |
-| Third-party software is listed in chrome://conflicts | Code injection | [Fix 4: Check code injection](#fix-4-check-for-code-injection) |
-| Crash only happens under heavy tab load | Memory pressure | [Fix 5: Reduce memory footprint](#fix-5-reduce-memory-footprint) |
-
-## Fix 1: Reset Your Chrome Profile
-
-Chrome profiles can accumulate corrupt data in `Preferences` or `Web Data` files that trigger access violations on startup — often after a Chrome update or an abrupt shutdown.
-
-1. Close Chrome completely.
-2. Open File Explorer and navigate to `%LOCALAPPDATA%\Google\Chrome\User Data\`.
-3. Rename the `Default` folder to `Default_Backup`.
-4. Relaunch Chrome — it creates a fresh profile automatically.
-5. If the crash stops, your profile was corrupt. Migrate bookmarks by copying the `Bookmarks` file from `Default_Backup` into the new `Default` folder.
-
-## Fix 2: Isolate Extension Conflicts
-
-Extensions that inject code into every page are a frequent cause of memory access violations.
-
-1. Open an **Incognito window** (Ctrl+Shift+N) — extensions are disabled by default.
-2. Browse normally. If the crash does not occur, an extension is the cause.
-3. Go to `chrome://extensions/` and disable all extensions.
-4. Re-enable them one at a time, testing after each, to identify the offending extension.
-5. Update or remove the problematic extension.
-
-## Fix 3: Disable Hardware Acceleration
-
-GPU driver bugs under memory pressure can trigger access violations in Chrome's GPU process.
-
-1. Go to **Settings > System** (`chrome://settings/system`).
-2. Toggle off **Use graphics acceleration when available**.
-3. Click **Relaunch**.
-4. If the crash stops, update your GPU drivers before re-enabling this setting.
-
-## Fix 4: Check for Code Injection
-
-Some antivirus programs and accessibility tools inject DLLs into Chrome processes, which can cause memory conflicts.
-
-1. Navigate to `chrome://conflicts` in your address bar.
-2. Look for any modules listed as **Conflicting** or **Unknown**.
-3. Update or uninstall the software associated with those modules.
-
-## Fix 5: Reduce Memory Footprint
-
-Access violations become more likely when Chrome is competing with other processes for RAM and memory addresses become fragmented.
-
-1. Press **Shift + Esc** to open Chrome Task Manager.
-2. Sort by **Memory** and close tabs or processes you are not using.
-3. Go to **Settings > Performance** and enable **Memory Saver**.
-4. Avoid running Chrome alongside other RAM-intensive applications.
-
-## Reducing Memory Pressure That Triggers Access Violations
-
-If your crashes match the heavy tab load pattern (Fix 5), reducing active renderer processes is the right lever. SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()`, lowering memory pressure and reducing the chance of address space conflicts. Ad and tracker blocking at the network level also reduces the number of scripts running in renderer processes.
-
-For crashes caused by corrupt profiles or specific extension conflicts, the extension is irrelevant — those require the direct fixes above.
-
-## Technical Background
-
-A `STATUS_ACCESS_VIOLATION` is a **General Protection Fault** — the processor detects that a program is attempting to access memory outside its assigned region and raises an exception. Chrome processes each tab in an isolated renderer process, but code injected by extensions or third-party DLLs can break that isolation.
-
-Under high memory load, the operating system may place Chrome's memory pages in regions that become inaccessible due to address space layout randomization (ASLR) conflicts or fragmentation. The violation occurs when a pointer is dereferenced after the underlying memory has been moved or released.
-
-Updating Chrome, keeping GPU drivers current, and minimizing the number of active renderer processes address all three root causes.
-
-For related Chrome stability issues, see [fixing the Aw, Snap crash](/library/fix-aw-snap-crash/) and [fixing STATUS_BREAKPOINT errors](/library/fix-chrome-status-breakpoint-error/).
-
-#### FAQ
-Q: What causes STATUS_ACCESS_VIOLATION in Chrome?
-A: A Chrome process attempted to access memory it does not own. Common causes include a buggy extension injecting code into the DOM, a corrupt Chrome profile, or a GPU driver conflict. Despite the alarming name, it is a crash error, not a security breach.
-
-Q: Is STATUS_ACCESS_VIOLATION a virus?
-A: No. STATUS_ACCESS_VIOLATION is a Chrome crash code (error 0xC0000005) meaning a process tried to read or write memory outside its allocated range. Updating Chrome, disabling extensions one by one, and clearing your Chrome profile data are the standard fixes.
-
-Q: Does this error only happen on Windows?
-A: The STATUS_ACCESS_VIOLATION error code is Windows-specific. macOS and Linux show different crash messages for the same underlying problem (invalid memory access), but the causes and fixes are similar.
 
 ---
 
