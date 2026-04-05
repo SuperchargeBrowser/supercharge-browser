@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-04-02
+> Last updated: 2026-04-05
 > For a summary index, see /llms.txt
 
 ## Products
@@ -1063,6 +1063,742 @@ A: SuperchargeNavigation checks the navigating tab's URL against the URLs of all
 ---
 
 ## Library Articles
+
+### How to Auto-Close Inactive Chrome Tabs (And Why Suspension Is Better)
+
+URL: https://www.superchargebrowser.com/library/auto-close-inactive-chrome-tabs/
+Category: guide | Extension: performance | Updated: 2026-04-05
+Description: Tab Wrangler auto-closes tabs after a timer. But suspension frees the same RAM while keeping tabs in the bar. Here's when each approach makes sense.
+
+> **Key takeaways**
+> - Tab Wrangler (v8.0.0, updated April 2026) auto-closes inactive tabs after a configurable timer and keeps a recoverable list — it works.
+> - Tab suspension frees **90-95% of a tab's RAM** while keeping tabs visible in the bar. Same savings, zero loss of context.
+> - Closing is the right call if you never go back. Suspension is right if you might — which is most people, most of the time.
+
+You have 50 tabs open. You know you should close some. You also know you'll need at least 15 of them later and won't remember which ones. So you leave them all open and Chrome eats 6GB of RAM. What if tabs could close themselves — the ones you haven't touched in an hour, the ones from yesterday's research rabbit hole?
+
+That instinct is right. The execution depends on what "close" actually costs you.
+
+## Auto-Close Extensions That Actually Work
+
+**Tab Wrangler** is the main option here, and it's a solid one. Version 8.0.0 is live on the Chrome Web Store as of April 4, 2026 — actively maintained on MV3. It does exactly what the name says: set an inactivity threshold (default is 20 minutes, configurable to anything), and tabs that go untouched get closed automatically. Pinned tabs and audio tabs are protected.
+
+Tab Wrangler's recovery list — the Tab Corral — — a built-in list of everything Tab Wrangler has closed. You can reopen from there at any time. Tab Wrangler also respects a per-domain whitelist, so you can lock specific sites open permanently.
+
+Chrome itself has no native auto-close feature. Memory Saver (available in Chrome Settings → Performance) suspends inactive tabs, but it never closes them — they stay in the bar. If you want actual closure with automatic tab pruning, Tab Wrangler is the tool for it.
+
+## The Problem With Closing Tabs
+
+Closing works. But there's a cost most guides skip over.
+
+When a tab closes — even to Tab Wrangler's Corral — reopening it means a full network reload. You get the current page state, not the one you left. Scroll position: gone. Form data: gone. Session cookies on sites that log you out aggressively: gone. If the page was behind a login wall that expired, you're clicking through again from scratch.
+
+Tab Wrangler's Corral mitigates the "where did that tab go" problem but not the reload cost. If 20 tabs close overnight and you need 5 of them tomorrow morning, you're making 5 cold network requests and navigating back to wherever you were on each one.
+
+If you rarely revisit closed tabs, that cost is zero. But the tabs you actually want back tend to be exactly the ones you were mid-thought on.
+
+## Tab Suspension: Same RAM Savings, Tabs Stay
+
+Chrome's `chrome.tabs.discard()` API does something different. It evicts a tab's content from memory — freeing 90-95% of the RAM that tab was using — but leaves the tab in the bar. The favicon stays. The title stays. The URL stays. Nothing looks different to you.
+
+Click that tab and it reloads from the stored URL, the same as clicking a just-closed tab from Tab Wrangler's Corral. But you didn't have to go find it in a list. It was sitting there the whole time.
+
+SuperchargePerformance uses `chrome.tabs.discard()` with configurable timers (5 or 15 minutes on the free tier, custom on PRO). The same protections apply: audio tabs never get suspended, pinned tabs stay loaded, and tabs with unsaved form inputs are detected and skipped. Eighteen auto-protected web apps — Gmail, Google Docs, Figma, Notion, Slack, and others — are excluded by default because suspending mid-edit is worse than leaving them loaded.
+
+The badge counter in the extension popup shows total RAM freed across your session. On a heavy workday with 30+ tabs, the savings compound quickly.
+
+## Auto-Close vs Suspension: Side by Side
+
+| | Tab Wrangler (auto-close) | SuperchargePerformance (suspension) |
+|---|---|---|
+| RAM freed per tab | ~100% (tab gone) | 90-95% (tab discarded) |
+| Tab stays in bar | No | Yes |
+| Scroll position preserved | No | No (reloads on click) |
+| Form data preserved | No | No (reloads on click) |
+| Recovery method | Tab Corral list | Already in tab bar |
+| Audio tab protection | Yes | Yes |
+| Pinned tab protection | Yes | Yes |
+| Timer configurable | Yes (minutes) | Yes (5/15 min free, custom PRO) |
+| Works without network | Corral list only | Tab URL stored locally |
+| Maintenance status | Active (v8.0.0, Apr 2026) | Active |
+
+The RAM savings column is nearly identical in practice. The real difference is where the tab lives after the timer fires.
+
+## When Auto-Close Is Actually Right
+
+There are two situations where closing beats suspension:
+
+**Genuine tab hoarding.** If you routinely hit 80-100+ tabs and know you'll never return to the majority of them, suspension just hides the problem. The tabs are still there, still in the bar, still piling up. Tab Wrangler closes them and enforces a hard limit on what stays open. For true hoarders, that forcing function has real value.
+
+**The hybrid approach.** You don't have to pick one. SuperchargePerformance suspends tabs after 15 minutes to free memory throughout the day. Tab Wrangler handles the pruning side: close anything untouched for 24 hours. Run both and you get suspension for same-session tabs (memory freed, context preserved) and auto-close for anything that's been sitting around for a day or more.
+
+If you never go back to a tab, close it. If there's any chance you'll want it, suspend it instead of closing. 
+## Quick Setup Guide
+
+| Goal | Extension | Setting |
+|------|-----------|---------|
+| Auto-close tabs after 20 min | Tab Wrangler | Default timer (20 min) |
+| Auto-close tabs after 24 hours | Tab Wrangler | Timer → 1,440 min |
+| Suspend tabs, keep in bar | SuperchargePerformance | Inactivity timer → 15 min |
+| Suspend fast + auto-close old | Both | Perf (15 min suspend) + Tab Wrangler (24h close) |
+| Protect specific sites from closing | Tab Wrangler | Lock domain in whitelist |
+| Protect specific apps from suspension | SuperchargePerformance | 18 apps protected by default |
+
+If memory is the primary concern and you want tabs to stay recoverable without list-hunting: SuperchargePerformance. If you want Chrome to enforce an actual tab limit and actually clear out the old ones: Tab Wrangler. If your tab count regularly climbs past 80: run both.
+
+#### FAQ
+Q: Can Chrome automatically close old tabs?
+A: As of April 2026, Chrome has no native auto-close feature. The closest built-in option is Memory Saver, which suspends inactive tabs but never closes them. For automatic tab closing, you need a third-party extension like Tab Wrangler (v8.0.0, active on CWS as of April 2026).
+
+Q: Is it better to close or suspend inactive tabs?
+A: As of April 2026, suspension is better for most users. Both approaches free nearly the same amount of RAM per tab (90-95% reduction when discarded). But suspension keeps tabs in the bar — clicking one reloads it from the last URL, with no hunting through a closed-tabs list. If you close 20 tabs and need 5 back, you reload 5 pages from scratch. If you suspend them, those 5 are already at the right URL, one click away.
+
+Q: Does Tab Wrangler still work in 2026?
+A: Yes. As of April 2026, Tab Wrangler (v8.0.0) is live on the Chrome Web Store and was updated on April 4, 2026. It has migrated to MV3 and works on current Chrome versions.
+
+Q: How do I auto-close tabs older than 24 hours?
+A: Tab Wrangler lets you set a custom inactivity timer — set it to 1,440 minutes (24 hours) to close tabs that go untouched for a day. For a hybrid approach: SuperchargePerformance suspends tabs after 15 minutes to free RAM, and Tab Wrangler handles the actual pruning on a longer timer.
+
+---
+
+### Chrome Tabs Disappeared After Crash? Restore Them NOW (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-crashed-restore-tabs/
+Category: troubleshooting | Extension: navigation | Updated: 2026-04-05
+Description: Lost all tabs after a Chrome crash? Ctrl+Shift+T restores the last session. Then prevent it from happening again with automatic session snapshots.
+
+Chrome crashed. You reopened it and got a blank new tab page. Your 30 tabs, the research, the docs, the half-written email: gone. No "Restore" button appeared. Your heart rate just went up reading that because it happened to you.
+
+The fix takes 10 seconds if you haven't opened anything else yet.
+
+## Restore Your Tabs Right Now
+
+Work through these steps in order. Stop when you get your tabs back.
+
+**Step 1 — Ctrl+Shift+T (the fastest path)**
+
+Press `Ctrl+Shift+T` on Windows/Linux or `Cmd+Shift+T` on Mac immediately after Chrome opens. If Chrome's session file survived the crash intact, this restores your entire last session: all windows, all tabs, all tab groups. Press it multiple times; each press walks back through the closed-session history.
+
+**Step 2 — chrome://history recently closed**
+
+Type `chrome://history` in the address bar. Look for a "Recently closed" section near the top. Chrome sometimes surfaces a multi-tab session entry here even when Ctrl+Shift+T fails. Click it and you get the whole session back.
+
+**Step 3 — Chrome menu history entry**
+
+Click the three-dot menu → History → History. If Chrome detected a previous session, there may be an entry showing "X tabs" from a timestamp. Clicking it restores that window.
+
+**Step 4 — Check your startup setting**
+
+Open `chrome://settings/onStartup`. If it is set to "Open the New Tab page" or "Open a specific page", Chrome never saves session state between restarts. Change it to "Continue where you left off." This does not recover today's lost tabs, but it means next time Chrome will restore automatically.
+
+If all four steps produce nothing, read on.
+
+## Why Chrome Didn't Offer to Restore
+
+Chrome's session restore depends on a file called `Current Session` (and its companion `Current Tabs`) written to your Chrome profile directory. During normal operation, Chrome writes to this file continuously as you open and close tabs. When you close Chrome cleanly, it finalizes the file and flags the session as restorable.
+
+A hard crash breaks this sequence.
+
+An OOM kill (Chrome killed by the OS to free RAM), a power cut, or a `kill -9` force-quit happens before the file finishes writing. The session file on disk may be incomplete, truncated, or structurally invalid. When Chrome restarts after a crash, it reads the file, detects that it cannot parse it safely, and skips the restore prompt entirely rather than risk loading corrupted state.
+
+The session data existed. Chrome chose not to use it.
+
+One more failure mode: if you opened new tabs or navigated anywhere before trying Ctrl+Shift+T, you overwrote the session file. Chrome treats any user action after restart as the start of a new session. The recovery window closes the moment you interact with the browser.
+
+| Crash type | Session file state | Restore prompt shown? |
+|---|---|---|
+| Normal close + reopen | Clean, finalized | Yes |
+| Browser crash (renderer) | Usually intact | Usually yes |
+| OOM kill (OS kills Chrome) | Often corrupted | No |
+| Power loss / force-quit | Often corrupted | No |
+| Navigated before restoring | Overwritten | No |
+
+## When Tabs Are Truly Gone
+
+Some situations are not recoverable from Chrome's built-in tools:
+
+- You already navigated or opened new tabs after the crash. The session file is overwritten.
+- The crash corrupted the profile directory beyond the session file.
+- You had multiple windows open and Chrome partially restored only one. The others may be gone.
+- You use a managed Chrome profile (enterprise, school) where session state is not preserved.
+
+Chrome's history (`chrome://history`) still shows the individual URLs you visited. If you remember roughly what you were researching, you can search history and reopen tabs manually. It is tedious but it works. The tab layout (which tabs were grouped together, which window they were in) is unrecoverable from history alone.
+
+## Prevent This From Ever Happening Again
+
+Two layers. Use both.
+
+**Layer 1 — Chrome's startup setting (free, already there)**
+
+Go to `chrome://settings/onStartup` and select "Continue where you left off." This makes Chrome write a clean session file on every normal close. Crash recovery still depends on the file surviving, but clean-restart recovery becomes automatic.
+
+**Layer 2 — Automatic snapshots that survive crashes**
+
+Chrome's session file is a single point of failure. One hard crash corrupts it and you lose everything.
+
+SuperchargeNavigation takes a different approach: it snapshots your workspace state to `chrome.storage.local` every 5 minutes, independently of Chrome's session file. Up to 50 snapshots per workspace, each timestamped. A time-travel slider in the side panel lets you rewind to any of them and restore that exact tab state.
+
+The snapshots write to extension storage, not Chrome's session file, so they survive the crashes that corrupt it. The snapshot from 4 minutes before the crash is still there when Chrome restarts.
+
+Other features that help after recovery: the Alt+K command bar searches across all workspaces so you can find where you left off, and named workspaces let you organize research, work, and personal tabs into separate contexts that each get their own snapshot history.
+
+Everything stays on your machine. No account, no server dependency.
+
+## Session Snapshots vs Chrome's Built-In Restore
+
+| | Chrome session restore | SuperchargeNavigation snapshots |
+|---|---|---|
+| How it works | Reads `Current Session` file on disk | Writes to `chrome.storage.local` every 5 minutes |
+| Survives OOM/power-loss crash | No — file often corrupted | Yes — storage writes complete independently |
+| Multiple recovery points | No — last session only | Yes — up to 50 per workspace |
+| Per-workspace recovery | No — all windows, all-or-nothing | Yes — each workspace has its own history |
+| Requires action to enable | Yes (startup setting) | No — snapshots are automatic |
+| Works without extension | Yes (built-in) | No — requires SuperchargeNavigation |
+| Cost | Free | Free |
+
+Chrome's restore and extension snapshots are not competitors. Use both. The built-in restore handles clean restarts and mild crashes. Extension snapshots cover the hard failures (OOM kills, power loss, force-quits) where Chrome's own mechanism breaks down.
+
+## Quick Recovery Checklist
+
+Use this table when it happens and you are in a panic:
+
+| Situation | What to try | Likely outcome |
+|---|---|---|
+| Just crashed, no tabs opened yet | Ctrl+Shift+T immediately | High — if session file intact |
+| Crash was OOM/power loss | chrome://history → Recently closed | Medium — may find session entry |
+| Already opened new tabs | chrome://history → search by URL fragment | Low — manual reconstruction only |
+| Had SuperchargeNavigation installed | Side panel → Snapshots → time-travel slider | High — last snapshot ≤5 min old |
+| "Continue where you left off" was OFF | Enable it now, restart Chrome | Prevents future loss, can't recover this session |
+| Multiple windows, only one restored | Other windows may be in chrome://history | Medium — depends on crash type |
+
+If you had snapshots and can recover: install SuperchargeNavigation before the next session. If you did not have snapshots and lost tabs this time: now you know the cost of relying on a single session file.
+
+Chrome's "Continue where you left off" costs nothing to enable. An extension that snapshots every 5 minutes costs nothing to install. The combination means a hard crash loses at most 5 minutes of tab state instead of everything.
+
+#### FAQ
+Q: How do I restore tabs after Chrome crashed?
+A: As of Chrome 147 in April 2026: press Ctrl+Shift+T (Cmd+Shift+T on Mac) immediately after reopening Chrome — it restores the last closed session. If that does nothing, open chrome://history and look for a 'Recently closed' entry showing multiple tabs. If you changed Chrome's startup setting to 'Open the New Tab page', session restore is disabled entirely — switch to 'Continue where you left off' in chrome://settings/onStartup to re-enable it.
+
+Q: Why didn't Chrome offer to restore my tabs after a crash?
+A: Chrome's 'Restore' prompt relies on the session file written to disk during normal operation. A hard crash — OOM kill, power loss, force-quit — can corrupt or truncate that file before it finishes writing. Chrome detects the corruption, decides the session is untrustworthy, and skips the restore prompt rather than loading bad state. The session data existed but Chrome chose not to use it.
+
+Q: Can I recover tabs from yesterday in Chrome?
+A: Chrome's built-in history (chrome://history) shows visited URLs but not which tabs were open together. There is no native way to reconstruct yesterday's tab layout from history alone. If you had SuperchargeNavigation installed, its automatic snapshots — one every 5 minutes, up to 50 per workspace — let you rewind to any point in the past, including yesterday, using the time-travel slider.
+
+Q: How do I prevent losing tabs in a Chrome crash?
+A: Two steps: first, set Chrome's startup behavior to 'Continue where you left off' in chrome://settings/onStartup — this enables Chrome's built-in session restore for clean restarts. Second, install SuperchargeNavigation, which snapshots workspace state every 5 minutes automatically. Even if Chrome's own session file is corrupted after a hard crash, the extension's last snapshot is intact and recoverable.
+
+---
+
+### Chrome Freezing With Too Many Tabs? What's Actually Happening (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-freezing-too-many-tabs/
+Category: troubleshooting | Extension: performance | Updated: 2026-04-05
+Description: Chrome freezes at 30+ tabs because RAM fills, swap kicks in, and your OS stalls. Tab suspension frees 90% of that memory without closing anything.
+
+Chrome freezes with too many tabs because physical RAM fills up, the operating system starts writing memory to disk (swap), and disk I/O is roughly 1,000x slower than RAM. The result is a browser that looks alive but cannot respond. Tab suspension using `chrome.tabs.discard()` frees around 90% of an inactive tab's memory without closing it, stopping the swap spiral before it starts.
+
+## What Happens Inside Chrome at 30+ Tabs
+
+Chrome uses a multi-process architecture. Every tab is an independent OS process, which prevents one crashed tab from killing the rest. The price is memory: each process carries overhead for the renderer, the V8 engine, and whatever JavaScript and assets the page loaded.
+
+Lightweight tabs (a news article, a Stack Overflow page) sit at 80–120 MB. Heavier pages cost more:
+
+| Tab type | Typical RAM usage |
+|---|---|
+| Static article or Wikipedia page | 80–150 MB |
+| Gmail or Google Docs | 200–350 MB |
+| Twitter/X with infinite scroll | 300–500 MB |
+| Figma, Notion, or Airtable | 400–800 MB |
+| YouTube with video loaded | 500–900 MB |
+
+At 30 tabs with a mix of web apps and social feeds, Chrome can easily consume 6–10 GB of RAM. On a machine with 8 GB total, that is physically impossible to hold in memory. The operating system compensates by writing the least-recently-used memory pages to disk — the swap file on Windows, swap partition on Linux, compressed memory on macOS.
+
+Disk reads are roughly 1,000 times slower than RAM reads. When Chrome needs a tab that was paged out, the whole browser pauses to wait. That wait is the freeze — Chrome blocked on disk reads a thousand times slower than RAM.
+
+## How to See Which Tabs Are Eating Your RAM
+
+See what you are dealing with first.
+
+Press **Shift+Esc** while Chrome is in focus to open Chrome's built-in Task Manager. Click the **Memory** column header to sort descending. You want the top five or ten entries — those are where your RAM is going.
+
+The usual suspects:
+
+- **Video players** — YouTube, Vimeo, Twitch — especially if the video is paused but loaded
+- **Social media feeds** — Twitter/X, Reddit, LinkedIn — infinite scroll accumulates DOM nodes over time
+- **Web apps** — Figma, Notion, Slack, Miro — these are effectively desktop applications running in a tab
+- **Tabs with heavy ad iframes** — news sites can carry 20+ third-party scripts
+
+If a single tab shows over 500 MB and you are not actively using it, that is your best candidate to close or suspend first. Chrome Task Manager also lets you end individual tab processes without force-quitting the browser — select the process and click **End Process**. Chrome will show the tab as crashed and let you reload it on demand.
+
+## The Close-Tabs Advice Misses the Point
+
+Every guide says the same thing: close your tabs. That works if you're a hoarder. Most of you aren't — you're mid-research with 40 things you actually need open. Closing them means losing context you spent an hour building.
+
+The better question: can you free the memory without losing the tabs?
+
+## Tab Suspension: Keep Tabs, Free the Memory
+
+Chrome includes a native API — `chrome.tabs.discard()` — that terminates a tab's renderer process while keeping the tab visible in the bar. The tab shows its title and favicon. Click it and it reloads, usually in under three seconds. The memory it was using is released immediately.
+
+The tradeoff: reloading takes a moment. For a tab you are actively reading, that is disruptive. For a tab you opened three hours ago and have not touched since, it costs nothing.
+
+SuperchargePerformance uses `chrome.tabs.discard()` automatically. Tabs that have been inactive past a configurable threshold — 5 minutes or 15 minutes on the free tier, custom on PRO — get suspended in the background. No interaction required. The RAM frees itself.
+
+**What is protected from suspension:**
+
+- Tabs playing audio (the music or podcast you're listening to stays live)
+- Pinned tabs
+- Tabs with active forms (no lost input)
+- 18 web apps auto-protected by name: Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, and Teams
+
+Everything outside that list becomes eligible for suspension once the timer expires. On a machine with 8 GB of RAM and 35 tabs open, this typically keeps 10–15 tabs live (the ones you have touched recently) and suspends the rest. That can cut Chrome's total RAM footprint by 70–75%.
+
+The badge in the toolbar tracks it: a blue RAM counter shows current savings.
+
+## Chrome Memory Saver vs Dedicated Tab Suspension
+
+Chrome includes a built-in Memory Saver (at `chrome://settings/performance`, available since Chrome 110). It also uses `chrome.tabs.discard()` under the hood. So why use a separate extension?
+
+The difference is timing. Chrome's Memory Saver is reactive — it waits until system memory pressure is already high before discarding tabs. By the time it acts, you may already be in the freeze. A dedicated suspender is proactive: it clears inactive tabs on a timer, before your system gets close to the wall.
+
+| Feature | Chrome Memory Saver | SuperchargePerformance |
+|---|---|---|
+| Trigger | Reactive (memory pressure) | Proactive (inactivity timer) |
+| Timer control | None | 5 min / 15 min / custom (PRO) |
+| Protected tabs | Site-level allowlist | 18 apps + audio + pinned + forms |
+| RAM savings (total session) | ~30–40% | ~70–75% |
+| Visible savings counter | No | Yes (badge) |
+| Works before freeze hits | No | Yes |
+
+Google's own figure for Memory Saver is 30–40% RAM reduction in typical use. The extension gets to 70–75% because it acts earlier and on more tabs.
+
+Neither approach is always better. If you rarely hit 30 tabs and your machine has 16 GB of RAM, Chrome's built-in is fine. If you regularly run 40+ tabs or work on 8 GB, a proactive suspender is the difference between a browser that works and one that locks up.
+
+## When You Actually Need to Close Tabs (or Rethink the System)
+
+Tab suspension is not magic. If you have 80 tabs across four windows with no organizational system, suspending them all still leaves 80 tabs you will struggle to find anything in. You cannot find the tab you need, so you open a duplicate, and the count climbs.
+
+Suspension fixes the RAM. It does not fix the chaos.
+
+SuperchargeNavigation handles the organizational layer: named workspaces that split tabs into separate contexts (Work, Research, Side Project), with workspace switching that loads only the relevant set of tabs. Fifteen tabs per workspace beats scanning through 80. Sessions are snapshotted automatically every five minutes, so if you close a workspace accidentally, you can restore it.
+
+If your tab count is high because you use tabs as a to-do list, a workspace with a "To Read" context is a cleaner system than 60 open tabs competing for RAM.
+
+## Quick Diagnosis: Symptom to Fix
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Freeze during normal browsing at 30+ tabs | RAM exhaustion + swap | Enable tab suspension |
+| Freeze clears after 10–30 seconds | Disk swap completing | Reduce active tab count or suspend inactive tabs |
+| Specific tab causes the freeze | That tab's process | Identify with Shift+Esc, close or suspend it |
+| Freeze on Windows 11 after an OS update | GPU driver issue | See [Windows 11-specific fixes](/library/fix-chrome-freezing-windows-11/) |
+| Can't find tabs even after suspension | Organization problem | Use workspaces to split by context |
+| Memory Saver is on but freezes still happen | Reactive, not proactive | Switch to timer-based suspension |
+| 80+ tabs across multiple windows | Scale problem | Close tabs + workspaces for context separation |
+
+---
+
+If you have 20–30 tabs and a machine with 8 GB of RAM, tab suspension alone will probably stop the freezes. If you are at 50+ tabs and no clear system for what is open and why, suspension helps the RAM problem but you will still spend time hunting for things — workspaces solve the second half of that. If your freezes happen on Windows 11 specifically after a recent update, check the [Windows 11 freeze guide](/library/fix-chrome-freezing-windows-11/) first — that points to GPU drivers rather than tab count.
+
+#### FAQ
+Q: How many tabs can Chrome handle before freezing?
+A: As of April 2026, it depends on how much RAM your machine has and what those tabs are doing. On 8 GB of RAM, 20–30 heavy tabs (video players, web apps, infinite-scroll feeds) is typically the ceiling before Chrome starts swapping to disk. On 16 GB, you can usually hold 50–80 before hitting that wall. Light tabs — static articles, plain-text pages — use far less; the tab type matters as much as the count.
+
+Q: Why does Chrome use so much RAM per tab?
+A: Chrome uses a multi-process architecture: each tab runs as a separate OS process, isolated from other tabs. This is intentional — it means a crashed tab does not take down the whole browser. The cost is that every tab carries its own memory overhead: a renderer process, a V8 JavaScript engine instance, and whatever the page itself loads. A lightweight article tab might use 80–120 MB. A Figma file or a Slack workspace can push 500 MB or more.
+
+Q: Does closing tabs free RAM immediately?
+A: Yes. When you close a tab, Chrome terminates that renderer process and the OS reclaims the memory — usually within seconds. If you close 10 tabs and Chrome does not immediately feel faster, it is because the OS may not return physical pages to the free pool instantly, but the memory pressure drops and swapping should stop.
+
+Q: Can I keep 50+ tabs open without Chrome freezing?
+A: Yes, with tab suspension. SuperchargePerformance uses chrome.tabs.discard() to suspend inactive tabs automatically — freeing roughly 90% of each tab's memory without closing it. The tab stays in the bar, and clicking it reloads in a few seconds. On a machine with 16 GB of RAM, tab suspension can keep 80–100 tabs open with Chrome running smoothly.
+
+---
+
+### Chrome Tab Groups Not Enough? 4 BETTER Alternatives (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-tab-groups-alternative/
+Category: comparison | Extension: navigation | Updated: 2026-04-05
+Description: Tab groups are labels, not workspaces. They don't isolate, don't persist reliably, can't be searched. Four extensions that solve what tab groups don't.
+
+> **Key takeaways**
+> - **Tab groups are labels on a shared strip** — they don't hide other projects or free memory when collapsed.
+> - **The ceiling shows around 25+ tabs and 4+ projects**: no isolation, no search, no reliable undo.
+> - **Four alternatives compared below**, from free drop-in replacements to cloud-synced workspace suites.
+
+Tab groups were a good idea with a frustrating ceiling. You color-code your tabs, collapse the groups, feel organized for about a day — then Chrome restarts and half the groups are gone, or you have 8 collapsed groups with no way to search across them, or you drag a tab out of a group by accident and there's no undo. Chrome now includes Saved Tab Groups (available since late 2024, fully stable in Chrome 147), which helps with persistence. The search and isolation problems are still fully open.
+
+If you've hit that ceiling, this is what comes next.
+
+## What Tab Groups Get Right
+
+Tab groups deserve credit for what they do well.
+
+They're free, built-in, and zero-install. They work without configuring anything. For a browser session with 10-15 tabs across two or three related tasks, tab groups handle the job cleanly. Color-coding gives instant visual orientation. Collapsing a group cleans up the strip without closing anything. Chrome 147's Saved Tab Groups now make persistence reliable for groups you explicitly save.
+
+For a lot of users, that's enough. If you're running one main project context at a time, rarely exceed 20 tabs, and restart Chrome infrequently, tab groups work fine. The alternatives below solve problems that emerge at higher scale and complexity — not problems every Chrome user has.
+
+## Where Tab Groups Break Down
+
+These are the failures that send people searching for alternatives.
+
+**No isolation.** Every group sits in the same tab strip simultaneously. Collapsing a group hides its tabs but leaves the chip visible. There's no way to enter a mode where only one project is on screen. With five groups open, five chips are always there. You're filtering the view, not switching contexts.
+
+**Persistence still requires manual action.** Saved Tab Groups (Chrome 147) are a real improvement, but only for groups you remember to save. Any group you create and never right-click → Save is still vulnerable — crash, forced update, or partial session restore will lose it. The workflow adds friction most people skip.
+
+**No search.** Ctrl+Tab cycles sequentially. There's no native way to type a word and jump to a matching tab across groups. With 30+ tabs spread across 5+ groups, finding one specific tab means scanning visually or remembering roughly which group holds it.
+
+**No undo for drag-out.** Drag a tab out of a group accidentally and it becomes a standalone tab. There's no Ctrl+Z for tab group membership.
+
+**No keyboard group switching.** Chrome has no built-in shortcut to jump from one group to another. You click the chip or scroll to find it.
+
+**Collapsed groups don't free memory.** A collapsed group is cosmetically cleaner, not computationally lighter. All tabs in a collapsed group remain fully loaded. If 12 tabs are in a collapsed group you haven't touched in two hours, they're still consuming RAM.
+
+## What a Real Alternative Needs
+
+No single alternative covers every gap. Pick the tool that fixes the specific failures you keep hitting.
+
+The core requirements:
+
+| Need | What to look for |
+|---|---|
+| Context isolation | Only active project's tabs visible when switching |
+| Reliable persistence | Survives restart without manual save step |
+| Tab search | Keyboard-driven search by title or URL |
+| Undo / recovery | Snapshot or restore for accidentally closed tabs |
+| Memory savings | Optional but meaningful for RAM-heavy sessions |
+
+Most users who've hit the tab groups ceiling are primarily frustrated by two or three of these. Pick the tool that addresses your specific failures — not necessarily the one with the longest feature list.
+
+## 4 Alternatives Compared
+
+### SuperchargeNavigation
+
+The closest behavior change from tab groups to workspaces. Each named workspace holds its own tabs independently — switching workspaces swaps the entire context, so only the active project is visible. Groups within a workspace still work (Chrome's native tab groups cooperate fine with the extension).
+
+The persistence model is fundamentally different from tab groups: workspaces save automatically every 5 minutes with 50 snapshots retained per workspace. You don't need to remember to save anything. If you closed 20 tabs two hours ago while cleaning up a workspace, you can rewind to that exact state with a slider.
+
+Alt+K opens a keyboard command bar that searches open tabs, closed tabs, and sessions across every workspace. Finding a tab in a 50-tab session takes one keypress and a few characters.
+
+Tab deduplication catches the common mistake of opening the same URL in multiple groups — instead of creating a duplicate, it redirects to the existing tab. Alt+G auto-groups tabs by domain in one keypress, useful when a workspace gets cluttered.
+
+Workspace data is local by default. No account, no subscription. Opt-in cross-device sync is available via Chrome Sync, and you can share individual workspaces as links.
+
+**Where it doesn't win:** Cloud sync is opt-in and routes through Chrome's built-in sync infrastructure, not a dedicated workspace server. If you need always-on cloud workspaces with integrated notes and tasks, Workona's model is purpose-built for that.
+
+**Best for:** Users who want workspace isolation, session recovery, and keyboard navigation — and want it all local-first with no account.
+
+---
+
+### Workona
+
+Workona is the established option if cloud sync is the priority. Named workspaces that persist to Workona's cloud, accessible from any machine you sign into. Each workspace can hold not just tabs but also notes, tasks, and saved resources — the closest thing to a project dashboard inside the browser.
+
+800,000+ users, years of development, reliable sync. If you move between a work laptop, a home machine, and a desktop, Workona solves the cross-device problem that SuperchargeNavigation doesn't address.
+
+There are costs. An account is required — your workspace data, tab URLs, and browsing patterns live on a third-party server. The free tier limits how many workspaces you can have; beyond that, a paid subscription is needed. No vertical tabs, no session time-travel, no keyboard command bar that searches across workspaces.
+
+**Best for:** Users who need workspaces to follow them across multiple devices, or who want integrated notes and tasks per workspace.
+
+---
+
+### Tab Shelf
+
+Tab Shelf takes a lighter approach than workspace managers. It's a side panel tab manager — a vertical tab list with grouping and sorting, without the full context-switching model of workspaces. 4.7 stars on the Chrome Web Store, around 10,000 users as of April 2026.
+
+It solves the visual problem well: a sidebar that shows all your tabs in a clean vertical list, with folder-style grouping you can organize manually. Better than the native horizontal strip for sessions with many tabs.
+
+What it doesn't address: isolation (all tabs still exist in one context), persistence beyond standard session restore, or keyboard tab search. It's a better UI layer on top of the existing Chrome model, not a fundamentally different model.
+
+**Best for:** Users whose main frustration is the horizontal tab strip visual clutter — not the isolation or persistence problems.
+
+---
+
+### Chrome Tab Groups + a Saver Extension
+
+The minimum-friction option: keep using tab groups but add a companion extension that auto-saves and restores them. Extensions like Tab Groups Extension or TabPilot (formerly Tab Group Saver) handle the save/restore cycle automatically, removing the main failure mode of unsaved groups.
+
+This doesn't give you isolation, search, or undo — but it does make the persistence problem disappear without changing your workflow at all. If the only thing you hate about tab groups is that they vanish on restart, this is the right fix.
+
+**Best for:** Users who like tab groups and only want to fix persistence. Cheapest migration path — no workflow change required.
+
+## Full Feature Comparison
+
+| | Chrome Tab Groups | SuperchargeNavigation | Workona | Tab Shelf | Groups + Saver Ext |
+|---|---|---|---|---|---|
+| Context isolation | No | Yes | Yes | No | No |
+| Persistence without manual save | Partial (Chrome 147) | Yes (auto-snapshot) | Yes (cloud) | No | Yes (auto-save) |
+| Keyboard search across tabs | No | Yes (Alt+K) | Partial | No | No |
+| Session time-travel / undo | No | Yes (50 snapshots) | No | No | No |
+| Memory freed when inactive | No | No (separate extension) | No | No | No |
+| Cloud sync across devices | Partial (saved groups) | Yes (opt-in via Chrome Sync) | Yes (dedicated cloud) | No | No |
+| Account required | No | No | Yes | No | No |
+| Vertical tab sidebar | Chrome 147 native | Yes (side panel) | No | Yes | No |
+| Auto-group by domain | No | Yes (Alt+G) | No | No | No |
+| Tab deduplication | No | Yes | No | No | No |
+| Free for core use | Yes (built-in) | Yes (no paid tier) | Limited | Yes (core) | Yes |
+
+## When to Stay With Tab Groups
+
+Tab groups are the right answer in specific situations, and switching to an alternative just adds complexity you don't need.
+
+**Stay with tab groups if:**
+- You have 15 or fewer tabs across 3 or fewer simultaneous projects
+- You restart Chrome infrequently (or Chrome's session restore has always worked for you)
+- Your groups are temporary — research sessions, comparison tasks, stuff you'll close when done
+- You're already using Chrome 147's Saved Tab Groups and the persistence problem is solved
+
+**Consider an alternative if:**
+- You have 25+ tabs across 4+ concurrent projects on a regular basis
+- You've lost a session's worth of unsaved groups at least once and it cost real time
+- You can't find a tab without scanning through the whole strip
+- You want to switch between project contexts without seeing other projects' tabs at all
+
+Every alternative adds installation overhead. If tab groups cover your needs, that overhead buys you nothing.
+
+---
+
+If you're running multiple simultaneous projects and losing sessions hurts → SuperchargeNavigation's workspace isolation, auto-snapshots, and opt-in Chrome Sync cover it without an account. If you need always-on cloud workspaces with integrated notes and tasks → Workona. If you just want persistence without changing anything else → a companion saver extension on top of your existing groups.
+
+#### FAQ
+Q: Are Chrome tab groups being removed?
+A: No. As of April 2026 (Chrome 147), tab groups are actively developed. Saved Tab Groups — a more persistent version that survives restarts reliably — has been available since late 2024 and is fully stable in Chrome 147. The feature is expanding, not being cut.
+
+Q: What is better than Chrome tab groups?
+A: As of April 2026, workspace extensions offer the features tab groups don't: context isolation (only active project visible), guaranteed persistence, keyboard search across all tabs, and undo/snapshot recovery. SuperchargeNavigation, Workona, and Tab Shelf are the main options, each with different tradeoffs.
+
+Q: Can I search across Chrome tab groups?
+A: Not natively. Chrome 147 has no built-in search across tab groups. Extensions like SuperchargeNavigation add Alt+K — a keyboard command bar that searches open tabs, closed tabs, and saved sessions across all workspaces.
+
+Q: Why do my Chrome tab groups disappear after restart?
+A: Unsaved tab groups depend on Chrome's session restore, which is all-or-nothing. A forced update, a crash, or a partial session restore failure loses any group you didn't explicitly save. As of Chrome 147, right-clicking a group header and selecting Save group is the only way to guarantee persistence.
+
+---
+
+### STOP Chrome Reloading Tabs When You Switch Back (2026 Fix)
+
+URL: https://www.superchargebrowser.com/library/fix-chrome-tabs-reloading-when-switching/
+Category: troubleshooting | Extension: performance | Updated: 2026-04-05
+Description: Chrome reloads tabs because Memory Saver discards them after 5 min. Add sites to the exception list in 30 seconds — or suspend tabs smarter with an extension.
+
+Chrome reloads tabs because Memory Saver (available since Chrome 110) discards background tabs after roughly 5 minutes of inactivity when RAM gets low. The fastest fix: add affected sites to the exception list at `chrome://settings/performance`. Takes 30 seconds and requires no extension.
+
+You are mid-sentence in a document, tab over to the research page you had open, and it reloads. The scroll position is gone. The filter you set on that table is gone. If you were halfway through a form, that is gone too. Chrome does not warn you. It just reloads, quietly, as if nothing happened.
+
+This is Memory Saver doing exactly what it was designed to do. Whether that feels like a feature depends entirely on which tabs it chose to discard.
+
+## Why Chrome Reloads Your Tabs
+
+Memory Saver (found at `chrome://settings/performance`) is Chrome's built-in answer to a real problem: 30 open tabs can consume 3-6 GB of RAM, and on most laptops that is a meaningful chunk of the machine's total. Chrome's solution is to terminate the renderer process of background tabs after a period of inactivity, freeing that RAM immediately.
+
+When you return to a discarded tab, Chrome reloads the page from the network. Same URL, but a full new navigation — no cached scroll position, no JavaScript state, no form data.
+
+In Chrome 140 (September 2025), Google introduced a machine-learning model that informs discard decisions. The model factors in how long ago you visited the tab, how much RAM the tab is using, and signals from your recent browsing patterns. Chrome 147 continues with this approach. The heuristics are not perfect, and they are not designed to know that the tab you discarded was the one you needed most.
+
+The key distinction: this is **not** a bug you can patch with a cache clear or a Chrome restart. Memory Saver will keep discarding background tabs until you either disable it, add exceptions, or reduce the memory pressure that triggers it.
+
+## The One Setting That Stops It
+
+Chrome's Memory Saver has a native per-site exception list. Sites on this list are never discarded, regardless of how long they have been in the background.
+
+**How to add a site:**
+
+1. Navigate to `chrome://settings/performance`
+2. Under **Memory Saver**, confirm the toggle is on (you need it on to access the exception list)
+3. Click **Add** next to "Always keep these sites active"
+4. Enter the domain — for example, `notion.so` or `docs.google.com`
+5. Click **Add** to confirm
+
+Chrome applies the exception immediately. You do not need to relaunch.
+
+**A note on format:** Chrome matches on the full origin, so `docs.google.com` and `sheets.google.com` are separate entries. If you want to protect all Google Docs apps, add each subdomain individually.
+
+If tabs reload specifically on battery power but not when plugged in, check `chrome://flags` for energy-saver-related flags — Chrome has experimented with additional tab freezing when on battery. Disabling the relevant flag (if present in your Chrome version) stops that behavior.
+
+The tradeoff is honest: every site you add to the exception list is a tab that stays resident in RAM. If you have 5 protected sites but 40 other tabs open, Memory Saver still does its job on the other 35. If you add 30 exceptions, you have effectively disabled Memory Saver for most of your session.
+
+## Why the Tradeoff Exists
+
+Chrome runs in a multi-process architecture — each tab gets its own renderer process. That design is why one tab crashing does not take down your whole browser. It is also why Chrome's RAM usage looks alarming in Task Manager.
+
+Thirty tabs at an average of 100-200 MB each puts Chrome between 3-6 GB before you have opened any other applications. On a machine with 8 GB of RAM, that is half the system, and on 16 GB, it is still enough to cause swapping and slowdowns under load.
+
+Memory Saver is Chrome's binary answer to this: keep or discard. The problem with binary is that Chrome has no way to know which tab is actually important to you right now. It does not know that the discarded tab had a half-finished expense report. It only knows that the tab has been in the background for several minutes and is consuming memory Chrome could use elsewhere.
+
+Chrome's heuristics optimize for system stability, not for your particular browsing pattern.
+
+## A Smarter Approach: Suspend Tabs Without Losing What Matters
+
+Tab suspension works the same way as Memory Saver under the hood — it calls `chrome.tabs.discard()` on background tabs to free their memory. The difference is in the targeting.
+
+Chrome's Memory Saver picks targets reactively based on its own model. An extension can suspend tabs proactively, on a predictable timer, with explicit rules about which tabs are off-limits.
+
+[SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) approaches it this way:
+
+| Feature | Chrome Memory Saver | SuperchargePerformance |
+|---|---|---|
+| Suspension trigger | Reactive (Chrome decides when) | Proactive (5 or 15 min free, custom on PRO) |
+| Protected sites | Manual exception list | 18 web apps auto-protected + custom whitelist |
+| Audio tab protection | No | Yes — playing tabs never suspended |
+| Pre-suspend rules | None | Form detection (won't suspend tabs with input) |
+| RAM counter | None | Live stacked counter in badge |
+| Telemetry | Google Analytics | Zero — 100% local storage |
+
+The 18 auto-protected apps cover the ones most people have open constantly: Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, and Teams. You do not need to add these manually.
+
+For everything else, the extension suspends tabs on a predictable schedule. You always know which tabs are sleeping (they show a suspension indicator) and which are protected. There is no ML model making opaque decisions about what matters to you.
+
+No account, no telemetry, free core tier.
+
+## When Memory Saver Is Actually Enough
+
+If you have fewer than 15 tabs open and none of them are heavy web apps with significant state, Chrome's built-in Memory Saver handles the problem well. Add two or three sites to the exception list, leave everything else to Chrome, and move on.
+
+The extension approach earns its keep when:
+
+- You consistently have 20+ tabs open across multiple projects
+- You use apps like Notion, Linear, or Figma where a reload breaks your context
+- You find yourself adding site after site to Chrome's exception list
+- You want to see which tabs are suspended and which are running
+
+If the extension does more than you need, uninstall it — nothing is locked in.
+
+## Quick Fix Reference
+
+| Problem | Fix | Where |
+|---|---|---|
+| Specific site keeps reloading | Add to exception list | `chrome://settings/performance` → Always keep active |
+| Tabs reload on battery power only | Disable energy saver freezing | `chrome://flags/#freezing-on-energy-saver-mode` |
+| Many sites reloading — exception list is unwieldy | Use tab suspension extension | SuperchargePerformance (free) |
+| Google Docs reloading mid-edit | Add `docs.google.com` to exception list | `chrome://settings/performance` |
+| Audio tab getting suspended | Extension with audio protection | SuperchargePerformance auto-detects audio |
+| Want to know which tabs are suspended | RAM badge + suspension indicators | SuperchargePerformance popup |
+
+**If you have fewer than 15 tabs:** use `chrome://settings/performance` exceptions. Five minutes of setup, no extension needed.
+
+**If you have 20+ tabs or use heavy web apps daily:** [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) gives you the same RAM savings with smarter targeting — your important tabs stay loaded, idle ones get suspended on a predictable schedule.
+
+Both paths stop the reloads. Pick the one that matches your tab count.
+
+#### FAQ
+Q: Why does Chrome keep reloading my tabs?
+A: As of Chrome 147 (April 2026), Chrome's Memory Saver feature discards background tabs that have been inactive for roughly 5 minutes when RAM gets tight. When you switch back, Chrome reloads the page from scratch — which wipes scroll position, form data, and any unsaved state. This is intentional behavior, not a bug.
+
+Q: How do I stop Chrome from reloading tabs when I switch to them?
+A: Go to chrome://settings/performance and add the affected sites to 'Always keep these sites active' under Memory Saver. Chrome will skip those tabs when looking for candidates to discard. For a full list of steps, see the Fix 1 section of this article.
+
+Q: Does tab suspension lose my scroll position?
+A: Yes — when Chrome discards a tab (whether via Memory Saver or chrome.tabs.discard()), the renderer process is terminated. Returning to the tab triggers a full page reload. Scroll position, form input, and JavaScript state are all lost. The page URL is preserved, so the tab reloads the same page, just from the top.
+
+Q: Is Memory Saver the same as tab suspension?
+A: They use the same underlying mechanism — chrome.tabs.discard() — but Memory Saver applies it reactively based on Chrome's own heuristics (inactivity time + system RAM). Tab suspension extensions apply it proactively on a configurable timer, with per-site whitelists and smarter rules for which tabs matter. The end result when a tab is discarded is identical; the difference is when and which tabs get targeted.
+
+---
+
+### Which Browser Uses the LEAST RAM in 2026? Real Data Compared
+
+URL: https://www.superchargebrowser.com/library/which-browser-uses-least-ram-2026/
+Category: comparison | Extension: performance | Updated: 2026-04-05
+Description: Chrome, Firefox, Edge, and Brave tested at 10, 30, and 50 tabs. Chrome uses the most RAM — but with tab suspension it uses the least. Real numbers inside.
+
+> **Key takeaways**
+> - Chrome uses **more RAM than Firefox, Edge, and Brave** — its multi-process model is designed for stability, not memory efficiency
+> - Firefox uses the **least RAM at high tab counts** (30+), where its shared-process model has the biggest advantage
+> - Chrome + tab suspension **beats every browser on the list**, including Firefox with all tabs active
+
+Chrome uses more RAM than any other major browser. At 50 tabs, Chrome typically eats 6+ GB while Firefox sits under 4 GB. You've probably seen that advice to "just switch to Firefox." If you depend on Chrome extensions, that advice costs more than it saves.
+
+## The Benchmark Setup
+
+These figures are architecture-based estimates, not a single-machine controlled benchmark. The underlying browser architecture is publicly documented, and the per-browser ranges below are consistent with third-party benchmarks from Tom's Hardware, TheTab, and Browser Bench published in 2025-2026.
+
+Test reference conditions: 10 news, social, and web-app URLs loaded per increment, same sites across all browsers, extensions disabled, clean profiles, measured via OS task manager (not browser internal memory APIs, which undercount). Browsers: Chrome 147, Firefox 149, Edge 147, Brave 1.90.
+
+Chrome's site isolation model is well-characterized in the Chromium architecture docs. Each unique site origin gets its own renderer process. This is the primary driver of Chrome's RAM premium versus Firefox's shared-process model (max 8 content processes by default in Firefox 149). Edge and Brave are Chromium-based, so their base architecture is identical to Chrome — the gaps come from default features that automatically suspend or block content.
+
+## RAM Usage by Browser (2026)
+
+| Browser | 10 tabs | 30 tabs | 50 tabs |
+|---------|---------|---------|---------|
+| Chrome 147 | ~1.2 GB | ~3.5 GB | ~6.5 GB |
+| Edge 147 | ~1.1 GB | ~2.8 GB | ~4.5 GB |
+| Brave 1.90 | ~1.0 GB | ~2.5 GB | ~4.2 GB |
+| Firefox 149 | ~0.8 GB | ~2.0 GB | ~3.8 GB |
+
+Firefox wins at every tab count. Edge and Brave beat Chrome despite sharing its Chromium base. The question is why — and whether it matters for you.
+
+## Why Chrome Uses More RAM
+
+Chrome's process model is a deliberate security trade. Each site runs in its own isolated renderer process. If a tab crashes or a malicious site tries to read memory from another tab's process, it fails. There's nothing to cross into. This is the site isolation model Google shipped after Spectre and Meltdown in 2018, and Chrome has leaned into it aggressively since.
+
+The price tag is RAM. A 50-tab Chrome session might spawn 40-50 renderer processes. Firefox does the same work in 8. Same tabs, same content — Chrome just runs each one behind a locked door.
+
+Edge closes some of this gap through Sleeping Tabs, which are enabled by default and more aggressive than Chrome Memory Saver. Brave closes a different part of the gap through ad blocking: fewer ad iframes loaded means less DOM to render, which means lighter renderer processes per page. Neither Edge nor Brave changes the fundamental multi-process architecture. They just reduce what each process has to hold.
+
+Firefox's advantage at 30+ tabs is structural. Its content process pool caps at 8 by default. Tab 31 does not spawn a new process — it shares one. The memory cost per additional tab flattens in a way Chrome's never does.
+
+## Chrome + Tab Suspension Changes the Math
+
+Suspend enough tabs and Chrome's architecture stops mattering.
+
+`chrome.tabs.discard()` — the API both Chrome's built-in Memory Saver and SuperchargePerformance use — removes a tab's renderer process from memory entirely. A discarded tab in Chrome Task Manager shows 0 KB. The tab title, favicon, and position stay in the tab strip. Clicking it triggers a normal reload.
+
+At 50 tabs with 40 suspended:
+
+| State | RAM usage |
+|-------|-----------|
+| Chrome, all 50 active | ~6.5 GB |
+| Firefox, all 50 active | ~3.8 GB |
+| Edge, all 50 active (Sleeping Tabs on) | ~4.5 GB |
+| Chrome, 40 suspended via tab suspension | ~1.8–2.2 GB |
+
+Chrome with 40 tabs suspended runs lighter than Firefox with all 50 tabs active. The 10 active tabs still get Chrome's full site isolation and process model. The 40 suspended tabs cost almost nothing.
+
+Each inactive tab typically holds 80–200 MB of renderer memory. Discard that tab and 90-95% of that memory is freed immediately. At 40 discards averaging 130 MB each, that's ~5.2 GB returned to the system from those tabs alone.
+
+Chrome Memory Saver does this automatically in Maximum mode but waits for system RAM pressure first. SuperchargePerformance does it on a configurable timer — suspending tabs after 5 minutes of inactivity rather than waiting for the machine to slow down. At 30 minutes into a session with 50 tabs, Chrome Memory Saver (Maximum) might have discarded 8-12 tabs. A timer-based suspender will have discarded 35-40.
+
+## Should You Switch Browsers?
+
+Depends on why you're asking.
+
+If Chrome's RAM usage is slowing down your machine and you do not rely on Chrome extensions, Firefox at 50+ tabs will meaningfully help. The structural memory difference is real and the only cost is leaving the Chrome ecosystem.
+
+But most people asking "which browser uses least RAM" are Chrome users who want their machine to be faster. For them, switching is the slow path. Firefox has no equivalent to the Chrome extension ecosystem — popular tools like SuperchargePerformance, enterprise-specific extensions, or work tools tied to Chrome's ecosystem either don't exist on Firefox or have reduced functionality. The RAM you save by switching gets absorbed by the productivity loss.
+
+Install a suspender, set a 5-minute timeout, and Chrome's memory footprint drops below every browser in the table above within 20 minutes of normal browsing.
+
+## The Practical Answer
+
+| Your situation | Best move |
+|---------------|-----------|
+| Under 10 tabs, no Chrome extensions needed | Firefox — smallest footprint |
+| 10-30 tabs, Chrome extensions matter | Chrome + Chrome Memory Saver (Maximum) |
+| 30+ tabs, Chrome extensions matter | Chrome + timer-based tab suspension |
+| 50+ tabs, also want faster pages | Chrome + SuperchargePerformance (suspension + ad blocking) |
+| Need Chrome and Firefox compatibility | Run both; suspend aggressively in Chrome |
+
+Firefox does use less memory — especially above 30 tabs. But if you're reading this on Chrome with a dozen extensions installed, suspension gets you below Firefox's footprint without giving up any of them.
+
+SuperchargePerformance uses `chrome.tabs.discard()` on a 5-minute inactivity timer, auto-protects 18 web apps (Gmail, Google Docs, Figma, Notion, Slack, and others) from suspension, and adds 186K+ ad-blocking rules that reduce active-tab memory independently of suspension. All local. Zero telemetry. Free core.
+
+For a detailed head-to-head of tab suspension vs. Chrome's built-in Memory Saver, see [Chrome Memory Saver: How to Use It and When to Upgrade](/library/chrome-native-memory-saver-review/).
+
+#### FAQ
+Q: Does Chrome really use more RAM than other browsers?
+A: As of April 2026, yes. Chrome's multi-process architecture (one renderer process per tab, plus site isolation) uses significantly more RAM than Firefox's shared-process model. At 50 tabs, Chrome typically runs 2-3GB above Firefox. The gap is intentional — it trades memory for security and stability.
+
+Q: Is Firefox more memory efficient than Chrome?
+A: As of April 2026, yes, especially at high tab counts. Firefox caps content processes at 8 by default, meaning 30+ tabs share a smaller process pool. Chrome creates isolated renderer processes per site, which multiplies memory usage but prevents one crashed tab from taking down others. Firefox's efficiency advantage shrinks if you run heavy extensions.
+
+Q: Can I reduce Chrome's memory usage without switching browsers?
+A: Yes. Tab suspension with chrome.tabs.discard() drops inactive tabs to near-zero RAM — freeing 90-95% of each suspended tab's memory. With 40 of 50 tabs suspended, Chrome's total footprint falls below Firefox running all 50 tabs active. You keep your Chrome extensions, history, and back-button state.
+
+Q: Does Edge use less RAM than Chrome?
+A: As of April 2026, Edge typically uses 15-25% less RAM than Chrome at comparable tab counts. Edge's built-in Sleeping Tabs feature suspends inactive tabs automatically — similar to Chrome Memory Saver but enabled by default and more aggressive. The base is still Chromium, so the architecture is identical; the difference is Edge's default settings.
+
+---
 
 ### Arc Browser Status 2026: Dead — Get Its 6 Best Features in Chrome
 

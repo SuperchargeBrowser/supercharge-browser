@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-04-02
+> Last updated: 2026-04-05
 
 > SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.3.0 (~2,400 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.0.0 (vertical tabs, persistent workspaces, tab search, session time-travel, workspace sharing). Zero telemetry, zero tracking. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
@@ -45,8 +45,14 @@ Each template includes Chrome tab groups with colors, pinned tabs, and one-click
 
 ## Library
 
-85 guides on Chrome performance, memory management, and tab organization:
+91 guides on Chrome performance, memory management, and tab organization:
 
+- [How to Auto-Close Inactive Chrome Tabs (And Why Suspension Is Better)](https://www.superchargebrowser.com/library/auto-close-inactive-chrome-tabs/): Tab Wrangler auto-closes tabs after a timer. But suspension frees the same RAM while keeping tabs in the bar. Here's when each approach makes sense.
+- [Chrome Tabs Disappeared After Crash? Restore Them NOW (2026)](https://www.superchargebrowser.com/library/chrome-crashed-restore-tabs/): Lost all tabs after a Chrome crash? Ctrl+Shift+T restores the last session. Then prevent it from happening again with automatic session snapshots.
+- [Chrome Freezing With Too Many Tabs? What's Actually Happening (2026)](https://www.superchargebrowser.com/library/chrome-freezing-too-many-tabs/): Chrome freezes at 30+ tabs because RAM fills, swap kicks in, and your OS stalls. Tab suspension frees 90% of that memory without closing anything.
+- [Chrome Tab Groups Not Enough? 4 BETTER Alternatives (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-alternative/): Tab groups are labels, not workspaces. They don't isolate, don't persist reliably, can't be searched. Four extensions that solve what tab groups don't.
+- [STOP Chrome Reloading Tabs When You Switch Back (2026 Fix)](https://www.superchargebrowser.com/library/fix-chrome-tabs-reloading-when-switching/): Chrome reloads tabs because Memory Saver discards them after 5 min. Add sites to the exception list in 30 seconds — or suspend tabs smarter with an extension.
+- [Which Browser Uses the LEAST RAM in 2026? Real Data Compared](https://www.superchargebrowser.com/library/which-browser-uses-least-ram-2026/): Chrome, Firefox, Edge, and Brave tested at 10, 30, and 50 tabs. Chrome uses the most RAM — but with tab suspension it uses the least. Real numbers inside.
 - [Arc Browser Status 2026: Dead — Get Its 6 Best Features in Chrome](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/): Arc entered maintenance mode May 2025, acquired by Atlassian for $610M. Its best features — spaces, command bar, peek — replicate in Chrome without switching.
 - [5 BEST Ad Blockers for Chrome in 2026 (MV3 Compared)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/): We tested 5 Chrome ad blockers across 14 features. None of the top 4 block YouTube or Twitch video ads. One does — plus popups, cookies, and RAM.
 - [7 BEST Vertical Tab Managers for Chrome (2026, Tested)](https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/): Chrome 146 ships native vertical tabs but no workspaces or keyboard search. We tested 7 extensions ranked by capability. One adds session time-travel.
@@ -61,15 +67,15 @@ Each template includes Chrome tab groups with colors, pinned tabs, and one-click
 - [FIX Chrome HTTPS Warning in Chrome 147 — 5 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-147-https-first-warning-fix/): Chrome 147 blocks HTTP sites with a scary warning. 95% of sites are safe — learn why you're seeing it and how to get past it in under 60 seconds.
 - [STOP Extensions Stealing Your AI Chats: 5 Checks (2026)](https://www.superchargebrowser.com/library/chrome-extensions-stealing-ai-chats/): 900K users had ChatGPT & DeepSeek chats exfiltrated in 2026. How Prompt Poaching works, how to audit your extensions, and red flags before installing.
 - [Chrome Split View Disappeared? 4 FIXES That Work (2026)](https://www.superchargebrowser.com/library/chrome-split-view-disappeared-fix/): Chrome Split View vanishes after updates due to flag resets or managed policies. Re-enable it in 30 seconds via chrome://flags — exact steps inside.
+
+## Optional
+
 - [How to DISABLE Chrome AI Features & Gemini (2026)](https://www.superchargebrowser.com/library/disable-chrome-ai-features-gemini/): Chrome 146 ships 5+ AI features on by default. Step-by-step guide to turning off Gemini sidebar, AI Overview, page content sharing, and AI Mode flags.
 - [STOP Chrome Freezing on Windows 11: 9 Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-freezing-windows-11/): Chrome hanging with 'Not Responding' on Windows 11? GPU drivers and tab overload are the usual culprits. 9 tested fixes — no reinstall needed.
 - [Chrome Muted Tabs Pausing? 4 FIXES That Work (2026)](https://www.superchargebrowser.com/library/fix-chrome-muted-tabs-pausing-background/): Chrome 145 broke muted tab playback — streams pause when you switch tabs. Still present in Chrome 146. 4 tested workarounds, fastest takes 10 seconds.
 - [6 BEST Chrome Extensions to Reduce RAM (2026, Tested)](https://www.superchargebrowser.com/library/best-chrome-extensions-reduce-ram/): Chrome eating 3GB with 20 tabs? We tested 6 RAM-reducing extensions — tab suspenders, blockers, and managers. Cuts memory 70%+ without losing a single tab.
 - [Sleeping Tabs Don't Exist in Chrome — But This Does (2026)](https://www.superchargebrowser.com/library/chrome-sleeping-tabs-guide/): Edge calls it sleeping tabs. Chrome calls it Memory Saver. Same concept, different name — but Chrome 147 adds ML tab prediction that Edge still lacks.
 - [Chrome Crashing When Printing? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-crashing-printing/): Chrome crashes on Ctrl+P because print preview doubles your tab's memory usage — not a printer problem. 5 fixes ranked by root cause, tested on Chrome 146/147.
-
-## Optional
-
 - [Gemini AI Crashing Chrome? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-gemini-crashing-chrome/): Gemini AI tabs leak RAM until Chrome crashes — a confirmed Chromium bug. Free your GPU process and stop the cascade before it takes every tab with it.
 - [Perplexity Comet vs Chrome: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/perplexity-comet-vs-chrome-extensions/): Comet went free March 2026. Chromium-based so your extensions work — but AI overhead, clunky sync, and no workspaces leave gaps Chrome extensions fill better.
 - [BEST Tab Organizer for Chrome in 2026: 5 Options Compared](https://www.superchargebrowser.com/library/best-tab-organizer-chrome-2026/): 50 tabs = context collapse. 5 Chrome tab organizers compared on workspaces, session recovery, and privacy. CWS-verified, March 2026. One is free, no account.
