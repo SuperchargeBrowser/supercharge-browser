@@ -47,10 +47,13 @@ Vertical tabs display your open tabs in a vertical list on the side of your brow
 Chrome 146 added a basic vertical tab list, but it lacks workspaces, session time travel, tab search (Alt+K), smart grouping (Alt+G), Glance/Peek, Super Drag, and tab deduplication. SuperchargeNavigation's side panel coexists with Chrome's native vertical tabs — you can use either or both. See our [detailed comparison](https://www.superchargebrowser.com/library/chrome-146-vertical-tabs-vs-extensions/).
 
 ### Is this a replacement for Arc Browser?
-SuperchargeNavigation brings Arc's most-loved features — vertical tabs, workspaces, command palette, and link previews — to Chrome without switching browsers. Arc stopped active development after being acquired by Atlassian in 2025. See [Arc Browser alternatives in Chrome](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/).
+SuperchargeNavigation brings Arc's most-loved features — vertical tabs, workspaces, command palette, and link previews — to Chrome without switching browsers. Arc stopped active development after being acquired by Atlassian in September 2025. See [Arc Browser alternatives in Chrome](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/).
+
+### Can I sync my workspaces across devices?
+Yes. SuperchargeNavigation syncs workspaces across your signed-in Chrome devices using `chrome.storage.sync`. Sync is opt-in and configured during onboarding — no account or external server required. All data passes through Chrome's own sync infrastructure and never touches SuperchargeBrowser servers.
 
 ### How do workspaces work?
-Workspaces let you save a named set of tabs and restore them later. Each workspace preserves tab groups, pinned tabs, mute states, and group colors. You can create unlimited workspaces (e.g., "Work", "Personal", "Research") and switch between them instantly. All data is stored locally — no account or cloud sync needed. This is a free alternative to Workona's workspace feature.
+Workspaces let you save a named set of tabs and restore them later. Each workspace preserves tab groups, pinned tabs, mute states, and group colors. You can create unlimited workspaces (e.g., "Work", "Personal", "Research") and switch between them instantly. All data is stored locally by default, with optional cross-device sync via Chrome's built-in sync. This is a free alternative to Workona's workspace feature.
 
 ### What is session time travel?
 SuperchargeNavigation takes automatic snapshots of your open tabs every 5 minutes, keeping the last 50 states. If Chrome crashes, you accidentally close tabs, or you want to go back to an earlier browsing session, you can rewind to any snapshot and restore it as a new workspace. No other Chrome extension offers this feature.
@@ -75,6 +78,6 @@ SuperchargePerformance requires Chrome 120+. SuperchargeNavigation requires Chro
 
 ## More Resources
 
-- [51 Chrome guides](https://www.superchargebrowser.com/library/) covering memory management, performance optimization, and tab organization
+- [95 Chrome guides](https://www.superchargebrowser.com/library/) covering memory management, performance optimization, and tab organization
 - [Feature documentation](https://www.superchargebrowser.com/features/) for both extensions
 - [Changelog](https://www.superchargebrowser.com/changelog/) for version history

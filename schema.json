@@ -38,11 +38,16 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2025-01-01",
-      "dateModified": "2026-03-22",
-      "softwareVersion": "1.2.2",
+      "dateModified": "2026-05-05",
+      "softwareVersion": "1.3.2",
       "featureList": [
         "Tab suspension via chrome.tabs.discard()",
         "186,000+ declarativeNetRequest blocking rules",
+        "YouTube ad blocking",
+        "Twitch ad blocking",
+        "Popup blocker",
+        "Smart Page Cleanup (off by default)",
+        "Cosmetic ad blocking",
         "RAM savings dashboard",
         "Cookie consent auto-dismissal",
         "Link preloading",
@@ -50,7 +55,7 @@
         "Font optimization",
         "Stop autoplay",
         "Safe Mode auto-recovery",
-        "14 auto-protected web apps",
+        "18 auto-protected web apps",
         "Per-site feature whitelist"
       ],
       "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local."
@@ -73,11 +78,14 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2026-03-13",
-      "dateModified": "2026-03-22",
-      "softwareVersion": "1.0.0",
+      "dateModified": "2026-05-05",
+      "softwareVersion": "1.1.0",
       "featureList": [
         "Vertical tab sidebar (Chrome side panel API)",
         "Named workspaces with tab isolation",
+        "Multi-window workspaces",
+        "Cross-device workspace sync (chrome.storage.sync, opt-in)",
+        "Custom new tab page with command palette",
         "Session time-travel (50 auto-snapshots, 5-min intervals)",
         "Alt+K command bar (tabs, bookmarks, history, web search)",
         "Alt+G smart tab grouping by domain",
