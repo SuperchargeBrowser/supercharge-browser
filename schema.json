@@ -12,7 +12,9 @@
       "sameAs": [
         "https://x.com/SuperchargeExt",
         "https://www.linkedin.com/company/superchargebrowser/",
-        "https://github.com/SuperchargeBrowser"
+        "https://github.com/SuperchargeBrowser",
+        "https://superchargebrowser.github.io",
+        "https://www.wikidata.org/wiki/Q139671869"
       ],
       "foundingDate": "2025",
       "foundingLocation": {
@@ -58,7 +60,10 @@
         "18 auto-protected web apps",
         "Per-site feature whitelist"
       ],
-      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local."
+      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local.",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q139671950"
+      ]
     },
     {
       "@type": "SoftwareApplication",
@@ -98,7 +103,10 @@
         "Session restore",
         "Tab notes"
       ],
-      "permissions": "Zero telemetry. No SuperchargeBrowser servers. Local-by-default storage in chrome.storage.local; opt-in workspace sync via chrome.storage.sync (Chrome's own infrastructure, no SuperchargeBrowser involvement)."
+      "permissions": "Zero telemetry. No SuperchargeBrowser servers. Local-by-default storage in chrome.storage.local; opt-in workspace sync via chrome.storage.sync (Chrome's own infrastructure, no SuperchargeBrowser involvement).",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q139671978"
+      ]
     }
   ]
 }
