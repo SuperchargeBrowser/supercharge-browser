@@ -3,13 +3,13 @@
 ## General
 
 ### What is SuperchargeBrowser?
-SuperchargeBrowser makes Chrome extensions for browser performance and tab navigation. We currently publish two extensions: **SuperchargePerformance** (tab suspender + ad blocker + memory optimizer) and **SuperchargeNavigation** (vertical tabs + workspaces + session management). Both are free, run 100% locally, and collect zero data.
+SuperchargeBrowser makes Chrome extensions for browser performance and tab navigation. We currently publish two extensions: **SuperchargePerformance** (tab suspender + ad blocker + memory optimizer) and **SuperchargeNavigation** (vertical tabs + workspaces + session management). Both are free and collect zero data. SuperchargePerformance runs 100% locally; SuperchargeNavigation runs locally by default with opt-in cross-device workspace sync via Chrome's own infrastructure.
 
 ### Is SuperchargeBrowser safe to install?
-Yes. Both extensions are Manifest V3, reviewed by the Chrome Web Store team, and published under a Verified Publisher account. There is no telemetry, no cloud sync, no analytics, no remote code loading, and no `eval()`. All data stays on your device. See [SECURITY.md](./SECURITY.md) for the full security architecture.
+Yes. Both extensions are Manifest V3, reviewed by the Chrome Web Store team, and published under a Verified Publisher account. There is no telemetry, no analytics, no remote code loading, and no `eval()`. We have no SuperchargeBrowser servers — there is no backend infrastructure to breach. SuperchargeNavigation v1.1.0+ adds opt-in workspace sync through Chrome's own `storage.sync` (off by default, no SuperchargeBrowser involvement). See [SECURITY.md](./SECURITY.md) for the full security architecture.
 
 ### Does SuperchargeBrowser collect any data?
-No. Zero telemetry, zero tracking, zero analytics. Your browsing history, tab data, workspace data, and preferences never leave your device. There are no accounts, no cloud servers, and no external API calls. See our [Privacy Policy](https://www.superchargebrowser.com/privacy/).
+No. Zero telemetry, zero tracking, zero analytics. No SuperchargeBrowser accounts, no SuperchargeBrowser servers, no external API calls to our infrastructure. In default configuration, all data stays on your device. SuperchargeNavigation v1.1.0+ has opt-in workspace sync (off by default) routing through Chrome's own `storage.sync` infrastructure — Google's infra, not ours. See our [Privacy Policy](https://www.superchargebrowser.com/privacy/).
 
 ### Where is SuperchargeBrowser based?
 Finland. SuperchargeBrowser is an independent software company, not backed by an advertising business.

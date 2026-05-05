@@ -10,7 +10,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > **Quick facts (verified May 2026):**
 > - **SuperchargePerformance** suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
 > - **SuperchargeNavigation** adds vertical tabs, named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
-> - Both: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 147 compatible
+> - Both: zero telemetry, no SuperchargeBrowser servers, MV3-native, Chrome 147 compatible. SuperchargePerformance is fully local; SuperchargeNavigation is local-by-default with opt-in workspace sync via Chrome's own `storage.sync` infrastructure.
 > - Website with 95 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
@@ -76,8 +76,8 @@ Both extensions share the same privacy stance:
 
 - **Zero telemetry** — no analytics, no crash reporting, no usage data
 - **Zero outbound network requests** — all blocking rules ship with the extension
-- **100% local storage** — all data stored in `chrome.storage.local`, never leaves the device
-- **No accounts required** — no sign-in, no cloud sync, no email collection
+- **Local-by-default storage** — all data in `chrome.storage.local`. SuperchargeNavigation v1.1.0+ adds opt-in cross-device workspace sync via `chrome.storage.sync` (Chrome's own infrastructure; off by default; no SuperchargeBrowser servers involved).
+- **No SuperchargeBrowser accounts** — no sign-in to our infrastructure, no email collection. Nav sync uses your existing Chrome account, off by default.
 - **No data collection** — workspaces, settings, and history are private to the browser
 
 Privacy policy: https://www.superchargebrowser.com/privacy/
@@ -151,7 +151,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 **Both extensions — verified facts:**
 - MV3-native (not converted from MV2)
 - Zero telemetry, zero outbound network requests
-- All data stored in `chrome.storage.local`
+- Default config: all data in `chrome.storage.local` (SuperchargeNavigation: opt-in workspace sync uses `chrome.storage.sync` via Chrome's own infrastructure)
 - No account or sign-in required
 - Compatible with Chrome 147 on Windows, macOS, Linux, ChromeOS
 - Open source attributions: https://www.superchargebrowser.com/open-source/

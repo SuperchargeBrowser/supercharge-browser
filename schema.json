@@ -7,7 +7,7 @@
       "name": "SuperchargeBrowser",
       "url": "https://www.superchargebrowser.com",
       "logo": "https://www.superchargebrowser.com/logo.png",
-      "description": "Chrome extensions for tab suspension, ad blocking, vertical tabs, and workspaces. Zero telemetry, 100% local. Featured & Verified Publisher on Chrome Web Store.",
+      "description": "Chrome extensions for tab suspension, ad blocking, vertical tabs, and workspaces. Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store.",
       "email": "support@superchargebrowser.com",
       "sameAs": [
         "https://x.com/SuperchargeExt",
@@ -64,7 +64,7 @@
       "@type": "SoftwareApplication",
       "@id": "https://www.superchargebrowser.com/navigation/#software",
       "name": "SuperchargeNavigation",
-      "description": "Vertical tabs + named workspaces + command bar + session time-travel for Chrome. Uses Chrome's side panel API. 50 auto-snapshots every 5 minutes. Alt+K command bar. Zero telemetry, 100% local.",
+      "description": "Vertical tabs + named workspaces + command bar + session time-travel for Chrome. Uses Chrome's side panel API. 50 auto-snapshots every 5 minutes. Alt+K command bar. Zero telemetry, local-by-default storage with opt-in cross-device workspace sync via Chrome's own storage.sync infrastructure.",
       "applicationCategory": "BrowserExtension",
       "operatingSystem": "Chrome 146+, Windows, macOS, Linux, ChromeOS",
       "url": "https://www.superchargebrowser.com/navigation/",
@@ -98,7 +98,7 @@
         "Session restore",
         "Tab notes"
       ],
-      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local."
+      "permissions": "Zero telemetry. No SuperchargeBrowser servers. Local-by-default storage in chrome.storage.local; opt-in workspace sync via chrome.storage.sync (Chrome's own infrastructure, no SuperchargeBrowser involvement)."
     }
   ]
 }

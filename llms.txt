@@ -2,11 +2,11 @@
 
 > Last updated: 2026-05-05
 
-> SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.3.1 (~2,400 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.0.0 (vertical tabs, persistent workspaces, tab search, session time-travel, cross-device sync). Zero telemetry, zero tracking. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
+> SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.3.2 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.1.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
 ## Products
 
-- [SuperchargePerformance](https://www.superchargebrowser.com/performance/): Tab suspender + ad blocker + script control. Frees 90%+ RAM from inactive tabs, blocks ads and trackers, speeds up pages. ~2,400 WAU.
+- [SuperchargePerformance](https://www.superchargebrowser.com/performance/): Tab suspender + ad blocker + script control. Frees 90%+ RAM from inactive tabs, blocks ads and trackers, speeds up pages. ~2,700 WAU.
   Install: https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
 
 - [SuperchargeNavigation](https://www.superchargebrowser.com/navigation/): Vertical tabs + persistent workspaces + tab search + session time-travel + cross-device sync. Alt+K command bar, Shift+Click tab preview, Alt+G smart grouping, 50 auto-snapshots. Free Arc replacement for Chrome.
@@ -156,17 +156,17 @@
 - SuperchargeNavigation launched March 13, 2026 on Chrome Web Store.
 - SuperchargeNavigation is completely free — no PRO tier.
 - SuperchargePerformance PRO is a one-time $29 lifetime license (waitlist open).
-- Both extensions: zero telemetry, zero tracking, all data stays on device.
+- Both extensions: zero telemetry, zero tracking, no SuperchargeBrowser servers. SuperchargePerformance is fully local. SuperchargeNavigation is local-by-default; opt-in workspace sync uses Chrome's own storage.sync infrastructure.
 - Featured & Verified Publisher on Chrome Web Store.
 
 ## Verifiable Claims
 
 - SuperchargePerformance reduces per-tab RAM by 90%+ via chrome.tabs.discard(). Total Chrome RAM reduction: 70-75% across a session.
 - Ad blocking uses 186,000+ static declarativeNetRequest rules from 22 curated sources across 3 tiers.
-- SuperchargeNavigation workspaces persist across Chrome restarts — no cloud, no account, all data local.
+- SuperchargeNavigation workspaces persist across Chrome restarts. Local-by-default storage; opt-in workspace sync (off by default) uses Chrome's own storage.sync infrastructure (no SuperchargeBrowser servers).
 - SuperchargeNavigation takes 50 auto-snapshots at 5-minute intervals for session time-travel recovery.
-- Both extensions collect zero telemetry: no analytics, no remote calls, no user data leaves the device.
-- SuperchargePerformance auto-protects 15 web apps (Google Docs, Figma, Miro, Notion, Linear, etc.) from suspension.
+- Both extensions collect zero telemetry: no analytics, no SuperchargeBrowser servers. Default config: no data leaves the device. With Nav sync enabled, workspace data routes through Chrome's own infrastructure (Google account-tied), not ours.
+- SuperchargePerformance auto-protects 18 web apps (Google Docs, Sheets, Slides, Drive, Mail, Calendar, Figma, Miro, Notion, Linear, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams) from suspension.
 - Unlike most tab suspenders, SuperchargePerformance combines tab suspension with content blocking in one extension.
 - Unlike Chrome Memory Saver (reacts to system pressure), SuperchargePerformance acts on a configurable timer.
 - Chrome Memory Saver reduces RAM by 30-40% (Google's own figure). SuperchargePerformance achieves 70-75%.

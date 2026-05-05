@@ -7,8 +7,8 @@ SuperchargeBrowser develops Chrome extensions with a strict local-execution mode
 ## Architecture Principles
 
 - **Zero telemetry** — no analytics, no crash reporting, no usage tracking
-- **Zero outbound network requests** — extensions make no network requests to SuperchargeBrowser servers during normal operation
-- **Local storage only** — all settings, workspaces, and session data use `chrome.storage.local`
+- **No SuperchargeBrowser servers** — extensions make no network requests to our infrastructure (we have no backend). SuperchargeNavigation's opt-in cross-device workspace sync (v1.1.0+) routes through Chrome's own `storage.sync` infrastructure — Google's infra, not ours.
+- **Local-by-default storage** — all settings, snapshots, and session data use `chrome.storage.local`. SuperchargeNavigation v1.1.0+ adds opt-in workspace sync via `chrome.storage.sync` (off by default).
 - **Manifest V3** — both extensions use Chrome's latest extension platform with tighter security defaults
 - **Minimal permissions** — each extension requests only the permissions required for its features
 - **No `eval()`** — no dynamic code execution anywhere in either extension
@@ -19,7 +19,7 @@ SuperchargeBrowser develops Chrome extensions with a strict local-execution mode
 
 - Secret scanning with [gitleaks](https://github.com/gitleaks/gitleaks) on every commit (pre-commit hook + CI)
 - Dependency vulnerability monitoring via Dependabot
-- Automated testing: 244 unit tests (Perf) + 384 unit tests (Nav) + 181 Playwright E2E tests
+- Automated testing: 1,500+ unit tests (Vitest) and 250+ Playwright E2E tests across both extensions plus a cross-extension test suite
 - Google Chrome Web Store review before every published version
 
 ## Permissions Justification
