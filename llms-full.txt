@@ -1107,7 +1107,7 @@ SuperchargeNavigation (v1.1.0, verified live on CWS as of May 2026) provides the
 
 **Per-workspace customization.** Each workspace gets an icon from a 60+ icon library (Work, Dev, Personal, Research, and more categories) and a name you set. The visual differentiation is lighter than Arc's full theme system. There is no per-Space background color or font change, but the icon and name make workspaces identifiable at a glance in the side panel and on the new tab page workspace pills.
 
-**Session persistence and time-travel.** Nav saves an automatic snapshot every 5 minutes per workspace, with a ring buffer of 50 snapshots. If Chrome crashes, if you accidentally close a workspace, or if you want to undo a tab cleanup from an hour ago, the snapshot list has a recoverable state. Arc users who relied on Spaces persistence will recognize this behavior: same class of accidents, same recovery path.
+**Session persistence and time-travel.** Nav saves an automatic snapshot of your full browser state every 5 minutes, kept in a 50-entry global ring buffer. If Chrome crashes, if you accidentally close a workspace, or if you want to undo a tab cleanup from an hour ago, the snapshot list has a recoverable state. Arc users who relied on Spaces persistence will recognize this behavior: same class of accidents, same recovery path.
 
 **Cross-device sync.** Workspace sync is off by default. Enable it in Settings to route workspaces through Chrome's storage sync infrastructure across devices. This requires being signed into Chrome on both machines. All sync traffic goes through Chrome's own infrastructure; no data touches SuperchargeBrowser servers unless you enable sync and Chrome sync is active.
 
@@ -1324,7 +1324,7 @@ Suspension timers: 15 minutes on the default level, 5 minutes on the medium leve
 
 The ad blocking layer runs 186,000+ declarative network request rules from 22 curated sources. On a Chromebook, blocking ad iframes does two things: it removes the subframe processes (each ad iframe spawns its own renderer process in Chrome's multi-process model), and it cuts CPU time spent parsing and executing ad scripts. A news site that would spawn 8-10 ad subframes just does not spawn them.
 
-Background cost: the suspension logic runs a 30-second alarm check (standard Chrome alarm API, near-zero overhead). The DNR rules are evaluated by Chrome natively with no per-request JavaScript. Total background RAM: 15-25 MB measured on ChromeOS 147.
+Background cost: the suspension logic runs a 1-minute alarm check (standard Chrome alarm API, near-zero overhead). The DNR rules are evaluated by Chrome natively with no per-request JavaScript. Total background RAM: 15-25 MB measured on ChromeOS 147.
 
 One caveat: if all you want is ad blocking with zero background overhead, uBlock Origin Lite (below) has no background worker at all. SuperchargePerformance's background worker costs ~15-25 MB. It returns that many times over via tab suspension, but the overhead is real.
 
@@ -1419,16 +1419,16 @@ A: As of May 2026, the heaviest categories are: password managers with cloud syn
 
 URL: https://www.superchargebrowser.com/library/best-chrome-tab-managers-2026/
 Category: comparison | Extension: navigation | Updated: 2026-05-05
-Description: Chrome's native tab tools leave three gaps: no suspension, no workspaces, no keyboard search. 6 extensions tested by approach. One covers all three, free.
+Description: Chrome's native tools cover groups + Ctrl+Shift+A search, but skip workspaces, suspension, and cross-history search. 6 extensions tested by approach.
 
 > **Key takeaways**
-> - Chrome 147 covers visual grouping — it still skips **workspaces, keyboard search, and automatic suspension**.
+> - Chrome 147 covers visual grouping + Ctrl+Shift+A tab-search — it still skips **workspaces, cross-history search, and automatic suspension**.
 > - Tab managers split into three approaches: passive cleanup, active organization, and search-first. Pick based on which gap actually frustrates you.
 > - **SuperchargeNavigation** covers the active organization and search-first gaps in one extension, locally, with no account required.
 
 You open Chrome at 9am with two tabs. By 2pm you have 47. Half are reference material you haven't read. A quarter are things you'll "get back to." Six are duplicates. The title strip is too narrow to read any of them. Finding the one tab you need takes longer than re-Googling it.
 
-Chrome's built-in tools have improved. Tab groups arrived in Chrome 89; native vertical tabs in Chrome 146. But the three gaps that matter most are still open: no workspace separation, no keyboard-driven search across all tabs, no automatic suspension of tabs you haven't touched in an hour. The extensions below map to those gaps.
+Chrome's built-in tools have improved. Tab groups arrived in Chrome 89; the Ctrl+Shift+A tab-search dropdown also dates to Chrome 89; native vertical tabs landed via flag in Chrome 146. The three gaps that still matter: no workspace separation, no unified search across open tabs + bookmarks + history, no automatic suspension of tabs idle for an hour. The extensions below map to those gaps.
 
 ## What Chrome 147 Includes (and What It Skips)
 
@@ -1440,7 +1440,8 @@ Know what you already have before installing anything.
 | Vertical tabs sidebar | Yes (flag) | Chrome 146 |
 | Named workspaces | No | — |
 | Session recovery on restart | Partial | "Continue where you left off" only |
-| Keyboard tab search | No | — |
+| Keyboard tab search | Limited (Ctrl+Shift+A — open tabs only) | Chrome 89 |
+| Cross-history search (open + bookmarks + history) | No | — |
 | Automatic tab suspension | No | — |
 | Tab deduplication | No | — |
 
@@ -1520,7 +1521,7 @@ SuperchargeNavigation covers the active organization and search-first categories
 
 **Shift+Click peek preview.** Hold Shift and click any link to open a full-page preview overlay without leaving your current tab. The preview is a complete interactive page — you can read, scroll, and interact. Esc closes it. The tab is not added to your workspace unless you navigate away from the overlay. For research-heavy workflows where you open 10 links to see which 2 are worth keeping, this cuts tab count by avoiding the other 8.
 
-Beyond those three, Nav adds session time-travel (every workspace auto-saves a snapshot every 5 minutes, 50 retained per workspace — roughly 4 hours of recoverable history), Alt+G smart grouping by domain (one keystroke clusters tabs from github.com, notion.so, and others into collapsed groups), multi-select bulk actions (Ctrl+Click builds a selection; bulk close, pin, mute, group, or lock the result), and opt-in cross-device sync through Chrome's own `chrome.storage.local` infrastructure (off by default; zero external calls).
+Beyond those three, Nav adds session time-travel (auto-saves a global snapshot of your full browser state every 5 minutes, 50 retained in a ring buffer — roughly 4 hours of recoverable history across all workspaces), Alt+G smart grouping by domain (one keystroke clusters tabs from github.com, notion.so, and others into collapsed groups), multi-select bulk actions (Ctrl+Click builds a selection; bulk close, pin, mute, group, or lock the result), and opt-in cross-device workspace sync through Chrome's own `chrome.storage.sync` infrastructure (off by default; no SuperchargeBrowser servers).
 
 Zero telemetry. 100% local storage by default. No account required for any feature.
 
@@ -1536,7 +1537,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 | Auto-close inactive tabs | No | Yes | No | No | No | No |
 | Bulk tab collapse | Yes | No | No | No | No | No |
 | Vertical tab sidebar | No | No | No | No | Yes | Yes (flag) |
-| Keyboard tab search | No | No | Limited | No | Yes (Alt+K) | No |
+| Keyboard tab search | No | No | Limited | No | Yes (Alt+K, includes bookmarks/history) | Limited (Ctrl+Shift+A — open tabs only) |
 | Session snapshots / time-travel | No | Corral list | Cloud backup | Manual save | Yes (50 auto, 5-min) | No |
 | Tab deduplication | No | No | No | No | Yes | No |
 | Peek preview | No | No | No | No | Yes (Shift+Click) | No |
@@ -1568,7 +1569,7 @@ Q: What is the best Chrome tab manager extension in 2026?
 A: As of May 2026, the right answer depends on which tab problem you have. For bulk tab collapse and immediate RAM savings, OneTab (v2.14, 2M users) is the fastest tool. For named workspaces with session recovery and keyboard search, SuperchargeNavigation (v1.1.0, free) covers all three in a single extension with no account required. For auto-closing old tabs on a timer, Tab Wrangler (v8.3.0) handles that specifically. Chrome 147's built-in tab groups handle basic organization for users managing under 15 tabs.
 
 Q: Does Chrome have a built-in tab manager in 2026?
-A: As of May 2026, Chrome 147 includes native tab groups (color-coded, collapsible, introduced in Chrome 89) and vertical tabs (via chrome://flags, introduced in Chrome 146). What it does not include: named workspaces, session recovery that survives browser restarts, keyboard-driven tab search, or automatic tab suspension. Extensions are still required for those features.
+A: As of May 2026, Chrome 147 includes native tab groups (Chrome 89), vertical tabs via chrome://flags (Chrome 146), and a keyboard tab-search dropdown (Ctrl+Shift+A, Chrome 89). What it does not include: named workspaces, session recovery that survives browser restarts, search across bookmarks/history alongside open tabs, or automatic tab suspension. Extensions are still required for those features.
 
 Q: What is the difference between tab suspension and tab management?
 A: As of May 2026, these are different operations. Tab suspension (chrome.tabs.discard) removes a tab from memory while keeping it visible in the tab strip — clicking it reloads from cache. Tab management covers organization: workspaces, groups, search, and session save. Some extensions do both; most specialize in one. SuperchargeNavigation does organization and search; SuperchargePerformance does suspension.
@@ -1644,7 +1645,7 @@ Each renderer process runs a V8 instance with its own heap. V8's memory layout h
 
 **Old space (old generation):** Long-lived objects that survived multiple scavenge cycles. No fixed upper limit — V8 grows old space dynamically. The major GC (Orinoco) collects here. Major GC is incremental and concurrent: most marking work happens in background threads while JavaScript continues executing, with short stop-the-world pauses for finalization.
 
-V8's current GC infrastructure (as of Chrome 125, May 2026) is called **Orinoco**. It includes:
+V8's current GC infrastructure (as of Chrome 147, May 2026) is called **Orinoco**. It includes:
 - Concurrent marking (background threads mark live objects while main thread runs)
 - Parallel scavenging (multiple threads process the young generation)
 - Incremental marking (breaks full-heap scan into incremental steps to reduce jank)
@@ -1788,7 +1789,7 @@ Q: What is Site Isolation and how much RAM does it use?
 A: Site Isolation (enabled by default since Chrome 67, May 2018) places every site origin into its own renderer process. This prevents Spectre-class attacks from reading memory across origins. Google's own data on the Chromium blog (2018) put the overhead at 10-13% more RAM in real workloads. On a 4 GB machine with 10 tabs, that is roughly 50-130 MB extra for the security benefit.
 
 Q: What is V8's garbage collector called in Chrome 2026?
-A: As of Chrome 125 (May 2026), V8 uses a generational garbage collector called Orinoco. It runs major GC (full heap collection) concurrently in a background thread, and minor GC (young generation scavenging) incrementally. The young generation (new space) is typically 1–8 MB; the old generation heap grows dynamically. V8 exposes approximate heap usage via the legacy performance.memory API (JSHeapSizeLimit, usedJSHeapSize, totalJSHeapSize), though that API is deprecated in cross-origin isolated contexts.
+A: As of Chrome 147 (May 2026), V8 uses a generational garbage collector called Orinoco. It runs major GC (full heap collection) concurrently in a background thread, and minor GC (young generation scavenging) incrementally. The young generation (new space) is typically 1–8 MB; the old generation heap grows dynamically. V8 exposes approximate heap usage via the legacy performance.memory API (JSHeapSizeLimit, usedJSHeapSize, totalJSHeapSize), though that API is deprecated in cross-origin isolated contexts.
 
 Q: Does chrome.tabs.discard() free RAM immediately?
 A: Yes. When chrome.tabs.discard(tabId) is called, Chrome terminates the renderer process for that tab and releases its memory back to the OS. The tab remains visible in the tab strip and reloads from the network when clicked. Chrome Task Manager (Shift+Esc) shows 0 KB for the discarded tab's process immediately after. The browser process retains a few KB for the tab entry (favicon, title, URL). This is why tab suspension frees 90–95% of each inactive tab's RAM — the renderer is entirely unloaded.
@@ -1938,7 +1939,7 @@ A: Chrome's Memory Saver can discard background tabs, which terminates the rende
 
 URL: https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/
 Category: troubleshooting | Extension: performance | Updated: 2026-05-05
-Description: Chrome backgrounded tabs + transparent windows = WindowServer CPU spike. 5 ranked fixes tested on macOS Tahoe (26). Drops it 40-60% in under a minute.
+Description: Chrome backgrounded tabs + transparent windows = WindowServer CPU spike. 5 ranked fixes tested on macOS Sequoia (15). Drops it 40-60% in under a minute.
 
 WindowServer high CPU on Mac is most commonly caused by Chrome's GPU compositing pipeline. Open **Activity Monitor**, search for "WindowServer" — if it's above 15% while Chrome is open, background tab rendering is the cause. The fastest fix suspends those tabs and cuts compositor load 40–60% in under a minute.
 
@@ -1949,7 +1950,7 @@ WindowServer high CPU on Mac is most commonly caused by Chrome's GPU compositing
 
 WindowServer is macOS's window compositor (analogous to `dwm.exe` on Windows). Every visible app submits rendering surfaces to it, which WindowServer composites into the final image sent to your display. Chrome's GPU process alone can push WindowServer above 50% CPU on a MacBook with 15+ tabs open — each tab with active JavaScript animations submits fresh GPU textures up to 60 times per second.
 
-The problem intensified on macOS Tahoe (26). User reports from April 2026 show WindowServer CPU spiking on Tahoe even on M-series chips, tied to the updated compositor in the new rendering stack.
+The problem intensified on macOS Sequoia (15). User reports from April 2026 show WindowServer CPU spiking on Sequoia even on M-series chips, tied to the updated compositor in the new rendering stack.
 
 ## 5 Quick Fixes Ranked by Impact
 
@@ -1983,7 +1984,7 @@ The problem intensified on macOS Tahoe (26). User reports from April 2026 show W
 2. Enable **Reduce Transparency**.
 3. No restart needed — WindowServer load drops within seconds.
 
-**Why it works:** macOS transparency effects require WindowServer to composite a blur pass over every window boundary in real time. On Tahoe (26) this is especially heavy with multiple Chrome windows open. As of May 2026, Reduce Transparency is the fastest single toggle for systems without Chrome open.
+**Why it works:** macOS transparency effects require WindowServer to composite a blur pass over every window boundary in real time. On Sequoia (15) this is especially heavy with multiple Chrome windows open. As of May 2026, Reduce Transparency is the fastest single toggle for systems without Chrome open.
 
 ### 4. Reduce Open Windows and Desktops
 
@@ -2022,7 +2023,7 @@ Watch the top processes for 30 seconds. If `Chrome_ChildIOT` or `com.google.Chro
 
 ## Reducing the Compositor Load Long-Term
 
-Suspending background tabs is the correct fix for sustained WindowServer overload, not a one-time restart. For related Chrome memory issues on Tahoe, see [fixing Chrome memory leaks on macOS Tahoe](/library/fix-chrome-memory-leaks-macos-tahoe/) — the unified memory architecture means GPU and system RAM compete for the same pool, so WindowServer overload and Chrome memory leaks often appear together.
+Suspending background tabs is the correct fix for sustained WindowServer overload, not a one-time restart. For related Chrome memory issues on macOS, see [fixing Chrome memory leaks on macOS](/library/fix-chrome-memory-leaks-macos-tahoe/) — the unified memory architecture means GPU and system RAM compete for the same pool, so WindowServer overload and Chrome memory leaks often appear together.
 
 If WindowServer stays above 20% after applying all five fixes, the issue is almost always an external display with a mismatched refresh rate or a GPU-heavy web app (WebGL, video encoding in-tab, or a continuously-polling analytics dashboard).
 
@@ -2034,13 +2035,13 @@ When Chrome uses hardware acceleration, its renderer processes submit GPU textur
 
 The problem scales with Retina resolution. On a 5K display, each compositor surface is four times the pixel count of a 1080p surface, multiplying WindowServer's memory bandwidth and compute requirements per frame.
 
-**Apple Silicon (M1–M4) vs Intel on Tahoe (26):** On Apple Silicon, WindowServer uses unified memory — GPU and CPU share the same RAM pool. WindowServer's GPU compositing work competes directly with application RAM. On Intel Macs, WindowServer must bridge CPU-rendered Chrome content and the GPU compositor across PCIe, adding latency. Either way, reducing the number of active compositor surfaces (Fix 4) and eliminating background tab renders (Fix 1) are the correct architectural fixes.
+**Apple Silicon (M1–M4) vs Intel on Sequoia (15):** On Apple Silicon, WindowServer uses unified memory — GPU and CPU share the same RAM pool. WindowServer's GPU compositing work competes directly with application RAM. On Intel Macs, WindowServer must bridge CPU-rendered Chrome content and the GPU compositor across PCIe, adding latency. Either way, reducing the number of active compositor surfaces (Fix 4) and eliminating background tab renders (Fix 1) are the correct architectural fixes.
 
-For related issues: [stopping Chrome from overheating your MacBook](/library/stop-chrome-overheating-macbook/) and [fixing Chrome's GPU process memory on macOS Tahoe](/library/fix-chrome-memory-leaks-macos-tahoe/).
+For related issues: [stopping Chrome from overheating your MacBook](/library/stop-chrome-overheating-macbook/) and [fixing Chrome's GPU process memory on macOS](/library/fix-chrome-memory-leaks-macos-tahoe/).
 
 #### FAQ
 Q: What is WindowServer on Mac and why does it use so much CPU?
-A: WindowServer is macOS's display compositor — it draws every pixel on screen. As of May 2026 on macOS Tahoe (26), when Chrome uses hardware acceleration it sends GPU compositing work that WindowServer must process. Too many Chrome windows or GPU-heavy pages overload it.
+A: WindowServer is macOS's display compositor — it draws every pixel on screen. As of May 2026 on macOS Sequoia (15), when Chrome uses hardware acceleration it sends GPU compositing work that WindowServer must process. Too many Chrome windows or GPU-heavy pages overload it.
 
 Q: Will closing Chrome tabs fix WindowServer high CPU?
 A: Yes, in most cases. Each Chrome tab with animations, videos, or WebGL adds compositing work for WindowServer. Suspending inactive tabs with chrome.tabs.discard() removes them from the GPU pipeline entirely — WindowServer has nothing to composite for a discarded tab.
@@ -2048,8 +2049,8 @@ A: Yes, in most cases. Each Chrome tab with animations, videos, or WebGL adds co
 Q: Is WindowServer high CPU dangerous for my Mac?
 A: It causes higher fan speeds, battery drain, and thermal throttling, but won't damage your Mac. Fixing the Chrome GPU load brings WindowServer back to normal levels.
 
-Q: Does macOS Tahoe (26) make WindowServer worse?
-A: Yes. Reports from April 2026 show WindowServer CPU spikes resurfaced on Tahoe (26) due to updated compositor behavior. The fixes below apply to Tahoe and all recent macOS versions.
+Q: Does macOS Sequoia (15) make WindowServer worse?
+A: Yes. Reports from April 2026 show WindowServer CPU spikes resurfaced on Sequoia (15) due to updated compositor behavior. The fixes below apply to Tahoe and all recent macOS versions.
 
 ---
 
@@ -2062,7 +2063,7 @@ Description: Banned Feb 2021 for malware. Two forks survived: Reloaded (v2.0.0, 
 > **Key takeaways**
 > - The original Great Suspender was **removed from Chrome Web Store for malware in February 2021**. It's gone permanently.
 > - Two forks are active on CWS in May 2026: **Reloaded (v2.0.0, updated May 1 2026)** and **Marvellous (v8.1.3, Dec 2025)**. Both are MV3, open-source, and volunteer-maintained.
-> - **`chrome.tabs.discard()` suspends invisibly** — no custom suspension page, back button unaffected, scroll position preserved.
+> - **`chrome.tabs.discard()` suspends invisibly** — no custom suspension page, no extra back-button history entry. (Scroll position resets on reload — a Chrome API limitation across all tab-discard tools.)
 
 If you used The Great Suspender for years and want to know what's still working in 2026, this page covers the current fork status, how they compare, and what SuperchargePerformance does differently.
 
@@ -2108,7 +2109,7 @@ SuperchargePerformance uses `chrome.tabs.discard()`, Chrome's native tab lifecyc
 
 The Great Suspender forks replace the tab's content with a custom suspension page. Pressing back after a tab wakes up navigates to that suspension page — it's a history entry. Scroll position resets to top. There's a brief flash of the suspension screen before content loads.
 
-Chrome's discard API has none of these issues. The tab stays in the tab bar with its favicon and title. Memory drops to near zero. Clicking it triggers a normal reload. No custom screen, no back-button quirk, no scroll reset.
+Chrome's discard API skips the suspension-page UX entirely. The tab stays in the tab bar with its favicon and title. Memory drops to near zero. Clicking it triggers a normal reload — no custom screen, no extra history entry. (Scroll position resets on reload, the same as any page reload after a long idle; this is a Chrome API limitation that applies to all tab-discard tools.)
 
 ## Feature Comparison
 
@@ -2180,7 +2181,7 @@ Q: Will Great Suspender forks keep working in Chrome?
 A: Both active forks have migrated to MV3 and work on Chrome 147. Great Suspender Reloaded updated to v2.0.0 on May 1 2026. The Marvellous Suspender is on v8.1.3 (December 2025). Whether they continue receiving timely updates depends on volunteer maintainers — neither has commercial backing.
 
 Q: How does SuperchargePerformance suspend tabs differently from The Great Suspender?
-A: The Great Suspender replaced the tab's content with a custom suspension page. SuperchargePerformance uses chrome.tabs.discard(), which is invisible — the tab stays in the tab bar, memory is freed, and clicking it reloads naturally without breaking the back button or losing scroll position.
+A: The Great Suspender replaced the tab's content with a custom suspension page, which created a back-button history entry. SuperchargePerformance uses chrome.tabs.discard(), which is invisible — the tab stays in the tab bar, memory is freed, and clicking reloads the page without that history entry. (Note: clicking a discarded tab triggers a fresh page load, so scroll position is lost on reload — this is a Chrome API limitation that affects every tab-discard tool, not just ours.)
 
 ---
 
@@ -2379,7 +2380,7 @@ uBlock Origin handles ad and tracker blocking. It does not suspend tabs, manage 
 
 uBlock Origin handles ads and trackers. It does not suspend inactive tabs, show RAM usage, or manage tab lifecycle. If you run 20+ tabs regularly, the memory problem isn't just what loads in each tab — it's how many tabs stay loaded.
 
-SuperchargePerformance covers that gap: tab suspension via `chrome.tabs.discard()` with a configurable timer, 186K+ DNR rules for tracker and malware blocking (compiled March 2026), cookie consent auto-dismissal on 100+ sites, a per-tab RAM savings dashboard, and 15 auto-protected web apps. Zero telemetry, 100% local, no account. A note on running both: Chrome enforces a shared rule budget across all extensions. SuperchargePerformance uses 100K+ rules at its default setting; uBlock uses 60–100K+. Running both can exceed Chrome's shared pool of ~150K rules, causing rulesets to be silently dropped. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, malware, and phishing — for most users, it replaces uBlock's blocking entirely while adding video ads, popups, cookies, and tab suspension on top.
+SuperchargePerformance covers that gap: tab suspension via `chrome.tabs.discard()` with a configurable timer, 186K+ DNR rules for tracker and malware blocking (compiled March 2026), cookie consent auto-dismissal on 100+ sites, a per-tab RAM savings dashboard, and 18 auto-protected web apps. Zero telemetry, 100% local, no account. A note on running both: Chrome's static DNR budget is 300K rules per extension (raised from 150K in Chrome 120). Running Perf + uBlock won't exceed that per-extension cap, but it does create duplicate evaluation — the same request gets matched against two large filter sets, with overlapping coverage and small CPU + memory overhead. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, malware, and phishing — for most users, it replaces uBlock's blocking entirely while adding video ads, popups, cookies, and tab suspension on top.
 
 ## Which Setup Makes Sense
 
@@ -2651,7 +2652,7 @@ The API proxy layer syncs from AdBlock for YouTube's upstream, which patches wit
 
 **On filter count:** Perf's 186K rules are all native DNR entries: compiled from 22 upstream sources, deduplicated at build time, and evaluated by Chrome's network layer with zero per-request JavaScript overhead. uBlock Origin's 300K+ figure includes procedural cosmetic rules and scriptlets that cannot be expressed as DNR and require a running JS engine to apply. On raw domain-level blocking, Perf's compiled ruleset is comparable. Where uBlock leads is cosmetic depth — hiding ad containers by CSS selector on long-tail sites, and scriptlet-based interception for edge cases that URL rules can't reach. For YouTube ads, popups, cookie banners, and tab memory, Perf covers the full stack without requiring multiple extensions.
 
-Note on running Perf alongside uBlock Origin: Chrome enforces a shared rule budget. Running both can cause silent ruleset drops. The recommended configuration is to set Perf's content blocking to Off and let uBlock handle website ads, while Perf handles YouTube, popups, cookie banners, and tab suspension.
+Note on running Perf alongside uBlock Origin: each extension has its own 300K static DNR rule budget (Chrome 120+), so neither hits a per-extension cap. The cost is duplicate evaluation — overlapping rule sets, two service workers. The recommended configuration is to set Perf's content blocking to Off and let uBlock handle website ads, while Perf handles YouTube, popups, cookie banners, and tab suspension.
 
 ## Why YouTube Ad Blocking Is Uniquely Hard
 
@@ -2715,7 +2716,7 @@ Q: Is AdBlock for YouTube the same as SuperchargePerformance's video blocking?
 A: As of April 2026, they share one layer. SuperchargePerformance's API-proxy layer is derived from AdBlock for YouTube (v7.2.1, synced March 31, 2026). Both proxy the same JavaScript APIs — JSON.parse, TextEncoder, XHR.send, and others — to strip ad slots from YouTube's player configuration. On YouTube specifically, SuperchargePerformance adds three proprietary layers that AdBlock for YouTube does not have: (a) 14 DNR network rules that Chrome evaluates before any script runs, (b) an ISOLATED-world bridge that polls for skip buttons and hides interstitials when the proxy misses an ad, and (c) cosmetic CSS hiding promoted-card slots in YouTube's feeds, search, and masthead. Beyond YouTube, SuperchargePerformance also bundles tab suspension, 186K+ content blocking rules, and AutoConsent cookie banner removal. AdBlock for YouTube is a dedicated tool that does only YouTube ad removal, using the proxy layer alone.
 
 Q: Can I run uBlock Origin and SuperchargePerformance together?
-A: As of April 2026, running both is possible but creates a shared rule budget conflict. Chrome enforces approximately 150K rules across all extensions. SuperchargePerformance uses 100K+ at its default tier; uBlock Origin uses 60-100K+. The combined total can silently exceed Chrome's limit, causing rulesets to be dropped without warning. The safest configuration: set SuperchargePerformance's content blocking to Off and let it handle only YouTube/Twitch video ads, popups, and cookie banners. Let uBlock Origin own general website ad blocking.
+A: As of May 2026, running both is possible. Each extension has a 300K static DNR rule budget per extension (Chrome 120+), so neither blocker hits a hard cap individually. The real cost is duplicate evaluation — every request gets matched against two large filter sets, plus two extension service workers running. The cleanest configuration: set SuperchargePerformance's content blocking to Off and let it handle only YouTube/Twitch video ads, popups, and cookie banners. Let uBlock Origin own general website ad blocking.
 
 ---
 
@@ -3667,13 +3668,13 @@ Zero data collection. 100% local processing. No account required. Featured badge
 | Want website ad blocking + video ads + memory control | SuperchargePerformance alone covers all three. If you keep uBlock, set Perf's content blocking to Off and use Perf for video ads, popups, cookies, and tabs. |
 | Willing to switch browsers for maximum everything | Firefox + uBlock Origin (still supports the old extension system) |
 
-A note on running both: Chrome enforces a shared rule budget across all extensions. Each extension gets 30,000 rules guaranteed, but everything beyond that draws from a global pool of roughly 150,000 rules shared across all installed extensions. SuperchargePerformance at its default setting uses 100,000 rules. uBlock Origin uses 60,000–100,000+. The combined total can exceed Chrome's shared pool — and when that happens, Chrome silently drops rulesets from one or both extensions without warning. Neither extension crashes, but blocking coverage degrades invisibly.
+A note on running both: Chrome's static DNR budget is 300K rules per extension (raised from 150K in Chrome 120). Running Perf + uBlock Origin won't exceed that per-extension cap individually. The real cost is duplicate evaluation — every network request gets matched against two large filter sets with overlapping coverage, plus the runtime cost of two extension service workers. CPU and memory overhead is small but real.
 
-SuperchargePerformance's 186K rules are compiled from 22 curated sources covering ads, trackers, analytics, fingerprinting, malware, phishing, fraud, and ransomware. The lists are deduplicated against each other and ranked by Majestic Million traffic data. For most users, adding uBlock Origin on top does not meaningfully improve coverage — it competes for the same rule budget and can cause SuperchargePerformance's higher-tier rulesets to fail silently.
+SuperchargePerformance's 186K rules are compiled from 22 curated sources covering ads, trackers, analytics, fingerprinting, malware, phishing, fraud, and ransomware. The lists are deduplicated against each other and ranked by Majestic Million traffic data. For most users, adding uBlock Origin on top does not meaningfully improve blocking coverage — it just runs the same checks twice with different rule sources.
 
 On YouTube and Twitch, both extensions intercept page scripts at the same injection point, and the non-deterministic load order can cause one to interfere with the other's ad detection.
 
-If you already use uBlock Origin and want to add SuperchargePerformance for tab suspension and video ad blocking, set Perf's content blocking to Off or Low to avoid rule budget contention — and let uBlock handle general website ads while Perf handles video ads, popups, cookies, and tab memory.
+If you already use uBlock Origin and want to add SuperchargePerformance for tab suspension and video ad blocking, set Perf's content blocking to Off or Low to skip the duplicate work — and let uBlock handle general website ads while Perf handles video ads, popups, cookies, and tab memory.
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
@@ -3689,7 +3690,7 @@ Q: What is the difference between MV3 and MV2 ad blocking on Chrome?
 A: As of April 2026, Chrome's Manifest V3 replaced the webRequest API with declarativeNetRequest (DNR). Under MV2, extensions intercepted every network request at runtime. Under MV3, extensions submit static rule sets that Chrome's engine evaluates natively. This limits dynamic filtering but the best MV3 blockers — uBlock Origin and AdGuard — adapted well and remain effective.
 
 Q: Is SuperchargePerformance a replacement for uBlock Origin?
-A: As of April 2026, SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), YouTube and Twitch video ad blocking, popup/popup-under blocking, cookie consent auto-rejection (AutoConsent 14.67.0), cosmetic filtering (universal + site-specific CSS for YouTube, Facebook, Twitter, Reddit), and per-domain whitelist with 14 individually toggleable features. The difference from uBlock Origin is scope: SuperchargePerformance also handles tab suspension, a RAM dashboard, and video ad blocking — while uBlock Origin has deeper general filter list coverage and the network request logger. Running both is possible but not recommended. Chrome enforces a shared rule budget across extensions — SuperchargePerformance's 100K+ default rules and uBlock's 60–100K+ rules can exceed Chrome's global pool, causing rulesets to be silently dropped. If you keep both, set SuperchargePerformance's content blocking to Off and use it for video ads, popups, cookies, and tab suspension instead.
+A: As of May 2026, SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), YouTube and Twitch video ad blocking, popup/popup-under blocking, cookie consent auto-rejection (AutoConsent 14.67.0), cosmetic filtering (universal + site-specific CSS for YouTube, Facebook, Twitter, Reddit), and per-domain whitelist with 14 individually toggleable features. The difference from uBlock Origin is scope: SuperchargePerformance also handles tab suspension, a RAM dashboard, and video ad blocking — while uBlock Origin has deeper general filter list coverage and the network request logger. Running both is possible: each extension has its own 300K static DNR rule budget (Chrome 120+), so neither hits a hard cap. The cost is duplicate evaluation — overlapping coverage, two service workers, minor CPU and memory overhead. For best results, set SuperchargePerformance's content blocking to Off and use it for video ads, popups, cookies, and tab suspension while uBlock handles general website ads.
 
 Q: Which Chrome ad blocker uses the least memory in 2026?
 A: As of April 2026, uBlock Origin Lite uses near-zero memory because it has no background service worker — Chrome evaluates its DNR rules natively with no extension code running. uBlock Origin (full) has a small service worker overhead. AdGuard and SuperchargePerformance both have small resource footprints. None of them are significant RAM consumers on modern hardware.
@@ -4981,7 +4982,7 @@ Everything is controlled by a single toggle in the extension popup. A per-site w
 
 The next video you play should load without pre-roll. If you see an anti-adblock popup appear briefly before disappearing, that's the click-skip fallback handling a placement the main layer didn't catch in time.
 
-If you're already running another ad blocker: Chrome enforces a shared rule budget across all extensions. SuperchargePerformance's 186K+ rules and your other blocker's rules draw from the same pool. Running both can cause rules to be silently dropped, with no warning. The cleanest fix is to drop your other blocker's aggressiveness to its lowest setting and let SuperchargePerformance own video ads, popups, and cookie banners. Alternatively, keep your existing blocker for website ads and disable its YouTube-specific features.
+If you're already running another ad blocker: each extension has its own 300K static DNR rule budget (Chrome 120+), so neither hits a per-extension cap. But running both means every request gets matched against two large filter sets with overlapping coverage, plus two extension service workers running. The cleanest fix is to drop your other blocker's aggressiveness to its lowest setting and let SuperchargePerformance own video ads, popups, and cookie banners. Alternatively, keep your existing blocker for website ads and disable its YouTube-specific features.
 
 ## Fix 2: Keeping Your Existing Ad Blocker
 
@@ -5121,15 +5122,15 @@ Install it if: you want lightweight tracker and ad blocking with minimal resourc
 
 Ad blocking handles one slice of browser performance. If you also have 20+ tabs draining RAM, neither uBO version addresses that — their scope is content filtering, not tab lifecycle management.
 
-Tab suspension (discarding inactive tabs to free memory), RAM dashboards, and cookie consent auto-dismissal are a separate layer. SuperchargePerformance covers that layer: 186,000+ DNR rules for tracker and malware blocking (compiled March 2026), tab suspension via `chrome.tabs.discard()` with a configurable timer, 15 auto-protected web apps (Figma, Notion, Slack), and a per-tab RAM savings dashboard. Zero telemetry, 100% local, no account, Featured badge on CWS.
+Tab suspension (discarding inactive tabs to free memory), RAM dashboards, and cookie consent auto-dismissal are a separate layer. SuperchargePerformance covers that layer: 186,000+ DNR rules for tracker and malware blocking (compiled March 2026), tab suspension via `chrome.tabs.discard()` with a configurable timer, 18 auto-protected web apps (Figma, Notion, Slack), and a per-tab RAM savings dashboard. Zero telemetry, 100% local, no account, Featured badge on CWS.
 
-If you already run uBlock Origin: SuperchargePerformance's ad blocking overlaps significantly with uBlock's coverage, and Chrome's shared rule budget means running both at full strength can cause rulesets to be silently dropped. For the best setup, either use SuperchargePerformance alone (it covers ads, trackers, video ads, popups, cookies, and tab suspension) or keep uBlock for website ads and set Perf's content blocking to Off so it handles only video ads, popups, cookies, and tab memory.
+If you already run uBlock Origin: SuperchargePerformance's ad blocking overlaps significantly with uBlock's coverage, and running both means every request gets matched against both filter sets — duplicate work, no incremental coverage gain. For the best setup, either use SuperchargePerformance alone (it covers ads, trackers, video ads, popups, cookies, and tab suspension) or keep uBlock for website ads and set Perf's content blocking to Off so it handles only video ads, popups, cookies, and tab memory.
 
 ## Which Setup to Choose
 
 - Maximum ad blocking, single extension: **uBlock Origin** (full)
 - Lightweight blocking, minimal resource use: **uBlock Origin Lite**
-- Ad blocking + video ads + tab suspension + RAM savings: **SuperchargePerformance** alone (covers all four; running uBlock alongside risks Chrome's shared rule budget)
+- Ad blocking + video ads + tab suspension + RAM savings: **SuperchargePerformance** alone (covers all four; running uBlock alongside means duplicate evaluation overhead with no extra coverage)
 - Tracker/performance focus, no ad blocker needed: **SuperchargePerformance** alone
 - Maximum everything, don't mind a different browser: **Firefox + uBlock Origin** (Firefox's MV2 support means zero MV3 constraints)
 
@@ -5144,7 +5145,7 @@ Q: Should I use uBlock Origin or uBlock Origin Lite?
 A: Use uBlock Origin (full) if you want maximum blocking coverage and don't mind a small resource overhead. Use uBlock Origin Lite if you want the lightest possible blocker with zero background processes. Both are free, by the same developer, and available on the Chrome Web Store as of March 2026.
 
 Q: Is SuperchargePerformance a replacement for uBlock Origin?
-A: SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), cosmetic filtering, and per-domain whitelist rules — alongside tab suspension and a RAM dashboard. The difference is scope: uBlock Origin focuses exclusively on content filtering with deeper filter lists. SuperchargePerformance combines blocking with tab lifecycle management. Running both is possible but not ideal. Chrome enforces a shared rule budget across extensions — combined, the two can exceed Chrome's global pool, causing rulesets to silently fail. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, and malware comprehensively. If you keep uBlock, set Perf's content blocking to Off and use it for video ads, popups, cookies, and tab suspension.
+A: SuperchargePerformance includes ad blocking (186K+ DNR rules from 22 sources, 3 tiers), cosmetic filtering, and per-domain whitelist rules — alongside tab suspension and a RAM dashboard. The difference is scope: uBlock Origin focuses exclusively on content filtering with deeper filter lists. SuperchargePerformance combines blocking with tab lifecycle management. Running both is possible: each extension has its own 300K static DNR budget (Chrome 120+). The cost is duplicate evaluation — overlapping rule sets and two service workers running. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, and malware comprehensively. If you keep uBlock, set Perf's content blocking to Off and use it for video ads, popups, cookies, and tab suspension.
 
 ---
 
@@ -6363,7 +6364,7 @@ Discarding inactive tabs before they accumulate is the structural solution. Chro
 
 SuperchargePerformance does this automatically. Tabs inactive for a configurable period (15 minutes at level 1, 5 minutes at level 2) get discarded while you edit. For Office 365 specifically: go to the extension's whitelist settings and add `office.com` — this ensures your Word Online or Excel tab is never discarded mid-session, while everything else clears aggressively.
 
-The 15 auto-protected web apps in SuperchargePerformance include Google Docs, Sheets, and Slides. They are never suspended. Office 365 requires a manual whitelist addition since it is a Microsoft property rather than a default-protected app. Adding it takes 10 seconds and stays persistent.
+The 18 auto-protected web apps in SuperchargePerformance include Google Docs, Sheets, and Slides. They are never suspended. Office 365 requires a manual whitelist addition since it is a Microsoft property rather than a default-protected app. Adding it takes 10 seconds and stays persistent.
 
 The math across a typical session: suspending 12 inactive tabs frees 70–75% of total Chrome RAM, creating headroom that delays or prevents the point at which Office 365 memory pressure forces OS-level swapping. Per-discarded-tab savings are 90–95% of that tab's renderer memory.
 
@@ -6917,10 +6918,10 @@ Q: What does SuperchargePerformance actually do?
 A: As of April 2026, SuperchargePerformance is a Chrome extension with 13 distinct features across two categories: memory management and page speed. Its core function is intelligent tab suspension — it unloads idle tabs after a configurable timer, freeing roughly 80MB per tab. On the page speed side, it blocks ads, trackers, and malware using 186,000+ rules from 22 curated sources, with separate video ad blocking for YouTube and Twitch. All features are individually toggleable. Zero telemetry, 100% local, no account required.
 
 Q: Does SuperchargePerformance conflict with uBlock Origin?
-A: As of April 2026, they can run simultaneously but it is not recommended at full strength. Chrome enforces a shared rule budget across all extensions — SuperchargePerformance uses 100K+ rules at its default setting, and uBlock uses 60–100K+. Combined, they can exceed Chrome's shared pool of ~150K rules, causing rulesets to be silently dropped without warning. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, and malware comprehensively. If you prefer to keep uBlock for website ads, set SuperchargePerformance's content blocking to Off and use it for video ads, popups, cookies, and tab suspension.
+A: As of May 2026, they can run simultaneously. Each extension has its own 300K static DNR rule budget (Chrome 120+), so neither blocker hits a per-extension cap. The cost is duplicate evaluation — overlapping coverage and two service workers running. SuperchargePerformance's 186K rules from 22 curated sources cover ads, trackers, and malware comprehensively. If you prefer to keep uBlock for website ads, set SuperchargePerformance's content blocking to Off and use it for video ads, popups, cookies, and tab suspension.
 
 Q: How does tab suspension work in SuperchargePerformance?
-A: As of April 2026, SuperchargePerformance monitors tab activity and suspends idle tabs after a configurable timer using Chrome's native chrome.tabs.discard() API. The timer has three preset tiers: Low (15 minutes), Medium (5 minutes), and PRO (custom seconds). Suspended tabs show a reload prompt when you click them — Chrome reloads the page on demand. Fifteen web apps are auto-protected from suspension: Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Google Docs, Sheets, and Slides. Pinned tabs, tabs playing audio, and tabs with unsaved form data are also never suspended.
+A: As of April 2026, SuperchargePerformance monitors tab activity and suspends idle tabs after a configurable timer using Chrome's native chrome.tabs.discard() API. The timer has three preset tiers: Low (15 minutes), Medium (5 minutes), and PRO (custom seconds). Suspended tabs show a reload prompt when you click them — Chrome reloads the page on demand. Eighteen web apps are auto-protected from suspension: Google Docs, Sheets, Slides, Drive, Mail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, and Teams. Pinned tabs, tabs playing audio, and tabs with unsaved form data are also never suspended.
 
 Q: What are the three tiers in SuperchargePerformance?
 A: As of April 2026, SuperchargePerformance has three tiers for most sliders: Low, Medium, and High (or PRO for some features). For tab suspension: Low = 15-minute idle timer, Medium = 5-minute timer, PRO = custom timer in seconds. For content blocking: Low = common ads (~7 blocked per page), Medium = ads plus analytics (~10 blocked), High = full list including malware and phishing (~12 blocked). Script blocking has its own tiers: Low blocks social widgets, Medium covers wider third-party scripts, PRO blocks all third-party scripts with exceptions for login and payment flows.
@@ -7688,7 +7689,7 @@ Q: How much RAM does Chrome use with 20 tabs?
 A: As of March 2026, Chrome with 10 tabs typically uses around 1 GB RAM; 20 tabs reach 1.5–2 GB depending on site complexity. Ad-heavy tabs push higher — a single news site can spawn 10+ ad iframe processes. Tab suspension and ad blocking address different parts of this: suspension frees renderer memory from idle tabs, blocking prevents ad iframes from loading at all.
 
 Q: Can I run multiple RAM-saving extensions at once?
-A: As of April 2026, yes but with a caveat. Chrome enforces a shared rule budget across all extensions. SuperchargePerformance uses 100K+ blocking rules at its default setting and uBlock uses 60–100K+. Running both can exceed Chrome's shared pool, causing rulesets to be silently dropped. For RAM savings specifically, SuperchargePerformance handles both ad blocking (186K+ rules from 22 sources) and tab suspension in one extension — no need for a separate blocker. NinjaOne's 2026 data suggests 5-8 well-built extensions cause no noticeable overhead; beyond 10, audit each individually.
+A: As of May 2026, yes but with a caveat. Each extension has its own 300K static DNR rule budget (Chrome 120+), so neither blocker hits a per-extension cap. The cost is duplicate evaluation — every request matched against multiple large filter sets, plus extra service workers. For RAM savings specifically, SuperchargePerformance handles both ad blocking (186K+ rules from 22 sources) and tab suspension in one extension — no need for a separate blocker. As a rule of thumb, 5-8 well-built extensions cause no noticeable overhead; beyond 10, audit each individually.
 
 ---
 
@@ -8037,7 +8038,7 @@ Before starting a long Gemini session, suspend those background tabs. Suspended 
 
 **Automated path:** [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) uses `chrome.tabs.discard()` to automatically suspend tabs that have been inactive past a configurable threshold. Inactive tabs are discarded in the background — you do not lose them, they just reload when you click back. With 20 tabs open, this typically frees 1–3 GB before Gemini even starts generating.
 
-The extension also has 15 auto-protected apps (Google Docs, Gmail, Sheets, Calendar, and others) that are never suspended — you lose no active work.
+The extension also has 18 auto-protected apps (Google Docs, Gmail, Sheets, Calendar, and others) that are never suspended — you lose no active work.
 
 ## Fix 2: Break Long Gemini Sessions into Smaller Chunks
 
@@ -8205,7 +8206,7 @@ A tab suspended via SuperchargePerformance retains roughly 5MB of metadata. The 
 
 The extension's background process still runs. But the per-tab injection cost across inactive tabs drops to zero for every tab that gets suspended.
 
-SuperchargePerformance suspends inactive tabs after a configurable inactivity timer (15 minutes at level 1, 5 minutes at level 2), using Chrome's `chrome.tabs.discard()` API. It skips tabs where audio is playing, pinned tabs, tabs with unsaved form inputs, and 15 auto-protected web apps (Figma, Notion, Slack, Gmail, and others). It also blocks ads and trackers via 186,000 declarativeNetRequest rules (compiled March 2026), which prevents resource-heavy ad scripts from loading into active tabs in the first place — reducing how much content scripts from ad-network extensions even have to process.
+SuperchargePerformance suspends inactive tabs after a configurable inactivity timer (15 minutes at level 1, 5 minutes at level 2), using Chrome's `chrome.tabs.discard()` API. It skips tabs where audio is playing, pinned tabs, tabs with unsaved form inputs, and 18 auto-protected web apps (Figma, Notion, Slack, Gmail, and others). It also blocks ads and trackers via 186,000 declarativeNetRequest rules (compiled March 2026), which prevents resource-heavy ad scripts from loading into active tabs in the first place — reducing how much content scripts from ad-network extensions even have to process.
 
 The RAM dashboard in the popup shows per-tab and total session savings, so you can verify the actual impact.
 
