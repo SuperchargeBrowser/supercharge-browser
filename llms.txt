@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-05-05
+> Last updated: 2026-05-06
 
 > SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.3.2 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.1.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
@@ -39,8 +39,10 @@
 
 ## Library
 
-95 guides on Chrome performance, memory management, and tab organization:
+97 guides on Chrome performance, memory management, and tab organization:
 
+- [Chrome 148 RELEASED: What Changed for Tab Users (2026)](https://www.superchargebrowser.com/library/chrome-148-whats-new-tab-users/): Chrome 148 dropped May 5: Prompt API ships stable, lazy video loading lands, vertical tabs still flag-only. What actually changed for tab-heavy users.
+- [Chrome 149 BETA: NEW Features for Tab Users Preview (2026)](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/): Chrome 149 beta opened May 6, stable scheduled June 2: BFCache WebSocket fix, scroll Promises, 5 proposed changes — what's confirmed and what may slip.
 - [Missing Arc Spaces in Chrome? Get Them Back in 5 Minutes](https://www.superchargebrowser.com/library/arc-spaces-chrome-extension/): Arc Spaces are dead — Atlassian bought The Browser Company. Chrome has no native Spaces. SuperchargeNavigation replicates them free, setup in 5 minutes.
 - [Arc Tab Archive Gone? 4 Chrome Replacements TESTED (2026)](https://www.superchargebrowser.com/library/arc-tab-archive-chrome-equivalent/): Arc Tab Archive auto-closed tabs after 12h–7 days. Chrome has no equivalent — but Tab Wrangler replicates it exactly. Here's what works and what doesn't.
 - [Best Chrome Extensions for Chromebook 2026 (4GB & 8GB)](https://www.superchargebrowser.com/library/best-chrome-extensions-for-chromebook-2026/): Chromebooks cap out at 5-8 active tabs before lag hits. We tested 6 extensions on 4GB and 8GB hardware — tab suspenders, blockers, and readers that run light.
@@ -59,11 +61,11 @@
 - [Chrome Tab Search Shortcut: TESTED Guide (2026)](https://www.superchargebrowser.com/library/chrome-tab-search-shortcut-guide/): Ctrl+Shift+A searches open and recent tabs by title and URL — no fuzzy match, current window only. Here's what it finds, and where Alt+K covers the gap.
 - [Chrome Not Responding? 5 TESTED Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-chrome-not-responding/): Chrome's 'Not Responding' is a browser-process hang — not an Aw, Snap crash or tab freeze. Identify which it is and apply the right fix in under 5 minutes.
 - [AI Tab Organizer vs Tab Manager: 6 TESTED (2026)](https://www.superchargebrowser.com/library/ai-tab-organizer-vs-tab-manager-chrome/): 6 AI tab organizers tested on CWS vs real tab managers. AI groups by content. You work by project. That gap costs more than you think. Real comparison inside.
-- [Which Chrome Ad Blocker Blocks YouTube? 5 TESTED (2026)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/): Most Chrome ad blockers miss YouTube and Twitch video ads — including uBlock Origin. We tested 5 across 14 features. One blocks video ads, popups, and cookies.
-- [BEST Tab Organizer for Chrome in 2026: 5 Options Compared](https://www.superchargebrowser.com/library/best-tab-organizer-chrome-2026/): 50 tabs = context collapse. 5 Chrome tab organizers compared on workspaces, session recovery, and privacy. CWS-verified, March 2026. One is free, no account.
 
 ## Optional
 
+- [Which Chrome Ad Blocker Blocks YouTube? 5 TESTED (2026)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/): Most Chrome ad blockers miss YouTube and Twitch video ads — including uBlock Origin. We tested 5 across 14 features. One blocks video ads, popups, and cookies.
+- [BEST Tab Organizer for Chrome in 2026: 5 Options Compared](https://www.superchargebrowser.com/library/best-tab-organizer-chrome-2026/): 50 tabs = context collapse. 5 Chrome tab organizers compared on workspaces, session recovery, and privacy. CWS-verified, March 2026. One is free, no account.
 - [5 BEST Chrome Workspaces Extensions for Tab Groups, Ranked (2026)](https://www.superchargebrowser.com/library/chrome-workspaces-extension/): Chrome 147 has no native workspaces. Tab groups are labels, not contexts. 5 workspace extensions ranked: free local-first to cloud-synced paid options.
 - [How to DISABLE Chrome AI Features & Gemini (2026)](https://www.superchargebrowser.com/library/disable-chrome-ai-features-gemini/): Chrome 147 ships 5+ AI features on by default. Step-by-step guide to turning off Gemini sidebar, AI Overview, page content sharing, and AI Mode flags.
 - [FIX Chrome Efficiency Mode Throttling Specific Tabs (2026)](https://www.superchargebrowser.com/library/disable-efficiency-mode-specific-tabs-chrome/): Chrome Efficiency Mode throttles all background tabs with no per-tab control. Options to protect specific tabs while still saving power on idle ones.
@@ -149,7 +151,28 @@
 
 ## Changelog
 
-- [Release History](https://www.superchargebrowser.com/changelog/): Version history for both extensions.
+- [Release History](https://www.superchargebrowser.com/changelog/): Version history for both extensions. RSS: https://www.superchargebrowser.com/changelog/rss.xml
+
+- [SuperchargeNavigation 1.2.0 — Hint Mode, Type-to-Select & a Real Keyboard Layer](https://www.superchargebrowser.com/changelog/navigation/1.2.0/): Nav v1.2.0 introduces a real keyboard layer for the browser. Four first-time features ship together: hint mode (letter badges over every clickable thing on the page), type-to-select (bare letters highlight every match), fast text selection (Shift+arrows extend by word, line, or block — copy without the mouse), and arrow-key page scroll with a velocity model. The settings dropdown is promoted to a full options page with 40 toggles up from 28 — sidebar nav, live search, and a tour that demonstrates each feature on hover. Per-site pause via Shift+Escape, customizable hint trigger, peek-by-default. Page-keystroke features ship OFF on install.
+
+- [SuperchargePerformance 1.3.2 — 59 Locales & Listing Rewrite](https://www.superchargebrowser.com/changelog/performance/1.3.2/): A discovery release, not a code release. The Chrome Web Store listing now ships in 59 languages — up from 28 — so SuperchargePerformance shows up in native search for users browsing in Norwegian, Estonian, Greek, Hebrew, Filipino, Bengali, Tamil, Swahili, and 23 others. The English title and short description were rewritten too. The extension itself is byte-identical to v1.3.1: same blocklists, same suspension engine, same popup. If your browser is set to English, updating changes nothing except the version number.
+
+- [SuperchargeNavigation 1.1.0 — Cross-Device Sync, New Tab Page & Multi-Window Workspaces](https://www.superchargebrowser.com/changelog/navigation/1.1.0/): Your workspaces now follow you across devices. Enable sync and they appear on every Chrome install tied to your Google account — through Chrome's own sync infrastructure, never through a SuperchargeBrowser server. Every new tab opens on Nav's custom page: workspace cards, pinned sites, top-visited URLs, and fuzzy search, each row individually toggleable. Run a different workspace per Chrome window, rewind your entire setup to any of the last 50 auto-snapshots, and paste a list of URLs to bootstrap a workspace in seconds.
+
+- [SuperchargePerformance 1.3.1 — Stability, Speed & Stronger Ad Blocking](https://www.superchargebrowser.com/changelog/performance/1.3.1/): YouTube kept changing how it delivers ads after v1.3.0 — this release catches the new methods, including Shorts feed injections and midroll gaps that slipped through the network filter. Blocking systems now load in parallel so startup is faster and the popup feels snappier. The one-click recovery toast no longer fires on PDFs or standalone media files. Suspended tabs and their metrics survive browser restarts cleanly.
+
+- [SuperchargePerformance 1.3.0 — Video Ad Blocking, Popup Blocker & Cookie Consent Upgrade](https://www.superchargebrowser.com/changelog/performance/1.3.0/): Pre-rolls, mid-rolls, overlays, and the countdown timer on YouTube: gone. When Twitch inserts an ad segment, the extension swaps in the backup stream without a black screen. Sites that fire popups or popup-unders get blocked automatically, while same-domain windows and OAuth flows pass through. Cookie banner rejection now covers more CMPs at higher speed. 186,573 rules across 22 sources, ranked by real-world traffic impact.
+
+- [SuperchargePerformance 1.2.2 — Theme-Aware Icons, Cross-Promo & Fresh Blocklists](https://www.superchargebrowser.com/changelog/performance/1.2.2/): The toolbar icon now shows how much RAM you've saved: a live canvas-rendered badge with the stacked number and unit, updating as tabs get suspended. Icon color adapts to your system theme automatically. The global toggle gains a timed pause option — disable optimizations for a set duration and they come back on their own. Arabic support added, bringing localization to 28 languages.
+
+- [SuperchargeNavigation 1.0.0 — Initial Release — Vertical Tabs, Workspaces & Instant Search](https://www.superchargebrowser.com/changelog/navigation/1.0.0/): SuperchargeNavigation puts a full vertical tab list, named workspaces, and instant fuzzy search inside Chrome's native side panel. Switch between work and personal contexts in one click. Press the shortcut, type a few letters, and jump to any open tab without touching the mouse. Closed a tab by accident? Time Travel surfaces it with full session context. Everything stays on your device — no accounts, no telemetry.
+
+- [SuperchargePerformance 1.2.1 — Rebrand, Refreshed Blocklists & Stability Fixes](https://www.superchargebrowser.com/changelog/performance/1.2.1/): The extension is now SuperchargePerformance — renamed to sit clearly alongside SuperchargeNavigation. All blocklist sources are freshly compiled: 186K+ declarativeNetRequest rules across three tiers. Frozen tab detection, Safe Mode reliability, and fresh-install blocking all got fixes. The whitelist toggle now reads the correct state when you reopen the popup.
+
+- [SuperchargePerformance 1.2.0 — WXT Migration, Cookie Autopilot & Zero-Latency Navigation](https://www.superchargebrowser.com/changelog/performance/1.2.0/): Cookie banners now disappear without a click. The extension detects over 100 Consent Management Platforms and programmatically opts you out — not just hides the banner, but actually rejects tracking and frees the page underneath. Hover over any link and the destination starts loading before you click, so navigation feels instant. If a page breaks, one tap on the recovery toast brings it back without touching settings. Preload on Hover is now free for everyone.
+
+- [SuperchargePerformance 1.1.0 — Performance Dashboard, Global Controls & 27 Languages](https://www.superchargebrowser.com/changelog/performance/1.1.0/): The popup now shows real-time stats: RAM freed through tab suspension, ads blocked, scripts managed, pages enhanced. Numbers update on every page. A single global toggle pauses everything when you need a clean browsing session, and per-site controls let you carve out exceptions for sites that need the full experience. All of this now available in 27 languages, including Spanish, French, German, Japanese, and Chinese.
+
 
 ## Key Facts
 
