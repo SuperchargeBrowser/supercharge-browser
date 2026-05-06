@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-05-05
+> Last updated: 2026-05-06
 > For a summary index, see /llms.txt
 
 ## Products
@@ -1064,6 +1064,293 @@ A: SuperchargeNavigation checks the navigating tab's URL against the URLs of all
 ---
 
 ## Library Articles
+
+### Chrome 148 RELEASED: What Changed for Tab Users (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-148-whats-new-tab-users/
+Category: guide | Extension: navigation | Updated: 2026-05-06
+Description: Chrome 148 dropped May 5: Prompt API ships stable, lazy video loading lands, vertical tabs still flag-only. What actually changed for tab-heavy users.
+
+Chrome 148 shipped May 5, 2026 — and for tab power users, very little changed. Version `148.0.7778.96/97` lands on Windows, Mac, and Linux. The release centers on the Prompt API (on-device Gemini Nano access for developers), lazy loading parity for video and audio, and a security-relevant URL parsing change. Vertical tabs stay flag-only, the Projects Panel stays Canary-only, and no new tab API landed in this cycle.
+
+> **Key takeaways**
+> - **Prompt API ships to stable**: developers get direct access to Gemini Nano, Chrome's on-device model — local inference, no API key.
+> - **Vertical tabs: still flag-only.** No change from Chrome 146 or 147. Same setup steps apply.
+> - **Lazy loading for `<video>` and `<audio>`**: pages can now defer media loading until near the viewport, the same way images work.
+> - **IDNA ContextJ rule enforcement**: Chrome now blocks ZWNJ/ZWJ characters in URLs — a low-visibility but meaningful homograph attack fix.
+> - **Security patch list**: the Chrome team noted it will be published "shortly" — it was not fully available at the time of writing (May 6, 2026).
+
+## Chrome 148's Headline Feature: Prompt API
+
+The Prompt API is the first stable-channel exposure of Gemini Nano (Chrome's on-device language model) to web developers. It's a developer-facing API, not a user-facing UI change. You won't see a Gemini button appear in your toolbar after updating.
+
+What it does: pages that request the API can run text, image, and audio through a local model without sending data to a server. The model runs in Chrome's renderer process. No API key, no cloud round-trip, no account required.
+
+Use cases developers are targeting: image captioning, offline transcription, content classification, and JSON/structured output from unstructured text. The API supports response constraints: return valid JSON matching a schema, or a string matching a regex.
+
+| Prompt API aspect | Detail |
+|---|---|
+| Model | Gemini Nano (on-device, Chrome-hosted) |
+| Inputs | Text, image, audio |
+| Inference location | Local — no network call |
+| Account required | No |
+| Availability | Chrome 148 stable (May 2026) |
+| Origin trial | Prompt API sampling parameters (temperature, topK) still in trial |
+
+The practical privacy question: a page can call this API, meaning third-party sites could run local inference on content you've entered or images you've selected. Chrome's existing permissions model applies. The API is gated the same way camera/mic access is gated. Pages cannot silently access it.
+
+For users, the immediate impact is near-zero. For developers building extensions or web apps, this is significant: it's the first stable path to local LLM inference inside the browser without bundling a model yourself.
+
+## Vertical Tabs: No Change in Chrome 148
+
+Third release running, same answer. Vertical tabs in Chrome 148 require the flag. If you enabled them in Chrome 146 or 147, your settings carry over unchanged.
+
+The setup steps if you haven't enabled them:
+
+1. Navigate to `chrome://flags/#vertical-tabs`
+2. Set the flag to **Enabled**
+3. Relaunch Chrome
+4. Go to **Settings > Appearance > Tab strip position** and select **Left**
+
+Chrome's native implementation moves the tab strip to a collapsible left sidebar. It handles the layout problem: tab titles stay readable at 40+ tabs. It doesn't handle the context problem: no named workspaces, no session persistence across restart, no keyboard search across open tabs and history, no tab previews.
+
+The [Chrome 146 vertical tabs comparison](/library/chrome-146-vertical-tabs-vs-extensions/) covers the gap in detail. Nothing in that analysis changed in 147 or 148.
+
+## Lazy Loading for Video and Audio
+
+This is a small but practical web performance change. Chrome 148 adds the `loading` attribute to `<video>` and `<audio>` elements, letting page authors defer loading media until it's within viewport proximity.
+
+Images and iframes have had this since Chrome 77 (2019). Video and audio are catching up.
+
+For users, pages that implement this load faster. Media-heavy pages where videos below the fold were loading on page open regardless of scrolling benefit most. No browser settings change. No extension interaction. Pages that add `loading="lazy"` to their media elements just work differently.
+
+## IDNA ContextJ Rules: A URL Security Fix
+
+This one is low-visibility but worth knowing. Chrome 148 enforces IDNA2008's ContextJ rules, blocking zero-width joiner (ZWJ) and zero-width non-joiner (ZWNJ) characters in most URL positions.
+
+Why that matters: ZWJ and ZWNJ are Unicode characters with no visual representation. They can be embedded in internationalized domain names to create visually identical URLs that resolve to different domains. That's the homograph attack vector. A URL containing `paypa‍l.com` could render as `paypal.com` in browsers that don't strip or reject the invisible character.
+
+Chrome 148 rejects these characters in URL parsing rather than silently ignoring them. Legitimate internationalized domains that use ZWJ or ZWNJ in RFC-compliant positions are not affected. The rules only block positions where those characters serve no valid purpose.
+
+This is not a setting you configure. It's a parser-level change that makes phishing via homograph URLs harder.
+
+## CSS Name-Only Container Queries
+
+For developers: Chrome 148 lets you query a container by name alone, without specifying a `container-type`.
+
+Previously, container queries required both a name and a type (`container: sidebar / inline-size`). Now you can set a container name and query against it without locking in a size type. Component libraries can scope styles to named ancestors without imposing layout constraints on their consumers.
+
+No browser UI impact. Extension compatibility unaffected.
+
+## Manifest Localization for Web Apps
+
+Installed Progressive Web Apps can now localize their manifest (app name, description, icons, and shortcuts) based on the user's language and region. A Japanese user installing a PWA sees the Japanese app name and icon without the developer shipping a separate manifest per locale.
+
+This is a web app platform capability, not a Chrome extension API change. MV3 extensions use `_locales/` for localization, which is unchanged.
+
+## What Still Hasn't Changed
+
+These are the tab and extension features people are still waiting on:
+
+| Feature | Status as of May 2026 |
+|---|---|
+| Vertical tabs — default (no flag) | Not in 148. Still flag-only. |
+| Projects Panel (Gemini + tab groups) | Canary only. No stable ETA announced. |
+| Tab scrolling restoration | Expected H1 2026 — may land in a 148.x update or 149. |
+| HTTPS-First for all Chrome users | Previously announced for Chrome 154 (Oct 2026); confirm current status on chromestatus.com. |
+| Extensions API for tab strip position | Not available — no extension API to detect or modify vertical tab state. |
+
+The Projects Panel, which connects Gemini chat threads to tab groups, has been Canary-only since Chrome 146. Chrome 148 doesn't change that.
+
+## Security Patch Details: Not Yet Published
+
+The Chrome team's May 5, 2026 release announcement explicitly states: "Security changes will be updated shortly."
+
+This is unusual but not unprecedented. It typically means the security team is waiting for a majority of users to receive the update before disclosing vulnerability details. Google holds CVE publication until most users are patched, shrinking the window between disclosure and exploitation.
+
+The IDNA ContextJ enforcement described above is one confirmed security-relevant change. The full list will appear on the [Chrome Security Page](https://chromereleases.googleblog.com/) within days of rollout completion.
+
+Update Chrome regardless: **Menu > Help > About Google Chrome** and let it download. If the update is already applied, the page will show `148.0.7778.96` or later.
+
+## What Chrome 148 Means for Tab-Heavy Users
+
+This is a developer-platform release more than a tab-management release. The Prompt API is the headline, and it matters to people building things on top of Chrome, not to people using Chrome for work.
+
+For tab power users, nothing shifted. You have the same native tools as Chrome 147:
+
+- Vertical tabs if you've enabled the flag (same as before)
+- Tab groups (same as before)
+- Ctrl+Shift+A for basic tab search (same limited overlay)
+- No named workspaces, no session snapshots, no keyboard command bar, no tab previews
+
+If you're managing 20+ tabs across multiple projects and Chrome's built-in tools aren't keeping up, Chrome 148 doesn't add anything to that story. Named workspaces with session persistence, 200 auto-snapshots taken every 5 minutes, Alt+K to search open tabs from any page, and Shift+Click to peek at tab content without switching: these remain extension territory.
+
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) covers all four via Chrome's side panel API. Free core, no account, zero telemetry, 100% local.
+
+For Chrome 148 specifically: update when prompted, know the security patch list is pending publication, and don't expect any change to your tab workflow. If the Prompt API is relevant to something you're building, the developer notes are at [developer.chrome.com/release-notes/148](https://developer.chrome.com/release-notes/148).
+
+For the HTTPS-First warning that's been active since Chrome 147, the [fix guide](/library/chrome-147-https-first-warning-fix/) covers five scenarios in under five minutes. The vertical tabs analysis (current through Chrome 148) is at [Chrome 146 Vertical Tabs vs Extensions](/library/chrome-146-vertical-tabs-vs-extensions/).
+
+#### FAQ
+Q: When did Chrome 148 stable release?
+A: As of May 2026, Chrome 148 stable rolled out on May 5, 2026. Version numbers: 148.0.7778.96 on Linux, 148.0.7778.96/97 on Windows and Mac. The rollout reaches all users over the following days.
+
+Q: What is the Prompt API in Chrome 148?
+A: As of May 2026, the Prompt API in Chrome 148 gives web developers direct access to Gemini Nano, Chrome's on-device language model. It runs locally — no cloud call required — and supports text, image, and audio inputs. It's a developer API, not a user-facing feature you'll notice in the browser UI.
+
+Q: Do Chrome 148 vertical tabs work without a flag?
+A: No. As of May 2026, vertical tabs in Chrome 148 still require enabling chrome://flags/#vertical-tabs and relaunching. There's no change from Chrome 146 or 147 — vertical tabs remain a flag-only feature with no confirmed graduation date.
+
+Q: What is new in Chrome 148 for security?
+A: As of May 2026, the Chrome 148 stable release post notes that the security patch list will be published shortly after rollout. One confirmed security-adjacent change is enforcement of IDNA ContextJ rules, which blocks zero-width joiners and non-joiners (ZWNJ/ZWJ) in most URL positions — a homograph attack mitigation.
+
+Q: What is lazy loading for video and audio in Chrome 148?
+A: As of May 2026, Chrome 148 adds a loading='lazy' attribute to video and audio elements, deferring their resource load until they're near the viewport. Behavior mirrors what Chrome already does for images and iframes. No action required from users — pages that implement it load faster by default.
+
+Q: Should I update to Chrome 148?
+A: Yes. As of May 2026, Chrome 148 includes developer-facing improvements and at least one confirmed security-relevant URL parsing fix. The security patch list was not fully published at the time of writing — update via Chrome menu > Help > About Google Chrome when prompted.
+
+---
+
+### Chrome 149 BETA: NEW Features for Tab Users Preview (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/
+Category: guide | Extension: navigation | Updated: 2026-05-06
+Description: Chrome 149 beta opened May 6, stable scheduled June 2: BFCache WebSocket fix, scroll Promises, 5 proposed changes — what's confirmed and what may slip.
+
+Chrome 149 entered beta on May 6, 2026 — the same day this article published. Stable is currently scheduled for June 2 per Chromium Dash, with late stable on June 16. The Dev channel is at 149.0.7815.2; Chrome 148 remains current stable. The features listed on chromestatus.com targeting milestone 149 are still mostly "Proposed" — slated for this release, but not all of them will graduate by stable. Things change. Treat this as a preview, not a release note.
+
+> **Key takeaways**
+> - **Chrome 149 is Dev-channel only** (version 149.0.7815.2 as of May 6, 2026). No beta, no stable date announced.
+> - **BFCache WebSocket disconnect:** pages with open WebSocket connections now qualify for back/forward caching. Better back-button behavior in web apps.
+> - **Programmatic scroll Promises:** `element.scrollTo()` returns a Promise — finally solvable without hacks.
+> - **IndexedDB SQLite backend:** flag-only experiment to rewrite IndexedDB storage — note: actually targets Chrome 150, not 149.
+> - **CSS Gap Decorations:** style the whitespace between grid and flex items directly.
+> - All features are "Proposed" on chromestatus.com — subject to change before beta.
+
+## What "Dev Channel" Actually Means
+
+The Dev channel is not beta. It gets builds roughly weekly, features can be pulled between Dev and beta, and some features are explicitly behind flags that won't flip by default until stable. The chromestatus.com feature tracker shows what's *targeted* for milestone 149 — not what's confirmed shipped.
+
+Chrome's rough cadence is:
+
+| Channel | Lag behind stable | Stability |
+|---------|-------------------|-----------|
+| Canary | ~0 days (daily) | Experimental |
+| Dev | varies (typically 4–9 weeks before stable) | Preview |
+| Beta | ~4 weeks before stable | Near-final |
+| Stable | — | Production |
+
+Chrome 148 went stable on May 5, 2026. Chrome 149 beta opened May 6 (one day later). Stable is scheduled for June 2, 2026 per Chromium Dash, with late stable on June 16. Schedule may shift if blockers emerge during beta.
+
+## BFCache WebSocket Disconnect: Better Back-Button in Web Apps
+
+This is the change with the most visible effect on everyday browsing. The Back/Forward Cache (BFCache) is Chrome's mechanism for storing a complete snapshot of a page in memory so the back button restores it instantly: no network request, no re-render, sub-100ms navigation.
+
+The problem: pages with active WebSocket connections were ineligible for BFCache. Chrome couldn't freeze a live socket. So any web app that maintains a persistent WebSocket (real-time collaboration tools, chat apps, dashboards with live updates) got slow back-navigation while the page reloaded from scratch.
+
+Chrome 149's proposed fix closes the WebSocket connection when the page enters BFCache instead of blocking the page from being cached at all. When you navigate back, the page restores instantly from the cache. The app's reconnect logic handles re-establishing the socket.
+
+The tradeoff: apps with WebSockets need to handle the disconnect gracefully. Most already do. A dropped connection and reconnect is a normal network event. Poorly written apps that assume a permanent socket could break in unexpected ways, but Google's enterprise impact rating on this change is "Low" — most apps already handle reconnect logic correctly.
+
+For tab power users, the practical effect: back-navigation on Notion, Figma, Linear, Slack Web, and other WebSocket-heavy apps should feel faster in Chrome 149. Whether it lands in stable exactly as described is TBD.
+
+## Programmatic Scroll Promises: A Long-Standing Developer Frustration Fixed
+
+`element.scrollTo({ top: 1000, behavior: 'smooth' })` returns `undefined`. Has always returned `undefined`. If you wrote code that needed to do something after the scroll finished, you had to hack it with a timeout, a MutationObserver, or polling.
+
+Chrome 149 targets a fix: scroll methods return a Promise that resolves when the scroll completes. For end users, this is invisible. It's a developer API change. The downstream effect is that web apps can sequence animations, load deferred content, or trigger events precisely after a scroll lands instead of guessing with timers.
+
+Tabs behave the same. The tab bar doesn't gain new behavior from this. But web apps with heavy scroll-based interactions (reading apps, canvas tools, virtualized lists) get more reliable animation sequencing once this lands.
+
+## IndexedDB SQLite Backend: Targeting Chrome 150, Not 149
+
+A clarification worth making, since this feature gets attributed to 149 in a lot of coverage. Per chromestatus.com, the IndexedDB SQLite backend targets Chrome **150**, not 149. Early flag exposure may appear in 149 Dev builds, but the feature itself isn't a 149 milestone item.
+
+What it does, when it lands: IndexedDB is the browser's built-in structured storage API. Most users never interact with it directly, but it's what Notion, Figma, Google Docs offline mode, and many PWAs use to store data locally. Chrome's existing backend has had edge-case reliability issues — data corruption after crashes, inconsistent behavior under concurrent writes, slow recovery. The SQLite rewrite borrows from a storage engine with a decades-long track record in reliability-critical environments.
+
+The relevance for tab power users: if you use Notion, Linear, or Figma in a browser tab and have ever lost local data after a Chrome crash, this is the fix that's been in the works. Watch for it in 150, not 149.
+
+## CSS Gap Decorations: Grid and Flexbox Gaps You Can Style
+
+Grid and Flexbox layouts have gaps, the whitespace between rows and columns defined by the `gap` property. Until now, you couldn't put a visible border or line into that gap directly. The common workaround was adding borders to individual items and canceling them at the edges.
+
+Chrome 149 targets CSS Gap Decorations, which adds properties to style those gaps natively. The visual result is similar to what you'd get adding dividers manually, but without the box model gymnastics.
+
+This is an "In development" feature on chromestatus.com, further from stable than the Proposed features above. Extension users won't notice any behavior change. Web developers building complex layouts will gain a cleaner way to express visual structure that was previously a box-model workaround problem.
+
+## Selective Clipboard Format Read: Less CPU on Paste
+
+When web apps read from the clipboard, the standard behavior is to request all available formats and receive all of them. If you copy a rich document chunk from Notion and paste it into a web editor, the editor might receive HTML, plain text, and a Notion-specific binary format simultaneously, even if it only uses HTML.
+
+Chrome 149's Selective Clipboard Format Read defers fetching clipboard data until the app explicitly calls `getType()` for a specific format. Apps that only need plain text won't receive or process the rich formats at all.
+
+The user-visible effect is a small CPU and memory reduction on paste-heavy workflows in web editors. Not tab management, but relevant if you work in browser-based writing or code tools.
+
+## Security Changes Targeting 149
+
+Two security-adjacent proposals on chromestatus.com are targeting milestone 149:
+
+**SVG Filters Blocked on Sandboxed Frames:** Chrome 149 proposes preventing SVG filter effects from applying to cross-origin iframes and embedded plugins. This closes a rendering isolation gap — a cross-origin iframe could theoretically have its rendering influenced by SVG filters defined in the parent page. Safari already ships this behavior. Google's enterprise impact rating is "High" because some enterprise web apps use embedded cross-origin content with custom styling.
+
+**Web App Scope System Accent Color:** Chrome 149 proposes restricting the CSS `system-color: AccentColor` property to installed PWAs only. Currently, any website can read the system accent color, which is a minor fingerprinting vector (it reveals OS-level personalization). This change doesn't affect normal browsing — you won't notice it. Installed PWAs retain access for UI consistency.
+
+## What Didn't Move: Vertical Tabs, Projects Panel, Tab Scrolling
+
+Nothing in Chrome 149's dev-channel feature list touches the areas Chrome tab users have been watching since Chrome 146:
+
+| Feature | Status as of May 2026 |
+|---------|----------------------|
+| Vertical tabs — no flag required | Still flag-only. No change in 149. |
+| Projects Panel (Gemini + tab groups) | Canary experimental. No stable ETA. |
+| Tab scrolling restoration | Expected H1 2026. Not in 149 dev-channel feature list. |
+| Named workspaces (native) | Not on any milestone. Extension territory. |
+| Session snapshots (native) | Not on any milestone. Extension territory. |
+
+The gap between Chrome's native tab features and what extension-based tab management covers has not narrowed in Chrome 149. Named workspaces, session time-travel, keyboard search across tabs and history, and tab preview without context-switching are not on any announced Chrome milestone.
+
+SuperchargeNavigation covers those via Chrome's side panel API: named workspaces that persist across restarts, 200 auto-snapshots taken every 5 minutes, Alt+K to search open tabs from any page, and Shift+Click to peek at a tab's content without switching. Free, no account, 100% local storage — nothing sent anywhere.
+
+## How to Try Chrome 149 Before Stable
+
+Chrome 149 is now in beta as of May 6, 2026. Two options if you want to test before the June 2 stable release:
+
+1. **Chrome Beta** — closer to what stable will look like. Download from [google.com/chrome/beta/](https://www.google.com/chrome/beta/). Updates roughly weekly with feature-frozen builds.
+2. **Chrome Dev** — bleeding edge, features may flip on and off. Currently 149.0.7815.2. Download from [google.com/chrome/dev/](https://www.google.com/chrome/dev/).
+
+Both run independently from your stable Chrome on the same machine. Signing in with a Google account syncs your profile — use a test account if you want to keep them isolated. Check `chrome://version` to confirm milestone.
+
+Features tagged for milestone 149 on chromestatus.com can still ship, be delayed, or be removed during the four-week beta window before June 2.
+
+## What to Watch Before Chrome 149 Beta
+
+Chrome 149 is now in beta (since May 6, 2026). Stable is scheduled for June 2. Over the four weeks between now and stable, a few things become clearer:
+
+- Which "Proposed" features passed their ship review and graduated to "Enabled by default"
+- Which features were delayed to 150 or later (the IndexedDB SQLite backend is one example — already flagged for 150)
+- Whether any new Origin Trials open that weren't in Dev
+
+The BFCache WebSocket change and programmatic scroll Promises are the two most likely to have user-visible effects.
+
+If you run WebSocket-heavy apps (Notion, Slack Web, Figma) on a daily basis, the BFCache change is the one to watch as 149 moves through beta — back-button navigation should feel noticeably faster on these apps once 149 ships. If you're on stable Chrome today, you're on Chrome 148 — see what changed there in [Chrome 148: What Changed for Tab Users](/library/chrome-148-whats-new-tab-users/). For the 147 breakdown including HTTPS-First rollout details, see [Chrome 147 Release Notes](/library/chrome-147-whats-new-tab-users/).
+
+#### FAQ
+Q: When does Chrome 149 stable release?
+A: As of May 2026, Chromium Dash schedules Chrome 149 stable for June 2, 2026 (late stable June 16). Beta opened May 6, 2026. Chrome 148 (148.0.7778.96) remains the current stable release. The schedule can shift if blockers are found during beta — confirm at chromiumdash.appspot.com/schedule.
+
+Q: What are the biggest changes in Chrome 149?
+A: As of May 2026, the features targeting Chrome 149 on chromestatus.com include: Programmatic scroll promises (scroll methods return Promises), BFCache WebSocket disconnect (pages with open WebSockets can now use back/forward cache), CSS Gap Decorations (style grid/flexbox gaps), Selective Clipboard format reading, and SVG filters blocked on sandboxed cross-origin frames. All are 'Proposed' or 'In development' status — subject to change before stable. The IndexedDB SQLite backend (often discussed alongside 149) actually targets Chrome 150.
+
+Q: Does Chrome 149 change tab or session management?
+A: As of May 2026, Chrome 149 does not include announced changes to vertical tabs, session restore, or tab group behavior. The BFCache WebSocket change is the most tab-adjacent: pages that previously couldn't be cached by BFCache due to open WebSocket connections will now be eligible. This can improve back-button responsiveness for web apps that use WebSockets.
+
+Q: What is the IndexedDB SQLite backend, and is it in Chrome 149?
+A: As of May 2026, the IndexedDB SQLite backend rewrites Chrome's structured storage layer using SQLite for improved reliability. Per chromestatus.com, the feature targets Chrome 150 (Proposed status), not 149 — early flag exposure may appear in 149 Dev builds, but the feature is a 150 target. It improves stability for web apps like Notion, Figma, and Linear that rely heavily on IndexedDB.
+
+Q: Is Chrome 149 available to try now?
+A: Yes. As of May 2026, Chrome 149 entered the beta channel on May 6, 2026, with stable scheduled for June 2. The Dev channel is at 149.0.7815.2. Install Chrome Beta or Chrome Dev alongside your stable installation — they run independently and don't affect your main profile unless you sign in.
+
+---
 
 ### Missing Arc Spaces in Chrome? Get Them Back in 5 Minutes
 
