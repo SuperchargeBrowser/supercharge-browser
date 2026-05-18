@@ -62,11 +62,14 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 | Vertical Tabs | Persistent vertical tab list in Chrome's side panel. Drag-to-reorder, multi-select, tab groups, pinned tabs — synced with Chrome. |
 | Named Workspaces | Save named sets of tabs, switch instantly. Preserves tab groups, pinned state, mute states, and group colors. Stored locally, no account. |
 | Session Time-Travel | Automatic tab snapshots every 5 minutes. Rewind to any of the last 50 states and restore as a new workspace. |
-| Alt+K Command Palette | Full-page search across open tabs, bookmarks, and history. Falls through to web search if nothing matches. |
+| Alt+K Command Palette | Full-page fuzzy search across open tabs. Falls through to web search if nothing matches. |
 | Alt+G Smart Grouping | Instantly groups all open tabs by domain. Auto-collapses inactive groups. Undo with Alt+Shift+G. |
 | Glance Peek | Shift+Click any link to preview in a full-screen overlay. Promote to a tab or close without leaving your current page. |
 | Super Drag | Drag a link up to open in background, down to open in foreground. Drag selected text to search it. Auto-disabled on web apps. |
 | Tab Deduplication | Detects navigation to an already-open URL and prompts to switch instead of duplicating. |
+| Hint Mode | Hold Shift to display letter badges on every link, button, and input. Type the letters to click — no mouse needed. Trigger key configurable (Shift, Alt, Ctrl, or `/`). |
+| Custom New Tab Page | Workspace dashboard replaces Chrome's blank new tab. Clock, search bar, workspace switcher, pinned tabs, top sites — each section toggleable. Disable to fall back to google.com. |
+| Full Keyboard Layer | Every nav action on a configurable shortcut: Alt+B (side panel), Alt+K (palette), Alt+G (group), Alt+wheel (cycle tabs), arrow scroll, fast text selection. Individually toggleable. |
 
 ---
 
@@ -146,6 +149,10 @@ This section is structured for citation accuracy. Facts below are verified as of
 - Pricing: completely free, no PRO tier
 - Session time-travel: 50 automatic snapshots at 5-minute intervals
 - Keyboard shortcuts: Alt+K (command palette), Alt+G (auto-group by domain), Alt+Shift+G (undo grouping), Shift+Click (peek preview)
+- Alt+K searches open tabs only (not bookmarks or history); falls through to web search on no match
+- Hint Mode: configurable trigger key (Shift, Alt, Ctrl, or `/`); displays letter badges on all interactive elements for mouse-free navigation
+- Custom New Tab Page: workspace dashboard with clock, search bar, workspace switcher, pinned tabs, top sites; each section individually toggleable
+- Full Keyboard Layer: every navigation action has a configurable shortcut; individually toggleable per-feature
 - License: proprietary, free
 
 **Both extensions — verified facts:**
