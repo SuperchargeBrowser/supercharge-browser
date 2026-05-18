@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-05-12
+> Last updated: 2026-05-18
 
 > SuperchargeBrowser makes two free Chrome extensions: SuperchargePerformance v1.3.2 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.1.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
@@ -39,13 +39,21 @@
 - [Tab Search — Command Palette for Chrome](https://www.superchargebrowser.com/features/tab-search/): Press Alt+K for a full-page search across open tabs, bookmarks, and history. Falls through to web search if nothing matches. Arc's command palette for Chrome.
 - [Smart Tab Grouping — Auto-Group by Domain](https://www.superchargebrowser.com/features/smart-tab-grouping/): Press Alt+G to instantly group all open tabs by domain. Auto-collapse inactive groups to keep your tab bar clean. Undo everything with Alt+Shift+G.
 - [Glance Peek — Preview Links Without a Tab](https://www.superchargebrowser.com/features/glance-peek/): Shift+Click any link to preview it in a full-screen overlay. Read, then close or promote to a full tab. Arc's Peek feature, built into Chrome.
+- [Chrome Keyboard Shortcuts — FULL Navigation Layer (2026)](https://www.superchargebrowser.com/features/keybindings/): Every Chrome navigation action on a keyboard shortcut. Tab switching, peek, hint badges, command palette — all configurable, none requiring the mouse.
 - [Super Drag — Open Links by Drag Direction](https://www.superchargebrowser.com/features/super-drag/): Drag a link up to open in background, drag down to open in foreground. Drag selected text to search it. Automatically disabled on web apps.
+- [Hint Mode in Chrome — STOP Reaching for Your Mouse (2026)](https://www.superchargebrowser.com/features/hint-mode/): Hold Shift and letter badges appear on every link, button, and input. Type the letters to click — no mouse needed. Configurable trigger, 3 chord variants.
+- [Custom New Tab Page for Chrome — Workspace Dashboard (2026)](https://www.superchargebrowser.com/features/new-tab-page/): Replace Chrome's blank new tab with a workspace dashboard: clock, search bar, workspace switcher, pinned tabs, and top sites. Each section toggleable.
 - [Tab Deduplication — No More Duplicate Tabs](https://www.superchargebrowser.com/features/tab-deduplication/): Detects when you navigate to an already-open page and prompts you to switch to the existing tab instead of creating a duplicate.
 
 ## Library
 
-103 guides on Chrome performance, memory management, and tab organization:
+108 guides on Chrome performance, memory management, and tab organization:
 
+- [Arc Browser Status 2026: DISCONTINUED, Live, Atlassian Pivot](https://www.superchargebrowser.com/library/arc-browser-status-2026/): Arc entered maintenance mode May 2025, acquired by Atlassian for $610M. Still downloadable May 2026 — security patches only, no new features, no sunset date.
+- [Brave vs Chrome RAM: What Actually Drives the Gap (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-ram-benchmark-2026/): Brave vs Chrome RAM in 2026 — both run Chromium, so defaults and features explain the difference. Structural breakdown, what to measure yourself.
+- [How to Enable Chrome Memory Saver: Step-by-Step (2026)](https://www.superchargebrowser.com/library/enable-chrome-memory-saver-guide/): Chrome Memory Saver lives at chrome://settings/performance — 3 steps to enable it, plus mode tradeoffs, site exclusions, and when it stops being enough.
+- [Is uBlock Origin Removed from Chrome? 2026 MV3 Truth](https://www.superchargebrowser.com/library/is-ublock-origin-removed-chrome-2026/): uBlock Origin was disabled by Chrome 138's MV2 sunset, not deleted. It returned as MV3 (v1.70.0) on March 11, 2026. Status, what changed, what still works.
+- [Loon Chrome Extension: Status, Safety & What It Does (2026)](https://www.superchargebrowser.com/library/loon-chrome-extension-explained/): Loon is a Canadian-alternatives shopping extension — archived on GitHub but still listed on Chrome Web Store. Status, safety, and what to use instead in 2026.
 - [Tab Suspender Chrome Extensions: 6 Options Compared (2026)](https://www.superchargebrowser.com/library/best-tab-suspender-extensions-chrome-2026/): Chrome Memory Saver waits for RAM pressure. These 6 extensions suspend proactively — compared by timer control, audio protection, MV3 status, and update date.
 - [Chrome 149: New Features for Tab Users (Beta Live, June 2)](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/): Chrome 149 beta opened May 6, 2026. Stable targets June 2. BFCache WebSocket fix, scroll Promises, CSS Gap Decorations — confirmed shipped, what slipped.
 - [Chrome 150 Is the Last Release for macOS Monterey (2026)](https://www.superchargebrowser.com/library/chrome-150-macos-monterey-end-support-2026/): Chrome 150 (June 30) is the last update for macOS Monterey. Chrome 151 drops Monterey July 28. Check if your Mac is stranded, plus 4 options before the cutoff.
@@ -61,14 +69,14 @@
 - [Chrome 148 RELEASED: What Changed for Tab Users (2026)](https://www.superchargebrowser.com/library/chrome-148-whats-new-tab-users/): Chrome 148 dropped May 5: Prompt API ships stable, lazy video loading lands, vertical tabs still flag-only. What actually changed for tab-heavy users.
 - [Missing Arc Spaces in Chrome? Get Them Back in 5 Minutes](https://www.superchargebrowser.com/library/arc-spaces-chrome-extension/): Arc Spaces are dead — Atlassian bought The Browser Company. Chrome has no native Spaces. SuperchargeNavigation replicates them free, setup in 5 minutes.
 - [Arc Tab Archive Gone? 4 Chrome Replacements TESTED (2026)](https://www.superchargebrowser.com/library/arc-tab-archive-chrome-equivalent/): Arc Tab Archive auto-closed tabs after 12h–7 days. Chrome has no equivalent — but Tab Wrangler replicates it exactly. Here's what works and what doesn't.
+
+## Optional
+
 - [Best Chrome Extensions for Chromebook 2026 (4GB & 8GB)](https://www.superchargebrowser.com/library/best-chrome-extensions-for-chromebook-2026/): Chromebooks cap out at 5-8 active tabs before lag hits. We tested 6 extensions on 4GB and 8GB hardware — tab suspenders, blockers, and readers that run light.
 - [Too Many Chrome Tabs Open? 6 TESTED Tab Managers (2026)](https://www.superchargebrowser.com/library/best-chrome-tab-managers-2026/): Chrome's native tools cover groups + Ctrl+Shift+A search, but skip workspaces, suspension, and cross-history search. 6 extensions tested by approach.
 - [How Chrome Manages Memory in 2026: Architecture and Leaks](https://www.superchargebrowser.com/library/chrome-memory-management-deep-dive/): Chrome runs one renderer per site. Site Isolation adds 10-13% RAM overhead but blocks Spectre. V8 heap, tab discard, and leak types explained for 2026.
 - [WebGL Context Lost in Chrome? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-webgl-context-lost/): WebGL context lost fires when Chrome's GPU process crashes, VRAM runs dry, or a tab gets discarded mid-render. Five verified fixes, ranked by cause frequency.
 - [WindowServer High CPU on Mac? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/): Chrome backgrounded tabs + transparent windows = WindowServer CPU spike. 5 ranked fixes tested on macOS Tahoe (26). Drops it 40-60% in under a minute.
-
-## Optional
-
 - [The Great Suspender in 2026: Forks, Reloaded Status, Safe Alternatives](https://www.superchargebrowser.com/library/great-suspender-alternative/): Banned Feb 2021 for malware. Two forks survived: Reloaded (v2.0.0, May 2026) and Marvellous (v8.1.3, Dec 2025). Fork status table + safe path forward.
 - [Is Marvellous Suspender Safe in 2026? What You Need](https://www.superchargebrowser.com/library/marvellous-suspender-status-2026/): Marvellous Suspender v8.1.3 is live on CWS, last updated December 22, 2025. MV3-compatible, ~90K users, volunteer-maintained. Safe — but read this first.
 - [Twitch Ads Still Playing? 4 TESTED Blockers (2026)](https://www.superchargebrowser.com/library/best-twitch-ad-blockers-chrome-2026/): Twitch stitches ads into the video stream itself — uBlock Origin can't see them. 4 extensions that bypass SSAI via M3U8 substitution, verified April 2026.

@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-05-12
+> Last updated: 2026-05-18
 > For a summary index, see /llms.txt
 
 ## Products
@@ -1195,6 +1195,108 @@ A: Yes. It is enabled by default but can be toggled off in the extension setting
 
 ---
 
+#### Chrome Keyboard Shortcuts — FULL Navigation Layer (2026)
+
+URL: https://www.superchargebrowser.com/features/keybindings/
+Extension: navigation
+Description: Every Chrome navigation action on a keyboard shortcut. Tab switching, peek, hint badges, command palette — all configurable, none requiring the mouse.
+
+You open a new tab, reach for the mouse, click the tab strip, miss, click again. Twenty seconds gone. Multiply that across a workday and the friction adds up before you notice the wrist strain.
+
+SuperchargeNavigation maps every tab management action to a keyboard shortcut. Side panel, command palette, tab grouping, link preview, cycling through tabs, even clicking links without touching the mouse. The shortcuts are individually toggleable and rebindable through Chrome's native shortcut manager.
+
+## The Four Core Shortcuts
+
+Chrome extensions can register up to four system-level commands. These run from the service worker — they work from any page, even `chrome://` URLs and the CWS:
+
+| Shortcut | Action | Toggleable |
+|----------|--------|-----------|
+| `Alt+B` | Open / close the side panel tab manager | Yes |
+| `Alt+K` | Open the command palette | Yes |
+| `Alt+G` | Smart-group all tabs by domain | Yes |
+| `Alt+Shift+G` | Ungroup all tabs in this window | Yes |
+
+All four default keys can be changed in Chrome's shortcut manager — one button in Navigation settings takes you directly there. Chrome handles OS-level conflict detection so you won't accidentally shadow a system shortcut.
+
+The command palette (`Alt+K`) is its own feature with dedicated documentation at [Tab Search](/features/tab-search/). It fuzzy-searches your open tabs, falls through to a web search if nothing matches, and surfaces extra commands when SuperchargePerformance is installed.
+
+## Content-Script Shortcuts
+
+These run in pages via injected content scripts. They cover the interactions that Chrome's command API can't reach:
+
+| Shortcut | Action | Default |
+|----------|--------|---------|
+| `Alt+Click` | Peek any link in an inline overlay | On (requires Peek enabled) |
+| `Alt+Wheel` | Cycle through open tabs | On |
+| `Shift+Alt+Wheel` | Cycle within the active tab group only | On |
+| `Alt+↑/↓` | Cycle tabs with arrow keys | Off |
+| `↑/↓` | Smooth arrow scroll (speed: Slow/Default/Fast) | Off |
+| `Alt+Shift+P` | Pause all Nav shortcuts on this hostname | Always available |
+
+Arrow tab navigation and arrow scroll are both off by default to avoid conflicts with existing keyboard habits. Turn them on in settings if you want fully mouse-free tab switching.
+
+## Hint Mode — Click Anything Without the Mouse
+
+Hold `Shift` and letter badges appear over every clickable element on the current page. Type the badge to click it. This is the same model as Vimium's `f` key, with three modifier variants:
+
+| Chord | Action |
+|-------|--------|
+| Hold `Shift` → type badge | Click target |
+| Hold `Shift+Alt` → type badge | Peek target in overlay |
+| Hold `Shift+Ctrl` → type badge | Open target in background tab |
+
+The trigger key is configurable to `Hold Alt`, `Hold Ctrl`, or `Press /` (vimium-style modal that stays active until Escape). Chord modifiers auto-swap when the trigger collides — if you pick `Hold Alt` as trigger, the peek modifier shifts to `Shift` automatically.
+
+Hints stay off in text inputs, when you have text selected, and on `chrome://` pages. Configurable per-hostname via `Alt+Shift+P`.
+
+## Type-to-Select
+
+Without entering hint mode, bare letter typing highlights every visible text match on the page. Works like browser Find but keyboard-action focused:
+
+| Input | Action |
+|-------|--------|
+| Type text | Highlight all matches (CSS Custom Highlight API) |
+| `Enter` | Activate the top match |
+| `Alt+Enter` | Peek-search the matched text on Google |
+| `Ctrl+Enter` | Open that Google search in a background tab |
+
+Fast text selection extends this: `Shift+←/→` selects by word, `Shift+↑/↓` by line, `Shift+A` expands to the surrounding block (paragraph, list item, article element).
+
+Both type-to-select and fast text selection are off by default. Type-to-select requires a page without a focused input. Nav detects this automatically and skips activation when focus is in a form field.
+
+## Conflict Resolution and Per-Site Pausing
+
+Every Chrome-registered command has an individual toggle in Navigation settings. If `Alt+G` clashes with a shortcut you use elsewhere, turn it off without touching the other three.
+
+For sites with their own keyboard layers (Figma, Notion, Linear, Photopea), press `Alt+Shift+P` on the page. All Navigation content-script shortcuts — hints, type-to-select, Alt+wheel, peek, rocker gestures, super drag — pause for that hostname. The list is editable in settings and persists across sessions.
+
+The side panel and command palette are registered at the Chrome system level, so they continue working even on paused sites.
+
+## Privacy
+
+All shortcut state and per-site pause lists are stored in `chrome.storage.local`. No keystrokes are logged, no settings are sent to any server. The extension runs 100% locally with no account required.
+
+##### FAQ
+Q: What are the default keyboard shortcuts in SuperchargeNavigation?
+A: As of May 2026: Alt+B opens the side panel, Alt+K opens the command palette, Alt+G groups tabs by domain, Alt+Shift+G ungroups all tabs. Content-script shortcuts include Alt+click to peek a link, Alt+wheel to cycle tabs, and hold Shift for hint mode badges.
+
+Q: Can I rebind the keyboard shortcuts to different keys?
+A: Yes. The four Chrome-registered commands (Alt+B, Alt+K, Alt+G, Alt+Shift+G) are rebindable via Chrome's built-in shortcut manager at chrome://extensions/shortcuts — with conflict detection and OS-level reservation handling. Content-script shortcuts like the hint trigger key can be changed in Navigation's own settings page.
+
+Q: How does hint mode work?
+A: Hold Shift (default trigger) and letter badges appear over every clickable element on the page. Type the badge letters to click that element. Hold Alt while typing to peek the link instead. Hold Ctrl while typing to open in a background tab. The trigger key is configurable — Alt, Ctrl, or press / for vimium-style modal mode.
+
+Q: Does SuperchargeNavigation conflict with Vimium or other keyboard extensions?
+A: The four registered commands (Alt+B, Alt+K, Alt+G, Alt+Shift+G) could conflict if you've assigned the same keys elsewhere. Each command has an individual toggle in Navigation settings so you can disable any shortcut that clashes. The hint trigger key is also customizable to avoid overlap.
+
+Q: What is type-to-select?
+A: Type-to-select lets you type bare letters (no modifier held) to highlight every visible text match on the page. Press Enter to activate the top match, Alt+Enter to peek-search it on Google, or Ctrl+Enter to open that search in a background tab.
+
+Q: Can I disable Navigation shortcuts on specific sites?
+A: Yes. Press Alt+Shift+P on any page to pause all Navigation content-script shortcuts (hints, type-to-select, Alt+wheel, peek, rocker gestures, super drag) for that hostname. The same toggle is available in the command palette (Alt+K) and in the side panel header. Per-site pauses persist across browser restarts.
+
+---
+
 #### Super Drag — Open Links by Drag Direction
 
 URL: https://www.superchargebrowser.com/features/super-drag/
@@ -1248,6 +1350,206 @@ A: Direction determines the behavior: upward = background tab, downward = foregr
 
 Q: Does Super Drag work on all sites?
 A: It works on most standard web pages. It is intentionally disabled on web apps that use drag-and-drop as part of their own interface to prevent conflicts.
+
+---
+
+#### Hint Mode in Chrome — STOP Reaching for Your Mouse (2026)
+
+URL: https://www.superchargebrowser.com/features/hint-mode/
+Extension: navigation
+Description: Hold Shift and letter badges appear on every link, button, and input. Type the letters to click — no mouse needed. Configurable trigger, 3 chord variants.
+
+Hold Shift on any page and colored letter badges appear over every link, button, and input visible in your viewport. Type the letters (one or two) and the element activates. Your hands never leave the keyboard. It works on standard HTML, ARIA widgets, and web components with shadow DOM.
+
+## Activating Hint Mode
+
+Hint mode is off by default. Enable it once in SuperchargeNavigation Settings under Keyboard Shortcuts, then it's available on every page.
+
+Once enabled, hold Shift. Badges appear. Type the label. Done.
+
+If Shift conflicts with your OS (some accessibility tools intercept it), switch the trigger in settings:
+
+| Trigger | How to enter hint mode |
+|---------|----------------------|
+| Shift (default) | Hold Shift |
+| Alt | Hold Alt |
+| Ctrl | Hold Ctrl |
+| Slash (modal) | Press `/` once (no held modifier) |
+
+Slash modal mode is designed for laptop users on non-US keyboards where `/` requires Shift anyway. The extension detects the layout and handles it correctly.
+
+## What Gets a Hint Badge
+
+Every element a user can meaningfully interact with gets a badge:
+
+- **Links** (`<a>` tags): any href, including JavaScript links
+- **Buttons**: `<button>`, `<input type="submit">`, `<input type="button">`, checkbox, radio
+- **Form fields**: `<select>`, `<textarea>`, and all text input variants (search, email, url, tel, password, date, and more)
+- **ARIA widgets**: roles: button, link, checkbox, radio, menuitem, tab, switch, option, searchbox, textbox, combobox
+- **Web components**: SuperchargeNavigation pierces both open and closed shadow DOM roots, so complex sites like Reddit (which wraps its search input in a closed shadow tree) show hints correctly
+
+Up to 400 in-viewport elements get badges. Beyond that, a further 200 off-screen elements are labeled and reachable by scrolling. The total cap is 600 per page.
+
+Labels use a home-row weighted alphabet (`asdfjklghvnbcmrutyeiwoqpxz`) so the most common letters land under your strongest fingers. Common buttons get mnemonic shortcuts: "submit" → `s`, "login" → `l`, "cancel" → `c`, "download" → `d`. Dense pages with hundreds of elements fall back to two-letter combinations, giving 625 unique slots before any cap is reached.
+
+## The Three Chord Variants
+
+Typing a hint label alone clicks the element. Two modifier chords change what happens on activation:
+
+| Chord | Action |
+|-------|--------|
+| Shift + label | Click (normal navigation) |
+| Shift + Alt + label | Open in [Glance Peek](/features/glance-peek/) overlay |
+| Shift + Ctrl + label | Open in background tab (matching Chrome's Ctrl+Click) |
+
+The peek chord is the fastest way to use Glance on a dense page. Instead of hovering for the right link and then holding Shift to click it, you hold Shift, type the two-letter badge, and the preview opens. One continuous motion.
+
+If you set Alt as your trigger, the chord roles shift to stay non-conflicting: bare Alt activates hints, Shift becomes the peek modifier, Ctrl stays background tab. All four trigger configurations maintain distinct chord roles by construction.
+
+## Dismissing Hints and Per-Site Pause
+
+Press Escape to clear hint badges without clicking anything. If a Glance overlay is open, Escape closes that first; if the Alt+K palette is open, Escape closes that next; only then does it clear hints. The priority chain means you never need to think about which Escape press does what.
+
+Shift+Escape does something different: it toggles a per-site pause for the current domain. On sites with their own Shift-based shortcuts (Google Docs, Figma, certain web apps), one keystroke pauses all SuperchargeNavigation content-script shortcuts. This suppresses hints, type-to-select, Alt+scroll, rocker gestures, and Super Drag on that domain until you re-enable them. The pause persists across page loads.
+
+## How Labels Are Assigned
+
+The label alphabet is `asdfjklghvnbcmrutyeiwoqpxz` (home-row characters first). Labels are assigned in viewport order (top-left to bottom-right) so spatial position is consistent across visits to the same page. Elements sharing the same screen coordinates within 12px are deduplicated to prevent badge stacking.
+
+A small mnemonic table biases common actions toward their natural letter: "search" → `s`, "reply" → `r`, "next" → `n`, "previous" → `p`. When a mnemonic would collide with an already-assigned label, the system falls back to the next available character in the alphabet sequence.
+
+Text inputs get hints too, but activation works differently: instead of simulating a click, hint activation focuses the field and selects its existing content. That is the expected behavior when landing in a form field via keyboard.
+
+## Settings
+
+| Option | Default | Notes |
+|--------|---------|-------|
+| Keyboard hints (hint mode) | Off | Enable in Settings → Keyboard Shortcuts |
+| Hint trigger key | Shift | Shift, Alt, Ctrl, or Slash modal |
+| Type-to-select | Off | Related: bare letters without trigger highlight matching text |
+
+Hint mode and type-to-select share the same label rendering engine but activate differently. Type-to-select fires on bare letter keypresses when no input is focused; hint mode fires only while the trigger key is held.
+
+## When This Replaces the Mouse
+
+**Long-form reading with lots of links:** Hold Shift, type `s` to open the next section in a background tab, type `n` for the next page. No scrolling back to the navigation bar.
+
+**Forms:** Tab through fields normally, or hold Shift and jump directly to any input by label. Works on login pages, checkout flows, and web apps.
+
+**Dropdown menus and ARIA widgets:** Badge overlays appear on menu items, tabs, and role="button" elements. Sites built on component libraries (Material UI, Radix, Headless UI) hint correctly even when the underlying markup is unconventional.
+
+**Research with Glance:** You're on a search results page. Hold Shift, see badges on every result link, type the badge while holding Alt and the link opens as a Glance overlay. Read, close, move to the next badge. No new tabs accumulate.
+
+## Privacy
+
+Hint mode runs entirely in the page's content script context. No URLs, labels, or activation events are transmitted anywhere. The per-site pause list (`nav.sitePausedDomains`) is stored in `chrome.storage.local` on your device. Nothing leaves the browser.
+
+##### FAQ
+Q: How do I activate hint mode in SuperchargeNavigation?
+A: Hint mode is off by default. Enable it in SuperchargeNavigation Settings under Keyboard Shortcuts. Once on, hold Shift on any page and letter badges appear over every link, button, and input. Release Shift to dismiss.
+
+Q: What elements get hint labels?
+A: As of May 2026, hints appear on links (a), buttons, select menus, textareas, labels, and any element with an ARIA role of button, link, checkbox, radio, menuitem, tab, switch, option, searchbox, textbox, or combobox. SuperchargeNavigation also pierces closed shadow DOM roots, so web components on sites like Reddit show hints correctly.
+
+Q: What are the chord shortcuts inside hint mode?
+A: Hold Shift and type the hint label to click the element. Hold Shift+Alt and type the label to open it in a Glance preview overlay. Hold Shift+Ctrl and type the label to open it in a background tab — matching Chrome's built-in Ctrl+Click behavior.
+
+Q: Can I change the trigger key?
+A: Yes. SuperchargeNavigation offers four trigger options: Shift (default), Alt, Ctrl, or slash modal mode. Slash modal mode activates hints with a single / keypress — no held modifier needed, useful if Shift conflicts with your OS or other shortcuts.
+
+Q: How many hints can appear at once?
+A: Up to 400 in-viewport hints and 600 total per page. Labels start as single letters (home-row weighted: a, s, d, f, j, k, l, g…) and fall back to two-letter combinations when needed, giving 625 unique slots. Common buttons like 'submit' and 'login' get mnemonic labels (s, l) where possible.
+
+Q: How do I dismiss hints without clicking anything?
+A: Press Escape to clear hints. Shift+Escape toggles a per-site pause that suppresses all SuperchargeNavigation content-script shortcuts on the current domain — useful for web apps with their own Shift-based shortcuts.
+
+---
+
+#### Custom New Tab Page for Chrome — Workspace Dashboard (2026)
+
+URL: https://www.superchargebrowser.com/features/new-tab-page/
+Extension: navigation
+Description: Replace Chrome's blank new tab with a workspace dashboard: clock, search bar, workspace switcher, pinned tabs, and top sites. Each section toggleable.
+
+Every new tab you open in Chrome is a dead end by default — a blank rectangle with a Google logo. SuperchargeNavigation replaces it with a dashboard that shows your workspaces, pinned tabs, most-visited sites, a live clock, and a unified search bar. One new tab tells you where you were and gets you back there.
+
+## What's on the Dashboard
+
+The page loads instantly from a bundled HTML file: no network requests, no framework overhead. Six sections appear by default, each toggleable from settings:
+
+**Clock and date.** A large 72px clock centered on the page. Lightweight, always accurate, no widget overhead.
+
+**Unified search bar.** Type anything: the bar searches your open tabs, your named workspaces, and your Chrome bookmarks simultaneously. Results appear with favicons and a source badge (tab, workspace, or bookmark). Press Enter on a result to jump there, or press Enter with no match to run a Google search.
+
+**Workspace switcher.** Every named workspace appears as a card. Each card shows the workspace name, favicon previews of up to three open tabs, the total tab count, and an active-state highlight (blue border) on your current workspace. Click any card to switch. The active workspace is always visible at a glance.
+
+**Pinned tabs.** Your pinned tabs appear as a row of favicon icons below the workspace switcher. Click any favicon to jump to that tab.
+
+**Top sites.** Your most-visited sites appear as a row of circular favicon icons, sourced from `chrome.history.search()`. Hover a site to reveal an ✕ button that removes it from the row permanently.
+
+**Antigravity animation.** Floating particles on a canvas element behind the content. Purely visual, runs without blocking the main thread. Turn it off in settings for a completely static background.
+
+## Settings Reference
+
+| Setting | Default | Effect |
+|---------|---------|--------|
+| New tab page (master) | On | Turns off the custom NTP; Chrome's default returns |
+| Clock | On | Shows or hides the large clock and date |
+| Search bar | On | Shows or hides the unified search input |
+| Workspace pills | On | Shows or hides the workspace card row |
+| Pinned tabs | On | Shows or hides the pinned tab favicon row |
+| Top sites | On | Shows or hides the most-visited sites row |
+| Antigravity animation | On | Shows or hides the particle canvas |
+
+All settings live in **Options → New tab page** (gear icon, top-right of the new tab, or via the extension options page).
+
+## How It Compares
+
+| Feature | Chrome default | Momentum | SuperchargeNavigation NTP |
+|---------|---------------|----------|--------------------------|
+| Workspace switcher | No | No | Yes — all named workspaces with favicons |
+| Open-tab search | No | No | Yes — tabs + bookmarks + workspaces |
+| Pinned tab shortcuts | No | No | Yes |
+| Top sites | Yes | No | Yes |
+| Clock | No | Yes | Yes |
+| Photo/widget backgrounds | No | Yes (paid) | No — intentionally minimal |
+| Requires account | No | Yes | No |
+| Works offline | Yes | Partial | Yes — fully local |
+| Syncs workspaces | No | No | Optional via Chrome Sync |
+
+The design is intentional. No weather widgets, no inspirational quotes, no background photo subscription. The goal is a dashboard that loads before you think about loading, shows your actual browser state, and gets out of the way.
+
+## Disabling or Restoring Chrome's Default
+
+The custom NTP is enabled by default when you install SuperchargeNavigation. Two ways to turn it off:
+
+1. **From the new tab page:** scroll to the bottom, click "Restore default new tab." A confirmation dialog appears. Confirm, and Chrome's default new tab returns immediately.
+2. **From Options:** open the extension options page → **New tab page** section → flip the master toggle off.
+
+Either path writes `nav.ntpEnabled: false` to local storage. The NTP page itself detects this on load and redirects to `google.com`. Re-enable any time from Options with no reinstall needed.
+
+## Privacy
+
+The new tab page reads your open tabs, pinned tabs, named workspaces, and Chrome's top-sites list locally. Nothing leaves your device. No analytics, no external requests on load. The search bar sends a Google search only when you explicitly press Enter with no local match — the same behavior as typing in Chrome's address bar.
+
+##### FAQ
+Q: Does the custom new tab page replace Chrome's default completely?
+A: Yes. SuperchargeNavigation uses Chrome's chrome_url_overrides API to serve its own new tab page. Chrome's default (with Google search and doodle) is replaced. As of May 2026, all six dashboard sections (clock, search, workspaces, pinned tabs, top sites, animation) are on by default and each can be toggled off individually.
+
+Q: How do I disable the custom new tab page?
+A: Two paths: click the 'Restore default new tab' link at the bottom of the new tab page, or go to the extension Options → New tab page → turn off the master toggle. Either way, Chrome's default new tab is restored immediately without reinstalling the extension.
+
+Q: Does the new tab page sync across devices?
+A: The workspace cards shown on the new tab page reflect your local workspaces. If you enable cross-device sync in SuperchargeNavigation settings, your workspaces (and therefore the workspace cards) sync across devices via Chrome Sync infrastructure. The NTP layout settings (which sections are visible) are stored locally per device.
+
+Q: Can I search Google from the new tab search bar?
+A: Yes. The search bar searches your open tabs, workspaces, and bookmarks as you type. If nothing local matches, press Enter to run the query as a Google search in the current tab.
+
+Q: Does the new tab page slow down Chrome?
+A: No measurable impact. The page is a static HTML file bundled with the extension — no network requests on load, no JavaScript framework, no external fonts. The antigravity particle animation runs on a canvas element and can be turned off in settings if you prefer a fully static page.
+
+Q: Can I switch to a different workspace from the new tab page?
+A: Yes. Each workspace appears as a card showing its name, favicon previews of open tabs, and tab count. Clicking a card switches Chrome to that workspace immediately.
 
 ---
 
@@ -1308,6 +1610,634 @@ A: SuperchargeNavigation checks the navigating tab's URL against the URLs of all
 ---
 
 ## Library Articles
+
+### Arc Browser Status 2026: DISCONTINUED, Live, Atlassian Pivot
+
+URL: https://www.superchargebrowser.com/library/arc-browser-status-2026/
+Category: guide | Extension: navigation | Updated: 2026-05-15
+Description: Arc entered maintenance mode May 2025, acquired by Atlassian for $610M. Still downloadable May 2026 — security patches only, no new features, no sunset date.
+
+Arc Browser is not shut down, but it is effectively finished as a product. As of May 2026, Arc still downloads, installs, and runs on Mac and Windows. It receives Chromium security patches — macOS reached v1.146.0 on May 6, 2026. What it does not receive: new features, a roadmap, or active development from any team. The Browser Company stopped building Arc in May 2025 and pivoted to Dia, an AI-first browser. Atlassian completed its $610M acquisition of The Browser Company on October 21, 2025.
+
+> **Key takeaways**
+> - **Arc is alive but frozen**: downloadable and running in May 2026, security patches only, no new features and no announced sunset date.
+> - **Atlassian's focus is Dia**, not Arc — the acquisition announcement mentions Arc once, in passing.
+> - **Most Arc workflows port to Chrome**: workspaces, command bar, peek previews, and session snapshots are all replicable without switching browsers.
+
+## The Short Answer: Arc's Status in May 2026
+
+Arc still works. You can download it today at arc.net. The latest macOS version is v1.146.0 (May 6, 2026); Windows is at v1.106.0 (May 14, 2026). Both updates are Chromium security patches, not feature releases.
+
+What has stopped: active development, new features, and any meaningful product investment. The Browser Company announced maintenance mode in May 2025. Atlassian acquired the company four months later. Every engineer on the Arc team is now building Dia. Arc's future depends entirely on whether Atlassian continues to fund the infrastructure — something they have neither committed to nor announced discontinuing.
+
+The honest summary: Arc is safe to keep using today. It is not safe to plan around long-term.
+
+## The Timeline: How Arc Got Here
+
+| Date | Event |
+|------|-------|
+| ~2023 | Arc Browser launches publicly for macOS |
+| May 27, 2025 | The Browser Company announces Arc enters maintenance mode — no new features, security patches only |
+| May–Oct 2025 | Dia (AI-first browser) launches in public beta on macOS Apple Silicon |
+| September 4, 2025 | Atlassian announces definitive agreement to acquire The Browser Company for $610M |
+| October 21, 2025 | Atlassian acquisition closes |
+| 2026 (ongoing) | Arc continues receiving Chromium security updates; macOS v1.146.0 released May 6, 2026 |
+| May 2026 | No sunset date announced; Arc still downloadable; Atlassian focused on Dia |
+
+The arc of Arc (forgive it) is a familiar story in consumer software. The product built a devoted community. The company ran out of runway to justify continued investment at the original ambition level. Rather than kill it, they moved to maintenance mode while pivoting to a new product. Atlassian then bought the team for the team — specifically for the people who built Dia, and for Dia's enterprise potential. Arc came along with the deal.
+
+## What Still Works in Arc Today
+
+As of May 2026, the core Arc experience is intact:
+
+**The browser itself:** tabs, browsing, rendering, extensions. Arc is Chromium-based, so it tracks Chromium's security patches and supports the full Chrome extension ecosystem. An Arc user loses nothing in terms of extensions.
+
+**Spaces:** Arc's named workspaces still exist and still function. Switching between Spaces switches tab context as it always has. No new improvements are coming to Spaces, but the existing behavior works.
+
+**Command Bar:** Cmd+T still opens Arc's command bar. Tab search, history search, and action commands all function normally.
+
+**Little Arc:** the mini floating browser window still works. This is the feature with no Chrome equivalent, and it continues to function for Arc users.
+
+**Sync:** Arc's cross-device sync remains operational as of May 2026. No shutdown of backend sync infrastructure has been announced. Atlassian has made no public commitment to maintaining Arc's sync servers indefinitely. If backend services close at some future date, sync breaks without warning.
+
+**Boosts:** custom CSS/JS site modifications still function.
+
+## What Doesn't Work (or Is at Risk)
+
+**New features.** There are none. Whatever Arc was in May 2025 is what Arc is today and will be for the foreseeable future.
+
+**Bug fixes.** Security patches come through Chromium. Browser-specific bugs (things the Arc team would have fixed in the product itself) are not being addressed.
+
+**Community.** Arc's development community has largely disbanded. Third-party tooling around Arc has stalled. Arcify (v5.0.0 on CWS as of early 2026) replicates some Arc-style tab behavior in Chrome, but Arc's broader developer ecosystem is effectively frozen.
+
+**Long-term infrastructure.** Atlassian has not committed to maintaining Arc's sync and account infrastructure beyond the immediate term. This is the most significant hidden risk for Arc power users who depend on cross-device sync. There is no announced shutdown date, and no announced commitment.
+
+## The Bigger Picture: Atlassian's Plans for Arc
+
+Atlassian's acquisition announcement is unambiguous about its intent: build Dia, not continue Arc.
+
+CEO Mike Cannon-Brookes described the vision: "Our vision is to make Dia the browser" optimized for SaaS-heavy knowledge work, with AI assistance woven into the browsing experience. The announcement mentions Arc once, identifying The Browser Company as "the team behind the incredible Dia and Arc browsers." No Arc roadmap, no Arc investment commitment, no statement about Arc's future at all.
+
+Atlassian is a $50B+ enterprise software company (Jira, Confluence, Trello). The $610M acquisition was not a browser play. It was a talent acquisition to build an enterprise AI browser. Arc served its purpose as the product that proved the team could ship a differentiated browser. That chapter is closed.
+
+This does not mean Arc will be killed imminently. Atlassian has no incentive to generate negative press by shutting down a browser that still has users. But the probability of meaningful Arc investment under Atlassian is effectively zero.
+
+## Dia: The Replacement That Isn't a Replacement
+
+Dia is available to download as of May 2026, on macOS 14+ with Apple Silicon only. It is a fundamentally different product from Arc: not a version 2, not a spiritual successor in any practical sense.
+
+Where Arc was built for power users who wanted a highly customizable, workflow-focused browser, Dia is built for enterprise teams who want AI assistance across their SaaS tools. Dia integrates AI that can "read" your tabs and help you work across multiple apps. It is priced for knowledge workers ($20/month Pro tier reported for advanced AI features) and positioned against enterprise software, not consumer browsers.
+
+Arc users who have tested Dia generally reach the same conclusion: these are different tools for different jobs. If you loved Arc for Spaces and the Command Bar, Dia does not replace them. If you want an AI co-pilot for Jira and Google Docs, Dia is built for you.
+
+For Mac users with Apple Silicon who want to try Dia, it is available at diabrowser.com. Windows availability has been mentioned by Atlassian but has no committed release date as of May 2026.
+
+## If You're Switching: Arc Features in Chrome
+
+For users who want to leave Arc for a stable, actively developed platform, Chrome is the most common destination. The extension ecosystem is the main reason: Chrome extensions don't work in Firefox-based browsers like Zen, which otherwise closely mirrors Arc's design philosophy.
+
+The feature gap between Arc and stock Chrome is real. Chrome 146's native vertical tabs cover the structural change, but Spaces, the Command Bar, peek previews, and session history have no built-in Chrome equivalents.
+
+| Arc Feature | Chrome Equivalent | How |
+|-------------|------------------|-----|
+| Spaces (named workspaces) | Yes | SuperchargeNavigation |
+| Command Bar (Cmd+T) | Yes | SuperchargeNavigation (Alt+K) |
+| Vertical tabs | Yes | Chrome 146 native or SuperchargeNavigation |
+| Peek / Glance preview | Yes | SuperchargeNavigation (Shift+Click) |
+| Session snapshots | Yes | SuperchargeNavigation (200 auto-saves, 5-min intervals) |
+| Little Arc mini windows | No | No Chrome equivalent |
+| Boosts (custom CSS) | Partial | Stylus extension |
+| Sync across devices | Yes | SuperchargeNavigation (opt-in via Chrome Sync) |
+
+For the full setup walkthrough — including how to configure workspaces, keyboard shortcuts, and peek previews — the [Arc features in Chrome guide](/library/arc-browser-dead-get-features-in-chrome/) covers each one in detail. For Spaces specifically: [Arc Spaces in Chrome](/library/arc-spaces-chrome-extension/).
+
+**Other Chromium alternatives.** Vivaldi and Brave both offer vertical tabs and some workspace functionality without requiring extensions. Vivaldi in particular has a feature depth that Arc users often appreciate. These are active products under active development, a meaningful distinction from Arc's current state.
+
+## Should You Wait for Dia?
+
+Only if you're on a Mac with Apple Silicon and want AI-assisted enterprise browsing. Dia is a real product with active development and a functioning public release as of May 2026.
+
+If what you want is the Arc workflow — Spaces, Command Bar, fast tab management — Dia does not deliver it. The product is built around a different use case. Waiting for Dia to become "Arc but better" is waiting for something that isn't coming.
+
+If you're on Windows, Dia has no release date. Chrome with extensions is the practical path today.
+
+---
+
+**Where things stand in May 2026:** Arc works, receives security patches, and has no announced shutdown date. The team that built it is at Atlassian building Dia. There is no realistic scenario where Arc gets new features. Use it while it runs, but migrate before you depend on it. Cross-device sync is the highest-risk dependency if Atlassian eventually shuts down Arc's backend infrastructure.
+
+#### FAQ
+Q: Is Arc Browser shut down in 2026?
+A: As of May 2026, Arc Browser is not shut down — it is in maintenance mode. Arc is still downloadable at arc.net and receives Chromium-based security updates. The latest macOS version is v1.146.0 (released May 6, 2026) and Windows v1.106.0 (released May 14, 2026). No new features are coming, and no sunset date has been announced. The Browser Company stopped active development in May 2025 and the team is now fully focused on Dia under Atlassian.
+
+Q: What did Atlassian do with Arc after acquiring The Browser Company?
+A: Atlassian acquired The Browser Company for $610 million in September 2025, with the deal closing October 21, 2025. Atlassian's stated focus is building Dia — an AI-first browser for enterprise work — not continuing Arc development. The Atlassian acquisition announcement mentions Arc only once, in passing. There is no public Atlassian roadmap for Arc specifically.
+
+Q: Are Arc Spaces still syncing in 2026?
+A: Arc Spaces sync continues to function as of May 2026 for existing users, as no shutdown of sync infrastructure has been announced. However, no improvements to Spaces sync are coming — the feature is frozen at its May 2025 state. If Atlassian shuts down Arc's backend sync services at some future date, Spaces sync would break without warning.
+
+Q: What is Dia and is it the same as Arc?
+A: Dia is a separate product from Arc, built by the same team (The Browser Company, now part of Atlassian). Dia is an AI-first browser focused on knowledge work: it integrates AI assistance across your tabs, is designed for SaaS-heavy workflows, and is positioned as an enterprise tool rather than a consumer browser. As of May 2026, Dia is available for download on macOS 14+ with Apple Silicon. It is not a continuation of Arc — it is a different product with a different design philosophy.
+
+Q: What's the best Chrome alternative for Arc features?
+A: For users who want to stay on Chrome rather than switch browsers, SuperchargeNavigation (free, no account required) replicates the core Arc workflow: named workspaces with full tab isolation, a keyboard command bar (Alt+K), vertical tabs, Shift+Click peek previews, and 200-snapshot session history. For a full feature comparison, see the Arc features in Chrome guide.
+
+---
+
+### Brave vs Chrome RAM: What Actually Drives the Gap (2026)
+
+URL: https://www.superchargebrowser.com/library/brave-vs-chrome-ram-benchmark-2026/
+Category: comparison | Extension: performance | Updated: 2026-05-15
+Description: Brave vs Chrome RAM in 2026 — both run Chromium, so defaults and features explain the difference. Structural breakdown, what to measure yourself.
+
+> **Key takeaways**
+> - Both browsers run **the same Chromium engine** — defaults and features explain the RAM gap, not architecture
+> - Brave Shields **blocks ads and trackers before they load**, shrinking each tab's renderer process
+> - Chrome's Memory Saver **suspends inactive tabs** — a different lever, and one you can replicate in Chrome
+
+Brave and Chrome share the same engine. Blink renders pages. V8 runs JavaScript. Site Isolation puts each website origin in its own sandboxed renderer process. If you loaded the exact same page, with zero extensions, in a clean profile of each browser, the memory numbers would be nearly identical.
+
+The gap people observe in practice comes from one thing: what each browser loads before the page reaches the renderer.
+
+## The Short Answer: Why the Gap Exists in 2026
+
+Brave Shields blocks ads, trackers, and third-party scripts at the network layer before they load. Chrome ships clean — no blocking, no filtering, no interception. Every ad iframe, tracking pixel, and analytics script that a page requests loads into the renderer process and consumes RAM.
+
+The gap is a content-per-tab difference, not an engine difference. At a page with 40 third-party resources blocked by Shields, Brave's renderer process for that tab holds less. Chrome's holds more. Multiply that across 30 tabs and the difference accumulates.
+
+There are no fabricated numbers in this article. The structural mechanics are documented; the exact magnitude varies by the sites you visit and your extension setup.
+
+## Both Are Chromium — What That Means for Memory
+
+Chrome and Brave both use Chromium's multi-process architecture. The key piece is Site Isolation, which Google shipped to all desktop users with Chrome 67 (after Spectre and Meltdown in 2018). According to the Chromium site isolation documentation, the feature ensures pages from different websites run in separate processes, each in a sandbox. On desktop, this applies to all sites by default — confirmed overhead is approximately 10–13% more processes compared to a single-process model, at high tab counts.
+
+This is the primary reason Chromium-based browsers use more RAM than Firefox at high tab counts. Firefox caps content processes at 8 by default; Chrome creates isolated renderer processes per site origin. Tab 31 in Firefox does not spawn a new process. In Chrome (and Brave), it does.
+
+Brave does not change this architecture. Neither does Edge. Both run Site Isolation identically to Chrome. The per-tab content weight is what differs.
+
+## Where Brave's Defaults Save RAM
+
+Brave Shields is active by default on every site. According to Brave's own documentation, Shields operates across two blocking modes — Standard and Aggressive — and handles:
+
+- **Ad and tracker blocking** — network-level interception before resources reach the renderer
+- **HTTPS upgrades** — forces secure connections where available
+- **Fingerprint protection** — randomizes browser API responses to reduce fingerprinting
+- **Cookie control** — blocks third-party tracking cookies
+- **Query parameter stripping** — removes tracking parameters from URLs
+
+The RAM-relevant piece is ad and tracker blocking. A typical news page may embed dozens of ad iframes, retargeting pixels, analytics scripts, and social widgets. In Chrome, these load fully into the renderer process. In Brave with Shields on Standard, most are intercepted at the network layer and never reach the renderer.
+
+The renderer process for a Brave tab on a content-heavy page starts with a smaller DOM, fewer JavaScript heaps, and fewer loaded assets. At 30+ tabs on ad-heavy sites, this compounds.
+
+Two caveats: Shields can be toggled off per site, and its effect varies significantly by site. A Google Docs tab contains almost no third-party ads — Shields saves nothing there. A tabloid news site blocked 40 resources? That tab's process is meaningfully lighter in Brave.
+
+## Where Chrome's Defaults Cost RAM (and How Memory Saver Helps)
+
+Chrome ships with no content blocking. It loads the full unfiltered page — including all third-party scripts, ad iframes, and tracking pixels — into each renderer process. This is a deliberate product choice, not a technical limitation.
+
+Chrome 148 adds a meaningful mitigation: Memory Saver. Navigate to `chrome://settings/performance` to configure it. Three modes are available, verified from Google's support documentation:
+
+| Mode | Behavior |
+|------|----------|
+| **Moderate** | Tabs become inactive after a longer period of inactivity |
+| **Balanced** *(recommended)* | Tabs become inactive after an optimal period |
+| **Maximum** | Tabs become inactive after a shorter period (most aggressive) |
+
+Memory Saver uses the same `chrome.tabs.discard()` mechanism available to extensions. A discarded tab's renderer process is removed from memory — the tab stays visible in the strip, clicking it reloads from the network. Audio playing, screen sharing, pinned tabs, tabs with unsaved form input, and active downloads are protected from discard automatically.
+
+Memory Saver addresses a different problem than Brave Shields. Shields reduces per-tab content weight. Memory Saver eliminates the process entirely for inactive tabs. A Chrome session with Memory Saver on Maximum and an ad blocker extension installed covers both dimensions — but that requires adding two features Brave ships by default.
+
+## The Hidden Cost: Optional Features That Add Processes
+
+Brave includes features that can add process overhead, though only when used:
+
+- **Brave Wallet** — the built-in crypto wallet spawns a dedicated process when opened. Closed or never used, it adds no meaningful overhead.
+- **Tor private windows** — opening a Tor window adds an additional process for the Tor circuit. Closing the window removes it.
+
+Chrome's equivalent optional cost is extensions. Every Chrome extension runs in its own renderer process. A Chrome user with 10 active extensions carries significant background process overhead that Brave's Shields — a native browser feature, not a separate process — does not match in process count.
+
+The comparison table below shows the structural cost differences:
+
+| Factor | Chrome (clean install) | Brave (clean install) |
+|--------|----------------------|----------------------|
+| Ad/tracker blocking | None — extension required | Shields ON by default |
+| Blocking mechanism | Extension renderer process (if installed) | Native browser layer (no separate process) |
+| Inactive tab handling | Memory Saver (opt-in) | No built-in suspender |
+| Wallet process | N/A | Optional, only when opened |
+| Tor process | N/A | Optional, only when opened |
+| Site Isolation | Yes — all desktop sites | Yes — identical to Chrome |
+
+The key asymmetry: Brave's Shields block content as a native browser feature with no dedicated process cost. Chrome achieves equivalent blocking only by adding an extension, which carries its own process overhead.
+
+## How to Measure It Yourself
+
+Self-measurement is the only way to know what the gap actually is on your machine, with your sites, and your usage pattern. Architecture explains the direction; your browsing habits determine the magnitude.
+
+**Method 1: Browser Task Manager (most accurate)**
+
+Both Chrome and Brave include a task manager that shows per-process memory:
+
+1. Press `Shift+Esc` (Windows/Linux) or go to the hamburger menu → More tools → Task Manager
+2. Sort by "Memory footprint"
+3. Sum all browser processes — renderer processes (one per site origin), the GPU process, the browser process, and any extension processes
+
+Do this in both browsers with the same tabs open, extensions disabled, and a clean profile. Repeat with your normal extensions to see the real-world difference.
+
+**Method 2: OS Task Manager**
+
+Windows Task Manager or macOS Activity Monitor will show all browser sub-processes. Filter by the browser name and sum the memory column. Less precise than the in-browser view because some shared memory may be double-counted, but useful as a cross-check.
+
+**What to control for:**
+
+- Use the same URLs in both browsers (bookmark a set of 10-20 representative sites)
+- Wait 5 minutes after loading all tabs before measuring — JavaScript initialization affects early readings
+- Disable extensions in Chrome for a fair baseline comparison against Brave's clean install
+- Run the test twice to average out garbage collection timing differences
+
+The methodology matters more than the result. A measurement you took on your machine with your sites is more useful than any published benchmark, because the gap depends almost entirely on what ad density the pages you visit carry.
+
+## What to Do If You're Staying on Chrome
+
+Brave's RAM advantage comes from two defaults Chrome doesn't ship: content blocking and nothing else. You can replicate both without switching browsers.
+
+**Step 1: Enable Memory Saver on Maximum.** Visit `chrome://settings/performance`, turn on Memory Saver, and set it to Maximum. This discards inactive tabs before memory pressure builds, freeing the renderer process for tabs you haven't touched recently.
+
+**Step 2: Add an ad blocker.** uBlock Origin or the equivalent blocks the same ad and tracker content Brave Shields blocks by default. Active tabs carry lighter renderer processes. This is the per-tab content weight reduction Shields provides.
+
+**Step 3: For proactive suspension, add a timer-based suspender.** Chrome Memory Saver waits for system memory pressure before discarding tabs. A dedicated tab suspender applies discard on a configurable inactivity timer — suspending tabs before the system slows down, not after.
+
+For a full walkthrough of Chrome Memory Saver configuration and its limits, see [How to Enable Chrome Memory Saver (And When It's Not Enough)](/library/enable-chrome-memory-saver-guide/).
+
+The RAM gap between Brave and Chrome is real but structural, not mysterious. Brave ships with content blocking and Chrome doesn't. Understanding that makes it straightforward to close the gap without changing browsers — or to decide that Brave's defaults are simply faster to set up.
+
+#### FAQ
+Q: Does Brave actually use less RAM than Chrome in 2026?
+A: As of May 2026, yes — typically. Both browsers run the same Chromium engine, so their base memory footprint is structurally identical. The difference comes from defaults: Brave Shields blocks ads and trackers before they load, reducing the DOM size and script count each renderer process must hold. Fewer resources loaded per tab means lighter renderer processes. Chrome ships with no such blocking; every ad iframe, tracker pixel, and third-party script loads and occupies memory.
+
+Q: If both run Chromium, why does Brave use less RAM?
+A: Same engine, different defaults. Chromium's renderer process holds everything a tab has loaded: HTML, CSS, JavaScript heap, images, fonts, third-party iframes. Brave Shields intercepts ads and trackers at the network level before they reach the renderer, so each tab's process starts with less content to hold. Chrome's renderer processes are heavier because they load the full unfiltered page. The architecture is identical — the content per process is not.
+
+Q: Does Chrome's Memory Saver close the gap with Brave?
+A: Partially, and in a different dimension. Chrome Memory Saver (available at chrome://settings/performance) discards inactive tabs, which frees nearly all of each suspended tab's renderer memory. This is orthogonal to the per-tab content weight Brave reduces through Shields. Memory Saver addresses the tab count problem; Shields addresses the per-tab content problem. Chrome with Memory Saver on Maximum + an ad blocker extension can match or beat Brave's footprint, but that requires adding what Brave ships by default.
+
+Q: How much RAM does Brave Wallet add?
+A: Brave Wallet is an optional, built-in crypto wallet. When you use it, it runs in a dedicated process. If you never open the wallet, it adds no meaningful process overhead — the service is not pre-spawned just by having Brave installed. Tor private windows follow the same pattern: opening a Tor window spawns an additional process; closing it removes it. These are opt-in costs, not always-on overhead.
+
+Q: How do I measure RAM on my own machine?
+A: The most reliable method on any OS: open the browser's built-in task manager (Chrome/Brave: Shift+Esc or hamburger menu → More tools → Task Manager). This shows per-process memory, which is more accurate than OS-level figures that mix processes together. For a controlled comparison, load the same set of tabs in each browser with extensions disabled and a clean profile, then read the 'Memory footprint' column for all browser processes combined. Repeat with your normal extensions enabled to see the realistic gap.
+
+---
+
+### How to Enable Chrome Memory Saver: Step-by-Step (2026)
+
+URL: https://www.superchargebrowser.com/library/enable-chrome-memory-saver-guide/
+Category: guide | Extension: performance | Updated: 2026-05-15
+Description: Chrome Memory Saver lives at chrome://settings/performance — 3 steps to enable it, plus mode tradeoffs, site exclusions, and when it stops being enough.
+
+> **Key takeaways**
+> - **Three steps to enable:** open `chrome://settings/performance`, toggle Memory Saver on, pick a mode.
+> - Balanced mode uses ML to time discards; Maximum mode **suspends most aggressively** for the largest RAM reduction.
+> - Native Memory Saver has no configurable timer, no RAM dashboard, and no awareness of productivity apps — relevant for heavy tab users.
+
+Chrome Memory Saver has been built into Chrome since version 108 (December 2022). In Chrome 148 (current stable as of May 2026), it sits at `chrome://settings/performance` with three intensity modes powered by an ML discard model introduced in Chrome 140. Enabling it takes under 30 seconds.
+
+## The Short Answer: Where Memory Saver Lives
+
+The setting is at `chrome://settings/performance`. Scroll to the **Memory** section, toggle **Memory Saver** on, then pick a mode. That is the full enable flow — three steps, no restart required.
+
+If you want the full walkthrough with mode explanations and exception site setup, keep reading. If you are already enabled and something is not working, jump to [Troubleshooting](#troubleshooting-memory-saver-not-working).
+
+## Step-by-Step: Enabling Memory Saver in Chrome 148
+
+**Step 1.** Open Chrome and type `chrome://settings/performance` in the address bar, then press Enter. You can also get here via the three-dot menu → Settings → Performance.
+
+**Step 2.** Scroll to the **Memory** section. You will see a toggle labeled **Memory Saver**. Click it to switch on. The toggle turns blue.
+
+**Step 3.** Select your mode. Three options appear below the toggle:
+
+| Mode | Behavior | Best for |
+|------|----------|----------|
+| Moderate | Discards tabs after a longer inactive period | Users who switch between many tabs frequently |
+| Balanced *(recommended)* | ML model picks discard timing per tab | Most users — good default |
+| Maximum | Discards tabs fastest, largest RAM reduction | Heavy tab users, lower-RAM machines (8GB or less) |
+
+**Step 4 (optional).** Add exception sites. Under **Always keep these sites active**, click **Add**, then enter domains you never want discarded. Type `notion.so` to keep Notion always live, `linear.app` for Linear, and so on. Domain format: `google.com` covers all subdomains; `.google.com` excludes subdomains but covers the root.
+
+That is everything required to enable Memory Saver. Chrome begins discarding eligible inactive tabs based on your chosen mode immediately — no restart needed.
+
+## How Memory Saver Works Under the Hood
+
+Memory Saver calls `chrome.tabs.discard()`, the same browser API that third-party tab suspender extensions use. When Chrome discards a tab:
+
+- The renderer process and its memory are freed
+- The tab title and favicon stay visible in the tab strip
+- Clicking the tab triggers a fresh network reload from the server
+- A discarded tab typically retains 5–10MB for metadata versus 80–300MB when active
+
+What triggers the discard depends on the mode. In **Moderate** and **Balanced**, Chrome's ML model (introduced in Chrome 140, September 2025) estimates how likely you are to return to each tab. Tabs with low revisit probability get discarded first. **Maximum** mode applies a shorter inactivity window regardless of revisit probability.
+
+What never gets discarded: tabs currently playing audio or video, tabs with active media sessions, and tabs you have added to the exception list. Pinned tabs are protected in most cases but not guaranteed. Chrome's heuristics can still discard a pinned tab under sustained memory pressure.
+
+## When Native Memory Saver Is Not Enough
+
+Memory Saver is reactive. It monitors system memory and acts when pressure signals appear, not before. At 10 tabs, that timing rarely matters. At 30+ tabs on a machine with 8–16GB RAM, Chrome may already be consuming 2–3GB before Memory Saver discards a single tab.
+
+Four specific gaps:
+
+**No configurable timer.** You cannot tell Chrome to suspend a tab after 5 minutes of inactivity. The ML model decides, and you have no visibility into when it will act.
+
+**No RAM dashboard.** Chrome does not show you how much RAM Memory Saver has actually freed. The hover tooltip over a discarded tab shows a per-tab estimate, but there is no running total.
+
+**No productivity app awareness.** Memory Saver does not know that Figma, Notion, Slack, or Linear tabs should never be discarded mid-session. If RAM pressure spikes, these are candidates like any other tab.
+
+**No exception UI for tab categories.** You can exclude individual domains, but there is no "never discard anything in this group" or workspace-level protection.
+
+For users with fewer than 10 tabs and no productivity web apps, these gaps rarely surface. For users with 20+ tabs or tools like Figma or Notion open, they become daily friction.
+
+## Layering a Tab Suspender Extension
+
+A timer-based tab suspender and Chrome's native Memory Saver work on different trigger conditions. Running both simultaneously causes no conflicts. The extension typically suspends tabs before Memory Saver's pressure-based trigger activates.
+
+What a dedicated extension adds on top of Memory Saver:
+
+- **Configurable timer:** suspend after 5 minutes or 15 minutes of inactivity, before RAM pressure builds
+- **Live RAM dashboard:** see total memory freed per session, shown in the extension popup
+- **Auto-protected web apps:** skip suspension for productivity tools automatically, without manual exception entry
+- **Audio and pinned tab protection:** explicit skip logic for tabs where `tab.audible` is true and for pinned tabs
+
+SuperchargePerformance auto-protects 18 web apps from suspension (Figma, Notion, Slack, Discord, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, and Teams). Manual exception lists in native Memory Saver require you to add each domain yourself.
+
+The two work best in combination: Memory Saver as the browser's baseline safety net, the extension as the proactive first line that acts on a timer.
+
+## Troubleshooting Memory Saver Not Working
+
+**"Memory Saver is on but RAM usage looks the same."**
+Discard only happens after a tab has been inactive long enough. In Balanced mode, that can be 10–30 minutes depending on the ML model's estimate for that tab. Check `chrome://discards` to see which tabs Chrome currently considers eligible for discard and their time-to-discard.
+
+**"Tabs reload every time I switch to them."**
+That is normal post-discard behavior. The renderer process was freed; clicking the tab triggers a network reload. If this is happening to tabs you actively use, add them to the exception list at `chrome://settings/performance` or switch from Maximum to Balanced mode.
+
+**"A site I added to Always Keep Active is still getting discarded."**
+Confirm the domain format. `notion.so` covers all subdomains. If you entered `www.notion.so`, only that exact subdomain is protected. Also check `chrome://discards` — it lists each tab's current protection status and discard eligibility.
+
+**"Memory Saver toggle is grayed out."**
+This usually means a device policy has locked the setting. On corporate-managed Chrome, system admins can disable Memory Saver via the `MemorySaverModeSavings` enterprise policy. Check `chrome://policy` and look for Memory Saver-related policies. On unmanaged Chrome, the toggle should always be accessible.
+
+**"After enabling, a specific site behaves differently."**
+Some single-page apps lose client-side state when discarded and reload from the initial URL rather than the last position. Add that domain to the Always Keep Active list.
+
+---
+
+If you have fewer than 10 tabs: Balanced mode is the right default, set it and leave it. If you have 20+ tabs or keep productivity web apps open: Maximum plus a timer-based extension gives you proactive suspension before pressure hits, with automatic protection for apps that should never go idle.
+
+#### FAQ
+Q: How do I enable Chrome Memory Saver in 2026?
+A: As of May 2026 (Chrome 148): open chrome://settings/performance, scroll to the Memory section, and toggle Memory Saver on. Then pick a mode — Moderate, Balanced, or Maximum. Done. Inactive tabs will start being discarded based on your chosen aggressiveness.
+
+Q: What is the difference between Moderate, Balanced, and Maximum Memory Saver?
+A: As of Chrome 148: Moderate discards tabs after a longer inactive period, saving less RAM but keeping more tabs ready. Balanced (the default recommendation) uses an ML model to pick an optimal discard timing. Maximum discards tabs fastest and delivers the biggest RAM reduction, but clicking back to a tab more often triggers a reload.
+
+Q: Why does Chrome Memory Saver reload tabs when I click them?
+A: This is expected behavior. When Chrome discards a tab, it removes the renderer process from memory. Clicking the tab triggers a fresh network reload. The tab's title and favicon stay visible in the tab strip the whole time — the tab is not closed, just unloaded.
+
+Q: Can I exclude specific sites from Memory Saver?
+A: Yes. Navigate to chrome://settings/performance and click Add under 'Always keep these sites active'. Enter a domain — google.com covers all subdomains; .google.com excludes subdomains. This was added in Chrome 124 and remains present in Chrome 148.
+
+Q: Do I still need a tab suspender extension if I use Memory Saver?
+A: At under 10 tabs, Memory Saver Maximum is often enough. At 20+ tabs, the gap opens up: Memory Saver is reactive (waits for RAM pressure before acting), while a timer-based suspender like SuperchargePerformance is proactive (suspends after 5 or 15 minutes of inactivity regardless of system state). A dedicated extension also auto-protects productivity apps like Figma, Notion, and Slack, which Memory Saver has no awareness of.
+
+---
+
+### Is uBlock Origin Removed from Chrome? 2026 MV3 Truth
+
+URL: https://www.superchargebrowser.com/library/is-ublock-origin-removed-chrome-2026/
+Category: guide | Extension: performance | Updated: 2026-05-15
+Description: uBlock Origin was disabled by Chrome 138's MV2 sunset, not deleted. It returned as MV3 (v1.70.0) on March 11, 2026. Status, what changed, what still works.
+
+> **Key takeaways**
+> - **uBlock Origin was disabled, not removed** — Chrome 138's MV2 sunset silently disabled existing installs in mid-2025.
+> - It returned as MV3 (v1.70.0) on March 11, 2026, at the same Chrome Web Store URL.
+> - **uBlock Origin Lite is a separate, lighter extension** that cannot block YouTube video ads.
+
+As of May 2026, uBlock Origin is on the Chrome Web Store. It was not banned, not taken down, and not removed by Google. Chrome disabled existing MV2 installs in mid-2025. It looked like removal, but it wasn't. Raymond Hill (gorhill) shipped the MV3 migration as v1.70.0 on March 11, 2026, and the extension passed CWS review. If your install still shows as disabled, a reinstall from CWS fixes it.
+
+## The Short Answer: No, uBlock Origin Is Not Removed
+
+uBlock Origin v1.70.0 is live on the Chrome Web Store as of March 11, 2026 (source: GitHub releases, verified May 2026). v1.71.0 shipped May 11, 2026 and is pending CWS review: same URL, same extension, same author. Nothing changed hands. The "removed" perception came entirely from Chrome 138's MV2 sunset disabling existing installs without explanation.
+
+If your copy shows a disabled badge: open the Chrome Web Store listing, uninstall the old version, and install fresh. The new MV3 version installs cleanly.
+
+## Why People Think It Was Removed
+
+Chrome 138 did something that looked like removal but wasn't. When Google enforced the Manifest V2 deprecation, Chrome silently disabled every MV2 extension already installed. No popup, no error message. Just a grey disabled badge in the toolbar.
+
+uBlock Origin had been MV2 since its original release. Users who had it installed for years woke up to a disabled extension and assumed the worst: that Chrome had banned it, that Google had forced it off the store, or that gorhill had abandoned the project.
+
+None of that happened. The timeline shows what actually did:
+
+| Date | Event |
+|------|-------|
+| 2024 | Chrome 127+ begins showing MV2 deprecation warnings to developers |
+| Mid-2025 (Chrome 138) | MV2 extensions disabled for standard users — uBO shows as disabled |
+| Late 2025 | gorhill completes MV3 migration, submits to CWS |
+| March 11, 2026 | uBlock Origin v1.70.0 passes CWS review — MV3, same CWS URL |
+| May 11, 2026 | v1.71.0 released on GitHub, pending CWS review |
+| May 15, 2026 | uBlock Origin active on CWS — verified |
+
+The six-month gap between Chrome 138 and the v1.70.0 return is where the confusion took root. Users who searched "uBlock Origin removed" during that window found panic threads, not a clear timeline. Most of those threads are still indexed.
+
+## What Actually Changed in the MV3 Version
+
+The MV3 port is not a stripped-down replacement. gorhill preserved the core blocking capabilities. What changed is the underlying mechanism:
+
+| Capability | MV2 (old) | MV3 (v1.70.0+) |
+|------------|-----------|-----------------|
+| Network blocking | `webRequest` API (JS intercept) | DNR rules (Chrome evaluates natively) |
+| Cosmetic filtering | Full | Full |
+| Dynamic filter rules | Full | Full (within Chrome's rule limits) |
+| Element picker | Yes | Yes |
+| Filter list sources | EasyList, EasyPrivacy, etc. | Same lists |
+| YouTube ad blocking | Scriptlets | Scriptlets (same mechanism) |
+| Static rule minimum | No cap | 30,000 guaranteed per extension |
+| Firefox network layer | Yes | Chrome MV3 does not permit this layer |
+
+The 30,000-rule guaranteed minimum is a Chrome DNR constraint — it applies to all MV3 extensions. uBlock Origin works around this by using dynamic rules and scriptlets alongside its static ruleset. For most sites, the effective coverage is close to its MV2 predecessor. The gap shows on YouTube specifically, because that attack surface requires scriptlets rather than URL rules, and scriptlets are more vulnerable to YouTube's counter-measures on Chrome than on Firefox.
+
+For a side-by-side comparison of uBlock Origin (full) versus uBlock Origin Lite, see [uBlock Origin Lite vs uBlock Origin](/library/ublock-origin-lite-vs-full-chrome/). That article covers the architectural tradeoffs in detail.
+
+## uBlock Origin vs uBlock Origin Lite
+
+These are two different extensions by the same author. Confusing them is the second-most common mistake after assuming uBO was deleted.
+
+| Feature | uBlock Origin (full) | uBlock Origin Lite (uBOL) |
+|---------|---------------------|--------------------------|
+| CWS listing | Same URL as always | Separate listing |
+| Latest version | v1.70.0 on CWS (May 2026) | 2026.510.1607 (May 10, 2026) |
+| Architecture | Scriptlets + DNR | DNR only — no background script |
+| YouTube video ads | Yes (scriptlets) | No — structurally impossible |
+| General website ads | Full | Good — covers domain-level blocking |
+| RAM overhead | Small background script | Near-zero |
+| Best for | Full ad blocking, YouTube | Low-RAM devices, no YouTube need |
+
+uBlock Origin Lite was released as a native MV3 extension from day one, before the MV2 sunset. It has more users than the full version (roughly 17 million vs 15 million as of April 2026) partly because people installed it thinking it was the main uBlock Origin.
+
+uBOL works well for general website ad blocking. On YouTube specifically, it cannot intercept video ads — the declarative rule model has no mechanism to modify YouTube's player API responses. This is a structural limit, not a bug that will be patched.
+
+## YouTube Ad Blocking Status
+
+As of May 2026, uBlock Origin (full) blocks the majority of YouTube pre-roll and mid-roll ads on Chrome. The mechanism: scriptlets injected into the YouTube tab intercept the player's configuration data and strip ad metadata before the player reads it.
+
+YouTube pushes counter-measures regularly. The biggest wave since 2023 was June 2025 (11 months before this article's May 2026 publication). That wave restructured how YouTube packages ad metadata in its player API, breaking scriptlet-based blockers across the board. gorhill patched it within weeks for Chrome; the Firefox version recovered faster because Firefox has an additional network-interception layer Chrome's MV3 does not allow.
+
+As of May 2026, no comparable DOM-level wave has followed since June 2025. YouTube has shifted to testing Server-Side Ad Insertion (SSAI) — ads stitched into the video stream before delivery — which would be a structural change no browser extension can address. That's still in limited testing; it's a future risk, not a current break.
+
+The arms-race reality: uBO on Chrome blocks YouTube ads most of the time. During wave windows (typically 1-4 weeks per major YouTube update), ads get through with no badge warning. Keeping auto-update enabled minimizes the gap.
+
+## If You Don't Want to Wait During Patch Windows
+
+Some users find the intermittent gaps unacceptable, especially during long wave windows. The options that reduce gap duration are ad blockers using a preventive API-proxy approach rather than reactive scriptlets. When the proxy strips ad metadata before the player ever reads it, YouTube's counter-measure detection finds nothing to detect.
+
+AdBlock for YouTube (v7.2.1, 11 million users) uses this approach as its core method — typically patching within 24-48 hours of YouTube changes. SuperchargePerformance takes the same API-proxy engine as a base layer and adds three additional proprietary layers: 14 DNR network rules evaluated before any page script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead.
+
+Neither approach is immune to YouTube's long-term SSAI plans. For general website ad blocking beyond YouTube, uBlock Origin (full) is still the strongest option — 300K+ rules including procedural cosmetic and scriptlet coverage that DNR alone cannot match.
+
+## Which Setup Fits Your Situation
+
+- uBlock Origin shows disabled and you want it back: reinstall from the Chrome Web Store — it's live, MV3, same URL
+- You installed uBlock Origin Lite thinking it was the full version: install uBlock Origin (full) for YouTube ad blocking
+- You need YouTube ads blocked with the shortest possible patch window: AdBlock for YouTube or SuperchargePerformance (API-proxy approach)
+- You want the deepest general web ad blocking on Chrome: uBlock Origin (full), v1.70.0+
+- You're on a low-RAM device and don't need YouTube ad blocking: uBlock Origin Lite covers you with near-zero overhead
+- Chrome-vs-Firefox decision: uBO on Firefox has a structural advantage for YouTube — Chrome MV3 removes the network-interception layer Firefox retains
+
+#### FAQ
+Q: Was uBlock Origin removed from the Chrome Web Store in 2025 or 2026?
+A: No. As of May 2026, uBlock Origin is on the Chrome Web Store at the same URL it has always used (CWS ID: cjpalhdlnbpafiamejdnhcphjbkeiagm). What happened: Chrome 138, released mid-2025, disabled Manifest V2 extensions without deleting them. uBlock Origin (which was MV2) showed as disabled on existing installs. Raymond Hill (gorhill) completed the MV3 migration and the extension returned to CWS as v1.70.0 on March 11, 2026. v1.71.0 was released May 11, 2026 and is pending CWS review.
+
+Q: What's the difference between uBlock Origin and uBlock Origin Lite?
+A: As of May 2026, they are two separate extensions by the same author (gorhill). uBlock Origin (full) uses scriptlets and dynamic rules — it can block YouTube video ads by intercepting the player API. uBlock Origin Lite (uBOL) is declarative-only: no background script, no injected JS. This makes it lighter but structurally unable to block YouTube video ads. uBOL's latest version is 2026.510.1607 (May 10, 2026). If you need YouTube ad blocking, you need uBlock Origin (full), not uBOL.
+
+Q: Does uBlock Origin block YouTube ads on Chrome in 2026?
+A: As of May 2026, yes — with gaps. uBlock Origin blocks YouTube pre-roll and mid-roll ads via injected scriptlets. YouTube runs active counter-measures, causing multi-week gaps when a major update hits. The most significant wave was June 2025 (roughly 11 months before this article's May 2026 publication); gorhill patched it within weeks. On Chrome, uBO lacks the secondary network-interception layer it has on Firefox, making it more vulnerable during these waves. Keep uBO on auto-update to minimize gap duration.
+
+Q: Why did Chrome 138 disable uBlock Origin?
+A: Chrome 138 (released mid-2025) enforced the Manifest V2 deprecation for standard users. MV2 extensions — including the version of uBlock Origin that had been on CWS for years — were disabled automatically, without user action and without being deleted. The extension showed a disabled badge in Chrome's toolbar. Many users assumed it was banned or dead. It was not: gorhill ported uBlock Origin to MV3, and the extension passed CWS review and returned in March 2026.
+
+Q: Is uBlock Origin still as effective on Chrome as on Firefox in 2026?
+A: As of May 2026, no — and gorhill says so openly. Firefox's extension API permits a network-interception layer that Chrome's MV3 does not allow. On Firefox, uBO has both scriptlets and that network layer for YouTube. On Chrome, it has scriptlets only. The practical gap: during YouTube's anti-adblock waves, Chrome users see longer patch gaps than Firefox users. For general website ad blocking, the difference is smaller — DNR-based blocking covers most network-level ad domains on both platforms.
+
+---
+
+### Loon Chrome Extension: Status, Safety & What It Does (2026)
+
+URL: https://www.superchargebrowser.com/library/loon-chrome-extension-explained/
+Category: guide | Extension: performance | Updated: 2026-05-15
+Description: Loon is a Canadian-alternatives shopping extension — archived on GitHub but still listed on Chrome Web Store. Status, safety, and what to use instead in 2026.
+
+> **Key takeaways**
+> - **Loon is a Canadian shopping extension**, not an ad blocker — it surfaces domestic product alternatives while you browse Amazon, Walmart, and Canadian Tire.
+> - **The GitHub repo is archived** and the extension receives no updates, but the Chrome Web Store listing (22 users, v0.1.68) remains live as of May 2026.
+> - **If you found this page looking for a YouTube ad blocker**, skip to the [What to Install Instead](#what-to-install-instead) section below.
+
+Loon is a browser extension for finding Canadian-made product alternatives while shopping online. It is not a YouTube ad blocker, not a privacy tool, and not related to ad removal of any kind. The confusion exists because scraper sites catalog every Chrome extension and attach popular search keywords regardless of what the extension actually does.
+
+The developer archived the project after the operational cost — product data curation, marketing, maintenance — outgrew what a side project could sustain. As of May 2026, the Chrome Web Store listing is still live at version 0.1.68 with 22 users.
+
+## What Loon Actually Does
+
+Loon was built to solve a specific problem: when a Canadian shopper lands on Amazon or Walmart, they often don't know whether a Canadian-made equivalent exists. The extension surfaces those alternatives inline, without leaving the retailer page.
+
+Supported retailers at launch included Amazon, Walmart, and Canadian Tire. The experience was an extension popup — browse a product, open Loon, see domestic options if any existed in the database.
+
+| What Loon Does | What Loon Does Not Do |
+|---|---|
+| Shows Canadian product alternatives while shopping | Block ads of any kind |
+| Works on Amazon, Walmart, Canadian Tire | Remove YouTube ads |
+| Bookmarks saved Canadian products | Protect privacy or block trackers |
+| Requires no account or registration | Filter or hide web content |
+| Free, open-source (MIT license) | Modify YouTube player behavior |
+
+The tech stack was Vue 3, TypeScript, UnoCSS, and Axios. Developed in Montréal and Victoria. MIT license, so the code is public on GitHub even in its archived state.
+
+One caveat the developers noted: full functionality required a connection to their backend for product data. With the project archived, that backend is not guaranteed to remain operational.
+
+## Current Status: Archived on GitHub, Listed on CWS
+
+The GitHub repository at `github.com/jackmayhew/loon` has been archived. The developer's own words in the README: "Adding product data, marketing, and development became too time-consuming for a side project."
+
+That tracks. A shopping-alternatives extension is hard to maintain: the product database needs continuous updates, retailer page structures change, and building an audience for a niche tool without funding is slow work. No criticism. It's a pattern that ends most passion projects.
+
+What this means practically, as of May 2026:
+
+- The CWS listing (ID: `kikcflkchkgbafmmilpcpeammlfjllbe`) is live at v0.1.68 with 22 users
+- No new versions are in development
+- Bugs and broken retailer integrations will not be patched
+- The product database may degrade as the backend loses maintenance
+
+The extension did not get removed from CWS. Google's Chrome Web Store does not automatically delist extensions when their GitHub repository goes dormant or when a developer stops activity. CWS removals happen when an extension violates policy, gets flagged for malware, or the developer explicitly removes it. Archived side projects can sit on CWS indefinitely.
+
+## Why People Confuse It With a YouTube Ad Blocker
+
+Short answer: scraper sites and .crx catalogues.
+
+When an extension ships to the Chrome Web Store, dozens of third-party sites automatically index it. These sites pull the extension name, ID, and sometimes description, then cluster extensions under broad keyword categories to chase search traffic. "Loon" gets filed under categories that include ad blockers, video tools, and YouTube utilities — not because Loon does any of that, but because the indexers are sweeping everything.
+
+The result: a query like "loon youtube adblock plugin 2026" returns results pointing at a Canadian shopping tool. This is not Loon's fault and not a signal that Loon has hidden ad-blocking features.
+
+There's also a year-spam pattern at work. Scrapers append year suffixes to drive recency clicks ("loon chrome extension 2024", "loon chrome extension 2025", "loon chrome extension 2026") even when the underlying product hasn't changed. The query generates impressions for sites that have nothing useful to say about it.
+
+If someone told you "Loon blocks YouTube ads," that information came from a scraper index, not from the extension's actual function.
+
+## What to Install Instead
+
+The right replacement depends on what you were actually looking for.
+
+### For Canadian Shopping Alternatives
+
+The Loon CWS listing remains accessible. If you want to try it knowing it's unmaintained, it's at `chromewebstore.google.com/detail/loon/kikcflkchkgbafmmilpcpeammlfjllbe`. Verify the permissions it requests before installing — an abandoned extension with broad permissions is a risk worth checking.
+
+Beyond Loon, this specific niche (inline Canadian product alternatives on major retailers) has sparse coverage. No maintained, broadly-adopted replacement exists as of May 2026. Most Canadian shoppers check vendor sites manually or use browser bookmarks to Canadian retailers.
+
+### For YouTube Ad Blocking
+
+Loon has no YouTube functionality, but if that's what brought you here, the options that actually work are covered in the [YouTube ad blocker comparison](/library/best-youtube-ad-blockers-chrome-2026/). The short version: the approaches that survive YouTube's anti-adblock detection work at the API data layer before the player reads ad configuration, not at the DOM level after ads load.
+
+SuperchargePerformance uses a four-layer approach for YouTube: DNR network rules evaluated before any script runs, an API-proxy layer (upstream-derived from AdBlock for YouTube v7.2.1), a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. Beyond YouTube, it bundles tab suspension, 186K+ content-blocking rules from 22 filter sources, and AutoConsent cookie banner removal — zero telemetry, no account required, free core.
+
+### For General Ad Blocking
+
+For website-wide ad and tracker blocking, the [general ad blocker comparison](/library/best-ad-blocker-chrome-2026/) covers the current MV3 landscape with verified user counts and extension versions. The main dimensions that matter in 2026: whether the extension survived MV3 intact, how many rules it can evaluate, and whether the architecture handles dynamic scripts or only static URL rules.
+
+## Why Archived Chrome Extensions Stay on CWS
+
+Loon is not unusual. The Chrome Web Store has tens of thousands of unmaintained extensions: some dormant, some broken, some still functional years after their last update.
+
+Google does not proactively audit extensions for maintenance status. The CWS review process gates entry: extensions get reviewed before listing and after policy changes. Ongoing maintenance is on the developer. An extension can sit at a three-year-old version, work fine for most users, and face no removal pressure unless it breaks a policy rule or gets flagged for security issues.
+
+The implication for users: CWS listing status is not a freshness signal. An extension being "on CWS" tells you it passed policy review. That's it. Not that it's actively developed, not that its backend still works, not that it handles the current Chrome version cleanly. For extensions with backend dependencies (like Loon's product database), this matters more than for purely client-side tools.
+
+The practical check before installing any unfamiliar extension: open the listing, look at the last update date, check the permissions it requests, and verify the developer has some presence if the extension handles anything sensitive.
+
+---
+
+If you landed here because you wanted a YouTube ad blocker, the [tested comparison](/library/best-youtube-ad-blockers-chrome-2026/) has what you need. If you wanted Loon specifically for Canadian shopping — the listing is still there, but go in knowing updates stopped.
+
+#### FAQ
+Q: Is Loon still on the Chrome Web Store in 2026?
+A: As of May 2026, yes — the Loon extension (ID: kikcflkchkgbafmmilpcpeammlfjllbe) is still listed on the Chrome Web Store with 22 users and version 0.1.68. The GitHub repository has been archived by the developer, meaning no new updates are coming. The CWS listing remains live but unmaintained.
+
+Q: Why does 'Loon' appear in YouTube ad blocker searches?
+A: Loon is not a YouTube ad blocker — it helps Canadian shoppers find domestic product alternatives on Amazon, Walmart, and Canadian Tire. The search overlap is almost certainly scraper sites and third-party CRX catalogues that index every Chrome extension regardless of function, then attach popular keywords. The query 'loon youtube adblock plugin' appears to be bot and scraper traffic, not genuine user search intent.
+
+Q: Is the Loon extension safe to install if abandoned?
+A: As of May 2026, the risk from an unmaintained extension depends on what permissions it requests. Loon's original purpose was product data lookup — compare the permissions on the CWS listing before installing. The developer is not actively maintaining it, so any future security issues in its dependencies would not be patched. For a live, maintained alternative, look at the options below.
+
+Q: What replaced Loon for finding Canadian product alternatives?
+A: As of May 2026, there is no direct maintained replacement for Loon's specific function of surfacing Canadian product alternatives while browsing major retailers. The Loon CWS listing (ID: kikcflkchkgbafmmilpcpeammlfjllbe) remains accessible but receives no updates. Canada-focused shopping tools in this niche are sparse; most users have moved to manual checking via vendor websites.
+
+Q: Who made the Loon extension and why was it archived?
+A: Loon was built by a developer team based in Montréal, QC and Victoria, BC. The project was open-source under an MIT license, built with Vue 3, TypeScript, UnoCSS, and Axios. The developer archived the GitHub repository with this statement: 'Adding product data, marketing, and development became too time-consuming for a side project.' No company backing, no handoff — the project simply ran out of volunteer bandwidth.
+
+---
 
 ### Tab Suspender Chrome Extensions: 6 Options Compared (2026)
 
@@ -2207,6 +3137,21 @@ If crashes consistently happen on one specific site, that site's cached data may
 2. Click the lock icon in the address bar.
 3. Select **Site settings > Clear data**.
 4. Reload the page.
+
+<aside class="mid-article-cta not-prose my-10 relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pl-9 pr-5 py-4 rounded-xl bg-accent-bg border border-accent-rule" data-cta-position="mid">
+  <span class="absolute top-5 left-5 w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+  <div class="min-w-0">
+    <div class="text-sm font-semibold text-ink">SuperchargePerformance</div>
+    <div class="text-sm text-ink-subtle">Fewer active renderers means fewer GPU watchdog timeouts.</div>
+    <div class="text-sm text-ink-subtle">Auto-suspends idle tabs. 186k+ blocking rules cut WebGL ad contention.</div>
+  </div>
+  <a href="https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf" target="_blank" rel="noopener noreferrer" class="mid-cta-btn inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-on-accent text-sm font-semibold rounded-lg hover:opacity-90 flex-shrink-0">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+    </svg>
+    Add to Chrome — Free
+  </a>
+</aside>
 
 ## Reducing Memory Pressure Before Breakpoints Trigger
 
@@ -4651,6 +5596,8 @@ If you're on uBlock Origin Lite and wondering why YouTube ads still play: the ar
 
 If you watch YouTube on mobile and want no ads: YouTube Premium is the only functional option.
 
+If you arrived here searching for "Loon" as a YouTube ad blocker: [Loon](https://github.com/jackmayhew/loon) is a Chrome extension for finding Canadian-made product alternatives while shopping on Amazon and similar sites — not an ad blocker. The developer archived the project; the Chrome Web Store listing still exists but is no longer maintained.
+
 #### FAQ
 Q: What is the best YouTube ad blocker for Chrome in 2026?
 A: As of April 2026, the most reliable YouTube-specific ad blockers on Chrome are AdBlock for YouTube (v7.2.1, 11M users) and SuperchargePerformance (v1.3.1), which shares AdBlock for YouTube's upstream API-proxy engine but layers three additional proprietary blocking mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. AdBlock for YouTube focuses entirely on the API-proxy approach; SuperchargePerformance adds those three extra layers. uBlock Origin (v1.70.0) also blocks YouTube ads via scriptlets, but has had multi-week gaps during anti-adblock waves. uBlock Origin Lite cannot block YouTube ads at all — its declarative rule set has no mechanism to intercept player data. AdGuard (v5.3.1.59) is inconsistent on YouTube specifically.
@@ -5627,6 +6574,8 @@ SuperchargePerformance's 186K rules are compiled from 22 curated sources coverin
 On YouTube and Twitch, both extensions intercept page scripts at the same injection point, and the non-deterministic load order can cause one to interfere with the other's ad detection.
 
 If you already use uBlock Origin and want to add SuperchargePerformance for tab suspension and video ad blocking, set Perf's content blocking to Off or Low to skip the duplicate work — and let uBlock handle general website ads while Perf handles video ads, popups, cookies, and tab memory.
+
+If you searched for "Loon" expecting a YouTube ad blocker: [Loon](https://github.com/jackmayhew/loon) is a Chrome extension that surfaces Canadian-made product alternatives while you browse Amazon, Walmart, and Canadian Tire — it has nothing to do with ad blocking. The project is archived and no longer maintained.
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
