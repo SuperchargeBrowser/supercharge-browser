@@ -7,14 +7,12 @@
       "name": "SuperchargeBrowser",
       "url": "https://www.superchargebrowser.com",
       "logo": "https://www.superchargebrowser.com/logo.png",
-      "description": "Chrome extensions for tab suspension, ad blocking, vertical tabs, and workspaces. Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store.",
+      "description": "Chrome and Edge extensions for tab suspension, ad blocking, vertical tabs, workspaces, and per-tab audio control. Zero telemetry, 100% local. Featured & Verified Publisher on Chrome Web Store.",
       "email": "support@superchargebrowser.com",
       "sameAs": [
         "https://x.com/SuperchargeExt",
         "https://www.linkedin.com/company/superchargebrowser/",
-        "https://github.com/SuperchargeBrowser",
-        "https://superchargebrowser.github.io",
-        "https://www.wikidata.org/wiki/Q139671869"
+        "https://github.com/SuperchargeBrowser"
       ],
       "foundingDate": "2025",
       "foundingLocation": {
@@ -26,11 +24,12 @@
       "@type": "SoftwareApplication",
       "@id": "https://www.superchargebrowser.com/performance/#software",
       "name": "SuperchargePerformance",
-      "description": "Tab suspender + ad blocker + RAM dashboard for Chrome. Suspends inactive tabs using chrome.tabs.discard(), blocks trackers with 186,000+ declarativeNetRequest rules from 22 sources. Zero telemetry, 100% local.",
+      "description": "Tab suspender + ad blocker + RAM dashboard for Chrome and Edge. Suspends inactive tabs using chrome.tabs.discard(), blocks trackers with 186,000+ declarativeNetRequest rules from 22 sources. Zero telemetry, 100% local.",
       "applicationCategory": "BrowserExtension",
-      "operatingSystem": "Chrome 146+, Windows, macOS, Linux, ChromeOS",
+      "operatingSystem": "Chrome 146+, Edge, Windows, macOS, Linux, ChromeOS",
       "url": "https://www.superchargebrowser.com/performance/",
       "installUrl": "https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf",
+      "sameAs": ["https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol"],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -40,16 +39,11 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2025-01-01",
-      "dateModified": "2026-05-05",
+      "dateModified": "2026-04-30",
       "softwareVersion": "1.3.2",
       "featureList": [
         "Tab suspension via chrome.tabs.discard()",
         "186,000+ declarativeNetRequest blocking rules",
-        "YouTube ad blocking",
-        "Twitch ad blocking",
-        "Popup blocker",
-        "Smart Page Cleanup (off by default)",
-        "Cosmetic ad blocking",
         "RAM savings dashboard",
         "Cookie consent auto-dismissal",
         "Link preloading",
@@ -57,19 +51,16 @@
         "Font optimization",
         "Stop autoplay",
         "Safe Mode auto-recovery",
-        "18 auto-protected web apps",
+        "25+ auto-protected web apps (productivity, media, and calls)",
         "Per-site feature whitelist"
       ],
-      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local.",
-      "sameAs": [
-        "https://www.wikidata.org/wiki/Q139671950"
-      ]
+      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local."
     },
     {
       "@type": "SoftwareApplication",
       "@id": "https://www.superchargebrowser.com/navigation/#software",
       "name": "SuperchargeNavigation",
-      "description": "Vertical tabs + named workspaces + command bar + session time-travel for Chrome. Uses Chrome's side panel API. 50 auto-snapshots every 5 minutes. Alt+K command bar. Zero telemetry, local-by-default storage with opt-in cross-device workspace sync via Chrome's own storage.sync infrastructure.",
+      "description": "Vertical tabs + named workspaces + command bar + session time-travel for Chrome. Uses Chrome's side panel API. 50 auto-snapshots every 5 minutes. Alt+K command bar. Zero telemetry, 100% local.",
       "applicationCategory": "BrowserExtension",
       "operatingSystem": "Chrome 146+, Windows, macOS, Linux, ChromeOS",
       "url": "https://www.superchargebrowser.com/navigation/",
@@ -83,14 +74,11 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2026-03-13",
-      "dateModified": "2026-05-05",
+      "dateModified": "2026-04-24",
       "softwareVersion": "1.1.0",
       "featureList": [
         "Vertical tab sidebar (Chrome side panel API)",
         "Named workspaces with tab isolation",
-        "Multi-window workspaces",
-        "Cross-device workspace sync (chrome.storage.sync, opt-in)",
-        "Custom new tab page with command palette",
         "Session time-travel (50 auto-snapshots, 5-min intervals)",
         "Alt+K command bar (tabs, bookmarks, history, web search)",
         "Alt+G smart tab grouping by domain",
@@ -103,10 +91,36 @@
         "Session restore",
         "Tab notes"
       ],
-      "permissions": "Zero telemetry. No SuperchargeBrowser servers. Local-by-default storage in chrome.storage.local; opt-in workspace sync via chrome.storage.sync (Chrome's own infrastructure, no SuperchargeBrowser involvement).",
-      "sameAs": [
-        "https://www.wikidata.org/wiki/Q139671978"
-      ]
+      "permissions": "Zero telemetry. Zero outbound network requests. All data stored locally in chrome.storage.local."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.superchargebrowser.com/audio/#software",
+      "name": "SuperchargeAudio",
+      "description": "Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), Smart Mute, per-site memory, 8D audio, Bauer crossfeed, and stereo width control for Chrome. Zero telemetry, 100% local.",
+      "applicationCategory": "BrowserExtension",
+      "operatingSystem": "Chrome 146+, Edge, Windows, macOS, Linux, ChromeOS",
+      "url": "https://www.superchargebrowser.com/audio/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/PreOrder"
+      },
+      "author": {
+        "@id": "https://www.superchargebrowser.com/#organization"
+      },
+      "featureList": [
+        "Per-tab volume boost up to 600% via Web Audio API GainNode",
+        "10-band equalizer: 32Hz–16kHz, each ±12dB",
+        "Smart Mute: silence all tabs except the audible one",
+        "Per-site memory: volume and EQ persist per domain",
+        "8D audio effect (rotating stereo field)",
+        "Bauer crossfeed for headphone listening",
+        "Stereo width control (0–200%)",
+        "Mono mix toggle"
+      ],
+      "permissions": "Zero telemetry. Permissions: storage, tabs, tabCapture, offscreen, host all_urls. No webRequest. All data stored locally in chrome.storage.local."
     }
   ]
 }
