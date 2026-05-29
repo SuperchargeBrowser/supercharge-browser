@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-05-28
+> Last updated: 2026-05-29
 > For a summary index, see /llms.txt
 
 ## Products
@@ -2114,6 +2114,268 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 ---
 
 ## Library Articles
+
+### Arc-Like Chromium Browsers Ranked: Vivaldi Wins (2026)
+
+URL: https://www.superchargebrowser.com/library/open-source-chromium-arc-like-browsers-2026/
+Category: comparison | Extension: navigation | Updated: 2026-05-29
+Description: Vivaldi is the closest Chromium browser to Arc's UI: vertical tabs, workspaces, Quick Commands (F2). Thorium and Brave cover parts. Honest verdict, May 2026.
+
+> **Key takeaways**
+> - **Vivaldi** is the only Chromium-based browser that hits three of four Arc pillars out of the box: vertical tabs, named workspaces, and a keyboard command palette (F2).
+> - **Thorium** and **Brave** are Chromium-based and actively maintained, but neither adds workspaces or a command bar. Thorium is a performance fork, not a UI fork.
+> - **Floorp, Zen, and Min are disqualified** — Firefox-based or Electron-based, meaning Chrome extensions stop working the moment you switch.
+> - No current Chromium fork ships all four Arc pillars in a fully open-source package.
+
+After Arc entered maintenance mode in May 2025, two search patterns appeared in parallel. One was "how do I get Arc features in Chrome" (the stay-on-Chrome crowd). The other was this one: people who wanted a full browser replacement, Chromium-based, that felt like Arc.
+
+This article is for the second group. Every candidate has been checked for current release dates, architecture, and actual feature lists. Browsers that do not run Chrome extensions were cut immediately.
+
+## What "Arc-Like UI" Actually Means
+
+Arc is not one feature. It is four structural changes stacked on top of a browser engine:
+
+1. **Vertical tabs:** tabs move to the left sidebar, full titles visible, collapsible panel
+2. **Workspaces (Spaces):** named tab groups that persist across restarts, switch context with one click
+3. **Command bar:** keyboard-first launcher that searches open tabs, history, bookmarks, and browser commands from a single prompt
+4. **Peek / preview:** inspect a link or tab without navigating away, typically via hover or modifier+click
+
+A browser that has only vertical tabs is not Arc-like. It is a browser with a vertical tab bar. The combination of all four is what made Arc feel different. Use this framework to evaluate what each candidate actually delivers.
+
+## Why People Are Asking Now
+
+Arc Browser entered maintenance mode in May 2025 (roughly 12 months before this article's May 2026 publication). The Browser Company pivoted to Dia, an AI-first product. Atlassian acquired TBC in September 2025 for $610M. Arc still launches and runs, but it is receiving no new features and its development community has dispersed.
+
+The timing matters for this comparison. Any browser that was actively trying to capture Arc's displaced user base in late 2025 and early 2026 would show it in their release notes. As of May 2026, no Chromium fork has shipped a product explicitly positioning itself as "Arc for Chromium."
+
+## Verdict First
+
+Vivaldi is the answer if you need a Chromium browser with near-Arc workflow coverage. It is not open-source at the UI layer, which some users will find disqualifying. If that matters to you, there is currently no fully open-source Chromium browser that ships workspaces and a command bar.
+
+Brave covers vertical tabs only. Thorium is a performance fork with no UI changes at all. Ungoogled-Chromium strips Google telemetry and adds no UI features.
+
+Floorp and Zen are Firefox-based. Min is Electron-based. None of these run Chrome extensions, which disqualifies them for the majority of Chrome users considering a switch.
+
+## Vivaldi 7.9: The Closest Match
+
+**Chromium-based. Latest version: 7.9.3970.64 (May 8, 2026). Actively developed.**
+
+Vivaldi is the most feature-complete Chromium browser for users coming from Arc. It is a closed-source UI layer built on an open-source Chromium core. Free to use, but the proprietary features are not auditable.
+
+**Vertical tabs.** Vivaldi supports vertical tabs on the left or right side with full title display. It also ships tree-style tabs (a hierarchical view where child tabs nest visually under parent tabs), which goes further than Arc's flat sidebar. Tab stacking groups tabs into collapsible accordion stacks.
+
+**Workspaces.** Named workspaces that persist across restarts. Switching workspaces shows only the tabs assigned to that workspace, which is the visual isolation Arc users are used to. Tabs can be moved between workspaces via context menu or drag-and-drop. Workspaces from regular windows save on close; private window workspaces do not.
+
+**Quick Commands (F2).** The closest thing to Arc's Command Bar in any current Chromium browser. Press F2 (or Cmd+E on Mac) to open a keyboard-first search across open tabs, closed tabs, synced tabs, bookmarks, notes, history, browser commands, and workspaces. Prefix filtering works: `tab:`, `bookmark:`, `history:`, `command:`, `workspace:`. You can also execute Command Chains (sequences of actions) from Quick Commands.
+
+**Tab tiling.** Vivaldi calls it Tab Tiling: view multiple tabs simultaneously in a split-screen or grid layout. Up to four tabs tiled. This is Vivaldi's equivalent of Arc's split view.
+
+**Tab hibernation.** Inactive tabs can be put to sleep to reduce RAM. Not as configurable as a dedicated extension but functional.
+
+**What Vivaldi does not have:** a hover-based peek preview (no equivalent to Arc's peek or SuperchargeNavigation's Shift+Click overlay). Session time-travel or snapshot recovery is not built in. The UI is not open-source.
+
+**Performance note.** Vivaldi has historically carried a higher RAM footprint than stock Chrome due to its feature-rich UI layer. In a 2026 context with Chrome's own memory footprint well-managed by Memory Saver, this gap is smaller but still present. If RAM is your primary concern, Vivaldi is not the right choice.
+
+## Brave: Vertical Tabs, Nothing Else
+
+**Chromium-based. Open-source. Latest stable: 1.90 (May 7, 2026).**
+
+Brave shipped vertical tabs in version 1.52 (May 2023). The feature moves tabs to a collapsible left panel, supports pinned tabs and tab groups, and works with standard keyboard navigation. It is solid.
+
+That is where the Arc similarity ends. Brave has no named workspaces, no keyboard command bar, and no peek/preview feature. Its privacy-first positioning (built-in ad blocking, fingerprinting protection, Tor integration) is meaningfully different from Arc's workflow-first positioning. Brave is a good browser for a different reason than Arc was a good browser.
+
+If you used Arc primarily for its sidebar layout and nothing else, Brave's vertical tabs will feel familiar. If you used Arc for Spaces and the Command Bar, Brave does not help.
+
+## Thorium: Performance Fork, Not UI Fork
+
+**Chromium-based. Open-source. Latest: M138.0.7204.303 (February 18, 2026).**
+
+Thorium is a Chromium fork optimized for compilation performance. The developer applies SSE4.2, AVX, AES, and LLVM compiler optimizations, LTO, and PGO. [Thorium's site](https://thorium.rocks/) claims an 8-38% performance improvement over vanilla Chromium depending on the benchmark and OS. It supports Windows, macOS, Linux, Android, and Raspberry Pi.
+
+Thorium adds no UI features. No vertical tabs, no workspaces, no command bar. It ships the stock Chromium interface with performance tuning underneath. Its appeal is to users who want a faster Chromium binary, not a different browser experience.
+
+Worth noting: as of February 2026, the maintainer shifted Thorium to a Long Term Support Chromium base (updated twice yearly) rather than tracking the latest Chromium release on a fast cadence. This reflects the reality that the project is maintained by one person alongside a full-time job. Thorium is active and well-maintained, but its scope is narrowly defined.
+
+## Ungoogled-Chromium: Privacy Focus, No UI Changes
+
+**Chromium-based. Open-source. Latest: 148.0.7778.96-1 (May 8, 2026).**
+
+Ungoogled-Chromium removes Google's background service calls, telemetry, and service integrations from Chromium. Its explicit goal is to be "Google Chromium, sans dependency on Google web services." It deliberately avoids UI changes to remain a drop-in replacement.
+
+No vertical tabs. No workspaces. No command bar. The Chrome extension ecosystem works as normal. The trade-off is zero Arc-like UI in exchange for a cleaner privacy profile.
+
+For users whose primary concern was Arc's data practices rather than Arc's interface, ungoogled-Chromium solves that problem. For users who want Arc's workflow features, it does not.
+
+## What Gets Disqualified and Why
+
+Several browsers come up in Arc migration discussions but do not belong in a Chromium comparison:
+
+**Floorp** is a Firefox fork. Chrome extensions do not work in it. Its vertical tab panel and workspace features are Firefox-native and well-implemented, but irrelevant if you have Chrome extension dependencies.
+
+**Zen Browser** is also a Firefox fork, built on Firefox 150 as of May 2026. It ships vertical tabs by default, named workspaces, a Glance preview, and a 4-pane split view. Zen is arguably closer to Arc's design philosophy than any Chromium browser. But it is not Chromium. Chrome extensions stop working. The full breakdown of Zen's features and where Chrome can close the gap is covered in the [Zen vs Chrome extensions article](/library/zen-browser-vs-chrome-extensions/).
+
+**Min Browser** (v1.35.5, April 2026) is Electron-based, not a Chromium fork. It uses a different extension system and lacks vertical tabs or workspaces. Electron shares V8 with Chrome but is not the same engine, and Min does not support Chrome extensions.
+
+**Orion** (Kagi) is WebKit-based and macOS/iOS only. It supports Firefox and Chrome extensions through a compatibility layer, but its engine is not Chromium. Out of scope here.
+
+**SigmaOS** is also macOS-only and not open-source. Excluded.
+
+## Feature Parity Table
+
+| Browser | Engine | Vertical Tabs | Workspaces | Command Bar | Peek/Preview | Open Source | Last Release |
+|---------|--------|---------------|-----------|-------------|-------------|-------------|-------------|
+| Vivaldi 7.9 | Chromium | Yes (+ tree-style) | Yes | Yes (F2) | No | UI: No | May 2026 |
+| Brave 1.90 | Chromium | Yes | No | No | No | Yes | May 2026 |
+| Thorium M138 | Chromium | No | No | No | No | Yes | Feb 2026 |
+| ungoogled-chromium | Chromium | No | No | No | No | Yes | May 2026 |
+| Floorp | Firefox | Yes | Yes | No | No | Yes | Active |
+| Zen | Firefox | Yes | Yes | No | Yes | Yes | Active |
+| Min 1.35.5 | Electron | No | No | No | No | Yes | April 2026 |
+
+Floorp and Zen are included for reference only. Both are Firefox-based and excluded from the Chromium comparison.
+
+## Setting Up Vivaldi to Feel Like Arc
+
+If Vivaldi is your path, a one-time configuration gets it substantially closer to Arc's layout.
+
+**Enable vertical tabs.** Go to Settings → Tabs → Tab Bar Position → Left (or Right). Turn on "Show Tab Bar" if hidden. Enable "Show Tab Titles" for full-width title display. Tree-style tab view is available under the same settings pane if you prefer hierarchical nesting over a flat list.
+
+**Create workspaces.** Click the grid icon in the tab bar or use the Workspaces button in the sidebar. Name your workspaces. Assign tabs by right-clicking a tab and selecting "Move to Workspace." Workspace switching is instant: click or use Quick Commands.
+
+**Learn Quick Commands.** Press F2. Start typing. This is the feature that most directly replaces Arc's Command Bar. The `workspace:` prefix filters to workspace switching only. `tab:` narrows to open tabs. `command:` exposes browser controls. Unlike Arc's Command Bar, Quick Commands does not search web content inline, but for tab and workspace management the coverage is equivalent.
+
+**Set up Tab Tiling for split view.** Select multiple tabs, right-click, choose "Tile Tabs." Vivaldi supports two-tab and four-tab grid layouts. Not as fluid as Arc's drag-to-split interaction, but functionally equivalent.
+
+## If You Want to Stay on Chrome
+
+The browser-replacement path has a real cost: extension compatibility. If your workflow depends on Chrome-specific extensions, no Chromium fork eliminates that friction. You are still switching engines, with a different extension behavior, permissions model, and update cadence from Chrome stable.
+
+For users who want Arc's workspace and command bar features without leaving Chrome, [SuperchargeNavigation](/library/arc-browser-dead-get-features-in-chrome/) adds named workspaces with full session recovery, an Alt+K command bar, 50 auto-snapshots at 5-minute intervals, and Shift+Click peek previews. Zero telemetry, no account required. The full breakdown of which Arc features map to Chrome is in the [Arc-dead article](/library/arc-browser-dead-get-features-in-chrome/).
+
+The [Chrome 146 vertical tabs vs extensions](/library/chrome-146-vertical-tabs-vs-extensions/) article covers where Chrome's native vertical tab implementation lands versus dedicated extensions.
+
+## Which Path Fits Your Situation
+
+If you want to leave Chrome entirely and want the most Arc-like Chromium browser: Vivaldi. The UI layer is proprietary, but the feature coverage is real. Workspaces, command bar, vertical tabs, and tab tiling all in one package. Accept that it is not open-source and set up the four features above.
+
+If open-source is a hard requirement and you can live with only vertical tabs: Brave. Solid vertical tab implementation, good privacy defaults, active development.
+
+If your primary concern is performance on a slow machine rather than Arc's UI: Thorium. It will not look like Arc but it will run faster on constrained hardware.
+
+If Chrome extension compatibility is non-negotiable: stay on Chrome. Use native vertical tabs (available since Chrome 146 via `chrome://flags`) plus extensions to close the gap. The [best vertical tab managers for Chrome](/library/best-vertical-tab-managers-chrome-2026/) article covers the extension options.
+
+#### FAQ
+Q: Is there an open-source Chromium browser with Arc-like UI?
+A: As of May 2026, Vivaldi is the closest Chromium-based option with vertical tabs, named workspaces, tree-style tabs, and a Quick Commands palette (F2). Its UI layer is proprietary (not open-source). Thorium is open-source Chromium but adds no UI features. No Chromium fork currently ships all four Arc pillars in an open-source package.
+
+Q: What happened to Arc Browser?
+A: As of May 2026, Arc Browser is in maintenance mode. The Browser Company halted active development in May 2025 and pivoted to Dia, an AI-first browser. Atlassian acquired The Browser Company in September 2025 for $610M. Arc still runs but receives no new features.
+
+Q: Is Vivaldi open-source?
+A: As of May 2026, Vivaldi's browser engine is Chromium (open-source). The UI layer and proprietary features (workspaces, Quick Commands, tab tiling) are closed-source. The browser is free to use but the UI code is not publicly auditable.
+
+Q: Is Floorp or Zen a Chromium fork?
+A: Neither. Floorp and Zen Browser are both Firefox forks. Chrome extensions do not work in either browser. They are excluded from this comparison on that basis.
+
+Q: Does Brave have Arc-like workspaces?
+A: As of May 2026, Brave has vertical tabs (shipped in version 1.52, May 2023) but no named workspaces and no command bar. It covers one of the four Arc pillars.
+
+---
+
+### Toby Alternative for Chrome: Free, Local, No Limits (2026)
+
+URL: https://www.superchargebrowser.com/library/toby-alternative/
+Category: comparison | Extension: navigation | Updated: 2026-05-29
+Description: Toby moved to a paid subscription in 2024-2025. 5 free Chrome Toby alternatives with no item limits and local storage. No account required, no recurring fees.
+
+> **Key takeaways**
+> - Toby was free until 2024. Then came a **60-item limit, mandatory account, and reports of collections disappearing.**
+> - **Local-only tools** store nothing on remote servers. The exit is clear if you hit the limit or lost data.
+> - SuperchargeNavigation is **unlimited, local-only, and free**: no account, no item cap, no cloud dependency.
+
+Toby was good — clean card grid, easy to organize, completely free. Then in 2024-2025 it introduced a 60-item limit on the free tier and made account creation mandatory. Users with hundreds of saved tabs hit the limit immediately, and some reported collections disappearing after the login prompt appeared. Here's what to move to if you've decided to leave.
+
+## What Changed with Toby
+
+| Issue | Details |
+|-------|---------|
+| 60-item free tier limit | Saved tabs beyond 60 locked unless you pay |
+| Mandatory account creation | Local collections required a login to access |
+| Reported data loss | Multiple users reported collections vanishing after login prompts |
+| Price | Paid subscription for unlimited access |
+| Storage model | Cloud-dependent — tabs inaccessible if Toby's servers are slow |
+
+Toby's current rating on the Chrome Web Store is approximately 4.0 stars, with recent reviews focused on the subscription transition.
+
+## Feature Comparison
+
+| Feature | Toby Free | Toby Paid | SuperchargeNavigation |
+|---------|----------|----------|----------------------|
+| Saved item limit | 60 items | Unlimited | No limit |
+| Account required | Yes | Yes | No |
+| Storage | Cloud | Cloud | 100% local |
+| Offline access | Partial (cached) | Partial (cached) | Full |
+| Tab view | New tab page (card grid) | New tab page (card grid) | Side panel vertical tabs |
+| Vertical tabs | No | No | Yes |
+| Named workspaces | Limited | Yes | Yes, unlimited |
+| Session time-travel | No | No | Yes (50 auto-snapshots) |
+| Tab search | No | No | Yes (Alt+K) |
+| Price | Free (60 items) | Paid subscription | Free |
+| Data stays on device | No | No | Yes |
+
+## Three Groups Leaving Toby
+
+**Limit hitters** — users with 100+ saved tabs who suddenly can't add more. Existing saves remain accessible, but the ceiling is there.
+
+**Data loss reports** — users who reported collections disappearing after the account creation prompt or after subscription changes. The extent of this is based on Chrome Web Store reviews and community forum reports — not something that can be independently verified.
+
+**Privacy-concerned users** — users who don't want their tab collections on a cloud service, especially one that now requires an account.
+
+## What a Workspace-Based Replacement Offers
+
+SuperchargeNavigation is a Chrome side panel extension with vertical tabs and workspaces. Unlike Toby's new-tab card grid, it operates as a persistent sidebar.
+
+Key differences from Toby:
+
+- **No item limits** — save as many tabs and workspaces as you need
+- **Vertical tabs in Chrome's side panel** — persistent sidebar with drag-and-drop, multi-select, and bulk operations
+- **Named workspaces** — switch between named project contexts (e.g., "Research" and "Dev") instantly, each with their own tab groups and pinned tabs
+- **Session time-travel** — automatic snapshots every 5 minutes, up to 50 snapshots, with a slider to preview and restore any earlier state
+- **Alt+K command bar** — search open tabs, bookmarks, and history from anywhere
+- **100% local storage** — no account, no server, no sync service. Your tab data stays on your device.
+
+Note: SuperchargeNavigation does not sync across devices. If cross-device sync is a requirement, Toby's paid tier or Workona remain the options for that use case.
+
+## Who Should Choose What
+
+| If you need... | Use |
+|---------------|-----|
+| Free, unlimited, local tab organization | SuperchargeNavigation |
+| Visual card grid layout | Toby (paid) |
+| Cross-device sync | Toby (paid) or Workona |
+| Vertical tabs + workspaces in a sidebar | SuperchargeNavigation |
+| Team sharing and collaboration | Workona |
+
+## Bottom Line
+
+Toby's free tier has a 60-item ceiling and requires an account. If neither of those is acceptable, SuperchargeNavigation is the most direct replacement: unlimited workspaces, vertical tabs in Chrome's side panel, session time-travel, no account, 100% local. The one thing it doesn't do is sync across devices — if that's a hard requirement, Toby paid or Workona are the options.
+
+## Related Articles
+
+- [Best Vertical Tab Managers for Chrome in 2026](/library/best-vertical-tab-managers-chrome-2026/) — ranked comparison of all Chrome vertical tab extensions
+- [Cluster Tab Manager Alternative](/library/cluster-tab-manager-alternative/) — another popular tab manager that is no longer available
+
+#### FAQ
+Q: Is SuperchargeNavigation actually free?
+A: Yes. No item limits, no subscription for core features. If a paid tier is introduced in future, core tab management stays free.
+
+Q: Can I import Toby collections into SuperchargeNavigation?
+A: Direct import is not available. Open the tabs you want to keep, then save them as a workspace in SuperchargeNavigation.
+
+Q: Does SuperchargeNavigation sync across devices?
+A: No cross-device sync. For users leaving Toby because of cloud sync failures, local-only storage is the feature, not a limitation.
+
+---
 
 ### YouTube Ad Blocker Stopped Working? 5 TESTED Options (2026)
 
@@ -5460,173 +5722,6 @@ A: As of May 2026, Gemini Nano is Chrome's on-device language model, accessible 
 
 Q: How do I watch Google I/O 2026 live?
 A: As of May 2026, Google I/O 2026 is livestreamed at io.google. The main keynote starts May 19 at 10 am PT, the developer keynote at 1:30 pm PT, and the Chrome session 'What's new in Chrome' at 3:30 pm PT. All sessions are available for replay after the event.
-
----
-
-### Open-Source Chromium Browsers With Arc-Like UI (2026)
-
-URL: https://www.superchargebrowser.com/library/open-source-chromium-arc-like-browsers-2026/
-Category: comparison | Extension: navigation | Updated: 2026-05-11
-Description: Vivaldi is the closest Chromium browser to Arc's UI: vertical tabs, workspaces, Quick Commands (F2). Thorium and Brave cover parts. Honest verdict, May 2026.
-
-> **Key takeaways**
-> - **Vivaldi** is the only Chromium-based browser that hits three of four Arc pillars out of the box: vertical tabs, named workspaces, and a keyboard command palette (F2).
-> - **Thorium** and **Brave** are Chromium-based and actively maintained, but neither adds workspaces or a command bar. Thorium is a performance fork, not a UI fork.
-> - **Floorp, Zen, and Min are disqualified** — Firefox-based or Electron-based, meaning Chrome extensions stop working the moment you switch.
-> - No current Chromium fork ships all four Arc pillars in a fully open-source package.
-
-After Arc entered maintenance mode in May 2025, two search patterns appeared in parallel. One was "how do I get Arc features in Chrome" (the stay-on-Chrome crowd). The other was this one: people who wanted a full browser replacement, Chromium-based, that felt like Arc.
-
-This article is for the second group. Every candidate has been checked for current release dates, architecture, and actual feature lists. Browsers that do not run Chrome extensions were cut immediately.
-
-## What "Arc-Like UI" Actually Means
-
-Arc is not one feature. It is four structural changes stacked on top of a browser engine:
-
-1. **Vertical tabs:** tabs move to the left sidebar, full titles visible, collapsible panel
-2. **Workspaces (Spaces):** named tab groups that persist across restarts, switch context with one click
-3. **Command bar:** keyboard-first launcher that searches open tabs, history, bookmarks, and browser commands from a single prompt
-4. **Peek / preview:** inspect a link or tab without navigating away, typically via hover or modifier+click
-
-A browser that has only vertical tabs is not Arc-like. It is a browser with a vertical tab bar. The combination of all four is what made Arc feel different. Use this framework to evaluate what each candidate actually delivers.
-
-## Why People Are Asking Now
-
-Arc Browser entered maintenance mode in May 2025 (roughly 12 months before this article's May 2026 publication). The Browser Company pivoted to Dia, an AI-first product. Atlassian acquired TBC in September 2025 for $610M. Arc still launches and runs, but it is receiving no new features and its development community has dispersed.
-
-The timing matters for this comparison. Any browser that was actively trying to capture Arc's displaced user base in late 2025 and early 2026 would show it in their release notes. As of May 2026, no Chromium fork has shipped a product explicitly positioning itself as "Arc for Chromium."
-
-## Verdict First
-
-Vivaldi is the answer if you need a Chromium browser with near-Arc workflow coverage. It is not open-source at the UI layer, which some users will find disqualifying. If that matters to you, there is currently no fully open-source Chromium browser that ships workspaces and a command bar.
-
-Brave covers vertical tabs only. Thorium is a performance fork with no UI changes at all. Ungoogled-Chromium strips Google telemetry and adds no UI features.
-
-Floorp and Zen are Firefox-based. Min is Electron-based. None of these run Chrome extensions, which disqualifies them for the majority of Chrome users considering a switch.
-
-## Vivaldi 7.9: The Closest Match
-
-**Chromium-based. Latest version: 7.9.3970.64 (May 8, 2026). Actively developed.**
-
-Vivaldi is the most feature-complete Chromium browser for users coming from Arc. It is a closed-source UI layer built on an open-source Chromium core. Free to use, but the proprietary features are not auditable.
-
-**Vertical tabs.** Vivaldi supports vertical tabs on the left or right side with full title display. It also ships tree-style tabs (a hierarchical view where child tabs nest visually under parent tabs), which goes further than Arc's flat sidebar. Tab stacking groups tabs into collapsible accordion stacks.
-
-**Workspaces.** Named workspaces that persist across restarts. Switching workspaces shows only the tabs assigned to that workspace, which is the visual isolation Arc users are used to. Tabs can be moved between workspaces via context menu or drag-and-drop. Workspaces from regular windows save on close; private window workspaces do not.
-
-**Quick Commands (F2).** The closest thing to Arc's Command Bar in any current Chromium browser. Press F2 (or Cmd+E on Mac) to open a keyboard-first search across open tabs, closed tabs, synced tabs, bookmarks, notes, history, browser commands, and workspaces. Prefix filtering works: `tab:`, `bookmark:`, `history:`, `command:`, `workspace:`. You can also execute Command Chains (sequences of actions) from Quick Commands.
-
-**Tab tiling.** Vivaldi calls it Tab Tiling: view multiple tabs simultaneously in a split-screen or grid layout. Up to four tabs tiled. This is Vivaldi's equivalent of Arc's split view.
-
-**Tab hibernation.** Inactive tabs can be put to sleep to reduce RAM. Not as configurable as a dedicated extension but functional.
-
-**What Vivaldi does not have:** a hover-based peek preview (no equivalent to Arc's peek or SuperchargeNavigation's Shift+Click overlay). Session time-travel or snapshot recovery is not built in. The UI is not open-source.
-
-**Performance note.** Vivaldi has historically carried a higher RAM footprint than stock Chrome due to its feature-rich UI layer. In a 2026 context with Chrome's own memory footprint well-managed by Memory Saver, this gap is smaller but still present. If RAM is your primary concern, Vivaldi is not the right choice.
-
-## Brave: Vertical Tabs, Nothing Else
-
-**Chromium-based. Open-source. Latest stable: 1.90 (May 7, 2026).**
-
-Brave shipped vertical tabs in version 1.52 (May 2023). The feature moves tabs to a collapsible left panel, supports pinned tabs and tab groups, and works with standard keyboard navigation. It is solid.
-
-That is where the Arc similarity ends. Brave has no named workspaces, no keyboard command bar, and no peek/preview feature. Its privacy-first positioning (built-in ad blocking, fingerprinting protection, Tor integration) is meaningfully different from Arc's workflow-first positioning. Brave is a good browser for a different reason than Arc was a good browser.
-
-If you used Arc primarily for its sidebar layout and nothing else, Brave's vertical tabs will feel familiar. If you used Arc for Spaces and the Command Bar, Brave does not help.
-
-## Thorium: Performance Fork, Not UI Fork
-
-**Chromium-based. Open-source. Latest: M138.0.7204.303 (February 18, 2026).**
-
-Thorium is a Chromium fork optimized for compilation performance. The developer applies SSE4.2, AVX, AES, and LLVM compiler optimizations, LTO, and PGO. [Thorium's site](https://thorium.rocks/) claims an 8-38% performance improvement over vanilla Chromium depending on the benchmark and OS. It supports Windows, macOS, Linux, Android, and Raspberry Pi.
-
-Thorium adds no UI features. No vertical tabs, no workspaces, no command bar. It ships the stock Chromium interface with performance tuning underneath. Its appeal is to users who want a faster Chromium binary, not a different browser experience.
-
-Worth noting: as of February 2026, the maintainer shifted Thorium to a Long Term Support Chromium base (updated twice yearly) rather than tracking the latest Chromium release on a fast cadence. This reflects the reality that the project is maintained by one person alongside a full-time job. Thorium is active and well-maintained, but its scope is narrowly defined.
-
-## Ungoogled-Chromium: Privacy Focus, No UI Changes
-
-**Chromium-based. Open-source. Latest: 148.0.7778.96-1 (May 8, 2026).**
-
-Ungoogled-Chromium removes Google's background service calls, telemetry, and service integrations from Chromium. Its explicit goal is to be "Google Chromium, sans dependency on Google web services." It deliberately avoids UI changes to remain a drop-in replacement.
-
-No vertical tabs. No workspaces. No command bar. The Chrome extension ecosystem works as normal. The trade-off is zero Arc-like UI in exchange for a cleaner privacy profile.
-
-For users whose primary concern was Arc's data practices rather than Arc's interface, ungoogled-Chromium solves that problem. For users who want Arc's workflow features, it does not.
-
-## What Gets Disqualified and Why
-
-Several browsers come up in Arc migration discussions but do not belong in a Chromium comparison:
-
-**Floorp** is a Firefox fork. Chrome extensions do not work in it. Its vertical tab panel and workspace features are Firefox-native and well-implemented, but irrelevant if you have Chrome extension dependencies.
-
-**Zen Browser** is also a Firefox fork, built on Firefox 150 as of May 2026. It ships vertical tabs by default, named workspaces, a Glance preview, and a 4-pane split view. Zen is arguably closer to Arc's design philosophy than any Chromium browser. But it is not Chromium. Chrome extensions stop working. The full breakdown of Zen's features and where Chrome can close the gap is covered in the [Zen vs Chrome extensions article](/library/zen-browser-vs-chrome-extensions/).
-
-**Min Browser** (v1.35.5, April 2026) is Electron-based, not a Chromium fork. It uses a different extension system and lacks vertical tabs or workspaces. Electron shares V8 with Chrome but is not the same engine, and Min does not support Chrome extensions.
-
-**Orion** (Kagi) is WebKit-based and macOS/iOS only. It supports Firefox and Chrome extensions through a compatibility layer, but its engine is not Chromium. Out of scope here.
-
-**SigmaOS** is also macOS-only and not open-source. Excluded.
-
-## Feature Parity Table
-
-| Browser | Engine | Vertical Tabs | Workspaces | Command Bar | Peek/Preview | Open Source | Last Release |
-|---------|--------|---------------|-----------|-------------|-------------|-------------|-------------|
-| Vivaldi 7.9 | Chromium | Yes (+ tree-style) | Yes | Yes (F2) | No | UI: No | May 2026 |
-| Brave 1.90 | Chromium | Yes | No | No | No | Yes | May 2026 |
-| Thorium M138 | Chromium | No | No | No | No | Yes | Feb 2026 |
-| ungoogled-chromium | Chromium | No | No | No | No | Yes | May 2026 |
-| Floorp | Firefox | Yes | Yes | No | No | Yes | Active |
-| Zen | Firefox | Yes | Yes | No | Yes | Yes | Active |
-| Min 1.35.5 | Electron | No | No | No | No | Yes | April 2026 |
-
-Floorp and Zen are included for reference only. Both are Firefox-based and excluded from the Chromium comparison.
-
-## Setting Up Vivaldi to Feel Like Arc
-
-If Vivaldi is your path, a one-time configuration gets it substantially closer to Arc's layout.
-
-**Enable vertical tabs.** Go to Settings → Tabs → Tab Bar Position → Left (or Right). Turn on "Show Tab Bar" if hidden. Enable "Show Tab Titles" for full-width title display. Tree-style tab view is available under the same settings pane if you prefer hierarchical nesting over a flat list.
-
-**Create workspaces.** Click the grid icon in the tab bar or use the Workspaces button in the sidebar. Name your workspaces. Assign tabs by right-clicking a tab and selecting "Move to Workspace." Workspace switching is instant: click or use Quick Commands.
-
-**Learn Quick Commands.** Press F2. Start typing. This is the feature that most directly replaces Arc's Command Bar. The `workspace:` prefix filters to workspace switching only. `tab:` narrows to open tabs. `command:` exposes browser controls. Unlike Arc's Command Bar, Quick Commands does not search web content inline, but for tab and workspace management the coverage is equivalent.
-
-**Set up Tab Tiling for split view.** Select multiple tabs, right-click, choose "Tile Tabs." Vivaldi supports two-tab and four-tab grid layouts. Not as fluid as Arc's drag-to-split interaction, but functionally equivalent.
-
-## If You Want to Stay on Chrome
-
-The browser-replacement path has a real cost: extension compatibility. If your workflow depends on Chrome-specific extensions, no Chromium fork eliminates that friction. You are still switching engines, with a different extension behavior, permissions model, and update cadence from Chrome stable.
-
-For users who want Arc's workspace and command bar features without leaving Chrome, [SuperchargeNavigation](/library/arc-browser-dead-get-features-in-chrome/) adds named workspaces with full session recovery, an Alt+K command bar, 50 auto-snapshots at 5-minute intervals, and Shift+Click peek previews. Zero telemetry, no account required. The full breakdown of which Arc features map to Chrome is in the [Arc-dead article](/library/arc-browser-dead-get-features-in-chrome/).
-
-The [Chrome 146 vertical tabs vs extensions](/library/chrome-146-vertical-tabs-vs-extensions/) article covers where Chrome's native vertical tab implementation lands versus dedicated extensions.
-
-## Which Path Fits Your Situation
-
-If you want to leave Chrome entirely and want the most Arc-like Chromium browser: Vivaldi. The UI layer is proprietary, but the feature coverage is real. Workspaces, command bar, vertical tabs, and tab tiling all in one package. Accept that it is not open-source and set up the four features above.
-
-If open-source is a hard requirement and you can live with only vertical tabs: Brave. Solid vertical tab implementation, good privacy defaults, active development.
-
-If your primary concern is performance on a slow machine rather than Arc's UI: Thorium. It will not look like Arc but it will run faster on constrained hardware.
-
-If Chrome extension compatibility is non-negotiable: stay on Chrome. Use native vertical tabs (available since Chrome 146 via `chrome://flags`) plus extensions to close the gap. The [best vertical tab managers for Chrome](/library/best-vertical-tab-managers-chrome-2026/) article covers the extension options.
-
-#### FAQ
-Q: Is there an open-source Chromium browser with Arc-like UI?
-A: As of May 2026, Vivaldi is the closest Chromium-based option with vertical tabs, named workspaces, tree-style tabs, and a Quick Commands palette (F2). Its UI layer is proprietary (not open-source). Thorium is open-source Chromium but adds no UI features. No Chromium fork currently ships all four Arc pillars in an open-source package.
-
-Q: What happened to Arc Browser?
-A: As of May 2026, Arc Browser is in maintenance mode. The Browser Company halted active development in May 2025 and pivoted to Dia, an AI-first browser. Atlassian acquired The Browser Company in September 2025 for $610M. Arc still runs but receives no new features.
-
-Q: Is Vivaldi open-source?
-A: As of May 2026, Vivaldi's browser engine is Chromium (open-source). The UI layer and proprietary features (workspaces, Quick Commands, tab tiling) are closed-source. The browser is free to use but the UI code is not publicly auditable.
-
-Q: Is Floorp or Zen a Chromium fork?
-A: Neither. Floorp and Zen Browser are both Firefox forks. Chrome extensions do not work in either browser. They are excluded from this comparison on that basis.
-
-Q: Does Brave have Arc-like workspaces?
-A: As of May 2026, Brave has vertical tabs (shipped in version 1.52, May 2023) but no named workspaces and no command bar. It covers one of the four Arc pillars.
 
 ---
 
@@ -14749,101 +14844,6 @@ A: Any extension using chrome.storage.local loses its data on uninstall — this
 
 Q: Does SuperchargePerformance replace Session Buddy?
 A: For automatic session persistence after crashes or restarts, yes. For manual session organization with named collections, SuperchargeNavigation is the closer replacement — it adds workspaces and named tab groups.
-
----
-
-### Toby Alternative for Chrome: 5 BEST Free Options (2026)
-
-URL: https://www.superchargebrowser.com/library/toby-alternative/
-Category: comparison | Extension: navigation | Updated: 2026-03-11
-Description: Toby moved to a paid subscription in 2024-2025. 5 free Chrome Toby alternatives with no item limits and local storage. No account required, no recurring fees.
-
-> **Key takeaways**
-> - Toby was free until 2024. Then came a **60-item limit, mandatory account, and reports of collections disappearing.**
-> - **Local-only tools** store nothing on remote servers. The exit is clear if you hit the limit or lost data.
-> - SuperchargeNavigation is **unlimited, local-only, and free**: no account, no item cap, no cloud dependency.
-
-Toby was good — clean card grid, easy to organize, completely free. Then in 2024-2025 it introduced a 60-item limit on the free tier and made account creation mandatory. Users with hundreds of saved tabs hit the limit immediately, and some reported collections disappearing after the login prompt appeared. Here's what to move to if you've decided to leave.
-
-## What Changed with Toby
-
-| Issue | Details |
-|-------|---------|
-| 60-item free tier limit | Saved tabs beyond 60 locked unless you pay |
-| Mandatory account creation | Local collections required a login to access |
-| Reported data loss | Multiple users reported collections vanishing after login prompts |
-| Price | Paid subscription for unlimited access |
-| Storage model | Cloud-dependent — tabs inaccessible if Toby's servers are slow |
-
-Toby's current rating on the Chrome Web Store is approximately 4.0 stars, with recent reviews focused on the subscription transition.
-
-## Feature Comparison
-
-| Feature | Toby Free | Toby Paid | SuperchargeNavigation |
-|---------|----------|----------|----------------------|
-| Saved item limit | 60 items | Unlimited | No limit |
-| Account required | Yes | Yes | No |
-| Storage | Cloud | Cloud | 100% local |
-| Offline access | Partial (cached) | Partial (cached) | Full |
-| Tab view | New tab page (card grid) | New tab page (card grid) | Side panel vertical tabs |
-| Vertical tabs | No | No | Yes |
-| Named workspaces | Limited | Yes | Yes, unlimited |
-| Session time-travel | No | No | Yes (50 auto-snapshots) |
-| Tab search | No | No | Yes (Alt+K) |
-| Price | Free (60 items) | Paid subscription | Free |
-| Data stays on device | No | No | Yes |
-
-## Three Groups Leaving Toby
-
-**Limit hitters** — users with 100+ saved tabs who suddenly can't add more. Existing saves remain accessible, but the ceiling is there.
-
-**Data loss reports** — users who reported collections disappearing after the account creation prompt or after subscription changes. The extent of this is based on Chrome Web Store reviews and community forum reports — not something that can be independently verified.
-
-**Privacy-concerned users** — users who don't want their tab collections on a cloud service, especially one that now requires an account.
-
-## What a Workspace-Based Replacement Offers
-
-SuperchargeNavigation is a Chrome side panel extension with vertical tabs and workspaces. Unlike Toby's new-tab card grid, it operates as a persistent sidebar.
-
-Key differences from Toby:
-
-- **No item limits** — save as many tabs and workspaces as you need
-- **Vertical tabs in Chrome's side panel** — persistent sidebar with drag-and-drop, multi-select, and bulk operations
-- **Named workspaces** — switch between named project contexts (e.g., "Research" and "Dev") instantly, each with their own tab groups and pinned tabs
-- **Session time-travel** — automatic snapshots every 5 minutes, up to 50 snapshots, with a slider to preview and restore any earlier state
-- **Alt+K command bar** — search open tabs, bookmarks, and history from anywhere
-- **100% local storage** — no account, no server, no sync service. Your tab data stays on your device.
-
-Note: SuperchargeNavigation does not sync across devices. If cross-device sync is a requirement, Toby's paid tier or Workona remain the options for that use case.
-
-## Who Should Choose What
-
-| If you need... | Use |
-|---------------|-----|
-| Free, unlimited, local tab organization | SuperchargeNavigation |
-| Visual card grid layout | Toby (paid) |
-| Cross-device sync | Toby (paid) or Workona |
-| Vertical tabs + workspaces in a sidebar | SuperchargeNavigation |
-| Team sharing and collaboration | Workona |
-
-## Bottom Line
-
-Toby's free tier has a 60-item ceiling and requires an account. If neither of those is acceptable, SuperchargeNavigation is the most direct replacement: unlimited workspaces, vertical tabs in Chrome's side panel, session time-travel, no account, 100% local. The one thing it doesn't do is sync across devices — if that's a hard requirement, Toby paid or Workona are the options.
-
-## Related Articles
-
-- [Best Vertical Tab Managers for Chrome in 2026](/library/best-vertical-tab-managers-chrome-2026/) — ranked comparison of all Chrome vertical tab extensions
-- [Cluster Tab Manager Alternative](/library/cluster-tab-manager-alternative/) — another popular tab manager that is no longer available
-
-#### FAQ
-Q: Is SuperchargeNavigation actually free?
-A: Yes. No item limits, no subscription for core features. If a paid tier is introduced in future, core tab management stays free.
-
-Q: Can I import Toby collections into SuperchargeNavigation?
-A: Direct import is not available. Open the tabs you want to keep, then save them as a workspace in SuperchargeNavigation.
-
-Q: Does SuperchargeNavigation sync across devices?
-A: No cross-device sync. For users leaving Toby because of cloud sync failures, local-only storage is the feature, not a limitation.
 
 ---
 
