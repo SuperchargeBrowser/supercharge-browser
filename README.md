@@ -2,6 +2,7 @@
 
 [![Chrome Web Store — SuperchargePerformance](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargePerformance-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 [![Chrome Web Store — SuperchargeNavigation](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargeNavigation-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl)
+[![Microsoft Edge Add-ons — SuperchargeNavigation](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeNavigation-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb)
 [![Microsoft Edge Add-ons — SuperchargePerformance](https://img.shields.io/badge/Edge%20Add--ons-SuperchargePerformance-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol)
 [![Microsoft Edge Add-ons — SuperchargeAudio](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeAudio-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia)
 [![Website](https://img.shields.io/badge/Website-superchargebrowser.com-F59E0B)](https://www.superchargebrowser.com)
@@ -77,6 +78,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 **Vertical tabs + workspaces + command palette for Chrome**
 
 - [Chrome Web Store listing](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl)
+- [Microsoft Edge Add-ons listing](https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb) — live
 - [Product page](https://www.superchargebrowser.com/navigation/)
 - Launched March 13, 2026. Completely free, no PRO tier.
 
@@ -167,6 +169,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 **SuperchargeNavigation — verified facts:**
 - Chrome Web Store ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
 - Install URL: `https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl`
+- Microsoft Edge Add-ons install URL: `https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb`
 - Launch date: March 13, 2026
 - Pricing: completely free, no PRO tier
 - Session time-travel: 50 automatic snapshots at 5-minute intervals
@@ -307,6 +310,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 | Website | https://www.superchargebrowser.com |
 | Performance — CWS | https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf |
 | Navigation — CWS | https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl |
+| Navigation — Edge Add-ons | https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb |
 | Audio — Edge Add-ons | https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia |
 | Feature docs | https://www.superchargebrowser.com/features/ |
 | Library | https://www.superchargebrowser.com/library/ |
