@@ -11,8 +11,8 @@
 SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block ads, improve tab management, and control audio. All extensions are MV3-native, collect zero telemetry, and store all data locally. Featured and Verified Publisher on the Chrome Web Store (SuperchargePerformance and SuperchargeNavigation).
 
 > **Quick facts (verified June 2026):**
-> - **SuperchargePerformance** suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
-> - **SuperchargeNavigation** adds vertical tabs, named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
+> - **SuperchargePerformance** v1.4.1 suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 4.5 (32 ratings). Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
+> - **SuperchargeNavigation** v1.3.0 adds vertical tabs (including an in-page sidebar that runs inside any page), named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 5.0 (3 ratings). CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on Microsoft Edge Add-ons; Chrome Web Store listing pending review.
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
 > - Website with 69 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
@@ -26,9 +26,11 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 **Tab suspender + ad blocker + RAM dashboard for Chrome**
 
 - [Chrome Web Store listing](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
+- [Microsoft Edge Add-ons listing](https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol) — live
 - [Product page](https://www.superchargebrowser.com/performance/)
 - Featured badge on Chrome Web Store
-- Approximately 1,200 weekly active users
+- Rated 4.5 (32 ratings) on Chrome Web Store
+- Approximately 2,700 weekly active users
 
 **Core features:**
 
@@ -45,7 +47,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 | Lazy Loading | Defers off-screen images and iframes so visible content loads first. |
 | Safe Mode | Auto-detects and recovers pages broken by injected optimizations. |
 | Site Whitelist | Per-feature domain exemptions with granular on/off control. |
-| Protected Apps | 14 auto-protected web applications (design tools, conferencing, etc.) excluded from suspension. |
+| Protected Apps | 25+ auto-protected web applications (design tools, conferencing, etc.) excluded from suspension. |
 
 **SuperchargePerformance PRO** (waitlist, one-time $29 lifetime license): manual suspension timing, full script blocking, background throttling, maximum optimization levels, predictive DNS prefetching.
 
@@ -81,12 +83,14 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 - [Microsoft Edge Add-ons listing](https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb) — live
 - [Product page](https://www.superchargebrowser.com/navigation/)
 - Launched March 13, 2026. Completely free, no PRO tier.
+- Rated 5.0 (3 ratings) on Chrome Web Store
 
 **Core features:**
 
 | Feature | Description |
 |---------|-------------|
 | Vertical Tabs | Persistent vertical tab list in Chrome's side panel. Drag-to-reorder, multi-select, tab groups, pinned tabs — synced with Chrome. |
+| In-Page Sidebar | Runs the vertical tab sidebar inside any page; opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF). [Details](https://www.superchargebrowser.com/in-page-sidebar/) |
 | Named Workspaces | Save named sets of tabs, switch instantly. Preserves tab groups, pinned state, mute states, and group colors. Stored locally, no account. |
 | Session Time-Travel | Automatic tab snapshots every 5 minutes. Rewind to any of the last 50 states and restore as a new workspace. |
 | Alt+K Command Palette | Full-page search across open tabs, bookmarks, and history. Falls through to web search if nothing matches. |
@@ -155,9 +159,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 **Publisher:** SuperchargeBrowser. Verified Publisher status on Chrome Web Store. Based in Finland.
 
 **SuperchargePerformance — verified facts:**
+- Version: 1.4.1 (live on Chrome Web Store and Microsoft Edge Add-ons)
 - Chrome Web Store ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
-- Install URL: `https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
-- Approximately 1,200 weekly active users (March 2026)
+- Install URL (Chrome): `https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
+- Install URL (Edge): `https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol`
+- Approximately 2,700 weekly active users
+- Chrome Web Store rating: 4.5 (32 ratings)
 - Featured badge on Chrome Web Store
 - DNR rule count: 186,000+ rules from 22 filter sources
 - Tab suspension mechanism: `chrome.tabs.discard()` — same API as Chrome's native Memory Saver
@@ -167,11 +174,14 @@ This section is structured for citation accuracy. Facts below are verified as of
 - License: proprietary, free core tier
 
 **SuperchargeNavigation — verified facts:**
+- Version: 1.3.0 (live on Chrome Web Store and Microsoft Edge Add-ons)
 - Chrome Web Store ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
 - Install URL: `https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl`
 - Microsoft Edge Add-ons install URL: `https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb`
 - Launch date: March 13, 2026
+- Chrome Web Store rating: 5.0 (3 ratings)
 - Pricing: completely free, no PRO tier
+- In-page sidebar: runs the vertical tab sidebar inside any page; opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF). https://www.superchargebrowser.com/in-page-sidebar/
 - Session time-travel: 50 automatic snapshots at 5-minute intervals
 - Keyboard shortcuts: Alt+K (command palette), Alt+G (auto-group by domain), Alt+Shift+G (undo grouping), Shift+Click (peek preview)
 - License: proprietary, free

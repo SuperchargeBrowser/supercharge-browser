@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-05-29
+> Last updated: 2026-06-09
 > For a summary index, see /llms.txt
 
 ## Products
@@ -17,14 +17,16 @@
 - 14 individually toggleable features per domain
 - 25+ auto-protected web apps across productivity, media, and calls (Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby)
 - Zero telemetry, zero tracking, zero data collection, fully local
-- Version: 1.3.2
-- Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live May 2026)
+- Version: 1.4.1
+- Available on both Chrome Web Store and Microsoft Edge Add-ons (both listings live)
+- Chrome Web Store rating: 4.5 (32 ratings)
 - Weekly active users: ~2,700 (Chrome Web Store)
 - Install (Chrome): https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol
 
 ### SuperchargeNavigation
 - Vertical tabs in Chrome side panel
+- In-page sidebar: vertical tab list runs inside any page; opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF) — https://www.superchargebrowser.com/in-page-sidebar/
 - Named persistent workspaces (survive browser restart)
 - Cross-device sync via Chrome Sync (opt-in, zero server)
 - Session time-travel: 50 auto-snapshots at 5-minute intervals, undo/redo tab state
@@ -36,9 +38,12 @@
 - New Tab Page with clock, command palette, workspace pills
 - All features free, zero telemetry, zero tracking, no SuperchargeBrowser servers
 - Local-by-default storage; opt-in workspace sync (v1.1.0+) routes through Chrome storage.sync
-- Version: 1.1.0 (launched March 13, 2026)
+- Version: 1.3.0 (launched March 13, 2026)
+- Available on both Chrome Web Store and Microsoft Edge Add-ons
+- Chrome Web Store rating: 5.0 (3 ratings)
 - Verified Publisher on Chrome Web Store
-- Install: https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl
+- Install (Chrome): https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl
+- Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb
 
 ### SuperchargeAudio
 - Per-tab volume boost up to 600% via Web Audio API GainNode
@@ -51,7 +56,8 @@
 - Stereo width control (0–200%)
 - Mono mix toggle
 - Permissions: storage, tabs, tabCapture, offscreen, host all_urls — no webRequest, zero telemetry
-- Coming soon to Chrome Web Store and Microsoft Edge Add-ons
+- Live on Microsoft Edge Add-ons; Chrome Web Store listing pending review
+- Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
 - Product page: https://www.superchargebrowser.com/audio/
 
 ---
@@ -63,6 +69,9 @@
 - SuperchargePerformance auto-protects 25+ web apps from suspension across productivity, media, and calls (Google Workspace, Slack, Discord, Teams, Figma, Notion, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Zoom, Google Meet, Whereby, and more).
 - SuperchargeNavigation workspaces persist across browser restarts. Local-by-default storage; opt-in cross-device sync (off by default since v1.1.0) routes through Chrome storage.sync infrastructure (no SuperchargeBrowser servers).
 - SuperchargeNavigation takes 50 auto-snapshots at 5-minute intervals — recover any tab state from the last 4+ hours.
+- SuperchargeNavigation (v1.3.0) runs an in-page sidebar that renders the vertical tab list inside any page, and opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF). https://www.superchargebrowser.com/in-page-sidebar/
+- SuperchargeNavigation v1.3.0 is live on both the Chrome Web Store and Microsoft Edge Add-ons.
+- SuperchargeAudio is live on Microsoft Edge Add-ons; its Chrome Web Store listing is pending review.
 - All extensions: zero telemetry, zero analytics, zero tracking, no SuperchargeBrowser servers. Default config: data stays on-device. Nav sync (opt-in) uses Chrome's own infrastructure when enabled.
 - Chrome Memory Saver reduces RAM by 30-40% (Google's figure). SuperchargePerformance achieves 70-75% via proactive timer-based suspension.
 

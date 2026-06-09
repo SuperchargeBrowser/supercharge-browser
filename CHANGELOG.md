@@ -4,6 +4,22 @@ All notable changes to SuperchargeBrowser extensions are documented here. For de
 
 ## SuperchargeNavigation
 
+### v1.3.0 — June 2026
+- In-page sidebar: the vertical tab sidebar can now run inside any page, and opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF)
+- Live on Microsoft Edge Add-ons alongside the Chrome Web Store
+
+### v1.2.2 — May 2026
+- Auto-open workspace on launch: optionally open a workspace automatically on each empty new window
+- Fixed clicking a workspace with none active (silent no-op) and a blank Peek frame on certain sites in Edge
+
+### v1.2.1 — May 2026
+- Microsoft Edge support: every internal URL filter and browser deep-link now handles edge:// alongside chrome://
+- Per-site pause shortcut moved to Alt+Shift+P; new tab page gains a persistent restore button; settings help icons open dedicated feature pages
+
+### v1.2.0 — May 2026
+- Keyboard layer for the page: hint mode (letter badges over clickable elements), type-to-select, fast text selection, and arrow-key page scroll
+- Settings promoted to a full options page; page-keystroke features ship off by default
+
 ### v1.1.0 — April 24, 2026
 - Cross-device workspace sync through Chrome's built-in account sync — no SuperchargeBrowser server involved
 - Full-replacement new tab page with workspace cards, pinned tabs, top sites, fuzzy search, clock, and ambient particles
@@ -27,6 +43,16 @@ All notable changes to SuperchargeBrowser extensions are documented here. For de
 - Zero runtime dependencies, zero telemetry
 
 ## SuperchargePerformance
+
+### v1.4.1 — June 2026
+- Suspended tabs restore scroll position on reload
+- Tabs paused on YouTube and other Media Session API sites no longer get stuck open — the engine now checks for a genuinely playing media element
+- Overlay scroll-locks handled alongside cookie-consent banners; alarm reliability and safe-mode cleanup tightened
+
+### v1.4.0 — June 2026
+- Adaptive suspension: tabs scored by memory used × idle time instead of oldest-idle-first, skipping tabs with unsaved form data
+- Memory fast-path mode can suspend heavy tabs before the idle timer fires
+- Redesigned popup with a live status line and a Silent toggle; AutoConsent upgraded to 14.84.0; blocklists refreshed across all 22 sources
 
 ### v1.3.2 — April 30, 2026
 - 59 locales total (up from 28) — 31 new languages including Norwegian Bokmål, Arabic, Hebrew, Persian, Filipino, Bengali, Tamil, and more

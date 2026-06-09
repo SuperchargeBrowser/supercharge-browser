@@ -1,8 +1,8 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-05-29
+> Last updated: 2026-06-09
 
-> SuperchargeBrowser makes three free Chrome extensions: SuperchargePerformance v1.3.2 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.1.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — coming soon). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
+> SuperchargeBrowser makes three free Chrome and Edge extensions: SuperchargePerformance v1.4.1 (~2,700 weekly active users, rated 4.5 from 32 ratings, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization — live on Chrome Web Store and Microsoft Edge Add-ons) and SuperchargeNavigation v1.3.0 (rated 5.0 from 3 ratings, vertical tabs, in-page sidebar, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync — live on Chrome Web Store and Microsoft Edge Add-ons) and SuperchargeAudio (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — live on Microsoft Edge Add-ons, Chrome Web Store listing pending review). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
 ## Products
 
@@ -10,11 +10,14 @@
   Install (Chrome): https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol
 
-- [SuperchargeNavigation](https://www.superchargebrowser.com/navigation/): Vertical tabs + persistent workspaces + tab search + session time-travel + cross-device sync. Alt+K command bar, Shift+Click tab preview, Alt+G smart grouping, 50 auto-snapshots. Free Arc replacement for Chrome.
-  Install: https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl
+- [SuperchargeNavigation](https://www.superchargebrowser.com/navigation/): Vertical tabs + in-page sidebar + persistent workspaces + tab search + session time-travel + cross-device sync. Alt+K command bar, Shift+Click tab preview, Alt+G smart grouping, 50 auto-snapshots. Free Arc replacement for Chrome. Available on Chrome and Microsoft Edge.
+  Install (Chrome): https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl
+  Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb
+
+- [In-Page Sidebar](https://www.superchargebrowser.com/in-page-sidebar/): SuperchargeNavigation runs its vertical tab sidebar inside any page, and opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF).
 
 - [SuperchargeAudio](https://www.superchargebrowser.com/audio/): Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), 10 presets, Smart Mute, per-site memory, 8D audio, Bauer crossfeed, stereo width 0–200%, mono mix. Zero telemetry, fully local.
-  Coming soon: https://www.superchargebrowser.com/audio/
+  Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia (Chrome Web Store listing pending review)
 
 - [SuperchargePerformance PRO](https://www.superchargebrowser.com/pro/): Advanced performance features — manual suspension timing, full script blocking, background throttling, maximum optimization levels, predictive DNS prefetching. One-time payment, waitlist open.
 
@@ -223,12 +226,13 @@
 
 ## Key Facts
 
-- SuperchargeNavigation launched March 13, 2026 on Chrome Web Store.
+- SuperchargeNavigation launched March 13, 2026 on Chrome Web Store; current version v1.3.0, live on Chrome Web Store and Microsoft Edge Add-ons.
 - SuperchargeNavigation is completely free — no PRO tier.
 - SuperchargePerformance PRO is a one-time $29 lifetime license (waitlist open).
 - All extensions: zero telemetry, zero tracking, no SuperchargeBrowser servers. SuperchargePerformance is fully local. SuperchargeNavigation is local-by-default; opt-in workspace sync uses Chrome's own storage.sync infrastructure. SuperchargeAudio is fully local.
 - Featured & Verified Publisher on Chrome Web Store.
-- SuperchargePerformance is also available on Microsoft Edge Add-ons (listing live May 2026).
+- SuperchargePerformance is also available on Microsoft Edge Add-ons (listing live).
+- SuperchargeAudio is live on Microsoft Edge Add-ons; its Chrome Web Store listing is pending review.
 
 ## Verifiable Claims
 
@@ -236,6 +240,7 @@
 - Ad blocking uses 186,000+ static declarativeNetRequest rules from 22 curated sources across 3 tiers.
 - SuperchargeNavigation workspaces persist across Chrome restarts. Local-by-default storage; opt-in workspace sync (off by default) uses Chrome's own storage.sync infrastructure (no SuperchargeBrowser servers).
 - SuperchargeNavigation takes 50 auto-snapshots at 5-minute intervals for session time-travel recovery.
+- SuperchargeNavigation includes an in-page sidebar that runs the vertical tab list inside any page and opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF). https://www.superchargebrowser.com/in-page-sidebar/
 - All extensions collect zero telemetry: no analytics, no SuperchargeBrowser servers. Default config: no data leaves the device. With Nav sync enabled, workspace data routes through Chrome's own infrastructure (Google account-tied), not ours.
 - SuperchargePerformance auto-protects 25+ web apps from suspension across productivity, media, and calls — including Google Docs, Slack, Figma, Notion, Spotify, Zoom, and Microsoft Teams.
 - Unlike most tab suspenders, SuperchargePerformance combines tab suspension with content blocking in one extension.

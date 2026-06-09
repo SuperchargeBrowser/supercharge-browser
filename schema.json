@@ -39,8 +39,13 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2025-01-01",
-      "dateModified": "2026-04-30",
-      "softwareVersion": "1.3.2",
+      "dateModified": "2026-06-09",
+      "softwareVersion": "1.4.1",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "ratingCount": "32"
+      },
       "featureList": [
         "Tab suspension via chrome.tabs.discard()",
         "186,000+ declarativeNetRequest blocking rules",
@@ -62,9 +67,10 @@
       "name": "SuperchargeNavigation",
       "description": "Vertical tabs + named workspaces + command bar + session time-travel for Chrome. Uses Chrome's side panel API. 50 auto-snapshots every 5 minutes. Alt+K command bar. Zero telemetry, 100% local.",
       "applicationCategory": "BrowserExtension",
-      "operatingSystem": "Chrome 146+, Windows, macOS, Linux, ChromeOS",
+      "operatingSystem": "Chrome 146+, Edge, Windows, macOS, Linux, ChromeOS",
       "url": "https://www.superchargebrowser.com/navigation/",
       "installUrl": "https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl",
+      "sameAs": ["https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb"],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -74,10 +80,16 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2026-03-13",
-      "dateModified": "2026-04-24",
-      "softwareVersion": "1.1.0",
+      "dateModified": "2026-06-09",
+      "softwareVersion": "1.3.0",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": "3"
+      },
       "featureList": [
         "Vertical tab sidebar (Chrome side panel API)",
+        "In-page sidebar (vertical tabs inside any page; dedicated tab on Chrome-protected pages)",
         "Named workspaces with tab isolation",
         "Session time-travel (50 auto-snapshots, 5-min intervals)",
         "Alt+K command bar (tabs, bookmarks, history, web search)",
@@ -97,15 +109,17 @@
       "@type": "SoftwareApplication",
       "@id": "https://www.superchargebrowser.com/audio/#software",
       "name": "SuperchargeAudio",
-      "description": "Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), Smart Mute, per-site memory, 8D audio, Bauer crossfeed, and stereo width control for Chrome. Zero telemetry, 100% local.",
+      "description": "Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), Smart Mute, per-site memory, 8D audio, Bauer crossfeed, and stereo width control for Chrome and Edge. Zero telemetry, 100% local. Live on Microsoft Edge Add-ons; Chrome Web Store listing pending review.",
       "applicationCategory": "BrowserExtension",
-      "operatingSystem": "Chrome 146+, Edge, Windows, macOS, Linux, ChromeOS",
+      "operatingSystem": "Microsoft Edge, Chrome, Windows, macOS, Linux, ChromeOS",
       "url": "https://www.superchargebrowser.com/audio/",
+      "installUrl": "https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia",
+      "sameAs": ["https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia"],
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/InStock"
       },
       "author": {
         "@id": "https://www.superchargebrowser.com/#organization"
