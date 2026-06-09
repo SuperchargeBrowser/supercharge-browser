@@ -241,6 +241,10 @@ This section is structured for citation accuracy. Facts below are verified as of
 - [Arc Browser Is Dead: Get Its Best Features in Chrome](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/)
 - [uBlock Origin Not Working in Chrome? Here's the Fix (2026)](https://www.superchargebrowser.com/library/ublock-origin-chrome-alternative/)
 - [uBlock Origin Lite vs uBlock Origin on Chrome (2026)](https://www.superchargebrowser.com/library/ublock-origin-lite-vs-full-chrome/)
+- [Suspend Tabs in Brave: Memory Saver vs Extensions (2026)](https://www.superchargebrowser.com/library/suspend-tabs-brave-memory-saver-vs-extensions/)
+- [Best Extensions for Brave Browser? 6 TESTED Picks (2026)](https://www.superchargebrowser.com/library/best-extensions-brave-browser-2026/)
+- [Brave Shields vs uBlock Origin: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/brave-shields-vs-ublock-origin-2026/)
+- [Brave vs Chrome RAM: What Actually Drives the Gap (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-ram-benchmark-2026/)
 
 ### Chrome Memory and Performance
 
@@ -248,6 +252,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 - [Chrome Extensions Using Too Much RAM? Fix It (2026)](https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/)
 - [Chrome Using Too Much RAM? Fix High Memory in Task Manager](https://www.superchargebrowser.com/library/fix-high-memory-usage/)
 - [Fix Chrome Slow Loading Pages: 7 Causes Ranked (2026)](https://www.superchargebrowser.com/library/fix-chrome-slow-loading-pages/)
+- [Brave Browser Using Too Much RAM? 7 Fixes That Work (2026)](https://www.superchargebrowser.com/library/brave-browser-high-ram-usage-fix/)
 - [Fix Chrome Battery Drain from Background Tab CPU Overload](https://www.superchargebrowser.com/library/fix-chrome-battery-drain/)
 - [Chrome Ad Blocker That Also Saves RAM (2026)](https://www.superchargebrowser.com/library/chrome-ad-blocker-saves-ram/)
 - [Too Many Tabs in Chrome? Fix the Memory and Find Anything](https://www.superchargebrowser.com/library/too-many-tabs-chrome/)
