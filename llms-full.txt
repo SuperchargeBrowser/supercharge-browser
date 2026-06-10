@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-06-09
+> Last updated: 2026-06-10
 > For a summary index, see /llms.txt
 
 ## Products
@@ -53,8 +53,8 @@
 - Stereo width control (0–200%)
 - Mono mix toggle
 - Permissions: storage, tabs, tabCapture, offscreen, host all_urls — no webRequest, zero telemetry
-- Live on the Chrome Web Store (June 10, 2026) and Microsoft Edge Add-ons (June 4, 2026)
-- Install (Chrome): https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe
+- Available on Chrome Web Store (launched June 10, 2026) and Microsoft Edge Add-ons (live June 4, 2026)
+- Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
 - Product page: https://www.superchargebrowser.com/audio/
 
@@ -12453,7 +12453,7 @@ Description: Volume Master has 7M users and a simple slider. SuperchargeAudio ad
 
 Volume Master is the most-installed Chrome volume booster. Seven million users, 4.8 stars, and a single slider that does one thing well: boost any tab's audio up to 600% of its original level. If that is all you need, it earns its reputation.
 
-[SuperchargeAudio](/audio/) covers the same ground and goes further. Same GainNode-based amplification, same per-site memory, but adds a graphic EQ, 8D spatial processing, crossfeed, mono downmix, stereo widening, smart mute, and per-site full audio profiles. It launched on the Chrome Web Store in June 2026 (submitted 2026-05-28, live since 2026-06-10).
+[SuperchargeAudio](/audio/) covers the same ground and goes further. Same GainNode-based amplification, same per-site memory, but adds a graphic EQ, 8D spatial processing, crossfeed, mono downmix, stereo widening, smart mute, and per-site full audio profiles. It launched on the Chrome Web Store in June 2026.
 
 ## Feature Comparison
 
@@ -12472,8 +12472,8 @@ Volume Master is the most-installed Chrome volume booster. Seven million users, 
 | Account required | No | No |
 | Telemetry | None | None |
 | DRM audio (Netflix/Disney+) | No | No |
-| Last updated | April 2025 | May 2026 |
-| CWS install count | ~7 million | New (pending CWS approval) |
+| Last updated | April 2025 | June 2026 |
+| CWS install count | ~7 million | New (launched June 2026) |
 
 ## How Volume Boosting Works in Both Extensions
 
@@ -14196,7 +14196,7 @@ SuperchargeAudio shapes bass with a 10-band graphic equalizer rather than a sing
 
 Every setting lives in `chrome.storage.local`: no account, no external sync, nothing sent off your machine. Your bass curve is remembered per domain, so YouTube can sound different from your podcast player without re-adjusting.
 
-A dating note: SuperchargeAudio was submitted to the Chrome Web Store on 2026-05-28 and is in review at the time of writing. Install whatever version is live when you click through.
+A dating note: SuperchargeAudio launched on the Chrome Web Store in June 2026, so it is a young listing. Install whatever version is live when you click through.
 
 ## When a Bass Extension Is the Wrong Fix
 
@@ -14249,7 +14249,7 @@ Two failure patterns recur. The first is the restart reset already described. Th
 | Audio Equalizer (cjadmgo…) | 50,000 | 4.3 | Presets | No | Presets | Moderate |
 | Audio Equalizer - EQ (dddonmd…) | 40,000 | 3.7 | 12 | No | Up to ~300% | All-sites |
 | Equalizer Plus | 20,000 | 4.4 | 10 | Startup preset only | Yes | Moderate |
-| SuperchargeAudio | New (pending CWS approval) | New | 10 | Yes (full profile per domain) | Up to ~600% | Audio-scoped |
+| SuperchargeAudio | New (launched June 2026) | New | 10 | Yes (full profile per domain) | Up to ~600% | Audio-scoped |
 
 All figures verified on the Chrome Web Store in June 2026. Ratings and install brackets shift, so re-check the live listing before you install.
 
@@ -14275,7 +14275,7 @@ The trap with the permission screen is that it reads identically for a clean EQ 
 
 [SuperchargeAudio](/audio/) was built around the two failures above. It ships a 10-band graphic EQ on fixed frequencies from 32 Hz to 16 kHz at ±12 dB per band, with presets including Flat, Acoustic, Rock, Pop, Electronic, Loudness, and Treble. The difference is persistence: it saves a full audio profile per domain (gain level, the complete EQ curve, channel mode, and selected preset) to `chrome.storage.local`, and reapplies it when you return to that site. Set a warm curve on a podcast host once. It is there next visit, and it does not bleed onto YouTube.
 
-It also pairs the EQ with volume boost up to roughly 600%, so a quiet-and-muffled source gets gain and tone correction in one popup instead of two stacked extensions. Settings stay on your machine: no account, no telemetry, no analytics call, and permissions scoped to audio rather than all-sites. The qualifier is its age: it launched on the Chrome Web Store in June 2026 (submitted 2026-05-28, live since 2026-06-10), so it has none of the multi-year install track record that Equalizer for Chrome browser carries.
+It also pairs the EQ with volume boost up to roughly 600%, so a quiet-and-muffled source gets gain and tone correction in one popup instead of two stacked extensions. Settings stay on your machine: no account, no telemetry, no analytics call, and permissions scoped to audio rather than all-sites. The qualifier is its age: it launched on the Chrome Web Store in June 2026, so it has none of the multi-year install track record that Equalizer for Chrome browser carries.
 
 ## Picking by Need
 
