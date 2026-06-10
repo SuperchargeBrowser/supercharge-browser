@@ -109,11 +109,11 @@
       "@type": "SoftwareApplication",
       "@id": "https://www.superchargebrowser.com/audio/#software",
       "name": "SuperchargeAudio",
-      "description": "Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), Smart Mute, per-site memory, 8D audio, Bauer crossfeed, and stereo width control for Chrome and Edge. Zero telemetry, 100% local. Live on Microsoft Edge Add-ons; Chrome Web Store listing pending review.",
+      "description": "Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), Smart Mute, per-site memory, 8D audio, Bauer crossfeed, and stereo width control for Chrome and Edge. Zero telemetry, 100% local. Available on the Chrome Web Store and Microsoft Edge Add-ons.",
       "applicationCategory": "BrowserExtension",
       "operatingSystem": "Microsoft Edge, Chrome, Windows, macOS, Linux, ChromeOS",
       "url": "https://www.superchargebrowser.com/audio/",
-      "installUrl": "https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia",
+      "installUrl": "https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe",
       "sameAs": ["https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia"],
       "offers": {
         "@type": "Offer",

@@ -2,6 +2,7 @@
 
 [![Chrome Web Store — SuperchargePerformance](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargePerformance-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 [![Chrome Web Store — SuperchargeNavigation](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargeNavigation-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl)
+[![Chrome Web Store — SuperchargeAudio](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargeAudio-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe)
 [![Microsoft Edge Add-ons — SuperchargeNavigation](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeNavigation-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb)
 [![Microsoft Edge Add-ons — SuperchargePerformance](https://img.shields.io/badge/Edge%20Add--ons-SuperchargePerformance-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol)
 [![Microsoft Edge Add-ons — SuperchargeAudio](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeAudio-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia)
@@ -13,7 +14,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > **Quick facts (verified June 2026):**
 > - **SuperchargePerformance** v1.4.1 suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 4.5 (32 ratings). Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
 > - **SuperchargeNavigation** v1.3.0 adds vertical tabs (including an in-page sidebar that runs inside any page), named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 5.0 (3 ratings). CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
-> - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on Microsoft Edge Add-ons; Chrome Web Store listing pending review.
+> - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
 > - Website with 69 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
@@ -57,9 +58,9 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 
 **Per-tab volume control + EQ + Smart Mute for Chrome and Edge**
 
+- [Chrome Web Store listing](https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe)
 - [Microsoft Edge Add-ons listing](https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia) — live
 - [Product page](https://www.superchargebrowser.com/audio/)
-- Chrome Web Store listing pending review
 
 **Core features:**
 
@@ -187,8 +188,11 @@ This section is structured for citation accuracy. Facts below are verified as of
 - License: proprietary, free
 
 **SuperchargeAudio — verified facts:**
+- Version: 1.0.0 (live on Chrome Web Store and Microsoft Edge Add-ons)
+- Chrome Web Store ID: `cbjglaijgolamegjnaiabgdojmghalbe`
+- Install URL: `https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe`
 - Microsoft Edge Add-ons install URL: `https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia`
-- Availability: live on Microsoft Edge Add-ons; Chrome Web Store listing pending review
+- Availability: live on the Chrome Web Store since June 10, 2026 and on Microsoft Edge Add-ons since June 4, 2026
 - Per-tab volume boost: up to 600% via Web Audio API GainNode
 - Equalizer: 10 bands from 32Hz to 16kHz, each ±12dB, 10 built-in presets
 - Smart Mute: one click mutes all tabs except the audible one
@@ -326,6 +330,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 | Performance — CWS | https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf |
 | Navigation — CWS | https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl |
 | Navigation — Edge Add-ons | https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb |
+| Audio — CWS | https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe |
 | Audio — Edge Add-ons | https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia |
 | Feature docs | https://www.superchargebrowser.com/features/ |
 | Library | https://www.superchargebrowser.com/library/ |

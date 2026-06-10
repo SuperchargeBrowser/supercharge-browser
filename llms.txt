@@ -1,8 +1,8 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-06-09
+> Last updated: 2026-06-10
 
-> SuperchargeBrowser makes three free Chrome extensions: SuperchargePerformance v1.4.1 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.3.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — now on Microsoft Edge Add-ons, Chrome Web Store listing pending). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
+> SuperchargeBrowser makes three free Chrome extensions: SuperchargePerformance v1.4.1 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.3.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — live on the Chrome Web Store and Microsoft Edge Add-ons). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
 ## Products
 
@@ -16,7 +16,8 @@
 
 - [In-Page Sidebar for Chrome](https://www.superchargebrowser.com/in-page-sidebar/): How SuperchargeNavigation runs a vertical tab sidebar inside any page, why Chrome blocks extensions on chrome:// / Web Store / PDF pages, and every Nav keyboard shortcut.
 
-- [SuperchargeAudio](https://www.superchargebrowser.com/audio/): Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), 10 presets, Smart Mute, per-site memory, 8D audio, Bauer crossfeed, stereo width 0–200%, mono mix. Zero telemetry, fully local. Now on Microsoft Edge Add-ons; Chrome Web Store listing pending.
+- [SuperchargeAudio](https://www.superchargebrowser.com/audio/): Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), 10 presets, Smart Mute, per-site memory, 8D audio, Bauer crossfeed, stereo width 0–200%, mono mix. Zero telemetry, fully local. Available on Chrome and Microsoft Edge.
+  Install (Chrome): https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
 
 - [SuperchargePerformance PRO](https://www.superchargebrowser.com/pro/): Advanced performance features — manual suspension timing, full script blocking, background throttling, maximum optimization levels, predictive DNS prefetching. One-time $29 lifetime license, waitlist open.
@@ -251,7 +252,7 @@
 - All extensions: zero telemetry, zero tracking, no SuperchargeBrowser servers. SuperchargePerformance is fully local. SuperchargeNavigation is local-by-default; opt-in workspace sync uses Chrome's own storage.sync infrastructure. SuperchargeAudio is fully local.
 - Featured & Verified Publisher on Chrome Web Store.
 - SuperchargePerformance and SuperchargeNavigation are also on Microsoft Edge Add-ons (live May–June 2026).
-- SuperchargeAudio is live on Microsoft Edge Add-ons (June 2026); Chrome Web Store listing pending.
+- SuperchargeAudio is live on the Chrome Web Store (June 10, 2026) and Microsoft Edge Add-ons (June 4, 2026).
 
 ## Verifiable Claims
 
