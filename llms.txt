@@ -2,7 +2,7 @@
 
 > Last updated: 2026-06-10
 
-> SuperchargeBrowser makes three free Chrome extensions: SuperchargePerformance v1.4.1 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.3.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — live on the Chrome Web Store and Microsoft Edge Add-ons). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
+> SuperchargeBrowser makes three free Chrome extensions: SuperchargePerformance v1.4.1 (~2,700 weekly active users, tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.3.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store. Founded 2025 in Finland.
 
 ## Products
 
@@ -17,7 +17,7 @@
 - [In-Page Sidebar for Chrome](https://www.superchargebrowser.com/in-page-sidebar/): How SuperchargeNavigation runs a vertical tab sidebar inside any page, why Chrome blocks extensions on chrome:// / Web Store / PDF pages, and every Nav keyboard shortcut.
 
 - [SuperchargeAudio](https://www.superchargebrowser.com/audio/): Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), 10 presets, Smart Mute, per-site memory, 8D audio, Bauer crossfeed, stereo width 0–200%, mono mix. Zero telemetry, fully local. Available on Chrome and Microsoft Edge.
-  Install (Chrome): https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe
+  Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
 
 - [SuperchargePerformance PRO](https://www.superchargebrowser.com/pro/): Advanced performance features — manual suspension timing, full script blocking, background throttling, maximum optimization levels, predictive DNS prefetching. One-time $29 lifetime license, waitlist open.
@@ -64,7 +64,8 @@
 
 ## Library
 
-134 guides on Chrome performance, memory management, and tab organization:
+134 guides on Chrome performance, memory management, and tab organization.
+Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.superchargebrowser.com/library/<slug>/index.md).
 
 - [Best Extensions for Brave Browser? 6 TESTED Picks (2026)](https://www.superchargebrowser.com/library/best-extensions-brave-browser-2026/): Brave blocks ads natively, so skip the ad blockers. These 6 extensions cover what Shields can't: timed tab suspension, workspaces, session recovery. June 2026.
 - [Brave Browser Using Too Much RAM? 7 Fixes That Work (2026)](https://www.superchargebrowser.com/library/brave-browser-high-ram-usage-fix/): Brave eating RAM? The usual cause is tab count, not Shields. Sleeping a tab frees nearly all of its memory. 7 fixes checked on Brave 1.91 in June 2026.
@@ -215,6 +216,12 @@
 
 - [Release History](https://www.superchargebrowser.com/changelog/): Version history for all extensions. RSS: https://www.superchargebrowser.com/changelog/rss.xml
 
+- [SuperchargeAudio 1.0.2 — SuperchargeAudio — Live on the Chrome Web Store](https://www.superchargebrowser.com/changelog/audio/1.0.2/): A small release for a real milestone: the Chrome Web Store listing is live. Chrome users can now install and rate SuperchargeAudio directly, and the occasional in-extension review prompt points at the actual listing — before this it had nowhere real to go on Chrome. Everything else carries over from 1.0.1 unchanged.
+
+- [SuperchargeAudio 1.0.1 — SuperchargeAudio — Clean High Boost and Protected-Audio Support](https://www.superchargebrowser.com/changelog/audio/1.0.1/): Push the volume up and stack the EQ as hard as you like — a new soft limiter catches the peaks, so 600% stays clean instead of buzzing. Slider and band moves now glide rather than click. Protected streams like Netflix and Spotify surface a one-tap capture banner when in-page boosting can't reach them, and a tap anywhere on a tab row switches you to it. The cross-tab sync and sticky mute from launch come along for the ride.
+
+- [SuperchargeAudio 1.0.0 — SuperchargeAudio — Volume, EQ, and Spatial Controls for Every Tab](https://www.superchargebrowser.com/changelog/audio/1.0.0/): SuperchargeAudio brings granular audio control to every browser tab. Boost volume beyond the browser's 100% limit, shape sound with a 10-band equalizer, and widen or narrow the stereo field — all without leaving the browser. Smart mute keeps background tabs silent while you focus on the active one, and per-site memory means your preferred settings apply automatically every time you return to a site. For DRM-protected streaming sites where in-page audio processing is not permitted, an optional tab-audio-capture mode applies the same controls to the tab's output.
+
 - [SuperchargePerformance 1.4.1 — Scroll Restore, Smarter Media Detection & Overlay Scroll Fix](https://www.superchargebrowser.com/changelog/performance/1.4.1/): v1.4.1 is a polish patch on v1.4.0. The two most-noticed fixes: suspended tabs now restore your scroll position on reload, and tabs paused on YouTube (or any site using the Media Session API) no longer get stuck open — the suspension engine now checks for a genuinely playing media element rather than a declared media session. Overlay scroll-locks join cookie-consent banners as a handled case. Under the hood, alarm reliability and safe-mode cleanup are tightened.
 
 - [SuperchargeNavigation 1.2.2 — Auto-Open Workspace on Launch & Two Bug Fixes](https://www.superchargebrowser.com/changelog/navigation/1.2.2/): v1.2.2 is a small patch with one new opt-in behavior and two bug fixes. The new option opens a workspace automatically on each empty new window — useful if you always want to land in a workspace on launch. The two fixes are: clicking a workspace when none was active did nothing (silent no-op, now corrected), and Peek showed a blank frame on certain sites in Edge where Chrome was always fine.
@@ -252,7 +259,7 @@
 - All extensions: zero telemetry, zero tracking, no SuperchargeBrowser servers. SuperchargePerformance is fully local. SuperchargeNavigation is local-by-default; opt-in workspace sync uses Chrome's own storage.sync infrastructure. SuperchargeAudio is fully local.
 - Featured & Verified Publisher on Chrome Web Store.
 - SuperchargePerformance and SuperchargeNavigation are also on Microsoft Edge Add-ons (live May–June 2026).
-- SuperchargeAudio is live on the Chrome Web Store (June 10, 2026) and Microsoft Edge Add-ons (June 4, 2026).
+- SuperchargeAudio launched June 10, 2026 on Chrome Web Store; live on Microsoft Edge Add-ons since June 4, 2026.
 
 ## Verifiable Claims
 
