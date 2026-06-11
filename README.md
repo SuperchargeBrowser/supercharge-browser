@@ -12,7 +12,7 @@
 SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block ads, improve tab management, and control audio. All extensions are MV3-native, collect zero telemetry, and store all data locally. Featured and Verified Publisher on the Chrome Web Store (SuperchargePerformance and SuperchargeNavigation).
 
 > **Quick facts (verified June 2026):**
-> - **SuperchargePerformance** v1.4.1 suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 4.5 (32 ratings). Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
+> - **SuperchargePerformance** v1.4.2 suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 4.5 (32 ratings). Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
 > - **SuperchargeNavigation** v1.3.0 adds vertical tabs (including an in-page sidebar that runs inside any page), named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 5.0 (3 ratings). CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
@@ -96,7 +96,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 | Session Time-Travel | Automatic tab snapshots every 5 minutes. Rewind to any of the last 50 states and restore as a new workspace. |
 | Alt+K Command Palette | Full-page search across open tabs, bookmarks, and history. Falls through to web search if nothing matches. |
 | Alt+G Smart Grouping | Instantly groups all open tabs by domain. Auto-collapses inactive groups. Undo with Alt+Shift+G. |
-| Glance Peek | Shift+Click any link to preview in a full-screen overlay. Promote to a tab or close without leaving your current page. |
+| Glance Peek | Alt+Click any link to preview in a full-screen overlay. Promote to a tab or close without leaving your current page. |
 | Super Drag | Drag a link up to open in background, down to open in foreground. Drag selected text to search it. Auto-disabled on web apps. |
 | Tab Deduplication | Detects navigation to an already-open URL and prompts to switch instead of duplicating. |
 
@@ -161,7 +161,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 **Publisher:** SuperchargeBrowser. Verified Publisher status on Chrome Web Store. Based in Finland.
 
 **SuperchargePerformance — verified facts:**
-- Version: 1.4.1 (live on Chrome Web Store and Microsoft Edge Add-ons)
+- Version: 1.4.2 (live on Chrome Web Store and Microsoft Edge Add-ons)
 - Chrome Web Store ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
 - Install URL (Chrome): `https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
 - Install URL (Edge): `https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol`
@@ -185,11 +185,11 @@ This section is structured for citation accuracy. Facts below are verified as of
 - Pricing: completely free, no PRO tier
 - In-page sidebar: runs the vertical tab sidebar inside any page; opens a dedicated tab on Chrome-protected pages (chrome://, Web Store, PDF). https://www.superchargebrowser.com/in-page-sidebar/
 - Session time-travel: 50 automatic snapshots at 5-minute intervals
-- Keyboard shortcuts: Alt+K (command palette), Alt+G (auto-group by domain), Alt+Shift+G (undo grouping), Shift+Click (peek preview)
+- Keyboard shortcuts: Alt+K (command palette), Alt+G (auto-group by domain), Alt+Shift+G (undo grouping), Alt+Click (peek preview)
 - License: proprietary, free
 
 **SuperchargeAudio — verified facts:**
-- Version: 1.0.0 (live on Chrome Web Store and Microsoft Edge Add-ons)
+- Version: 1.0.2 (live on Chrome Web Store; Microsoft Edge Add-ons at 1.0.0)
 - Chrome Web Store ID: `cbjglaijgolamegjnaiabgdojmghalbe`
 - Install URL: `https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe`
 - Microsoft Edge Add-ons install URL: `https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia`
