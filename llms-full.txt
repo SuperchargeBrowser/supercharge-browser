@@ -29,7 +29,7 @@
 - Cross-device sync via Chrome Sync (opt-in, zero server)
 - Session time-travel: 50 auto-snapshots at 5-minute intervals, undo/redo tab state
 - Alt+K instant tab search across open tabs, bookmarks, and history
-- Shift+Click Peek: inline tab preview without switching
+- Alt+Click Peek: inline link preview without leaving the page
 - Alt+G smart grouping by domain, Alt+Shift+G degroup
 - Rocker gestures (off by default), Super Drag (links/text)
 - Tab de-duplication, tab freeze, multi-select + bulk actions
@@ -162,7 +162,7 @@ Ad Blocking stops ads, trackers, analytics scripts, and malware domains before t
 
 SuperchargePerformance uses Chrome's **declarativeNetRequest (DNR) API** to evaluate network requests against a set of static rules before they leave your browser. When a request matches a blocked rule, Chrome drops it at the network layer — the page never receives a response from the blocked domain.
 
-The rules are split across 14 static rule files bundled with the extension, covering ad networks, trackers, analytics endpoints, and malware/phishing domains at increasing coverage levels. Because all rules ship with the extension, there is no startup network request to fetch remote filter lists. Rule updates arrive with normal extension version updates through the Chrome Web Store.
+The rules are split across 15 static rule files bundled with the extension, covering ad networks, trackers, analytics endpoints, and malware/phishing domains at increasing coverage levels. Because all rules ship with the extension, there is no startup network request to fetch remote filter lists. Rule updates arrive with normal extension version updates through the Chrome Web Store.
 
 ## Settings
 
@@ -198,7 +198,7 @@ Q: Will it break sites I need to use?
 A: High mode is aggressive and can occasionally break forms or logins on sites that rely on third-party analytics scripts for functionality. If a site breaks, drop to Med or use the Safe Mode feature to automatically recover.
 
 Q: Does the extension fetch updated block lists?
-A: No. All 14 rule files ship with the extension package. Updates arrive through normal extension updates on the Chrome Web Store.
+A: No. All 15 rule files ship with the extension package. Updates arrive through normal extension updates on the Chrome Web Store.
 
 Q: Does it block malware and phishing?
 A: Yes. The High level includes rulesets that cover known malware domains and phishing URLs in addition to ads and trackers.
@@ -494,7 +494,7 @@ Safe Mode is a background safety net that watches for pages broken by Supercharg
 
 As SuperchargePerformance applies features like [Script Control](/features/script-control/) and [Ad Blocking](/features/ad-blocking/) to pages, Safe Mode monitors for indicators that a page is not functioning as expected. When it detects signals consistent with a feature-caused breakage, it flags the page, disables the relevant features for that URL, and reloads it cleanly.
 
-The recovery is surgical: only the problematic page receives an exception. Every other page continues to run your full settings. The exception is stored locally so the recovered page loads correctly on future visits without triggering the detection cycle again.
+The recovery is surgical: only the problematic page receives an exception. Every other page continues to run your full settings. The exception is held in the current browser session (up to one hour) so the recovered page loads correctly while you continue working without retriggering the detection cycle.
 
 ## Settings
 
@@ -510,7 +510,7 @@ The default is **On**. There is rarely a reason to turn Safe Mode off. It only a
 - You use aggressive settings (PRO Script Control, High Ad Blocking) and want protection against occasional site breakage
 - You do not want to manually maintain a whitelist of sites that need exceptions
 - You want to set your preferred feature levels and not think about compatibility again
-- You encounter a site that loads incorrectly and want it recovered automatically on the next visit
+- You encounter a site that loads incorrectly and want it recovered automatically without manual intervention
 
 Safe Mode is particularly valuable in combination with [Script Control](/features/script-control/) and [Ad Blocking](/features/ad-blocking/) at higher levels, where the occasional site compatibility issue is most likely to occur.
 
@@ -532,7 +532,7 @@ Q: Is this feature free?
 A: Yes. Safe Mode is completely free.
 
 Q: Will Safe Mode disable features permanently for recovered pages?
-A: Only for pages where a problem was detected. All other pages continue to benefit from your active feature settings. You can review and clear the exception list at any time.
+A: No. The exception is session-scoped and expires after one hour. All other pages continue to benefit from your active feature settings. For a permanent fix on a site that regularly breaks, add it to your whitelist manually.
 
 ---
 
@@ -608,7 +608,7 @@ These are CSS injections, not DOM removals. The page structure stays intact; the
 
 Unsolicited popups come from `window.open()` calls triggered by page scripts rather than user actions. Smart Page Cleanup intercepts those calls and drops the popup before the browser opens a new window.
 
-Popups that follow a direct user click — OAuth flows, download dialogs, payment processor windows — are allowed through. The distinction is whether the `window.open()` traces back to a genuine user gesture within a 1-second window.
+Popups that follow a direct user click — OAuth flows, download dialogs, payment processor windows — are allowed through. The distinction is whether the `window.open()` traces back to a genuine user gesture within a 2-second window.
 
 ## When to Turn It Off
 
@@ -646,7 +646,7 @@ Each whitelist entry is a domain paired with one or more feature exemptions. Whe
 
 Domain matching is subdomain-aware and normalizes `www.` on both sides, so whitelisting `example.com` also covers `www.example.com` and any subdomain of either form. This match is applied consistently across suspension, ad blocking, throttling, and preload — a site you whitelist stays exempt regardless of which form of its address you land on.
 
-When you whitelist the site you are currently on, the change takes effect immediately without waiting for a reload. Any elements that cosmetic blocking had hidden reappear on the open page right away. The active tab then reloads itself once the network rules (ad blocking, throttling) are confirmed, so those features catch up in the same step.
+When you whitelist the site you are currently on, the change takes effect immediately without waiting for a reload. Any elements that cosmetic blocking had hidden reappear on the open page right away. Network-level rules (ad blocking, throttling) apply to the next request — a manual reload picks those up if you need them to take effect on the current page immediately.
 
 Entries are stored in `chrome.storage.local` and persist across browser restarts. The whitelist is evaluated locally — no domains or rules are sent anywhere.
 
@@ -851,9 +851,9 @@ Every time you navigate to a domain you haven't visited recently, Chrome perform
 
 ## How It Works
 
-SuperchargePerformance scans links on the current page and injects `<link rel="dns-prefetch">` elements for the domains those links point to. Chrome processes these hints and resolves the DNS records in the background while you're reading.
+SuperchargePerformance scans links on the current page and injects connection hints for the domains those links point to. The top three domains get a `<link rel="preconnect">` hint — Chrome completes the full DNS + TCP + TLS handshake in the background. Remaining domains get a lighter `<link rel="dns-prefetch">` hint that resolves only the DNS record.
 
-Click a link to one of those domains and the DNS step is already done. The browser can start the TCP connection and request immediately.
+Click a link to one of those domains and the DNS step is already done. The browser can start the connection and request immediately.
 
 ## Two Modes
 
@@ -876,7 +876,7 @@ DNS queries for prefetched domains go to your configured DNS resolver. This mean
 
 ##### FAQ
 Q: What is DNS prefetching and why does it help?
-A: When you click a link to a new domain, Chrome first performs a DNS lookup to resolve the domain name to an IP address. This lookup adds 20-120ms of latency before the page can start loading. Prefetching resolves that lookup in the background while you're still on the current page, so when you click, the DNS step is already done.
+A: When you click a link to a new domain, Chrome first performs a DNS lookup to resolve the domain name to an IP address. This lookup adds 20-120ms of latency before the page can start loading. The extension injects connection hints in the background while you're still on the current page — the top priority domains get a full preconnect (DNS + TCP + TLS), and the rest get a dns-prefetch (DNS only) — so when you click, that step is already done.
 
 Q: What does 'Common' mode do versus 'All Page Domains'?
 A: Common mode injects dns-prefetch hints for a fixed list of seven widely used domains (google.com, gstatic.com, youtube.com, googlevideo.com, ytimg.com, amazon.com, cloudfront.net). All Page Domains scans up to 175 elements on the current page — links, scripts, iframes — and injects hints for each unique external domain it finds.
@@ -898,13 +898,15 @@ A: Yes. Preload Pages on Hover prefetches the full page when you hover a link. D
 
 URL: https://www.superchargebrowser.com/features/vertical-tabs/
 Extension: navigation
-Description: Persistent vertical tab list in Chrome's side panel. Drag-to-reorder, multi-select, tab groups, pinned tabs — all synced with Chrome.
+Description: Floating in-page vertical tab list, narrower than Chrome's panel. Drag-to-reorder, tab groups, compact favicon mode, auto-hide — all synced with Chrome.
 
-Vertical tabs put your entire tab list in Chrome's native side panel, giving you a persistent, scrollable view of every open tab, tab group, and pinned tab. Instead of squinting at compressed favicons along the top bar, you can read full tab titles and navigate your browser the way Arc and Edge have shown is genuinely better — vertically.
+Vertical tabs put your entire tab list in a floating in-page sidebar, giving you a persistent, scrollable view of every open tab, tab group, and pinned tab. Instead of squinting at compressed favicons along the top bar, you can read full tab titles and navigate your browser the way Arc and Edge have shown is genuinely better — vertically.
 
 ## How It Works
 
-When you click the SuperchargeNavigation toolbar button, the sidebar opens and displays your full tab list. On standard web pages, it appears as an in-page panel injected alongside the page content. On Chrome's own pages (chrome://, the Web Store, the PDF viewer) where injection is not possible, it falls back to Chrome's native Side Panel API. The panel stays open as you browse, updating in real time as tabs open, close, or change title.
+When you click the SuperchargeNavigation toolbar button, the sidebar opens and displays your full tab list. On standard web pages, it appears as [an in-page panel](/in-page-sidebar/) injected directly alongside the page content — floating over it rather than consuming a browser panel slot. On Chrome's own pages (chrome://, the Web Store, the PDF viewer) where content-script injection is blocked, there is no fallback to Chrome's native Side Panel. Instead, the extension opens or re-focuses a single helper tab at `/in-page-sidebar/` and mounts the sidebar there. The panel stays open as you browse, updating in real time as tabs open, close, or change title.
+
+Because the in-page sidebar has no minimum-width floor imposed by the browser, you can drag its edge narrower than Chrome's native panel (which enforces a ~320 px minimum). The sidebar defaults to the right edge but can be docked left in Options. You can also resize it in three resting states: **Full** keeps it open at your chosen width; **Collapse** shrinks it to a 56 px favicon-only strip that peeks to full width when you hover; **Hide** tucks it off-screen and reveals it when you slide your mouse to the screen edge. Collapse and Hide are set under "Sidebar resting state" in Options and default to Full.
 
 Tab groups appear as collapsible sections with their Chrome-assigned colors and names. Pinned tabs appear at the top of the list, separate from unpinned tabs, matching the mental model you already have from the standard tab bar.
 
@@ -912,6 +914,9 @@ Tab groups appear as collapsible sections with their Chrome-assigned colors and 
 
 | Option | Default | Description |
 |--------|---------|-------------|
+| Sidebar style | In-page | In-page floating sidebar (default) or Chrome's native side panel — set under "Sidebar style" in Options |
+| Sidebar side | Right | Dock the in-page sidebar to the left or right edge of the page |
+| Sidebar resting state | Full | Full stays open; Collapse shrinks to a favicon strip (hover to peek); Hide tucks off-screen (slide to edge to reveal) |
 | Search bar in header | Off | Show a search bar at the top of the side panel; Alt+K opens [Tab Search](/features/tab-search/) regardless |
 
 The panel syncs with Chrome's built-in tab and tab group sync — no separate account or cloud service required.
@@ -926,7 +931,7 @@ The panel syncs with Chrome's built-in tab and tab group sync — no separate ac
 
 ## Multi-Select and Bulk Actions
 
-Hold the standard OS modifier key and click tabs to build a selection. Bulk actions — close, move to group, send to workspace — apply to the entire selection at once. This makes cleaning up a cluttered session a matter of seconds rather than minutes.
+Hold the standard OS modifier key and click tabs to build a selection. Bulk actions — close, move to group, pin, mute — apply to the entire selection at once. This makes cleaning up a cluttered session a matter of seconds rather than minutes.
 
 ## Privacy
 
@@ -934,13 +939,13 @@ The vertical tab list reads your open tabs and tab groups directly from Chrome's
 
 ##### FAQ
 Q: Does vertical tabs replace Chrome's default tab bar?
-A: No. The vertical tab list lives in Chrome's native side panel alongside your existing tab bar. You can keep both or ignore the top bar — the choice is yours.
+A: No. The vertical tab list floats in an in-page sidebar alongside your existing tab bar. You can keep both or ignore the top bar — the choice is yours.
 
 Q: Will my tabs sync across devices?
 A: Yes. SuperchargeNavigation uses Chrome's built-in tab and tab group sync, so your tabs and groups sync wherever you're signed into Chrome.
 
 Q: How do I open the sidebar?
-A: Click the SuperchargeNavigation toolbar button. Because the extension has no popup, that button opens the sidebar directly — one click, no extra menu. On standard web pages the sidebar appears as an in-page panel; on Chrome's own pages (chrome://, Web Store, PDF viewer) it uses Chrome's native side panel instead.
+A: Click the SuperchargeNavigation toolbar button. Because the extension has no popup, that button opens the sidebar directly — one click, no extra menu. On standard web pages the sidebar appears as a floating in-page panel. On Chrome's own pages (chrome://, Web Store, PDF viewer) where injection is not possible, it opens a single helper tab at superchargebrowser.com/in-page-sidebar/ and mounts the sidebar there instead.
 
 Q: Can I reorder tabs by dragging?
 A: Yes. Drag any tab to a new position in the list; the change takes effect immediately with live updates as you drag.
@@ -969,7 +974,7 @@ To restore a workspace, select it from the [Vertical Tabs](/features/vertical-ta
 | Option | Description |
 |--------|-------------|
 | Export | Download the workspace as a file for backup or sharing |
-| Send tab to workspace | Right-click any tab → context menu option |
+| Send tab to workspace | Right-click any tab in the side panel → context menu option |
 
 All data is stored in `chrome.storage` — local by default, with no external dependency.
 
@@ -998,7 +1003,7 @@ Q: Can I back up or share a workspace?
 A: Yes. Use the Export option on any workspace to download it as a file. You can import it on another device or share it with a colleague.
 
 Q: Can I send a single tab to a different workspace without switching?
-A: Yes. Right-click any tab and choose 'Send to workspace' from the context menu. The tab moves to the target workspace without interrupting your current session.
+A: Yes. Right-click any tab in the side panel and choose 'Send to workspace' from the menu that appears. The tab moves to the target workspace without interrupting your current session.
 
 Q: How many workspaces can I create?
 A: There is no hard limit imposed by SuperchargeNavigation. Practical limits depend on Chrome's storage quota, which is generous for typical use.
@@ -1186,13 +1191,13 @@ A: Yes. It uses Chrome's native tab group API, so groups created by Smart Tab Gr
 
 URL: https://www.superchargebrowser.com/features/glance-peek/
 Extension: navigation
-Description: Shift+Click any link to preview it in a full-screen overlay. Read, then close or promote to a full tab. Arc's Peek feature, built into Chrome.
+Description: Alt+Click any link to preview it in a full-screen overlay. Read, then close or promote to a full tab. Arc's Peek feature, built into Chrome.
 
-Glance Peek lets you read any linked page without leaving your current tab. Shift+Click a link and the target opens in a full-screen overlay — you get full, scrollable access to the page content. When you're done, dismiss the overlay to return to exactly where you were, or promote the preview to a full tab if it's worth keeping. It's Arc's Peek feature, available in Chrome.
+Glance Peek lets you read any linked page without leaving your current tab. Alt+Click a link and the target opens in a full-screen overlay — you get full, scrollable access to the page content. When you're done, dismiss the overlay to return to exactly where you were, or promote the preview to a full tab if it's worth keeping. It's Arc's Peek feature, available in Chrome.
 
 ## How It Works
 
-Shift+Click triggers an overlay iframe that covers the current tab. The target URL loads in full inside the iframe — including JavaScript, images, and interactive content.
+Alt+Click triggers an overlay iframe that covers the current tab. The target URL loads in full inside the iframe — including JavaScript, images, and interactive content.
 
 Many websites use `X-Frame-Options` or `Content-Security-Policy` headers to block being displayed inside iframes (a standard anti-clickjacking measure). For Glance Peek to work reliably, SuperchargeNavigation uses Chrome's Declarative Net Request API to create dynamic session rules that strip these blocking headers for the preview request. These rules are active only during the peek and are scoped to the preview session — they do not affect normal browsing.
 
@@ -1200,17 +1205,17 @@ Many websites use `X-Frame-Options` or `Content-Security-Policy` headers to bloc
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| Glance Peek | On | Enable or disable Shift+Click preview behavior |
+| Glance Peek | On | Enable or disable Alt+Click preview behavior |
 
 ## When to Use This
 
-**Reading news or articles:** You're scanning a list of links and want to check a few before deciding which to read in full. Shift+Click each one, read the gist, close what you don't need, promote what you do.
+**Reading news or articles:** You're scanning a list of links and want to check a few before deciding which to read in full. Alt+Click each one, read the gist, close what you don't need, promote what you do.
 
 **Research:** You're on a search results page or a resource list. Glance Peek each link without accumulating a pile of open tabs. Decide as you go.
 
 **Checking references:** You're writing or researching and want to verify a linked source without context-switching away from your current page.
 
-**Complement to [Super Drag](/features/super-drag/):** Super Drag opens links in background or foreground tabs; Glance Peek opens them in overlays. Together they cover every link-opening pattern — no tab required, background tab, or foreground tab — all from keyboard modifiers and drag direction.
+**Complement to [Super Drag](/features/super-drag/):** Super Drag opens links in background or foreground tabs; Glance Peek opens them in overlays. Together they cover every link-opening pattern — no tab required, background tab, or foreground tab — all from Alt+Click, drag direction, or Shift+Click hints.
 
 ## Privacy
 
@@ -1218,7 +1223,7 @@ Glance Peek loads the linked page directly from its origin. The extension does n
 
 ##### FAQ
 Q: How do I trigger a Glance Peek?
-A: Hold Shift and click any link. The target page opens in a full-screen overlay iframe on top of your current tab.
+A: Hold Alt and click any link. The target page opens in a full-screen overlay iframe on top of your current tab.
 
 Q: What happens after I read the preview?
 A: You can close the overlay and return to your current page, or promote the preview to a full tab if you want to keep it open.
@@ -1267,7 +1272,7 @@ These run in pages via injected content scripts. They cover the interactions tha
 |----------|--------|---------|
 | `Alt+Click` | Peek any link in an inline overlay | On (requires Peek enabled) |
 | `Alt+Wheel` | Cycle through open tabs | On |
-| `Shift+Alt+Wheel` | Cycle within the active tab group only | On |
+| `Shift+Wheel` | Cycle within the active tab group only | Off |
 | `Alt+↑/↓` | Cycle tabs with arrow keys | Off |
 | `↑/↓` | Smooth arrow scroll (speed: Slow/Default/Fast) | Off |
 | `Alt+Shift+P` | Pause all Nav shortcuts on this hostname | Always available |
@@ -1309,7 +1314,7 @@ Every Chrome-registered command has an individual toggle in Navigation settings.
 
 For sites with their own keyboard layers (Figma, Notion, Linear, Photopea), press `Alt+Shift+P` on the page. All Navigation content-script shortcuts — hints, type-to-select, Alt+wheel, peek, rocker gestures, super drag — pause for that hostname. The list is editable in settings and persists across sessions.
 
-The side panel and command palette are registered at the Chrome system level, so they continue working even on paused sites.
+[The in-page sidebar](/in-page-sidebar/) and command palette are registered at the Chrome system level, so they continue working even on paused sites.
 
 ## Privacy
 
@@ -1342,7 +1347,7 @@ URL: https://www.superchargebrowser.com/features/super-drag/
 Extension: navigation
 Description: Drag a link up to open in background, drag down to open in foreground. Drag selected text to search it. Automatically disabled on web apps.
 
-Super Drag adds directional intent to the most common browsing action: opening a link. Drag a link up and it opens in a background tab — your current page stays in focus. Drag it down and it opens in the foreground — you switch immediately. Drag selected text and it launches a search. No keyboard modifiers, no right-click menus — just the direction of the drag.
+Super Drag adds directional intent to the most common browsing action: opening a link. Drag a link up and it opens in a background tab — your current page stays in focus. Drag it down and it opens in the foreground — you switch immediately. Drag selected text and it launches a search, with the same up/down logic: up for background, down for foreground. No keyboard modifiers, no right-click menus — just the direction of the drag.
 
 ## How It Works
 
@@ -1350,7 +1355,8 @@ Super Drag intercepts drag events on links and text selections. The extension de
 
 - **Drag link upward** → opens in a new background tab (current tab retains focus)
 - **Drag link downward** → opens in a new foreground tab (switches to the new tab)
-- **Drag selected text** → opens a web search for the selected text in a new tab
+- **Drag selected text upward** → opens a web search in a background tab
+- **Drag selected text downward** → opens a web search in a foreground tab
 
 The extension monitors the page to detect web apps that use drag-and-drop as part of their own functionality — Google Docs, Google Sheets, ChatGPT, and similar applications. On those pages, Super Drag deactivates itself automatically so it never interferes with the app's native drag behavior.
 
@@ -1366,9 +1372,9 @@ The extension monitors the page to detect web apps that use drag-and-drop as par
 
 **Research queuing:** On a search results page, drag multiple links upward to open them all in the background, then work through them at your own pace.
 
-**Text lookup:** Select an unfamiliar term, drag it, and search it — faster than copying, opening a new tab, and pasting.
+**Text lookup:** Select an unfamiliar term, drag it up to search in the background (stay reading) or down to jump to the search immediately.
 
-**Complement to [Glance Peek](/features/glance-peek/):** Super Drag and Glance Peek cover opposite use cases. Use Super Drag when you want a real tab; use Glance Peek (Shift+Click) when you want a quick preview you'll likely dismiss. Together, they give you complete control over how every link opens.
+**Complement to [Glance Peek](/features/glance-peek/):** Super Drag and Glance Peek cover opposite use cases. Use Super Drag when you want a real tab; use Glance Peek (Alt+Click) when you want a quick preview you'll likely dismiss. Together, they give you complete control over how every link opens.
 
 ## Privacy
 
@@ -1376,7 +1382,7 @@ Super Drag operates entirely within the browser. Link URLs opened via drag are h
 
 ##### FAQ
 Q: How does Super Drag work?
-A: Drag any link upward to open it in a background tab (your current tab stays focused). Drag any link downward to open it in a foreground tab (you switch to the new tab immediately). Drag selected text in any direction to search it in a new tab.
+A: Drag any link upward to open it in a background tab (your current tab stays focused). Drag any link downward to open it in a foreground tab (you switch to the new tab immediately). Drag selected text upward to search it in a background tab, or downward to search it in the foreground.
 
 Q: What web apps does Super Drag automatically disable on?
 A: Super Drag detects common web apps — including Google Docs, Google Sheets, and ChatGPT — where drag behavior is part of the app's own interface. It disables itself automatically on those pages to avoid interfering with the app.
@@ -1449,7 +1455,7 @@ If you set Alt as your trigger, the chord roles shift to stay non-conflicting: b
 
 Press Escape to clear hint badges without clicking anything. If a Glance overlay is open, Escape closes that first; if the Alt+K palette is open, Escape closes that next; only then does it clear hints. The priority chain means you never need to think about which Escape press does what.
 
-Shift+Escape does something different: it toggles a per-site pause for the current domain. On sites with their own Shift-based shortcuts (Google Docs, Figma, certain web apps), one keystroke pauses all SuperchargeNavigation content-script shortcuts. This suppresses hints, type-to-select, Alt+scroll, rocker gestures, and Super Drag on that domain until you re-enable them. The pause persists across page loads.
+Alt+Shift+P does something different: it toggles a per-site pause for the current domain. On sites with their own Shift-based shortcuts (Google Docs, Figma, certain web apps), one keystroke pauses all SuperchargeNavigation content-script shortcuts. This suppresses hints, type-to-select, Alt+scroll, rocker gestures, and Super Drag on that domain until you re-enable them. The same toggle is available from [the in-page sidebar](/in-page-sidebar/) header and from the Alt+K command palette. The pause persists across page loads.
 
 ## How Labels Are Assigned
 
@@ -1500,7 +1506,7 @@ Q: How many hints can appear at once?
 A: Up to 400 in-viewport hints and 600 total per page. Labels start as single letters (home-row weighted: a, s, d, f, j, k, l, g…) and fall back to two-letter combinations when needed, giving 625 unique slots. Common buttons like 'submit' and 'login' get mnemonic labels (s, l) where possible.
 
 Q: How do I dismiss hints without clicking anything?
-A: Press Escape to clear hints. Shift+Escape toggles a per-site pause that suppresses all SuperchargeNavigation content-script shortcuts on the current domain — useful for web apps with their own Shift-based shortcuts.
+A: Press Escape to clear hints. Alt+Shift+P toggles a per-site pause that suppresses all SuperchargeNavigation content-script shortcuts on the current domain — useful for web apps with their own Shift-based shortcuts.
 
 ---
 
@@ -1520,7 +1526,7 @@ The page loads instantly from a bundled HTML file: no network requests, no frame
 
 **Unified search bar.** Type anything: the bar searches your open tabs, your named workspaces, and your Chrome bookmarks simultaneously. Results appear with favicons and a source badge (tab, workspace, or bookmark). Press Enter on a result to jump there, or press Enter with no match to run a Google search.
 
-**Workspace switcher.** Every named workspace appears as a card. Each card shows the workspace name, favicon previews of up to three open tabs, the total tab count, and an active-state highlight (blue border) on your current workspace. Click any card to switch. The active workspace is always visible at a glance.
+**Workspace switcher.** Every named workspace appears as a card. Each card shows the workspace name, favicon previews of up to five open tabs, the total tab count, and an active-state highlight (blue border) on your current workspace. Click any card to switch. The active workspace is always visible at a glance.
 
 **Pinned tabs.** Your pinned tabs appear as a row of favicon icons below the workspace switcher. Click any favicon to jump to that tab.
 
@@ -1705,7 +1711,7 @@ Q: Does volume boost work on streaming sites like Netflix or Spotify?
 A: Most sites work with the standard in-page gain node, which requires no extra permissions. For DRM-protected content where that path is blocked by the site's content security policy, SuperchargeAudio includes an optional tab-audio-capture mode — off by default — that applies the same boost to the tab's audio output. This does not bypass or remove DRM; it only adjusts the volume of what you already have permission to hear.
 
 Q: Will boosting above 100% distort the audio?
-A: Distortion depends on the source material. Quiet recordings (podcasts recorded at low levels, old video content) benefit most and show little clipping. Already-loud content pushed to 4–6× may clip. Use the equalizer alongside the boost to shape the output if needed.
+A: SuperchargeAudio applies a soft-clip stage at the output, so heavy boost produces gentle saturation rather than hard digital clipping. Quiet recordings benefit most with very little audible change. Already-loud content pushed to 4–6× will saturate at the peaks — the result is softer than hard clipping but the sound will compress. Use the equalizer alongside the boost to shape the output if needed.
 
 Q: Does the volume setting save per site?
 A: Yes. SuperchargeAudio stores your preferred level per origin, so YouTube, Spotify, and your video conferencing app can each have their own setting.
@@ -2087,7 +2093,7 @@ The audible-tabs list is a real-time view of your open tabs that are actively pr
 | Tab title and site | Jump to that tab immediately |
 | Audio-active indicator | Mute the tab without leaving your current tab |
 
-Tabs that are already muted do not appear in the list. The list reflects what is audible right now.
+Externally muted tabs do not appear when you first open the popup. If you mute a tab from inside the list, it stays visible so you can unmute it in the same session.
 
 ## Jumping to a Tab
 
@@ -2124,7 +2130,7 @@ Q: Can I mute a tab without switching to it?
 A: Yes. The audible-tabs list lets you mute any listed tab with a single click, without leaving your current tab.
 
 Q: What does 'audible' mean — does it include muted tabs?
-A: Audible tabs are tabs that are actively producing audio output. Tabs that are already muted do not appear in the audible-tabs list.
+A: Audible tabs are tabs that are actively producing audio output. Externally muted tabs do not appear when you open the popup. If you mute a tab from inside the list, it stays visible so you can unmute it without closing and reopening the popup.
 
 Q: Is this different from Smart Mute?
 A: Yes. Smart Mute automatically mutes background tabs as you switch focus. The audible-tabs list is a manual tool — it shows you what is playing so you can decide what to do with each tab individually.
@@ -2612,7 +2618,7 @@ The Command Bar was one piece of Arc. If you switched to it, you probably want t
 
 - **Spaces become workspaces.** Create named workspaces, each with its own isolated set of tabs. Switch between them from inside the Alt+K palette ("Switch to workspace") or the side panel.
 - **New Space on the fly.** The palette's "New empty workspace" command spins up a clean workspace without leaving the keyboard, mirroring how Arc let you create a Space from the bar.
-- **Peek previews.** Shift+Click a link to preview it in an inline overlay instead of opening a full tab, the closest thing to Arc's Peek.
+- **Peek previews.** Alt+Click a link to preview it in an inline overlay instead of opening a full tab, the closest thing to Arc's Peek.
 - **Session snapshots.** SuperchargeNavigation auto-saves your tab state on a rolling 5-minute interval (50 snapshots, roughly four hours of history), so a misfired close isn't permanent.
 
 None of this needs an account or sends your tab data anywhere. It runs locally in Chrome.
@@ -2754,7 +2760,7 @@ Nothing in Chrome 149 touches the areas Chrome tab users have been watching sinc
 
 The gap between Chrome's native tab features and what extension-based tab management covers has not narrowed in Chrome 149. Named workspaces, session time-travel, keyboard search across open tabs and history, and tab preview without context-switching are not on any announced Chrome milestone.
 
-SuperchargeNavigation covers those via Chrome's side panel API: named workspaces that persist across restarts, 50 auto-snapshots taken every 5 minutes (a rolling ~4-hour buffer), Alt+K to search open tabs from any page, and Shift+Click to peek at a tab's content without switching. All free, no account, local by default with optional Chrome-native sync, zero telemetry.
+SuperchargeNavigation covers those via Chrome's side panel API: named workspaces that persist across restarts, 50 auto-snapshots taken every 5 minutes (a rolling ~4-hour buffer), Alt+K to search open tabs from any page, and Alt+Click to peek at a tab's content without switching. All free, no account, local by default with optional Chrome-native sync, zero telemetry.
 
 ## IndexedDB SQLite Backend: Still Targeting Chrome 150, Not 149
 
@@ -3732,7 +3738,7 @@ Switching workspaces swaps the entire tab context. Each workspace remembers its 
 
 ## Option 5: Preview Links Without Opening More Tabs
 
-Part of why you end up with 60 tabs is that every link you want to check becomes a new tab. Shift+Click on any link opens a Glance preview — a full-page overlay that loads the linked page without actually creating a tab. Read it, decide if it matters, then either promote it to a real tab or close the preview.
+Part of why you end up with 60 tabs is that every link you want to check becomes a new tab. Alt+Click on any link opens a Glance preview — a full-page overlay that loads the linked page without actually creating a tab. Read it, decide if it matters, then either promote it to a real tab or close the preview.
 
 This does not replace tab scrolling directly, but it attacks the root cause: having too many tabs open in the first place. If you check a link and it is not useful, you never added it to your tab count.
 
@@ -3834,7 +3840,7 @@ Here is the feature-by-feature map from Sidekick's organizational layer to where
 | Workspace isolation | Yes | SuperchargeNavigation (each workspace = its own tabs) |
 | Vertical tab list | Yes | Chrome 146 native or SuperchargeNavigation side panel |
 | Quick search / launcher | Yes | SuperchargeNavigation (Alt+K command bar) |
-| Link peek without a new tab | Yes | SuperchargeNavigation (Shift+Click) |
+| Link peek without a new tab | Yes | SuperchargeNavigation (Alt+Click) |
 | Session recovery after a crash | Yes | SuperchargeNavigation snapshot history |
 | Integrated app shortcuts | Partial | Chrome bookmarks / PWAs, not a single sidebar widget |
 | Built-in ad / tracker blocking | Separate | A dedicated blocker extension, not bundled |
@@ -3851,7 +3857,7 @@ For the core of Sidekick — Sessions and the workspace sidebar — SuperchargeN
 
 **The command bar replaces quick search.** Sidekick leaned on fast keyboard search to jump around. SuperchargeNavigation opens a command bar with Alt+K that searches across open tabs. Type a fragment of a title, arrow to it, Enter. If you had Sidekick muscle memory for not reaching for the mouse, this is the closest equivalent.
 
-**Peek replaces glance-style previews.** Shift+Click any link to open it in an inline overlay without adding a tab to your current workspace. Dismiss it and you are back where you were. Good for checking a link mid-task without polluting a clean Session.
+**Peek replaces glance-style previews.** Alt+Click any link to open it in an inline overlay without adding a tab to your current workspace. Dismiss it and you are back where you were. Good for checking a link mid-task without polluting a clean Session.
 
 The whole thing is local by default: no account to create, no telemetry sent, your workspace names and URLs stay on your machine unless you deliberately turn on Chrome sync.
 
@@ -4178,7 +4184,7 @@ The last thing that does not transfer is the part you used most without thinking
 
 SuperchargeNavigation maps that to **Alt+K**: a keyboard-first command bar that filters open tabs, history, and bookmarks. Type to narrow, arrow keys to move, Enter to open. If you built Arc reflexes around never touching the mouse to switch tabs, this is where they come back. The deeper keyboard layer goes further with a hint mode that overlays letter badges on links so you can follow them by keystroke, covered in the [Arc command bar replacement guide](/library/arc-command-bar-chrome/).
 
-For the sidebar itself: Chrome 146 ships native vertical tabs in a left rail, which restores the Arc tab-list look with no extension. The extension's side panel adds what native vertical tabs leave out — the workspace switcher, multi-select bulk actions on tabs, and **Shift+Click peek** previews that float a link's destination in an overlay without committing it to a tab, the way Arc's Glance worked.
+For the sidebar itself: Chrome 146 ships native vertical tabs in a left rail, which restores the Arc tab-list look with no extension. The extension's side panel adds what native vertical tabs leave out — the workspace switcher, multi-select bulk actions on tabs, and **Alt+Click peek** previews that float a link's destination in an overlay without committing it to a tab, the way Arc's Glance worked.
 
 ## What Transfers, What You Rebuild
 
@@ -4191,7 +4197,7 @@ For the sidebar itself: Chrome 146 ships native vertical tabs in a left rail, wh
 | Spaces | No | Rebuild as named workspaces (Step 4) |
 | Command Bar (Cmd+T) | No | Alt+K command bar |
 | Sidebar / vertical tabs | No native carry-over | Chrome 146 native + side panel |
-| Peek / Glance | No | Shift+Click peek |
+| Peek / Glance | No | Alt+Click peek |
 | Little Arc (mini windows) | No | No Chrome equivalent |
 
 Little Arc is the one feature with no Chrome path at all. The transient mini-window for a quick lookup that never touches your main tabs does not map onto Chrome's extension surface. If that was central to how you worked, it is the single thing you will miss.
@@ -4285,7 +4291,7 @@ For a one-time "my tabs are a disaster and I need them sorted right now" scenari
 | API key required | Often (OpenAI etc.) | No | No |
 | Privacy | Tab URLs sent to remote LLM | On-device, no external request | 100% local, zero telemetry |
 | Keyboard search | No | No | Yes (Alt+K — open tabs across workspaces) |
-| Tab preview | No | No | Yes (Shift+Click peek) |
+| Tab preview | No | No | Yes (Alt+Click peek) |
 | Cost | Free to paid (API costs extra) | Free | Free |
 | Works offline | No | Yes | Yes |
 | Account required | Often | No | No |
@@ -4353,7 +4359,7 @@ Arc Browser stopped active development in May 2025. Its signature features — v
 
 > **Key takeaways**
 > - **The Browser Company stopped Arc development in May 2025** and pivoted to Dia, an AI-first product acquired by Atlassian for $610M.
-> - **Most of Arc's core workflow maps directly onto Chrome**: vertical tabs, named workspaces, command bar, Shift+Click peek previews.
+> - **Most of Arc's core workflow maps directly onto Chrome**: vertical tabs, named workspaces, command bar, Alt+Click peek previews.
 > - **Little Arc mini windows have no Chrome equivalent** — everything else is covered by Chrome 146 plus SuperchargeNavigation.
 
 Arc Browser changed how a lot of people think about tabs. The sidebar, Spaces, the Command Bar — these were not incremental improvements. They were a fundamentally different way to use a browser. When The Browser Company announced in May 2025 that Arc was entering maintenance mode, the reaction from users was not indifference. It was grief.
@@ -4387,7 +4393,7 @@ Some Arc features have direct Chrome equivalents. Others do not.
 | Vertical tabs | Yes | Chrome 146 native or SuperchargeNavigation |
 | Named workspaces (Spaces) | Yes | SuperchargeNavigation |
 | Command Bar | Yes | SuperchargeNavigation (Alt+K) |
-| Peek / Glance preview | Yes | SuperchargeNavigation (Shift+Click) |
+| Peek / Glance preview | Yes | SuperchargeNavigation (Alt+Click) |
 | Session snapshots | Yes | SuperchargeNavigation (50 auto-saves, every 5 min) |
 | Tab search | Yes | SuperchargeNavigation |
 | Mouse gestures | Yes | SuperchargeNavigation |
@@ -4418,7 +4424,7 @@ For the fuller Arc workflow, SuperchargeNavigation is a single extension that co
 
 **Command Bar.** Arc's Command Bar (Cmd+T) let you search open tabs, history, bookmarks, and actions from a single keyboard-driven interface. SuperchargeNavigation's command bar opens with Alt+K and searches across open tabs, history, and bookmarks. It is keyboard-first: type to filter, arrow keys to navigate, Enter to open. If you built Arc muscle memory around not touching the mouse for tab switching, this is the closest equivalent in Chrome.
 
-**Peek previews.** Arc's Glance feature let you hover over a link to preview the destination page in a floating overlay, without opening a new tab. SuperchargeNavigation maps this to Shift+Click: hold Shift and click any link to open it in a peek overlay. The overlay closes when you click away, and the tab is not added to your workspace unless you explicitly keep it.
+**Peek previews.** Arc's Glance feature let you hover over a link to preview the destination page in a floating overlay, without opening a new tab. SuperchargeNavigation maps this to Alt+Click: hold Shift and click any link to open it in a peek overlay. The overlay closes when you click away, and the tab is not added to your workspace unless you explicitly keep it.
 
 **Tab search.** Arc made it fast to find any open tab by typing. SuperchargeNavigation includes fuzzy search across all open tabs in the sidebar. If you have 40 tabs across three workspaces and you need the one with a specific article, you type a fragment of the title and it surfaces immediately.
 
@@ -4426,7 +4432,7 @@ For the fuller Arc workflow, SuperchargeNavigation is a single extension that co
 
 ## What to Expect if You Are Coming From Arc
 
-The transition is not frictionless. Arc had a level of UI polish and integration that extensions cannot fully match. The side panel in Chrome is a panel alongside the browser, not a redesigned shell around it. The command bar is powerful but does not have Arc's speed of launch. Peek previews require Shift+Click rather than a hover gesture.
+The transition is not frictionless. Arc had a level of UI polish and integration that extensions cannot fully match. The side panel in Chrome is a panel alongside the browser, not a redesigned shell around it. The command bar is powerful but does not have Arc's speed of launch. Peek previews require Alt+Click rather than a hover gesture.
 
 These are real differences. Arc's design team built something that felt native in a way that extensions, by definition, cannot fully replicate. If your priority is that specific aesthetic, Zen Browser is probably a better fit even with the extension trade-off.
 
@@ -4442,7 +4448,7 @@ Q: Is Arc Browser shutting down?
 A: Arc entered maintenance mode in May 2025. Atlassian announced its acquisition of The Browser Company in September 2025 and closed the $610M deal that October. The team is now focused on Dia, an AI-first browser. Arc still works and receives Chromium security patches, but no new features.
 
 Q: Can I get Arc features in Chrome without switching browsers?
-A: Yes. Chrome extensions can replicate most Arc features: vertical tabs via Chrome 146 native or extensions, workspaces via SuperchargeNavigation, command bar via Alt+K, and peek previews via Shift+Click. The main Arc feature with no Chrome equivalent is Little Arc (mini browser windows).
+A: Yes. Chrome extensions can replicate most Arc features: vertical tabs via Chrome 146 native or extensions, workspaces via SuperchargeNavigation, command bar via Alt+K, and peek previews via Alt+Click. The main Arc feature with no Chrome equivalent is Little Arc (mini browser windows).
 
 Q: What is the best Arc replacement that uses Chrome?
 A: For users who want to stay on Chrome, SuperchargeNavigation replicates the most Arc features in a single extension: vertical tabs, named workspaces, session snapshots, command bar, and peek previews. It is free and requires no account.
@@ -4541,7 +4547,7 @@ The feature gap between Arc and stock Chrome is real. Chrome 146's native vertic
 | Spaces (named workspaces) | Yes | SuperchargeNavigation |
 | Command Bar (Cmd+T) | Yes | SuperchargeNavigation (Alt+K) |
 | Vertical tabs | Yes | Chrome 146 native or SuperchargeNavigation |
-| Peek / Glance preview | Yes | SuperchargeNavigation (Shift+Click) |
+| Peek / Glance preview | Yes | SuperchargeNavigation (Alt+Click) |
 | Session snapshots | Yes | SuperchargeNavigation (50 auto-saves, 5-min intervals) |
 | Little Arc mini windows | No | No Chrome equivalent |
 | Boosts (custom CSS) | Partial | Stylus extension |
@@ -4577,7 +4583,7 @@ Q: What is Dia and is it the same as Arc?
 A: Dia is a separate product from Arc, built by the same team (The Browser Company, now part of Atlassian). Dia is an AI-first browser focused on knowledge work: it integrates AI assistance across your tabs, is designed for SaaS-heavy workflows, and is positioned as an enterprise tool rather than a consumer browser. As of June 2026, Dia is available for download on macOS 14+ with Apple Silicon. It is not a continuation of Arc — it is a different product with a different design philosophy.
 
 Q: What's the best Chrome alternative for Arc features?
-A: For users who want to stay on Chrome rather than switch browsers, SuperchargeNavigation (free, no account required) replicates the core Arc workflow: named workspaces with full tab isolation, a keyboard command bar (Alt+K), vertical tabs, Shift+Click peek previews, and 50-snapshot session history. For a full feature comparison, see the Arc features in Chrome guide.
+A: For users who want to stay on Chrome rather than switch browsers, SuperchargeNavigation (free, no account required) replicates the core Arc workflow: named workspaces with full tab isolation, a keyboard command bar (Alt+K), vertical tabs, Alt+Click peek previews, and 50-snapshot session history. For a full feature comparison, see the Arc features in Chrome guide.
 
 ---
 
@@ -4611,7 +4617,7 @@ Chrome 149 still has no equivalent. This is not a gap that Chrome's roadmap is a
 | Keyboard switching | No | Yes | Yes (Alt+K) |
 | Session time-travel | No | No | Yes (50 snapshots) |
 | Vertical tab panel | No | Yes | Yes |
-| Peek preview | No | No | Yes (Shift+Click) |
+| Peek preview | No | No | Yes (Alt+Click) |
 
 ## How SuperchargeNavigation Replicates Arc Spaces
 
@@ -4679,7 +4685,7 @@ Q: What happened to Arc Browser and Arc Spaces?
 A: As of June 2026, Arc Browser is in maintenance mode. The Browser Company stopped active development in May 2025 and pivoted to Dia, an AI-first product. Atlassian acquired The Browser Company in September 2025 for $610M. Arc still runs but receives no new features. Arc Spaces — the named, isolated tab contexts Arc was known for — are no longer receiving updates, and the broader Arc ecosystem has wound down.
 
 Q: What is the closest Chrome extension to Arc Spaces?
-A: SuperchargeNavigation (v1.3.0, free, no account required) is the closest Chrome equivalent to Arc Spaces as of June 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Shift+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
+A: SuperchargeNavigation (v1.3.0, free, no account required) is the closest Chrome equivalent to Arc Spaces as of June 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Alt+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
 
 Q: Can I use Chrome Profiles instead of Arc Spaces?
 A: Chrome Profiles provide stronger isolation — separate cookies, passwords, and extensions per profile — but they are not a practical Spaces replacement. Each profile is a separate Chrome window with its own session state. There is no keyboard shortcut to switch between profiles, no unified tab search across them, and no session snapshots. Profiles are the right tool for separate Google accounts or full identity separation. For fast workspace switching without the overhead, use named workspaces.
@@ -5425,7 +5431,7 @@ SuperchargeNavigation covers the active organization and search-first categories
 
 **Alt+K command bar.** A keyboard-driven palette that searches open tabs, recently closed tabs, bookmarks, and history simultaneously. Type a fragment of any title; results filter in real time. Arrow keys navigate, Enter opens. When nothing local matches, Enter falls through to web search. At 40+ tabs across multiple workspaces, this is faster than scanning the sidebar.
 
-**Shift+Click peek preview.** Hold Shift and click any link to open a full-page preview overlay without leaving your current tab. The preview is a complete interactive page — you can read, scroll, and interact. Esc closes it. The tab is not added to your workspace unless you navigate away from the overlay. For research-heavy workflows where you open 10 links to see which 2 are worth keeping, this cuts tab count by avoiding the other 8.
+**Alt+Click peek preview.** Hold Shift and click any link to open a full-page preview overlay without leaving your current tab. The preview is a complete interactive page — you can read, scroll, and interact. Esc closes it. The tab is not added to your workspace unless you navigate away from the overlay. For research-heavy workflows where you open 10 links to see which 2 are worth keeping, this cuts tab count by avoiding the other 8.
 
 Beyond those three, Nav adds session time-travel (auto-saves a global snapshot of your full browser state every 5 minutes, 50 retained in a ring buffer — roughly 4 hours of recoverable history across all workspaces), Alt+G smart grouping by domain (one keystroke clusters tabs from github.com, notion.so, and others into collapsed groups), multi-select bulk actions (Ctrl+Click builds a selection; bulk close, pin, mute, group, or lock the result), and opt-in cross-device workspace sync through the browser's own `chrome.storage.sync` infrastructure — your Google account on Chrome, your Microsoft account on Edge, never our servers (off by default; Chrome and Edge sync as separate islands).
 
@@ -5446,7 +5452,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 | Keyboard tab search | No | No | Limited | No | Yes (Alt+K, includes bookmarks/history) | Limited (Ctrl+Shift+A — open tabs only) |
 | Session snapshots / time-travel | No | Corral list | Cloud backup | Manual save | Yes (50 auto, 5-min) | No |
 | Tab deduplication | No | No | No | No | Yes | No |
-| Peek preview | No | No | No | No | Yes (Shift+Click) | No |
+| Peek preview | No | No | No | No | Yes (Alt+Click) | No |
 | Smart domain grouping | No | No | No | No | Yes (Alt+G) | No |
 | Tab suspension | Collapse (full close) | Close + archive | Yes | Close | No (pair with Perf) | Yes (Memory Saver) |
 | Cross-device sync | No | No | Yes (cloud) | No | Opt-in (Chrome/Edge sync) | Via Google account |
@@ -5559,7 +5565,7 @@ Features beyond workspace management:
 - **Alt+K command bar** — search open tabs, recently closed tabs, bookmarks, history, and saved sessions across all workspaces from anywhere in Chrome
 - **Tab deduplication** — detects and removes duplicate tabs automatically
 - **Session time-travel** — 50 auto-snapshots every 5 minutes; rewind to any earlier tab state with a slider
-- **Shift+Click peek** — preview any link in an overlay without navigating away
+- **Alt+Click peek** — preview any link in an overlay without navigating away
 
 Workspaces live in `chrome.storage.local` on the machine where they were created, and since v1.1.0 they also sync across your devices through Chrome's own account sync when you opt in. Switch between a desktop and a laptop signed into the same Chrome (or Edge) profile and the same named workspaces and tab state follow you, with no SuperchargeBrowser account and nothing routed through our servers. The boundary worth knowing: that sync stays within one browser family and has no team sharing. If you need the same workspaces across *different* browsers, or shared with colleagues, a hosted tool like Workona is built for that.
 
@@ -6025,7 +6031,7 @@ The only Chrome vertical tab extension that also handles workspaces, session rec
 - **Named workspaces** — save and restore complete tab sets by name, switch between project contexts instantly
 - **Session time-travel** — 50 auto-snapshots every 5 minutes (a rolling ~4-hour buffer), rewind to any earlier state with a slider
 - **Alt+K command bar** — search open tabs, bookmarks, and history from anywhere in Chrome
-- **Glance/Peek preview** — Shift+Click any link to preview it in an overlay without leaving the page
+- **Glance/Peek preview** — Alt+Click any link to preview it in an overlay without leaving the page
 - **Smart grouping** — auto-group by domain (Alt+G), bulk multi-select, tab lock, tab deduplication
 - **Mouse gestures** — rocker navigation (back/forward), Super Drag to open links in background
 - **Scroll gestures** — Alt+Scroll to switch tabs, Shift+Scroll to cycle within active group
@@ -6607,7 +6613,7 @@ For tab power users, nothing shifted. You have the same native tools as Chrome 1
 - Ctrl+Shift+A for basic tab search (same limited overlay)
 - No named workspaces, no session snapshots, no keyboard command bar, no tab previews
 
-If you're managing 20+ tabs across multiple projects and Chrome's built-in tools aren't keeping up, Chrome 148 doesn't add anything to that story. Named workspaces with session persistence, 50 auto-snapshots taken every 5 minutes, Alt+K to search open tabs from any page, and Shift+Click to peek at tab content without switching: these remain extension territory.
+If you're managing 20+ tabs across multiple projects and Chrome's built-in tools aren't keeping up, Chrome 148 doesn't add anything to that story. Named workspaces with session persistence, 50 auto-snapshots taken every 5 minutes, Alt+K to search open tabs from any page, and Alt+Click to peek at tab content without switching: these remain extension territory.
 
 [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) covers all four via Chrome's side panel API. Free core, no account, zero telemetry, local by default with optional browser-native sync.
 
@@ -7976,7 +7982,7 @@ Split View solves one specific problem: two tabs, side by side, right now. It do
 
 The 50/50 fixed split and no session persistence are real constraints. Every time Chrome opens, you rebuild the split. There is no way to say "my research context is always split; my work context is always full-width."
 
-SuperchargeNavigation takes a different approach. Named workspaces let you define separate tab contexts (Work, Research, Personal, Client A) and switch between them instantly. Each workspace remembers its tabs. The Alt+K command bar searches every tab across every workspace from the keyboard in under two seconds. Shift+Click opens any link in a peek panel without leaving your current context. 50 automatic snapshots mean a bad restart does not cost you a session.
+SuperchargeNavigation takes a different approach. Named workspaces let you define separate tab contexts (Work, Research, Personal, Client A) and switch between them instantly. Each workspace remembers its tabs. The Alt+K command bar searches every tab across every workspace from the keyboard in under two seconds. Alt+Click opens any link in a peek panel without leaving your current context. 50 automatic snapshots mean a bad restart does not cost you a session.
 
 Where Chrome Split View handles two tabs in the moment, workspaces handle ongoing parallel projects. They're not the same tool solving the same problem. Split View is useful for quick side-by-side comparisons; workspaces are for people who keep multiple distinct projects running all week.
 
@@ -8417,7 +8423,7 @@ The matching is fuzzy. "fig hand" will find "Figma Design Handoff" by recognizin
 
 **Multi-window workspaces.** SuperchargeNavigation supports named workspaces, with each Chrome window able to run its own active workspace. Your "Work" workspace lives in window 1, "Research" in window 2, "Personal" in window 3. Switching workspaces within a window is instant: only that workspace's tabs are visible. Each window maintains its own focused context instead of one shared tab strip with everything mixed together.
 
-**Peek preview.** When you find a result in Alt+K, Alt+Click on any link previews it in an inline overlay without opening a new tab. See the page, then decide whether it deserves a tab. This is the same Glance feature accessible via Shift+Click on links anywhere on the page.
+**Peek preview.** When you find a result in Alt+K, Alt+Click on any link previews it in an inline overlay without opening a new tab. See the page, then decide whether it deserves a tab. This is the same Glance feature accessible via Alt+Click on links anywhere on the page.
 
 **Time-travel snapshots.** SuperchargeNavigation takes an auto-snapshot every 5 minutes and retains up to 50 of them. Accidentally close a tab or restructure a workspace? Rewind the session to a prior state and restore it. This sidesteps the "closed tab not in Chrome's recent 25" problem: you have your own ring buffer, not Chrome's fixed-length history.
 
@@ -8656,7 +8662,7 @@ The tradeoff is usability. Switching profiles means switching Chrome windows. Th
 | Vertical tabs | Chrome 146 native | Chrome 146 native | No | No | Yes (side panel) |
 | Tab deduplication | No | No | No | No | Yes |
 | Command bar (search all) | No | No | Partial | No | Yes (Alt+K) |
-| Tab preview without switching | No | No | No | No | Yes (Shift+Click) |
+| Tab preview without switching | No | No | No | No | Yes (Alt+Click) |
 
 ## The Extension Options
 
@@ -8692,7 +8698,7 @@ The extension adds functionality beyond workspaces that the other options here d
 
 **Vertical tab sidebar.** The side panel shows all tabs for the active workspace in a vertical list. It uses Chrome's side panel API and works alongside Chrome's flag-gated native vertical tabs (shipped in 146, still flag-gated in 149) without conflict.
 
-**Peek preview (Shift+Click).** Shift+Click on any link opens the page in an inline overlay without switching tabs or creating a new tab in your current workspace. Dismiss the overlay and you are back where you were.
+**Peek preview (Alt+Click).** Alt+Click on any link opens the page in an inline overlay without switching tabs or creating a new tab in your current workspace. Dismiss the overlay and you are back where you were.
 
 **Tab deduplication.** Opening a URL that already exists in any workspace redirects to the existing tab rather than creating a duplicate.
 
@@ -9057,7 +9063,7 @@ AI Overview in Search is the most disruptive to disable if you rely on Google fo
 
 If the underlying frustration isn't Gemini specifically but the general drift toward a browser that tries to do your thinking for you, with tabs cluttered with suggestions, side panels filling up, and constant ambient UI, that's a different problem than a single AI toggle can fix.
 
-[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) takes the opposite approach to AI-driven browsing: named workspaces that separate your contexts (work, research, personal), an Alt+K command bar for navigating without touching the mouse, and Shift+Click to peek at a link without leaving your current tab. The side panel is used for workspace switching, not AI chat. Zero telemetry. Local by default (optional Chrome-native sync). No account required.
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) takes the opposite approach to AI-driven browsing: named workspaces that separate your contexts (work, research, personal), an Alt+K command bar for navigating without touching the mouse, and Alt+Click to peek at a link without leaving your current tab. The side panel is used for workspace switching, not AI chat. Zero telemetry. Local by default (optional Chrome-native sync). No account required.
 
 If your goal is a browser that responds exactly to what you direct it to do, rather than one that anticipates and injects, workspace-based navigation is worth considering alongside the AI disabling steps above.
 
@@ -11508,7 +11514,7 @@ Chrome's native implementation is version one. No roadmap speculation needed her
 | Named workspaces | No | Yes (SuperchargeNavigation) |
 | Session recovery | No | Yes (50 auto-snapshots) |
 | Keyboard search all tabs | No (Tab Search UI only) | Yes (Alt+K) |
-| Peek preview without switching | No | Yes (Shift+Click) |
+| Peek preview without switching | No | Yes (Alt+Click) |
 | Tab deduplication | No | Yes |
 | Auto-group by domain | No | Yes (Alt+G) |
 | Cross-device workspace sync | No | Optional (Chrome/Edge-native) |
@@ -11539,7 +11545,7 @@ The workflow that the combination enables:
 
 - Switch between named workspaces (Alt+K → type the workspace name) without hunting through a flat list
 - Rewind to any workspace state from the past four hours via 50 auto-snapshots taken every five minutes
-- Peek at a link in an overlay with Shift+Click before deciding to open a full tab
+- Peek at a link in an overlay with Alt+Click before deciding to open a full tab
 - Auto-group all tabs by domain (Alt+G) when a workspace has accumulated too many ungrouped tabs
 - Deduplicate tabs — if a URL is already open somewhere in a workspace, the extension switches you to it instead of creating a duplicate
 - Carry workspaces to another computer with optional sync — it rides Chrome's or Edge's own account sync, so nothing touches our servers and we can't read it
@@ -11758,7 +11764,7 @@ Vivaldi is the most feature-complete Chromium browser for users coming from Arc.
 
 **Tab hibernation.** Inactive tabs can be put to sleep to reduce RAM. Not as configurable as a dedicated extension but functional.
 
-**What Vivaldi does not have:** a hover-based peek preview (no equivalent to Arc's peek or SuperchargeNavigation's Shift+Click overlay). Session time-travel or snapshot recovery is not built in. The UI is not open-source.
+**What Vivaldi does not have:** a hover-based peek preview (no equivalent to Arc's peek or SuperchargeNavigation's Alt+Click overlay). Session time-travel or snapshot recovery is not built in. The UI is not open-source.
 
 **Performance note.** Vivaldi has historically carried a higher RAM footprint than stock Chrome due to its feature-rich UI layer. In a 2026 context with Chrome's own memory footprint well-managed by Memory Saver, this gap is smaller but still present. If RAM is your primary concern, Vivaldi is not the right choice.
 
@@ -11836,7 +11842,7 @@ If Vivaldi is your path, a one-time configuration gets it substantially closer t
 
 The browser-replacement path has a real cost: extension compatibility. If your workflow depends on Chrome-specific extensions, no Chromium fork eliminates that friction. You are still switching engines, with a different extension behavior, permissions model, and update cadence from Chrome stable.
 
-For users who want Arc's workspace and command bar features without leaving Chrome, [SuperchargeNavigation](/library/arc-browser-dead-get-features-in-chrome/) adds named workspaces with full session recovery, an Alt+K command bar, 50 auto-snapshots at 5-minute intervals, and Shift+Click peek previews. Zero telemetry, no account required. The full breakdown of which Arc features map to Chrome is in the [Arc-dead article](/library/arc-browser-dead-get-features-in-chrome/).
+For users who want Arc's workspace and command bar features without leaving Chrome, [SuperchargeNavigation](/library/arc-browser-dead-get-features-in-chrome/) adds named workspaces with full session recovery, an Alt+K command bar, 50 auto-snapshots at 5-minute intervals, and Alt+Click peek previews. Zero telemetry, no account required. The full breakdown of which Arc features map to Chrome is in the [Arc-dead article](/library/arc-browser-dead-get-features-in-chrome/).
 
 The [Chrome 146 vertical tabs vs extensions](/library/chrome-146-vertical-tabs-vs-extensions/) article covers where Chrome's native vertical tab implementation lands versus dedicated extensions.
 
@@ -12555,9 +12561,9 @@ A: As of June 2026, Volume Master remembers per-site volume settings and can aut
 
 URL: https://www.superchargebrowser.com/library/supercharge-navigation-complete-guide/
 Category: guide | Extension: navigation | Updated: 2026-06-02
-Description: Side panel, workspaces, Alt+K, Shift+Click peek, time-travel — all 38 Nav features in one reference. Keyboard shortcuts table, settings defaults, Chrome tips.
+Description: Side panel, workspaces, Alt+K, Alt+Click peek, time-travel — all 38 Nav features in one reference. Keyboard shortcuts table, settings defaults, Chrome tips.
 
-Most Chrome extensions do one thing. SuperchargeNavigation (Nav for short) does closer to forty. The side panel is the obvious entry point — vertical tabs, full titles, pinned tabs visible. But the feature that makes users stay is usually something they find by accident: Shift+Click opens a full-page preview without creating a tab. Alt+G organizes everything by domain in one keystroke. A workspace they closed three hours ago is still recoverable from the snapshot history.
+Most Chrome extensions do one thing. SuperchargeNavigation (Nav for short) does closer to forty. The side panel is the obvious entry point — vertical tabs, full titles, pinned tabs visible. But the feature that makes users stay is usually something they find by accident: Alt+Click opens a full-page preview without creating a tab. Alt+G organizes everything by domain in one keystroke. A workspace they closed three hours ago is still recoverable from the snapshot history.
 
 This page covers every feature in one place. Bookmark it. New installs from the welcome page can start with the Quick Reference table and branch from there.
 
@@ -12572,7 +12578,7 @@ Everything keyboard-accessible, in one table.
 | `Alt+Shift+G` | Remove all tab groups | On |
 | `Alt+Scroll` | Cycle through tabs | On |
 | `Shift+Scroll` | Jump between tab groups | On |
-| `Shift+Click` | Peek preview any link (full-page overlay) | On |
+| `Alt+Click` | Peek preview any link (full-page overlay) | On |
 | `Ctrl+Click` | Multi-select tabs in side panel | On |
 | `Alt+B` | Toggle side panel open/closed | On |
 | `Alt+Up / Alt+Down` | Arrow-navigate through tabs (Shift = groups) | On |
@@ -12652,9 +12658,9 @@ Workspaces are the feature that separates Nav from a vertical tab extension. Eac
 
 ## Peek Preview (Glance)
 
-Shift+Click any link for a full-page preview overlay. The target page loads completely inside the overlay — you can scroll, read, interact, and copy content. The tab is not added to your workspace. Press `Esc` or click outside the overlay to dismiss.
+Alt+Click any link for a full-page preview overlay. The target page loads completely inside the overlay — you can scroll, read, interact, and copy content. The tab is not added to your workspace. Press `Esc` or click outside the overlay to dismiss.
 
-This feature changes how you handle research links. Instead of opening 15 tabs to see which articles are worth reading, Shift+Click each link in sequence. Close the overlay if the content isn't useful. Open it as a real tab only when you want to keep it. Tab count stays controlled.
+This feature changes how you handle research links. Instead of opening 15 tabs to see which articles are worth reading, Alt+Click each link in sequence. Close the overlay if the content isn't useful. Open it as a real tab only when you want to keep it. Tab count stays controlled.
 
 The overlay is a full-size page render, not a thumbnail. Every element of the destination page loads as normal. Forms work. Videos play. The distinction from a screenshot preview is total.
 
@@ -12707,7 +12713,7 @@ Every toggle, grouped by category, with defaults marked.
 
 | Setting | Default |
 |---|---|
-| Glance / Peek (Shift+Click) | On |
+| Glance / Peek (Alt+Click) | On |
 | Duplicate tab warning | On |
 | Session time-travel | On |
 | Persistent search bar | Off |
@@ -12788,8 +12794,8 @@ A: The side panel position is controlled by Chrome, not the extension. Go to Chr
 Q: How does workspace time-travel work in SuperchargeNavigation?
 A: As of June 2026, SuperchargeNavigation saves an automatic snapshot of your workspace every 5 minutes. Up to 50 snapshots are retained, giving approximately 4 hours of recoverable history. To access snapshots, open the workspace menu and look for the time-travel or session history option. Select any snapshot to restore that workspace state — all tabs, groups, and positions as they were at that point in time.
 
-Q: What is the Shift+Click peek feature?
-A: Shift+Click on any link opens a full-page overlay preview of that destination without creating a new tab or leaving your current page. The overlay is a complete, interactive page view — you can read, scroll, and interact with the preview. Press Esc or click outside to close it. The tab is not added to your workspace unless you explicitly navigate away from the overlay.
+Q: What is the Alt+Click peek feature?
+A: Alt+Click on any link opens a full-page overlay preview of that destination without creating a new tab or leaving your current page. The overlay is a complete, interactive page view — you can read, scroll, and interact with the preview. Press Esc or click outside to close it. The tab is not added to your workspace unless you explicitly navigate away from the overlay.
 
 Q: Can I share a workspace with someone else?
 A: Yes. As of June 2026, SuperchargeNavigation lets you export a workspace as a JSON file. Send the file via any channel (email, Slack, etc.), and the recipient imports it into their own Nav install to recreate the workspace with pinned tabs, groups, and colors intact. All transfer happens via file — nothing is uploaded to our servers.
@@ -13415,7 +13421,7 @@ SuperchargeNavigation's command bar (Alt+K) searches open tabs, bookmarks, and b
 | Session persistence | No | No | Yes |
 | Session snapshots | No | No | Yes (50 auto-saves) |
 | Keyboard tab search | No | No | Yes (Alt+K) |
-| Tab preview (Shift+Click) | No | No | Yes |
+| Tab preview (Alt+Click) | No | No | Yes |
 | Tab deduplication | No | No | Yes |
 | Bulk tab actions | No | No | Yes |
 | Auto-group by domain | No | No | Yes (Alt+G) |
@@ -13542,7 +13548,7 @@ What SuperchargeNavigation does offer is a different answer to the same underlyi
 - **Named workspaces** — save complete tab sets by name, switch project contexts instantly without losing anything
 - **Alt+G auto-grouping** — group all open tabs by domain in one keystroke, creating flat but logical clusters
 - **Alt+K command bar** — search open tabs across every workspace from anywhere, without clicking through a sidebar
-- **Peek preview** — Shift+Click any link to preview the destination in an overlay without opening a new tab
+- **Peek preview** — Alt+Click any link to preview the destination in an overlay without opening a new tab
 - **50 auto-snapshots** — the browser keeps a rolling session history, rewind to any point in the last 250 minutes
 - **Tab deduplication** — no duplicate tabs accumulating as you open the same sites repeatedly
 - Zero telemetry, 100% local storage, no account required
@@ -14104,7 +14110,7 @@ The remaining Zen features that Chrome lacks natively require an extension. Supe
 
 **Command bar via Alt+K.** Zen does not yet have a built-in command palette — it is still an open feature request as of June 2026. SuperchargeNavigation's Alt+K command bar is keyboard-first: type to search open tabs, recently closed tabs, bookmarks, history, and saved sessions across all workspaces. If you want a feature that Zen does not currently ship, this is it.
 
-Shift+Click on any link opens a peek preview — a floating overlay that lets you inspect a page without creating a new tab or leaving your current context. Zen's Glance preview is hover-based and browser-native; SuperchargeNavigation's version is click-triggered. The trigger is different (click vs hover) but the outcome — inspect a page without committing to a tab switch — is the same.
+Alt+Click on any link opens a peek preview — a floating overlay that lets you inspect a page without creating a new tab or leaving your current context. Zen's Glance preview is hover-based and browser-native; SuperchargeNavigation's version is click-triggered. The trigger is different (click vs hover) but the outcome — inspect a page without committing to a tab switch — is the same.
 
 **RAM control.** Zen inherits Firefox's memory management, which is generally more efficient than Chrome's baseline. SuperchargePerformance fills the same role in Chrome: it uses `chrome.tabs.discard()` to suspend inactive tabs, plus 186K+ blocking rules across 22 sources in three tiers. The RAM dashboard shows per-process memory usage in real time.
 
@@ -14117,7 +14123,7 @@ Shift+Click on any link opens a peek preview — a floating overlay that lets yo
 | Session time-travel | SuperchargeNavigation | 50 snapshots, no manual backup needed |
 | Command palette | SuperchargeNavigation (Alt+K) | Zen has no built-in command palette yet |
 | Split view (4-pane grid) | No equivalent | Chrome has 2-pane only |
-| Glance tab preview | SuperchargeNavigation (Shift+Click) | Click-triggered vs hover-triggered |
+| Glance tab preview | SuperchargeNavigation (Alt+Click) | Click-triggered vs hover-triggered |
 | Nested tab folders | Chrome tab groups (partial) | No nesting in Chrome native |
 | Zen Mods (site CSS/JS) | Stylus + UserScripts (separate) | Requires two additional extensions |
 | Tracker blocking | SuperchargePerformance | 186K+ rules, 22 sources |
@@ -14157,7 +14163,7 @@ Q: What are Zen Browser's best features?
 A: As of June 2026, Zen Browser's standout features are vertical tabs by default, named workspaces with tab isolation, split view with up to four tiled tabs in a grid, Glance tab previews, tab folders (nested), Zen Mods and Boosts for site customization, and minimal telemetry. It is free and open source.
 
 Q: How do you get Zen Browser features in Chrome?
-A: As of June 2026, Chrome includes native vertical tabs (shipped in Chrome 146, enable via chrome://flags). SuperchargeNavigation adds named workspaces, session time-travel (50 auto-snapshots), an Alt+K command bar, and Shift+Click peek previews. SuperchargePerformance adds 186K+ blocking rules and a RAM dashboard. Both extensions are free with no account required.
+A: As of June 2026, Chrome includes native vertical tabs (shipped in Chrome 146, enable via chrome://flags). SuperchargeNavigation adds named workspaces, session time-travel (50 auto-snapshots), an Alt+K command bar, and Alt+Click peek previews. SuperchargePerformance adds 186K+ blocking rules and a RAM dashboard. Both extensions are free with no account required.
 
 ---
 
@@ -15754,7 +15760,7 @@ A few specifics verified against the v1.3.0 source (live on Chrome Web Store as 
 
 - **50 auto-snapshots**, stored locally, at up to 5-minute intervals via `chrome.alarms`. The ring buffer discards the oldest when full. No manual save step.
 - **Alt+K command bar** searches across all open tabs in all open windows — fuzzy match, instant results. Not just the active workspace.
-- **Shift+Click peek preview**: hover a link, hold Shift and click, and the destination renders in an inline overlay. Decide whether it warrants a tab before opening one.
+- **Alt+Click peek preview**: hover a link, hold Shift and click, and the destination renders in an inline overlay. Decide whether it warrants a tab before opening one.
 - **Tab freeze** via `chrome.tabs.discard()` for individual tabs you want to keep visible but not consuming memory.
 - **Multi-select with bulk actions**: close, freeze, or move multiple tabs to a different workspace in one operation.
 - **Zero telemetry**, 100% local storage by default. Cross-device sync is opt-in via Chrome Sync infrastructure and off by default.
@@ -16399,7 +16405,7 @@ The net effect for people who use Chrome heavily for tab-intensive work: this is
 
 If you're managing 30+ tabs across multiple work contexts, the native tools in Chrome 147 give you the same toolkit as Chrome 146. Named workspaces, session recovery, keyboard navigation across open tabs and history, and tab previews without context-switching are still extension territory.
 
-SuperchargeNavigation handles these via Chrome's side panel API: named workspaces with persistence across restarts, 50 auto-snapshots at 5-minute intervals for session time-travel, Alt+K to search open tabs from any page, and Shift+Click to peek at a tab without switching to it. Free core, no account, local by default (optional browser-native sync via your Google or Microsoft account; zero telemetry either way).
+SuperchargeNavigation handles these via Chrome's side panel API: named workspaces with persistence across restarts, 50 auto-snapshots at 5-minute intervals for session time-travel, Alt+K to search open tabs from any page, and Alt+Click to peek at a tab without switching to it. Free core, no account, local by default (optional browser-native sync via your Google or Microsoft account; zero telemetry either way).
 
 If your main Chrome 147 concern is the HTTPS warning appearing on specific sites, the [fix guide](/library/chrome-147-https-first-warning-fix/) covers it in under five minutes. If you want the full vertical tabs analysis comparing Chrome native to extension options, that's at [Chrome 146 Vertical Tabs vs Extensions](/library/chrome-146-vertical-tabs-vs-extensions/).
 
@@ -16996,7 +17002,7 @@ An extension command bar — Alt+K in SuperchargeNavigation — searches open ta
 
 Chrome 146 has no way to glance at a tab's content without switching to it. With 40 tabs open, checking one means committing to a full context switch.
 
-Shift+Click in SuperchargeNavigation opens an inline preview overlay so you can look at the tab's content and dismiss it without disrupting your current page.
+Alt+Click in SuperchargeNavigation opens an inline preview overlay so you can look at the tab's content and dismiss it without disrupting your current page.
 
 ## Side-by-Side: Chrome Native vs. SuperchargeNavigation
 
@@ -17009,7 +17015,7 @@ Shift+Click in SuperchargeNavigation opens an inline preview overlay so you can 
 | Session persistence across restart | No | Yes |
 | Session time-travel (50 snapshots) | No | Yes |
 | Keyboard search (Alt+K) | No | Yes |
-| Tab preview (Shift+Click) | No | Yes |
+| Tab preview (Alt+Click) | No | Yes |
 | Auto-group by domain (Alt+G) | No | Yes |
 | Bulk multi-select | No | Yes |
 | Tab deduplication | No | Yes |
