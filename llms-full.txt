@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-06-10
+> Last updated: 2026-06-11
 > For a summary index, see /llms.txt
 
 ## Products
@@ -17,7 +17,7 @@
 - 14 individually toggleable features per domain
 - 25+ auto-protected web apps across productivity, media, and calls (Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby)
 - Zero telemetry, zero tracking, zero data collection, fully local
-- Version: 1.4.1
+- Version: 1.4.2
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live May 2026)
 - Weekly active users: ~2,700 (Chrome Web Store)
 - Install (Chrome): https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
@@ -435,9 +435,11 @@ Stop Autoplay prevents videos from playing automatically when you load a page. A
 
 ## How It Works
 
-SuperchargePerformance intercepts video autoplay behavior, preventing video elements from beginning playback without a direct user interaction (clicking play). At the "Allow Common" level, an allowlist of major video and conferencing platforms is exempted so your intentional media experiences are not disrupted. At "Block All", blocking applies universally to every page.
+Stop Autoplay blocks video and audio autoplay the same way Chrome's own autoplay policy does: when a video tries to start before you have interacted with it, the play call is rejected with the same error Chrome itself returns. Each player keeps its own controls — a click on the player starts the video normally. Once you start a video, it is never paused again, including across element swaps and single-page navigation. Sites that retry aggressively (such as live players that loop on pause) are detected and let through rather than being fought in a loop.
 
-The feature targets the autoplay behavior specifically — videos remain fully functional and play normally the moment you click them.
+Beyond the play() override, the script neutralizes the `autoplay` attribute and per-element `playing` events on newly inserted media, so videos that use the native autoplay path are also caught. YouTube's next-video autoplay is handled separately: when you finish a video and YouTube queues the next one, the incoming video is frozen until you click. On Twitter, LinkedIn, and feed-style sites, videos that scroll into view are paused at the moment of intersection.
+
+At the "Allow Common" level, major video platforms and conferencing tools (YouTube, Netflix, Twitch, Vimeo, Zoom, Slack, and others) play normally. Autoplay is blocked on all other sites. At "Block All", every site is blocked with no exceptions.
 
 ## Settings
 
@@ -470,7 +472,7 @@ Q: Does it block video conferencing?
 A: At the 'Allow Common' level, video conferencing tools are on the allowlist so they work normally. 'Block All' will block them.
 
 Q: Are muted preview videos (like on social media) blocked?
-A: At 'Allow Common', muted preview-style autoplay is allowed. These are typically low-bandwidth, silent previews that do not disrupt browsing. 'Block All' stops them.
+A: At 'Allow Common', muted previews on major video platforms and conferencing sites are allowed because those sites are on the allowlist. On other sites — news, social feeds, general websites — muted previews are blocked the same as any other autoplay. 'Block All' stops them everywhere.
 
 Q: Is this feature free?
 A: Yes. Stop Autoplay is completely free — no PRO subscription required.
@@ -642,6 +644,10 @@ The whitelist gives you surgical control over which SuperchargePerformance featu
 
 Each whitelist entry is a domain paired with one or more feature exemptions. When SuperchargePerformance processes a tab or network request, it checks whether the tab's domain has a whitelist entry covering that feature. If it does, that feature is skipped for that domain. All other features continue to run normally.
 
+Domain matching is subdomain-aware and normalizes `www.` on both sides, so whitelisting `example.com` also covers `www.example.com` and any subdomain of either form. This match is applied consistently across suspension, ad blocking, throttling, and preload — a site you whitelist stays exempt regardless of which form of its address you land on.
+
+When you whitelist the site you are currently on, the change takes effect immediately without waiting for a reload. Any elements that cosmetic blocking had hidden reappear on the open page right away. The active tab then reloads itself once the network rules (ad blocking, throttling) are confirmed, so those features catch up in the same step.
+
 Entries are stored in `chrome.storage.local` and persist across browser restarts. The whitelist is evaluated locally — no domains or rules are sent anywhere.
 
 ## Features You Can Exempt Per Domain
@@ -658,8 +664,8 @@ Entries are stored in `chrome.storage.local` and persist across browser restarts
 
 Entries support two formats:
 
-- **Exact domain:** `example.com` — matches only that domain
-- **Wildcard subdomains:** `*.example.com` — matches all subdomains
+- **Exact domain:** `example.com` — matches that domain and all its subdomains
+- **Wildcard subdomains:** `*.example.com` — accepted, but behaves the same as the exact form
 
 The input field validates domain format and prevents duplicate entries.
 
@@ -722,7 +728,7 @@ Q: Can I whitelist a site from ad blocking but still suspend its tabs?
 A: Yes. Whitelisting is per-feature. You can exempt a domain from ad blocking only, leaving tab suspension and script blocking active. Each feature is controlled independently.
 
 Q: Does whitelisting a domain cover all its subdomains?
-A: An exact domain entry like `example.com` covers that domain only. To cover all subdomains, add a wildcard entry: `*.example.com`.
+A: Yes. An entry for `example.com` also covers `sub.example.com` and any other subdomain. The matching logic normalizes `www.` and checks subdomain suffixes, so you do not need a separate wildcard entry for subdomains. The `*.example.com` format is accepted but behaves identically to `example.com`.
 
 Q: Why does the UI suggest extra domains when I add YouTube?
 A: YouTube loads video content from `googlevideo.com` and thumbnails from `ytimg.com`. If you whitelist YouTube from ad blocking but not these CDN domains, some blocking rules may still fire on those requests. The suggestions let you add the full set in one step.
@@ -898,7 +904,7 @@ Vertical tabs put your entire tab list in Chrome's native side panel, giving you
 
 ## How It Works
 
-When you click the SuperchargeNavigation toolbar button, Chrome's side panel opens and displays your full tab list. The panel stays open as you browse, updating in real time as tabs open, close, or change title. Because it uses Chrome's official Side Panel API, it behaves like a first-class part of the browser — not an injected overlay.
+When you click the SuperchargeNavigation toolbar button, the sidebar opens and displays your full tab list. On standard web pages, it appears as an in-page panel injected alongside the page content. On Chrome's own pages (chrome://, the Web Store, the PDF viewer) where injection is not possible, it falls back to Chrome's native Side Panel API. The panel stays open as you browse, updating in real time as tabs open, close, or change title.
 
 Tab groups appear as collapsible sections with their Chrome-assigned colors and names. Pinned tabs appear at the top of the list, separate from unpinned tabs, matching the mental model you already have from the standard tab bar.
 
@@ -933,8 +939,8 @@ A: No. The vertical tab list lives in Chrome's native side panel alongside your 
 Q: Will my tabs sync across devices?
 A: Yes. SuperchargeNavigation uses Chrome's built-in tab and tab group sync, so your tabs and groups sync wherever you're signed into Chrome.
 
-Q: How do I open the side panel?
-A: Click the SuperchargeNavigation toolbar button. Because the extension has no popup, that button directly opens the side panel — one click, no extra menu.
+Q: How do I open the sidebar?
+A: Click the SuperchargeNavigation toolbar button. Because the extension has no popup, that button opens the sidebar directly — one click, no extra menu. On standard web pages the sidebar appears as an in-page panel; on Chrome's own pages (chrome://, Web Store, PDF viewer) it uses Chrome's native side panel instead.
 
 Q: Can I reorder tabs by dragging?
 A: Yes. Drag any tab to a new position in the list; the change takes effect immediately with live updates as you drag.
@@ -1295,7 +1301,7 @@ Without entering hint mode, bare letter typing highlights every visible text mat
 
 Fast text selection extends this: `Shift+←/→` selects by word, `Shift+↑/↓` by line, `Shift+A` expands to the surrounding block (paragraph, list item, article element).
 
-Both type-to-select and fast text selection are off by default. Type-to-select requires a page without a focused input. Nav detects this automatically and skips activation when focus is in a form field.
+Type-to-select is on by default as of v1.3.0; fast text selection is off by default. Type-to-select requires a page without a focused input. Nav detects this automatically and skips activation when focus is in a form field.
 
 ## Conflict Resolution and Per-Site Pausing
 
@@ -1311,7 +1317,7 @@ All shortcut state and per-site pause lists are stored in `chrome.storage.local`
 
 ##### FAQ
 Q: What are the default keyboard shortcuts in SuperchargeNavigation?
-A: As of May 2026: Alt+B opens the side panel, Alt+K opens the command palette, Alt+G groups tabs by domain, Alt+Shift+G ungroups all tabs. Content-script shortcuts include Alt+click to peek a link, Alt+wheel to cycle tabs, and hold Shift for hint mode badges.
+A: As of June 2026: Alt+B opens the side panel, Alt+K opens the command palette, Alt+G groups tabs by domain, Alt+Shift+G ungroups all tabs. Content-script shortcuts include Alt+click to peek a link, Alt+wheel to cycle tabs, and hold Shift for hint mode badges.
 
 Q: Can I rebind the keyboard shortcuts to different keys?
 A: Yes. The four Chrome-registered commands (Alt+B, Alt+K, Alt+G, Alt+Shift+G) are rebindable via Chrome's built-in shortcut manager at chrome://extensions/shortcuts — with conflict detection and OS-level reservation handling. Content-script shortcuts like the hint trigger key can be changed in Navigation's own settings page.
@@ -1396,7 +1402,7 @@ Hold Shift on any page and colored letter badges appear over every link, button,
 
 ## Activating Hint Mode
 
-Hint mode is off by default. Enable it once in SuperchargeNavigation Settings under Keyboard Shortcuts, then it's available on every page.
+Hint mode is on by default as of v1.3.0. It's available on every page without any setup. To turn it off, go to SuperchargeNavigation Settings under Keyboard Shortcuts.
 
 Once enabled, hold Shift. Badges appear. Type the label. Done.
 
@@ -1457,9 +1463,9 @@ Text inputs get hints too, but activation works differently: instead of simulati
 
 | Option | Default | Notes |
 |--------|---------|-------|
-| Keyboard hints (hint mode) | Off | Enable in Settings → Keyboard Shortcuts |
+| Keyboard hints (hint mode) | On | Disable in Settings → Keyboard Shortcuts |
 | Hint trigger key | Shift | Shift, Alt, Ctrl, or Slash modal |
-| Type-to-select | Off | Related: bare letters without trigger highlight matching text |
+| Type-to-select | On | Related: bare letters without trigger highlight matching text |
 
 Hint mode and type-to-select share the same label rendering engine but activate differently. Type-to-select fires on bare letter keypresses when no input is focused; hint mode fires only while the trigger key is held.
 
@@ -1479,7 +1485,7 @@ Hint mode runs entirely in the page's content script context. No URLs, labels, o
 
 ##### FAQ
 Q: How do I activate hint mode in SuperchargeNavigation?
-A: Hint mode is off by default. Enable it in SuperchargeNavigation Settings under Keyboard Shortcuts. Once on, hold Shift on any page and letter badges appear over every link, button, and input. Release Shift to dismiss.
+A: Hint mode is on by default as of v1.3.0. Hold Shift on any page and letter badges appear over every link, button, and input. Release Shift to dismiss. You can turn it off in SuperchargeNavigation Settings under Keyboard Shortcuts.
 
 Q: What elements get hint labels?
 A: As of May 2026, hints appear on links (a), buttons, select menus, textareas, labels, and any element with an ARIA role of button, link, checkbox, radio, menuitem, tab, switch, option, searchbox, textbox, or combobox. SuperchargeNavigation also pierces closed shadow DOM roots, so web components on sites like Reddit show hints correctly.
@@ -2147,8 +2153,8 @@ Brave runs Chrome Web Store extensions, and most "best extensions" lists waste y
 
 | Extension | Version (Jun 2026) | Users | Gap it fills in Brave | Cost |
 |---|---|---|---|---|
-| SuperchargePerformance | v1.4.1 | ~3,000 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
-| SuperchargeNavigation | v1.2.2 | ~1,000 | Named workspaces, tab command bar, session snapshots | Free |
+| SuperchargePerformance | v1.4.2 | ~3,000 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
+| SuperchargeNavigation | v1.3.0 | ~1,000 | Named workspaces, tab command bar, session snapshots | Free |
 | Dark Reader | v4.9.125 | ~7M | Dark mode for website content, per-site | Free |
 | Bitwarden | v2026.5.1 | ~6M | Open-source password manager beyond the browser | Free / paid |
 | Session Buddy | v4.1.2 | ~1M | Session backup and crash recovery | Free |
@@ -2170,7 +2176,7 @@ What the native trio lacks is depth. The strip has no workspaces. Memory Saver h
 
 ## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
 
-Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.1, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
+Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.2, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
 
 - **Suspension timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier; the PRO tier, waitlist-only for now, unlocks custom values down to seconds.
 - **Multi-signal protection.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 25+ web apps are auto-protected out of the box: Figma, Notion, Slack, Google Docs, Discord, Zoom, WhatsApp Web, and others where a discard would drop a call or kill a queue.
@@ -2183,7 +2189,7 @@ If you want to compare the category first, [the tab suspender field test](/libra
 
 ## SuperchargeNavigation: Workspaces on Top of Brave's Vertical Tabs
 
-Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.2.2, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close actions. Around that core:
+Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.0, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close actions. Around that core:
 
 - **Named workspaces with full isolation.** Client work, research, and personal tabs live in separate named sets that survive restarts. Brave has nothing equivalent.
 - **Alt+K command bar** searching open tabs, bookmarks, and recent history from the keyboard.
@@ -2228,7 +2234,7 @@ Q: Does Brave have a built-in memory saver?
 A: Yes. As of June 2026, Brave's Memory Saver (Settings > System > Performance) deactivates tabs you are not using and reloads them when you return, with a manual site-exception list. What it lacks is control: no user-set suspension timer and no automatic protection for web apps like Figma or Slack. Tab suspender extensions add those layers on top of the same Chromium discard mechanism.
 
 Q: Do tab suspender extensions work on Brave?
-A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of June 2026, SuperchargePerformance (v1.4.1 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 25+ auto-protected web apps including Figma, Notion, Slack, and Google Docs.
+A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of June 2026, SuperchargePerformance (v1.4.2 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 25+ auto-protected web apps including Figma, Notion, Slack, and Google Docs.
 
 Q: Does Brave have native vertical tabs?
 A: Yes. Brave shipped native vertical tabs in version 1.52 back in May 2023, three years before this article's publication. Enable them under brave://settings/appearance or by right-clicking any tab. They support collapsing to icons, pinning, and tab groups. They are a relocated tab strip rather than an organization system: no named workspaces, no session snapshots, no command-bar search across tabs.
@@ -2588,7 +2594,7 @@ Press Alt+K on any page and a search overlay opens. Type, and it fuzzy-matches:
 
 Type a URL into the Alt+K palette and it offers to open that address; type anything else and it offers a web search. The palette also matches your bookmarks and history alongside open tabs, so one typed fragment surfaces all of them at once. The single difference from Arc: a typed URL or search opens in a fresh tab rather than navigating the current one inline the way Arc's merged bar did. Everything that made the Command Bar fast for moving between things you already had open is here.
 
-The extension is free, stores everything locally, and needs no account. As of June 2026 the Chrome Web Store version is 1.2.2.
+The extension is free, stores everything locally, and needs no account. As of June 2026 the Chrome Web Store version is 1.3.0.
 
 ## How to Set It Up
 
@@ -2636,7 +2642,7 @@ Q: What is Arc's Command Bar?
 A: Arc's Command Bar is a keyboard-launched overlay (Cmd+T) that searches open tabs, history, and bookmarks, switches between them, and runs actions like opening a new tab or jumping to a Space. It replaced the traditional address bar as the primary way to navigate Arc. As of June 2026 it still works in Arc, but Arc itself has been in maintenance mode since May 2025.
 
 Q: How do I get Arc's Command Bar in Chrome?
-A: Chrome has no built-in equivalent. The closest match is SuperchargeNavigation's Alt+K command palette (extension v1.2.2 on the Chrome Web Store as of June 2026, free, no account). Press Alt+K on any page to open a fuzzy-search overlay that finds and switches open tabs across all windows, reopens recently-closed tabs, and switches or creates workspaces.
+A: Chrome has no built-in equivalent. The closest match is SuperchargeNavigation's Alt+K command palette (extension v1.3.0 on the Chrome Web Store as of June 2026, free, no account). Press Alt+K on any page to open a fuzzy-search overlay that finds and switches open tabs across all windows, reopens recently-closed tabs, and switches or creates workspaces.
 
 Q: What keyboard shortcut opens the command palette in SuperchargeNavigation?
 A: Alt+K opens the command palette on any page. It works whether or not the sidebar search field is visible. Inside the palette, type to fuzzy-match tabs and workspaces, use arrow keys to move through results, and press Enter to switch. As of June 2026 this is the default and is not rebindable from the options page.
@@ -3136,7 +3142,7 @@ So "Need 3043MB" is not a claim about your machine. It is the size of the contig
 
 The manual version of Fix 1 is discarding tabs by hand every time you open a large file. SuperchargePerformance does it on a timer: idle tabs suspend with `chrome.tabs.discard()` after a set interval, releasing their memory back to the pool so Photopea's tab can claim the contiguous block it needs.
 
-Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of June 2026 the live version is v1.4.1.
+Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of June 2026 the live version is v1.4.2.
 
 If Photopea is the only heavy tab you ever have open, the extension will not change much — at that point the answer is Fix 3 (shrink the file) or Fix 6 (split it). Suspension helps when Photopea competes with a wall of other tabs for the same block.
 
@@ -3837,7 +3843,7 @@ Two rows there are real gaps. Sidekick's app sidebar — Gmail, Notion, Slack pi
 
 ## Rebuilding Sessions and Workspaces in Chrome
 
-For the core of Sidekick — Sessions and the workspace sidebar — SuperchargeNavigation is the closest single-extension match. It is v1.2.2 on the Chrome Web Store as of June 2026, free, with no account.
+For the core of Sidekick — Sessions and the workspace sidebar — SuperchargeNavigation is the closest single-extension match. It is v1.3.0 on the Chrome Web Store as of June 2026, free, with no account.
 
 **Workspaces replace the workspace sidebar.** Each workspace holds its own tabs, independently. Switching workspaces switches the whole context, not a filter view: you see only the active workspace's tabs, exactly the separation Sidekick's sidebar gave you between Work, Personal, and a project. Workspace state is stored locally. If you want it on a second machine, you opt into Chrome's own account sync and the data rides your Google account, not a SuperchargeBrowser server.
 
@@ -3881,7 +3887,7 @@ Q: Is the Sidekick browser coming back?
 A: No. As of June 2026, there is no sign of a Sidekick revival. The team moved to Perplexity's Comet browser after the May 2025 acquisition, the app stopped receiving updates, and the original meetsidekick.com domain now points to Comet. Comet is an AI-assistant browser, not a continuation of Sidekick's Sessions-and-workspace tab model.
 
 Q: What is the best Sidekick browser alternative that stays on Chrome?
-A: For Sidekick's core workflow — a workspace sidebar and saved Sessions — SuperchargeNavigation (v1.2.2, free, on the Chrome Web Store as of June 2026) is the closest single-extension match. It adds named workspaces, an Alt+K command bar, automatic session snapshots, and link peek, all stored locally with no account.
+A: For Sidekick's core workflow — a workspace sidebar and saved Sessions — SuperchargeNavigation (v1.3.0, free, on the Chrome Web Store as of June 2026) is the closest single-extension match. It adds named workspaces, an Alt+K command bar, automatic session snapshots, and link peek, all stored locally with no account.
 
 Q: How do I get Sidekick's Sessions feature in Chrome?
 A: Sidekick Sessions saved a named set of tabs you could reopen later. In Chrome, SuperchargeNavigation replaces this two ways: named workspaces hold their own isolated tabs, and an automatic snapshot system saves your tab state every 5 minutes (up to 50 rolling snapshots, roughly the last four hours) so you can rewind to an earlier state. As of June 2026 this works on Chrome 149.
@@ -4162,7 +4168,7 @@ The fastest way to rebuild your set: open Arc's extensions page (`arc://extensio
 
 This is where the migration stops being a copy job. Chrome has no native Space. Tab Groups look similar but share one tab strip: every group's tabs stay visible at once, so there is no context isolation and no key to flip from Work mode to Personal mode.
 
-To get the actual Arc Spaces behavior back (switch context and the previous space's tabs vanish from view), you add named workspaces through an extension. [SuperchargeNavigation](/library/arc-spaces-chrome-extension/) (v1.2.2, free, no account) is the direct equivalent. Create one workspace per Arc Space you had, open the relevant tabs in each, and switching between them swaps the entire tab context the way Arc did. Your imported bookmark folders from Step 2 become the seed list: open a folder's links inside its matching workspace and you have reconstructed that Space.
+To get the actual Arc Spaces behavior back (switch context and the previous space's tabs vanish from view), you add named workspaces through an extension. [SuperchargeNavigation](/library/arc-spaces-chrome-extension/) (v1.3.0, free, no account) is the direct equivalent. Create one workspace per Arc Space you had, open the relevant tabs in each, and switching between them swaps the entire tab context the way Arc did. Your imported bookmark folders from Step 2 become the seed list: open a folder's links inside its matching workspace and you have reconstructed that Space.
 
 Each workspace holds its tabs independently. Switching hides the previous workspace's tabs entirely rather than filtering a shared list. Sessions persist across Chrome restarts, and a snapshot of your layout saves automatically every 5 minutes (up to 50 rolling saves, roughly the last four hours), so an accidental close is recoverable from a time-travel slider.
 
@@ -4208,7 +4214,7 @@ Leaving Arc usually comes down to one factor: the extension library. If that is 
 
 #### FAQ
 Q: How do I move my Arc bookmarks and spaces to Chrome?
-A: As of June 2026, export from Arc with File menu, Export Bookmarks (it writes a standard HTML file), then import it in Chrome via Bookmarks, Import Bookmarks and Settings, From HTML file. Your Arc Spaces flatten into ordinary bookmark folders during this transfer — Chrome has no native concept of a Space. To rebuild switchable, isolated spaces, add named workspaces through an extension like SuperchargeNavigation (v1.2.2, free).
+A: As of June 2026, export from Arc with File menu, Export Bookmarks (it writes a standard HTML file), then import it in Chrome via Bookmarks, Import Bookmarks and Settings, From HTML file. Your Arc Spaces flatten into ordinary bookmark folders during this transfer — Chrome has no native concept of a Space. To rebuild switchable, isolated spaces, add named workspaces through an extension like SuperchargeNavigation (v1.3.0, free).
 
 Q: Is Arc Browser shutting down in 2026?
 A: As of June 2026, Arc is in maintenance mode, not shut down. The Browser Company stopped active feature development in May 2025 and Atlassian closed its $610M acquisition on October 21, 2025. Arc still downloads at arc.net and gets Chromium security patches — the latest macOS build was v1.147.1 (May 22, 2026) — but no new features are planned and no sunset date has been announced. The team builds Dia, an AI-first browser, now.
@@ -4609,7 +4615,7 @@ Chrome 149 still has no equivalent. This is not a gap that Chrome's roadmap is a
 
 ## How SuperchargeNavigation Replicates Arc Spaces
 
-SuperchargeNavigation (v1.2.2, verified live on CWS as of June 2026) provides the workspace layer that Chrome does not. The match to Arc Spaces is not incidental: the extension's workspace model was designed for exactly this user.
+SuperchargeNavigation (v1.3.0, verified live on CWS as of June 2026) provides the workspace layer that Chrome does not. The match to Arc Spaces is not incidental: the extension's workspace model was designed for exactly this user.
 
 **Named, isolated workspaces.** Each workspace in Nav holds its own tab set. When you switch from Work to Personal, the Work tabs leave the view entirely — they remain running in memory, but they are not visible and do not compete for attention. This is the Arc Spaces behavior at the functional level. You can have as many workspaces as you need; there is no paid tier or limit on workspace count.
 
@@ -4663,23 +4669,23 @@ The path forward from Arc Spaces depends on what you actually needed from them:
 
 Arc entered maintenance mode May 2025 (12 months before this article's May 2026 publication). The team has moved to Dia. Waiting for Arc to return is not the practical path. The workflow is rebuildable in Chrome today, with tools that are actively maintained.
 
-SuperchargeNavigation v1.2.2 is free, zero telemetry, no account required. The workspace separation Arc users built their workflows around is available today.
+SuperchargeNavigation v1.3.0 is free, zero telemetry, no account required. The workspace separation Arc users built their workflows around is available today.
 
 #### FAQ
 Q: Does Chrome have something like Arc Spaces?
-A: As of June 2026, Chrome has no native equivalent to Arc Spaces. Chrome's Tab Groups add labels and color-coding but share the same tab strip — there is no context isolation, no per-Space tab hiding, and no session switching. Named workspaces via an extension like SuperchargeNavigation (v1.2.2, free) replicate the core Arc Spaces behavior: each workspace holds its own tabs independently, switching is instant, and sessions persist across browser restarts.
+A: As of June 2026, Chrome has no native equivalent to Arc Spaces. Chrome's Tab Groups add labels and color-coding but share the same tab strip — there is no context isolation, no per-Space tab hiding, and no session switching. Named workspaces via an extension like SuperchargeNavigation (v1.3.0, free) replicate the core Arc Spaces behavior: each workspace holds its own tabs independently, switching is instant, and sessions persist across browser restarts.
 
 Q: What happened to Arc Browser and Arc Spaces?
 A: As of June 2026, Arc Browser is in maintenance mode. The Browser Company stopped active development in May 2025 and pivoted to Dia, an AI-first product. Atlassian acquired The Browser Company in September 2025 for $610M. Arc still runs but receives no new features. Arc Spaces — the named, isolated tab contexts Arc was known for — are no longer receiving updates, and the broader Arc ecosystem has wound down.
 
 Q: What is the closest Chrome extension to Arc Spaces?
-A: SuperchargeNavigation (v1.2.2, free, no account required) is the closest Chrome equivalent to Arc Spaces as of June 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Shift+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
+A: SuperchargeNavigation (v1.3.0, free, no account required) is the closest Chrome equivalent to Arc Spaces as of June 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Shift+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
 
 Q: Can I use Chrome Profiles instead of Arc Spaces?
 A: Chrome Profiles provide stronger isolation — separate cookies, passwords, and extensions per profile — but they are not a practical Spaces replacement. Each profile is a separate Chrome window with its own session state. There is no keyboard shortcut to switch between profiles, no unified tab search across them, and no session snapshots. Profiles are the right tool for separate Google accounts or full identity separation. For fast workspace switching without the overhead, use named workspaces.
 
 Q: Does SuperchargeNavigation sync workspaces across devices like Arc Spaces did?
-A: Yes, with opt-in. As of June 2026, SuperchargeNavigation v1.2.2 includes cross-device workspace sync via your browser's own account sync (Google account on Chrome, Microsoft account on Edge). Sync is off by default — enable it in Settings after signing into your browser on both devices. Sync runs through the browser's own infrastructure, not SuperchargeBrowser servers, so we cannot read your data. With sync off, workspace data stays local. Either way: zero telemetry.
+A: Yes, with opt-in. As of June 2026, SuperchargeNavigation v1.3.0 includes cross-device workspace sync via your browser's own account sync (Google account on Chrome, Microsoft account on Edge). Sync is off by default — enable it in Settings after signing into your browser on both devices. Sync runs through the browser's own infrastructure, not SuperchargeBrowser servers, so we cannot read your data. With sync off, workspace data stays local. Either way: zero telemetry.
 
 ---
 
@@ -4891,7 +4897,7 @@ This is what you came for. Every claim verified against current Chrome Web Store
 
 | | uBlock Origin (full) | uBlock Origin Lite | AdGuard | Ghostery | SuperchargePerformance |
 |---|---|---|---|---|---|
-| Version (Jun 2026) | v1.71.0 | v2026.529.1448 | v5.4.2.0 | v10.5.45 | v1.4.1 |
+| Version (Jun 2026) | v1.71.0 | v2026.529.1448 | v5.4.2.0 | v10.5.45 | v1.4.2 |
 | **Runs on Chrome 149?** | **No — MV2, removed** | Yes | Yes | Yes | Yes |
 | CWS rating | n/a on Chrome | 4.5 stars | 4.7 stars | 4.7 stars | Featured badge |
 | Users | Firefox only now | ~16M (Chrome) | ~17M | ~2M | ~2,700 |
@@ -4943,7 +4949,7 @@ Smaller user base (~2M) than the others, but a loyal one. If your primary motiva
 
 ## SuperchargePerformance — When Ads Are Only Half the Problem
 
-v1.4.1. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
+v1.4.2. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
 
 **Layer 1: Ad and tracker blocking.** 186,645 rules compiled from 22 curated sources. Three tiers — 100K ad and tracker domains on the free tier, 65K privacy and telemetry domains on Medium, 22K malware, phishing, and fraud domains on Pro. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
 
@@ -4989,7 +4995,7 @@ If you searched for "Loon" expecting a YouTube ad blocker: [Loon](https://github
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
-A: As of June 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.71.0) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.1) covers all four — plus tab suspension and a RAM dashboard — in a single MV3 extension with 186K+ rules from 22 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
+A: As of June 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.71.0) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.2) covers all four — plus tab suspension and a RAM dashboard — in a single MV3 extension with 186K+ rules from 22 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
 
 Q: What is the best ad blocker for Chrome in 2026?
 A: As of June 2026, the major Chrome ad blockers are all Manifest V3 — AdGuard, Ghostery, Adblock Plus, and uBlock Origin Lite. Full uBlock Origin (v1.71.0) still has the deepest filter coverage of any blocker, but it is MV2 and no longer runs on Chrome, only on Firefox. On Chrome, uBlock Origin Lite is the zero-overhead option, AdGuard adds DNS-level protection in its paid apps, and SuperchargePerformance combines ad blocking (186K+ DNR rules) with tab suspension in a single extension.
@@ -5060,7 +5066,7 @@ The last three are named specifically as what to avoid, or use only on 8GB+ hard
 
 ## SuperchargePerformance: Tab Suspension + Ad Blocking Combined
 
-**CWS version: v1.4.1 (June 2026). We built this extension.**
+**CWS version: v1.4.2 (June 2026). We built this extension.**
 
 On a Chromebook, the two biggest RAM drains are idle tab renderers and ad iframes. SuperchargePerformance addresses both.
 
@@ -5145,10 +5151,10 @@ If you use Google Docs, Gmail, and YouTube regularly: SuperchargePerformance aut
 
 #### FAQ
 Q: What Chrome extensions are safe to install on a 4GB Chromebook?
-A: As of June 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.1) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
+A: As of June 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.2) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
 
 Q: Does SuperchargePerformance work on ChromeOS?
-A: As of June 2026, yes. SuperchargePerformance (v1.4.1) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
+A: As of June 2026, yes. SuperchargePerformance (v1.4.2) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
 
 Q: How many Chrome extensions should I have on a Chromebook?
 A: As of June 2026, 5-8 well-built extensions usually cause no noticeable Chrome overhead on Chromebook. Beyond 10, audit each one individually. On a 4GB Chromebook, each background-active extension adds 5-30 MB of memory overhead and some CPU. The practical limit depends on what each extension does — a declarative-only extension like uBlock Origin Lite costs near zero; a tab manager that syncs cloud state costs meaningfully more.
@@ -5411,7 +5417,7 @@ Where it fits: archiving research sessions and named project states for later re
 
 ## SuperchargeNavigation: Workspaces, Command Bar, Peek Preview
 
-**Version:** v1.2.2 | **CWS Status:** Live (Chrome + Edge) | **Rating:** 5.0/5 | **Free, no account**
+**Version:** v1.3.0 | **CWS Status:** Live (Chrome + Edge) | **Rating:** 5.0/5 | **Free, no account**
 
 SuperchargeNavigation covers the active organization and search-first categories in one extension. The entry point is a vertical tab sidebar that shows full tab titles, group structures, and pinned tabs without the truncation of the native tab strip. The three features that earn its place here:
 
@@ -5431,7 +5437,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 
 ## Full Comparison Table
 
-| Feature | OneTab v2.14 | Tab Wrangler v8.3.0 | Workona v3.1.33 | Session Buddy v4.1.2 | SuperchargeNavigation v1.2.2 | Chrome Native |
+| Feature | OneTab v2.14 | Tab Wrangler v8.3.0 | Workona v3.1.33 | Session Buddy v4.1.2 | SuperchargeNavigation v1.3.0 | Chrome Native |
 |---------|-------------|---------------------|-----------------|---------------|------------------------------|--------------|
 | Named workspaces | No | No | Yes | No | Yes (unlimited) | No |
 | Auto-close inactive tabs | No | Yes | No | No | No | No |
@@ -5446,7 +5452,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 | Cross-device sync | No | No | Yes (cloud) | No | Opt-in (Chrome/Edge sync) | Via Google account |
 | Account required | No | No | Yes | No | No | No |
 | Data storage | Local | Local | Cloud | Local | Local (default) | Local / Google |
-| Last updated | March 2026 | April 2026 | January 2025 | April 2026 | v1.2.2 2026 | Chrome 149 |
+| Last updated | March 2026 | April 2026 | January 2025 | April 2026 | v1.3.0 2026 | Chrome 149 |
 | Price | Free | Free | Free + paid plans | Free | Free | Built-in |
 
 ## How to Choose
@@ -5466,7 +5472,7 @@ Chrome's built-in Memory Saver suspends tabs automatically, but it has no worksp
 
 #### FAQ
 Q: What is the best Chrome tab manager extension in 2026?
-A: As of June 2026, the right answer depends on which tab problem you have. For bulk tab collapse and immediate RAM savings, OneTab (v2.14, 2M users) is the fastest tool. For named workspaces with team-grade cloud sync, Workona (v3.1.33, 200,000+ users) is the most-installed paid option. For local-first named workspaces with session recovery and keyboard search, SuperchargeNavigation (v1.2.2, free) covers those gaps in a single extension with no account required. For auto-closing old tabs on a timer, Tab Wrangler (v8.3.0) handles that specifically. Chrome 149's built-in tab groups handle basic organization for users managing under 15 tabs.
+A: As of June 2026, the right answer depends on which tab problem you have. For bulk tab collapse and immediate RAM savings, OneTab (v2.14, 2M users) is the fastest tool. For named workspaces with team-grade cloud sync, Workona (v3.1.33, 200,000+ users) is the most-installed paid option. For local-first named workspaces with session recovery and keyboard search, SuperchargeNavigation (v1.3.0, free) covers those gaps in a single extension with no account required. For auto-closing old tabs on a timer, Tab Wrangler (v8.3.0) handles that specifically. Chrome 149's built-in tab groups handle basic organization for users managing under 15 tabs.
 
 Q: Does Chrome have a built-in tab manager in 2026?
 A: As of June 2026, Chrome 149 includes native tab groups (Chrome 89), vertical tabs via chrome://flags (Chrome 146), and a keyboard tab-search dropdown (Ctrl+Shift+A, Chrome 89). What it does not include: named workspaces, session recovery that survives browser restarts, search across bookmarks/history alongside open tabs, or automatic tab suspension. Extensions are still required for those features.
@@ -5624,7 +5630,7 @@ Description: Chrome Memory Saver waits for RAM pressure. These 6 extensions susp
 
 > **Key takeaways**
 > - Chrome Memory Saver suspends tabs **only after RAM pressure builds**. Timer-based extensions act proactively after idle time, regardless of system state.
-> - **SuperchargePerformance** (v1.4.1, May 2026) adds ad blocking and a RAM dashboard to tab suspension. **Tab Wrangler** (v8.3.0, April 30 2026) auto-closes and logs old tabs.
+> - **SuperchargePerformance** (v1.4.2, June 2026) adds ad blocking and a RAM dashboard to tab suspension. **Tab Wrangler** (v8.3.0, April 30 2026) auto-closes and logs old tabs.
 > - **Auto Tab Discard** works but hasn't updated on CWS since February 2024. The Great Suspender forks (Reloaded and Marvellous) are volunteer-maintained and both live on CWS.
 
 Six open-source or free tab suspenders exist for Chrome in 2026. One hasn't shipped a CWS update in over two years. One was banned for malware and survived as two forks. The right pick depends on what you're actually after: proactive suspension, auto-close with a log, a memory dashboard, or ad blocking bundled in. This page covers the verified current state of each.
@@ -5671,7 +5677,7 @@ Before the extension reviews, these are the criteria that actually matter:
 
 ### SuperchargePerformance
 
-**v1.4.1 · ~2,700 weekly users · 4.56/5 (16 ratings) · Updated May 2026 · MV3**
+**v1.4.2 · ~2,700 weekly users · 4.56/5 (16 ratings) · Updated June 2026 · MV3**
 
 [Chrome Web Store](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 
@@ -5771,7 +5777,7 @@ Still a one-developer volunteer project, with the same structural caveats as any
 
 | Extension | Users | Rating | MV3 | Last CWS Update | Suspension Method | Idle Timer | Ad Blocking | RAM Dashboard | Cost |
 |-----------|-------|--------|-----|-----------------|-------------------|------------|-------------|---------------|------|
-| SuperchargePerformance | ~2,700 | 4.56/5 | Yes | May 2026 | chrome.tabs.discard() | Yes (15 min free, 5 min medium, custom PRO) | Yes (186,645 rules) | Yes | Free + PRO |
+| SuperchargePerformance | ~2,700 | 4.56/5 | Yes | June 2026 | chrome.tabs.discard() | Yes (15 min free, 5 min medium, custom PRO) | Yes (186,645 rules) | Yes | Free + PRO |
 | Tab Wrangler | 70,000 | 4.4/5 | Yes | April 30, 2026 | Auto-close + Corral log | Yes | No | No | Free |
 | Auto Tab Discard | 100,000 | 4.2/5 | Yes | Feb 17, 2024 | chrome.tabs.discard() | Yes | No | No | Free |
 | OneTab | 2,000,000 | 4.5/5 | Yes | March 22, 2026 | Tab consolidation (close) | No | No | No | Free |
@@ -5809,7 +5815,7 @@ A tab suspender also can't fix a Chrome process that has leaked memory through a
 
 #### FAQ
 Q: What is the best tab suspender extension for Chrome in 2026?
-A: As of June 2026, the most actively maintained options are SuperchargePerformance (v1.4.1, updated May 2026), Tab Wrangler (v8.3.0, updated April 30 2026), and Great Suspender Reloaded (updated May 1 2026). SuperchargePerformance combines tab suspension with ad blocking and a RAM dashboard. Tab Wrangler auto-closes old tabs and logs them. Great Suspender Reloaded is a fork of the original suspender with a custom suspension page.
+A: As of June 2026, the most actively maintained options are SuperchargePerformance (v1.4.2, updated June 2026), Tab Wrangler (v8.3.0, updated April 30 2026), and Great Suspender Reloaded (updated May 1 2026). SuperchargePerformance combines tab suspension with ad blocking and a RAM dashboard. Tab Wrangler auto-closes old tabs and logs them. Great Suspender Reloaded is a fork of the original suspender with a custom suspension page.
 
 Q: Is Auto Tab Discard still maintained in 2026?
 A: Auto Tab Discard (v0.6.8.2) is still on the Chrome Web Store as of June 2026 with 100,000 users. Its last CWS update was February 17, 2024 — over two years ago. It works on current Chrome but has not had a public update since then.
@@ -5917,7 +5923,7 @@ The bypass logic runs entirely in your browser — no playback metadata leaves t
 
 | | TwitchAdblock | TTV LOL Pro | Alternate Player | SuperchargePerformance |
 |---|---|---|---|---|
-| Version (Jun 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.1 |
+| Version (Jun 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.2 |
 | CWS users | 100K+ | 200K+ | 80K+ | — |
 | MV3 | Yes | Yes | Yes | Yes |
 | Bypass method | Worker hijack + M3U8 sub | Proxy + clean token | Embed player swap | Worker hijack + M3U8 sub |
@@ -6164,11 +6170,11 @@ YouTube coverage is a side effect of AdGuard's general blocking stack, not its c
 | uBlock Origin | v1.71.0 | 15M | No (MV2) | Scriptlets (reactive) | 1-4 weeks (Chrome) | Full | Yes |
 | uBlock Origin Lite | v2026.529.1448 | 17M | Yes | None — cannot block YT ads | N/A | Good | Yes |
 | AdGuard | v5.4.2.0 | 17M | Yes | Mixed (inconsistent) | 24-48h | Full | Free/Paid |
-| SuperchargePerformance | v1.4.1 | ~2.7K | Yes | DNR + API proxy (AdBlock for YT base) + fallback + cosmetic | 24-48h | 186K+ DNR rules | Yes |
+| SuperchargePerformance | v1.4.2 | ~2.7K | Yes | DNR + API proxy (AdBlock for YT base) + fallback + cosmetic | 24-48h | 186K+ DNR rules | Yes |
 
 ## SuperchargePerformance: The Multi-Utility Case
 
-**v1.4.1 · verified June 2026**
+**v1.4.2 · verified June 2026**
 
 SuperchargePerformance's YouTube blocking runs four layers in sequence, three of which are proprietary:
 
@@ -6244,7 +6250,7 @@ If you arrived here searching for "Loon" as a YouTube ad blocker: [Loon](https:/
 
 #### FAQ
 Q: What is the best YouTube ad blocker for Chrome in 2026?
-A: As of June 2026, the most reliable YouTube-specific ad blockers on Chrome are AdBlock for YouTube (v7.2.1, 11M users) and SuperchargePerformance (v1.4.1), which shares AdBlock for YouTube's upstream API-proxy engine but layers three additional proprietary blocking mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. AdBlock for YouTube focuses entirely on the API-proxy approach; SuperchargePerformance adds those three extra layers. uBlock Origin (v1.71.0) also blocks YouTube ads via scriptlets, but has had multi-week gaps during anti-adblock waves. uBlock Origin Lite cannot block YouTube ads at all — its declarative rule set has no mechanism to intercept player data. AdGuard (v5.4.2.0) is inconsistent on YouTube specifically.
+A: As of June 2026, the most reliable YouTube-specific ad blockers on Chrome are AdBlock for YouTube (v7.2.1, 11M users) and SuperchargePerformance (v1.4.2), which shares AdBlock for YouTube's upstream API-proxy engine but layers three additional proprietary blocking mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. AdBlock for YouTube focuses entirely on the API-proxy approach; SuperchargePerformance adds those three extra layers. uBlock Origin (v1.71.0) also blocks YouTube ads via scriptlets, but has had multi-week gaps during anti-adblock waves. uBlock Origin Lite cannot block YouTube ads at all — its declarative rule set has no mechanism to intercept player data. AdGuard (v5.4.2.0) is inconsistent on YouTube specifically.
 
 Q: Why did my YouTube ad blocker stop working in 2026?
 A: As of June 2026, YouTube has pushed multiple anti-adblock updates since 2023, the most significant being the June 2025 wave — about a year before this update. Each update changes how ad metadata is packaged in the player's API response, breaking extensions that rely on static scriptlets. Extensions need to update their interception code within 24-48 hours or ads return. Since June 2025, YouTube's anti-adblock pressure has shifted from DOM-level scriptlet-busting waves to limited Server-Side Ad Insertion (SSAI) testing — the next structural threat rather than another wave. If SSAI is fully deployed, ads would be stitched into the video stream before delivery, which no browser extension can intercept.
@@ -7514,7 +7520,7 @@ Neither of these is a session manager. They are convenience features. A session 
 | Cloud sync | No | No | No | No (Sync ≠ sessions) |
 | Account required | No | No | No | Google account |
 | Free | Yes | Yes | Yes | Built-in |
-| Current version | 4.1.2 (Apr 2026) | 7.3.0 (Feb 2026) | v1.2.2 (2026) | Chrome 149 |
+| Current version | 4.1.2 (Apr 2026) | 7.3.0 (Feb 2026) | v1.3.0 (2026) | Chrome 149 |
 
 ## Session Buddy: The Reliable Standard
 
@@ -11624,7 +11630,7 @@ Chrome's `chrome.tabs.discard()` API works differently. The tab's renderer proce
 | Feature | Marvellous Suspender | SuperchargePerformance |
 |---------|---------------------|----------------------|
 | Suspension method | Custom suspension page | `chrome.tabs.discard()` (invisible) |
-| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.1, CWS-live June 2026) |
+| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.2, CWS-live June 2026) |
 | RAM freed per suspended tab | 90-95% | 90-95% |
 | Back button affected | Possible (history entry) | No |
 | Suspension screen | Yes | None |
@@ -13938,7 +13944,7 @@ This timing matters. The script doing the removal has to run before the player d
 
 Pre-rolls are handled at page load. Mid-rolls are a second problem: YouTube fetches additional ad batches through network calls as you watch. A complete fix also monitors this ongoing traffic and strips ad data from each subsequent response before the player processes it.
 
-SuperchargePerformance (v1.4.1) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
+SuperchargePerformance (v1.4.2) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
 
 ## How SuperchargePerformance Does It
 
@@ -14013,7 +14019,7 @@ Q: Does uBlock Origin block YouTube ads on Chrome in 2026?
 A: As of June 2026, uBlock Origin (v1.71.0) does block YouTube ads on Chrome using scriptlets — small scripts injected into the page to strip ad data from YouTube's API responses. It works most of the time. The complication: YouTube actively ships anti-adblock updates that temporarily defeat scriptlet-based blockers, and there have been windows of days or weeks where uBlock's scripts fell behind YouTube's changes. Firefox users with uBlock Origin have an additional backup layer that makes it more consistent. On Chrome, the scriptlet approach alone is the mechanism — effective, but fragile by nature.
 
 Q: What is the most reliable way to block YouTube ads on Chrome in 2026?
-A: As of June 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.1) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
+A: As of June 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.2) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
 
 Q: Will YouTube's anti-adblock detection catch this fix?
 A: As of June 2026, SuperchargePerformance bypasses YouTube's anti-adblock detection by removing ad data before the player initializes — the player sees a clean configuration with no ad slots, so the detection logic has nothing to find. A click-skip fallback handles rare cases where a placement slips through.
@@ -15744,7 +15750,7 @@ Named workspaces — where each project lives in its own isolated tab context �
 
 SuperchargeNavigation adds this to Chrome's side panel. Each workspace stores its tabs independently. Switching workspaces swaps the visible context completely, the same way Arc's Spaces did before Arc entered maintenance mode in May 2025.
 
-A few specifics verified against the v1.2.2 source (live on Chrome Web Store as of June 2026):
+A few specifics verified against the v1.3.0 source (live on Chrome Web Store as of June 2026):
 
 - **50 auto-snapshots**, stored locally, at up to 5-minute intervals via `chrome.alarms`. The ring buffer discards the oldest when full. No manual save step.
 - **Alt+K command bar** searches across all open tabs in all open windows — fuzzy match, instant results. Not just the active workspace.
