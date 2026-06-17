@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-06-13
+> Last updated: 2026-06-17
 > For a summary index, see /llms.txt
 
 ## Products
@@ -17,10 +17,10 @@
 - 13 individually toggleable features per domain
 - 25+ auto-protected web apps across productivity, media, and calls (Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby)
 - Zero telemetry, zero tracking, zero data collection, fully local
-- Version: 1.4.2
+- Version: 1.4.3
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live May 2026)
 - Weekly active users: 5,000+ combined across the extension family (Chrome Web Store)
-- Install (Chrome): https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
+- Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol
 
 ### SuperchargeNavigation
@@ -39,7 +39,7 @@
 - Version: 1.3.0 (launched March 13, 2026)
 - Verified Publisher on Chrome Web Store
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live June 2026)
-- Install (Chrome): https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl
+- Install (Chrome): https://chromewebstore.google.com/detail/vertical-tabs-tab-manager/mpkbppjbchjdohbjgeoamdehklmapgnl
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb
 
 ### SuperchargeAudio
@@ -2142,6 +2142,695 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 
 ## Library Articles
 
+### Best AI Browsers 2026: Atlas, Comet, Dia Ranked
+
+URL: https://www.superchargebrowser.com/library/best-ai-browsers-2026/
+Category: comparison | Extension: navigation | Updated: 2026-06-17
+Description: Comet is the only cross-platform pick; Atlas and Dia are Mac-only. We rank the AI browsers, then the Chrome + extension setup that skips switching. June 2026.
+
+You've watched three demos of an AI browser answering questions about the page you're on, you've got Chrome open with the extensions and tab layout you spent a year tuning, and now you're wondering whether to throw that away for Atlas, Comet, or Dia. Start with the question that settles half the decision before features matter: what's your operating system? As of June 2026, Perplexity Comet is the only one of these that runs on Windows, Mac, iOS, and Android, and its browser is free. ChatGPT Atlas has the strongest agent but is macOS-only. Dia is the most refined reader's assistant, also macOS-only. All four are Chromium underneath, so your extensions install in every one.
+
+> **Key takeaways**
+> - **Comet is the only cross-platform pick.** Atlas and Dia are both macOS-only as of June 2026, which removes them from the running for most Windows and Linux users before features even enter the discussion.
+> - **The AI is the product; the tabs are an afterthought.** None of the four brings Arc-style named workspaces, and their tab management stays close to stock Chromium. The differentiator is the assistant.
+> - **You probably don't need to switch.** A ChatGPT, Claude, or Gemini sidebar extension covers most of the assistant value inside Chrome, where your workspaces, RAM tooling, and full extension library already live.
+
+You keep hearing that the AI browser is the future, that one of these will replace Chrome, and that they all run your extensions anyway so the switch is free. Two of those are roughly true. The third hides a catch: the switch costs you a platform, a tuned tab setup, and in some cases your wallet. Here is how the four stack up, and what staying on Chrome actually gives up.
+
+## The Ranking
+
+This is ordered for the typical reader: someone on Chrome, possibly on Windows, deciding whether any AI browser is worth the move. OS reach and cost are weighted heavily, because a brilliant browser you can't install is not a real option.
+
+**1. Perplexity Comet: the only one most people can actually use.** Comet runs on Windows, macOS, iOS, and Android, and the browser went free worldwide on March 23, 2026. Its AI sidebar handles search, page summaries, and translation, with an answer engine that's strong for research. The agentic auto-browse is the weak spot (unreliable in practice), but as a free, cross-platform AI browser, nothing else is close on accessibility. Full breakdown: [Perplexity Comet vs Chrome extensions](/library/perplexity-comet-vs-chrome-extensions/).
+
+**2. ChatGPT Atlas: the strongest agent, locked to one platform.** Atlas is the one with a real agent mode: describe a multi-step task and it navigates, clicks, and fills forms on its own. No Chrome extension reproduces that one-for-one. The cost is steep on two axes: it's macOS-only as of June 2026, and agent mode plus browser memories need a $20/month ChatGPT Plus subscription. It also blocks most extensions on chatgpt.com itself. If you're on a Mac and the agent is your daily driver, this is the pick. Full breakdown: [ChatGPT Atlas vs Chrome extensions](/library/chatgpt-atlas-vs-chrome-extensions/).
+
+**3. Dia: the best reader's assistant, narrowest reach.** Dia comes from The Browser Company, the Arc team, and it shows in the polish. Its sidebar reads across your open tabs, supports @tab references, and runs custom "Skills" for summarizing and drafting. But it's macOS-only and Apple Silicon only, in beta, with Dia Pro at $20/month for unlimited use. It also abandoned Arc's named workspaces, so it's a worse Arc than Arc was. Full breakdown: [Dia vs Chrome extensions](/library/dia-browser-vs-chrome-extensions/).
+
+**4. Microsoft Edge with Copilot: the safe cross-platform default.** Not a standalone AI browser, but worth ranking: on May 13, 2026 Microsoft retired the separate "Copilot Mode" and folded AI directly into Edge across Windows, Mac, and mobile. You get multi-tab reasoning (Copilot reasons across all open tabs), Journeys (auto-grouped browsing history), and page summaries from the address bar. If you already run Edge, the AI is just there. The catch is the catch with all of Edge: it's a Microsoft funnel, and the AI is increasingly hard to fully turn off.
+
+A note on Arc itself: it's not on this list because it entered maintenance mode in May 2025 (about a year before this article) and gets no new features. If you're coming from Arc and wanted Spaces rather than AI, see the [Arc-like Chromium browsers ranking](/library/open-source-chromium-arc-like-browsers-2026/), where Vivaldi takes the top spot.
+
+## The Assistant Is the Whole Pitch
+
+Strip away the marketing and every one of these browsers is making the same bet: that an AI assistant living in the browser chrome is more valuable than another tab feature. The differences are in which AI, and how deeply it's wired in.
+
+| Browser | AI engine | Agent (acts on sites) | Platforms | Browser free? | Paid tier |
+|---|---|---|---|---|---|
+| Comet | Perplexity | Yes (unreliable) | Win, Mac, iOS, Android | Yes | Pro $20/mo |
+| Atlas | ChatGPT | Yes (strong, paid) | macOS only | Shell yes | Plus $20/mo |
+| Dia | The Browser Company | Limited | macOS (Apple Silicon) | Tier-limited | Pro $20/mo |
+| Edge + Copilot | Microsoft Copilot | Multi-tab reasoning | Win, Mac, mobile | Yes | Folded into Edge |
+
+Two things fall out of this table. First, the free-and-everywhere quadrant has exactly one true AI browser in it: Comet. Edge sits there too if you count it. Second, the autonomous agent that justifies the "this replaces how you browse" framing is an Atlas feature, on a Mac, for $20/month. The rest is page summaries and chat, which is useful but is not a reason to abandon a browser you've configured.
+
+That matters because page summaries and chat are precisely the part you can bolt onto Chrome. The autonomous agent is the part you can't. So the real question isn't "which AI browser is best." It's "is the agent worth switching platforms for, or do you just want the assistant?"
+
+## What None of Them Fix
+
+Here's the quiet thing the AI-browser pitch skips over. All four are Chromium, which means all four inherit Chromium's actual day-to-day weaknesses, and none of them solve those weaknesses, because they spent their engineering budget on the assistant instead.
+
+**No named workspaces.** Arc's Spaces were the feature people actually missed when Arc died. Not one of these four ships an equivalent isolated-workspace system. Atlas and Edge have tab groups; that's not the same as a workspace that holds its own isolated tab set you switch into wholesale.
+
+**No real RAM management.** Atlas, Comet, and Dia inherit Chromium's memory appetite with no suspension layer of their own. Edge has sleeping tabs, which helps. Open thirty tabs in Atlas and it drags exactly as hard as Chrome does. The AI assistant doesn't reclaim memory; if anything, a persistent AI sidebar adds to the footprint.
+
+**No session recovery worth the name.** A keyboard-driven command bar, peek previews, time-travel session snapshots: the power-user tab layer that made Arc feel different is absent across the board. These are AI browsers, not tab browsers, and it shows the moment you have more tabs open than the assistant can summarize.
+
+This is the gap that doesn't close by switching browsers. You'd be trading your tuned Chrome setup for a browser that has a better assistant and a worse everything-else-about-tabs.
+
+## Getting the AI-Browser Wins in Chrome
+
+If what you want is an AI assistant plus a tab setup that doesn't fall apart, you can build that in Chrome and keep your extensions, your OS, and the parts of these browsers you'd actually use.
+
+**The assistant.** Chrome ships a Gemini side panel, and the Chrome Web Store has ChatGPT and Claude sidebar extensions that summarize the current page, answer questions about it, and draft text. This won't reproduce Atlas's autonomous agent — that's the one piece that stays Atlas-only — but for "explain this, summarize that, rewrite this reply," it's the same job, and it runs on Windows and Linux where Atlas and Dia don't go at all.
+
+**The workspaces these browsers dropped.** [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) brings Arc-style named workspaces to Chrome — each holds its own isolated tab set, so Work never bleeds into Personal, and switching swaps the whole context at once. Its Alt+K command bar searches open tabs, bookmarks, and history keyboard-first, the fast manual tab-jumping none of the four AI browsers offer.
+
+**Peek previews and crash-proof sessions.** Hold Alt and click a link to open it in a peek overlay without committing it to your workspace. Your session is snapshotted automatically every 5 minutes, keeping the last 50 saves (roughly 4 hours) on a time-travel slider, so an accidental window-close doesn't erase your layout. No AI browser here has an equivalent. It's zero telemetry, no account, local-first storage; cross-device sync is opt-in and rides Chrome's own sync rather than any server of ours.
+
+**The RAM none of them manage.** [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) suspends idle tabs with `chrome.tabs.discard()`, cutting roughly 90-95% of the RAM a discarded tab held, while protecting tabs that play audio, hold unsaved form input, or are pinned.
+
+On June 16, 2026, I ran Comet, a Gemini-sidebar Chrome window, and Chrome-with-SuperchargeNavigation side by side on the same machine with twenty tabs open across three projects. The split was consistent: the AI browser won "summarize this article without leaving the page," and Chrome-plus-Nav won "jump to the right project and not lose my tab layout when I close the window." Different jobs, and only one of them needs you to change browsers.
+
+## Which One Fits Your Situation
+
+If you're on Windows or Linux and want to try an AI browser, the list is short: Comet, or Edge with Copilot. Both are free and cross-platform; Comet leads on the AI, Edge leads on already-being-installed.
+
+If you're on a Mac and an autonomous agent that acts on sites is the single feature you most want, ChatGPT Atlas is the one with no real Chrome substitute. Budget the $20/month and accept the extension hole on chatgpt.com.
+
+If you loved Arc and want that feel back, none of these AI browsers is it — they kept the chrome and dropped the Spaces. Look at [Vivaldi or the Arc-like Chromium browsers](/library/open-source-chromium-arc-like-browsers-2026/), or stay on Chrome and add workspaces with an extension.
+
+And if your honest bottleneck is tab chaos and RAM rather than AI, no browser switch fixes that better than Chrome plus the right two extensions, on whatever OS you already run. Add a ChatGPT or Claude sidebar for the assistant, and you've assembled most of every browser on this list without leaving the one you know.
+
+#### FAQ
+Q: What is the best AI browser in 2026?
+A: As of June 2026, there is no single winner — it depends on your OS. Perplexity Comet is the only one that runs on Windows, macOS, iOS, and Android, and its core browser is free, which makes it the default pick for most people. ChatGPT Atlas has the strongest agent (it acts on sites for you) but is macOS-only with agent mode at $20/month. Dia is the most polished reader-focused assistant but is also macOS-only, Apple Silicon only. Microsoft Edge with Copilot is the cross-platform pick if you already use Edge. All four are Chromium-based, so your Chrome extensions install in every one of them.
+
+Q: Which AI browsers run on Windows?
+A: As of June 2026, Perplexity Comet (Windows 10 build 1903+ or Windows 11) and Microsoft Edge with Copilot are the cross-platform AI browsers. ChatGPT Atlas and Dia are both macOS-only with no shipped Windows build. Atlas has Windows 'coming soon' and Dia has a waitlist, but neither has a release date. Windows users wanting AI-browser features today are limited to Comet, Edge, or Chrome plus an AI sidebar extension.
+
+Q: Are AI browsers free?
+A: The browser shells are mostly free; the agentic features usually are not. Comet's browser is free with rate-limited AI. Atlas and Dia are free to download, but agent mode (Atlas) and unlimited AI (Dia Pro) sit behind $20/month subscriptions. Edge's Copilot features are folded into the free browser. The pattern across all of them: page summaries and basic chat are free, while the AI that clicks and fills forms for you is paid.
+
+Q: Do AI browsers support Chrome extensions?
+A: Yes — all four covered here (Atlas, Comet, Dia, Edge) are Chromium-based, so Chrome Web Store extensions install and run. The caveats are per-browser: Atlas blocks most extensions on chatgpt.com itself, Dia treats extensions as a second-class feature with no auto-migration, and on iOS every browser loses extension support because of Apple's platform rules. On Windows and macOS desktop, extension support is broadly functional in all of them.
+
+Q: Should I switch from Chrome to an AI browser in 2026?
+A: For most people, no — not yet. As of June 2026 the AI browsers' real differentiator is an integrated assistant, and you can add a ChatGPT, Claude, or Gemini sidebar extension to Chrome to cover most of that without changing your OS, your extension library, or your tab setup. The exception is ChatGPT Atlas's agent mode, which acts autonomously on sites and has no exact Chrome equivalent. If that specific capability is your daily bottleneck and you're on a Mac, switching makes sense. Otherwise Chrome plus extensions covers the practical wins.
+
+Q: What happened to Arc, and is an AI browser the replacement?
+A: Arc entered maintenance mode in May 2025 and The Browser Company pivoted to Dia, its AI-first successor. Atlassian acquired The Browser Company for $610M (closed October 2025). So yes, the most direct lineage from Arc is Dia. But Dia dropped Arc's named workspaces in favor of an AI sidebar, which is why Arc loyalists who wanted Spaces, not AI, often end up on Vivaldi or Chrome plus a workspace extension instead.
+
+---
+
+### ChatGPT Atlas vs Chrome Extensions: What You Gain and Lose (2026)
+
+URL: https://www.superchargebrowser.com/library/chatgpt-atlas-vs-chrome-extensions/
+Category: comparison | Extension: both | Updated: 2026-06-17
+Description: ChatGPT Atlas runs Chrome extensions since it's Chromium-based. But it's Mac-only, paywalls agent mode at $20/mo, and blocks extensions on chatgpt.com itself.
+
+ChatGPT Atlas is OpenAI's Chromium-based browser with ChatGPT wired into the chrome of the window, and because it's Chromium, your Chrome Web Store extensions install and run in it. The trade is everything around that. As of June 2026 Atlas is still macOS-only, its agent mode and browser memories sit behind a $20/month ChatGPT subscription, and it blocks most extensions on chatgpt.com itself. Switching means betting your whole setup on one platform.
+
+> **Key takeaways**
+> - **Atlas runs Chrome extensions** and even imports them from Chrome, but it blocks most extensions on chatgpt.com, so your tooling has a hole exactly where you'd use OpenAI most.
+> - **It's Mac-only and partly paywalled.** No Windows or Linux build as of June 2026, and the headline agent mode needs a $20/month ChatGPT subscription.
+> - **The real draw is the agent, not the tabs.** For tab management, workspaces, and RAM, Chrome plus SuperchargeNavigation and SuperchargePerformance matches or beats Atlas, on any OS, for free.
+
+You've heard Atlas is the AI browser everyone's talking about, you've heard it runs your extensions, and you want to know what changes if you leave Chrome. Short version: you gain an AI assistant that can drive the browser for you, and you give up cross-platform reach, clean extension behavior on OpenAI's own site, and a tab setup you've spent years tuning.
+
+## What ChatGPT Atlas Is
+
+Atlas comes from OpenAI and launched on macOS on October 21, 2025. It's a Chromium browser, so it looks and behaves like Chrome at the base, but the defining feature is ChatGPT living in a sidebar that reads the page you're on, summarizes it, rewrites text, and answers questions about what's in front of you. The assistant is the product; tabs are the supporting cast.
+
+What sets Atlas apart from other AI browsers is agent mode. You describe a task and Atlas takes over the browser, navigating to sites, clicking buttons, filling forms, and stepping through multi-page workflows on its own. That's the capability OpenAI is really selling, and it's the paid part: the assistant has a free tier with usage limits, while agent mode and browser memories need a ChatGPT subscription, $20/month for ChatGPT Plus in most regions as of June 2026.
+
+OpenAI ships Atlas on a near-weekly cadence. Through early 2026 it added tab groups with emoji labels and an "Auto" search toggle between ChatGPT and Google (January 2026), then multiple-account profiles for separate personal, work, and school logins (March 2026), plus extension import, iCloud passkeys, and vertical tabs. But two constraints matter before you commit: Atlas is macOS-only as of June 2026, with no Windows, Linux, or ChromeOS build, and its best features are behind a subscription. If you're not on a Mac, or you won't pay for agent mode, much of the reason to switch evaporates.
+
+## Atlas Native vs Chrome Plus Extensions
+
+Because Atlas is Chromium-based, the foundation is shared with Chrome. The differences are in what each side stacks on top.
+
+| Capability | ChatGPT Atlas (native) | Chrome + Extensions |
+|---|---|---|
+| Chrome Web Store extensions | Yes, with import, but blocked on chatgpt.com | Yes, full and first-class everywhere |
+| AI sidebar assistant | Yes (free tier limited) | Gemini side panel, or ChatGPT/Claude extension |
+| Agent mode (acts on sites) | Yes (paid, $20/mo) | No direct equivalent |
+| Tab groups | Yes | Chrome native |
+| Vertical tabs | Yes | Chrome 146 native, or SuperchargeNavigation |
+| Named, isolated workspaces | No | SuperchargeNavigation |
+| Command bar (keyboard switching) | No | SuperchargeNavigation (Alt+K) |
+| Peek / link preview | No | SuperchargeNavigation (Alt+Click) |
+| Session snapshots / recovery | No | SuperchargeNavigation (50 auto-saves) |
+| Tab suspension (RAM) | No | SuperchargePerformance |
+| Platform | macOS only | Windows, macOS, Linux, ChromeOS |
+| Cost for full features | $20/month (ChatGPT Plus) | Free core |
+
+The honest read: Atlas wins decisively on the integrated AI agent, and Chrome-plus-extensions wins on platform reach, extension breadth, tab-management depth, and RAM control. If agent mode is the feature you'd use daily, Atlas is hard to replicate. Almost everything else on this table is something Chrome can match or beat with the right extension.
+
+## What You Gain: An Agent That Drives the Browser
+
+Atlas's agent mode is a real capability, not a gimmick. Tell it to compare three product pages and pull the prices into a list, or to fill a multi-step form, and it works the tabs for you while you do something else. The sidebar assistant, even free, is more tightly woven into the page than a bolt-on extension feels: it already knows what you're looking at, so you skip the copy-paste-into-a-chatbot dance. If your main friction is "I keep feeding pages into ChatGPT manually," Atlas removes the manual part, and no Chrome extension reproduces the autonomous agent piece one-for-one today.
+
+Weigh that against how narrow the win is. The agent is the reason to switch. The browser around it is, by OpenAI's own roadmap, still filling in basics that Chrome and its extension ecosystem settled years ago.
+
+## What You Lose: Extensions, Cross-Platform, and a Hole on chatgpt.com
+
+"Atlas runs Chrome extensions" is true, and it's doing some quiet work. The Chromium base means a Chrome Web Store extension installs and functions, and a 2026 Atlas update even added an explicit import for Passwords, Bookmarks, Extensions, and History at any time. That's better than the migration story of some AI browsers. The catch is where it stops: Atlas blocks most extensions on chatgpt.com itself, so content blockers, userscript managers like Tampermonkey, and similar tools that work everywhere else in Atlas go dark on OpenAI's own pages. If you live on chatgpt.com, you have a tooling hole exactly where you spend the most time.
+
+Then there's platform. Atlas is macOS-only as of June 2026, with no Windows, Linux, or ChromeOS build. If your machine isn't an Apple one, the switch isn't a trade-off, it's a non-starter. This is the opposite of the Arc situation: when [Arc went into maintenance mode](/library/arc-browser-dead-get-features-in-chrome/), the question was how to escape a dying browser. Atlas is alive and improving fast, but it asks Windows and Linux users to wait, and asks Mac users to accept extension gaps on the one domain they'd use most.
+
+Worth comparing inside the AI-browser category too. [Perplexity's Comet](/library/perplexity-comet-vs-chrome-extensions/) and [The Browser Company's Dia](/library/dia-browser-vs-chrome-extensions/) make similar bets with different assistants and different gaps. None of the three brings Arc-style named workspaces, and all three are Chromium underneath, which is why the Chrome-plus-extensions path stays viable against all of them.
+
+## Recreating the Atlas Workflow in Chrome
+
+If what you actually want is tab organization plus an AI assistant, you can assemble that in Chrome without leaving your extensions, your OS, or your wallet behind.
+
+**The AI sidebar.** Chrome ships a Gemini side panel, and the Chrome Web Store has ChatGPT and Claude sidebar extensions that summarize pages, answer questions, and draft text. This won't match Atlas's autonomous agent mode, the one piece Chrome extensions don't fully reproduce. For everyday "explain this, summarize that, draft a reply" work, it's close, and it runs on Windows and Linux too.
+
+**Named workspaces and a command bar.** Atlas has tab groups but no named, isolated Spaces. SuperchargeNavigation brings true workspaces to Chrome: each holds its own tab set, isolated from the others, so Work never bleeds into Personal, and switching swaps the entire context at once. Its Alt+K command bar searches open tabs, bookmarks, and history keyboard-first. Atlas keeps a smart address bar but doesn't offer this kind of fast manual tab-jumping.
+
+**Peek previews and session recovery.** Hold Alt and click a link to open it in a peek overlay without committing it to your workspace. Your session is snapshotted automatically every 5 minutes, keeping the last 50 saves (about 4 hours) on a time-travel slider, so an accidental window-close or a crash doesn't erase your layout. Atlas offers no equivalent.
+
+**RAM.** Atlas inherits Chromium's memory appetite with no suspension layer of its own, and you feel it once the tab count climbs. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) parks idle tabs with `chrome.tabs.discard()`, reclaiming roughly 90-95% of the RAM a parked tab was holding. It leaves alone the ones you'd notice: anything playing audio, anything with text you haven't saved, anything pinned. With thirty tabs open in each browser, Chrome-plus-Perf was the one that stayed responsive. And it does this without an account, without telemetry, and with everything stored locally; the optional cross-device sync rides Chrome's own account sync, not a server of ours.
+
+In a quick June 16, 2026 side-by-side on the same Mac, the split was clean: Atlas won "ask the AI to do this for me," and Chrome with SuperchargeNavigation pinned next to a Claude sidebar extension won "organize twenty tabs and switch between three projects without losing my place." Two different jobs.
+
+## Best For: Which Side Fits You
+
+**Choose ChatGPT Atlas if** you're on a Mac, you'll pay $20/month for ChatGPT Plus, and an AI agent that acts on sites for you is the single feature you most want. If your daily friction is feeding pages into ChatGPT by hand, Atlas's integrated assistant and agent mode are a distinctive upgrade that bolt-on Chrome AI doesn't fully match.
+
+**Stay on Chrome with extensions if** you're on Windows or Linux at all, you depend on a tuned set of extensions (especially anything you'd use on chatgpt.com), or your pain is tab management and RAM rather than AI. SuperchargeNavigation gives you the named workspaces Atlas lacks, an Alt+K command bar, peek previews, and crash-proof session snapshots; SuperchargePerformance handles the memory; and your entire extension library keeps working on every site.
+
+If you're torn, the deciding question is narrow: do you want the browser to *act* for you, or to *organize* for you? Atlas is built for the first, only on a Mac. Chrome plus [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) is built for the second, on any OS, and you can pin an AI sidebar extension alongside it to cover most of the first too.
+
+#### FAQ
+Q: Does ChatGPT Atlas support Chrome extensions?
+A: Yes, mostly. As of June 2026, Atlas is built on Chromium, so Chrome Web Store extensions install and run, and a 2026 update added an explicit extensions import so you can pull Passwords, Bookmarks, Extensions, and History across from Chrome at any time, not just during onboarding. The one real limit: Atlas blocks most extensions on chatgpt.com itself, so tools like AdGuard or Tampermonkey work everywhere except OpenAI's own pages. Outside chatgpt.com, treat extension support as broadly functional.
+
+Q: Is ChatGPT Atlas available on Windows?
+A: Not as of June 2026. Atlas launched on macOS on October 21, 2025, and it remains macOS-only. OpenAI has said Windows, iOS, and Android are next in the rollout, but no version has shipped and no release date is confirmed. Windows and Linux users who want Atlas-style features today need Chrome plus extensions.
+
+Q: How much does ChatGPT Atlas cost?
+A: The browser itself is free, and the sidebar assistant has a free tier with usage limits. The features people most want, agent mode (where Atlas clicks, fills forms, and runs multi-step tasks for you) and browser memories, require a paid ChatGPT subscription. As of June 2026 that's ChatGPT Plus at $20/month in most regions. So the shell is free; the agentic capability is what sits behind the paywall.
+
+Q: Is ChatGPT Atlas better than Chrome?
+A: It depends on what you want. As of June 2026, Atlas wins on one axis: a deeply integrated AI assistant that can read your page, answer questions, and act on sites in agent mode. Chrome wins on platform reach (Windows, Linux, ChromeOS), first-class extension support across every site, and a mature tab-and-workspace layer you can build with extensions. If your bottleneck is AI help on a Mac, Atlas is compelling. If it's tab management, RAM, or cross-platform work, Chrome plus extensions covers more ground.
+
+Q: Can I get ChatGPT Atlas features in Chrome without switching browsers?
+A: Most of the practical ones, yes. Atlas's AI sidebar maps to Chrome's built-in Gemini side panel or a ChatGPT/Claude extension. Its tab organization (tab groups, vertical tabs) is matched by Chrome 146's native vertical tabs plus SuperchargeNavigation's named workspaces and Alt+K command bar. And Atlas has no tab-suspension or RAM tooling, which SuperchargePerformance adds. You keep your full extension library, you stay cross-platform, and you skip the $20/month for the parts you don't need.
+
+---
+
+### Edge Vertical Tabs vs Chrome: Need an Extension in 2026?
+
+URL: https://www.superchargebrowser.com/library/edge-vertical-tabs-vs-chrome/
+Category: comparison | Extension: both | Updated: 2026-06-17
+Description: Edge ships vertical tabs, sleeping tabs, and workspaces built in. Chrome 146 added only vertical tabs. The real gap, and how to close it without switching.
+
+Edge wins the built-in tab fight in 2026. It ships native vertical tabs, automatic sleeping tabs, and named Workspaces. Chrome 146 added only vertical tabs (right-click a tab, choose Show Tabs Vertically), and still has no sleeping tabs or workspaces. The gap is two features, and a Chrome extension closes both without switching browsers.
+
+
+> **Key takeaways**
+> - Edge ships **three native tab powers** built in: vertical tabs, sleeping tabs, workspaces. Chrome ships **one**.
+> - Chrome's missing pieces are **automatic tab sleeping** and **named workspaces**, the two that matter most past 50 tabs.
+> - You do not need to leave Chrome. A vertical-tabs plus suspension extension stack matches Edge's set.
+
+You open 60 tabs across three projects. On Edge, the idle ones gray out and stop eating RAM on their own, and you flip between a "client work" workspace and a "research" workspace without losing either. On Chrome, those tabs stay live and hungry, and your groups evaporate the next time the browser restarts. That difference is what this comparison is about, and whether it should push you off Chrome.
+
+## What Edge Gives You That Chrome Does Not
+
+Edge has shipped vertical tabs since 2021 and kept adding to the surrounding toolkit. By June 2026 it carries three tab features that Chrome's stable build does not match natively.
+
+| Native feature | Microsoft Edge | Google Chrome (146/147) |
+|---|---|---|
+| Vertical tabs sidebar | Yes (since 2021) | Yes (since Chrome 146, April 2026) |
+| Automatic sleeping tabs | Yes, default-on | No (manual discard only) |
+| Named workspaces | Yes (sharing retired Feb 2026) | No (tab groups only, lost on restart) |
+| Tab groups | Yes | Yes |
+| Sleeping state shown in sidebar | Yes (tabs gray out) | N/A |
+| Cross-device tab-group sync | Yes | Partial |
+
+The headline isn't vertical tabs. Chrome closed that gap in the April 2026 stable rollout, and the two implementations feel similar in daily use. The headline is the other two rows.
+
+**Sleeping tabs.** Edge suspends inactive tabs automatically, with a timer you can set anywhere from 30 seconds to 12 hours, and the slept tabs gray out in the strip so you can see which ones are idle. The memory they were holding goes back to the system. Chrome has no equivalent. It can discard a tab, but only by hand or when the machine is already starved for memory, and there's no schedule and no per-tab control.
+
+**Workspaces.** Edge Workspaces are durable, named tab sets. Open one, work in it, close it, reopen it next week with everything intact. Chrome's tab groups look similar but are not persistent in the same way: a group is gone after a restart unless you lean on whole-session restore, which brings back everything at once rather than the one project context you wanted. One caveat on Edge: Microsoft retired Workspace sharing in February 2026, and the migrated v2 workspaces stay local to each device rather than syncing.
+
+## Where Chrome Holds Its Own
+
+Edge is not strictly ahead on everything, and pretending otherwise would be dishonest. Chrome's vertical tabs are clean, fast, and now a single right-click away with no flag to dig out, which the feature needed for its first few months. The sidebar is resizable down to an icon rail, tab groups carry their names and colors into it, and it stays smooth past 40 tabs where the horizontal strip turns every tab into an unreadable favicon.
+
+Chrome also has the larger extension ecosystem and the wider deployment, so most workplace tooling and identity flows are tested against it first. If your team standardizes on Chrome, that inertia is worth something real. The tab features are the part of the gap you can actually close from inside Chrome, which is the rest of this article.
+
+## How to Close the Gap Without Switching Browsers
+
+The two things Edge has and Chrome lacks, automatic tab sleeping and named workspaces, are both things a Chrome extension supplies. You keep Chrome's ecosystem and add the missing tab powers.
+
+For workspaces and keyboard navigation, [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) adds named, persistent workspaces with full isolation, an Alt+K command bar that searches open tabs, bookmarks, and history from any page, and 50 auto-snapshots taken every 5 minutes so you can rewind to a tab set from earlier in the day (verified June 2026). That covers the workspace gap and then some, since Edge has no keyboard command bar or session time-travel of its own.
+
+For the memory side, [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) suspends inactive tabs the way Edge's sleeping tabs do, using `chrome.tabs.discard()` with a configurable timer. A suspended tab gives back roughly 90 to 95 percent of the RAM it was holding. It protects audio tabs, pinned tabs, tabs with unsaved form input, and 18 auto-detected web apps (Gmail, Docs, Figma, Notion, Slack, and more) so nothing important sleeps mid-task. That is the sleeping-tabs gap closed.
+
+## Native Edge vs Chrome Plus Extensions: Side by Side
+
+| Capability | Edge native | Chrome native | Chrome + extensions |
+|---|---|---|---|
+| Vertical tabs sidebar | Yes | Yes | Yes |
+| Automatic tab sleeping | Yes | No | Yes (Perf, configurable timer) |
+| Named workspaces | Yes | No | Yes (Nav, persistent + isolated) |
+| Keyboard command bar | No | No | Yes (Nav, Alt+K) |
+| Session time-travel | No | No | Yes (Nav, 50 snapshots) |
+| Tab preview without switching | No | No | Yes (Nav, Alt+Click) |
+| Auto-group by domain | No | No | Yes (Nav, Alt+G) |
+| RAM saved per idle tab | ~suspended | Manual only | ~90-95% per tab (Perf) |
+| Zero telemetry / 100% local | N/A | N/A | Yes |
+
+The Chrome-plus-extension column reaches past what Edge ships natively in a few rows, the command bar, session snapshots, and tab preview, none of which Edge has built in. So the choice is not "Edge for power, Chrome for compromise." It is "Edge if you want it all in one install, Chrome if you want the ecosystem plus a sharper toolkit you assemble yourself."
+
+## A Quick Test We Ran
+
+On June 16, 2026, we loaded the same 55-tab session, three project contexts mixed together, on both browsers. Edge slept the idle tabs on its default timer and held lower memory without intervention. On Chrome, the tabs stayed resident until we suspended them with SuperchargePerformance, after which the per-tab memory dropped into the same range. The workspace test was starker: separating the three contexts on Chrome needed SuperchargeNavigation's named workspaces, since Chrome's groups did not survive the restart we triggered. Edge's Workspaces did.
+
+## So Which Should You Use?
+
+If you want every tab power preinstalled and you have no reason to stay on Chrome, Edge is the most complete built-in package in 2026, and that is a fair reason to use it.
+
+If you are on Chrome for the ecosystem, the extension library, work requirements, or simple preference, you do not give up tab power to stay. Add SuperchargeNavigation for workspaces and keyboard search, add SuperchargePerformance for automatic tab sleeping, and you match Edge's native set, then pass it on command bar, session snapshots, and tab preview. Both extensions are free, store nothing off your device, and need no account.
+
+If you only ever keep a dozen tabs and close the browser nightly, the question is moot: Chrome's native vertical tabs alone are plenty, and so is Edge's.
+
+## Related Reading
+
+- [Chrome 146 Vertical Tabs vs Extensions: Real Data (2026)](/library/chrome-146-vertical-tabs-vs-extensions/) — where Chrome's own vertical tabs end and extensions begin
+- [Chrome Vertical Tabs Missing Workspaces? 7 TESTED Extensions](/library/best-vertical-tab-managers-chrome-2026/) — the full extension lineup compared
+- [Is Chrome Memory Saver Good in 2026? Tested Review](/library/chrome-native-memory-saver-review/) — how Chrome's own memory tool stacks up against suspension
+
+#### FAQ
+Q: Does Edge have more native tab features than Chrome in 2026?
+A: Yes. As of June 2026, Edge ships vertical tabs, automatic sleeping tabs, and named Workspaces built in. Chrome 146 added vertical tabs (right-click any tab, choose Show Tabs Vertically), but Chrome still has no native sleeping tabs and no workspaces. Edge has the most complete built-in tab package of any mainstream browser.
+
+Q: Does Chrome have sleeping tabs like Edge?
+A: No. As of June 2026, Chrome has no automatic sleeping-tabs feature. It can discard a tab from memory, but only manually or under memory pressure, with no per-tab timer and no configurable schedule. Edge sleeps inactive tabs automatically (default timer configurable from 30 seconds to 12 hours). To get the same on Chrome, you suspend tabs with an extension.
+
+Q: Does Chrome have workspaces like Edge?
+A: No. Chrome has tab groups, but groups vanish on restart and there is no named, savable workspace you can close and reopen later. Edge Workspaces persist. (Note: Edge retired Workspace sharing in February 2026, and v2 workspaces stay local to each device.) On Chrome, an extension supplies persistent named workspaces.
+
+Q: Do I need to switch to Edge to get vertical tabs and sleeping tabs?
+A: No. Chrome 146 already has native vertical tabs, and a Chrome extension adds the two pieces Chrome lacks: automatic tab sleeping and named workspaces. As of June 2026 you can stay on Chrome and match Edge's tab feature set with SuperchargeNavigation (workspaces, Alt+K search) plus SuperchargePerformance (tab suspension).
+
+Q: Why does Edge use less memory than Chrome with many tabs open?
+A: Edge's Sleeping Tabs suspends inactive tabs by default, freeing the memory each idle tab held. Chrome keeps idle tabs resident unless it hits memory pressure. With 50+ tabs the difference is real. On Chrome, suspending tabs with an extension closes most of that gap, cutting roughly 90 to 95 percent of RAM per suspended tab.
+
+Q: Is Edge's vertical tabs better than Chrome's?
+A: Both move the tab strip to a resizable left sidebar with group support, and both are smooth at 40-plus tabs. Edge added one extra layer: sleeping tabs gray out in the sidebar so you see at a glance which tabs are suspended. Chrome's vertical tabs have no such state, because Chrome has no sleeping tabs. The layout itself is comparable.
+
+---
+
+### FIX STATUS_BREAKPOINT Chrome Error: 6 Tested Fixes (2026)
+
+URL: https://www.superchargebrowser.com/library/fix-chrome-status-breakpoint-error/
+Category: troubleshooting | Extension: performance | Updated: 2026-06-17
+Description: Error code: STATUS_BREAKPOINT is not a virus — a Chrome renderer hit an unexpected state. GPU drivers cause most cases. 6 tested fixes, fastest first (2026).
+
+> **Key takeaways**
+> - **STATUS_BREAKPOINT is not a virus.** It means a renderer process hit an unexpected internal state and crashed.
+> - Ranked by frequency: **GPU driver timeouts, extension conflicts, and unstable XMP/EXPO RAM overclocks** — not malware.
+> - Start with **Incognito mode** to rule out extensions, then update GPU drivers. On gaming rigs, also disable XMP/EXPO.
+
+As of June 2026, "Error code: STATUS_BREAKPOINT" in Chrome means a renderer process hit an unexpected internal state and crashed. It is not a virus. The three most common causes are a GPU driver timeout, an extension conflict, or an unstable XMP/EXPO RAM overclock. The fastest fix is disabling hardware acceleration. If the error hits the moment Chrome opens — before any page loads — skip to [Fix 6](#fix-6-status_breakpoint-on-startup-chrome-wont-open), a different failure mode.
+
+`STATUS_BREAKPOINT` sounds alarming but usually has a mundane cause. It surfaces most often on pages with video, WebGL, or heavy animation (GPU path), or intermittently on gaming rigs where overclocked memory corrupts RAM pages at random.
+
+## What STATUS_BREAKPOINT Actually Means
+
+In plain terms: Chrome runs each page in a separate background process called a renderer. When that process reaches a state it cannot recover from, Windows steps in and stops it, and Chrome reports the stop using the code `STATUS_BREAKPOINT`. The name is misleading. A "breakpoint" normally means a pause a programmer set on purpose, but here nobody set anything. It is the label Windows attaches to that kind of forced stop.
+
+A few things it is **not**:
+
+- **Not a virus.** It carries no security meaning. If you searched `código de error: status_breakpoint` or `qué es el error status_breakpoint` worried it was malware, you can stop worrying.
+- **Not a broken part.** Your GPU or RAM is almost never failing. The usual triggers are a driver that timed out or a memory overclock that needs tuning, both fixable in software or BIOS.
+- **Not unique to Chrome.** The same code appears in Edge, Brave, Opera, and desktop apps built on Chromium, because they all share the renderer that produces it.
+
+Knowing the cause does not change the fix. Match your symptom in the table below and apply the matching fix.
+
+## Quick Diagnosis
+
+| Symptom | Likely Cause | Fix |
+|---------|-------------|-----|
+| Crash happens on sites with video, WebGL, or animations | GPU driver timeout | [Fix 1: Disable hardware acceleration](#fix-1-disable-hardware-acceleration) |
+| Crashes started after you installed an extension | Extension conflict | [Fix 2: Isolate extensions](#fix-2-isolate-extension-conflicts) |
+| Crash happens intermittently on any site | RAM instability (overclocking) | [Fix 3: Check RAM stability](#fix-3-check-ram-stability) |
+| Crash only happens when many tabs are open | Memory pressure | [Fix 4: Reduce memory pressure](#fix-4-reduce-memory-pressure) |
+| Crash tied to one specific site | Corrupt site cache | [Fix 5: Clear site data](#fix-5-clear-site-cache) |
+| Crash hits the instant Chrome opens, before any page loads | Profile corruption or GPU init failure | [Fix 6: On-startup STATUS_BREAKPOINT](#fix-6-status_breakpoint-on-startup-chrome-wont-open) |
+
+## What Causes the STATUS_BREAKPOINT Error in Chrome?
+
+`STATUS_BREAKPOINT` fires when Chrome's GPU watchdog resets a stalled driver connection, severing a renderer mid-draw. The ranked causes are: GPU driver timeouts on video and WebGL pages, conflicting extensions, and unstable XMP/EXPO/DOCP RAM overclocks that corrupt memory pages at random. Malware is not a cause.
+
+## Fix 1: Disable Hardware Acceleration
+
+GPU driver timeouts are a common cause. Disabling hardware acceleration removes the Chrome-GPU dependency.
+
+1. Go to **Settings > System** (`chrome://settings/system`).
+2. Toggle off **Use graphics acceleration when available**.
+3. Click **Relaunch**.
+4. If crashes stop, update your GPU drivers (NVIDIA, AMD, or Intel), then re-enable hardware acceleration to restore video performance.
+
+## Fix 2: Isolate Extension Conflicts
+
+1. Open an **Incognito window** (Ctrl+Shift+N). Extensions are disabled by default in Incognito.
+2. Browse normally for 10–15 minutes. If no crash occurs, an extension is the cause.
+3. Go to `chrome://extensions/` and disable all extensions.
+4. Re-enable them one at a time, testing after each, until the crash returns.
+5. Update or remove the offending extension.
+
+## Fix 3: Check RAM Stability
+
+This fix is specifically for gaming PCs or any system running XMP, EXPO, or DOCP memory profiles. Unstable memory overclocks corrupt data in RAM pages at random intervals — Chrome hits corrupted memory, and the renderer crashes. The frustrating part is that the system appears stable in normal use and even in stress tests, but Chrome's memory access patterns expose it.
+
+1. Enter your BIOS/UEFI settings (press Delete, F2, or F12 on startup — varies by motherboard).
+2. Locate the memory settings and temporarily disable XMP/EXPO/DOCP to run RAM at stock speeds.
+3. Test Chrome for several hours. If crashes stop, your overclock is unstable at its current settings.
+4. Either lower the memory speed in BIOS or manually adjust timings and voltage for stability.
+
+## Fix 4: Reduce Memory Pressure
+
+With many tabs open, available memory becomes scarce and renderer processes become unstable.
+
+1. Press **Shift + Esc** to open Chrome Task Manager.
+2. Sort by **Memory** and identify tabs using the most RAM.
+3. Close tabs you are not actively using.
+4. Go to **Settings > Performance** and enable **Memory Saver**.
+
+## Fix 5: Clear Site Cache
+
+If crashes consistently happen on one specific site, that site's cached data may be corrupt.
+
+1. Navigate to the site that causes the crash.
+2. Click the lock icon in the address bar.
+3. Select **Site settings > Clear data**.
+4. Reload the page.
+
+## Fix 6: STATUS_BREAKPOINT on Startup (Chrome Won't Open)
+
+If `STATUS_BREAKPOINT` fires the instant Chrome launches — before a single page renders — the cause is different from the in-session crashes above. The two usual suspects are a corrupted browser profile or a GPU process that fails during initialization. The fix order below isolates which one.
+
+1. **Test the GPU path first.** Close Chrome fully. Launch it once with hardware acceleration off: right-click the Chrome shortcut, open **Properties**, and append ` --disable-gpu` to the **Target** field (after the closing quote, with a leading space). Launch. If Chrome opens cleanly, the GPU process was the trigger — update your graphics drivers, then remove the flag.
+2. **Test the profile path.** If `--disable-gpu` did not help, the profile may be corrupt. Open `chrome://version` if you can reach it and note your **Profile Path**. Close Chrome, rename that profile folder (for example `Default` to `Default.old`), and relaunch. Chrome rebuilds a clean profile. If it opens, your old profile was corrupt — sign back in to restore bookmarks and history via Chrome Sync.
+3. **Test without extensions.** Launch with ` --disable-extensions` appended to the shortcut target. An extension that crashes during startup produces the same on-launch signature.
+4. **Last resort: reinstall.** If none of the above works, uninstall Chrome (keep your data when prompted), download a fresh installer from google.com/chrome, and reinstall. This replaces corrupted program files without touching your synced data.
+
+On Windows, the on-launch variant is the most common report because driver and profile state both load before the first tab. The flag syntax is identical on macOS (edit the launch command) and Linux (`google-chrome --disable-gpu`).
+
+## STATUS_BREAKPOINT in WhatsApp Desktop and Other Chromium Apps
+
+You can hit this error in apps that are not a browser at all. WhatsApp Desktop is the common one. Mid-2025, the Windows WhatsApp app stopped being a native build and became a thin wrapper around Microsoft Edge WebView2, which runs the Chromium engine. So when WhatsApp crashes with `STATUS_BREAKPOINT`, it is crashing for the same renderer reasons Chrome does, because under the surface it *is* a Chromium renderer. We reproduced the crash signature in June 2026 on a WhatsApp WebView2 build with a stale GPU driver: opening a chat with an autoplaying video preview reliably triggered it until the driver was updated.
+
+The same logic covers Electron apps (Slack, Discord, VS Code, older WhatsApp builds) and anything that embeds WebView2. They all carry a Chromium renderer, so they all inherit this crash.
+
+The fix order changes slightly because you cannot open `chrome://settings` inside WhatsApp:
+
+1. **Update the GPU driver first.** This is the single highest-yield fix for WhatsApp and Electron apps, because they have no in-app toggle to disable hardware acceleration the way Chrome does. Install the latest driver from NVIDIA, AMD, or Intel and relaunch the app.
+2. **Update the app and Windows.** WebView2 ships with Windows and updates with it. An outdated WebView2 runtime is a frequent trigger, so run Windows Update and update WhatsApp from the Microsoft Store.
+3. **Reduce memory pressure.** The WhatsApp WebView2 build uses noticeably more RAM than the old native app (community reports put it around 30% higher, occasionally spiking past 2 GB). If the crash hits when your system is already memory-starved, closing other heavy apps and suspending idle Chrome tabs frees headroom. See [Fix 4](#fix-4-reduce-memory-pressure).
+4. **Toggle hardware acceleration where the app exposes it.** Slack, Discord, and VS Code each have a setting to disable GPU acceleration in their preferences. WhatsApp's WebView2 wrapper does not, which is why the driver update in step 1 matters most for it.
+
+If WhatsApp crashes but Chrome on the same machine does not, that is expected, not a contradiction. Chrome may be running on a newer cached driver state or with hardware acceleration already off, while the WebView2 wrapper hits the GPU path fresh.
+
+## "Error Code: STATUS_BREAKPOINT" in Other Languages
+
+Chrome localizes the crash screen, so the same error reads differently depending on your system language. These all describe the identical renderer crash, and every fix on this page applies regardless of the wording:
+
+| Language | On-screen text |
+|----------|----------------|
+| English | Error code: STATUS_BREAKPOINT |
+| Dutch (Nederlands) | Foutcode: STATUS_BREAKPOINT |
+| Spanish (Español) | Código de error: STATUS_BREAKPOINT |
+| Danish (Dansk) | Fejlkode: STATUS_BREAKPOINT |
+| German (Deutsch) | Fehlercode: STATUS_BREAKPOINT |
+| French (Français) | Code d'erreur : STATUS_BREAKPOINT |
+
+If you reached this page after searching `foutcode: status_breakpoint`, `código de error: status_breakpoint`, or `fejlkode: status_breakpoint`, start with [Fix 1](#fix-1-disable-hardware-acceleration) for an in-session crash or [Fix 6](#fix-6-status_breakpoint-on-startup-chrome-wont-open) if Chrome will not open at all.
+
+<aside class="mid-article-cta not-prose my-10 relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pl-9 pr-5 py-4 rounded-xl bg-accent-bg border border-accent-rule" data-cta-position="mid" data-nosnippet>
+  <span class="absolute top-5 left-5 w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+  <div class="min-w-0">
+    <div class="text-sm font-semibold text-ink">SuperchargePerformance</div>
+    <div class="text-sm text-ink-subtle">Won't fix a GPU driver, but a lighter tab load is one less thing pushing renderers to the edge.</div>
+    <div class="text-sm text-ink-subtle">Auto-suspends idle tabs to free RAM and cut the active-renderer count.</div>
+  </div>
+  <a href="https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf" target="_blank" rel="noopener noreferrer" class="mid-cta-btn inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-on-accent text-sm font-semibold rounded-lg hover:opacity-90 flex-shrink-0">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+    </svg>
+    Add to Chrome — Free
+  </a>
+</aside>
+
+## Reducing Memory Pressure Before Breakpoints Trigger
+
+If your crashes match the heavy tab load pattern (Fix 4), reducing the number of active renderer processes helps. SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()`, which also reduces the number of renderers competing for GPU time — fewer opportunities for the GPU watchdog timeout that produces `STATUS_BREAKPOINT`. Ad and tracker blocking prevents WebGL-based ads from loading in background tabs, further reducing GPU contention.
+
+For crashes caused by GPU drivers or RAM instability, you need Fixes 1 and 3 — tab suspension won't change those outcomes.
+
+For related crashes, see the article on [fixing the Aw, Snap crash](/library/fix-aw-snap-crash/) and [fixing STATUS_ACCESS_VIOLATION](/library/fix-status-access-violation/).
+
+#### FAQ
+Q: What does STATUS_BREAKPOINT mean in Chrome?
+A: As of June 2026, it is a Chrome crash error indicating a renderer process hit an unexpected internal state. Common causes include memory exhaustion, GPU driver conflicts, or extension conflicts. Despite the name, it has nothing to do with software debugging breakpoints.
+
+Q: How do I fix STATUS_BREAKPOINT permanently?
+A: The most reliable fixes are: update Chrome and GPU drivers, disable extensions one by one to find conflicts, and reduce memory pressure by suspending unused tabs. If it only crashes on specific sites, clear that site's cached data.
+
+Q: Does STATUS_BREAKPOINT mean Chrome has a virus?
+A: No. It is a standard Chrome crash code, not a security indicator. It means a Chrome process ran out of resources or hit an internal error state.
+
+Q: Why does STATUS_BREAKPOINT appear only when Chrome opens?
+A: As of June 2026, an on-launch STATUS_BREAKPOINT usually points to a corrupted user profile or a GPU init failure rather than a single tab. Launch Chrome with the --disable-gpu flag to test the GPU path, or create a fresh profile to test the profile path. The fix differs from the in-session crash covered above.
+
+Q: Is STATUS_BREAKPOINT a GPU problem or a RAM problem?
+A: Both are common. If it crashes on video, WebGL, or animation-heavy pages, it is the GPU watchdog (Fix 1). If it strikes at random on a desktop running an XMP/EXPO memory overclock, it is unstable RAM (Fix 3). Crashes only with many tabs open point to memory pressure (Fix 4).
+
+Q: What is the STATUS_BREAKPOINT error code? (¿Qué es el código de error status_breakpoint?)
+A: As of June 2026, STATUS_BREAKPOINT (in Spanish, 'código de error: status_breakpoint') is the crash code a Chromium renderer process shows when it hits an unexpected internal state and is forced to stop. It is not a virus and not a real debugger breakpoint. The same crash appears in Chrome, Edge, Brave, and any app built on Chromium. The fixes on this page apply regardless of the page language.
+
+Q: Why does WhatsApp Desktop crash with STATUS_BREAKPOINT?
+A: As of June 2026, the WhatsApp Windows app runs inside Microsoft Edge WebView2, which is Chromium. So WhatsApp crashes with the same STATUS_BREAKPOINT code as Chrome and for the same reasons: a GPU driver timeout or memory pressure. Update your GPU drivers, update the WhatsApp app, and close background renderers. The fixes here transfer directly to WhatsApp.
+
+Q: Is STATUS_BREAKPOINT a hardware failure or a virus?
+A: Neither, in most cases. It is a software-level renderer crash. The one hardware link is unstable RAM from an XMP/EXPO overclock (Fix 3), which is a configuration issue, not a failed part. It is never a virus indicator on its own.
+
+---
+
+### Vivaldi Review: Should Chrome Power Users Switch in 2026?
+
+URL: https://www.superchargebrowser.com/library/vivaldi-review-chrome-power-users-2026/
+Category: review | Extension: navigation | Updated: 2026-06-17
+Description: Vivaldi 8.0 ships vertical tabs, workspaces and an F2 command bar Chrome lacks — and a learning curve most users quit. Tested June 2026: who should switch.
+
+> **Key takeaways**
+> - **Vivaldi hits three of Arc's four pillars natively:** vertical tabs (plus tree-style), named workspaces, and an F2 command bar. Chrome ships none of the three as a complete package.
+> - **The price of admission is setup time.** Almost everything is configurable, and the learning curve is the single most common complaint in 2026 reviews.
+> - **RAM is competitive, not great.** Around 960 MB for 10 tabs in independent testing — lighter than Brave, heavier than the leanest Chromium builds, and it strains earlier than Chrome at very high tab counts.
+
+You're a Chrome power user. You live in 30 tabs, you miss Arc's sidebar, and every few months someone tells you Vivaldi is the answer. So is it? As of June 2026, Vivaldi 8.0 (built on Chromium 148) is the most feature-complete Chromium browser for someone leaving Chrome: vertical tabs, workspaces, and a real command bar all ship in the box, and your extensions come with you. The catch is everything it asks of you before it pays off. This review covers what it does well, what it doesn't, and the one question that actually decides it.
+
+## The Verdict in One Table
+
+We rated Vivaldi on the four things a Chrome power user actually wants from a switch. Assessed on Vivaldi 8.0.4033.48 (Minor Update 6, released June 11, 2026), Chromium 148.
+
+| What you want | Vivaldi score | Why |
+|---------------|--------------|-----|
+| Vertical tabs + workspaces | Excellent | Both native, plus tree-style nesting and tab tiling Arc never had |
+| Keyboard command bar | Excellent | F2 Quick Commands searches tabs, history, bookmarks, and runs commands |
+| Easy to live in day one | Weak | Steep learning curve; nearly everything is a setting you have to find |
+| Light on RAM | Fair | ~960 MB / 10 tabs, lighter than Brave, strains earlier than Chrome at scale |
+
+Overall: **4 / 5** for the right person. Powerful and demanding in equal measure. A great fit for tinkerers, a poor one for anyone who wants Chrome but tidier.
+
+## Who Should Switch (and Who Shouldn't)
+
+Switch to Vivaldi if you enjoy configuring software, you want your whole workflow inside one browser rather than stitched together from extensions, and you'll get value from the bundled Mail, Calendar, Notes, and Feed reader. People who used Arc for its Spaces and command bar will feel most at home here.
+
+Stay on Chrome if you want those tab and workspace features but not a new browser to learn, if you're on a low-spec machine where the UI weight bites, or if your team standardizes on Chrome and switching creates friction. The honest read: most people who *try* Vivaldi for the tab features end up wanting the features, not the browser.
+
+That distinction is the whole review. Below is what each side of it actually looks like.
+
+## What Vivaldi Does Better Than Chrome
+
+**Vertical tabs, done thoroughly.** Tabs sit on the left or right with full titles visible. Vivaldi adds tree-style nesting, where child tabs tuck under their parent, and tab stacking that collapses related tabs into an accordion. Chrome 146 added a basic vertical tab bar, but it stops well short of this.
+
+**Named workspaces.** Group tabs into persistent, named workspaces and switch between them with one click or one keystroke. Each workspace shows only its own tabs, giving you the context isolation Arc users expect. Chrome has tab groups, but no workspace switching that hides everything outside the active set.
+
+**Quick Commands (F2).** Press F2, or Cmd+E on Mac, and a keyboard launcher opens that searches open tabs, closed tabs, history, bookmarks, notes, settings, and browser commands from one prompt. Prefix filters (`tab:`, `bookmark:`, `command:`) narrow the search. Chrome's address bar can't run browser commands or jump workspaces. This is the feature Chrome refugees miss most, and Vivaldi has the best version of it on Chromium.
+
+**Tab tiling and hibernation.** Tile up to four tabs in a split-screen grid, and let Vivaldi put inactive tabs to sleep to reclaim memory. Neither is as configurable as a dedicated suspension extension, but both work out of the box.
+
+You also get built-in ad and tracker blocking, a free VPN, and a Mail/Calendar/Feed suite. For someone who wants one app instead of six, that bundle is the real pitch.
+
+## Where Vivaldi Frustrates People
+
+**The learning curve is the headline complaint.** Across 2026 reviews, the same word recurs: overwhelming. Toolbars, status bars, panels, gestures, themes, and shortcuts are all configurable, and the defaults don't hide that complexity well. People expecting a Chrome-like first run instead meet a wall of options. Vivaldi rewards the hour you spend setting it up and punishes the impatience of anyone who won't.
+
+**The built-in ad blocker is only okay.** It blocks trackers and ads at a basic level, but users report it trailing dedicated blockers on tougher sites. If ad blocking is a priority, you'll likely add an extension anyway, which dents the all-in-one promise.
+
+**RAM is respectable, not best-in-class.** Independent 2026 benchmarks put Vivaldi near 960 MB for 10 tabs, comfortably under Brave's roughly 2.3 GB but heavier than the leanest stripped Chromium builds. Tab hibernation helps. Still, the feature-rich UI carries weight, and at very high tab counts Vivaldi reaches its stability ceiling earlier than Chrome does.
+
+**The design feels dated to some.** Critics call the interface a throwback, more "control panel" than the clean, opinionated look of modern browsers. That's a matter of taste, but it comes up often enough to mention.
+
+## How Vivaldi Stacks Against Chrome on the Four Things That Matter
+
+| Capability | Chrome (stock) | Vivaldi 8.0 |
+|------------|---------------|-------------|
+| Vertical tabs | Basic bar (Chrome 146) | Yes, plus tree-style + stacking |
+| Named workspaces | Tab groups only | Yes, with one-click switching |
+| Command bar | No (address bar only) | Quick Commands (F2 / Cmd+E) |
+| Tab suspension | Memory Saver (RAM-pressure based) | Hibernation, manual or automatic |
+| Extension support | Native | Chrome Web Store extensions work |
+| Setup to be productive | Minutes | An evening of configuration |
+| RAM at 10 tabs | Baseline | ~960 MB (lighter than Brave) |
+
+Vivaldi clearly wins on tab power and the command bar. Chrome wins on simplicity and on doing nothing you didn't ask it to. There is no universally correct pick here; there's only which trade you prefer.
+
+## A Note From Testing
+
+Set up on Vivaldi 8.0.4033.48 on June 16, 2026, the part that surprised us wasn't the feature depth, it was how long it took to feel normal. Vertical tabs, workspaces, and Quick Commands were each excellent once found, but locating and tuning them took a deliberate sitting. By the end of an evening it was a clearly better tab environment than stock Chrome. The depth is real and it's earned. What the test made concrete is that the payoff is gated behind that setup time, and the gate is steep enough to lose most people before they reach it.
+
+## If You Want the Features Without the Switch
+
+The case for Vivaldi is the case for vertical tabs, workspaces, and a command bar. The case against it is everything you have to absorb to get them, plus an ecosystem change for whatever you currently rely on in Chrome.
+
+If the features are what you're after and the switch isn't, you can replicate the three that matter without leaving Chrome. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) adds named workspaces with full isolation, an Alt+K command bar that searches open tabs, bookmarks, and history, vertical-style tab management in the side panel, and 50 auto-snapshots taken every 5 minutes so a misclick never costs your layout. It runs fully local with zero telemetry and no account. No evening of configuration: it works on install. Our [Arc-to-Chrome migration guide](/library/arc-browser-dead-get-features-in-chrome/) maps each feature in detail.
+
+For the full comparison of Chromium browsers that chase Arc's design, including where Vivaldi ranks against Brave, Thorium, and ungoogled-chromium, see the [Arc-like Chromium browsers ranked](/library/open-source-chromium-arc-like-browsers-2026/) breakdown. If your interest is purely the tab layout, the [best vertical tab managers for Chrome](/library/best-vertical-tab-managers-chrome-2026/) article covers the extension options head to head.
+
+## The One Question That Decides It
+
+Vivaldi is a real, well-built browser, and for someone who loves to configure their tools it's one of the best on Chromium. The four out of five is earned.
+
+Ask yourself one thing before you switch: do you want a new browser, or do you want three features? If it's the browser, and you'll invest the setup time, Vivaldi is the strongest Chromium option in 2026. If it's the features, you can have vertical tabs, workspaces, and a command bar in Chrome today, keep every extension and habit you already have, and skip the learning curve entirely.
+
+#### FAQ
+Q: Is Vivaldi worth switching to from Chrome in 2026?
+A: As of June 2026, Vivaldi (version 8.0, on Chromium 148) is worth it if you want vertical tabs, named workspaces, and a keyboard command bar built into the browser and you're willing to spend an evening configuring it. It runs Chrome extensions, so you keep your add-ons. The cost is a steep learning curve and a heavier UI than stock Chrome. If you mainly want those three features without changing browsers, a Chrome extension covers them with far less setup.
+
+Q: Does Vivaldi use more RAM than Chrome?
+A: Vivaldi's feature-rich interface adds overhead, but in tab-heavy use it can come out lighter than some rivals. Independent 2026 benchmarks measured Vivaldi around 960 MB for 10 tabs versus roughly 2.3 GB for Brave on the same tabs. It hibernates inactive tabs to claw memory back. On a low-spec machine the UI weight is still noticeable, and Vivaldi hits its stability ceiling earlier than Chrome at very high tab counts.
+
+Q: Does Vivaldi support Chrome extensions?
+A: Yes. As of June 2026 Vivaldi is built on Chromium 148 and installs extensions directly from the Chrome Web Store. Your existing Chrome add-ons carry over, which is the main reason it stays in the conversation for Chrome users who want to leave Chrome itself.
+
+Q: What is Vivaldi's command bar and how is it different from Chrome's?
+A: Press F2 (or Cmd+E on Mac) to open Quick Commands, a keyboard launcher that searches open tabs, history, bookmarks, settings, and browser commands from one prompt. Chrome has no native equivalent — its address bar searches the web and history but cannot run browser commands or switch workspaces. Quick Commands is the closest thing in any Chromium browser to Arc's Command Bar.
+
+Q: Is Vivaldi free?
+A: Yes. As of June 2026 Vivaldi is free with no paid tier for the browser itself. Its built-in Mail, Calendar, Feed reader, and tracker/ad blocking are included at no cost. It funds itself through default search-engine and bookmark partnerships, not a subscription.
+
+Q: What's the biggest downside of Vivaldi?
+A: Complexity. Reviewers and long-time users consistently flag the learning curve: nearly every toolbar, panel, gesture, and shortcut is configurable, which overwhelms people who expected a Chrome-like out-of-box experience. The built-in ad blocker is also weaker than a dedicated extension. Vivaldi rewards tinkerers and frustrates everyone else.
+
+---
+
+### YouTube Premium vs Ad Blockers in 2026: Which Costs Less?
+
+URL: https://www.superchargebrowser.com/library/youtube-premium-vs-ad-blockers-2026/
+Category: comparison | Extension: performance | Updated: 2026-06-17
+Description: YouTube Premium hit $15.99/mo in the US (June 7, 2026). A free ad blocker costs $0 but charges your time. Real annual math by region, with the trade-offs.
+
+> **Key takeaways**
+> - **US YouTube Premium Individual is now $15.99/month**, or $191.88 a year, after the June 7, 2026 price hike. Family is $26.99/month.
+> - **A free Chrome ad blocker costs $0** but pays for it in periodic breakage and zero coverage in YouTube's mobile app.
+> - **The decision is about where you watch, not the ads.** Desktop-only viewers save money blocking; phone-and-TV viewers get more from Premium.
+
+YouTube Premium Individual costs $15.99/month in the US as of June 7, 2026, which is $191.88 a year. A free Chrome ad blocker costs nothing in money. The honest comparison is not $191.88 versus $0, because the free route charges you in time, reliability, and missing coverage. Which one costs you less depends almost entirely on where and how you watch.
+
+## What Each Option Actually Costs in 2026
+
+YouTube Premium prices changed in 2026 and vary by region. These are the verified figures as of June 2026:
+
+| Region | Individual | Family | Annual (Individual) |
+|---|---|---|---|
+| US | $15.99/mo | $26.99/mo | ~$191.88 (no official annual discount) |
+| UK | £12.99/mo | £19.99/mo | £129.99/yr |
+| Germany | €14.99/mo | €27.99/mo | €149.99/yr |
+
+The US Individual plan rose from $13.99 to $15.99 on June 7, 2026, and the increase applied to existing subscribers, not just new sign-ups. UK pricing held steadier; the annual plan at £129.99 works out to about £10.83/month, the cheapest legitimate ad-free route if you pay yearly. Eurozone prices rose too: Germany's Individual plan went to €14.99/month (from €12.99) on June 11, 2026, with an annual option at €149.99. Other euro countries vary, so check your local plan.
+
+A free ad blocker costs $0 in subscription terms. That number is real but incomplete, which the next section covers.
+
+## The Hidden Cost of the Free Route
+
+Free does not mean costless. An ad blocker on YouTube carries three costs that never show up on a bill:
+
+**Breakage windows.** YouTube has pushed multiple anti-adblock waves since mid-2023. The largest hit in June 2025, a full year before this article. During each wave, scriptlet-based blockers can fail for days to weeks until they patch. In those windows, ads play with no warning. If a broken blocker costs you even an hour of fiddling, re-installing, and searching for a working alternative every few months, that is a real cost, just not a monetary one.
+
+**No mobile coverage.** Chrome extensions run on desktop only. The official YouTube app on iOS and Android does not support them. If a meaningful share of your watching happens on a phone, a desktop blocker does nothing for it, and you still see every ad there.
+
+**No background play or downloads.** These are Premium features, not ad-removal features. No extension can keep audio playing when your phone screen is off, and none can save a video for offline viewing. If you use YouTube as a podcast player or download videos for flights, the free route does not replace that.
+
+For a desktop-only viewer who watches on a laptop and never on a phone, these costs are small. For someone who watches half their YouTube on a phone, they're the whole decision.
+
+## A Blocker That Recovers Fast on Desktop
+
+If you choose the free route, the breakage windows are the thing to minimize. Blockers that strip ad data before YouTube's player reads it recover faster than ones that react after ads load. SuperchargePerformance (v1.4.3, verified June 2026) takes that preventive approach: it strips the ad data out before YouTube's player ever loads it, so pre-rolls and mid-rolls don't start in the first place. When YouTube changes how it serves ads, this design is the kind that patches in a day or two rather than staying broken for weeks. If a placement ever slips through, it skips and hides it instead of letting it play.
+
+It's free, needs no account, stores everything locally, and adds no telemetry. The same extension also suspends idle tabs and blocks general web ads, so it isn't a single-purpose YouTube tool. For the YouTube-specific ranking against AdBlock for YouTube, uBlock Origin, and AdGuard, see our [tested comparison of YouTube ad blockers](/library/best-youtube-ad-blockers-chrome-2026/). If your blocker is installed but ads still play, the [why-ads-still-show breakdown](/library/youtube-ads-still-showing-chrome/) explains the API-response mechanism.
+
+None of this changes the core limitation: it covers desktop Chrome only. It does not touch the mobile app, and it cannot add background play or downloads.
+
+## When Premium Is the Cheaper Choice
+
+Cheaper does not always mean lower dollar cost. Premium can be the better-value choice even at $15.99/month in these cases:
+
+**You watch on a phone or TV.** This is the decisive one. The mobile app and TV apps have no extension layer at all. Premium is the only way to remove ads there, and for many people that's where most viewing happens.
+
+**You want background audio or downloads.** If you play music or talks with the screen off, or download videos for travel, those are Premium features an extension cannot replicate. You'd be paying for the features and getting ad-free as a bonus.
+
+**You pay annually in the UK or Eurozone.** At £129.99/year (about £10.83/month), or €149.99 in Germany, the annual plan narrows the gap with the monthly route and you get guaranteed coverage everywhere with no maintenance.
+
+**You value your time over the savings.** $191.88 a year is roughly $0.53 a day. If the periodic breakage and the upkeep of a free blocker annoy you more than that, Premium buys the annoyance away.
+
+## The Verdict: Match the Plan to Where You Watch
+
+The cost comparison has a clean dividing line, and it isn't about price. It's about devices.
+
+If your YouTube viewing is desktop-Chrome-first and you don't watch much on a phone, a free, fast-recovering ad blocker costs you less, full stop. You save $191.88 a year in the US and accept occasional broken weeks during anti-adblock waves. If your viewing is spread across phone, TV, and desktop, or you rely on background play and downloads, a blocker can't cover you and Premium is the option that actually does the job.
+
+One thing that holds in 2026 and likely after: if YouTube's Server-Side Ad Insertion (still in limited testing as of mid-2026) ever ships broadly, ad blockers lose the technical ability to intercept ads, and Premium becomes the only ad-free path on any device. That's the long-term risk the free route carries that a subscription doesn't.
+
+## Quick Decision Guide
+
+| Your situation | Lower-cost choice |
+|---|---|
+| Desktop Chrome only, tolerate rare breakage | Free ad blocker |
+| Watch heavily on phone or TV | YouTube Premium |
+| Want background play or offline downloads | YouTube Premium |
+| Pay yearly in UK/EU, want zero maintenance | Premium annual plan |
+| Mix of desktop and occasional mobile | Blocker on desktop, accept ads on mobile |
+
+If you're starting on desktop and not sure Premium is worth $192 a year yet: try blocking the ads for free first, then decide whether the mobile gap and the maintenance push you toward a subscription. If you already pay for Premium, don't also install a YouTube ad blocker; for that scope, it's redundant.
+
+#### FAQ
+Q: How much does YouTube Premium cost in 2026?
+A: As of June 2026, YouTube Premium Individual is $15.99/month in the US (raised from $13.99, effective June 7, 2026), with the Family plan at $26.99/month. In the UK it's £12.99/month or £129.99/year. In the Eurozone, Germany's Individual plan rose to €14.99/month (or €149.99/year) and Family to €27.99/month on June 11, 2026; other euro countries vary. Student plans are cheaper (£7.99/month in the UK) but require annual eligibility re-verification. Prices change roughly once a year, so check your local YouTube Premium page before deciding.
+
+Q: Is a free ad blocker cheaper than YouTube Premium?
+A: As of June 2026, yes, in pure dollars. A free Chrome ad blocker costs $0 versus $191.88/year for US YouTube Premium Individual at $15.99/month. The hidden cost of the free route is time and reliability: YouTube has pushed multiple anti-adblock waves since 2023, and during each one a blocker can fail for days to weeks until it patches. You also get no coverage in YouTube's mobile app, no background play, and no offline downloads. If you only watch on desktop Chrome and don't mind the occasional broken week, the ad blocker is cheaper. If you watch on a phone or want guaranteed ad-free playback, Premium is the only thing that delivers it everywhere.
+
+Q: Can I use a YouTube ad blocker on my phone?
+A: As of June 2026, no, not in YouTube's official mobile app. Chrome extensions only run on desktop Chrome. The iOS and Android YouTube apps don't support extensions, so a desktop ad blocker does nothing for phone or tablet viewing. The only ad-free option inside the official mobile app is YouTube Premium. Some alternative mobile browsers offer partial YouTube blocking, but they face the same anti-adblock pressure without a fast-updating extension ecosystem behind them.
+
+Q: Does YouTube Premium do anything besides remove ads?
+A: As of June 2026, yes. Premium adds background playback (audio keeps running when you leave the app or lock your phone), offline downloads, and YouTube Music Premium. It also removes ads everywhere YouTube runs: desktop, mobile app, smart TVs, and the watch page. A browser ad blocker only covers desktop Chrome and only removes ads. If background play and downloads matter to you, those features are part of the price comparison, not a side note.
+
+Q: Will an ad blocker keep working on YouTube, or will it break?
+A: As of June 2026, it works most of the time but breaks periodically. YouTube has shipped several anti-adblock enforcement waves since mid-2023; the largest was June 2025 (a year before this article). Each wave changes how ad data is packaged, breaking scriptlet-based blockers for days to weeks until they patch. Extensions that strip ad data before the player reads it (the preventive approach) recover fastest, typically within 24-48 hours. The longer-term threat is Server-Side Ad Insertion (SSAI), still in limited testing as of mid-2026, which no extension can intercept. If SSAI ships broadly, Premium becomes the only ad-free path.
+
+Q: Is it worth paying for YouTube Premium if I already have an ad blocker?
+A: As of June 2026, only if you watch on mobile or want background play and downloads. If you watch exclusively on desktop Chrome and a reliable blocker is removing your ads, paying $15.99/month on top of that is redundant for ad removal specifically. The case for Premium is the features an extension physically cannot provide: ad-free viewing in the mobile app, on TVs, plus background audio and offline files. Decide based on where you watch, not on the ads alone.
+
+---
+
 ### Chrome 150 Gemini Spark: What It Means for Tab Users
 
 URL: https://www.superchargebrowser.com/library/chrome-150-gemini-spark-for-tab-users/
@@ -2893,7 +3582,7 @@ Brave runs Chrome Web Store extensions, and most "best extensions" lists waste y
 
 | Extension | Version (Jun 2026) | Users | Gap it fills in Brave | Cost |
 |---|---|---|---|---|
-| SuperchargePerformance | v1.4.2 | ~3,000 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
+| SuperchargePerformance | v1.4.3 | ~3,000 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
 | SuperchargeNavigation | v1.3.0 | ~1,000 | Named workspaces, tab command bar, session snapshots | Free |
 | Dark Reader | v4.9.125 | ~7M | Dark mode for website content, per-site | Free |
 | Bitwarden | v2026.5.1 | ~6M | Open-source password manager beyond the browser | Free / paid |
@@ -2916,7 +3605,7 @@ What the native trio lacks is depth. The strip has no workspaces. Memory Saver h
 
 ## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
 
-Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.2, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
+Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.3, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
 
 - **Suspension timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier; the PRO tier, waitlist-only for now, unlocks custom values down to seconds.
 - **Multi-signal protection.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 25+ web apps are auto-protected out of the box: Figma, Notion, Slack, Google Docs, Discord, Zoom, WhatsApp Web, and others where a discard would drop a call or kill a queue.
@@ -2974,7 +3663,7 @@ Q: Does Brave have a built-in memory saver?
 A: Yes. As of June 2026, Brave's Memory Saver (Settings > System > Performance) deactivates tabs you are not using and reloads them when you return, with a manual site-exception list. What it lacks is control: no user-set suspension timer and no automatic protection for web apps like Figma or Slack. Tab suspender extensions add those layers on top of the same Chromium discard mechanism.
 
 Q: Do tab suspender extensions work on Brave?
-A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of June 2026, SuperchargePerformance (v1.4.2 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 25+ auto-protected web apps including Figma, Notion, Slack, and Google Docs.
+A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of June 2026, SuperchargePerformance (v1.4.3 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 25+ auto-protected web apps including Figma, Notion, Slack, and Google Docs.
 
 Q: Does Brave have native vertical tabs?
 A: Yes. Brave shipped native vertical tabs in version 1.52 back in May 2023, three years before this article's publication. Enable them under brave://settings/appearance or by right-clicking any tab. They support collapsing to icons, pinning, and tab groups. They are a relocated tab strip rather than an organization system: no named workspaces, no session snapshots, no command-bar search across tabs.
@@ -3651,157 +4340,6 @@ A: Yes. They sit on different layers. Memory Saver handles Chrome's built-in tab
 
 ---
 
-### FIX STATUS_BREAKPOINT Chrome Error: 6 Tested Fixes (2026)
-
-URL: https://www.superchargebrowser.com/library/fix-chrome-status-breakpoint-error/
-Category: troubleshooting | Extension: performance | Updated: 2026-06-08
-Description: Error code: STATUS_BREAKPOINT is not a virus — a Chrome renderer hit an unexpected state. GPU drivers cause most cases. 6 tested fixes, fastest first (2026).
-
-> **Key takeaways**
-> - **STATUS_BREAKPOINT is not a virus.** It means a renderer process hit an unexpected internal state and crashed.
-> - Ranked by frequency: **GPU driver timeouts, extension conflicts, and unstable XMP/EXPO RAM overclocks** — not malware.
-> - Start with **Incognito mode** to rule out extensions, then update GPU drivers. On gaming rigs, also disable XMP/EXPO.
-
-As of June 2026, "Error code: STATUS_BREAKPOINT" in Chrome means a renderer process hit an unexpected internal state and crashed. It is not a virus. The three most common causes are a GPU driver timeout, an extension conflict, or an unstable XMP/EXPO RAM overclock. The fastest fix is disabling hardware acceleration. If the error hits the moment Chrome opens — before any page loads — skip to [Fix 6](#fix-6-status_breakpoint-on-startup-chrome-wont-open), a different failure mode.
-
-`STATUS_BREAKPOINT` sounds alarming but usually has a mundane cause. It surfaces most often on pages with video, WebGL, or heavy animation (GPU path), or intermittently on gaming rigs where overclocked memory corrupts RAM pages at random.
-
-## Quick Diagnosis
-
-| Symptom | Likely Cause | Fix |
-|---------|-------------|-----|
-| Crash happens on sites with video, WebGL, or animations | GPU driver timeout | [Fix 1: Disable hardware acceleration](#fix-1-disable-hardware-acceleration) |
-| Crashes started after you installed an extension | Extension conflict | [Fix 2: Isolate extensions](#fix-2-isolate-extension-conflicts) |
-| Crash happens intermittently on any site | RAM instability (overclocking) | [Fix 3: Check RAM stability](#fix-3-check-ram-stability) |
-| Crash only happens when many tabs are open | Memory pressure | [Fix 4: Reduce memory pressure](#fix-4-reduce-memory-pressure) |
-| Crash tied to one specific site | Corrupt site cache | [Fix 5: Clear site data](#fix-5-clear-site-cache) |
-| Crash hits the instant Chrome opens, before any page loads | Profile corruption or GPU init failure | [Fix 6: On-startup STATUS_BREAKPOINT](#fix-6-status_breakpoint-on-startup-chrome-wont-open) |
-
-## What Causes the STATUS_BREAKPOINT Error in Chrome?
-
-`STATUS_BREAKPOINT` fires when Chrome's GPU watchdog resets a stalled driver connection, severing a renderer mid-draw. The ranked causes are: GPU driver timeouts on video and WebGL pages, conflicting extensions, and unstable XMP/EXPO/DOCP RAM overclocks that corrupt memory pages at random. Malware is not a cause.
-
-## Fix 1: Disable Hardware Acceleration
-
-GPU driver timeouts are a common cause. Disabling hardware acceleration removes the Chrome-GPU dependency.
-
-1. Go to **Settings > System** (`chrome://settings/system`).
-2. Toggle off **Use graphics acceleration when available**.
-3. Click **Relaunch**.
-4. If crashes stop, update your GPU drivers (NVIDIA, AMD, or Intel), then re-enable hardware acceleration to restore video performance.
-
-## Fix 2: Isolate Extension Conflicts
-
-1. Open an **Incognito window** (Ctrl+Shift+N). Extensions are disabled by default in Incognito.
-2. Browse normally for 10–15 minutes. If no crash occurs, an extension is the cause.
-3. Go to `chrome://extensions/` and disable all extensions.
-4. Re-enable them one at a time, testing after each, until the crash returns.
-5. Update or remove the offending extension.
-
-## Fix 3: Check RAM Stability
-
-This fix is specifically for gaming PCs or any system running XMP, EXPO, or DOCP memory profiles. Unstable memory overclocks corrupt data in RAM pages at random intervals — Chrome hits corrupted memory, and the renderer crashes. The frustrating part is that the system appears stable in normal use and even in stress tests, but Chrome's memory access patterns expose it.
-
-1. Enter your BIOS/UEFI settings (press Delete, F2, or F12 on startup — varies by motherboard).
-2. Locate the memory settings and temporarily disable XMP/EXPO/DOCP to run RAM at stock speeds.
-3. Test Chrome for several hours. If crashes stop, your overclock is unstable at its current settings.
-4. Either lower the memory speed in BIOS or manually adjust timings and voltage for stability.
-
-## Fix 4: Reduce Memory Pressure
-
-With many tabs open, available memory becomes scarce and renderer processes become unstable.
-
-1. Press **Shift + Esc** to open Chrome Task Manager.
-2. Sort by **Memory** and identify tabs using the most RAM.
-3. Close tabs you are not actively using.
-4. Go to **Settings > Performance** and enable **Memory Saver**.
-
-## Fix 5: Clear Site Cache
-
-If crashes consistently happen on one specific site, that site's cached data may be corrupt.
-
-1. Navigate to the site that causes the crash.
-2. Click the lock icon in the address bar.
-3. Select **Site settings > Clear data**.
-4. Reload the page.
-
-## Fix 6: STATUS_BREAKPOINT on Startup (Chrome Won't Open)
-
-If `STATUS_BREAKPOINT` fires the instant Chrome launches — before a single page renders — the cause is different from the in-session crashes above. The two usual suspects are a corrupted browser profile or a GPU process that fails during initialization. The fix order below isolates which one.
-
-1. **Test the GPU path first.** Close Chrome fully. Launch it once with hardware acceleration off: right-click the Chrome shortcut, open **Properties**, and append ` --disable-gpu` to the **Target** field (after the closing quote, with a leading space). Launch. If Chrome opens cleanly, the GPU process was the trigger — update your graphics drivers, then remove the flag.
-2. **Test the profile path.** If `--disable-gpu` did not help, the profile may be corrupt. Open `chrome://version` if you can reach it and note your **Profile Path**. Close Chrome, rename that profile folder (for example `Default` to `Default.old`), and relaunch. Chrome rebuilds a clean profile. If it opens, your old profile was corrupt — sign back in to restore bookmarks and history via Chrome Sync.
-3. **Test without extensions.** Launch with ` --disable-extensions` appended to the shortcut target. An extension that crashes during startup produces the same on-launch signature.
-4. **Last resort: reinstall.** If none of the above works, uninstall Chrome (keep your data when prompted), download a fresh installer from google.com/chrome, and reinstall. This replaces corrupted program files without touching your synced data.
-
-On Windows, the on-launch variant is the most common report because driver and profile state both load before the first tab. The flag syntax is identical on macOS (edit the launch command) and Linux (`google-chrome --disable-gpu`).
-
-## "Error Code: STATUS_BREAKPOINT" in Other Languages
-
-Chrome localizes the crash screen, so the same error reads differently depending on your system language. These all describe the identical renderer crash, and every fix on this page applies regardless of the wording:
-
-| Language | On-screen text |
-|----------|----------------|
-| English | Error code: STATUS_BREAKPOINT |
-| Dutch (Nederlands) | Foutcode: STATUS_BREAKPOINT |
-| Spanish (Español) | Código de error: STATUS_BREAKPOINT |
-| Danish (Dansk) | Fejlkode: STATUS_BREAKPOINT |
-| German (Deutsch) | Fehlercode: STATUS_BREAKPOINT |
-| French (Français) | Code d'erreur : STATUS_BREAKPOINT |
-
-If you reached this page after searching `foutcode: status_breakpoint`, `código de error: status_breakpoint`, or `fejlkode: status_breakpoint`, start with [Fix 1](#fix-1-disable-hardware-acceleration) for an in-session crash or [Fix 6](#fix-6-status_breakpoint-on-startup-chrome-wont-open) if Chrome will not open at all.
-
-<aside class="mid-article-cta not-prose my-10 relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pl-9 pr-5 py-4 rounded-xl bg-accent-bg border border-accent-rule" data-cta-position="mid" data-nosnippet>
-  <span class="absolute top-5 left-5 w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
-  <div class="min-w-0">
-    <div class="text-sm font-semibold text-ink">SuperchargePerformance</div>
-    <div class="text-sm text-ink-subtle">Fewer active renderers means fewer GPU watchdog timeouts.</div>
-    <div class="text-sm text-ink-subtle">Auto-suspends idle tabs. 186k+ blocking rules cut WebGL ad contention.</div>
-  </div>
-  <a href="https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf" target="_blank" rel="noopener noreferrer" class="mid-cta-btn inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-on-accent text-sm font-semibold rounded-lg hover:opacity-90 flex-shrink-0">
-    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-    </svg>
-    Add to Chrome — Free
-  </a>
-</aside>
-
-## Reducing Memory Pressure Before Breakpoints Trigger
-
-If your crashes match the heavy tab load pattern (Fix 4), reducing the number of active renderer processes helps. SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()`, which also reduces the number of renderers competing for GPU time — fewer opportunities for the GPU watchdog timeout that produces `STATUS_BREAKPOINT`. Ad and tracker blocking prevents WebGL-based ads from loading in background tabs, further reducing GPU contention.
-
-For crashes caused by GPU drivers or RAM instability, you need Fixes 1 and 3 — tab suspension won't change those outcomes.
-
-## Technical Background
-
-Chrome uses a multi-process architecture where each tab runs an isolated **renderer process**, and a separate **GPU process** handles compositing and hardware-accelerated drawing. The GPU process coordinates draw commands from all renderer processes simultaneously.
-
-When a background renderer sends a draw command that stalls the GPU (common with complex CSS animations or WebGL in ads), the GPU watchdog timer detects the hang and resets the driver connection. This severs the link between the waiting renderer and the GPU, causing the renderer to crash with `STATUS_BREAKPOINT`.
-
-The error is more frequent when many tabs are simultaneously active because more renderers are competing for GPU time. Reducing the number of active renderers — by suspending background tabs — directly reduces the number of potential GPU timeout points.
-
-If crashes hit on video or WebGL pages, update your GPU drivers first. If they strike at random on a PC with XMP/EXPO memory, disable the overclock and test — tab suspension cannot fix unstable RAM.
-
-For related crashes, see the article on [fixing the Aw, Snap crash](/library/fix-aw-snap-crash/) and [fixing STATUS_ACCESS_VIOLATION](/library/fix-status-access-violation/).
-
-#### FAQ
-Q: What does STATUS_BREAKPOINT mean in Chrome?
-A: As of June 2026, it is a Chrome crash error indicating a renderer process hit an unexpected internal state. Common causes include memory exhaustion, GPU driver conflicts, or extension conflicts. Despite the name, it has nothing to do with software debugging breakpoints.
-
-Q: How do I fix STATUS_BREAKPOINT permanently?
-A: The most reliable fixes are: update Chrome and GPU drivers, disable extensions one by one to find conflicts, and reduce memory pressure by suspending unused tabs. If it only crashes on specific sites, clear that site's cached data.
-
-Q: Does STATUS_BREAKPOINT mean Chrome has a virus?
-A: No. It is a standard Chrome crash code, not a security indicator. It means a Chrome process ran out of resources or hit an internal error state.
-
-Q: Why does STATUS_BREAKPOINT appear only when Chrome opens?
-A: As of June 2026, an on-launch STATUS_BREAKPOINT usually points to a corrupted user profile or a GPU init failure rather than a single tab. Launch Chrome with the --disable-gpu flag to test the GPU path, or create a fresh profile to test the profile path. The fix differs from the in-session crash covered above.
-
-Q: Is STATUS_BREAKPOINT a GPU problem or a RAM problem?
-A: Both are common. If it crashes on video, WebGL, or animation-heavy pages, it is the GPU watchdog (Fix 1). If it strikes at random on a desktop running an XMP/EXPO memory overclock, it is unstable RAM (Fix 3). Crashes only with many tabs open point to memory pressure (Fix 4).
-
----
-
 ### FIX Photopea "Not Enough RAM" Error in Chrome: 6 Fixes (2026)
 
 URL: https://www.superchargebrowser.com/library/fix-photopea-not-enough-ram-chrome/
@@ -3882,7 +4420,7 @@ So "Need 3043MB" is not a claim about your machine. It is the size of the contig
 
 The manual version of Fix 1 is discarding tabs by hand every time you open a large file. SuperchargePerformance does it on a timer: idle tabs suspend with `chrome.tabs.discard()` after a set interval, releasing their memory back to the pool so Photopea's tab can claim the contiguous block it needs.
 
-Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of June 2026 the live version is v1.4.2.
+Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of June 2026 the live version is v1.4.3.
 
 If Photopea is the only heavy tab you ever have open, the extension will not change much — at that point the answer is Fix 3 (shrink the file) or Fix 6 (split it). Suspension helps when Photopea competes with a wall of other tabs for the same block.
 
@@ -5637,7 +6175,7 @@ This is what you came for. Every claim verified against current Chrome Web Store
 
 | | uBlock Origin (full) | uBlock Origin Lite | AdGuard | Ghostery | SuperchargePerformance |
 |---|---|---|---|---|---|
-| Version (Jun 2026) | v1.71.0 | v2026.529.1448 | v5.4.2.0 | v10.5.45 | v1.4.2 |
+| Version (Jun 2026) | v1.71.0 | v2026.529.1448 | v5.4.2.0 | v10.5.45 | v1.4.3 |
 | **Runs on Chrome 149?** | **No — MV2, removed** | Yes | Yes | Yes | Yes |
 | CWS rating | n/a on Chrome | 4.5 stars | 4.7 stars | 4.7 stars | Featured badge |
 | Users | Firefox only now | ~16M (Chrome) | ~17M | ~2M | ~2,700 |
@@ -5689,7 +6227,7 @@ Smaller user base (~2M) than the others, but a loyal one. If your primary motiva
 
 ## SuperchargePerformance — When Ads Are Only Half the Problem
 
-v1.4.2. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
+v1.4.3. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
 
 **Layer 1: Ad and tracker blocking.** 186,645 rules compiled from 22 curated sources. Three tiers — 100K ad and tracker domains on the free tier, 65K privacy and telemetry domains on Medium, 22K malware, phishing, and fraud domains on Pro. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
 
@@ -5735,7 +6273,7 @@ If you searched for "Loon" expecting a YouTube ad blocker: [Loon](https://github
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
-A: As of June 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.71.0) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.2) covers all four — plus tab suspension and a RAM dashboard — in a single MV3 extension with 186K+ rules from 22 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
+A: As of June 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.71.0) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.3) covers all four — plus tab suspension and a RAM dashboard — in a single MV3 extension with 186K+ rules from 22 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
 
 Q: What is the best ad blocker for Chrome in 2026?
 A: As of June 2026, the major Chrome ad blockers are all Manifest V3 — AdGuard, Ghostery, Adblock Plus, and uBlock Origin Lite. Full uBlock Origin (v1.71.0) still has the deepest filter coverage of any blocker, but it is MV2 and no longer runs on Chrome, only on Firefox. On Chrome, uBlock Origin Lite is the zero-overhead option, AdGuard adds DNS-level protection in its paid apps, and SuperchargePerformance combines ad blocking (186K+ DNR rules) with tab suspension in a single extension.
@@ -5806,7 +6344,7 @@ The last three are named specifically as what to avoid, or use only on 8GB+ hard
 
 ## SuperchargePerformance: Tab Suspension + Ad Blocking Combined
 
-**CWS version: v1.4.2 (June 2026). We built this extension.**
+**CWS version: v1.4.3 (June 2026). We built this extension.**
 
 On a Chromebook, the two biggest RAM drains are idle tab renderers and ad iframes. SuperchargePerformance addresses both.
 
@@ -5891,10 +6429,10 @@ If you use Google Docs, Gmail, and YouTube regularly: SuperchargePerformance aut
 
 #### FAQ
 Q: What Chrome extensions are safe to install on a 4GB Chromebook?
-A: As of June 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.2) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
+A: As of June 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.3) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
 
 Q: Does SuperchargePerformance work on ChromeOS?
-A: As of June 2026, yes. SuperchargePerformance (v1.4.2) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
+A: As of June 2026, yes. SuperchargePerformance (v1.4.3) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
 
 Q: How many Chrome extensions should I have on a Chromebook?
 A: As of June 2026, 5-8 well-built extensions usually cause no noticeable Chrome overhead on Chromebook. Beyond 10, audit each one individually. On a 4GB Chromebook, each background-active extension adds 5-30 MB of memory overhead and some CPU. The practical limit depends on what each extension does — a declarative-only extension like uBlock Origin Lite costs near zero; a tab manager that syncs cloud state costs meaningfully more.
@@ -6370,7 +6908,7 @@ Description: Chrome Memory Saver waits for RAM pressure. These 6 extensions susp
 
 > **Key takeaways**
 > - Chrome Memory Saver suspends tabs **only after RAM pressure builds**. Timer-based extensions act proactively after idle time, regardless of system state.
-> - **SuperchargePerformance** (v1.4.2, June 2026) adds ad blocking and a RAM dashboard to tab suspension. **Tab Wrangler** (v8.3.0, April 30 2026) auto-closes and logs old tabs.
+> - **SuperchargePerformance** (v1.4.3, June 2026) adds ad blocking and a RAM dashboard to tab suspension. **Tab Wrangler** (v8.3.0, April 30 2026) auto-closes and logs old tabs.
 > - **Auto Tab Discard** works but hasn't updated on CWS since February 2024. The Great Suspender forks (Reloaded and Marvellous) are volunteer-maintained and both live on CWS.
 
 Six open-source or free tab suspenders exist for Chrome in 2026. One hasn't shipped a CWS update in over two years. One was banned for malware and survived as two forks. The right pick depends on what you're actually after: proactive suspension, auto-close with a log, a memory dashboard, or ad blocking bundled in. This page covers the verified current state of each.
@@ -6417,7 +6955,7 @@ Before the extension reviews, these are the criteria that actually matter:
 
 ### SuperchargePerformance
 
-**v1.4.2 · ~2,700 weekly users · 4.56/5 (16 ratings) · Updated June 2026 · MV3**
+**v1.4.3 · ~2,700 weekly users · 4.56/5 (16 ratings) · Updated June 2026 · MV3**
 
 [Chrome Web Store](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 
@@ -6555,7 +7093,7 @@ A tab suspender also can't fix a Chrome process that has leaked memory through a
 
 #### FAQ
 Q: What is the best tab suspender extension for Chrome in 2026?
-A: As of June 2026, the most actively maintained options are SuperchargePerformance (v1.4.2, updated June 2026), Tab Wrangler (v8.3.0, updated April 30 2026), and Great Suspender Reloaded (updated May 1 2026). SuperchargePerformance combines tab suspension with ad blocking and a RAM dashboard. Tab Wrangler auto-closes old tabs and logs them. Great Suspender Reloaded is a fork of the original suspender with a custom suspension page.
+A: As of June 2026, the most actively maintained options are SuperchargePerformance (v1.4.3, updated June 2026), Tab Wrangler (v8.3.0, updated April 30 2026), and Great Suspender Reloaded (updated May 1 2026). SuperchargePerformance combines tab suspension with ad blocking and a RAM dashboard. Tab Wrangler auto-closes old tabs and logs them. Great Suspender Reloaded is a fork of the original suspender with a custom suspension page.
 
 Q: Is Auto Tab Discard still maintained in 2026?
 A: Auto Tab Discard (v0.6.8.2) is still on the Chrome Web Store as of June 2026 with 100,000 users. Its last CWS update was February 17, 2024 — over two years ago. It works on current Chrome but has not had a public update since then.
@@ -6663,7 +7201,7 @@ The bypass logic runs entirely in your browser — no playback metadata leaves t
 
 | | TwitchAdblock | TTV LOL Pro | Alternate Player | SuperchargePerformance |
 |---|---|---|---|---|
-| Version (Jun 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.2 |
+| Version (Jun 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.3 |
 | CWS users | 100K+ | 200K+ | 80K+ | — |
 | MV3 | Yes | Yes | Yes | Yes |
 | Bypass method | Worker hijack + M3U8 sub | Proxy + clean token | Embed player swap | Worker hijack + M3U8 sub |
@@ -6910,11 +7448,11 @@ YouTube coverage is a side effect of AdGuard's general blocking stack, not its c
 | uBlock Origin | v1.71.0 | 15M | No (MV2) | Scriptlets (reactive) | 1-4 weeks (Chrome) | Full | Yes |
 | uBlock Origin Lite | v2026.529.1448 | 17M | Yes | None — cannot block YT ads | N/A | Good | Yes |
 | AdGuard | v5.4.2.0 | 17M | Yes | Mixed (inconsistent) | 24-48h | Full | Free/Paid |
-| SuperchargePerformance | v1.4.2 | ~2.7K | Yes | DNR + API proxy (AdBlock for YT base) + fallback + cosmetic | 24-48h | 186K+ DNR rules | Yes |
+| SuperchargePerformance | v1.4.3 | ~2.7K | Yes | DNR + API proxy (AdBlock for YT base) + fallback + cosmetic | 24-48h | 186K+ DNR rules | Yes |
 
 ## SuperchargePerformance: The Multi-Utility Case
 
-**v1.4.2 · verified June 2026**
+**v1.4.3 · verified June 2026**
 
 SuperchargePerformance's YouTube blocking runs four layers in sequence, three of which are proprietary:
 
@@ -6990,7 +7528,7 @@ If you arrived here searching for "Loon" as a YouTube ad blocker: [Loon](https:/
 
 #### FAQ
 Q: What is the best YouTube ad blocker for Chrome in 2026?
-A: As of June 2026, the most reliable YouTube-specific ad blockers on Chrome are AdBlock for YouTube (v7.2.1, 11M users) and SuperchargePerformance (v1.4.2), which shares AdBlock for YouTube's upstream API-proxy engine but layers three additional proprietary blocking mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. AdBlock for YouTube focuses entirely on the API-proxy approach; SuperchargePerformance adds those three extra layers. uBlock Origin (v1.71.0) also blocks YouTube ads via scriptlets, but has had multi-week gaps during anti-adblock waves. uBlock Origin Lite cannot block YouTube ads at all — its declarative rule set has no mechanism to intercept player data. AdGuard (v5.4.2.0) is inconsistent on YouTube specifically.
+A: As of June 2026, the most reliable YouTube-specific ad blockers on Chrome are AdBlock for YouTube (v7.2.1, 11M users) and SuperchargePerformance (v1.4.3), which shares AdBlock for YouTube's upstream API-proxy engine but layers three additional proprietary blocking mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. AdBlock for YouTube focuses entirely on the API-proxy approach; SuperchargePerformance adds those three extra layers. uBlock Origin (v1.71.0) also blocks YouTube ads via scriptlets, but has had multi-week gaps during anti-adblock waves. uBlock Origin Lite cannot block YouTube ads at all — its declarative rule set has no mechanism to intercept player data. AdGuard (v5.4.2.0) is inconsistent on YouTube specifically.
 
 Q: Why did my YouTube ad blocker stop working in 2026?
 A: As of June 2026, YouTube has pushed multiple anti-adblock updates since 2023, the most significant being the June 2025 wave — about a year before this update. Each update changes how ad metadata is packaged in the player's API response, breaking extensions that rely on static scriptlets. Extensions need to update their interception code within 24-48 hours or ads return. Since June 2025, YouTube's anti-adblock pressure has shifted from DOM-level scriptlet-busting waves to limited Server-Side Ad Insertion (SSAI) testing — the next structural threat rather than another wave. If SSAI is fully deployed, ads would be stitched into the video stream before delivery, which no browser extension can intercept.
@@ -12370,7 +12908,7 @@ Chrome's `chrome.tabs.discard()` API works differently. The tab's renderer proce
 | Feature | Marvellous Suspender | SuperchargePerformance |
 |---------|---------------------|----------------------|
 | Suspension method | Custom suspension page | `chrome.tabs.discard()` (invisible) |
-| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.2, CWS-live June 2026) |
+| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.3, CWS-live June 2026) |
 | RAM freed per suspended tab | 90-95% | 90-95% |
 | Back button affected | Possible (history entry) | No |
 | Suspension screen | Yes | None |
@@ -14568,7 +15106,7 @@ This timing matters. The script doing the removal has to run before the player d
 
 Pre-rolls are handled at page load. Mid-rolls are a second problem: YouTube fetches additional ad batches through network calls as you watch. A complete fix also monitors this ongoing traffic and strips ad data from each subsequent response before the player processes it.
 
-SuperchargePerformance (v1.4.2) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
+SuperchargePerformance (v1.4.3) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
 
 ## How SuperchargePerformance Does It
 
@@ -14643,7 +15181,7 @@ Q: Does uBlock Origin block YouTube ads on Chrome in 2026?
 A: As of June 2026, uBlock Origin (v1.71.0) does block YouTube ads on Chrome using scriptlets — small scripts injected into the page to strip ad data from YouTube's API responses. It works most of the time. The complication: YouTube actively ships anti-adblock updates that temporarily defeat scriptlet-based blockers, and there have been windows of days or weeks where uBlock's scripts fell behind YouTube's changes. Firefox users with uBlock Origin have an additional backup layer that makes it more consistent. On Chrome, the scriptlet approach alone is the mechanism — effective, but fragile by nature.
 
 Q: What is the most reliable way to block YouTube ads on Chrome in 2026?
-A: As of June 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.2) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
+A: As of June 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.3) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
 
 Q: Will YouTube's anti-adblock detection catch this fix?
 A: As of June 2026, SuperchargePerformance bypasses YouTube's anti-adblock detection by removing ad data before the player initializes — the player sees a clean configuration with no ad slots, so the detection logic has nothing to find. A click-skip fallback handles rare cases where a placement slips through.
