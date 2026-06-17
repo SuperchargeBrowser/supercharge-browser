@@ -2622,7 +2622,7 @@ A: Neither, in most cases. It is a software-level renderer crash. The one hardwa
 
 ---
 
-### How to Take a Full Page Screenshot in Chrome (2026)
+### How to Take a Full-Page Screenshot in Chrome FAST (2026)
 
 URL: https://www.superchargebrowser.com/library/full-page-screenshot-chrome/
 Category: guide | Extension: capture | Updated: 2026-06-17
@@ -2683,7 +2683,7 @@ Then **Copy to clipboard** or **Save** in one click. The pixelate tool is the on
 
 ## Where Your Screenshots Are Stored
 
-A screenshot tool sees your screen, so the storage answer matters. SuperchargeCapture keeps captures in **local storage on your device** (the Origin Private File System). It declares **no host permissions in production** — the `activeTab` permission means it only touches a page when you invoke a capture on that tab, with no always-on content script, no `webRequest`, and zero telemetry. The DevTools method is local too, of course; the point is the extension does not trade that local-first posture for its extra features. The only cloud path is an optional Share to Drive that uploads to *your own* Google Drive, never to our servers.
+A screenshot tool sees your screen, so the storage answer matters. SuperchargeCapture keeps captures in **local storage on your device** (the Origin Private File System). It requires **no host permissions at install** — no install-time host warning — and the `activeTab` permission means it only touches a page when you invoke a capture on that tab, with no always-on content script, no `webRequest`, and zero telemetry. One optional `<all_urls>` permission can be enabled in-context for cross-site recording; it is off by default and revocable from Chrome's settings anytime. The DevTools method is local too, of course; the point is the extension does not trade that local-first posture for its extra features. The only cloud path is an optional Share to Drive that uploads to *your own* Google Drive, never to our servers.
 
 ## Choosing Your Method
 
@@ -2716,7 +2716,7 @@ A: As of June 2026, the DevTools full-size capture and most naive scroll-and-sti
 
 ---
 
-### GoFullPage Alternative That Exports Free? (2026)
+### GoFullPage Alternative? 4 Modes, FREE Export (2026)
 
 URL: https://www.superchargebrowser.com/library/superchargecapture-vs-gofullpage/
 Category: comparison | Extension: capture | Updated: 2026-06-17
@@ -2739,7 +2739,7 @@ GoFullPage is named for what it does: it grabs the full page, and it does that j
 | Visible viewport | Yes | Yes |
 | Drag a region | No | Yes |
 | Single element (hover + click) | No | Yes |
-| WebP export (smaller files) | No | Yes |
+| Export formats | PNG, PDF | PNG, JPG, WebP, PDF |
 
 **Element capture** is the underrated one. Hover over the page, SuperchargeCapture highlights the DOM node under your cursor, you click, and it grabs exactly that element — a pricing card, a chart, a single comment — already cropped, no manual trimming. For documentation and bug reports, that is faster than capturing the whole viewport and cropping down every time.
 
@@ -2781,7 +2781,7 @@ SuperchargeCapture is screenshots *and* screen recording in one. The same extens
 
 A screenshot tool sees your screen by definition, so where the bytes go matters.
 
-SuperchargeCapture declares **no host permissions in production**. The `activeTab` permission means it only touches a page after you invoke a capture on that tab — there is no always-on content script reading every site you visit, no `webRequest`, no telemetry. Screenshots and recordings live in local storage on your device. The only thing that ever leaves is an optional Share to Drive, which uploads to *your own* Google Drive (scoped so the app can only see files it created), never to SuperchargeBrowser servers.
+SuperchargeCapture requires **no host permissions at install** — no install-time host warning. The `activeTab` permission means it only touches a page after you invoke a capture on that tab — there is no always-on content script reading every site you visit, no `webRequest`, no telemetry. One optional `<all_urls>` permission can be enabled in-context for cross-site recording; it is off by default and revocable from Chrome's settings anytime. Screenshots and recordings live in local storage on your device. The only thing that ever leaves is an optional Share to Drive, which uploads to *your own* Google Drive (scoped so the app can only see files it created), never to SuperchargeBrowser servers.
 
 The mental model is simple: the tool touches a page only when you press capture, and the image stays yours, on your disk, until you decide to share it.
 
@@ -2826,7 +2826,7 @@ A: As of June 2026, SuperchargeCapture's screenshots, annotation, annotation exp
 
 ---
 
-### Loom Alternative That Records Without a Login? (2026)
+### Loom Alternative? 6 Reasons to Go LOCAL in Chrome (2026)
 
 URL: https://www.superchargebrowser.com/library/superchargecapture-vs-loom/
 Category: comparison | Extension: capture | Updated: 2026-06-17
@@ -2850,7 +2850,7 @@ Loom is a hosting product with a recorder attached. SuperchargeCapture is a reco
 | Upload before sharing | Yes, to get a link | Not required; local file is instant |
 | Cloud destination | Loom's servers | Your own Google Drive (opt-in) |
 | Crash mid-recording | Can lose the take | Recovered from disk |
-| Reads pages you browse | Account-based SaaS | No host permissions |
+| Reads pages you browse | Account-based SaaS | None required (optional cross-site opt-in) |
 | Recording length cap | Free tier capped | None |
 | Price for core recording | Free tier + paid plans | Free |
 
@@ -2892,7 +2892,7 @@ The contrast with Loom is the direction of the default. Loom uploads first and y
 
 ## What Each Tool Can Actually Touch
 
-SuperchargeCapture ships with **no host permissions in production**. Its `activeTab` permission covers every flow, so the extension only reaches a page after you invoke a capture on that specific tab. No always-on content script reads what you browse. There is no `webRequest`, no analytics SDK, no telemetry. Captures live in local storage on your device, and there is no account and no monetization layer riding along.
+SuperchargeCapture requires **no host permissions at install** — no install-time host warning. Its `activeTab` permission covers the default flow, so the extension only reaches a page after you invoke a capture on that specific tab. There is one optional `<all_urls>` permission you can enable in-context if you want to record across sites; it is off by default and revocable from Chrome's settings anytime. No always-on content script reads what you browse. There is no `webRequest`, no analytics SDK, no telemetry. Captures live in local storage on your device, and there is no account and no monetization layer riding along.
 
 Loom takes the standard SaaS shape: it is a hosting product, so your video lives on Loom's servers and an account is the front door. That is a reasonable design for a tool built around shared, hosted video. It is also a different trust model. One product holds your recordings on its infrastructure; the other touches a page only when you tell it to and keeps the file on your disk. Pick the default that matches how sensitive your recordings are.
 
@@ -2934,7 +2934,7 @@ Q: Is SuperchargeCapture free, and what does Loom cost?
 A: As of June 2026, SuperchargeCapture's screen recording, screenshot, trim, auto-zoom, cursor polish, and local export are free with no account. Loom has a free tier with caps on video length and library size, and removes those limits on paid plans. The core difference is not only price — it is that SuperchargeCapture has no paywall gating the recording itself and no requirement to host the file with a third party.
 
 Q: Can SuperchargeCapture read the pages I browse?
-A: No. As of June 2026, SuperchargeCapture ships with no host permissions in its production Chrome manifest. It injects nothing into a page until you start a capture on that specific tab, and it runs zero telemetry or analytics. The access to read or change your browsing is simply not granted, so it cannot watch your sessions in the background. It relies on activeTab, which only opens a single tab to you at the moment you invoke a capture.
+A: No. As of June 2026, SuperchargeCapture requires no host permissions at install in its production Chrome manifest — there is no install-time host warning, and by default it relies on activeTab, which grants access to a single tab only at the moment you invoke a capture on it. It injects nothing into a page until you start a capture on that specific tab, and it runs zero telemetry or analytics. There is one optional host permission you can grant in-context for recording across sites; it is off by default and revocable from Chrome's settings at any time. The access to read or change your browsing is not granted unless you opt in, so it cannot watch your sessions in the background.
 
 ---
 
