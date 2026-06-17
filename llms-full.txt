@@ -2622,6 +2622,322 @@ A: Neither, in most cases. It is a software-level renderer crash. The one hardwa
 
 ---
 
+### How to Take a Full Page Screenshot in Chrome (2026)
+
+URL: https://www.superchargebrowser.com/library/full-page-screenshot-chrome/
+Category: guide | Extension: capture | Updated: 2026-06-17
+Description: Chrome can screenshot a whole scrolling page with no extension: a hidden DevTools command does it. The steps, the limits, and when you need more than that.
+
+To take a full-page screenshot in Chrome with no extension (as of June 2026): open DevTools with **F12**, press **Ctrl+Shift+P** (Cmd+Shift+P on Mac) to open the Command Menu, type **screenshot**, and choose **Capture full size screenshot**. Chrome scrolls the whole page, stitches it, and saves a PNG to your downloads. It works, it is free, and it is built in. It also has three specific failure modes worth knowing before you rely on it.
+
+## The Built-In DevTools Method, Step by Step
+
+Chrome ships a real full-page capture. It is just hidden inside DevTools rather than on a menu, which is why most people never find it.
+
+1. Open the page you want to capture and scroll to the **top**.
+2. Open DevTools: **F12**, or **Ctrl+Shift+I** (Windows/Linux) / **Cmd+Option+I** (Mac).
+3. Open the **Command Menu**: **Ctrl+Shift+P** (Windows/Linux) / **Cmd+Shift+P** (Mac).
+4. Type **screenshot**. A short list of screenshot commands appears.
+5. Choose **Capture full size screenshot**.
+
+Chrome scrolls the page programmatically, captures it, stitches the frames, and drops a PNG of the **entire scrolling page** into your downloads folder. No extension, no account, no upload. The same Command Menu also offers **Capture screenshot** (just the visible viewport), **Capture area screenshot** (drag a region), and **Capture node screenshot** (grab one element, selected in the Elements panel first).
+
+For a clean, static article or a simple landing page, this is all you need. If the built-in command gives you a correct image, stop here and install nothing.
+
+## When the Built-In Capture Breaks
+
+The DevTools method is a scroll-and-stitch, and scroll-and-stitch has known weak spots. These are not rare edge cases; they show up on the kinds of pages people most often want to capture.
+
+**Blank sections on lazy-loaded pages.** Modern pages defer loading images and sections until you scroll near them. The DevTools capture can scroll faster than the content renders, so the bottom of your screenshot comes out as blank rectangles where images had not appeared yet. Partial fix: scroll slowly all the way to the bottom yourself first so everything loads, scroll back to the top, *then* run the capture.
+
+**The wrong scrollable element.** Many web apps do not scroll the document — they scroll an inner panel (a dashboard's main column, a chat thread, an email reading pane). The DevTools full-size capture targets the page, so on these layouts it can grab the static frame and miss the content inside the panel you actually wanted. There is no settings toggle that fixes this in the built-in tool.
+
+**Repeated sticky headers.** A header fixed to the top of the viewport stays pinned while the page scrolls, so a naive stitch captures it in every frame. The result is the same nav bar stamped at regular intervals down a tall screenshot, like a fence running through your image.
+
+**No annotation, ever.** The output is a flat PNG. If you need an arrow pointing at a bug or a blurred-out email address, that is a second tool and a round-trip through an image editor.
+
+## A One-Click Path That Survives Those Cases
+
+If the page you keep capturing is a real web app — lazy-loading, inner scroll panels, sticky chrome — the DevTools method turns into a fight. [SuperchargeCapture](/capture/) exists for exactly that page, and it skips the DevTools detour entirely.
+
+Pick **Full page** in the popup and it scrolls and stitches the whole page, built to handle **fixed and sticky elements correctly** so the repeated-header artifact does not happen. It is one action, not five DevTools steps, and there are three other modes when full-page is not what you want:
+
+| Mode | What it grabs |
+|---|---|
+| Full page | The entire scrolling page, sticky headers handled |
+| Visible | One instant capture of the current viewport |
+| Region | Drag a rectangle around any area |
+| Element | Hover to highlight a DOM node, click to grab just it |
+
+Output is PNG, JPG, or WebP, with PDF available from the editor for multi-section captures. The Element mode is the quiet time-saver: hover, click, and you have a tightly cropped shot of one card or chart with no manual trimming.
+
+## Mark It Up Before It Leaves Your Screen
+
+This is where the built-in command stops and an editor starts. After a SuperchargeCapture screenshot, an annotation editor opens with everything free, no export paywall:
+
+- **Arrow** to point, **Box** to frame an area, **Highlight** to emphasize.
+- **Pixelate** to blur a token, email, or face *inside* the screenshot, before it is ever shared.
+- **Text** for labels and callouts, and **Crop** with aspect-ratio presets.
+
+Then **Copy to clipboard** or **Save** in one click. The pixelate tool is the one to notice: redacting sensitive data inside the capture means a secret never has to pass through a separate editor or, worse, get pasted somewhere unredacted by accident.
+
+## Where Your Screenshots Are Stored
+
+A screenshot tool sees your screen, so the storage answer matters. SuperchargeCapture keeps captures in **local storage on your device** (the Origin Private File System). It declares **no host permissions in production** — the `activeTab` permission means it only touches a page when you invoke a capture on that tab, with no always-on content script, no `webRequest`, and zero telemetry. The DevTools method is local too, of course; the point is the extension does not trade that local-first posture for its extra features. The only cloud path is an optional Share to Drive that uploads to *your own* Google Drive, never to our servers.
+
+## Choosing Your Method
+
+| Your page / need | Use this |
+|---|---|
+| A simple static page, one-off capture | DevTools: F12 → Ctrl+Shift+P → "screenshot" |
+| A web app with lazy loading or inner scroll panels | SuperchargeCapture Full page |
+| You need to annotate or blur before sharing | SuperchargeCapture editor |
+| You want region or single-element shots | SuperchargeCapture Region / Element |
+| Sticky header keeps repeating in the stitch | SuperchargeCapture (sticky-aware stitch) |
+| You also record screen walkthroughs | SuperchargeCapture (records too) |
+
+If your screenshots are simple and the DevTools command gives you a clean image, you already have everything you need built into Chrome. If you keep fighting blank sections, the wrong scroll target, repeated headers, or the lack of markup, [SuperchargeCapture](/capture/) handles those cases in one click and lets you annotate and export free.
+
+#### FAQ
+Q: How do I take a full-page screenshot in Chrome without an extension?
+A: As of June 2026, open DevTools (F12 or Ctrl+Shift+I, Cmd+Option+I on Mac), press Ctrl+Shift+P (Cmd+Shift+P on Mac) to open the Command Menu, type 'screenshot', and choose 'Capture full size screenshot'. Chrome scrolls the page, stitches it, and saves a PNG of the entire scrolling page to your downloads. No extension required.
+
+Q: Why is my Chrome full-page screenshot blank or cut off?
+A: As of June 2026, the DevTools full-size screenshot fails on two common page types. Pages that lazy-load content as you scroll can produce blank sections, because the capture happens faster than the content renders. Pages with an inner scroll container (a scrollable panel rather than the whole document) can be captured at the wrong element, cutting off the part you wanted. Scrolling slowly to the bottom first, then capturing, helps with lazy loading but does not fix the scroll-container case.
+
+Q: What is the keyboard shortcut for a scrolling screenshot in Chrome?
+A: As of June 2026, Chrome has no single dedicated key for a full-page scrolling screenshot. The fastest built-in route is DevTools: F12, then Ctrl+Shift+P (Cmd+Shift+P on Mac), type 'screenshot', pick 'Capture full size screenshot'. An extension like SuperchargeCapture can map a true one-click or one-shortcut full-page capture without opening DevTools each time.
+
+Q: Can I annotate a full-page screenshot in Chrome?
+A: As of June 2026, Chrome's built-in DevTools screenshot saves a flat PNG with no annotation tools — you would mark it up in a separate image editor. SuperchargeCapture captures the full page and opens an editor with arrow, box, ellipse, highlight, pixelate (to blur sensitive data), text, and crop, then lets you copy or save the annotated image free. Captures stay on your device; nothing uploads unless you choose to share.
+
+Q: Does the Chrome full-page screenshot capture fixed headers correctly?
+A: As of June 2026, the DevTools full-size capture and most naive scroll-and-stitch tools can repeat a sticky or fixed header in every stitched frame, leaving the same nav bar stamped down the image. SuperchargeCapture is built to handle fixed and sticky elements correctly during the full-page stitch, which removes that repeated-header artifact.
+
+---
+
+### GoFullPage Alternative That Exports Free? (2026)
+
+URL: https://www.superchargebrowser.com/library/superchargecapture-vs-gofullpage/
+Category: comparison | Extension: capture | Updated: 2026-06-17
+Description: GoFullPage paywalls annotation export and guesses the wrong scroll container on complex pages. SuperchargeCapture exports free, adds region + element.
+
+> **Key takeaways**
+> - GoFullPage captures full pages well but **gates annotated-screenshot export behind a paid plan** and stumbles on pages with inner scroll containers or lazy-loaded content.
+> - SuperchargeCapture adds **region and element capture**, keeps **annotation export free**, and handles **sticky/fixed headers** during the stitch.
+> - If you only ever grab whole pages and never annotate, GoFullPage's free tier is fine. If you mark up screenshots or capture parts of a page, the swap removes the paywall.
+
+You scroll-capture a long documentation page, draw three arrows and a box to flag a bug, hit save — and GoFullPage asks you to upgrade before it will export the annotated image. The capture worked; the markup is locked behind a plan. As of June 2026, that is GoFullPage's model on annotation export. [SuperchargeCapture](/capture/) does the full-page scroll-and-stitch too, but the arrows, boxes, ellipses, highlights, blur, and text are free to draw *and* free to export, and it captures more than just whole pages: a dragged region or a single hovered element when that is all you need. This compares the two where it actually bites — annotation export, capture modes, and the stitching failures that leave blank gaps in long screenshots.
+
+## How Many Capture Modes You Get
+
+GoFullPage is named for what it does: it grabs the full page, and it does that job well. But plenty of real screenshot work is not "the whole page." It is "this one card," "this region," "everything above the fold." That is where a four-mode tool pulls ahead.
+
+| Capture mode | GoFullPage | SuperchargeCapture |
+|---|---|---|
+| Full page (scroll + stitch) | Yes | Yes |
+| Visible viewport | Yes | Yes |
+| Drag a region | No | Yes |
+| Single element (hover + click) | No | Yes |
+| WebP export (smaller files) | No | Yes |
+
+**Element capture** is the underrated one. Hover over the page, SuperchargeCapture highlights the DOM node under your cursor, you click, and it grabs exactly that element — a pricing card, a chart, a single comment — already cropped, no manual trimming. For documentation and bug reports, that is faster than capturing the whole viewport and cropping down every time.
+
+## The Annotation Paywall
+
+This is the line that sends people looking for an alternative. As of June 2026, GoFullPage lets you annotate, then gates exporting or saving the annotated result behind a paid plan. You did the work of marking up the screenshot, and the marked-up version is the thing held back.
+
+SuperchargeCapture's editor is free, all of it:
+
+- **Arrow** to point at the thing.
+- **Box** for a rectangle around the area.
+- **Ellipse** to circle a face, a logo, or a button.
+- **Highlight** for translucent emphasis.
+- **Pixelate** to blur out an email, token, or face before you share.
+- **Text** for labels and callouts.
+- **Crop** with aspect-ratio presets.
+
+Then one-click **Copy to clipboard** or **Save**, with no upgrade prompt between you and the finished image. The pixelate tool matters more than it sounds: it means you can redact a secret or a customer's name *inside* the screenshot before it ever leaves your editor, instead of pasting into a separate image editor to do it.
+
+## Why Long Screenshots Come Out Broken
+
+The hard part of a full-page screenshot is not capturing — it is stitching the scrolled frames into one clean image. Naive scroll-and-stitch tools fail in two specific, repeatable ways, and if you have used GoFullPage on a complex app you have probably seen both.
+
+**Wrong scroll container.** Many modern pages do not scroll the document — they scroll an inner panel (think a chat app, a dashboard with a scrollable main column, an email client). A tool that assumes the page itself scrolls grabs the wrong element and produces a screenshot of the static frame, missing the content you actually wanted.
+
+**Lazy-loaded blanks.** Pages that load images and sections only as you scroll near them will hand a fast scroll-capture a series of half-loaded frames. The result is a tall screenshot with blank rectangles where content had not rendered yet.
+
+**Repeated headers.** A sticky or fixed header that stays pinned while the page scrolls gets captured in every frame, so the stitched image has the same nav bar stamped down the page like a fence.
+
+SuperchargeCapture is built to handle fixed and sticky elements correctly during the stitch. The repeated-header problem is the one it specifically targets, because it is the most visible failure in a long capture. No screenshot tool is magic on every exotic layout, but handling sticky elements removes the most common ugly artifact.
+
+## Two Tools in One Extension
+
+GoFullPage is a screenshot extension. If you also need to record a screen walkthrough, that is a second extension to install, trust, and keep updated.
+
+SuperchargeCapture is screenshots *and* screen recording in one. The same extension that grabs your full-page screenshot also records your tab, window, or screen — locally, with auto-zoom on clicks, cursor polish, frame-accurate trim, and an optional webcam bubble, all free and on-device. For anyone who currently runs one extension for screenshots and another for recordings, consolidating into one tool with one trust decision is a real simplification. The recorder also writes to disk in one-second chunks, so a crash mid-recording recovers instead of losing the take.
+
+## The Privacy Posture
+
+A screenshot tool sees your screen by definition, so where the bytes go matters.
+
+SuperchargeCapture declares **no host permissions in production**. The `activeTab` permission means it only touches a page after you invoke a capture on that tab — there is no always-on content script reading every site you visit, no `webRequest`, no telemetry. Screenshots and recordings live in local storage on your device. The only thing that ever leaves is an optional Share to Drive, which uploads to *your own* Google Drive (scoped so the app can only see files it created), never to SuperchargeBrowser servers.
+
+The mental model is simple: the tool touches a page only when you press capture, and the image stays yours, on your disk, until you decide to share it.
+
+## Honest Limits
+
+SuperchargeCapture's edge is annotation export, capture modes, and stitching. It does not claim a perfect record on every page on the web:
+
+- **No stitch is flawless on every layout.** Pages with multiple nested independent scroll regions are hard for any tool. Sticky-header handling covers the common case, not every pathological one.
+- **PDF export of a full page** comes through the editor on multi-section captures, not as a one-click default for every mode.
+- **Share to Drive is Chrome-only** (it uses `chrome.identity`); Edge users get a clear message instead of a broken button.
+- **DRM-protected video** can't be captured in a screenshot or recording — the browser renders protected media as black to any capture tool, this one included.
+
+If your only need is grabbing whole pages, you never annotate, and GoFullPage's free tier already does that for you — there is no reason to switch. The case for SuperchargeCapture is annotation export, region/element capture, cleaner stitching, and folding recording into the same tool.
+
+## Which One to Install
+
+| Your situation | Better fit |
+|---|---|
+| You annotate screenshots and want to export them free | SuperchargeCapture |
+| You need region or single-element capture, not just full page | SuperchargeCapture |
+| Your full-page shots come out with blank gaps or repeated headers | SuperchargeCapture |
+| You also record screen walkthroughs and want one extension | SuperchargeCapture |
+| You only ever grab whole pages and never mark them up | GoFullPage free tier is fine |
+
+If the annotation paywall is what pushed you to look, or your long screenshots keep coming back with stamped headers and blank sections, [SuperchargeCapture](/capture/) fixes exactly those: free annotation export, four capture modes, sticky-element stitching, plus a local screen recorder in the same extension.
+
+#### FAQ
+Q: Is there a free GoFullPage alternative that exports annotations?
+A: As of June 2026, SuperchargeCapture's annotation tools — arrow, box, ellipse, highlight, pixelate, and text — and their export are all free, with no paywall on saving or copying the annotated image. GoFullPage lets you draw annotations but gates exporting or saving the annotated result behind a paid plan. SuperchargeCapture also captures full page, visible area, a dragged region, or a single hovered element, where GoFullPage is full-page focused.
+
+Q: Why does GoFullPage leave blank sections or miss content on some pages?
+A: As of June 2026, GoFullPage scrolls the page and stitches the frames together, which breaks on two common patterns: pages with their own inner scroll container (so it captures the wrong scrollable element) and pages that lazy-load content as you scroll (so sections that hadn't loaded yet come out blank). SuperchargeCapture is built to handle fixed and sticky elements correctly during the full-page stitch, the part that produces repeated headers and gaps in naive tools.
+
+Q: Can SuperchargeCapture screenshot just one element or a region?
+A: Yes. As of June 2026, SuperchargeCapture has four modes: Full page (scroll and stitch the whole page), Visible (one capture of the current viewport), Region (drag a rectangle around any area), and Element (hover to highlight a DOM node, click to grab just it). GoFullPage centers on full-page capture and does not offer region or element selection.
+
+Q: Does SuperchargeCapture also record the screen?
+A: Yes. As of June 2026, SuperchargeCapture is a screenshot and screen-recording tool in one. Beyond screenshots it records your tab, window, or screen locally, with auto-zoom on clicks, cursor polish, trim, and webcam bubble — all free and on-device. GoFullPage is screenshot-only. If you want both capture types in one extension instead of two, that consolidation is a reason to switch.
+
+Q: Is SuperchargeCapture free and does it need an account?
+A: As of June 2026, SuperchargeCapture's screenshots, annotation, annotation export, and screen recording are free with no account and no sign-in. Captures are stored locally on your device in the Origin Private File System. There is no telemetry and no monetization layer. The only cloud feature is an optional Share to Drive that uploads to your own Google Drive, never to our servers.
+
+---
+
+### Loom Alternative That Records Without a Login? (2026)
+
+URL: https://www.superchargebrowser.com/library/superchargecapture-vs-loom/
+Category: comparison | Extension: capture | Updated: 2026-06-17
+Description: Loom needs an account and a cloud upload before you get a share link. SuperchargeCapture records locally in Chrome, no account, file stays on your machine.
+
+> **Key takeaways**
+> - Loom requires a login to record and **uploads the finished video to its cloud** before you get a shareable link.
+> - SuperchargeCapture records to **local storage with no account**, in **crash-safe one-second chunks**, and shares only if you opt into your own Google Drive.
+> - If your team already lives inside Loom's hosting and analytics, Loom fits. If you want the file to stay on your machine, the local-first swap is free.
+
+You record a four-minute bug walkthrough, then Loom asks you to sign in and wait for the upload to finish before it hands you a link. As of June 2026, that is Loom's model: an account is required, the video is processed on Loom's cloud, and a hosted link is how you share it. [SuperchargeCapture](/capture/) records the same tab, window, or screen in Chrome and writes it straight to your device. No account, no forced upload. The file is yours the second you stop. Loom has been part of Atlassian since the 2023 acquisition, and for teams handling sensitive walkthroughs the question of where a recording lives has only gotten more pointed since. The two products answer that question in opposite ways, and that is what this comparison is about.
+
+## The Core Difference: Where the Recording Lives
+
+Loom is a hosting product with a recorder attached. SuperchargeCapture is a recorder that happens to let you upload if you want to.
+
+| | Loom | SuperchargeCapture |
+|---|---|---|
+| Account to record | Required | None |
+| Where the file lives | Loom cloud (hosted) | Your device (OPFS, local) |
+| Upload before sharing | Yes, to get a link | Not required; local file is instant |
+| Cloud destination | Loom's servers | Your own Google Drive (opt-in) |
+| Crash mid-recording | Can lose the take | Recovered from disk |
+| Reads pages you browse | Account-based SaaS | No host permissions |
+| Recording length cap | Free tier capped | None |
+| Price for core recording | Free tier + paid plans | Free |
+
+The row that drives every other one is "where the file lives." Once a recording must reach Loom's cloud to become shareable, you inherit an account, an upload wait, a hosting dependency, and a third party that holds the video. SuperchargeCapture's recording is a local file from the first second, so none of that chain exists unless you deliberately add it.
+
+## Recording Without a Picker Dialog
+
+Most browser recorders, Loom included, lean on `getDisplayMedia`, which pops the operating system's screen-picker dialog every single time: choose entire screen, choose window, choose tab, confirm. It is a small friction that you pay on every take.
+
+SuperchargeCapture records the current tab through `chrome.tabCapture`, which skips that dialog entirely. You pick This Tab in the popup and recording starts — no OS prompt, no "which window did I mean again." Window and full-screen capture are also available when you actually want them, and those use the standard picker because they have to. But the most common case, recording the tab you are already looking at, is one click.
+
+Before you record, the popup shows a **live microphone level meter**. You can see the bar move when you talk, so the silent-mic disaster, recording five minutes of a walkthrough only to find no audio, is caught before you start rather than after. A system-audio toggle and a countdown (off, 3s, or 5s) round out the pre-record controls.
+
+## Crash-Safe by Design
+
+This is the difference that only shows up on your worst day. Loom and most browser recorders accumulate the recording in memory and assemble the final file when you press stop. Chrome crashes, the tab is closed by accident, the laptop sleeps badly — and the whole take is gone.
+
+SuperchargeCapture writes the footage to the **Origin Private File System in one-second chunks** as it records. The bytes are on disk almost as fast as they are captured. If Chrome dies mid-recording, you reopen the extension and the partial recording is sitting there, recovered. For a twenty-minute product demo, that is the difference between a minor reopen and re-recording the entire thing.
+
+## The Editor: Screen-Studio Polish, Free and Local
+
+A raw screen recording looks like a raw screen recording. The editing layer is where a take becomes something you would actually send to a customer, and SuperchargeCapture renders all of it locally during export. No paywall on saving, no upload required to apply an effect.
+
+- **Auto-zoom:** the recording zooms toward each click automatically, the signature Screen Studio effect that makes a walkthrough feel directed instead of flat.
+- **Cursor polish:** the cursor path is smoothed and clicks get ripples, so fast mouse movement reads cleanly.
+- **Padded background:** a gradient backdrop with rounded corners and a soft shadow wraps the capture. Two presets, Dusk and Graphite, or toggle it off for raw.
+- **Frame-accurate trim:** dual handles on a scrubber cut the dead air off the front and back.
+- **Webcam bubble:** a draggable circle with an optional on-device background blur, no upload for the blur.
+
+One honest caveat: auto-zoom and cursor effects need captured pointer samples, which are recorded for **tab** recordings. For window or full-screen recordings, those effects may not be available. If the polished-walkthrough look is why you came, record the tab.
+
+Export is local too: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame-rate GIF (capped at 30 seconds) for quick embeds. WebM and MP4 have no length limit.
+
+## When You Do Want to Share It
+
+Local-first does not mean stranded. SuperchargeCapture has an opt-in **Share to Drive** that uploads a recording to *your own* Google Drive through Chrome's identity OAuth, using the `drive.file` scope. That scope only lets the app touch files it created — it cannot see the rest of your Drive. Nothing transits SuperchargeBrowser servers; the upload goes from your browser to your Drive directly.
+
+The contrast with Loom is the direction of the default. Loom uploads first and you opt out of nothing. SuperchargeCapture keeps the file local first and you opt *in* to a destination you already own. (Share to Drive uses `chrome.identity.getAuthToken`, so it is Chrome-only; Edge users get a clear message rather than a broken button.)
+
+## What Each Tool Can Actually Touch
+
+SuperchargeCapture ships with **no host permissions in production**. Its `activeTab` permission covers every flow, so the extension only reaches a page after you invoke a capture on that specific tab. No always-on content script reads what you browse. There is no `webRequest`, no analytics SDK, no telemetry. Captures live in local storage on your device, and there is no account and no monetization layer riding along.
+
+Loom takes the standard SaaS shape: it is a hosting product, so your video lives on Loom's servers and an account is the front door. That is a reasonable design for a tool built around shared, hosted video. It is also a different trust model. One product holds your recordings on its infrastructure; the other touches a page only when you tell it to and keeps the file on your disk. Pick the default that matches how sensitive your recordings are.
+
+## Honest Limits
+
+SuperchargeCapture is not trying to be Loom's whole product. A few things it does not do as of June 2026:
+
+- **No hosted share links yet.** Loom's instant `loom.com/share/...` link with view tracking is a hosting feature; SuperchargeCapture's sharing is Share-to-your-own-Drive, not a viewer page with analytics.
+- **No transcription or captions yet.** Loom auto-transcribes. SuperchargeCapture does not, currently.
+- **No team workspace.** If your workflow depends on a shared Loom library with comments and reactions, that is squarely Loom's lane.
+- **DRM video can't be captured.** Protected video from Netflix and Disney+ comes out black — the browser blocks frame capture of DRM-protected media. Screen recorders broadly hit this, Loom included.
+
+If those hosted-collaboration features are the reason you use Loom, Loom is the right tool and this article is not trying to talk you out of it.
+
+## Which One to Install
+
+| Your situation | Better fit |
+|---|---|
+| You want the recording to stay on your machine | SuperchargeCapture |
+| You record sensitive internal walkthroughs and don't want them hosted by a third party | SuperchargeCapture |
+| You've lost a recording to a crash before | SuperchargeCapture (chunked to disk) |
+| You want auto-zoom and cursor polish without paying | SuperchargeCapture |
+| Your team lives in a shared Loom library with comments and view analytics | Loom |
+| You need auto-transcription on every recording | Loom |
+
+If you record demos, bug repros, or walkthroughs and the only reason you tolerated the login-and-upload tax was that it came bundled with the recorder, [SuperchargeCapture](/capture/) gives you the recorder without the tax: free, no account, the file on your disk, crash-safe, and shared to your own Drive only when you choose. Record the next one locally.
+
+#### FAQ
+Q: Is there a Loom alternative that does not require a login?
+A: As of June 2026, SuperchargeCapture records your screen, tab, or window in Chrome without any account, sign-in, or email. The recording writes straight to your device's Origin Private File System and the file is yours immediately. Loom requires a Loom account to record and share, and the finished video uploads to Loom's cloud before you get a link. SuperchargeCapture sends nothing off your machine unless you choose Share to Drive, which uploads to your own Google Drive (scope drive.file, only files the extension created), never to our servers.
+
+Q: Does Loom upload my recordings to the cloud automatically?
+A: Yes. As of June 2026, Loom's core model is cloud-first: a finished recording is processed on Loom's servers and shared as a hosted link. There is no fully local-only mode where the video never leaves your machine. SuperchargeCapture inverts this — the recording stays in local storage by default, and cloud upload is an opt-in action to your own Drive that nothing transits our infrastructure to reach.
+
+Q: What happens to a Loom recording if Chrome crashes mid-record?
+A: Loom and most browser recorders hold the recording in memory and assemble it when you stop, so a crash or a closed tab mid-recording can lose the whole take. As of June 2026, SuperchargeCapture writes the footage to disk in one-second chunks as you record. If Chrome crashes or you kill the tab, reopen the extension and the partial recording is recovered from local storage.
+
+Q: Is SuperchargeCapture free, and what does Loom cost?
+A: As of June 2026, SuperchargeCapture's screen recording, screenshot, trim, auto-zoom, cursor polish, and local export are free with no account. Loom has a free tier with caps on video length and library size, and removes those limits on paid plans. The core difference is not only price — it is that SuperchargeCapture has no paywall gating the recording itself and no requirement to host the file with a third party.
+
+Q: Can SuperchargeCapture read the pages I browse?
+A: No. As of June 2026, SuperchargeCapture ships with no host permissions in its production Chrome manifest. It injects nothing into a page until you start a capture on that specific tab, and it runs zero telemetry or analytics. The access to read or change your browsing is simply not granted, so it cannot watch your sessions in the background. It relies on activeTab, which only opens a single tab to you at the moment you invoke a capture.
+
+---
+
 ### Vivaldi Review: Should Chrome Power Users Switch in 2026?
 
 URL: https://www.superchargebrowser.com/library/vivaldi-review-chrome-power-users-2026/
