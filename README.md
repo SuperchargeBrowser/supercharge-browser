@@ -16,7 +16,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeNavigation** v1.3.0 adds vertical tabs (including an in-page sidebar that runs inside any page), named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 5.0 (3 ratings). CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
-> - Website with 140 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 145 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -142,7 +142,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 140 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 145 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -216,12 +216,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 ## Library — Article Index
 
-140 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+145 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.superchargebrowser.com/library/<slug>/index.md).
 
 <details>
-<summary>View all 140 articles</summary>
+<summary>View all 145 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -231,16 +231,19 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Arc Tab Archive Gone? 4 Chrome Replacements TESTED (2026)](https://www.superchargebrowser.com/library/arc-tab-archive-chrome-equivalent/)
 - [Arc-Like Chromium Browsers Ranked: Vivaldi Wins (2026)](https://www.superchargebrowser.com/library/open-source-chromium-arc-like-browsers-2026/)
 - [Auto Tab Discard vs SuperchargePerformance: Compared (2026)](https://www.superchargebrowser.com/library/vs-auto-tab-discard/)
+- [Best AI Browsers 2026: Atlas, Comet, Dia Ranked](https://www.superchargebrowser.com/library/best-ai-browsers-2026/)
 - [Best Chrome Extensions for Chromebook 2026 (4GB & 8GB)](https://www.superchargebrowser.com/library/best-chrome-extensions-for-chromebook-2026/)
 - [BEST Chrome Session Manager Extension (2026): 4 Compared](https://www.superchargebrowser.com/library/chrome-session-manager-extension/)
 - [BEST Tab Organizer for Chrome in 2026: 5 Options Compared](https://www.superchargebrowser.com/library/best-tab-organizer-chrome-2026/)
 - [Brave Shields vs uBlock Origin: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/brave-shields-vs-ublock-origin-2026/)
 - [Brave vs Chrome RAM: What Actually Drives the Gap (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-ram-benchmark-2026/)
+- [ChatGPT Atlas vs Chrome Extensions: What You Gain and Lose (2026)](https://www.superchargebrowser.com/library/chatgpt-atlas-vs-chrome-extensions/)
 - [Chrome 146 Vertical Tabs vs Extensions: Real Data (2026)](https://www.superchargebrowser.com/library/chrome-146-vertical-tabs-vs-extensions/)
 - [Chrome Bookmarks vs Tab Managers: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/chrome-bookmarks-vs-tab-managers/)
 - [Chrome Tab Groups Not Enough? 4 BETTER Alternatives (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-alternative/)
 - [Cluster Tab Manager Dead: 5 BEST Free Alternatives (2026)](https://www.superchargebrowser.com/library/cluster-tab-manager-alternative/)
 - [Dia Browser vs Chrome Extensions: What You Lose (2026)](https://www.superchargebrowser.com/library/dia-browser-vs-chrome-extensions/)
+- [Edge Vertical Tabs vs Chrome: Need an Extension in 2026?](https://www.superchargebrowser.com/library/edge-vertical-tabs-vs-chrome/)
 - [FasterWeb vs SuperchargePerformance: Which Is BEST? (2026)](https://www.superchargebrowser.com/library/vs-fasterweb/)
 - [Firefox vs Chrome RAM Usage: What the Data Shows (2026)](https://www.superchargebrowser.com/library/firefox-vs-chrome-ram-usage-2026/)
 - [Is Marvellous Suspender Safe in 2026? What You Need](https://www.superchargebrowser.com/library/marvellous-suspender-status-2026/)
@@ -268,6 +271,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Which Chrome Ad Blocker Blocks YouTube? 5 TESTED (2026)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/)
 - [Workona vs SuperchargeNavigation: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/vs-workona/)
 - [YouTube Ad Blocker Stopped Working? 5 TESTED Options (2026)](https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/)
+- [YouTube Premium vs Ad Blockers in 2026: Which Costs Less?](https://www.superchargebrowser.com/library/youtube-premium-vs-ad-blockers-2026/)
 - [Zen Browser Chrome Extension Support? No — Here's Why (2026)](https://www.superchargebrowser.com/library/zen-browser-vs-chrome-extensions/)
 
 ### Troubleshooting and Fixes
@@ -374,6 +378,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Is AdGuard for Chrome Good in 2026? Tested Review](https://www.superchargebrowser.com/library/is-adguard-chrome-good-2026/)
 - [Is Chrome Memory Saver Good in 2026? Tested Review](https://www.superchargebrowser.com/library/chrome-native-memory-saver-review/)
 - [Is Volume Booster Safe? The Chrome Spyware Problem (2026)](https://www.superchargebrowser.com/library/is-volume-booster-chrome-extension-safe/)
+- [Vivaldi Review: Should Chrome Power Users Switch in 2026?](https://www.superchargebrowser.com/library/vivaldi-review-chrome-power-users-2026/)
 
 </details>
 
