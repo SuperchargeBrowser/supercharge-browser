@@ -1,17 +1,17 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-06-11
+> Last updated: 2026-06-15
 
-> SuperchargeBrowser makes three free Chrome extensions: SuperchargePerformance v1.4.2 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.3.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.0.2 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 5,000+ combined weekly active users. Founded 2025 in Finland.
+> SuperchargeBrowser makes three free Chrome extensions: SuperchargePerformance v1.4.3 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.3.0 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.0.2 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 5,000+ combined weekly active users. Founded 2025 in Finland.
 
 ## Products
 
 - [SuperchargePerformance](https://www.superchargebrowser.com/performance/): Tab suspender + ad blocker + script control. Frees 90%+ RAM from inactive tabs, blocks ads and trackers, speeds up pages. Available on Chrome and Microsoft Edge.
-  Install (Chrome): https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
+  Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol
 
 - [SuperchargeNavigation](https://www.superchargebrowser.com/navigation/): Vertical tabs + persistent workspaces + tab search + session time-travel + cross-device sync. Alt+K command bar, Alt+Click link preview, Alt+G smart grouping, 50 auto-snapshots. Free Arc replacement for Chrome. Available on Chrome and Microsoft Edge.
-  Install (Chrome): https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl
+  Install (Chrome): https://chromewebstore.google.com/detail/vertical-tabs-tab-manager/mpkbppjbchjdohbjgeoamdehklmapgnl
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb
 
 - [In-Page Sidebar for Chrome](https://www.superchargebrowser.com/in-page-sidebar/): How SuperchargeNavigation runs a vertical tab sidebar inside any page, why Chrome blocks extensions on chrome:// / Web Store / PDF pages, and every Nav keyboard shortcut.
@@ -64,9 +64,15 @@
 
 ## Library
 
-140 guides on Chrome performance, memory management, and tab organization.
+145 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.superchargebrowser.com/library/<slug>/index.md).
 
+- [Best AI Browsers 2026: Atlas, Comet, Dia Ranked](https://www.superchargebrowser.com/library/best-ai-browsers-2026/): Comet is the only cross-platform pick; Atlas and Dia are Mac-only. We rank the AI browsers, then the Chrome + extension setup that skips switching. June 2026.
+- [ChatGPT Atlas vs Chrome Extensions: What You Gain and Lose (2026)](https://www.superchargebrowser.com/library/chatgpt-atlas-vs-chrome-extensions/): ChatGPT Atlas runs Chrome extensions since it's Chromium-based. But it's Mac-only, paywalls agent mode at $20/mo, and blocks extensions on chatgpt.com itself.
+- [Edge Vertical Tabs vs Chrome: Need an Extension in 2026?](https://www.superchargebrowser.com/library/edge-vertical-tabs-vs-chrome/): Edge ships vertical tabs, sleeping tabs, and workspaces built in. Chrome 146 added only vertical tabs. The real gap, and how to close it without switching.
+- [FIX STATUS_BREAKPOINT Chrome Error: 6 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-status-breakpoint-error/): Error code: STATUS_BREAKPOINT is not a virus — a Chrome renderer hit an unexpected state. GPU drivers cause most cases. 6 tested fixes, fastest first (2026).
+- [Vivaldi Review: Should Chrome Power Users Switch in 2026?](https://www.superchargebrowser.com/library/vivaldi-review-chrome-power-users-2026/): Vivaldi 8.0 ships vertical tabs, workspaces and an F2 command bar Chrome lacks — and a learning curve most users quit. Tested June 2026: who should switch.
+- [YouTube Premium vs Ad Blockers in 2026: Which Costs Less?](https://www.superchargebrowser.com/library/youtube-premium-vs-ad-blockers-2026/): YouTube Premium hit $15.99/mo in the US (June 7, 2026). A free ad blocker costs $0 but charges your time. Real annual math by region, with the trade-offs.
 - [Chrome 150 Gemini Spark: What It Means for Tab Users](https://www.superchargebrowser.com/library/chrome-150-gemini-spark-for-tab-users/): Gemini Spark, revealed at Google I/O 2026, is an agentic AI that acts for you. It does not organize tabs or persist sessions. The real line, explained.
 - [Chrome Extension Keeps Getting Disabled After an Update? (2026)](https://www.superchargebrowser.com/library/chrome-extension-disabled-after-update/): Chrome disables extensions after updates for 5 reasons — unverified source, Manifest V2, dev mode, policy, or corruption. Re-enable steps that actually hold.
 - [Manifest V2 vs V3 Chrome Extensions: What Changed (2026)](https://www.superchargebrowser.com/library/chrome-manifest-v2-vs-v3-extensions/): Manifest V2 has been disabled in stable Chrome since October 2024. What MV3 changed, why uBlock Origin split, and what still works as of June 2026.
@@ -81,15 +87,14 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Arc Command Bar in Chrome: How to Replicate It (2026)](https://www.superchargebrowser.com/library/arc-command-bar-chrome/): Arc's Command Bar (Cmd+T) has no native Chrome match. SuperchargeNavigation's Alt+K palette recovers it: tab search, workspaces, URL + web-search. 2-min setup.
 - [Chrome 149 Release Date + What Lands for Tab Users (2026)](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/): Chrome 149 release date: stable June 2, 2026, build 149.0.7815.x. BFCache WebSocket fix and CSS Gap Decorations shipped; no new tab tools. Chrome 150: June 30.
 - [Is Chrome Memory Saver Good in 2026? Tested Review](https://www.superchargebrowser.com/library/chrome-native-memory-saver-review/): Tested Chrome Memory Saver on 32 tabs at chrome://settings/performance. Good under 10 tabs, reactive above 20 — it waits for RAM pressure, no timer you set.
-- [FIX STATUS_BREAKPOINT Chrome Error: 6 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-status-breakpoint-error/): Error code: STATUS_BREAKPOINT is not a virus — a Chrome renderer hit an unexpected state. GPU drivers cause most cases. 6 tested fixes, fastest first (2026).
+
+## Library (additional guides)
+
 - [FIX Photopea "Not Enough RAM" Error in Chrome: 6 Fixes (2026)](https://www.superchargebrowser.com/library/fix-photopea-not-enough-ram-chrome/): Photopea throws "Not enough RAM! (Need 3043MB)" even on a 16GB machine because the figure is per-tab, not total. Free the headroom and reopen the file.
 - [FIX SBOX_FATAL_MEMORY_EXCEEDED in Chrome: 6 Fixes (2026)](https://www.superchargebrowser.com/library/fix-sbox-fatal-memory-exceeded-chrome/): Error code: SBOX_FATAL_MEMORY_EXCEEDED is a per-tab memory-cap crash, not low RAM. 6 tested fixes, fastest first, plus the antivirus link guides miss (2026).
 - [FIX STATUS_INVALID_IMAGE_HASH in Chrome: 5 Fixes (2026)](https://www.superchargebrowser.com/library/fix-status-invalid-image-hash-chrome/): STATUS_INVALID_IMAGE_HASH is not a Chrome bug — your antivirus is injecting an unsigned DLL Chrome refuses to load. The registry fix takes 60 seconds.
 - [Why Is YouTube Stuttering on Chrome? 6 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-youtube-stutter-high-end-pc-chrome/): YouTube stuttering in Chrome is rarely a hardware problem. VP9/AV1 software decode, a GPU driver conflict, or an extension causes most cases. 6 fixes ranked.
 - [OneTab vs Session Buddy: Which Keeps Your Tabs? (Tested)](https://www.superchargebrowser.com/library/onetab-vs-session-buddy/): OneTab closes tabs to a flat list; Session Buddy saves snapshots but only when you click. We tested both on 30 tabs: restore clicks, data-loss risk, RAM.
-
-## Library (additional guides)
-
 - [Chrome Tab Scrolling Gone? 5 Ways That Still Work (2026)](https://www.superchargebrowser.com/library/restore-tab-scrolling-chrome/): Chrome tab scrolling is gone: Chrome 144 pulled the flag and it has not returned. Restore wheel-to-switch tabs with Alt+Scroll, plus 4 faster ways to any tab.
 - [Sidekick Browser Shut Down? Get Its Workspaces in Chrome (2026)](https://www.superchargebrowser.com/library/sidekick-browser-shutdown-chrome-alternative/): Sidekick browser sunset on August 3, 2025 after Perplexity bought the team for Comet. Its Sessions and workspace sidebar map onto Chrome free, no account.
 - [SuperchargeAudio vs Sound Booster: Real Data (2026)](https://www.superchargebrowser.com/library/supercharge-audio-vs-sound-booster/): Sound Booster has 2M users and a 600% slider — but no graphic EQ or 8D audio. Side-by-side permissions, boost ceiling, and feature data, verified June 2026.
@@ -222,6 +227,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 
 - [Release History](https://www.superchargebrowser.com/changelog/): Version history for all extensions. RSS: https://www.superchargebrowser.com/changelog/rss.xml
 
+- [SuperchargePerformance 1.4.3 — Whitelist Wildcard Fix & Smarter Per-Site Defaults](https://www.superchargebrowser.com/changelog/performance/1.4.3/) (2026-06-15): v1.4.3 is a focused bugfix release centered on the whitelist. A wildcard entry like `*.example.com` — a format the UI's own hint suggested — silently matched nothing, and a single wildcard entry could corrupt the per-site exclusions for every whitelist entry, making whitelisting appear to do nothing at all. Wildcard and www prefixes are now cleaned up automatically and existing entries are migrated on update. Manual whitelist adds now bypass all features by default, the popup's site toggle understands subdomains, the footer version string is read from the manifest, and the blocklists are refreshed.
 - [SuperchargeNavigation 1.3.0 — The In-Page Sidebar — Nav Lives Inside the Page Now](https://www.superchargebrowser.com/changelog/navigation/1.3.0/) (2026-06-11): v1.3.0 moves Nav's sidebar inside the web page — a slim panel that resizes narrower than Chrome's native one, docks to either edge, and even works on the Chrome Web Store, chrome:// pages, and PDFs. Keyboard hints and type-to-select now ship on by default, and a paused site greys out the toolbar icon so you can see where Nav is off. Your honest read is the only feedback signal a solo developer gets.
 - [SuperchargePerformance 1.4.2 — Instant Whitelisting, Fewer False Hides & Stop Autoplay Rebuilt](https://www.superchargebrowser.com/changelog/performance/1.4.2/) (2026-06-11): v1.4.2 makes per-site control immediate: disable the extension on a site and the change applies right away — hidden elements reappear without a reload, the tab reloads itself, and the whitelist now treats a domain and its www version as the same site. Cosmetic blocking is more conservative, so live tickers, share buttons, and real alert banners stay put, and the scroll-unlock fix no longer touches genuine modals. Stop Autoplay is rebuilt to be reliable, a new "Disable on this site" prompt appears only on genuinely broken pages, and the cookie engine and blocklists are refreshed.
 - [SuperchargeAudio 1.0.2 — SuperchargeAudio — Live on the Chrome Web Store](https://www.superchargebrowser.com/changelog/audio/1.0.2/) (2026-06-10): A small release for a real milestone: the Chrome Web Store listing is live. Chrome users can now install and rate SuperchargeAudio directly, and the occasional in-extension review prompt points at the actual listing — before this it had nowhere real to go on Chrome. Everything else carries over from 1.0.1 unchanged.
