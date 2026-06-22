@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-06-17
+> Last updated: 2026-06-22
 > For a summary index, see /llms.txt
 
 ## Products
@@ -2142,6 +2142,863 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 
 ## Library Articles
 
+### Chrome Side Panel Too Big? 4 Fixes to Resize It (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-side-panel-too-big-resize/
+Category: troubleshooting | Extension: navigation | Updated: 2026-06-22
+Description: Chrome's side panel won't shrink below ~320px and never saves your width — that's a hard floor, not a setting. 4 tested ways to reclaim the space (June 2026).
+
+Chrome's side panel won't shrink below about 320 pixels, and it forgets any width you set the moment you restart the browser. As of June 2026 (Chrome 149), that floor is hard-coded — no flag, no setting, no extension override. You have four real options: close it on a hotkey, move it to your quieter edge, swap to the collapsible vertical tab strip, or replace the native panel with an in-page rail that resizes down to a 56px favicon strip.
+
+You opened the side panel for a quick bookmark check, and now a third of your screen is gone. You drag the inner edge to claw back space, it slides for a second, then snaps right back. You restart Chrome later and the width you fought for is gone anyway. The panel is doing exactly what Chrome built it to do, which is the frustrating part.
+
+## Fix 1: Toggle It Closed With One Keystroke
+
+The fastest way to reclaim the space the side panel eats is to stop leaving it open. Press **Ctrl+Shift+S** (Windows and Linux) or **⌘+Shift+S** (Mac) to close it instantly, and the same keys to bring it back. The panel keeps its state and scroll position, so toggling it off and on is cheap.
+
+This is the right move if you use the panel in bursts: open it, grab the bookmark or the reading-list item, close it. The full browser width comes back the moment it's closed. Most people who complain the panel is "too big" don't actually need it pinned open all day — they need it out of the way between glances.
+
+If you find yourself reopening it every few minutes, the toggle stops being a fix and starts being a chore. That's the signal you need a panel that can stay open without dominating the window.
+
+## Fix 2: Move It to the Edge You Use Less
+
+Chrome docks the side panel on the right by default. If your content reads left-to-right and the right-edge panel is crowding the end of every line, shifting it left can make the same width feel less intrusive.
+
+Go to **Settings → Appearance → Side panel** and choose **Left**, or right-click the panel border and pick **Move side panel to the left**. The setting is global: it moves Chrome's built-in panels and any extension panel together.
+
+One honest limitation: this changes *which* edge the panel sits on, not how wide it is. The ~320px floor applies on either side. You're relocating the cost, not cutting it. For reading-heavy work the relocation helps a lot; for reclaiming horizontal pixels it does nothing.
+
+## Fix 3: Switch to the Collapsible Vertical Tab Strip
+
+If you're opening the side panel mainly to see your tabs, Chrome's native vertical tab strip is a smaller-footprint alternative. Right-click any tab and choose **Show Tabs Vertically**, or set **Settings → Appearance → Tab strip position** to **Side**.
+
+The vertical strip collapses to a thin favicon-only rail and expands on hover, which is exactly the space-saving behavior the side panel refuses to do. It lives on a different UI surface from the side panel, so the ~320px floor doesn't apply to it. Full walkthrough in our [Chrome side panel guide](/library/chrome-side-panel-guide/) and the [vertical tabs setup article](/library/how-to-enable-vertical-tabs-chrome/).
+
+The catch: the native vertical strip shows tabs and group colors, and that's it. No workspaces, no session recovery, no keyboard search across tabs. If tabs are all you need in the panel, this is the leanest native answer. If you opened the panel for workspaces or a tab search box, the strip doesn't carry those.
+
+## Fix 4: Replace the Native Panel With a Resizable In-Page Rail
+
+The native panel's 320px floor is a Chrome-level constraint. The only way past it is to not use the native panel surface at all. SuperchargeNavigation does this with an **in-page Shadow-DOM rail** that renders inside the page rather than in Chrome's panel slot, which means it isn't bound by Chrome's panel rules.
+
+What that buys you on the size complaint specifically:
+
+| Sizing behavior | Chrome native side panel | SuperchargeNavigation in-page rail |
+|---|---|---|
+| Minimum width | ~320px hard floor | 280px expanded, **56px favicon-only** |
+| Saves your width on restart | No, resets to ~360px | Yes, persists across sessions |
+| Which edge it docks | Left or right (global) | Left or right, independent setting |
+| Collapse to favicons | No | Yes, with hover-peek of the full rail |
+| Auto-hide off-screen when idle | No | Yes, optional |
+
+Drag the rail's edge below the expanded floor and it snaps to a **56px favicon-only strip**. Hover it and the full-width rail peeks back as a floating overlay — no page reflow, nothing shoves over — and re-collapses when your pointer leaves. You can also set it to auto-hide off-screen entirely when idle, leaving a faint 6px edge strip that brings it back on hover. Width, side, and compact state all persist across restarts, which the native panel never does.
+
+It's a segmented setting, not a separate app: in SuperchargeNavigation's options, **Sidebar style** flips between *In-page* (the rail) and *Native panel*. The two modes are mutually exclusive. The rail is the default. Everything else — named workspaces, the Alt+K command bar, 50 auto-snapshots for session recovery, multi-select bulk actions — lives in the same rail. No account, all storage stays on your machine, and the core is free.
+
+## When the Native Panel Is Fine As-Is
+
+If you open the side panel a few times a day for a bookmark or a reading-list item, the ~320px width is a non-issue — you close it and move on. Fix 1 covers that completely, and there's nothing to install. The built-in panel has no service worker and no memory overhead beyond Chrome itself.
+
+The width becomes a real cost only when you want the panel *pinned open* alongside your work: a tab list you glance at constantly, a workspace switcher, a search box you hit dozens of times an hour. That's when 320px of permanent screen tax stops being acceptable and the rail's 56px resting state earns its place.
+
+## Pick Your Fix
+
+| Your situation | Do this |
+|---|---|
+| Panel only crowds you occasionally | Fix 1: Ctrl+Shift+S to toggle |
+| Right-edge panel crowds your reading | Fix 2: move it to the left |
+| You mostly want to see your tabs | Fix 3: native vertical tab strip |
+| You want the panel pinned but tiny | Fix 4: in-page rail (56px compact) |
+| You need workspaces or session recovery pinned open | Fix 4: in-page rail |
+
+If the panel is an occasional visitor, keep it native and learn the toggle. If it's a permanent fixture of how you work and 320px is too much rent, the in-page rail is the only option that resizes below Chrome's floor and remembers it.
+
+#### FAQ
+Q: Why won't Chrome's side panel get any smaller?
+A: As of June 2026 (Chrome 149), Chrome's side panel has a built-in minimum width of roughly 320 pixels. Dragging the inner edge past that point does nothing — the panel snaps back. This floor is hard-coded into Chrome and there's no flag or setting to lower it. Extensions registered to the panel are stuck with the same floor.
+
+Q: Does Chrome remember my side panel width?
+A: No. As of June 2026, Chrome resizes the panel within a session when you drag the inner edge, but it does not persist a custom width across browser restarts. Every time you reopen Chrome, the panel resets to its default of about 360 pixels. There is no API for extensions to save a width either.
+
+Q: How do I make the Chrome side panel take less space?
+A: Three native options as of June 2026: close it when idle (Ctrl+Shift+S toggles it), move it to your less-used edge via Settings > Appearance > Side panel, or switch to the native vertical tab strip which collapses to a thin favicon rail. For a panel that resizes below 320px and stays collapsed, an in-page sidebar replaces the native panel surface entirely.
+
+Q: Can an extension make the side panel narrower than 320px?
+A: Not the native side panel — that floor is Chrome's, and the sidePanel API gives extensions no width control. SuperchargeNavigation works around it by rendering an in-page Shadow-DOM rail instead of the native panel. As of June 2026, that rail resizes down to a 56px favicon-only strip and remembers the width you set.
+
+Q: Will moving the side panel to the left make it smaller?
+A: No. As of June 2026, Settings > Appearance > Side panel only changes which edge the panel docks to, not its width. The ~320px floor applies on either side. Moving it left helps if your content reads left-to-right and the right-edge panel was crowding your reading column, but it reclaims no horizontal space.
+
+---
+
+### Error STATUS_BREAKPOINT en Chrome: 7 Soluciones (2026)
+
+URL: https://www.superchargebrowser.com/library/codigo-error-status-breakpoint-chrome/
+Category: troubleshooting | Extension: performance | Updated: 2026-06-22
+Description: Código de error: status_breakpoint no es un virus: Chrome cerró un proceso por fallo de GPU o memoria. 7 soluciones probadas, la primera en 10 segundos (2026).
+
+A fecha de junio de 2026, "código de error: status_breakpoint" en Chrome significa que un proceso de renderizado alcanzó un estado interno inesperado y se cerró. No es un virus. Las tres causas más comunes son un fallo del controlador de la tarjeta gráfica, un conflicto entre extensiones o una memoria RAM inestable por overclocking. La solución más rápida tarda diez segundos: desactivar la aceleración por hardware.
+
+Si el error aparece en el instante en que abres Chrome, antes de que cargue ninguna página, ve directo a la [Solución 7](#solucion-7-status_breakpoint-al-arrancar-chrome-no-abre): es un fallo distinto.
+
+## Solución 1: Reinicia Chrome con una ventana de incógnito
+
+Antes de tocar nada, descarta lo más probable en diez segundos. Pulsa **Ctrl + Mayús + N** para abrir una ventana de incógnito. Las extensiones están desactivadas ahí por defecto.
+
+Navega con normalidad durante diez o quince minutos. ¿No se cierra? Entonces el culpable es una extensión, y la [Solución 3](#solucion-3-aisla-el-conflicto-entre-extensiones) te dice cómo encontrar cuál. ¿Sigue fallando en incógnito? El problema está más abajo, en la gráfica, la memoria o el perfil. Sigue leyendo.
+
+Esta prueba no arregla nada por sí sola, pero parte el problema en dos y te ahorra probar soluciones que no van con tu caso.
+
+## Solución 2: Desactiva la aceleración por hardware
+
+Los fallos del controlador de la tarjeta gráfica son la causa más frecuente de STATUS_BREAKPOINT, sobre todo en páginas con vídeo, WebGL o animaciones pesadas. Desactivar la aceleración por hardware corta la dependencia entre Chrome y la GPU.
+
+1. Entra en **Configuración > Sistema** (escribe `chrome://settings/system` en la barra de direcciones).
+2. Desactiva **Usar aceleración de hardware cuando esté disponible**.
+3. Pulsa **Reiniciar**.
+4. Si los cierres paran, actualiza el controlador de tu gráfica (NVIDIA, AMD o Intel) y luego vuelve a activar la aceleración para recuperar el rendimiento de vídeo.
+
+Esto es un parche de diagnóstico, no una solución final. Si confirma que la GPU es el problema, el arreglo de verdad es el controlador actualizado.
+
+## ¿Qué significa realmente STATUS_BREAKPOINT?
+
+En lenguaje llano: Chrome ejecuta cada página en un proceso independiente en segundo plano llamado renderizador. Cuando ese proceso llega a un estado del que no puede salir, Windows lo detiene, y Chrome describe ese cierre con el código `STATUS_BREAKPOINT`.
+
+El nombre confunde. Un "breakpoint" (punto de interrupción) suele ser una pausa que un programador coloca a propósito. Aquí nadie colocó nada: es solo la etiqueta que Windows pone a ese tipo de cierre forzado.
+
+Tres cosas que **no** es:
+
+- **No es un virus.** No tiene ningún significado de seguridad. Es un código de cierre normal de Chrome.
+- **No es una pieza rota.** Tu GPU o tu RAM casi nunca fallan físicamente. Lo habitual es un controlador que dejó de responder o un overclock de memoria mal ajustado, y los dos se arreglan por software o desde la BIOS.
+- **No es exclusivo de Chrome.** El mismo código sale en Edge, Brave, Opera y en apps de escritorio basadas en Chromium, porque todas comparten el motor que lo produce.
+
+## Tabla rápida: identifica tu caso
+
+Conocer la causa no cambia el arreglo, pero sí te dice por dónde empezar. Busca tu síntoma:
+
+| Síntoma | Causa probable | Solución |
+|---------|---------------|----------|
+| Falla en webs con vídeo, WebGL o animaciones | Controlador de GPU | [Solución 2](#solucion-2-desactiva-la-aceleracion-por-hardware) |
+| Empezó tras instalar una extensión | Conflicto de extensiones | [Solución 3](#solucion-3-aisla-el-conflicto-entre-extensiones) |
+| Falla al azar en cualquier web | RAM inestable (overclocking) | [Solución 5](#solucion-5-comprueba-la-estabilidad-de-la-ram) |
+| Solo falla con muchas pestañas abiertas | Presión de memoria | [Solución 6](#solucion-6-reduce-la-presion-de-memoria) |
+| Solo falla en una web concreta | Caché del sitio dañada | [Solución 4](#solucion-4-borra-la-cache-del-sitio) |
+| Falla justo al abrir Chrome | Perfil dañado o fallo de la GPU | [Solución 7](#solucion-7-status_breakpoint-al-arrancar-chrome-no-abre) |
+
+## Solución 3: Aísla el conflicto entre extensiones
+
+Si la prueba de incógnito de la Solución 1 no se cerró, una extensión es la causa. Para encontrar cuál:
+
+1. Ve a `chrome://extensions/` y desactiva **todas** las extensiones.
+2. Vuelve a activarlas de una en una, probando Chrome unos minutos tras cada activación.
+3. Cuando el cierre reaparezca, la última que activaste es la culpable.
+4. Actualízala a su versión más reciente o elimínala.
+
+Las extensiones que inyectan código en cada página (bloqueadores antiguos, gestores de contraseñas mal mantenidos, scripts personalizados) son las que más conflictos provocan.
+
+## Solución 4: Borra la caché del sitio
+
+Si el cierre ocurre siempre en la misma web, sus datos almacenados pueden estar dañados.
+
+1. Abre la web que provoca el fallo.
+2. Pulsa el icono del candado (o de ajustes) a la izquierda de la barra de direcciones.
+3. Entra en **Configuración del sitio > Borrar datos**.
+4. Recarga la página.
+
+## Solución 5: Comprueba la estabilidad de la RAM
+
+Esta solución es específica para PC de sobremesa, sobre todo los de juegos, que tengan activado un perfil de memoria **XMP, EXPO o DOCP**. Un overclock de memoria inestable corrompe datos en la RAM al azar: Chrome accede a una zona dañada y el renderizador se cierra. Lo desconcertante es que el sistema parece estable en el uso normal e incluso en algunos test de estrés, pero la forma en que Chrome accede a la memoria lo acaba destapando.
+
+1. Entra en la BIOS/UEFI (pulsa Supr, F2 o F12 al arrancar, según la placa base).
+2. Localiza los ajustes de memoria y desactiva temporalmente XMP/EXPO/DOCP para que la RAM funcione a su velocidad de fábrica.
+3. Usa Chrome varias horas. Si los cierres paran, tu overclock era inestable.
+4. Baja la velocidad de la memoria en la BIOS o ajusta a mano los tiempos y el voltaje hasta que sea estable.
+
+## Solución 6: Reduce la presión de memoria
+
+Con muchas pestañas abiertas, la memoria disponible se agota y los procesos de renderizado se vuelven inestables. Este es el patrón "solo falla cuando tengo medio navegador abierto".
+
+1. Pulsa **Mayús + Esc** para abrir el Administrador de tareas de Chrome.
+2. Ordena por **Huella de memoria** e identifica las pestañas que más RAM consumen.
+3. Cierra las que no estés usando.
+4. Entra en **Configuración > Rendimiento** y activa el **Ahorro de memoria**.
+
+El Ahorro de memoria de Chrome ayuda, pero es conservador: Google estima que reduce el consumo total entre un 30% y un 40%, y solo libera pestañas cuando el sistema ya va justo de memoria. Si vives con muchas pestañas abiertas, la siguiente sección cubre una alternativa más agresiva.
+
+## Cómo quitar presión antes de que se dispare el error
+
+Si tus cierres encajan con el patrón de muchas pestañas (Solución 6), reducir el número de procesos de renderizado activos ayuda de forma directa. Cada pestaña que dejas abierta es un renderizador compitiendo por memoria y por tiempo de GPU, y cada uno es una ocasión más para que llegue el cierre.
+
+[SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) suspende las pestañas inactivas con `chrome.tabs.discard()`, la misma API que usa Chrome, pero con un temporizador propio y un sistema de protección que evita suspender lo que no debe: detecta audio en reproducción, formularios a medio rellenar y pestañas fijadas, y respeta una lista blanca por sitio con 18 aplicaciones (Gmail, Docs, Notion, Figma, Slack y otras) protegidas de fábrica. Una pestaña suspendida libera entre el 90% y el 95% de su RAM y baja el número de renderizadores que pelean por la GPU, justo el escenario que dispara STATUS_BREAKPOINT por presión de memoria.
+
+Conviene ser claro con los límites: si tu error viene del controlador de la GPU (Solución 2) o de una RAM inestable (Solución 5), suspender pestañas no cambia nada. Esos dos casos necesitan su arreglo concreto. La suspensión solo resuelve la rama de "demasiadas pestañas".
+
+Sin cuenta, sin telemetría, todo se guarda en tu equipo y las funciones básicas son gratis.
+
+## Solución 7: STATUS_BREAKPOINT al arrancar (Chrome no abre)
+
+Si el error salta en el instante en que lanzas Chrome, antes de que se dibuje una sola página, la causa es distinta a los cierres durante la navegación. Los dos sospechosos habituales son un perfil de navegador dañado o un proceso de GPU que falla al iniciarse. Este orden aísla cuál de los dos es.
+
+1. **Prueba primero la GPU.** Cierra Chrome del todo. Haz clic derecho en el acceso directo de Chrome, abre **Propiedades** y añade ` --disable-gpu` al final del campo **Destino** (después de las comillas de cierre, con un espacio delante). Lánzalo. Si abre limpio, el proceso de GPU era el detonante: actualiza los controladores de tu gráfica y luego quita el parámetro.
+2. **Prueba el perfil.** Si `--disable-gpu` no ayudó, el perfil puede estar dañado. Cierra Chrome y renombra la carpeta del perfil (por ejemplo, `Default` a `Default.old`). En Windows está en `%LOCALAPPDATA%\Google\Chrome\User Data`. Chrome reconstruye un perfil limpio al abrir. Si arranca, el perfil antiguo estaba corrupto; vuelve a iniciar sesión para recuperar marcadores e historial con la sincronización de Chrome.
+3. **Prueba sin extensiones.** Lanza Chrome con ` --disable-extensions` añadido al destino del acceso directo. Una extensión que se cae durante el arranque produce la misma firma.
+4. **Último recurso: reinstala.** Si nada funciona, desinstala Chrome (conserva tus datos cuando lo pregunte), descarga el instalador desde google.com/chrome y vuelve a instalarlo. Esto reemplaza los archivos de programa dañados sin tocar tus datos sincronizados.
+
+En Windows, la variante al arrancar es la más reportada porque el estado del controlador y del perfil se cargan antes de la primera pestaña. La sintaxis del parámetro es idéntica en macOS (edita el comando de lanzamiento) y en Linux (`google-chrome --disable-gpu`).
+
+## STATUS_BREAKPOINT en WhatsApp y otras apps Chromium
+
+Puedes encontrarte este error en programas que ni siquiera son un navegador. WhatsApp para escritorio es el caso típico. A mediados de 2025 (un año antes de la publicación de este artículo, junio de 2026), la app de WhatsApp para Windows dejó de ser una versión nativa y pasó a ser una envoltura ligera sobre Microsoft Edge WebView2, que ejecuta el motor Chromium. Por eso, cuando WhatsApp se cierra con `STATUS_BREAKPOINT`, lo hace por las mismas razones que Chrome: por debajo *es* un renderizador Chromium.
+
+La misma lógica cubre las apps Electron (Slack, Discord, VS Code) y cualquier programa que incruste WebView2. El orden de arreglo cambia un poco, porque dentro de WhatsApp no puedes abrir `chrome://settings`:
+
+1. **Actualiza primero el controlador de la GPU.** Es el arreglo de mayor rendimiento para WhatsApp y las apps Electron, porque no tienen un interruptor interno para desactivar la aceleración por hardware como sí tiene Chrome.
+2. **Actualiza la app y Windows.** WebView2 se actualiza con Windows. Un runtime de WebView2 antiguo es un detonante frecuente, así que ejecuta Windows Update y actualiza WhatsApp desde la Microsoft Store.
+3. **Reduce la presión de memoria.** La versión WebView2 de WhatsApp consume bastante más RAM que la app nativa antigua. Si el cierre llega cuando el sistema ya va justo, cerrar otras apps pesadas y suspender pestañas inactivas de Chrome libera margen.
+
+Si WhatsApp se cierra pero Chrome en el mismo equipo no, es lo normal, no una contradicción: Chrome puede estar funcionando ya con la aceleración desactivada, mientras la envoltura WebView2 vuelve a tirar de la GPU desde cero.
+
+## "Código de error: STATUS_BREAKPOINT" en otros idiomas
+
+Chrome traduce la pantalla de error, así que el mismo fallo se lee distinto según el idioma del sistema. Todos describen el mismo cierre del renderizador, y cada solución de esta página sirve sea cual sea el texto:
+
+| Idioma | Texto en pantalla |
+|--------|-------------------|
+| Español | Código de error: STATUS_BREAKPOINT |
+| Inglés | Error code: STATUS_BREAKPOINT |
+| Portugués | Código de erro: STATUS_BREAKPOINT |
+| Francés | Code d'erreur : STATUS_BREAKPOINT |
+| Alemán | Fehlercode: STATUS_BREAKPOINT |
+
+Esta página es la versión en español del artículo original en inglés, [FIX STATUS_BREAKPOINT Chrome Error](/library/fix-chrome-status-breakpoint-error/), con el mismo conjunto de soluciones probadas.
+
+## Qué hacer según tu caso
+
+- Si **solo falla con muchas pestañas abiertas**, empieza por la Solución 6 y plantéate suspender pestañas inactivas de forma automática.
+- Si falla **en webs con vídeo o animaciones**, ve directo a la Solución 2 y termina actualizando el controlador de la gráfica.
+- Si tienes un **PC de juegos con XMP o EXPO**, no descartes la Solución 5 aunque el sistema parezca estable.
+- Si **Chrome no abre siquiera**, salta a la Solución 7: es otro fallo y necesita otro orden.
+
+#### FAQ
+Q: ¿Qué es el código de error status_breakpoint en Chrome?
+A: A fecha de junio de 2026, STATUS_BREAKPOINT es el código que muestra Chrome cuando un proceso de renderizado (el que dibuja cada pestaña) llega a un estado interno del que no puede recuperarse y Windows lo cierra. No es un virus ni tiene relación con la depuración de software. Las causas más frecuentes son un fallo del controlador de la tarjeta gráfica, un conflicto entre extensiones o falta de memoria.
+
+Q: ¿STATUS_BREAKPOINT significa que tengo un virus?
+A: No. Es un código de error estándar de Chrome, no una señal de seguridad. Indica que un proceso de Chrome se quedó sin recursos o alcanzó un estado interno inesperado. Si buscaste 'código de error: status_breakpoint' temiendo malware, puedes quedarte tranquilo.
+
+Q: ¿Cómo soluciono STATUS_BREAKPOINT de forma permanente?
+A: Las soluciones más fiables son: actualizar Chrome y el controlador de la tarjeta gráfica, desactivar las extensiones una a una para encontrar la que falla, y reducir la presión de memoria suspendiendo las pestañas que no usas. Si solo falla en una web concreta, borra los datos almacenados de ese sitio.
+
+Q: ¿El error aparece justo al abrir Chrome y no carga ninguna página?
+A: A fecha de junio de 2026, un STATUS_BREAKPOINT al arrancar suele apuntar a un perfil de usuario dañado o a un fallo de inicio de la GPU, no a una pestaña concreta. Abre Chrome una vez con el parámetro --disable-gpu para descartar la gráfica, o crea un perfil nuevo para descartar el perfil. La causa es distinta a la del cierre durante la navegación.
+
+Q: ¿Es un problema de la tarjeta gráfica o de la memoria RAM?
+A: Ambos son habituales. Si el cierre ocurre en páginas con vídeo, WebGL o muchas animaciones, suele ser el controlador de la GPU (Solución 2). Si ocurre al azar en un PC con un perfil de memoria XMP o EXPO activado, la RAM puede estar inestable (Solución 5). Si solo falla con muchas pestañas abiertas, es presión de memoria (Solución 6).
+
+Q: ¿Por qué WhatsApp para escritorio se cierra con STATUS_BREAKPOINT?
+A: A fecha de junio de 2026, la aplicación de WhatsApp para Windows funciona dentro de Microsoft Edge WebView2, que es Chromium. Por eso se cierra con el mismo código STATUS_BREAKPOINT que Chrome y por los mismos motivos: un controlador de gráficos antiguo o falta de memoria. Actualiza el controlador de la GPU, actualiza WhatsApp y cierra procesos en segundo plano.
+
+---
+
+### Chrome Memory Saver Not Working? Why You See No Change
+
+URL: https://www.superchargebrowser.com/library/does-chrome-memory-saver-actually-work/
+Category: review | Extension: performance | Updated: 2026-06-22
+Description: Chrome Memory Saver works, but it discards tabs only under RAM pressure, so most users feel nothing. Verify it on your own machine in under 2 minutes (2026).
+
+Chrome Memory Saver works, but it is reactive: it discards inactive tabs only when your system reports memory pressure or its on-device model predicts you won't return to a tab. On a roomy machine, that threshold may never trip, so no tab is ever discarded and you feel nothing. As of June 2026 (Chrome 149), "Memory Saver not working" is almost always Memory Saver waiting, not Memory Saver broken.
+
+## Check Whether It Discarded Anything (2 Minutes)
+
+Before assuming the feature is dead, confirm what it has actually done. Type `chrome://discards` into the address bar and press Enter. You get a table of every open tab with two columns that settle the question:
+
+- **Discarded** — reads `Yes` if Chrome has freed that tab's memory, `No` if the tab is still fully resident.
+- **Last Active** — how long the tab has sat untouched.
+
+If you have a dozen tabs you abandoned hours ago and every Discarded cell reads `No`, Memory Saver has not acted on a single one. That is the most common "it's not working" case, and the table just proved the feature is idle rather than broken.
+
+To prove it *can* free RAM, find a heavy idle tab in that table, open Chrome's own Task Manager (`Shift+Esc` on Windows and Linux, or the Window menu on macOS), note the tab's memory figure, then click **Urgent Discard** on its `chrome://discards` row. The tab drops out of Task Manager's renderer list and its footprint collapses to a few kilobytes. The mechanism is fine. The trigger is the issue.
+
+## Why You See No Change
+
+Memory Saver only fires under two conditions: the operating system signals real memory pressure, or the on-device revisit model (added in Chrome 140, September 2025) flags a tab as unlikely to be reopened. Neither condition cares about a clock.
+
+On a 16 GB laptop with 15 mixed tabs, Chrome might sit at 4 GB all afternoon and never cross the pressure line. Your idle tabs stay fully loaded the entire time. Nothing is wrong, and nothing is freed, because the feature is built to step in during a shortage, not to keep your footprint trim by default.
+
+| What you expected | What Memory Saver does |
+|-------------------|------------------------|
+| Frees idle tabs after a few minutes | Frees them only when RAM runs short |
+| You set the timing | The mode (Moderate/Balanced/Maximum) and a model set it |
+| Every heavy tab gets suspended | Active, pinned, audio, and form tabs are never touched |
+| You can see the RAM saved | No per-tab readout; `chrome://discards` is the only window in |
+
+The mismatch between the first column and the second is the whole story behind the "no difference" complaint. The feature is quietly correct; it just optimizes for a moment you may not reach.
+
+## The Protections That Keep Heavy Tabs Resident
+
+Even when Memory Saver does fire, it deliberately skips the tabs most likely to be eating your RAM right now:
+
+- The **active** tab you're looking at
+- **Pinned** tabs
+- Tabs **playing audio** (a music or video tab)
+- Tabs with **unsubmitted form input**
+- Anything on your **Always keep active** exclude list
+
+These are the right calls. Discarding a half-written email or a live video call would be worse than the RAM it saves. But they also mean the Figma board, the Meet call, and the YouTube tab, often the three heaviest things open, frequently stay resident. So even an actively-working Memory Saver can leave your total RAM looking barely changed, which reads to most people as "it did nothing."
+
+## When the Reactive Model Is Already Enough
+
+Stay on the built-in feature with no extra tooling if you keep fewer than 10 tabs, run on a machine where memory pressure actually arrives (8 GB or less is common), and don't care about seeing the numbers. In that setup Memory Saver trips often, frees real RAM, and asks nothing of you. It is a good default and it is doing its job.
+
+The gap opens on a roomy machine with a heavy tab habit: 20-plus tabs on 16 GB, where pressure trips late or never, so you spend the session with idle tabs fully loaded. There, "reactive" means "mostly idle," and the RAM you could reclaim sits unrealized for hours.
+
+## Closing the Gap With Proactive Suspension
+
+A timer-based suspender attacks the timing problem directly. Instead of waiting for pressure, [SuperchargePerformance](/performance/) discards a tab once it has been inactive for a fixed window (5 or 15 minutes on the free tier, a custom value on PRO) through the same `chrome.tabs.discard()` call Chrome uses internally. The RAM comes back before your machine slows down, freeing 90-95% of each parked tab's memory, not after a shortage forces it.
+
+| | Chrome Memory Saver | SuperchargePerformance |
+|---|---------------------|------------------------|
+| Trigger | RAM pressure + revisit model | Fixed inactivity timer |
+| Acts before pressure | No | Yes |
+| Timing you control | Mode buckets only | 5 / 15 min, custom on PRO |
+| Per-tab RAM readout | None | Yes, in the popup |
+| Auto-protected web apps | Manual exclude list | 25+ built in (Gmail, Figma, Notion, Slack…) |
+| Ad / tracker blocking | None | 186K+ rules |
+| Account / telemetry | None | None, fully local, free core |
+
+The honest framing: the extension is not faster magic, it runs the same discard the browser does. Its edge is *when* (a clock you set, not a pressure spike) and *visibility* (a per-tab RAM figure so you can confirm the saving instead of squinting at `chrome://discards`). It also blocks ads on the active tabs Memory Saver leaves loading at full weight, and it runs entirely on your own machine with no account and nothing phoned home.
+
+If you want the full feature-by-feature breakdown of the built-in tool first, our [Chrome Memory Saver tested review](/library/chrome-native-memory-saver-review/) rates it across setup, timing, and visibility. To see exactly how the timing gap plays out at 30 tabs, the [tab suspender vs Memory Saver data](/library/tab-suspender-vs-chrome-memory-saver/) measures both side by side.
+
+## Settle It On Your Own Machine
+
+If `chrome://discards` shows everything as `No` and your tabs sit idle for hours: Memory Saver is waiting for pressure that isn't coming, so reach for a timer. If pressure does arrive on your hardware and tabs get discarded on their own: the built-in feature is already doing the work, and you don't need anything more.
+
+#### FAQ
+Q: Why does Chrome Memory Saver seem to do nothing?
+A: As of June 2026 (Chrome 149), Memory Saver is reactive: it discards inactive tabs only when the system reports memory pressure or its on-device model predicts you won't revisit a tab. On a 16 GB machine with 15 tabs open, that pressure threshold may never trip, so no tab is ever discarded and you feel no change. It is working as designed; the design just waits for a crisis that, on a roomy machine, rarely arrives.
+
+Q: How do I check if Chrome Memory Saver is actually discarding tabs?
+A: Open chrome://discards in the address bar. The table lists every open tab with a 'Discarded' state column and a 'Last Active' time. If the Discarded column reads 'No' for tabs you left hours ago, Memory Saver has not acted on them. You can force one with the 'Urgent Discard' link on that row, then watch the tab's RAM drop in chrome://settings/performance or Chrome's own Task Manager (Shift+Esc on Windows/Linux).
+
+Q: Does Chrome Memory Saver actually save RAM?
+A: Yes, when it fires. A discarded tab calls chrome.tabs.discard(), which terminates that tab's renderer process and frees 90-95% of its memory back to the operating system. The catch is timing: Memory Saver only fires under pressure, so on a machine with spare RAM the savings sit unrealized. In our 32-tab test on Maximum mode, total Chrome RAM fell about 38% once the threshold tripped.
+
+Q: How is a tab suspender extension different from Memory Saver?
+A: A timer-based suspender like SuperchargePerformance discards an inactive tab on a fixed clock (5 or 15 minutes, custom on PRO) regardless of system pressure. It frees the RAM before your machine slows down, not after. Memory Saver waits for pressure and uses a prediction model. Same chrome.tabs.discard() API underneath; the difference is when and which tabs get hit.
+
+Q: Will Memory Saver discard the tab I'm looking at?
+A: No. As of June 2026 it never discards the active tab, pinned tabs, tabs playing audio, tabs with unsubmitted form input, or sites on your 'Always keep active' exclude list. Those protections are why the heaviest tabs (a video call, a Figma board) often stay resident even when Memory Saver is on, which can make it look like nothing happened.
+
+Q: Is leaving Memory Saver on enough for heavy tab users?
+A: As of June 2026, under about 10 tabs it is fine. Above 20 tabs on a machine with 16 GB or more, the pressure threshold trips late, so you spend most of your session with idle tabs fully resident. If you want tabs freed proactively on a schedule you control, plus a per-tab RAM readout to verify it, a dedicated suspender closes that gap.
+
+---
+
+### Nimbus Became FuseBase? Free Local Alternative (2026)
+
+URL: https://www.superchargebrowser.com/library/nimbus-screenshot-alternative-fusebase/
+Category: comparison | Extension: capture | Updated: 2026-06-22
+Description: Nimbus Screenshot rebranded to FuseBase, added an account wall and paid tiers. SuperchargeCapture is the free, no-account, 100% local swap for Chrome.
+
+> **Key takeaways**
+> - Nimbus Screenshot rebranded to **FuseBase**, added an account requirement, and pushed serious capacity into **paid tiers** (its free recording is capped around 5 minutes).
+> - **SuperchargeCapture** is the free, no-account swap for Chrome: full-page and region screenshots, screen recording, a built-in editor, and **local export with no watermark**.
+> - If you relied on FuseBase's shared team workspace, FuseBase still wins there. If you just wanted to capture and keep the file, the local swap is free.
+
+You open the old Nimbus Screenshot extension expecting the same one-click capture you've used for years, and instead you're staring at a FuseBase sign-in screen. As of June 2026, that is the state of things: Nimbus Capture was rebranded to FuseBase, the free experience now sits behind a FuseBase account, and the longer recordings you used to take for free are gated by paid plans. [SuperchargeCapture](/capture/) is the swap for people who just want to capture a screenshot or a screen recording in Chrome and keep the file. No account, no watermark, nothing uploaded to anyone's servers. This compares the two honestly, including the team features FuseBase keeps that a local extension does not try to match.
+
+## What Changed When Nimbus Became FuseBase
+
+The capture tool you remember as Nimbus didn't disappear; it got absorbed. The rebrand to FuseBase (roughly two years before this June 2026 article) folded the standalone screenshot-and-recorder into a larger collaboration platform built around hosted client workspaces. That reframing is the source of most of the friction long-time users describe.
+
+The free path now runs through a FuseBase account. Recording length on the free version is limited (reports put the cap near 5 minutes), with the long takes moved to paid tiers. Reported pricing for the capture product has hovered around the $60/year figure, and the wider FuseBase platform sells higher monthly plans on top of that; the current number lives on FuseBase's own pricing page and shifts, so check it there rather than trusting a figure quoted secondhand.
+
+None of that makes FuseBase a bad product. It makes it a *different* product than the lightweight grab-a-screenshot tool many people installed Nimbus to be. If that gap is why you're reading this, the rest of the page is for you.
+
+## The No-Account, No-Watermark Swap
+
+SuperchargeCapture starts where Nimbus used to: you click, you capture, the file is yours. There is no account, no sign-in, and no email gate as of June 2026. The capture is processed on your machine, and the output carries no watermark on any format.
+
+It covers the screenshot work Nimbus was known for:
+
+- **Full-page screenshots** that scroll and stitch a long page into one image.
+- **Region capture** for a precise rectangle.
+- **Visible-area capture** for what's on screen right now.
+- **Screenshot or full page to PDF** when you need a document instead of an image.
+
+And it adds the recording side without a length paywall on the local file:
+
+- **Screen, tab, or window recording**, with **zero-picker tab recording** so the common case (record the tab you're already on) skips the operating system's screen-picker dialog.
+- **Webcam bubble** with optional **on-device background blur** for a talking-head corner.
+- **Export to MP4, WebM, or GIF**, saved locally.
+
+The capture itself isn't behind a tier. There's no "upgrade to remove the watermark" and no "sign in to save," because the file already lives on your disk the moment you finish.
+
+## Screenshots and Recording, Compared
+
+| | FuseBase (formerly Nimbus) | SuperchargeCapture |
+|---|---|---|
+| Account to capture | Required | None |
+| Watermark on free output | Varies by plan | None |
+| Full-page screenshot | Yes | Yes |
+| Region / visible screenshot | Yes | Yes |
+| Screenshot → PDF | Yes | Yes (screenshot + full page) |
+| Screen recording | Yes | Yes |
+| Free recording length | Capped (about 5 min) | No app-imposed cap |
+| Built-in editor | Yes | Yes (annotate, trim, auto-zoom) |
+| Where captures live | FuseBase hosted workspace | Your device (local) |
+| Cloud destination | FuseBase cloud | Your own Google Drive (opt-in) |
+| Team workspace / portals | Yes | No |
+| Price for core capture | Free tier + paid plans | Free |
+
+The row that pulls every other one along is "where captures live." FuseBase orients captures toward its hosted workspace, which is what makes the account and the plan tiers natural to it. SuperchargeCapture keeps the file local first, so the account, the cap, and the watermark question never enter the picture unless you deliberately add a destination.
+
+## The Editor You Don't Have to Pay to Use
+
+A raw capture is rarely the thing you actually send. The annotation and polish layer is where a screenshot becomes a usable bug report and a recording becomes a watchable walkthrough, and SuperchargeCapture renders all of it locally.
+
+On screenshots you get the annotation set you'd expect from Nimbus: arrows, boxes, text, highlight, and blur for redacting anything sensitive before the image leaves your hands. On recordings the editor goes further than a basic grab tool:
+
+- **Auto-zoom** pushes the frame toward each click so a walkthrough feels directed instead of flat.
+- **Cursor smoothing** cleans up jittery mouse paths.
+- **Frame-accurate trim** cuts dead air off the front and back with dual handles on a scrubber.
+
+One honest caveat: the auto-zoom and cursor effects rely on captured pointer samples, which come from **tab** recordings. Record the tab if the polished look is what you're after; window and full-screen captures may not carry those effects.
+
+## When FuseBase Is Still the Right Call
+
+This is the part where being straight matters more than winning the comparison. FuseBase is a collaboration platform, and a local extension does not replace a collaboration platform.
+
+If your team lives inside a shared FuseBase workspace, comments on hosted captures, runs client portals, or needs every capture to land in one cloud library that the whole group can browse, that is squarely FuseBase's lane. SuperchargeCapture has **no hosted share pages, no team library, and no transcription** as of June 2026. It is a tool for capturing and keeping, not for hosting and collaborating.
+
+The question to ask is which half of Nimbus you actually used. If you used it as a hosted workspace, the FuseBase rebrand gave you more of that, and you should stay. If you used it as a quick local screenshot-and-recorder and the account wall is the thing that pushed you here, the workspace features were never the point for you.
+
+## Moving Off Nimbus Without Losing the Workflow
+
+You don't migrate anything. SuperchargeCapture doesn't import a FuseBase library because it doesn't keep one; the captures you take from here live on your machine from the start. Install it, pin it, and the next screenshot or recording behaves the way the old Nimbus did before the rebrand: click, capture, done.
+
+If you do want a capture in the cloud occasionally, the **Share to Drive** option sends a single file to *your own* Google Drive using the `drive.file` scope, which can only touch files the extension created. It's opt-in per file, and nothing routes through SuperchargeBrowser servers. That's the inverse of a hosted-workspace default: local first, cloud only when you reach for it. (Share to Drive uses Chrome's identity OAuth, so it's Chrome-only; on Edge the button isn't shown.)
+
+## Which One to Install
+
+| Your situation | Better fit |
+|---|---|
+| You used Nimbus for quick local screenshots and recordings | SuperchargeCapture |
+| The FuseBase account wall is what pushed you to look | SuperchargeCapture |
+| You want recordings with no length cap on the local file | SuperchargeCapture |
+| You need a clean export with no watermark, free | SuperchargeCapture |
+| Your team shares a hosted FuseBase workspace with comments | FuseBase |
+| You need hosted client portals and a shared capture library | FuseBase |
+
+If Nimbus to FuseBase turned a one-click capture tool into a login screen and a pricing page, and the workspace half was never why you installed it, [SuperchargeCapture](/capture/) gives you the capture back without the account: free, no watermark, screenshots and screen recording that stay on your machine. Pin it and take the next one locally.
+
+#### FAQ
+Q: Did Nimbus Screenshot become FuseBase?
+A: Yes. The product formerly known as Nimbus Capture / Nimbus Screenshot was rebranded to FuseBase, roughly two years before this June 2026 article. The browser capture tool now lives under the FuseBase brand at thefusebase.com, and it sits inside FuseBase's broader paid collaboration platform. As of June 2026 the free version still exists, but it requires a FuseBase account and caps video recordings at about 5 minutes, with longer recording reserved for paid plans.
+
+Q: Is there a free Nimbus / FuseBase alternative with no account?
+A: As of June 2026, SuperchargeCapture is a free Chrome extension for screenshots and screen recording that needs no account, no sign-in, and no email. It takes full-page, region, and visible-area screenshots, records your screen, tab, or window, and saves the file straight to your device. Nothing uploads to our servers, and there is no watermark on the output. FuseBase's free tier, by contrast, requires a FuseBase login before you can capture.
+
+Q: How much does FuseBase cost, and is SuperchargeCapture really free?
+A: FuseBase keeps a free tier but moved its serious capacity behind paid plans; reported pricing for the capture product has been around the $60/year mark, and the wider FuseBase platform sells higher monthly tiers. Check thefusebase.com/pricing for the current figure, since it changes. SuperchargeCapture's screenshots, screen recording, built-in editor, and local export are free as of June 2026 with no account and no paywall on the capture itself.
+
+Q: Does SuperchargeCapture put a watermark on screenshots or recordings?
+A: No. As of June 2026, SuperchargeCapture adds no watermark to screenshots or recordings on any output format. The image or video you save is clean. Many free tiers of hosted capture tools stamp a logo or a 'made with' badge onto exports to push you toward a paid upgrade; SuperchargeCapture does not, because the capture is processed locally and there is no upsell layer riding on it.
+
+Q: Can I keep my screenshots local instead of uploading to a cloud workspace?
+A: Yes, and that is the default. As of June 2026, SuperchargeCapture saves captures to your device's local storage. You can also export a screenshot or full page to PDF, or save a recording as MP4, WebM, or GIF directly to your downloads. There is an opt-in option to send a file to your own Google Drive using the drive.file scope, which only touches files the extension created. Nothing routes through our servers. FuseBase's model centers on its hosted workspace, so captures are oriented toward its cloud.
+
+Q: What does FuseBase do that SuperchargeCapture does not?
+A: FuseBase is a team collaboration platform with a capture tool attached: shared client portals, hosted workspaces, comments, and cloud storage for captures across a team. SuperchargeCapture is a local capture tool, not a collaboration suite. As of June 2026 it has no hosted share pages, no team library, and no built-in transcription. If your workflow depends on a shared FuseBase workspace where a team comments on hosted captures, FuseBase is the right fit and a local extension will not replace it.
+
+---
+
+### Record a Chrome Tab With NO Screen Picker (2026)
+
+URL: https://www.superchargebrowser.com/library/record-chrome-tab-without-screen-picker/
+Category: guide | Extension: capture | Updated: 2026-06-22
+Description: Most recorders pop the OS screen-picker because they use getDisplayMedia. Tab recording via chrome.tabCapture skips it: pick the tab, recording starts.
+
+To record a single Chrome tab without the screen-picker dialog, you need an extension that uses `chrome.tabCapture` instead of `getDisplayMedia`. As of June 2026, that one API choice is the whole story: `getDisplayMedia` is required by spec to show the browser's "Choose what to share" picker, while `chrome.tabCapture` streams the current tab directly. [SuperchargeCapture](/capture/) takes the second path — you click This Tab and recording starts, no dialog.
+
+## Why the Picker Shows Up at All
+
+The screen-picker is not a bug and it is not your recorder being clumsy. It is the browser doing exactly what the spec tells it to.
+
+Web pages and most extensions capture the screen through one API: `getDisplayMedia`. By design, that API never lets the calling code decide what to record. It hands control to the browser, which throws up the "Choose what to share" dialog: entire screen, a specific window, or a Chrome tab. You pick, you confirm, and only then does the page receive a stream. This is a privacy guardrail. Without it, any page that got a recording permission could silently grab your whole desktop. The picker is the wall between "this site can record" and "this site records *what you chose*."
+
+The cost is friction. Every recorder built on `getDisplayMedia` pays that picker tax on every single take. Loom, most web-based recorders, and a large share of Chrome screen-recording extensions all sit on `getDisplayMedia`, so they all inherit the dialog. You record a two-minute walkthrough, and the first thing you do every time is click through "choose what to share" to select the tab you were already staring at.
+
+## The One API That Skips It: chrome.tabCapture
+
+Extensions have a second door that web pages do not: `chrome.tabCapture`. It captures the tab the user invokes it on, and it does not route through the screen-picker. There is no "choose what to share" step, because the API is already scoped to one tab, so there is nothing to choose.
+
+That is the mechanism behind picker-free tab recording. SuperchargeCapture acquires the tab stream through `chrome.tabCapture.getMediaStreamId`, builds the recorder, and starts. From your side it is one click on This Tab in the popup, then a countdown if you set one, then recording. No OS dialog ever appears for the tab case.
+
+A detail competitors gloss over: `chrome.tabCapture` is gesture-gated. It only returns a stream in direct response to a user action and the gesture window closes the instant the code yields for async work. SuperchargeCapture grabs the stream id the moment you click, before any other setup, precisely so the gesture does not lapse. The recorder itself runs in an offscreen document, which keeps recording even if Chrome suspends the extension's service worker mid-take. A thirty-second service-worker timeout does not end your recording. None of that is visible to you, which is the point. It is engineering spent so the experience is "click, recording."
+
+| | getDisplayMedia (most recorders) | chrome.tabCapture (SuperchargeCapture) |
+|---|---|---|
+| Screen-picker dialog | Every recording | None for tab capture |
+| What it can capture | Screen, window, or tab | The invoked tab only |
+| Clicks to start a tab record | Open record → pick tab → confirm | Click This Tab |
+| Risk of leaking your desktop | You could mis-click "entire screen" | Scoped to one tab, can't leak |
+| Available to plain web pages | Yes | No (extension-only API) |
+
+For deeper coverage of the recorder itself — editor, export formats, crash recovery — see the [screen recorder feature page](/features/screen-recorder/). This article is about the picker specifically.
+
+## When the Picker Still Appears (and Why That's Correct)
+
+Picker-free recording is the tab case, not every case. SuperchargeCapture can also record a specific window or your whole screen, and those *do* show the standard picker. That is not an oversight — it is the only correct behavior here.
+
+`chrome.tabCapture` can reach exactly one thing: the tab you triggered it on. The moment you want to record a window or the full desktop, you are asking to capture content the extension has no scoped claim to, so it falls back to `getDisplayMedia`, and the browser's picker is mandatory. You should *want* that wall there. An extension that could grab your entire screen with no confirmation would be a security problem, not a feature.
+
+So the honest rule is simple. Recording the tab in front of you: no picker. Recording a window or the whole screen: picker, because the browser insists, and rightly. Most recording you do — a bug repro, a feature demo, a how-to for a teammate — is the tab case, which is exactly the case that gets to skip the dialog.
+
+## How to Set Up Picker-Free Tab Recording
+
+The whole flow, from a cold install:
+
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store. No account, no sign-in.
+2. Open the tab you want to record.
+3. Click the SuperchargeCapture toolbar icon and choose **This Tab**.
+4. Optionally toggle microphone, the tab's audio, a webcam bubble, and a countdown (off, 3s, or 5s).
+5. Hit record. No "choose what to share" dialog appears. Recording starts on the countdown.
+
+When you stop, the recording opens in a local editor: trim, auto-zoom toward each click, smoothed cursor, optional padded background. Export to WebM or MP4, or a short GIF for embeds. The file writes to your device's local storage in one-second chunks as you record, so a crash mid-take leaves a recoverable partial rather than nothing. Nothing uploads unless you choose Share to Drive, which goes to your *own* Google Drive (`drive.file` scope, files the extension created only), never to our servers. No watermark, no account, free.
+
+## Picker-Free vs Picker-Based: Which Fits Your Recording
+
+| Your recording | API that fits | Picker? |
+|---|---|---|
+| A single Chrome tab (demo, bug repro, walkthrough) | chrome.tabCapture | No |
+| A non-browser desktop app | getDisplayMedia | Yes (required) |
+| Your whole screen across multiple windows | getDisplayMedia | Yes (required) |
+| One specific window that isn't a tab | getDisplayMedia | Yes (required) |
+| Tab audio + mic + webcam on one tab | chrome.tabCapture | No |
+
+If almost everything you record is a browser tab, a `tabCapture`-based recorder removes a click you have been paying on every take and removes the risk of mis-selecting your whole desktop. If you regularly record desktop software outside Chrome, you will meet the picker there no matter what tool you use, because that capture really does need your explicit choice.
+
+If your recordings are tabs and the picker has just been friction you tolerated, [SuperchargeCapture](/capture/) skips it: click This Tab, recording starts, the file stays on your machine. Record the next one without the dialog.
+
+#### FAQ
+Q: Why does Chrome show a screen-picker dialog when I record a tab?
+A: As of June 2026, that dialog appears because the recorder calls getDisplayMedia, the standard browser API for screen capture. getDisplayMedia is required by spec to hand control to the browser: it shows the 'Choose what to share' picker (entire screen, window, or Chrome tab) so the user, not the page, decides what gets captured. Any web-based or extension recorder built on getDisplayMedia gets that picker on every recording. The only way to skip it is to use a different API — chrome.tabCapture — which an extension can call to stream the current tab directly, no picker.
+
+Q: How do I record just one Chrome tab without the screen-picker popup?
+A: As of June 2026, install an extension that uses chrome.tabCapture rather than getDisplayMedia. SuperchargeCapture records the current tab through chrome.tabCapture.getMediaStreamId: you click This Tab in the popup and the recording starts with no OS dialog, no 'choose what to share' step. Window and full-screen recording still use the standard picker, because those capture content outside the extension's tab and the browser requires explicit user choice for them.
+
+Q: Is chrome.tabCapture better than getDisplayMedia for tab recording?
+A: As of June 2026, for recording the tab you are already looking at, chrome.tabCapture is faster to start (no picker click) and the stream is scoped to exactly that tab, so you cannot fat-finger 'entire screen' and leak your desktop. getDisplayMedia is broader: it can capture any window or the whole screen, which tabCapture cannot. The right tool depends on scope. Tab-only walkthroughs favor tabCapture; recording a desktop app outside the browser needs getDisplayMedia and its picker.
+
+Q: Does skipping the picker mean the extension can record tabs without my consent?
+A: No. As of June 2026, chrome.tabCapture is gesture-gated: it only returns a stream in response to a user action, like clicking the record button, and it can only capture the tab you invoke it on. SuperchargeCapture requires no host permissions at install and uses activeTab, so it reaches a tab only when you start a capture on it. There is no background recording. The picker is one consent surface; an explicit click on a record button scoped to one tab is another.
+
+Q: Can I record a tab with audio and webcam without the picker?
+A: As of June 2026, yes. SuperchargeCapture's tab recording through chrome.tabCapture supports the tab's own audio, your microphone, and an optional draggable webcam bubble with on-device background blur — all without the getDisplayMedia picker. System audio from outside the tab and full-screen capture are the cases that still route through the standard picker, because they reach beyond the single tab.
+
+---
+
+### Record Google Meet Without Admin Permission (2026)
+
+URL: https://www.superchargebrowser.com/library/record-google-meet-without-permission-chrome/
+Category: guide | Extension: capture | Updated: 2026-06-22
+Description: Workspace admin blocked recording? Record the Meet tab locally in Chrome: no bot joins, nothing uploads, the file stays on your device. Get consent first.
+
+To record a Google Meet without your Workspace admin enabling recording, capture the Meet browser tab locally instead of using Meet's recording feature. As of June 2026, a Chrome extension can record the Meet tab through `chrome.tabCapture`: no host rights, no recording button, no bot in the roster. [SuperchargeCapture](/capture/) does exactly this, and the file never leaves your device. One rule first: under two-party-consent law, get everyone's consent before you record.
+
+## Get Consent First: This Is Not Optional
+
+Before the how-to, the part that actually matters. Recording a call is a legal act, and where the people on the call live decides what is allowed.
+
+Consent law splits two ways. In **one-party-consent** jurisdictions, one participant agreeing is enough, and that can be you. In **two-party (all-party) consent** regimes, every person on the call has to agree before you record a private conversation. That second group is not niche: it includes US states like California, Florida, Washington, and Illinois, and broadly the EU, where GDPR treats a recording of identifiable people as personal data you need a lawful basis to collect.
+
+A tab recorder gives Meet no way to flash the red recording indicator, so nobody is warned unless you warn them. That is the whole reason to say it out loud. Drop one line at the top of the call: "Heads up, I'm recording this for my notes." In a two-party state that line is the difference between a notes habit and a misdemeanor. Outside the legal angle, it is the thing that keeps people trusting you on the next call.
+
+So treat this guide as: record without your *admin's* approval, never without your *participants'* knowledge. Those are different permissions. This page solves the first. You owe the second to the people on the call.
+
+## Why Meet Won't Let You Record
+
+Google Meet's built-in recording is gated, and the gate has three locks. You need to be the host or a co-host. The meeting has to be on a Workspace plan that includes recording. And a Workspace admin must not have switched recording off for the organization.
+
+Hit any one of those and the Record button is gone or greyed out. A guest on someone else's call, an attendee on a free account, an employee whose IT admin disabled recording org-wide: all three stare at a Meet window with no way to keep a copy of a meeting they are sitting in. The information is right there on screen; Meet just won't hand you a file.
+
+The usual workaround is a third-party note-taker: Otter, tl;dv, Fireflies. Those work, but look at what they do. a bot joins your meeting as a visible participant, and the call streams to that vendor's cloud to be transcribed. You traded "admin blocked recording" for "a stranger's server now holds my private meeting and everyone saw the bot show up." For a sensitive call, that is often a worse answer than no recording.
+
+## Record the Meet Tab Locally Instead
+
+There is a cleaner path that does not touch Meet's recording feature at all: record the **tab**. Your Meet call is a web page in a Chrome tab, and a tab is something an extension can capture directly.
+
+[SuperchargeCapture](/capture/) records the Meet tab through `chrome.tabCapture`, the browser API scoped to a single tab. It does not use Meet's recording, so Meet's host-only gate is irrelevant: there is no Record button to be missing. It does not join the call, so no extra name appears in the participant list. And it writes the video to your own device, so nothing streams to anyone's cloud. You stay a normal participant who happens to be keeping a local copy, with the consent you asked for at the top of the call.
+
+This is the structural difference from bot tools, laid out:
+
+| | Bot note-taker (Otter / tl;dv / Fireflies) | Built-in Meet recording | SuperchargeCapture (tab recording) |
+|---|---|---|---|
+| Joins the call as a participant | Yes, visible in roster | No | No |
+| Needs host / admin permission | No | Yes (host + Workspace plan + admin) | No |
+| Where the recording lives | Vendor's cloud | Google Drive (org-owned) | Your device (local) |
+| Anything uploaded off your machine | Yes, the whole call | Yes, to Workspace | No (optional Drive opt-in) |
+| Captures audio + your webcam | Audio + transcript | Yes | Tab audio + mic + webcam bubble |
+| Account required | Yes | Workspace account | None |
+
+Most note-takers are built to capture and transcribe, which is great when you want a searchable transcript and the cloud trade is acceptable. When you want the call to stay on your laptop and no third party in the loop, local tab recording is the fit.
+
+## Set It Up Before Your Next Call
+
+From a cold install, the whole flow takes under a minute:
+
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store. No account, no sign-in.
+2. Join your Google Meet in Chrome as you normally would.
+3. **Announce that you're recording** and confirm the others are okay with it. (See the consent section above; this is the load-bearing step.)
+4. Click the SuperchargeCapture toolbar icon and choose **This Tab**.
+5. Toggle on your microphone and the tab's audio so both your voice and theirs are captured. Add a webcam bubble if you want your face in the corner.
+6. Hit record. Meet shows no indicator because this is not Meet's recording, which is exactly why step 3 is yours to do.
+
+When you stop, the recording opens in a local editor. Trim the dead air at the start and end, let auto-zoom push in toward shared screens, then export to MP4 for archiving, WebM for the web, or a short GIF for a quick clip. The footage wrote to your device's local storage in one-second chunks the entire call, so if Chrome crashed forty minutes into an hour-long meeting, you reopen the extension and recover the partial instead of losing everything.
+
+## What Stays on Your Machine, and What Doesn't
+
+The privacy story here is the point, so it is worth being precise about it rather than waving at "local."
+
+The recording lives in your browser's Origin Private File System on your own disk. SuperchargeCapture requires no host permissions at install — there is no "read your data on all websites" warning — and it runs zero telemetry. It touches the Meet tab only at the moment you start a capture on it, through `activeTab`. Nothing about the call reaches our servers at any point, because there is no pipeline to our servers in the first place.
+
+One optional exception, opt-in and obvious: **Share to Drive** uploads the finished file to *your own* Google Drive under the `drive.file` scope, meaning the extension can only see files it created, not your wider Drive. That is the single network action, you trigger it deliberately, and it goes to your account, not ours. No watermark sits on the export, no plan caps the length, and the recorder costs nothing.
+
+So the full accounting: no bot in your meeting, no participant added to the roster, no transcript sent to a vendor, no upload unless you press the button. The thing that leaves your machine is whatever *you* choose to share, and you choose that after you have already trimmed it.
+
+## If You Need a Copy of a Meeting You're Locked Out Of
+
+The decision comes down to two questions. Can you legally record the people on this call, and do you want a searchable transcript or just the recording?
+
+If you need the transcript and everyone is in a one-party-consent jurisdiction (or has consented), a bot note-taker earns its cloud trade. If you are on a two-party-consent call, get explicit agreement first regardless of tool — no software exempts you from that. And if you want the call to stay on your own machine with no bot announcing itself and no vendor cloud holding your meeting, record the Meet tab locally: announce it, click This Tab, and the file is yours the moment you stop, on your device alone.
+
+#### FAQ
+Q: Is it legal to record a Google Meet without permission?
+A: It depends on where the participants are. As of June 2026, recording-consent law splits into one-party-consent and two-party (all-party) consent jurisdictions. In one-party states or countries, one person on the call consenting (which can be you) is enough. In two-party regimes — including several US states like California, Florida, and Illinois, and much of the EU under GDPR — every participant must consent before you record a private conversation, regardless of the tool you use. 'Without permission' in this guide means without your Workspace admin enabling Meet's built-in recording or a third-party bot joining the call. It does not mean without participant consent. Tell people they are being recorded; in many jurisdictions you are legally required to, and it is the decent thing regardless.
+
+Q: Can I record a Google Meet if I am not the host?
+A: Yes. As of June 2026, Google Meet's own recording is restricted to the host or co-host on an eligible Workspace plan, and a Workspace admin can disable it entirely. A tab recorder sidesteps that restriction because it does not use Meet's recording feature at all — it captures the Meet browser tab the way it would capture any web page. SuperchargeCapture records the Meet tab through chrome.tabCapture, so a participant with no host rights and no recording button can still capture the call to their own device. You still need participant consent under two-party-consent law.
+
+Q: Will the other people on the call see that I am recording?
+A: Not automatically. As of June 2026, Google Meet only shows the red 'recording' indicator when someone uses Meet's built-in recording. A tab recorder captures the page locally and Meet has no signal that it is happening, so there is no indicator. That is exactly why you should announce it yourself. Recording people who believe the call is unrecorded is the behavior consent laws exist to prevent. Say it out loud or drop a line in the chat: 'I'm recording this for notes.'
+
+Q: Does SuperchargeCapture join my call as a participant like Otter or Fireflies?
+A: No. As of June 2026, bot-based note-takers such as Otter, tl;dv, and Fireflies join the meeting as a visible attendee and stream the call to their cloud to transcribe it. SuperchargeCapture joins nothing. It records the Meet tab locally inside your own Chrome, the same browser you are already in. No extra participant appears in the roster, and the video never leaves your machine unless you choose to upload it to your own Google Drive.
+
+Q: Where does the Google Meet recording get saved?
+A: As of June 2026, the recording writes to your device's local storage (Origin Private File System) in one-second chunks as the call runs, so a crash or a closed tab leaves a recoverable partial rather than nothing. When you stop, it opens in a local editor to trim, then exports to MP4, WebM, or GIF. Nothing uploads to our servers, ever. If you want it in the cloud, Share to Drive sends it to your own Google Drive under the drive.file scope — only files the extension created — and that is the single optional network action.
+
+---
+
+### Screen Record No Watermark, Free? 5 Steps (2026)
+
+URL: https://www.superchargebrowser.com/library/screen-record-no-watermark-free-chrome/
+Category: guide | Extension: capture | Updated: 2026-06-22
+Description: Free screen recorders stamp a watermark, cap you at 5 minutes, or force a sign-in. Record your screen or tab in Chrome with none of that — 5 steps, no account.
+
+You hit record on a free screen recorder, talk through a five-minute walkthrough, and then it stamps a logo across the corner and tells you the clip is capped anyway. As of June 2026, [SuperchargeCapture](/capture/) records your screen, tab, or window in Chrome and exports a clean MP4, WebM, or GIF with no watermark, no length limit, and no account. The recording writes to your device, not a cloud server. Five steps below.
+
+## Step 1: Install and Open the Recorder
+
+Add [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.0, live as of June 2026) and click the toolbar icon. No sign-up screen, no email gate, no "start your free trial" wall. The recorder popup opens straight to its capture controls.
+
+There is nothing to log into because there is no account system at all. The extension stores everything on your own machine, so the moment it installs, it works.
+
+## Step 2: Pick What to Record (Tab, Window, or Screen)
+
+The popup gives you three capture targets:
+
+- **This Tab:** records only the current Chrome tab, through `chrome.tabCapture`. This skips the operating-system screen-picker dialog, so it is one click with no "which window did I mean" prompt. It also captures only the page, never your taskbar or other windows leaking into frame.
+- **Window:** records a specific application window using Chrome's standard picker.
+- **Screen:** records your entire display.
+
+For most software demos, tutorials, and bug reports, This Tab is the cleanest choice. You see only the page you are demonstrating, framed exactly.
+
+Before you start, the popup shows a **live microphone level meter**. The bar moves when you talk, so the classic disaster (recording a whole walkthrough only to discover the mic was muted) is caught before you press record, not after. Toggle system audio if you want the page's sound too, and set an optional 3- or 5-second countdown.
+
+## Step 3: Record (No Five-Minute Cap)
+
+Press record. Talk, click, scroll through whatever you are showing. There is no countdown timer ticking toward a paywall, because there is no length cap on video export. A two-minute clip and a fifty-minute walkthrough are equally free.
+
+As you record, the footage writes to your device's local storage in **one-second chunks**, not held in memory until you stop. That means two things. First, nothing uploads anywhere. Second, if Chrome crashes or you close the tab by accident mid-recording, you reopen the extension and the partial recording is recovered from disk. A long take is no longer a gamble.
+
+If you want yourself on camera, switch on the **webcam bubble**, a draggable circle with optional on-device background blur. The blur runs on your machine; no frame leaves your browser to apply it.
+
+## Step 4: Trim and Polish in the Built-In Editor
+
+When you stop, the recording opens in a local editor. Nothing here requires an upload or a paid unlock. Every effect renders on your machine during export.
+
+- **Frame-accurate trim:** dual handles on a scrubber cut dead air off the front and back.
+- **Auto-zoom:** the video zooms toward each click automatically, the directed look that makes a walkthrough feel produced instead of flat.
+- **Cursor polish:** the pointer path is smoothed and clicks get ripples, so fast mouse movement reads cleanly.
+- **Annotations:** mark up the frame to point at what matters.
+
+One honest caveat: auto-zoom and cursor effects rely on captured pointer samples, which are recorded for **tab** captures. If the polished-walkthrough look is the goal, record the tab rather than the full screen.
+
+## Step 5: Export Clean, No Watermark on Any Format
+
+Hit export and pick a format:
+
+- **MP4:** available when your browser's MediaRecorder supports it. No length limit.
+- **WebM:** always available. No length limit.
+- **GIF:** reduced frame rate for quick embeds, capped at 30 seconds (a longer GIF becomes an enormous file).
+
+Every export comes out clean. No logo in the corner, no "made with" banner, no stamp to pay to remove. The file saves to your device. If you want it shareable, the opt-in **Share to Drive** uploads to your *own* Google Drive through Chrome's identity OAuth on the `drive.file` scope, which only touches files the extension created. Nothing transits SuperchargeBrowser servers.
+
+## Why Free Recorders Watermark, Cap, and Gate at All
+
+None of those three frictions is a technical necessity. A browser recorder can export a clean, uncapped file. The watermark, the 5-minute limit, and the forced sign-in are business levers, not engineering limits.
+
+| Free-tool friction | What it actually is | SuperchargeCapture |
+|---|---|---|
+| Watermark / logo | A paywall marker — removing it is the upsell | No watermark, any format |
+| 5-minute (or 3, or 15) cap | A conversion timer to a subscription | No video length cap |
+| Forced sign-in / email | Lead capture before you record | No account, no email |
+| Cloud upload before you get a file | Hosting dependency + data on their servers | Local file, instant; cloud is opt-in |
+| Editor effects behind a paid plan | Feature gating | Trim, auto-zoom, cursor polish — all free |
+
+The watermark exists so that removing it becomes a reason to subscribe. The length cap exists so that recording one minute longer becomes a reason to subscribe. SuperchargeCapture has no paid recording tier gating the export, so there is no logo to stamp and no clock to beat.
+
+## What Stays Local, and What Doesn't
+
+The reason this works without an account is that the recording never needs to leave your machine to become a finished file. SuperchargeCapture writes to the Origin Private File System on your device and renders the editor effects locally during export. There is no telemetry and no analytics SDK riding along.
+
+It requires **no host permissions at install**, so there is no install-time warning about reading your browsing. Its `activeTab` permission covers the default flow, so the extension reaches a page only after you invoke a capture on that specific tab. One optional cross-site permission lets you record across sites if you want it; it is off by default and revocable from Chrome's settings at any time.
+
+The only thing that ever leaves your machine is a recording you explicitly send to your own Drive. The default is local, and it stays that way unless you decide otherwise.
+
+## If You Want a Clean Recording Right Now
+
+If your last free recorder stamped a logo, capped you at five minutes, or made you sign in before you could even start: install [SuperchargeCapture](/capture/), click the toolbar icon, pick This Tab, and record. The export is clean and uncapped, the file is on your disk, and there was never an account to make. Record the next one without the tax.
+
+#### FAQ
+Q: How do I screen record with no watermark for free?
+A: As of June 2026, SuperchargeCapture records your screen, tab, or window in Chrome and exports the file with no watermark, no logo, and no length cap, all free with no account. The watermark on most free recorders is a paywall marker — it exists to push you to a paid plan. SuperchargeCapture has no paid recording tier gating the export, so there is nothing to stamp. The finished MP4, WebM, or GIF is clean.
+
+Q: Is there a free screen recorder with no time limit?
+A: Yes. As of June 2026, SuperchargeCapture has no recording-length cap on MP4 and WebM export — you can record a two-minute clip or a fifty-minute walkthrough on the free version. Many browser-based free recorders cap free recordings at 5 minutes (or 3, or 15) to convert you to a subscription. The one length limit in SuperchargeCapture is the GIF export, capped at 30 seconds, because a longer GIF becomes an enormous file. Video export is uncapped.
+
+Q: Do I need to create an account to record my screen?
+A: No. As of June 2026, SuperchargeCapture requires no account, no sign-in, and no email to record or to export. You install it from the Chrome Web Store and the recorder works immediately. The recording writes to your device's local storage (Origin Private File System), so there is no server to log into and nothing uploads anywhere unless you deliberately choose Share to Drive, which goes to your own Google Drive.
+
+Q: Where do free screen recorder watermarks come from?
+A: A watermark on a free recording is almost always a freemium conversion lever, not a technical limit. The recorder can export a clean file — it chooses to stamp a logo on the free tier so that removing the logo becomes a reason to pay. The same logic drives the 5-minute caps and forced sign-ins. As of June 2026, SuperchargeCapture's recording and export are free with no paid recording tier, so there is no watermark to remove and no cap to lift.
+
+Q: Can I record just one Chrome tab instead of my whole screen?
+A: Yes. As of June 2026, SuperchargeCapture can record a single Chrome tab through chrome.tabCapture, which skips the operating-system screen-picker dialog entirely — you click This Tab in the popup and recording starts. It can also record a specific window or your full screen when you need those, using Chrome's standard picker. Tab recording is the cleanest option because it captures only the page, not your taskbar or other windows.
+
+Q: Does the recording upload to a cloud server?
+A: No, not by default. As of June 2026, SuperchargeCapture writes the recording to your device's local storage in one-second chunks as you record, and the file stays there. Nothing transits SuperchargeBrowser's servers. If you want to share, there is an opt-in Share to Drive that uploads to your own Google Drive using the drive.file scope, which only touches files the extension created. The default is local, and cloud is a deliberate choice you make.
+
+---
+
+### Screencastify Alternative? Free, No Watermark (2026)
+
+URL: https://www.superchargebrowser.com/library/superchargecapture-vs-screencastify/
+Category: comparison | Extension: capture | Updated: 2026-06-22
+Description: Screencastify's free tier caps you at 10 saved videos and stamps a watermark. SuperchargeCapture records unlimited, no watermark, no account. As of June 2026.
+
+> **Key takeaways**
+> - Screencastify's free tier caps you at **10 saved videos** and **30 minutes per recording**, and stamps a **watermark** on exports.
+> - SuperchargeCapture records **unlimited videos, no time cap on WebM/MP4, no watermark, no account**, saving locally to your device.
+> - If you teach inside Google Classroom or an LMS and need hosted share pages with view tracking, Screencastify still wins. For watermark-free local recording, the swap is free.
+
+You finish a 12-minute walkthrough, go to export, and there it is: the Screencastify badge burned into the corner. Then the library tells you that was video number 10, so the next one needs an upgrade. As of June 2026, that is Screencastify's free plan: up to 10 videos total, a 30-minute cap per recording, a watermark on exports, and a Google account required to use any of it. [SuperchargeCapture](/capture/) records the same tab, window, or screen in Chrome with no watermark, no video-count limit, no time cap on WebM and MP4, and no account. The file saves to your own machine. This is an honest comparison of where each tool earns its place.
+
+## What Screencastify's Free Tier Actually Costs You
+
+The free plan is not a trial that expires. It is a permanent tier with three hard edges, all verified against Screencastify's own pricing page as of June 2026.
+
+| | Screencastify Free | SuperchargeCapture |
+|---|---|---|
+| Watermark on exports | Yes (Screencastify branding) | None, ever |
+| Videos you can create | Up to 10 total | Unlimited |
+| Per-recording length cap | 30 minutes | None (WebM/MP4) |
+| Account to record | Google account required | None |
+| Where files live | Screencastify cloud library | Your device (local) |
+| Built-in editor | Trim + basic | Trim, auto-zoom, cursor polish, annotate |
+| Export formats | MP4 (hosted) | MP4, WebM, GIF + screenshot to PDF |
+| Price to remove caps | $7/user/mo (annual) Starter | Free |
+
+The video count is the edge that bites first. Ten lifetime videos sounds generous until you record a few drafts, a couple of retakes, and a screen-share you meant to delete. Screencastify does not delete your old videos when you hit the cap, but it stops you making new ones until you either clear space or pay. SuperchargeCapture has no counter. Record the eleventh, the fiftieth, the two-hundredth.
+
+The watermark is the edge that shows. Anything you send a client, a colleague, or a customer carries the branding of a tool you did not pay for, which is exactly the prompt to upgrade. SuperchargeCapture exports clean on every recording, because there is no paid tier to nudge you toward.
+
+## Recording in One Click, No Picker Dialog
+
+Most browser recorders, Screencastify included, route through the operating system's screen-picker dialog on every take: choose screen, choose window, choose tab, confirm. It is a small tax you pay each time you hit record.
+
+SuperchargeCapture records the current tab through `chrome.tabCapture`, which skips that dialog entirely. You click This Tab in the popup and recording starts. No OS prompt, no second-guessing which window you meant. Window and full-screen capture are there when you actually want them, using the standard picker because they have to, but the common case of recording the tab in front of you is a single click.
+
+Before recording, the popup shows a live microphone level meter, so you catch a dead mic before you talk for ten minutes instead of after. A system-audio toggle and an optional countdown round out the pre-record controls. None of this is gated behind a plan.
+
+## The Editor: Polish Without a Paywall
+
+A raw screen recording looks raw. The editing layer is where a take becomes something you would send to a customer, and SuperchargeCapture renders all of it locally during export, with no upgrade prompt on save.
+
+- **Auto-zoom:** the frame eases toward each click automatically, the directed-walkthrough effect that makes a demo feel intentional.
+- **Cursor polish:** the pointer path is smoothed and clicks get ripples, so fast mouse movement reads cleanly.
+- **Annotation:** mark up the recording to point a viewer at the thing that matters.
+- **Frame-accurate trim:** dual handles cut the dead air off the front and back.
+- **Webcam bubble:** a draggable circle with optional on-device background blur, no upload to apply the blur.
+
+One honest caveat: auto-zoom and cursor effects rely on captured pointer samples, which are recorded for tab captures. For window or full-screen recordings, those effects may not apply. If the polished look is the reason you came, record the tab.
+
+Export is local: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame GIF capped at 30 seconds for quick embeds. You can also grab a full-page screenshot or save a page to PDF. WebM and MP4 carry no length limit and no watermark.
+
+## Where the File Lives, and Who Can See It
+
+Screencastify is cloud-first. A free recording saves to your Screencastify library, counts against the 10-video cap, and shares as a hosted link. That is a sensible design for a tool built around shared, trackable video, and it is the reason the education and team features work as well as they do.
+
+SuperchargeCapture inverts the default. The recording writes to local storage on your device and uploads nothing unless you ask. The opt-in Share to Drive action sends a file to your *own* Google Drive through Chrome's identity OAuth using the `drive.file` scope, which can only touch files the extension itself created, never the rest of your Drive. Nothing routes through SuperchargeBrowser servers. There is no account, no analytics SDK, no telemetry. For a sensitive internal walkthrough, the recording never has to leave your laptop.
+
+That is also the privacy trade in plain terms: one tool hosts your video on its infrastructure by default, the other keeps it on your disk by default and lets you push a single file to a destination you already own.
+
+## Where Screencastify Is the Right Call
+
+This comparison is not a takedown. Screencastify earns its keep in places SuperchargeCapture does not reach, as of June 2026:
+
+- **Education integrations.** Screencastify is built for classrooms: Google Classroom workflows, assignment submission, and student-recording features. If you teach inside that ecosystem, that is squarely Screencastify's lane.
+- **Hosted share pages with view tracking.** A Screencastify link gives you a viewer page and analytics on who watched. SuperchargeCapture's sharing is a file to your own Drive, not a tracked viewer page.
+- **Auto-captions and transcription.** Screencastify generates captions. SuperchargeCapture does not, currently.
+- **A managed cloud library.** If you want every recording searchable in one hosted place across devices, that is a hosting feature, and SuperchargeCapture is local-first by design.
+
+If those hosted, collaborative, education-shaped features are why you use Screencastify, Screencastify is the right tool and this article is not trying to move you.
+
+## Which One to Install
+
+| Your situation | Better fit |
+|---|---|
+| You want recordings with no watermark, free | SuperchargeCapture |
+| You keep hitting the 10-video free cap | SuperchargeCapture |
+| You record longer than 30 minutes at a stretch | SuperchargeCapture |
+| You want the file to stay on your own machine | SuperchargeCapture |
+| You want auto-zoom and cursor polish without paying | SuperchargeCapture |
+| You teach in Google Classroom or an LMS | Screencastify |
+| You need hosted share links with view analytics | Screencastify |
+| You need auto-captions on every recording | Screencastify |
+
+If you reach for Screencastify only to record a quick demo and the watermark plus the video cap are the friction, [SuperchargeCapture](/capture/) gives you the recorder without either: free, no account, no watermark, no count limit, the file on your disk, and shared to your own Drive only when you choose. If your day runs on classroom integrations and hosted analytics, stay with Screencastify. Record the next quick one locally and see which side you actually live on.
+
+#### FAQ
+Q: What is Screencastify's free plan limit as of June 2026?
+A: As of June 2026, Screencastify's free plan lets you create up to 10 videos total, with a 30-minute cap per recording, and your exports carry a Screencastify watermark. Once you hit 10 saved videos you cannot create new ones without upgrading, though existing videos stay. The Starter plan at $7 per user per month (billed annually) removes the watermark and raises the per-video cap to 60 minutes. SuperchargeCapture has no video count limit, no per-recording time cap on WebM and MP4, and never adds a watermark.
+
+Q: Is there a free screen recorder with no watermark and no account?
+A: Yes. As of June 2026, SuperchargeCapture records your screen, tab, or window in Chrome with no watermark, no time cap on WebM and MP4 exports, and no account or sign-in. The recording writes to local storage on your own device. Screencastify requires a Google account to use even the free tier, and the free tier stamps a watermark on your exports.
+
+Q: Does Screencastify put a watermark on free recordings?
+A: Yes. As of June 2026, Screencastify's free plan adds Screencastify branding to your recordings, and removing it requires the Starter plan ($7 per user per month billed annually) or higher. SuperchargeCapture never adds a watermark on any tier, because it has only one tier: the core recorder and editor are free.
+
+Q: Where does SuperchargeCapture save recordings, and does anything upload to the cloud?
+A: As of June 2026, SuperchargeCapture writes recordings to local storage on your device and uploads nothing by default. There is an opt-in Share to Drive action that sends a file to your own Google Drive using the drive.file scope, which can only touch files the extension created. Nothing transits SuperchargeBrowser servers. Screencastify is cloud-first: free recordings save to your Screencastify library and count against the 10-video limit.
+
+Q: When is Screencastify the better choice over SuperchargeCapture?
+A: As of June 2026, Screencastify is the stronger fit if you teach in a school that runs Google Classroom or an LMS, because Screencastify has built-in education integrations, assignment workflows, hosted share pages with view tracking, and auto-captions. SuperchargeCapture has none of those hosted-collaboration features. If you need a recording that stays on your own machine, exports with no watermark, and carries no video-count limit, SuperchargeCapture is the better fit.
+
+---
+
 ### Best AI Browsers 2026: Atlas, Comet, Dia Ranked
 
 URL: https://www.superchargebrowser.com/library/best-ai-browsers-2026/
@@ -2791,7 +3648,7 @@ SuperchargeCapture's edge is annotation export, capture modes, and stitching. It
 
 - **No stitch is flawless on every layout.** Pages with multiple nested independent scroll regions are hard for any tool. Sticky-header handling covers the common case, not every pathological one.
 - **PDF export of a full page** comes through the editor on multi-section captures, not as a one-click default for every mode.
-- **Share to Drive is Chrome-only** (it uses `chrome.identity`); Edge users get a clear message instead of a broken button.
+- **Share to Drive is Chrome-only** (it uses `chrome.identity`); on Edge the button simply isn't shown.
 - **DRM-protected video** can't be captured in a screenshot or recording — the browser renders protected media as black to any capture tool, this one included.
 
 If your only need is grabbing whole pages, you never annotate, and GoFullPage's free tier already does that for you — there is no reason to switch. The case for SuperchargeCapture is annotation export, region/element capture, cleaner stitching, and folding recording into the same tool.
@@ -2888,7 +3745,7 @@ Export is local too: WebM always, MP4 when your browser's MediaRecorder supports
 
 Local-first does not mean stranded. SuperchargeCapture has an opt-in **Share to Drive** that uploads a recording to *your own* Google Drive through Chrome's identity OAuth, using the `drive.file` scope. That scope only lets the app touch files it created — it cannot see the rest of your Drive. Nothing transits SuperchargeBrowser servers; the upload goes from your browser to your Drive directly.
 
-The contrast with Loom is the direction of the default. Loom uploads first and you opt out of nothing. SuperchargeCapture keeps the file local first and you opt *in* to a destination you already own. (Share to Drive uses `chrome.identity.getAuthToken`, so it is Chrome-only; Edge users get a clear message rather than a broken button.)
+The contrast with Loom is the direction of the default. Loom uploads first and you opt out of nothing. SuperchargeCapture keeps the file local first and you opt *in* to a destination you already own. (Share to Drive uses `chrome.identity.getAuthToken`, so it is Chrome-only; on Edge the button simply isn't shown.)
 
 ## What Each Tool Can Actually Touch
 
@@ -2953,7 +3810,7 @@ You're a Chrome power user. You live in 30 tabs, you miss Arc's sidebar, and eve
 
 ## The Verdict in One Table
 
-We rated Vivaldi on the four things a Chrome power user actually wants from a switch. Assessed on Vivaldi 8.0.4033.48 (Minor Update 6, released June 11, 2026), Chromium 148.
+We rated Vivaldi on the four things a Chrome power user actually wants from a switch. Assessed on Vivaldi 8.0 (Minor Update 6), Chromium 148, in June 2026.
 
 | What you want | Vivaldi score | Why |
 |---------------|--------------|-----|
@@ -3010,7 +3867,7 @@ Vivaldi clearly wins on tab power and the command bar. Chrome wins on simplicity
 
 ## A Note From Testing
 
-Set up on Vivaldi 8.0.4033.48 on June 16, 2026, the part that surprised us wasn't the feature depth, it was how long it took to feel normal. Vertical tabs, workspaces, and Quick Commands were each excellent once found, but locating and tuning them took a deliberate sitting. By the end of an evening it was a clearly better tab environment than stock Chrome. The depth is real and it's earned. What the test made concrete is that the payoff is gated behind that setup time, and the gate is steep enough to lose most people before they reach it.
+Set up on Vivaldi 8.0 on June 16, 2026, the part that surprised us wasn't the feature depth, it was how long it took to feel normal. Vertical tabs, workspaces, and Quick Commands were each excellent once found, but locating and tuning them took a deliberate sitting. By the end of an evening it was a clearly better tab environment than stock Chrome. The depth is real and it's earned. What the test made concrete is that the payoff is gated behind that setup time, and the gate is steep enough to lose most people before they reach it.
 
 ## If You Want the Features Without the Switch
 
@@ -3051,14 +3908,14 @@ A: Complexity. Reviewers and long-time users consistently flag the learning curv
 
 URL: https://www.superchargebrowser.com/library/youtube-premium-vs-ad-blockers-2026/
 Category: comparison | Extension: performance | Updated: 2026-06-17
-Description: YouTube Premium hit $15.99/mo in the US (June 7, 2026). A free ad blocker costs $0 but charges your time. Real annual math by region, with the trade-offs.
+Description: YouTube Premium hit $15.99/mo in the US (June 4, 2026). A free ad blocker costs $0 but charges your time. Real annual math by region, with the trade-offs.
 
 > **Key takeaways**
-> - **US YouTube Premium Individual is now $15.99/month**, or $191.88 a year, after the June 7, 2026 price hike. Family is $26.99/month.
+> - **US YouTube Premium Individual is now $15.99/month**, or $191.88 a year, after the June 4, 2026 price hike. Family is $26.99/month.
 > - **A free Chrome ad blocker costs $0** but pays for it in periodic breakage and zero coverage in YouTube's mobile app.
 > - **The decision is about where you watch, not the ads.** Desktop-only viewers save money blocking; phone-and-TV viewers get more from Premium.
 
-YouTube Premium Individual costs $15.99/month in the US as of June 7, 2026, which is $191.88 a year. A free Chrome ad blocker costs nothing in money. The honest comparison is not $191.88 versus $0, because the free route charges you in time, reliability, and missing coverage. Which one costs you less depends almost entirely on where and how you watch.
+YouTube Premium Individual costs $15.99/month in the US as of June 4, 2026, which is $191.88 a year. A free Chrome ad blocker costs nothing in money. The honest comparison is not $191.88 versus $0, because the free route charges you in time, reliability, and missing coverage. Which one costs you less depends almost entirely on where and how you watch.
 
 ## What Each Option Actually Costs in 2026
 
@@ -3070,7 +3927,7 @@ YouTube Premium prices changed in 2026 and vary by region. These are the verifie
 | UK | £12.99/mo | £19.99/mo | £129.99/yr |
 | Germany | €14.99/mo | €27.99/mo | €149.99/yr |
 
-The US Individual plan rose from $13.99 to $15.99 on June 7, 2026, and the increase applied to existing subscribers, not just new sign-ups. UK pricing held steadier; the annual plan at £129.99 works out to about £10.83/month, the cheapest legitimate ad-free route if you pay yearly. Eurozone prices rose too: Germany's Individual plan went to €14.99/month (from €12.99) on June 11, 2026, with an annual option at €149.99. Other euro countries vary, so check your local plan.
+The US Individual plan rose from $13.99 to $15.99 on June 4, 2026, and the increase applied to existing subscribers, not just new sign-ups. UK pricing held steadier; the annual plan at £129.99 works out to about £10.83/month, the cheapest legitimate ad-free route if you pay yearly. Eurozone prices rose too: Germany's Individual plan went to €14.99/month (from €12.99) on June 11, 2026, with an annual option at €149.99. Other euro countries vary, so check your local plan.
 
 A free ad blocker costs $0 in subscription terms. That number is real but incomplete, which the next section covers.
 
@@ -3128,7 +3985,7 @@ If you're starting on desktop and not sure Premium is worth $192 a year yet: try
 
 #### FAQ
 Q: How much does YouTube Premium cost in 2026?
-A: As of June 2026, YouTube Premium Individual is $15.99/month in the US (raised from $13.99, effective June 7, 2026), with the Family plan at $26.99/month. In the UK it's £12.99/month or £129.99/year. In the Eurozone, Germany's Individual plan rose to €14.99/month (or €149.99/year) and Family to €27.99/month on June 11, 2026; other euro countries vary. Student plans are cheaper (£7.99/month in the UK) but require annual eligibility re-verification. Prices change roughly once a year, so check your local YouTube Premium page before deciding.
+A: As of June 2026, YouTube Premium Individual is $15.99/month in the US (raised from $13.99, effective June 4, 2026), with the Family plan at $26.99/month. In the UK it's £12.99/month or £129.99/year. In the Eurozone, Germany's Individual plan rose to €14.99/month (or €149.99/year) and Family to €27.99/month on June 11, 2026; other euro countries vary. Student plans are cheaper (£7.99/month in the UK) but require annual eligibility re-verification. Prices change roughly once a year, so check your local YouTube Premium page before deciding.
 
 Q: Is a free ad blocker cheaper than YouTube Premium?
 A: As of June 2026, yes, in pure dollars. A free Chrome ad blocker costs $0 versus $191.88/year for US YouTube Premium Individual at $15.99/month. The hidden cost of the free route is time and reliability: YouTube has pushed multiple anti-adblock waves since 2023, and during each one a blocker can fail for days to weeks until it patches. You also get no coverage in YouTube's mobile app, no background play, and no offline downloads. If you only watch on desktop Chrome and don't mind the occasional broken week, the ad blocker is cheaper. If you watch on a phone or want guaranteed ad-free playback, Premium is the only thing that delivers it everywhere.
