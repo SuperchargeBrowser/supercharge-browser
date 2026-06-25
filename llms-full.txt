@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-06-22
+> Last updated: 2026-06-25
 > For a summary index, see /llms.txt
 
 ## Products
@@ -53,10 +53,25 @@
 - Stereo width control (0–200%)
 - Mono mix toggle
 - Permissions: storage, tabs, tabCapture, offscreen, host all_urls — no webRequest, zero telemetry
+- Version: 1.0.3
 - Available on Chrome Web Store (launched June 10, 2026) and Microsoft Edge Add-ons (live June 4, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
 - Product page: https://www.superchargebrowser.com/audio/
+
+### SuperchargeCapture
+- One-click local screen recording with no screen-picker dialog (tab, window, or full screen)
+- Full-page and region screenshots, plus element capture
+- Crash-safe recording: frames stream to OPFS so an interrupted session can be recovered
+- Free annotation editor with Screen-Studio-grade export effects: auto-zoom on clicks, cursor polish, padded backgrounds
+- Microphone, system audio, and webcam capture
+- Optional Share-to-Drive: upload exports to your own Google Drive (no SuperchargeBrowser servers)
+- Local-first, zero telemetry, no account required
+- Version: 1.0.1
+- Available on Chrome Web Store (live June 22, 2026) and Microsoft Edge Add-ons (live June 25, 2026)
+- Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
+- Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
+- Product page: https://www.superchargebrowser.com/capture/
 
 ### SuperchargePerformance PRO
 - Optional paid tier on top of the free SuperchargePerformance extension — the 8 free features stay unchanged
@@ -2153,6 +2168,809 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 ---
 
 ## Library Articles
+
+### Awesome Screenshot in 2026: Still Worth It? (Review)
+
+URL: https://www.superchargebrowser.com/library/awesome-screenshot-review-2026/
+Category: review | Extension: capture | Updated: 2026-06-25
+Description: Hands-on review of Awesome Screenshot (4M+ users, 4.7 stars): what capture and recording do well, the capture-area bug, and the account catch. As of June 2026.
+
+> **Key takeaways**
+> - Awesome Screenshot (4M+ users, 4.7 stars across ~24K reviews as of June 2026) is still a strong screenshot-and-annotation tool that now records video too.
+> - The two things to weigh: a recurring **"capture selected area not working"** bug some users hit after updates, and a sharing model that pushes you toward an **account and cloud hosting**.
+> - Basic capture and annotation need no sign-in; the cloud library and one-click hosted sharing do.
+
+Is Awesome Screenshot still worth installing in 2026? Short answer: yes for screenshots and annotation, with two caveats. As of June 2026 it carries over 4 million users and a 4.7-star Chrome Web Store rating across roughly 24,000 reviews, numbers that reflect a mature, trusted tool. The capture and markup are good. The two things worth knowing before you commit are an intermittent "capture selected area" bug that a slice of users report, and that its sharing and cloud-save features steer you toward an Awesome Screenshot account. This is a hands-on look at where it earns its install and where it does not.
+
+## What It Does Well
+
+Awesome Screenshot has been refined over more than a decade, and the core screenshot workflow shows it. Full-page capture scrolls and stitches a long page into one clean image reliably. Visible-area and selected-area capture cover the everyday cases. The annotation layer — arrows, boxes, text, highlight, and a blur tool for masking sensitive data before you share — is fast and sensible, which is the part casual screenshot tools usually get wrong.
+
+The 2-in-1 expansion into screen recording is real, not a checkbox. You can record the entire screen, a single window, the current tab, or your camera, and the tool fits naturally into the report-a-bug, give-feedback, record-a-walkthrough loop it markets itself for. Export to PNG, JPG, or PDF on the screenshot side is there.
+
+For SEO audits, design feedback, developer bug reports, and quick tutorials, this is a competent default, and the 4.7-star rating is earned on this core.
+
+## The Capture-Area Bug Worth Knowing About
+
+The most consistent complaint across reviews, as of June 2026, is that the **"capture selected area" tool sometimes stops responding**: the selection overlay fails to appear or the drag does nothing. It tends to surface after a Chrome or extension update, or on specific pages where the overlay cannot draw over the content.
+
+It is not universal. Most users, most of the time, capture without issue, and the usual remedies (reload the page, toggle the extension off and on, reinstall) clear it. But it shows up often enough in the review stream to call it a known rough edge rather than a fluke. If selected-area capture is the thing you do twenty times a day, that intermittency is the single biggest reason to keep a second tool on hand.
+
+A smaller, related note: several reviewers describe the interface as busy for a first-timer. There is a lot packed into the popup now that screenshots and recording share it, and the discoverability of any one function suffers a little for it.
+
+## The Account and Cloud Catch
+
+This part decides the tool's shape for many people. Basic capture and annotation work with no sign-in, so you can install it and screenshot a page immediately. But the features that make Awesome Screenshot *Awesome Screenshot*, the cloud library and one-click shareable links, run through an account.
+
+That is a deliberate design, and for teams it is a feature: a hosted link with a viewer page, integrations into Slack, Asana, Trello, GitHub, and Jira, and a central library of captures. If that collaboration loop is your reason for using it, the account is the point, not a tax.
+
+It only becomes friction if what you actually want is a clean local capture with the file on your own disk and nobody's cloud in the loop. For a screenshot of something sensitive, or a recording you would rather not have living in a vendor's library, the gravity toward the account is the thing to be aware of going in.
+
+## My Test Notes
+
+Tested on Chrome 150 (Windows 11), June 24, 2026, on the then-current Awesome Screenshot build.
+
+Full-page capture of a long documentation page stitched correctly on the first try, no seams. Visible-area and annotation (arrow, text, blur) all behaved. Selected-area capture worked in my run — I could not reproduce the overlay failure on the pages I tried, which matches the "intermittent, update-and-page-dependent" pattern in the reviews rather than a constant break; your mileage really does vary here. Screen recording of a single tab started cleanly and exported without a watermark; the watermark only showed up when I added the webcam overlay on the free plan. The cloud-save and one-click-share actions prompted me toward signing in, as expected. The popup is dense; finding the recording controls versus the screenshot controls took a beat the first time.
+
+Net: the core capture is solid and the recording is competent. The two documented concerns are real *as concerns* — one intermittent, one structural — rather than dealbreakers for the screenshot use case.
+
+## Where a Local-First Recorder Fits Instead
+
+If your need is specifically *recording* rather than screenshots, and the account-and-cloud direction is the part you want to avoid, that is the gap a local-first tool fills. [SuperchargeCapture](/capture/) (version 1.0.1, live as of June 2026) records your tab, window, or screen in Chrome, edits locally, and exports MP4, WebM, or GIF with no account and no watermark. The recording writes to your device's Origin Private File System; nothing uploads unless you choose Share to Drive, which goes to your own Google Drive.
+
+To be fair about the trade, it runs the other way too. Awesome Screenshot is the stronger *screenshot* tool — a deeper annotation toolkit, full-page stitching with years of polish, and a hosted sharing-and-collaboration layer SuperchargeCapture does not attempt. SuperchargeCapture is a recorder first; on the screenshot side it captures full-page, region, or a clicked element and exports PNG, JPG, WebP, or PDF, but it is not the full markup suite Awesome Screenshot is.
+
+| | Awesome Screenshot | SuperchargeCapture |
+|---|---|---|
+| Screenshot capture + export | Deep markup (arrows, blur); PNG/JPG/PDF | Full-page, region, element; PNG/JPG/WebP/PDF |
+| Screen / tab recording | Yes | Yes (tab via `chrome.tabCapture`) |
+| Local editor (trim, auto-zoom) | Recording editor | Trim, auto-zoom, cursor polish |
+| Account for sharing / cloud save | Yes | None (local; opt-in Drive) |
+| Hosted share page + team integrations | Yes | No |
+| Watermark on exports | None on screen-only; free webcam overlay watermarked | None, ever |
+
+## So, Should You Install It?
+
+If you mainly take and mark up screenshots, or your team lives in the hosted-share-and-integrate workflow, Awesome Screenshot remains a yes in 2026 — install it, just know the selected-area tool can act up after updates and keep a fallback if that is your core task. If what you actually want is account-free local *recording* with the file kept on your own machine, that is the narrower job [SuperchargeCapture](/capture/) is built for, and the cleaner fit. Many people end up keeping both: Awesome Screenshot for annotated screenshots, a local recorder for video they would rather not host.
+
+#### FAQ
+Q: Is Awesome Screenshot still good in 2026?
+A: As of June 2026, Awesome Screenshot is still a capable screenshot and screen-recording extension: over 4 million users and a 4.7-star Chrome Web Store rating across roughly 24,000 reviews. Full-page capture, area capture, and annotation work well, and it now records video too. The two things to weigh are a recurring 'capture selected area not working' bug that a slice of users report after updates, and that its sharing and cloud-save features push you toward an Awesome Screenshot account. For local screenshots and annotation it remains a solid pick.
+
+Q: Does Awesome Screenshot require an account?
+A: Not for basic capture. As of June 2026, you can take screenshots, capture full pages, and annotate them without signing in. An account becomes necessary once you use the cloud features: saving a recording to your online library, or one-click sharing that generates a hosted link. That hosted-sharing model is core to how the tool is designed. If you want capture and recording with no account at any step and the file kept on your own device, that is where a local-first recorder like SuperchargeCapture differs.
+
+Q: Why is Awesome Screenshot's 'capture selected area' not working?
+A: As of June 2026, a recurring complaint is that the 'capture selected area' tool stops responding for some users, often after a Chrome or extension update, or on certain pages where the overlay fails to draw. It is not universal (most captures work), but it appears often enough in reviews to be a known rough edge. Usual fixes are reloading the page, toggling the extension off and on, or reinstalling. If area capture is your core daily task and you have hit this, it is a fair reason to keep a backup tool.
+
+Q: Does Awesome Screenshot put a watermark on recordings?
+A: As of June 2026, screenshots and screen-only recordings on the free tier export clean. The exception is the webcam overlay: free-plan recordings that include your camera bubble do carry a watermark, and removing it is a paid feature. So if you record screen-only, you get a clean file; if you add the webcam overlay on the free plan, expect a watermark. SuperchargeCapture never watermarks any export, webcam bubble included, because it has no paid recording tier.
+
+Q: What is a good no-account alternative to Awesome Screenshot for recording?
+A: As of June 2026, SuperchargeCapture is a local-first alternative focused on recording: it captures your tab, window, or screen in Chrome, edits locally (trim, auto-zoom, cursor polish), and exports MP4, WebM, or GIF with no watermark and no account. The recording stays on your device. It does not match Awesome Screenshot's hosted sharing, team collaboration, or its mature screenshot-annotation toolkit — Awesome Screenshot is the stronger screenshot tool. For account-free local video capture, SuperchargeCapture is the fit.
+
+---
+
+### Chrome 151 Has Vertical Tabs but Still No Workspaces (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-151-still-no-workspaces/
+Category: guide | Extension: navigation | Updated: 2026-06-25
+Description: Chrome 151 ships vertical tabs but no named workspaces — switching projects still mixes every tab on one strip. Add real workspace isolation in under a minute.
+
+> **Key takeaways**
+> - **Vertical tabs are not workspaces.** Chrome 146 moved the tab strip to a sidebar; Chrome 151 keeps every tab in that one list.
+> - **The missing piece is isolation.** A workspace shows only the active project and hides the rest. Chrome still has no native version of that.
+> - **You can add it in under a minute.** A workspace extension gives Chrome 151 named contexts, keyboard tab search, and rolling session snapshots — no account, local by default.
+
+You finally turned on vertical tabs, expecting the calm of a clean sidebar. Instead you got the same forty tabs you always had, now stacked in a column instead of crammed across the top. Work, the side project, the three research threads, that one shopping tab from Tuesday — all of it, in one list, every time you switch contexts. The layout changed. The chaos did not.
+
+Vertical tabs and workspaces are two different fixes, and Chrome 151 only ships the first one. This is exactly what is still missing, and how to close the gap today.
+
+## Vertical Tabs vs Workspaces: The Distinction Chrome 151 Blurs
+
+Native vertical tabs landed in Chrome 146 (March 2026) and carry forward unchanged through Chrome 151. They are a real feature: a collapsible left sidebar, full tab titles visible, tab groups that fold into the rail. If your only complaint was the cramped horizontal strip, that part is solved natively now.
+
+What vertical tabs do **not** do is change which tabs are on screen. Every tab you have open is still in that one sidebar. Switching from a work task to a personal errand means scrolling past everything, because nothing gets hidden.
+
+A workspace works on a different axis. Activating one replaces the visible tab context: your Work workspace shows only work tabs, your Research workspace shows only research tabs, and the others sit preserved but invisible until you switch back. The move is instant and complete, not a scroll-and-squint through a shared list.
+
+| What it controls | Vertical tabs (Chrome 151) | Workspaces |
+|---|---|---|
+| Where the tab strip sits | Sidebar (left) | Unchanged |
+| Which tabs are visible | All of them, always | Only the active project's |
+| Switching projects | Scroll the same list | Swaps the whole context |
+| Other projects when you switch | Still on screen | Hidden until you return |
+| Automatic session recovery | No | Yes (with the right tool) |
+| Keyboard search across every tab | No | Yes (with the right tool) |
+
+The two rows that matter most are the middle ones. Vertical tabs reorganize a list you still have to manage by hand. Workspaces remove the management problem by only ever showing you one project at a time.
+
+## Why "Just Use Tab Groups" Falls Short
+
+The standard advice is to lean on tab groups, and for small setups that advice is fine. Tab groups (Chrome 83+, with Saved Tab Groups since Chrome 133) let you name and color a cluster of tabs, collapse it into a chip, and save it manually so it survives a restart.
+
+They stop short in three specific ways that matter once you run more than one project:
+
+- **No context isolation.** Every group shares one strip. Collapsing a group hides its tabs but leaves the chip (and all the other groups) right there. There is no "show me only Work" mode.
+- **Persistence is opt-in and manual.** Only groups you right-click and save are guaranteed to come back after a crash. Forget the save step and you are trusting Chrome's all-or-nothing session restore.
+- **No type-to-jump search.** You cannot type a keyword and land on a matching tab across all your groups. You scan the strip with your eyes.
+
+That third gap is the quiet one. At fifteen tabs you scan fine. At sixty across four projects, scanning is the friction, and tab groups give you nothing faster.
+
+## Adding Real Workspaces to Chrome 151
+
+The feature Chrome 151 is missing is available as an extension today. SuperchargeNavigation builds named workspaces on top of Chrome's side-panel API, with the same isolation model the discontinued Arc Spaces had.
+
+Setup is a side panel. Open it, and your workspaces are listed with their tab counts. Create one with a click and a name. Switching between them is instant, and the whole tab context swaps with the switch — only the active workspace's tabs stay active, the rest are preserved out of view.
+
+Four things it does that native Chrome 151 does not:
+
+- **Isolation.** Switch from Work to Personal and only Personal's tabs are live. Work is saved, not visible. The shared-strip problem disappears because there is no shared strip across workspaces.
+- **Rolling snapshots.** Sessions auto-snapshot at least every five minutes (more often when tab activity triggers one), 50 retained in a ring buffer, each reachable through a time-travel slider. Close a tab by accident or restructure a workspace and you can rewind without ever having pressed save.
+- **Alt+K command bar.** Press Alt+K from any page to type-search open tabs, recently closed tabs, bookmarks, and browsing history, and to jump straight to a workspace by name. This is the keyboard-first search tab groups never gave you.
+- **Tab de-duplication.** Open a URL that is already live somewhere in your session and Nav surfaces a modal instead of spawning a duplicate, which helps if you open-in-new-tab on reflex.
+
+All of it is local by default through `chrome.storage.local`. Cross-device sync is on by default, but it rides Chrome's own account sync rather than a SuperchargeBrowser server, and a one-time onboarding prompt confirms the device merge before anything syncs; you can switch it off per device in settings. Either way the data stays inside your own browser account. No account to create, zero telemetry, free for the core workspace features. It runs on Chrome 146 through 151 and any current Chromium build.
+
+Two more pieces close the loop on the workflow. The first is the **in-page rail**: instead of Chrome's native side panel, Nav can dock an in-page sidebar on the left or right that goes narrower than Chrome's ~300px side-panel minimum, or collapse to a favicon strip that peeks open on hover. The second is **keyboard-first navigation**: hold Shift to paint letter badges on every link, then type a badge to click it, or press Shift+Alt and a badge to peek that link in an overlay without leaving the page. Mouse-free tab and link control, which is exactly what a vertical-tab power user reaches for.
+
+## What This Looks Like Day to Day
+
+The practical change is that "switch projects" stops meaning "re-find my tabs."
+
+A workspace per context — Work, a client, Personal, a research thread — means the morning's first action is picking a workspace, not rebuilding one. The tabs you left open yesterday are exactly where you left them, isolated from everything else. When a tab vanishes after a crash or a bad reload, the snapshot slider walks you back to the set you had before it broke.
+
+Vertical tabs make that single list prettier. Workspaces make the list shorter, because you are only ever looking at one project's worth of tabs. Paired, the sidebar shows a clean column of just the work in front of you.
+
+The honest limit: this is an extension, not a feature baked into the browser shell the way Arc's Spaces or Zen's workspaces are. The seams of Chrome's native side panel are occasionally visible in a way a browser-native sidebar's are not, which is exactly why Nav can replace it with the in-page rail described above: docked left or right, sized below Chrome's panel floor, collapsible to a favicon strip. That recovers most of the integrated feel a native panel lacks. For the functional outcome (isolated contexts, instant switching, recoverable sessions) the gap is small. For pixel-perfect fusion into the browser chrome, a true browser-native sidebar still has an edge.
+
+## Should You Wait for a Native Version?
+
+There is no native version to wait for. As of June 2026, Google has not announced workspaces for any future Chrome stable. The tab-strip roadmap delivered Saved Tab Groups (133) and native vertical tabs (146), both improvements to the one shared strip rather than a move toward isolated contexts. Nothing public suggests Chrome 152 or beyond changes that.
+
+So the decision is not "now or at the next update." It is "single shared strip or isolated workspaces," and only one side of that is shipping.
+
+If tab groups already handle your volume — one main project at a time, fifteen-ish tabs, occasional restarts — they are free and built in, and you do not need anything more. If you run several parallel projects and the context-switching friction is the daily tax, the workspace layer is the fix, and it is available now rather than on some unannounced roadmap.
+
+For the deeper background on why Chrome has no native workspaces and what the discontinued options were, see [Does Chrome have workspaces?](/library/chrome-workspaces-explained/). For how the native vertical tabs from Chrome 146 stack up against extensions, the [Chrome 146 vertical tabs breakdown](/library/chrome-146-vertical-tabs-vs-extensions/) maps that line. And if you are weighing a browser switch instead, the [Zen Browser extensions guide](/library/zen-browser-vs-chrome-extensions/) covers the Firefox-engine tradeoff.
+
+#### FAQ
+Q: Does Chrome 151 have workspaces?
+A: As of Chrome 151 (stable scheduled ~July 28, 2026), no. Chrome shipped native vertical tabs back in Chrome 146 (March 2026) — a collapsible sidebar with tab-group support — but it still has no named workspaces. Switching between projects keeps every tab on one shared strip. Context isolation, automatic session recovery, and typing to search across all open tabs remain extension-only features in 2026.
+
+Q: What is the difference between vertical tabs and workspaces?
+A: As of June 2026, vertical tabs only change where the tab strip sits — they move it from the top to a sidebar on the left. Every tab you have open is still in that one list. Workspaces change what is visible: activating your Work workspace shows only work tabs and hides everything else, then one click swaps the whole context to Personal or Research. Chrome 151 does the first; it does not do the second.
+
+Q: Can Chrome tab groups act as workspaces?
+A: Not really. As of Chrome 151, tab groups label and color tabs on a shared strip and can be collapsed or saved manually. What they cannot do: hide every other project when you switch, persist automatically without a manual save, or let you type a keyword to jump to a tab across all groups. A workspace replaces the entire visible tab set in one action; a tab group is a label on the strip you already have.
+
+Q: How do I add workspaces to Chrome 151?
+A: As of June 2026, install a workspace extension. SuperchargeNavigation adds named workspaces with full tab isolation, an Alt+K command bar to search every open tab from any page, and 50 rolling auto-snapshots for session recovery. It works on Chrome 146 through 151 and any current Chromium build. No account, free core, data stays local by default with optional Chrome-native sync.
+
+Q: When does Chrome 151 release?
+A: As of June 2026, Chrome 151 stable is expected around July 28, 2026 on Chrome's four-week release cadence (Chrome 150 stable lands June 30). No announced 151 changelog item adds workspaces — native vertical tabs were the tab-strip change, and that already shipped in 146. Updating to 151 will not turn on workspace isolation by itself.
+
+Q: Did Chrome ever announce native workspaces?
+A: As of June 2026, Google has not announced native workspaces for Chrome. The closest moves are Saved Tab Groups (Chrome 133) and native vertical tabs (Chrome 146), both of which improve the single shared strip rather than replacing it with isolated project contexts. There is no public roadmap entry promising Arc-style or Opera-style workspaces in a future stable build.
+
+---
+
+### Fix: STATUS_BREAKPOINT on WhatsApp Web in Chrome (2026)
+
+URL: https://www.superchargebrowser.com/library/fix-chrome-status-breakpoint-whatsapp/
+Category: troubleshooting | Extension: performance | Updated: 2026-06-25
+Description: WhatsApp Web crashing with STATUS_BREAKPOINT after you link a device? It's a GPU renderer crash, not a hack. The fix order that works, fastest first (2026).
+
+As of June 2026, WhatsApp Web crashing with `STATUS_BREAKPOINT` in Chrome is a renderer crash, not a hack — the tab's background process hit a state it could not recover from, and Chrome stopped it. The most common cause is a GPU driver timeout, especially in the media-heavy moment right after you link a device. The fastest fix is disabling hardware acceleration. Your account and messages are safe.
+
+If the crash hits the second a linked device appears under **Linked Devices**, skip to [the post-linking section](#why-the-crash-hits-right-after-linking). That is a specific, documented pattern with a specific fix order.
+
+## Fix 1: Disable Hardware Acceleration (Start Here)
+
+WhatsApp Web renders chat media, previews, and animations, all of which lean on the GPU. When Chrome's GPU watchdog resets a stalled driver connection mid-render, the renderer dies with `STATUS_BREAKPOINT`. Routing rendering off the GPU removes that failure path, and it is the single highest-yield fix for this crash.
+
+1. Go to **Settings → System** (`chrome://settings/system`).
+2. Toggle off **Use graphics acceleration when available**.
+3. Click **Relaunch**.
+4. Reopen WhatsApp Web. If it loads and stays up, the GPU path was the cause.
+
+If this stops the crash, you can leave acceleration off, or re-enable it after updating your GPU driver (Fix 2) to get smooth media back.
+
+## Fix 2: Update Your GPU Driver
+
+Disabling acceleration is the workaround; a current driver is the actual cure. A stale or buggy GPU driver is the top cause of `STATUS_BREAKPOINT` on any media-rich site, WhatsApp Web included.
+
+1. Identify your GPU vendor: **NVIDIA**, **AMD**, or **Intel**.
+2. Download the latest driver directly from the vendor (not Windows Update, which often lags).
+3. Install, then restart the machine.
+4. Reopen WhatsApp Web. If it is stable, re-enable hardware acceleration from Fix 1 to restore GPU rendering.
+
+On a laptop with switchable graphics, update both the integrated and discrete GPU drivers, since Chrome may be using whichever one you did not update.
+
+## Fix 3: Rule Out Extensions in Incognito
+
+A misbehaving extension that injects into WhatsApp Web can corrupt the renderer state and produce the same crash code.
+
+1. Open an **Incognito window** (Ctrl+Shift+N). Extensions are off there by default.
+2. Open WhatsApp Web and link or use it normally for several minutes.
+3. **No crash in Incognito** points to an extension. Go to `chrome://extensions/`, disable all, then re-enable one at a time, testing WhatsApp Web after each, until the crash returns.
+4. Remove or update the extension that brings it back.
+
+Note the documented exception below: in at least one June 2026 case, disabling extensions did **not** stop the crash, which pointed away from extensions and toward the browser's GPU state. So Incognito is a diagnostic, not a guaranteed fix — if it still crashes there, the cause is Fix 1 or Fix 2, not an add-on.
+
+## Fix 4: Reduce Memory Pressure
+
+WhatsApp Web pulls your full chat sync into the tab, and on a memory-starved system that spike alone can push a renderer over the edge.
+
+1. Press **Shift+Esc** to open Chrome's Task Manager.
+2. Sort by **Memory** and note the heaviest tabs.
+3. Close tabs you are not actively using, especially other media-heavy ones.
+4. Turn on **Memory Saver** under Settings → Performance to keep idle tabs from holding RAM.
+
+This matters most when the crash is intermittent and correlates with "lots of tabs open," rather than firing reliably on every WhatsApp load.
+
+## Why the Crash Hits Right After Linking
+
+The most reported variant of this crash has a precise trigger: it fires the instant a device finishes linking. You scan the QR code, the new device appears under **Linked Devices**, and the tab immediately crashes with `STATUS_BREAKPOINT`.
+
+This is not random. The moment linking completes, WhatsApp Web downloads and renders your entire chat history at once — message lists, media thumbnails, previews — a sharp simultaneous spike in GPU and memory work. If the GPU driver times out anywhere in that spike, the renderer crashes, and the crash lands exactly at the link-complete moment because that is when the load peaks.
+
+A concrete, dated example: on June 5, 2026, a user reported WhatsApp Web crashing with `STATUS_BREAKPOINT` every time, immediately after linking, in Brave 1.91.168 (Chromium 149) on Windows 11. What makes the report useful is what did **not** fix it — disabling shields and extensions, private mode, clearing site data, disabling hardware acceleration, and a fresh profile all failed in that browser. Yet **Chrome on the same machine, same account, ran WhatsApp Web normally**. That contrast is the tell: the crash tracked the browser's specific GPU/driver state, not WhatsApp itself. The same account that crashes one Chromium build can be fine in another, because each carries its own cached driver state and acceleration defaults.
+
+For the link-time crash specifically, the fix order is:
+
+1. **Disable hardware acceleration first** (Fix 1) — it removes the GPU spike from the equation, which is where the link-time load concentrates.
+2. **Update the GPU driver** (Fix 2) — if the timeout is driver-side, this addresses the root cause so you can re-enable acceleration.
+3. **If both fail in this browser, try Chrome specifically** — as the June 2026 report showed, a different Chromium build can sidestep the exact driver state triggering the crash.
+4. **Only then** consider a fresh profile or reinstall, since the standard profile fixes were ineffective in the documented case.
+
+## What STATUS_BREAKPOINT Actually Is (Briefly)
+
+`STATUS_BREAKPOINT` is the label Windows attaches when it force-stops a Chrome renderer process that reached an unrecoverable state. The name is misleading — nobody set a debugger "breakpoint." It is the same code Chrome shows for an "Aw, Snap!" crash, just surfaced with the specific error string.
+
+It is not a virus, not a sign your hardware is failing, and not unique to WhatsApp or to Chrome. The identical crash appears in Edge, Brave, and any Chromium app, because they all share the renderer that produces it. WhatsApp Web just happens to be a reliable way to trigger it, because the post-link sync is exactly the kind of GPU-and-memory spike that exposes a marginal driver.
+
+For the full cause-by-cause breakdown across all sites and the on-startup variant where Chrome will not open at all, see the [complete STATUS_BREAKPOINT fix guide](/library/fix-chrome-status-breakpoint-error/). For the broader crash family, [fixing the Aw, Snap crash](/library/fix-aw-snap-crash/) and [fixing Chrome out-of-memory](/library/fix-chrome-out-of-memory/) cover the adjacent codes.
+
+## What the June 2026 Report Tells Us About the Fix Order
+
+The clearest public data point on this crash is the documented June 2026 report on GitHub (brave/brave-browser#56134, filed June 5, 2026): WhatsApp Web crashing with `STATUS_BREAKPOINT` every time, immediately after device-linking, on Brave 1.91.168 (Chromium 149) under Windows 11. Two details in that report set the fix order. First, the crash lands at the link-complete moment, which is exactly where the post-link sync concentrates GPU and memory load. Second, the same WhatsApp account ran without issue in Chrome on the same machine, which points at the browser's GPU and driver state rather than at WhatsApp or Windows.
+
+That is why hardware acceleration and the GPU driver are the two levers that matter first, and why switching to a different Chromium build is a legitimate step when those fail in your current browser. The crash follows the renderer's GPU path, not the website.
+
+If WhatsApp Web is fine but your wider Chrome session is heavy with tabs, reducing the active-renderer count cuts the GPU contention that feeds crashes like this one. SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()`, so fewer renderers compete for GPU time, and its ad and tracker blocking stops media-heavy ads from loading in background tabs. It will not patch a broken driver — Fixes 1 and 2 do that — but a lighter tab load is one less thing pushing renderers to the edge. Worth knowing for this audience specifically: web.whatsapp.com sits on its built-in auto-protect list, so the suspender never discards your WhatsApp tab out from under an active chat. Local, no account, zero telemetry.
+
+#### FAQ
+Q: Why does WhatsApp Web crash with STATUS_BREAKPOINT in Chrome?
+A: As of June 2026, STATUS_BREAKPOINT on WhatsApp Web means the Chrome renderer process running the tab hit an unexpected internal state and was forced to stop. The usual triggers are a GPU driver timeout (WhatsApp Web renders media-heavy chat content) or memory pressure. It is a stability crash, not a security breach: your account and messages are not compromised.
+
+Q: WhatsApp Web crashes right after I link my device. Why?
+A: As of June 2026, a crash that fires the instant a device finishes linking (the moment it appears under Linked Devices) is a documented pattern in Chromium browsers. WhatsApp Web loads your full chat sync immediately after linking, which spikes GPU and memory work at once. If the GPU driver times out during that spike, the renderer crashes with STATUS_BREAKPOINT. Updating the GPU driver and disabling hardware acceleration is the highest-yield fix.
+
+Q: Does STATUS_BREAKPOINT on WhatsApp mean I got hacked?
+A: No. As of June 2026, STATUS_BREAKPOINT is a Chrome renderer crash code with no security meaning. It indicates Chrome stopped a tab's process, not that anyone accessed your WhatsApp. Linking a device through the official QR flow is end-to-end encrypted; a crash afterward is a browser stability issue, not an intrusion.
+
+Q: How do I stop WhatsApp Web from crashing in Chrome?
+A: As of June 2026, in order: disable hardware acceleration (chrome://settings/system), then update your GPU driver, then test in Incognito to rule out extensions, then reduce memory pressure by closing heavy tabs. If it crashes only on WhatsApp and only right after linking, the hardware-acceleration toggle resolves most cases because it routes rendering off the GPU watchdog path.
+
+Q: Why does WhatsApp Web crash in Chrome but not in another browser (or vice versa)?
+A: As of June 2026, different Chromium browsers carry different cached GPU driver states and default hardware-acceleration settings, so the same WhatsApp Web account can crash in one and run fine in another on the same machine. A documented June 2026 report showed WhatsApp Web crashing with STATUS_BREAKPOINT in Brave 1.91 while Chrome worked normally. The crash follows the GPU/renderer state, not the website.
+
+Q: Will reinstalling Chrome fix the WhatsApp STATUS_BREAKPOINT crash?
+A: As of June 2026, only if the cause is a corrupt profile or program files, which is less common for this specific crash. Try the GPU fixes first: disable hardware acceleration and update the driver. If WhatsApp Web still crashes after those plus an extension and memory-pressure check, then a fresh profile or reinstall is the next step, in that order.
+
+---
+
+### Record a Microsoft Teams Meeting From Chrome (No Admin)
+
+URL: https://www.superchargebrowser.com/library/record-teams-meeting-chrome-tab/
+Category: guide | Extension: capture | Updated: 2026-06-25
+Description: IT disabled Teams recording? Capture the Teams web tab locally in Chrome: no admin policy, no Stream upload, no bot joins. Consent first. As of June 2026.
+
+The Record button is gone from your own meeting. Not greyed out, gone, because someone in IT flipped a policy you never saw and never agreed to. To record a Microsoft Teams meeting when an admin has disabled recording, capture the Teams web tab locally in Chrome rather than using Teams' Record button. As of June 2026, the Teams web client runs in a Chrome tab, and a tab recorder captures it through `chrome.tabCapture`: no admin policy in the way, no upload to Microsoft Stream, no bot in the attendee list. [SuperchargeCapture](/capture/) records exactly that tab to your own device. Before any of it, one obligation: get the participants' consent, and confirm your workplace actually permits the recording.
+
+## Two Permissions You Are Conflating
+
+The Teams Record button being gone is an *admin* decision. Whether you are allowed to keep a copy of this particular call is a *consent and policy* decision. They are not the same thing, and this guide only removes the first obstacle.
+
+Consent law divides into one-party-consent and two-party (all-party) consent. In one-party regimes, your own agreement covers it. In two-party regimes — California, Florida, Washington, Illinois, much of the EU under GDPR — everyone on the call must agree before you record a private conversation. Tab recording gives Teams no way to post its "recording started" banner, so unless you say something, nobody knows. Say something: "I'm recording this for notes, everyone good with that?" in the chat or out loud.
+
+There is a second layer Teams adds that Zoom and Meet do not, and it deserves its own sentence. Many organizations run Teams under compliance rules: regulated industries, legal hold, data-residency requirements. If your employer forbids recording meetings or handles protected data, the fact that a browser extension *can* capture the tab does not make it allowed. This page is for lawful, consented recording. It is not a tool for defeating a compliance control that exists on purpose.
+
+## How Teams Recording Is Locked Down
+
+Teams recording lives behind an admin policy, and that is a deliberate enterprise design rather than an oversight. An administrator assigns a meeting-recording policy to each user or group. When the policy is off, the Record option is absent from your meeting controls. Guests and external participants cannot record regardless. And when recording *is* allowed, the file uploads to OneDrive or SharePoint, owned and retained by the organization, not by you.
+
+So the people who hit the wall are the usual cast: an external consultant in a client's tenant, an employee whose IT department disabled the policy org-wide, a contractor who joined as a guest. The meeting is on their screen; Teams just refuses to produce a file they can keep.
+
+The reflex is a bot note-taker, and the reflex has a cost. A bot joins the meeting as a named attendee, and the call streams to that vendor's cloud for transcription. In a compliance-sensitive Teams tenant, adding a third-party bot that ships the meeting offsite is often a bigger problem than the missing Record button, not a smaller one.
+
+## Capture the Teams Web Tab Directly
+
+The clean path skips Teams' recording entirely: record the **tab**. The Teams web client is a web page in a Chrome tab, and an extension can capture a tab without any cooperation from Teams.
+
+[SuperchargeCapture](/capture/) records the Teams tab through `chrome.tabCapture`. Because it never invokes Teams' recording, the admin policy that removed your Record button is simply not in the path — there is no Teams recording to be blocked. Nothing joins the meeting, so the attendee list is unchanged. And the video writes to your own disk, so it never reaches Microsoft Stream, OneDrive, or anyone's cloud.
+
+A quick contrast with the alternatives:
+
+| Approach | In the attendee list? | Needs admin policy on? | Where the file ends up |
+|---|---|---|---|
+| Teams built-in recording | No | Yes (and admin can disable) | OneDrive / SharePoint (org-owned) |
+| Bot note-taker | Yes, visible | No | Vendor's cloud |
+| Tab recording (SuperchargeCapture) | No | No | Your device (local) |
+
+The tab approach trades away Teams' automatic transcript and its tidy SharePoint filing. What you get back is a recording that stays on your machine and a meeting nobody else's server ever sees.
+
+## Run It Before Your Next Teams Call
+
+The whole setup, from nothing installed, takes about a minute:
+
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.1, live as of June 2026). No account, no email.
+2. Open the Teams meeting link and join through the **web app** in Chrome rather than the desktop client, so the call runs in a tab.
+3. **Announce the recording** in chat or aloud and confirm everyone agrees. Confirm your workplace allows it too.
+4. Click the SuperchargeCapture icon and choose **This Tab**.
+5. Turn on your microphone and the tab's audio so both sides of the conversation are captured; add a webcam bubble if you want your face on screen.
+6. Start the recording, either from the popup or with the **Alt+Shift+V** shortcut, and use the same shortcut to stop. No Teams banner fires, because this is not Teams' recording — which is the entire reason step 3 is yours.
+
+That keyboard shortcut matters more in Teams than it looks: enterprise calls jump into a screen-share the second the meeting starts, and one keystroke lets you begin capturing before the agenda slide is even up, without hunting for the toolbar. The popup's live mic meter moves while you talk, so a dead microphone is caught before the meeting, not after. On stop, the take opens in a local editor for a fast trim, with auto-zoom available to push toward shared screens, then exports to MP4, WebM, or a short GIF.
+
+## The Recording Stays On Your Disk
+
+This is the part that makes local recording worth choosing over a bot. SuperchargeCapture saves to the Origin Private File System on your own device. It ships with **no host permissions** at install (no all-sites warning) and runs no telemetry, reaching the Teams tab only when you trigger a capture through `activeTab`. The call never transits SuperchargeBrowser servers, because there is no server pipeline to transit.
+
+Writing happens in one-second chunks throughout the call, so a Chrome crash mid-meeting leaves a recoverable partial instead of an empty file. The only thing that can leave your machine is a file you deliberately push with **Share to Drive**, which uploads to *your own* Google Drive under the `drive.file` scope — limited to files the extension created. You choose it, after trimming, and it goes to your account.
+
+## Deciding Whether to Record This Call
+
+Two checks settle it. First, are you legally and contractually clear to record these people — consent obtained, and no workplace or compliance rule against it? If not, stop here; no tool makes an unlawful recording lawful. Second, do you need a searchable transcript or just the footage? Want the transcript and the cloud trade is acceptable: a bot tool fits. Want the call to stay yours, on your machine, with no bot in the roster and nothing reaching Microsoft or any vendor: join Teams in the browser, announce it, click This Tab, and keep the file.
+
+#### FAQ
+Q: Why can't I record a Teams meeting when the Record button is missing?
+A: As of June 2026, Microsoft Teams recording is governed by an admin policy, not by you. A Teams admin sets a meeting-recording policy per user or group, and when it is off, the Record option simply does not appear for you, even in your own meetings. Guests and external participants also cannot start a recording. The recording, when allowed, uploads to OneDrive or SharePoint under the organization's control. If your admin disabled the policy, no setting on your end brings the button back.
+
+Q: Can I record a Teams meeting without admin permission?
+A: Yes, by recording the browser tab instead of using Teams' recording. As of June 2026, the Teams web client runs in a Chrome tab, and a tab recorder captures that page directly without touching Teams' admin-gated recording feature. SuperchargeCapture records the Teams tab through chrome.tabCapture, so the admin policy that hides your Record button does not apply, because there is no Teams Record button involved at all. You still need the participants' consent under two-party-consent law, which is a separate requirement from admin permission.
+
+Q: Will Teams notify everyone that the meeting is being recorded?
+A: Only when someone uses Teams' own recording. As of June 2026, Teams posts a banner and a notification to all participants when its built-in recording starts. A tab recorder captures the page locally and Teams has no way to know it is happening, so no banner appears. That places the duty to disclose on you. Announce the recording out loud or in the meeting chat before you start. Recording people who think the meeting is private is exactly what consent law exists to prevent.
+
+Q: Does recording the Teams tab break my company's compliance rules?
+A: It can, and that is on you to check first. As of June 2026, recording the tab bypasses the technical control (the admin policy) but not your obligations. If your employer has a policy against recording meetings, or handles regulated data, capturing a call locally may breach that policy or the law even though the software lets you. This method is for lawful situations: your own consented calls, interviews where everyone agreed, a webinar you are permitted to keep. Do not use it to get around a compliance control that exists for a reason.
+
+Q: Where is the Teams recording saved, and does it upload to Microsoft?
+A: As of June 2026, SuperchargeCapture writes the recording to your device's local storage (Origin Private File System) as the call runs, in one-second chunks, so a crash leaves a recoverable partial. Nothing uploads to Microsoft Stream, OneDrive, SharePoint, or SuperchargeBrowser servers. When you stop, the file opens in a local editor for trimming, then exports to MP4, WebM, or GIF. The only optional upload is Share to Drive, sending the finished file to your own Google Drive under the drive.file scope — files the extension created, nothing else.
+
+---
+
+### Record a Zoom Meeting as a Participant (Chrome, 2026)
+
+URL: https://www.superchargebrowser.com/library/record-zoom-meeting-chrome-tab-2026/
+Category: guide | Extension: capture | Updated: 2026-06-25
+Description: Not the host? Record the Zoom web tab locally in Chrome — no host rights, no bot in the roster, nothing uploads. Get participant consent first. As of June 2026.
+
+You are a guest on someone else's Zoom. The Record button is greyed out, the call is the one meeting you actually need notes from, and Zoom will not hand you a thing. To record a Zoom meeting you are not hosting, capture the Zoom web tab locally in Chrome instead of using Zoom's Record button. As of June 2026, a Chrome extension can record the Zoom web-client tab through `chrome.tabCapture`: no host rights, no recording button, no bot added to the participant list. [SuperchargeCapture](/capture/) does exactly this, and the file never leaves your device. One rule comes before the how-to: under two-party-consent law, get everyone's agreement before you record.
+
+## Consent Comes First, and It Is Not the Same as Host Permission
+
+Two different permissions get tangled together here, so separate them cleanly. "Host permission" is whether Zoom lets *you* press Record. "Consent" is whether the people on the call have agreed to *being* recorded. This guide solves the first. The second is yours to handle on every call, and no software does it for you.
+
+Consent law splits two ways. In **one-party-consent** places, one person on the call agreeing is enough, and that person can be you. In **two-party (all-party) consent** regimes, everyone has to agree before you record a private conversation. That group is not small: California, Florida, Washington, and Illinois in the US, and broadly the EU, where GDPR treats a recording of identifiable people as personal data you need a lawful basis to hold.
+
+Because tab recording gives Zoom no way to flash its red indicator, nobody is warned unless you warn them. So warn them. One line at the top does it: "Heads up, I'm recording this for my notes." In a two-party state that sentence is the line between a notes habit and a misdemeanor. Everywhere else, it is the thing that keeps people trusting you on the next call.
+
+## Why Zoom Hides the Record Button From Participants
+
+Zoom's own recording is host-controlled by design. The host starts it, the host can grant a specific participant the right to record, and an account admin can switch participant recording off for the whole organization. Hit any of those locks and your Record button is greyed out or gone.
+
+So the people who get stuck are predictable: a guest on a client's call, an attendee whose company disabled participant recording, anyone who joined a meeting they did not schedule. The meeting is right in front of them and Zoom simply will not hand them a file.
+
+The common workaround is a bot note-taker — Otter, Fireflies, tl;dv. They work, but watch what they cost. A bot joins your call as a visible participant, and the meeting streams to that vendor's cloud to be transcribed. You swapped "host blocked recording" for "a stranger's server now holds my private call, and everyone watched the bot arrive." For a sensitive meeting that is frequently the worse trade.
+
+## Record the Zoom Tab Locally Instead
+
+There is a cleaner route that never touches Zoom's recording feature: record the **tab**. Your Zoom call, joined through the web client, is a web page in a Chrome tab, and a tab is something an extension can capture directly.
+
+[SuperchargeCapture](/capture/) records that tab through `chrome.tabCapture`, the API scoped to a single tab. It does not use Zoom's recording, so the host-only gate is irrelevant — there is no Record button to be missing. It does not join the call, so no extra name shows up in the roster. And it writes the video to your own device, so nothing streams to anyone's cloud. You stay an ordinary participant who happens to be keeping a local copy, with the consent you asked for up front.
+
+The structural difference from the bot tools, side by side:
+
+| | Bot note-taker (Otter / Fireflies / tl;dv) | Zoom built-in recording | SuperchargeCapture (tab recording) |
+|---|---|---|---|
+| Appears in the participant list | Yes, visible to everyone | No | No |
+| Needs host / admin permission | No | Yes (host enables, admin can block) | No |
+| Where the recording lives | Vendor's cloud | Zoom cloud or host's disk | Your device (local) |
+| Anything uploaded off your machine | Yes, the whole call | Yes | No (optional Drive opt-in) |
+| Captures audio + your webcam | Audio + transcript | Yes | Tab audio + mic + webcam bubble |
+| Account required | Yes | Zoom account | None |
+
+Bot tools shine when you want a searchable transcript and the cloud trade is fine. Local tab recording fits when you want the call on your laptop and no third party in the loop.
+
+## The Five-Minute Setup, Done Before the Call Starts
+
+From a cold install, the flow is short:
+
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.1, live as of June 2026). No account, no sign-in.
+2. Open your Zoom meeting link and choose **Join from your browser** so the call runs in a Chrome tab rather than the desktop app.
+3. **Say you are recording** and confirm everyone is okay with it. (See the consent section; this is the load-bearing step, not a formality.)
+4. Click the SuperchargeCapture toolbar icon and pick **This Tab**.
+5. Toggle on your microphone and the tab's audio, so both your voice and theirs land in the recording. Add a webcam bubble if you want your face in the corner.
+6. Hit record. Zoom shows no indicator because this is not Zoom's recording, which is precisely why step 3 is on you.
+
+Once it is set up, you do not even need the popup mid-call: the **Alt+Shift+V** shortcut starts and stops recording, so you can catch the moment a screen-share goes up without fumbling for the toolbar. The live microphone level meter in the popup moves when you talk, so you catch a muted mic before the meeting instead of discovering it an hour later. When you stop, the take opens in a local editor: trim the dead air, let auto-zoom push toward shared screens, then export to MP4 to archive, WebM for the web, or a short GIF for a clip.
+
+## What Leaves Your Machine (Almost Nothing)
+
+The privacy story is the reason to record this way, so be precise about it. The recording lives in your browser's Origin Private File System, on your own disk. SuperchargeCapture installs with **no host permissions** — there is no "read your data on all websites" warning — and runs zero telemetry. It reaches the Zoom tab only at the moment you start a capture, through `activeTab`. No part of the call touches our servers, because there is no pipeline to them.
+
+The footage writes to disk in one-second chunks the whole call. If Chrome crashes forty minutes into an hour-long meeting, you reopen the extension and recover the partial rather than losing the lot. The single optional upload is **Share to Drive**, which sends the finished file to *your own* Google Drive under the `drive.file` scope — the extension can only see files it created, never the rest of your Drive. You trigger it deliberately, after you have trimmed the recording, and it goes to your account, not ours.
+
+## If You Are Locked Out of Recording Your Own Meeting
+
+It comes down to two questions: can you legally record the people on this call, and do you want a transcript or just the recording? If you need the transcript and everyone is one-party (or has consented), a bot note-taker earns its cloud trade. If you are on a two-party call, get explicit agreement first no matter what tool you reach for. And if you want the meeting to stay on your machine with no bot announcing itself and no vendor holding your call: join Zoom in the browser, announce that you are recording, click This Tab, and the file is yours the second you stop.
+
+#### FAQ
+Q: Can I record a Zoom meeting if I am not the host?
+A: Yes, but not with Zoom's own recording. As of June 2026, Zoom's built-in Record button is host-controlled: the host (or someone they grant permission to) starts a cloud or local recording, and the host can disable recording for participants entirely. A tab recorder sidesteps that because it does not use Zoom's recording feature — it captures the Zoom web tab the way it captures any web page. SuperchargeCapture records the Zoom tab through chrome.tabCapture, so a participant with no recording rights can still keep a copy on their own device. You still need participant consent under two-party-consent law.
+
+Q: Is it legal to record a Zoom meeting without permission?
+A: It depends on where the people on the call are. As of June 2026, recording-consent law splits into one-party-consent and two-party (all-party) consent jurisdictions. In one-party regimes, one participant agreeing is enough, and that can be you. In two-party regimes — including US states like California, Florida, Washington, and Illinois, and broadly the EU under GDPR — every participant must consent before you record a private conversation, regardless of the tool. 'Without permission' in this guide means without the host enabling Zoom's recording. It does not mean without participant consent. Announce that you are recording; in many places you are legally required to.
+
+Q: Will Zoom show the other participants that I am recording?
+A: Not when you record the tab. As of June 2026, Zoom displays a red recording indicator and an audible notice only when someone uses Zoom's own recording. A tab recorder captures the page locally and Zoom has no signal that it is happening, so there is no indicator shown to anyone. That is exactly why you should announce it yourself. Recording people who believe the call is unrecorded is the behavior consent laws exist to prevent.
+
+Q: Do I need the Zoom desktop app, or can I record in the browser?
+A: You record in the browser. As of June 2026, Zoom runs in a Chrome tab through its web client (join from the meeting link and choose 'Join from your browser'). Because the call is a web page, a tab recorder can capture it. SuperchargeCapture records that tab through chrome.tabCapture and never touches the Zoom desktop app. If you normally use the desktop app, switch to the web client for the call you want to capture this way.
+
+Q: Where does the Zoom recording get saved, and does anything upload?
+A: As of June 2026, SuperchargeCapture writes the recording to your device's local storage (Origin Private File System) in one-second chunks as the call runs, so a crash or a closed tab leaves a recoverable partial instead of nothing. When you stop, it opens in a local editor to trim and polish, then exports to MP4, WebM, or a short GIF. Nothing transits SuperchargeBrowser servers. The one optional upload is Share to Drive, which sends the finished file to your own Google Drive under the drive.file scope — only files the extension created.
+
+---
+
+### How to Remove Gemini Nano Files from Chrome (Reclaim 4GB)
+
+URL: https://www.superchargebrowser.com/library/remove-gemini-nano-files-chrome/
+Category: guide | Extension: performance | Updated: 2026-06-25
+Description: Chrome's Gemini Nano model is a 3-4GB weights.bin file. Deleting it alone fails: Chrome re-downloads it. The disable-then-delete order that frees the disk.
+
+Chrome's Gemini Nano model is a 3-4GB file named `weights.bin`, stored in a folder called `OptGuideOnDeviceModel` inside your Chrome user data directory. Chrome downloaded it silently (widely reported in May 2026). Deleting the file alone does not work: with on-device AI still enabled, Chrome re-fetches the full 3-4GB. To reclaim the space for good, disable the feature first, then the file deletes itself.
+
+That ordering is the whole trick, and it is the part most "just delete the folder" advice gets wrong. Below is the path that actually frees the disk and keeps it free, on each OS.
+
+## Find the File First (Confirm You Have It)
+
+Before changing anything, check whether the model is even on your machine — the rollout was gradual, so not every profile has it.
+
+**Windows.** Open File Explorer and paste this into the address bar:
+
+```
+%LOCALAPPDATA%\Google\Chrome\User Data\OptGuideOnDeviceModel
+```
+
+If a `weights.bin` file is sitting there, the download happened. Right-click it → Properties to see the exact size (typically 3-4GB).
+
+**macOS.** In Finder, press Cmd+Shift+G and go to:
+
+```
+~/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel
+```
+
+**Linux.** The folder lives under your Chrome config directory:
+
+```
+~/.config/google-chrome/OptGuideOnDeviceModel
+```
+
+If the folder is absent or empty, your profile has not received the model, and there is nothing to reclaim. If it is there, continue — but do not delete it yet. Deleting now, before the next step, wastes the effort.
+
+## Why Deleting the File Alone Fails
+
+Chrome's optimization-guide system treats the on-device model as something it is responsible for keeping present. When the feature that uses it is enabled, Chrome periodically checks that the model exists and is current. Find it missing, and Chrome re-downloads the entire 3-4GB on the next eligible window — usually within a browsing session or two.
+
+So the hand-delete approach gives you the disk space back for an hour, then quietly takes it again, often over metered or slow connections you did not choose to spend on a 4GB transfer. People who only delete the folder end up doing it repeatedly and assuming the file is "stuck." It is not stuck. The feature behind it is still asking for it.
+
+The reliable sequence is: turn the feature off, which makes Chrome stop wanting the model, *then* the file is safe to remove (and Chrome removes it for you).
+
+## Remove It and Keep It Gone
+
+Three options, easiest to most permanent. For most people, Option 1 is the whole job.
+
+### Option 1: Toggle Off On-Device AI (Reclaims Space Instantly)
+
+This is the cleanest path and it deletes the file for you — no manual delete needed.
+
+1. Go to `chrome://settings`.
+2. Click **System** in the left sidebar.
+3. Toggle **On-device AI** off.
+4. The `weights.bin` file deletes immediately. The 3-4GB comes back with no restart required.
+
+The toggle was added in early 2026 after the silent-download behavior became public. Because it removes the file as part of disabling the feature, you never touch File Explorer. Confirm by revisiting the `OptGuideOnDeviceModel` folder from the previous section — it should now be empty or gone.
+
+### Option 2: Disable the Flag, Then Delete
+
+If your Chrome version does not show the System toggle, use the flag.
+
+1. Open `chrome://flags`.
+2. Search for `optimization-guide-on-device-model` and set it to **Disabled**.
+3. Search for `prompt-api-for-gemini-nano` and set it to **Disabled** too.
+4. Click **Relaunch**.
+5. After the restart, delete the `OptGuideOnDeviceModel` folder by hand from the path in the first section.
+
+With both flags off, Chrome no longer requests the model, so the manual delete sticks. The caveat: flags can reset on major Chrome updates, so re-check after a version bump. If it reset and the folder reappeared, that is why.
+
+### Option 3: Set a Policy (Survives Updates)
+
+For a machine where you never want the model back — a small SSD, a metered connection, a locked-down setup — a policy outlasts both the toggle and the flag.
+
+**Windows (Registry):**
+
+1. Open Registry Editor (`regedit`).
+2. Navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome` (create the keys if they do not exist).
+3. Create a DWORD value named `GenAILocalFoundationalModelSettings` and set it to `1`.
+4. Restart Chrome. Confirm at `chrome://policy` that the value shows under Machine Policies.
+
+**macOS (managed preferences):**
+
+Place a `com.google.Chrome.plist` in `/Library/Managed Preferences/` with:
+
+```xml
+<key>GenAILocalFoundationalModelSettings</key>
+<integer>1</integer>
+```
+
+A policy survives Chrome updates and profile resets, which flags do not. It also blocks the related on-device AI features from re-activating and pulling the model again.
+
+## What You Lose by Removing It
+
+Removing the model is low-cost, and being specific about the cost matters more than a blanket "you won't notice."
+
+The model powers two things. The first is **on-device scam detection** in the address bar — Chrome's local check that flags some malicious sites without sending data to Google. The second is the **Prompt API for Gemini Nano**, which a handful of third-party developer tools and extensions call for local AI features. If you do not use those tools, this is invisible.
+
+What you do **not** lose: your profile, bookmarks, history, saved passwords, extensions, or sync. The `weights.bin` file is a downloadable model, not user data. Nothing about your Chrome setup depends on it, which is why deleting it is safe in a way that deleting most files in the Chrome data directory is not.
+
+If on-device scam detection is something you want to keep but you still object to the silent 4GB download, that is a real tension — the model is the mechanism for the local check. Most users weighing 4GB of disk against a feature they did not know existed choose the disk back.
+
+## After You Reclaim the Space
+
+Clawing back 4GB once is a one-time win. The recurring version of the same instinct — wanting Chrome to use fewer resources without you babysitting it — is a different fix.
+
+SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()` so background tabs stop holding RAM, with multi-signal protection that leaves a playing tab or an active form alone. Its 186K+ blocking rules across 22 sources keep ad and tracker scripts (themselves a steady disk-cache and memory drain) from loading in the first place. It runs locally, with no account and zero telemetry. The Gemini Nano cleanup is housekeeping you do once; a leaner Chrome every session is the part that keeps paying back.
+
+If your underlying concern is the AI features themselves rather than the disk, the companion piece — [how to disable Chrome's AI features and Gemini](/library/disable-chrome-ai-features-gemini/) — walks through turning off the Gemini sidebar, page content sharing, and AI Overview, not just the on-device model. And if the 4GB download was part of a broader Chrome disk-usage problem, [fixing Chrome's 100% disk usage on Windows](/library/fix-chrome-100-disk-usage-windows/) covers the other common causes.
+
+#### FAQ
+Q: Where is the Gemini Nano file stored in Chrome?
+A: As of June 2026, the Gemini Nano model lives in a folder named OptGuideOnDeviceModel inside Chrome's user data directory, stored as a file called weights.bin. On Windows: C:\Users\<you>\AppData\Local\Google\Chrome\User Data\OptGuideOnDeviceModel. On macOS: ~/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel. On Linux: ~/.config/google-chrome/OptGuideOnDeviceModel. The file is typically 3 to 4GB.
+
+Q: How big is the Gemini Nano weights.bin file?
+A: As of June 2026, the weights.bin file is 3 to 4GB depending on Chrome version and channel. It was widely reported in May 2026 when users found Chrome had downloaded it silently, with no consent prompt and no progress indicator. On a laptop with a small SSD, 4GB is a meaningful share of free space.
+
+Q: Why does Chrome re-download Gemini Nano after I delete it?
+A: As of June 2026, Chrome treats a missing on-device model as an error to repair. If you delete the weights.bin file or the OptGuideOnDeviceModel folder while the on-device AI feature is still enabled, Chrome re-downloads the full 3-4GB on the next eligible window. The fix is to disable the feature first, then delete — with the feature off, the file stays gone.
+
+Q: How do I stop Chrome from re-downloading Gemini Nano permanently?
+A: As of June 2026, disable On-device AI at chrome://settings → System (the weights.bin file deletes itself when you do). For a setting that survives Chrome updates, set a policy: on Windows, create a DWORD named GenAILocalFoundationalModelSettings = 1 at HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome. On macOS, use a managed-preferences plist with the same key. Policy-level controls do not reset on update the way chrome://flags do.
+
+Q: Is it safe to delete the Gemini Nano file?
+A: As of June 2026, yes — deleting weights.bin does not harm your profile, bookmarks, history, or passwords. It is a downloadable AI model, not user data. What you lose is on-device features that depend on it: address-bar scam detection and the Prompt API used by some developer tools. Most users do not notice either. Disable the feature before deleting so Chrome does not just fetch it again.
+
+Q: Does disabling Gemini Nano free disk space immediately?
+A: As of June 2026, yes. Toggling off On-device AI at chrome://settings → System deletes the weights.bin file right away, reclaiming the full 3-4GB without a restart. If you delete the file by hand without disabling the feature, the space comes back only until Chrome re-downloads the model, which it will.
+
+---
+
+### ScreenPal Alternative? No 15-Min Cap, No Account (2026)
+
+URL: https://www.superchargebrowser.com/library/screenpal-alternative-no-watermark/
+Category: comparison | Extension: capture | Updated: 2026-06-25
+Description: ScreenPal's free tier caps recordings at 15 minutes and hosts about 10 videos. Record unlimited and watermark-free in Chrome, no account. As of June 2026.
+
+> **Key takeaways**
+> - ScreenPal's **free tier caps each recording at 15 minutes** and limits **free hosting to around 10 videos**; the Deluxe plan ($4/mo billed annually) lifts the cap.
+> - On watermarks the sources disagree (ScreenPal's plans page says "No watermark" free; some 2026 reviews still report one), so verify on screenpal.com. SuperchargeCapture sidesteps it: **no watermark on any tier**.
+> - SuperchargeCapture also records **with no time cap, no account, and the file on your own disk**, free. ScreenPal still wins on hosted share pages, auto-captions, and recording outside the browser.
+
+You finish a 12-minute walkthrough on ScreenPal's free plan, the next take runs past 15 minutes, and the free recorder stops you cold. As of June 2026, that is the hard edge of ScreenPal's free tier: a 15-minute cap per recording, free hosting limited to around 10 videos, and the cap lifted only on the Deluxe plan at $4 per month billed annually. [SuperchargeCapture](/capture/) records the same screen or tab in Chrome with no time cap, no account, and no watermark on any export. The file saves to your own machine.
+
+## What ScreenPal's Free Tier Actually Costs You
+
+ScreenPal is a capable, well-built recorder, and the rebrand from Screencast-O-Matic kept a usable free tier. So this is not a story about a tool that got worse. It is about matching the right tool to how long you record and where you want the file to end up, with the facts as they stand in June 2026.
+
+| | ScreenPal Free | SuperchargeCapture |
+|---|---|---|
+| Per-recording length cap | 15 minutes | None (MP4/WebM) |
+| Account to record | ScreenPal account | None |
+| Where recordings live | ScreenPal hosting (~10 free) | Your device (local) |
+| Watermark on exports | Contested (see below) | None, ever |
+| Built-in editor (free) | Basic | Trim, auto-zoom, cursor polish, annotate |
+| Cost to lift the cap | $4/mo (annual) Deluxe | Free (no cap) |
+
+The 15-minute cap is the edge that bites first, and it is the one fact here nobody disputes. A short update fits inside it; a full feature walkthrough, an interview, or a recorded class does not. When you cross fifteen minutes on the free tier, the answer is the Deluxe plan at $4 per month billed annually, which lifts the cap and opens the full multi-track editor.
+
+The account and hosting model is the quieter friction. ScreenPal is built around hosted video, so recording and sharing run through your ScreenPal account, and free hosting is limited to around 10 videos. That design is exactly why its share pages and analytics work as well as they do. It also means your recordings sit on ScreenPal's platform rather than your disk, which matters more for some recordings than others.
+
+## Record Clean, With No Cap or Account
+
+SuperchargeCapture comes at recording from the other direction: local-first, no account, no clock, no logo. You install it from the Chrome Web Store (version 1.0.1, live as of June 2026), click the toolbar icon, and the recorder opens straight to its controls. There is nothing to sign into, because there is no account system at all.
+
+Pick what to capture. **This Tab** records the current Chrome tab through `chrome.tabCapture`, which skips the operating-system screen-picker dialog: one click, no "which window did I mean." Window and full-screen capture are there when you need them, through Chrome's standard picker. Before you start, a live microphone level meter moves when you talk, so a muted mic is caught before a long take, not after it.
+
+Then record for as long as you need. There is no 15-minute timer, because there is no paid tier that the cap exists to sell. A two-minute clip and a fifty-minute walkthrough are equally free. As you record, the footage writes to your device's local storage in one-second chunks, so a crash or an accidentally closed tab leaves a recoverable partial instead of nothing.
+
+## The Watermark Question Is Contested
+
+The web disagrees with itself on whether ScreenPal's free plan watermarks exports, and the straight answer is to say so rather than pick the convenient side. ScreenPal's current plans page lists "No watermark" as a free-plan line. Several third-party reviews published in 2026 still report a watermark on free recordings, carried over from the Screencast-O-Matic days before the rebrand. Both cannot be fully right, and the only reliable check is screenpal.com for your own account when you read this.
+
+So the watermark is not the claim to lean on here, and this article does not. The 15-minute cap is. That one is on ScreenPal's own page, unambiguous, and it is the friction most free-tier users actually hit.
+
+SuperchargeCapture removes the question from the table. There is no paid recording tier, so there is no logo to stamp on any export, contested or not. Every recording comes out clean, which is why "no watermark" can be a flat promise here rather than a line you have to verify.
+
+## Polish Without a Paid Unlock
+
+When you stop, the recording opens in a local editor, and none of it is gated behind an upgrade. Every effect renders on your own machine during export.
+
+- **Auto-zoom** eases the frame toward each click, the directed-walkthrough look that makes a demo feel produced.
+- **Cursor polish** smooths the pointer path and adds click ripples so fast mouse movement reads cleanly.
+- **Frame-accurate trim** uses dual handles to cut dead air off the front and back.
+- **Annotation** marks up the frame to point a viewer at the thing that matters.
+- **Webcam bubble** drops a draggable circle with optional on-device background blur, and the blur runs locally with no frame uploaded to apply it.
+
+One honest caveat: auto-zoom and cursor effects rely on pointer samples that are captured for **tab** recordings. For window or full-screen captures they may not apply, so if the polished look is why you came, record the tab. Export is local too: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame GIF capped at 30 seconds for quick embeds. Every format comes out clean and uncapped.
+
+## Where ScreenPal Is Still the Right Call
+
+This is a fit question, not a takedown. ScreenPal earns its place in spots SuperchargeCapture does not reach, as of June 2026:
+
+- **Hosted video with a share page and analytics.** A ScreenPal link gives viewers a player page and tells you who watched. SuperchargeCapture's sharing is a file to your own Drive, not a tracked viewer page.
+- **Auto-captions and transcription.** ScreenPal generates captions; SuperchargeCapture does not.
+- **Recording beyond the browser.** ScreenPal has desktop and mobile apps that capture outside Chrome. SuperchargeCapture is a Chrome extension and records what Chrome can reach.
+
+If hosted sharing, captions, or out-of-browser recording are why you use ScreenPal, the Deluxe plan that lifts the cap also unlocks the rest, and staying put is the reasonable call.
+
+## Which One to Install
+
+| Your situation | Better fit |
+|---|---|
+| You record longer than 15 minutes at a stretch | SuperchargeCapture |
+| You want a guaranteed watermark-free export, free | SuperchargeCapture |
+| You would rather not create an account | SuperchargeCapture |
+| You want the file to stay on your own machine | SuperchargeCapture |
+| You want auto-zoom and cursor polish without paying | SuperchargeCapture |
+| You want a hosted share page with view analytics | ScreenPal |
+| You need auto-captions on every recording | ScreenPal |
+| You record on desktop or mobile outside Chrome | ScreenPal |
+
+If you reach for ScreenPal to record a quick demo and the 15-minute cap is the wall you keep hitting, [SuperchargeCapture](/capture/) gives you the recorder without it: free, no account, no time cap, a guaranteed-clean export, the file on your disk, shared to your own Drive only when you choose. If your day runs on hosted share pages and analytics, the Deluxe plan is the cleaner path. Record the next quick one locally and see which side you actually live on.
+
+#### FAQ
+Q: What is ScreenPal's free plan limit as of June 2026?
+A: As of June 2026, ScreenPal's free plan caps each recording at 15 minutes, includes a basic video editor, and limits free hosting to around 10 videos. Lifting the 15-minute cap and unlocking the full multi-track editor require the Deluxe plan at $4 per month billed annually. On watermarks the picture is mixed: ScreenPal's current plans page lists 'No watermark' as a free-plan line, while several 2026 third-party reviews still report a watermark on free exports, so verify on screenpal.com before relying on it. SuperchargeCapture has no time cap on MP4 and WebM, no watermark on any tier, no video-count limit, and no paid tier gating export.
+
+Q: Does ScreenPal's free plan put a watermark on recordings in 2026?
+A: It is contested. As of June 2026, ScreenPal's own plans page lists 'No watermark' under the free plan, but several third-party reviews published in 2026 still describe a watermark on free exports (a holdover from the Screencast-O-Matic era). Because the sources disagree, check screenpal.com directly for your account rather than trusting either claim. What is not contested is the free plan's 15-minute per-recording cap. SuperchargeCapture sidesteps the question entirely: it never watermarks any export on any tier, because it has no paid recording tier to upsell you toward.
+
+Q: Is there a free screen recorder with no time limit and no account?
+A: Yes. As of June 2026, SuperchargeCapture records your tab, window, or screen in Chrome and exports a clean MP4, WebM, or GIF with no watermark and no recording-length cap on MP4 and WebM, all free with no account or sign-in. The recording writes to local storage on your own device. ScreenPal's free tier caps recordings at 15 minutes and routes everything through a ScreenPal account, with the cap lifted on the Deluxe plan ($4/mo annual).
+
+Q: Where does ScreenPal store recordings versus SuperchargeCapture?
+A: As of June 2026, ScreenPal is hosting-centric: recordings save to your ScreenPal account (free hosting is limited to around 10 videos) and share as hosted links with a viewer page, which is what makes its sharing and analytics work. SuperchargeCapture inverts that. The recording writes to your device's local storage (Origin Private File System) and uploads nothing by default. There is an opt-in Share to Drive that sends a single file to your own Google Drive under the drive.file scope. Nothing routes through SuperchargeBrowser servers.
+
+Q: When is ScreenPal the better choice over SuperchargeCapture?
+A: As of June 2026, ScreenPal is the stronger fit if you want hosted video with a share page and view analytics, auto-captions and transcription, or its mobile and desktop recording apps beyond the browser. Those are real features SuperchargeCapture does not have. If you want exports with no watermark, recordings longer than 15 minutes, no account, and the file kept on your own machine, SuperchargeCapture is the better fit, and it is free.
+
+---
+
+### Zen Browser Extensions: How to Install Them (2026 Guide)
+
+URL: https://www.superchargebrowser.com/library/zen-browser-extensions-complete-guide/
+Category: guide | Extension: navigation | Updated: 2026-06-25
+Description: Zen Browser uses Firefox add-ons from addons.mozilla.org, not the Chrome Web Store. Full install steps, what works, what doesn't, and the Chrome alternative.
+
+You switched to Zen for the clean vertical tabs, opened the Add-ons Manager to bring your extensions across, and hit a wall: where is the Chrome Web Store? It isn't there, and it isn't coming. Zen is a Firefox fork (built on Firefox 152 as of mid-June 2026), so it pulls extensions from addons.mozilla.org instead. Open the Add-ons Manager with Ctrl+Shift+A, browse addons.mozilla.org, and click "Add to Firefox" on any add-on. Chrome extensions do not install.
+
+Whether that wall is a minor detour or a dealbreaker depends entirely on which extensions you rely on. The rest of this guide covers the exact install steps, which extensions carry over from Chrome, which break, and what to do if your stack is Chrome-only.
+
+## How to Install an Extension in Zen Browser
+
+There are two ways into the Add-ons Manager, and both end at addons.mozilla.org.
+
+**The keyboard route:**
+
+1. Press **Ctrl+Shift+A** to open the Add-ons Manager (this is the Firefox shortcut, and it works unchanged in Zen).
+2. Click **Find more add-ons**, which sends you to addons.mozilla.org.
+3. Search for the add-on you want, open its page, and click **Add to Firefox**.
+4. Confirm the permission prompt. The add-on appears in your toolbar or menu, exactly as it would in Firefox.
+
+**The URL-bar route:**
+
+1. Click the **settings icon** in the URL bar.
+2. Select the **plus icon** to jump to the Add-ons Manager page.
+3. From there, follow steps 2–4 above.
+
+You can also reach the manager through the main menu under **Add-ons and themes**. All three paths land in the same place. The "Add to Firefox" button label is correct here — Zen reuses Firefox's installation machinery, so the button keeps its Firefox wording even though you are running Zen.
+
+Once installed, an add-on manages itself like any Firefox extension: pin it to the toolbar, set per-site permissions, or disable it from the Add-ons Manager. Nothing about the management flow is Zen-specific.
+
+## Which Chrome Extensions Carry Over (and Which Don't)
+
+This is the question that actually decides whether Zen is switchable for you. The store is different, so an extension is only available in Zen if it has a Firefox build on addons.mozilla.org.
+
+Many of the most-used extensions ship in both stores and move over without friction:
+
+| Extension | On Firefox/Zen? | Notes |
+|---|---|---|
+| uBlock Origin | Yes | Full version, unlike Chrome's MV3-limited Lite |
+| Bitwarden | Yes | First-class Firefox build |
+| Dark Reader | Yes | Cross-store parity |
+| Privacy Badger | Yes | EFF maintains both |
+| Vimium | Yes (as Vimium-FF) | Keyboard navigation |
+| A Chrome-only extension with no Firefox port | No | The blocker for most switchers |
+
+The reliable carry-overs are the big, well-maintained, cross-platform tools. Where people get stuck is the long tail: a niche productivity extension, a company SSO helper, a Chrome-specific developer tool, or anything built for Chrome's APIs with no one porting it to Firefox. If your daily workflow leans on one of those, Zen cannot run it, and no setting changes that — it is a Firefox-engine limitation Zen inherits.
+
+One upside worth naming: because Zen is Firefox-based, you get Firefox's full uBlock Origin rather than the Manifest V3-restricted version Chrome now enforces. For ad and tracker blocking specifically, the Firefox side is currently stronger.
+
+If you carry over Vimium for keyboard-driven browsing, note that the Chrome side has a direct answer too: SuperchargeNavigation includes a hint mode where you hold Shift to label every link with a letter badge, then type the badge to click, or press Shift+Alt and a badge to peek the link in an overlay without leaving the page. So losing Vimium to a Chrome-only edge case is not the dead end it first looks like.
+
+## What Breaks: Themes and the Occasional Edge Case
+
+Two things do not transfer cleanly even within the Firefox ecosystem.
+
+**Firefox themes do not work in Zen.** Zen handles its appearance through its own Zen Mods system, which is separate from Firefox's theme engine. Functional add-ons install fine; visual themes from addons.mozilla.org do not apply. If you want to restyle Zen, use Zen Mods, not Firefox themes.
+
+**A small number of add-ons hit edge cases.** Zen changes the browser interface substantially, and add-ons are tested against stock Firefox first. Most install and run without issue, but an add-on that assumes Firefox's exact UI layout or pokes at unmodified browser chrome can misbehave in Zen. This is a minority, and it concentrates in add-ons that manipulate the toolbar or sidebar directly. Core functional categories — content blockers, password managers, readers, screenshot tools — are dependable. If an add-on glitches, the Zen GitHub discussions are the place reports collect.
+
+## Zen's Built-In Features Replace Some Extensions
+
+Part of why Zen needs fewer extensions is that it bakes in features Chrome users reach for add-ons to get. Before hunting for an add-on, check whether Zen already ships the capability:
+
+- **Vertical tabs** are the default, not an option.
+- **Named workspaces** with tab isolation are first-class — no extension needed.
+- **Split view** tiles up to four tabs in a grid, beyond what any Chrome extension offers.
+- **Glance** gives a live tab preview without switching away.
+- **Zen Mods** handle site CSS/JS customization, replacing the Stylus/UserScripts pairing.
+
+So a chunk of a typical Chrome extension stack — a vertical-tab manager, a workspace tool, a site-styling extension — is redundant in Zen. The extensions you still need are the cross-cutting utilities (blocker, password manager, reader), and those are exactly the ones with reliable Firefox builds.
+
+## If Your Stack Is Chrome-Only: The Chrome Path
+
+When the deciding extension has no Firefox port, switching to Zen costs you that tool, your saved passwords if they live in a Chrome-only manager, and your existing sync. For a lot of people that price is too high, and the better move is to recreate Zen's *workflow* inside Chrome rather than switch engines.
+
+Chrome already covers the structural part natively: vertical tabs shipped in Chrome 146 (enable via `chrome://flags`, then Settings → Appearance → Tab strip position). That gives you Zen's sidebar layout without leaving the Chrome Web Store behind.
+
+The features Chrome still lacks natively — named workspaces, a command bar, session recovery — come from an extension. SuperchargeNavigation adds named workspaces with full tab isolation (switching swaps the whole context, the way Zen's do), an Alt+K command bar for keyboard-driven search across tabs, history, and bookmarks, a hint mode that labels links for mouse-free clicking and peeking, and 50 rolling auto-snapshots for session time-travel. It can also dock its sidebar in-page on the left or right, narrower than Chrome's native side panel allows. The one Zen feature with no Chrome equivalent is the 4-pane split-view grid; Chrome's built-in split is 2-pane only.
+
+It runs locally with no account and zero telemetry, optional Chrome-native sync if you want it, and it keeps your entire Chrome extension library intact. For the memory and blocking side that Firefox handles structurally, SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()` and ships 186K+ blocking rules.
+
+## Picking Your Path
+
+The decision comes down to one question about your extensions.
+
+**If your must-have extensions all have Firefox builds** (or Zen's built-ins replace them), Zen is a clean switch and a well-designed browser in its own right. Install the cross-store essentials from addons.mozilla.org, lean on Zen Mods for theming, and you lose very little.
+
+**If even one critical extension is Chrome-only**, that wall at the Add-ons Manager is the whole story: switching means giving the extension up, and that is rarely worth it. Stay on Chrome, turn on native vertical tabs for the sidebar layout, and add SuperchargeNavigation for the workspaces, command bar, and keyboard hints that made Zen feel good in the first place.
+
+For a feature-by-feature comparison of the two paths rather than the install mechanics, see the [Zen vs Chrome extensions breakdown](/library/zen-browser-vs-chrome-extensions/). For the broader workspace question, [does Chrome have workspaces?](/library/chrome-workspaces-explained/) covers what native Chrome can and cannot do.
+
+#### FAQ
+Q: Where do Zen Browser extensions come from?
+A: As of June 2026, Zen Browser installs extensions from addons.mozilla.org, Mozilla's official Firefox add-on store. Zen is a Firefox fork (built on Firefox 152, version 1.21.3b as of mid-June 2026), so it uses the Firefox add-on ecosystem. The Chrome Web Store is not supported — Chrome extensions cannot be installed in Zen.
+
+Q: How do I install an extension in Zen Browser?
+A: As of June 2026, open the Add-ons Manager with Ctrl+Shift+A (or main menu → Add-ons and themes), then browse to addons.mozilla.org and click 'Add to Firefox' on any add-on. You can also click the settings icon in the URL bar and select the plus icon to reach the Add-ons Manager. The add-on installs the same way it would in Firefox.
+
+Q: Do Chrome extensions work in Zen Browser?
+A: No. As of June 2026, Zen Browser is Firefox-based and cannot run Chrome Web Store extensions. Some popular extensions ship in both stores (uBlock Origin, Bitwarden, Dark Reader), so those carry over. But any Chrome-only extension with no Firefox port will not work, and switching to Zen means losing it.
+
+Q: Do Firefox themes work in Zen Browser?
+A: No. As of June 2026, Firefox themes are not compatible with Zen because Zen handles theming through its own Zen Mods system rather than Firefox's theme engine. Add-ons (functional extensions) from addons.mozilla.org work; visual themes do not. Use Zen Mods for appearance customization instead.
+
+Q: Why won't some Firefox add-ons install in Zen?
+A: As of June 2026, most addons.mozilla.org add-ons install cleanly, but Zen modifies the browser interface heavily, so occasional edge cases break. Add-ons that depend on Firefox's exact UI layout or unmodified chrome can misbehave. Add-ons are tested against Firefox first, not Zen, so expect a small number to glitch. Core functional add-ons (blockers, password managers, readers) are reliable.
+
+Q: What's the Chrome equivalent of Zen Browser?
+A: As of June 2026, there is no single browser that matches Zen. The closest setup is Chrome with native vertical tabs (shipped in Chrome 146) plus SuperchargeNavigation for named workspaces, an Alt+K command bar, and session time-travel. This keeps the full Chrome Web Store extension library while adding Zen-style tab management. SuperchargePerformance covers the RAM and ad-blocking side.
+
+---
 
 ### Chrome Side Panel Too Big? 4 Fixes to Resize It (2026)
 
@@ -4780,7 +5598,7 @@ Installation works exactly as on Chrome. Browse the Chrome Web Store in Brave an
 
 Three categories dominate generic extension lists, and Brave ships all three natively.
 
-**Ad and tracker blocking.** Shields intercepts ads, trackers, and third-party cookies at the network layer before content loads, in Standard or Aggressive mode, with per-site toggles. There is no extension process behind it. Adding an ad blocker on top mostly re-checks requests Shields already dropped. Brave has even committed to keeping select Manifest V2 blockers such as uBlock Origin installable after Chrome removed them — context in [Does uBlock Origin Still Work in Chrome?](/library/does-ublock-origin-still-work-chrome-2026/) — but on Brave that is belt-and-suspenders, not a necessity.
+**Ad and tracker blocking.** Shields intercepts ads, trackers, and third-party cookies at the network layer before content loads, in Standard or Aggressive mode, with per-site toggles. There is no extension process behind it. Adding an ad blocker on top mostly re-checks requests Shields already dropped. Brave has even committed to keeping select Manifest V2 blockers such as uBlock Origin installable after Chrome removed them — context in [Does uBlock Origin Still Work in Chrome?](/library/does-ublock-origin-still-work-chrome-2026/) — but on Brave that is belt-and-suspenders, not a necessity. The underlying shift that changed what any extension can block is covered in [Chrome Manifest V2 vs V3: what changed for extensions](/library/chrome-manifest-v2-vs-v3-extensions/).
 
 **Vertical tabs.** Native since Brave 1.52 in May 2023, three years before this article. Right-click any tab or visit `brave://settings/appearance` to enable. You get a collapsible left-side tab strip with pinning and tab groups.
 
@@ -4936,7 +5754,7 @@ Two switches live at `brave://settings/system` next to Memory Saver:
 
 Brave's Memory Saver works, but it keeps two decisions to itself: when a tab counts as inactive, and which tabs deserve protection beyond your manual exception list. A dedicated tab suspender from the Chrome Web Store (Brave installs CWS extensions directly) puts both under your control: suspend after a fixed inactivity window, whitelist per domain, and see how much RAM suspension is saving you.
 
-This is the same category that exploded after The Great Suspender was pulled from the store; the modern, MV3-safe options are covered in our [Great Suspender alternative guide](/library/great-suspender-alternative/). For a Brave-specific breakdown of what the built-in misses versus a dedicated extension, see [suspending tabs in Brave: Memory Saver vs extensions](/library/suspend-tabs-brave-memory-saver-vs-extensions/).
+This is the same category that exploded after The Great Suspender was pulled from the store; the modern, MV3-safe options are covered in our [Great Suspender alternative guide](/library/great-suspender-alternative/). If you are curious why "MV3-safe" matters — Google's Manifest V3 restrictions changed what extensions can do at the network layer, and the [full breakdown of Manifest V2 vs V3](/library/chrome-manifest-v2-vs-v3-extensions/) explains what shifted and why Brave handled it differently than Chrome. For a Brave-specific breakdown of what the built-in misses versus a dedicated extension, see [suspending tabs in Brave: Memory Saver vs extensions](/library/suspend-tabs-brave-memory-saver-vs-extensions/).
 
 ## How SuperchargePerformance Helps
 
@@ -5033,7 +5851,7 @@ Two Shields protections sit outside what any extension can do: fingerprint rando
 
 Chrome disabled Manifest V2 extensions in Chrome 138 (mid-2025), then removed the enterprise escape hatch in Chrome 139. Full uBlock Origin returned to the Chrome Web Store in March 2026 and is live there today; [does uBlock Origin still work on Chrome](/library/does-ublock-origin-still-work-chrome-2026/) tracks its status. Working now, long-term uncertain.
 
-Brave went the other way: it hosts four MV2 extensions on its own backend (uBlock Origin, AdGuard, NoScript, uMatrix), installable from `brave://settings/extensions/v2`. Support is best-effort, but the dependency is Brave's stated commitment rather than Google's tolerance.
+Brave went the other way: it hosts four MV2 extensions on its own backend (uBlock Origin, AdGuard, NoScript, uMatrix), installable from `brave://settings/extensions/v2`. Support is best-effort, but the dependency is Brave's stated commitment rather than Google's tolerance. For a complete picture of what the MV2-to-MV3 transition actually restricted — declarativeNetRequest rule caps, the loss of blocking webRequest, and what ad blockers had to rebuild — [Manifest V2 vs V3 explained](/library/chrome-manifest-v2-vs-v3-extensions/) is the place to start.
 
 ## Running Both, and What Chrome Users Should Do Instead
 
