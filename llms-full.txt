@@ -53,7 +53,7 @@
 - Stereo width control (0–200%)
 - Mono mix toggle
 - Permissions: storage, tabs, tabCapture, offscreen, host all_urls — no webRequest, zero telemetry
-- Version: 1.0.3
+- Version: 1.0.4
 - Available on Chrome Web Store (launched June 10, 2026) and Microsoft Edge Add-ons (live June 4, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
@@ -67,7 +67,7 @@
 - Microphone, system audio, and webcam capture
 - Optional Share-to-Drive: upload exports to your own Google Drive (no SuperchargeBrowser servers)
 - Local-first, zero telemetry, no account required
-- Version: 1.0.1
+- Version: 1.0.2
 - Available on Chrome Web Store (live June 22, 2026) and Microsoft Edge Add-ons (live June 25, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
@@ -2216,7 +2216,7 @@ Net: the core capture is solid and the recording is competent. The two documente
 
 ## Where a Local-First Recorder Fits Instead
 
-If your need is specifically *recording* rather than screenshots, and the account-and-cloud direction is the part you want to avoid, that is the gap a local-first tool fills. [SuperchargeCapture](/capture/) (version 1.0.1, live as of June 2026) records your tab, window, or screen in Chrome with pause and resume, edits locally, and exports MP4, WebM, or GIF with no account and no watermark. On the screenshot side it has keyboard shortcuts for visible-area, full-page, and drag-a-region capture, plus a click-any-element mode and one-click copy to the clipboard. The recording writes to your device's Origin Private File System in one-second chunks, so an interrupted take is recoverable rather than lost (a cloud recorder with a dropped connection rarely gives you that). It runs with no telemetry and no host permissions, and nothing uploads unless you choose Share to Drive, which goes to your own Google Drive.
+If your need is specifically *recording* rather than screenshots, and the account-and-cloud direction is the part you want to avoid, that is the gap a local-first tool fills. [SuperchargeCapture](/capture/) (version 1.0.2, live as of June 2026) records your tab, window, or screen in Chrome with pause and resume, edits locally, and exports MP4, WebM, or GIF with no account and no watermark. On the screenshot side it has keyboard shortcuts for visible-area, full-page, and drag-a-region capture, plus a click-any-element mode and one-click copy to the clipboard. The recording writes to your device's Origin Private File System in one-second chunks, so an interrupted take is recoverable rather than lost (a cloud recorder with a dropped connection rarely gives you that). It runs with no telemetry and no host permissions, and nothing uploads unless you choose Share to Drive, which goes to your own Google Drive.
 
 To be fair about the trade, it runs the other way too. Awesome Screenshot still has the broader, older *screenshot* layer: more years of full-page polish, more export and integration options, and a hosted sharing-and-collaboration layer SuperchargeCapture does not attempt. But the markup gap is smaller than you might assume. SuperchargeCapture captures full-page, region, or a clicked element, and its editor carries a real markup suite — arrow, box, ellipse, highlight, text, and a pixelate-and-blur tool for redacting sensitive data, each in four colors with undo, clear-all, and crop — exporting to PNG, JPG, WebP, or PDF. Awesome Screenshot's annotation set is wider and more mature; both let you mark up and redact a capture.
 
@@ -2507,7 +2507,7 @@ The tab approach trades away Teams' automatic transcript and its tidy SharePoint
 
 The whole setup, from nothing installed, takes about a minute:
 
-1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.1, live as of June 2026). No account, no email.
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.2, live as of June 2026). No account, no email.
 2. Open the Teams meeting link and join through the **web app** in Chrome rather than the desktop client, so the call runs in a tab.
 3. **Announce the recording** in chat or aloud and confirm everyone agrees. Confirm your workplace allows it too.
 4. Click the SuperchargeCapture icon and choose **This Tab**.
@@ -2593,7 +2593,7 @@ A bot note-taker makes sense if you mainly want a searchable transcript and don'
 
 From a cold install, the flow is short:
 
-1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.1, live as of June 2026). No account, no sign-in.
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.2, live as of June 2026). No account, no sign-in.
 2. Open your Zoom meeting link and choose **Join from your browser** so the call runs in a Chrome tab rather than the desktop app.
 3. **Say you are recording** and confirm everyone is okay with it. (See the consent section; this is the load-bearing step, not a formality.)
 4. Click the SuperchargeCapture toolbar icon and pick **This Tab**.
@@ -2796,7 +2796,7 @@ The account and hosting model is the quieter friction. ScreenPal is built around
 
 ## Record Clean, With No Cap or Account
 
-SuperchargeCapture comes at recording from the other direction: local-first, no account, no clock, no logo. You install it from the Chrome Web Store (version 1.0.1, live as of June 2026), click the toolbar icon, and the recorder opens straight to its controls. There is nothing to sign into, because there is no account system at all.
+SuperchargeCapture comes at recording from the other direction: local-first, no account, no clock, no logo. You install it from the Chrome Web Store (version 1.0.2, live as of June 2026), click the toolbar icon, and the recorder opens straight to its controls. There is nothing to sign into, because there is no account system at all.
 
 Pick what to capture. **This Tab** records the current Chrome tab through `chrome.tabCapture`, which skips the operating-system screen-picker dialog: one click, no "which window did I mean." Window and full-screen capture are there when you need them, through Chrome's standard picker, and they carry system audio too, mixed with your microphone into a single track rather than left silent. Before you start, a live microphone level meter moves when you talk, so a muted mic is caught before a long take, not after it.
 
@@ -3637,7 +3637,7 @@ You hit record on a free screen recorder, talk through a five-minute walkthrough
 
 ## Step 1: Install and Open the Recorder
 
-Add [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.1, live as of June 2026) and click the toolbar icon. No sign-up screen, no email gate, no "start your free trial" wall. The recorder popup opens straight to its capture controls.
+Add [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.2, live as of June 2026) and click the toolbar icon. No sign-up screen, no email gate, no "start your free trial" wall. The recorder popup opens straight to its capture controls.
 
 There is nothing to log into because there is no account system at all. The extension stores everything on your own machine, so the moment it installs, it works.
 
