@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-06-25
+> Last updated: 2026-07-01
 > For a summary index, see /llms.txt
 
 ## Products
@@ -17,7 +17,7 @@
 - 13 individually toggleable features per domain
 - 25+ auto-protected web apps across productivity, media, and calls (Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby)
 - Zero telemetry, zero tracking, zero data collection, fully local
-- Version: 1.4.4
+- Version: 1.4.5
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live May 2026)
 - Weekly active users: 10,000+ combined across the extension family (Chrome Web Store)
 - Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
@@ -36,7 +36,7 @@
 - New Tab Page with clock, command palette, workspace pills
 - All features free, zero telemetry, zero tracking, no SuperchargeBrowser servers (Nav sync opt-in, Chrome-native)
 - Local-by-default storage; opt-in workspace sync (v1.1.0+) routes through Chrome storage.sync
-- Version: 1.3.1 (launched March 13, 2026)
+- Version: 1.3.3 (launched March 13, 2026)
 - Verified Publisher on Chrome Web Store
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live June 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/vertical-tabs-tab-manager/mpkbppjbchjdohbjgeoamdehklmapgnl
@@ -1329,7 +1329,7 @@ Without entering hint mode, bare letter typing highlights every visible text mat
 | Type text | Highlight all matches (CSS Custom Highlight API) |
 | `Enter` | Activate the top match |
 | `Alt+Enter` | Peek-search the matched text on Google |
-| `Ctrl+Enter` | Open that Google search in a background tab |
+| `Ctrl+Enter` | Search it in a background tab, using your default search engine |
 
 Fast text selection extends this: `Shift+←/→` selects by word, `Shift+↑/↓` by line, `Shift+A` expands to the surrounding block (paragraph, list item, article element).
 
@@ -1361,7 +1361,7 @@ Q: Does SuperchargeNavigation conflict with Vimium or other keyboard extensions?
 A: The four registered commands (Alt+B, Alt+K, Alt+G, Alt+Shift+G) could conflict if you've assigned the same keys elsewhere. Each command has an individual toggle in Navigation settings so you can disable any shortcut that clashes. The hint trigger key is also customizable to avoid overlap.
 
 Q: What is type-to-select?
-A: Type-to-select lets you type bare letters (no modifier held) to highlight every visible text match on the page. Press Enter to activate the top match, Alt+Enter to peek-search it on Google, or Ctrl+Enter to open that search in a background tab.
+A: Type-to-select lets you type bare letters (no modifier held) to highlight every visible text match on the page. Press Enter to activate the top match, Alt+Enter to peek-search it on Google, or Ctrl+Enter to search it in a background tab using your default search engine.
 
 Q: Can I disable Navigation shortcuts on specific sites?
 A: Yes. Press Alt+Shift+P on any page to pause all Navigation content-script shortcuts (hints, type-to-select, Alt+wheel, peek, rocker gestures, super drag) for that hostname. The same toggle is available in the command palette (Alt+K) and in the side panel header. Per-site pauses persist across browser restarts.
@@ -1551,7 +1551,7 @@ The page loads instantly from a bundled HTML file: no network requests, no frame
 
 **Clock and date.** A large 72px clock centered on the page. Lightweight, always accurate, no widget overhead.
 
-**Unified search bar.** Type anything: the bar searches your open tabs, your named workspaces, and your Chrome bookmarks simultaneously. Results appear with favicons and a source badge (tab, workspace, or bookmark). Press Enter on a result to jump there, or press Enter with no match to run a Google search.
+**Unified search bar.** Type anything: the bar searches your open tabs, your named workspaces, and your Chrome bookmarks simultaneously. Results appear with favicons and a source badge (tab, workspace, or bookmark). Press Enter on a result to jump there, or press Enter with no match to run the query through your default search engine.
 
 **Workspace switcher.** Every named workspace appears as a card. Each card shows the workspace name, favicon previews of up to five open tabs, the total tab count, and an active-state highlight (blue border) on your current workspace. Click any card to switch. The active workspace is always visible at a glance.
 
@@ -1602,7 +1602,7 @@ Either path writes `nav.ntpEnabled: false` to local storage. The NTP page itself
 
 ## Privacy
 
-The new tab page reads your open tabs, pinned tabs, named workspaces, and Chrome's top-sites list locally. Nothing leaves your device. No analytics, no external requests on load. The search bar sends a Google search only when you explicitly press Enter with no local match — the same behavior as typing in Chrome's address bar.
+The new tab page reads your open tabs, pinned tabs, named workspaces, and Chrome's top-sites list locally. Nothing leaves your device. No analytics, no external requests on load. The search bar sends a query to your default search engine only when you explicitly press Enter with no local match — the same behavior as typing in Chrome's address bar.
 
 ##### FAQ
 Q: Does the custom new tab page replace Chrome's default completely?
@@ -1615,7 +1615,7 @@ Q: Does the new tab page sync across devices?
 A: The workspace cards shown on the new tab page reflect your local workspaces. If you enable cross-device sync in SuperchargeNavigation settings, your workspaces (and therefore the workspace cards) sync across devices via Chrome Sync infrastructure. The NTP layout settings (which sections are visible) are stored locally per device.
 
 Q: Can I search Google from the new tab search bar?
-A: Yes. The search bar searches your open tabs, workspaces, and bookmarks as you type. If nothing local matches, press Enter to run the query as a Google search in the current tab.
+A: Yes, by default — Chrome's default search engine ships as Google. The search bar searches your open tabs, workspaces, and bookmarks as you type. If nothing local matches, press Enter to run the query through your browser's default search engine in the current tab.
 
 Q: Does the new tab page slow down Chrome?
 A: No measurable impact. The page is a static HTML file bundled with the extension — no network requests on load, no JavaScript framework, no external fonts. The antigravity particle animation runs on a canvas element and can be turned off in settings if you prefer a fully static page.
@@ -2168,6 +2168,981 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 ---
 
 ## Library Articles
+
+### How to Add Captions to a Screen Recording in Chrome (2026)
+
+URL: https://www.superchargebrowser.com/library/add-captions-screen-recording-chrome-2026/
+Category: guide | Extension: capture | Updated: 2026-07-01
+Description: Adding captions to a screen recording is a separate step from recording it: auto-generate an SRT free, or type one, then attach or burn in. (July 2026)
+
+You want the screen recording to work with the sound off and to turn up when someone searches its words. Both come from captions. As of July 2026, adding them in Chrome is a two-part job that people conflate into one: you record the video, then you caption it as a separate step, either as a soft SRT the viewer can toggle or as text burned into the picture. There is a free way to do each. There is no single Chrome button that records and captions a file in one shot yet, so knowing the routes saves you the wrong tool.
+
+*Caption routes tested on Chrome 150 with SuperchargeCapture 1.0.2, July 2026, including a YouTube auto-caption SRT round-trip.*
+
+## Soft Captions vs Burned-In: Pick Before You Start
+
+The choice shapes every step after it, so make it first.
+
+| | Soft captions (SRT/VTT) | Burned-in (hardcoded) |
+|---|---|---|
+| What it is | A separate subtitle file | Text drawn into the video pixels |
+| Viewer can toggle | Yes | No, always visible |
+| Survives re-upload / download | Not always | Yes |
+| Searchable on YouTube | Yes, indexed | No, it is just pixels |
+| Best for | YouTube, players with a CC button | Slack, LinkedIn, feeds, autoplay |
+
+If the clip is going somewhere with a caption toggle, keep it soft and flexible. If it will autoplay in a feed or a chat where no CC button exists, burn it in so the words cannot be lost. Plenty of screen recordings end up needing both versions.
+
+## The Free Route: Auto-Caption, Edit, Download an SRT
+
+The no-cost way to get an accurate caption file is to let a machine draft it and then fix the draft. YouTube does this well and for free:
+
+1. In [YouTube Studio](https://studio.youtube.com), upload the recording as an **unlisted** video.
+2. Wait for processing, then open **Subtitles**. You will see a track tagged **(Automatic)**.
+3. Click **Duplicate and Edit** to turn the auto-track into a correctable draft. Fix the timing, the product names, and anything the machine misheard.
+4. Use **Options → Download** to save the track as an **SRT**.
+
+You now have a real subtitle file. Attach it as soft captions on any player that accepts SRT, or feed it to a tool that burns it into the video. One cost comes with this route. The video has to go up to YouTube first, so it suits public or non-sensitive recordings. For anything private, use one of the next options instead.
+
+## Caption Without Uploading: On-Device and Manual Options
+
+When the recording should not touch a cloud service, you trade convenience for privacy:
+
+- **Type the SRT yourself.** For a clip under a minute, writing the subtitle file by hand is quick and fully local. The format is plain text: an index, a `00:00:01,000 --> 00:00:04,000` timecode, then the line.
+- **Chrome Live Caption.** Turn it on under **Settings → Accessibility → Captions → Live Caption**. Chrome then captions any audio playing in the browser in real time, processed **on your device**, never uploaded. The limit worth knowing: it captions live playback for the viewer and cannot export an SRT, so it is for watching with captions, not for attaching them to a file.
+
+So a fully local, one-click auto-caption of a recorded file is not something Chrome ships yet. The workable private path is a hand-typed SRT for short clips, with Live Caption covering on-device viewing.
+
+## Record a Clean, Local File to Caption
+
+Every route above starts with the recording, and the recording decides your options. A local file you own can go to any captioner, or none. A file trapped in a cloud recorder's account can only be captioned that recorder's way. [SuperchargeCapture](/capture/) keeps you in the first camp.
+
+It records the current tab through `chrome.tabCapture` (no screen-picker), mixes tab audio and your microphone, and writes the video to your device as an **MP4 or WebM** you can hand to any of the caption routes here. The recording stays on your device, so you decide if it ever reaches a cloud captioner. No account, no forced upload. SuperchargeCapture records the file; it does not transcribe it. The captions come from YouTube's auto-track, a manual SRT, or another tool. Its job is keeping the source clean, local, and yours to caption however privacy demands.
+
+## Loom vs Local: Where Your Video and Its Captions Live
+
+A cloud recorder can auto-caption for you, but the trade-off is worth seeing side by side:
+
+| | Cloud recorder (e.g. Loom) | Local file (SuperchargeCapture) |
+|---|---|---|
+| Auto-captions built in | Yes | No, caption the exported file yourself |
+| Account required | Yes | None |
+| Where the video lives | The vendor's cloud | Your device |
+| Caption a sensitive clip privately | Video already uploaded | Type an SRT locally, upload nothing |
+| Choice of caption tool | The vendor's | Any route you like |
+
+Loom's built-in captions are convenient because the video is already on its servers. That is fine for public demos and a real problem for a recording you cannot upload. A local file costs you one manual step and buys back the choice.
+
+## Which Caption Route Fits Your Clip
+
+Pick by the clip in front of you:
+
+- **Short clip, or it must stay private** → type the SRT by hand; nothing leaves your machine.
+- **Public demo or tutorial** → upload to YouTube, auto-caption, Duplicate and Edit, download the SRT.
+- **Autoplaying in a feed or Slack** → burn the captions in so no missing CC toggle can hide them.
+- **You only need to watch it captioned** → turn on Chrome Live Caption; it stays on-device.
+- **You have not recorded it yet** → capture a clean local file first, so all of these stay open.
+
+If your recordings need captions and some of them are too sensitive to upload, start by keeping the source local. [SuperchargeCapture](/capture/) records the tab or screen to a file you own, free and with no account, so the captioning route stays your call rather than a recorder's default.
+
+#### FAQ
+Q: How do I add captions to a screen recording for free?
+A: As of July 2026, the free route is to auto-generate them and export a subtitle file. Upload the recording to YouTube Studio as an unlisted video, let it auto-generate the captions, use Duplicate and Edit to fix the errors, then download the track as an SRT. For a short clip, typing the SRT by hand is faster and needs no upload. Chrome's built-in Live Caption also shows on-device captions in real time, but it captions playback only and cannot export a file.
+
+Q: What is the difference between soft captions and burned-in captions?
+A: As of July 2026, soft captions are a separate subtitle file (SRT or VTT) that plays alongside the video; the viewer can turn them on or off, and platforms like YouTube read them for search. Burned-in (hardcoded) captions are drawn permanently into the video pixels, so they always show and survive re-uploads, which is what you want for autoplaying clips in Slack, LinkedIn, or a feed where no caption toggle exists. Soft is flexible; burned-in is guaranteed.
+
+Q: Can I caption a screen recording without uploading it anywhere?
+A: As of July 2026, partly. Typing an SRT by hand is fully local, and Chrome's Live Caption generates on-device captions that never leave your device, but Live Caption only captions live playback and offers no SRT export. The free automatic route that produces a downloadable caption file (YouTube auto-captions) requires uploading the video to a cloud service first. So a one-click, fully-local auto-caption of a recorded file is not a built-in Chrome feature yet; keeping the source file local at least lets you decide whether it ever reaches a captioner.
+
+Q: Does SuperchargeCapture auto-generate captions?
+A: No. As of July 2026, SuperchargeCapture records your screen or tab to a local MP4 or WebM file that you own, but it does not transcribe or generate captions itself. Its role in a captioning workflow is the recording step: it gives you a clean, crash-safe local file with no account and no forced upload, which you then caption through YouTube auto-captions, a manual SRT, or another tool. Because the file stays on your device, you control whether it ever goes to a cloud captioner.
+
+Q: How accurate are automatically generated captions?
+A: As of July 2026, automatic captions are a fast draft, not a finished one. Accuracy drops with background noise, accents, technical terms, and product names, so plan to edit them. On YouTube, the Duplicate and Edit button turns the automatic track into a correctable draft; fixing timing and terms there takes minutes and is the difference between captions that help and captions that mislead. Never publish an unread auto-caption on anything that matters.
+
+Q: Why bother captioning a screen recording?
+A: As of July 2026, captions do three things. They make the video accessible to viewers who are deaf or hard of hearing. They let the content play silently and still land, which is how most clips are watched in feeds and busy offices. And on platforms that index subtitle text, they make the video searchable. For a product demo or a bug walkthrough, captions are the difference between a clip that works muted and one that is skipped.
+
+---
+
+### How to Auto-Mute Noisy Tabs in Chrome by Site (2026)
+
+URL: https://www.superchargebrowser.com/library/auto-mute-noisy-tabs-chrome-per-site-2026/
+Category: guide | Extension: audio | Updated: 2026-07-01
+Description: A background tab blasts audio and you scramble to find it. Chrome's Mute Site is per-site but manual. How to auto-mute noisy tabs and set per-site defaults.
+
+> **Key takeaways**
+> - **Chrome's right-click "Mute site" is persistent and per-domain, but manual.** You set it by hand, one site at a time, and it mutes every tab from that domain.
+> - **Chrome has no automatic background-tab muting** and no single list of sites muted by default.
+> - **A smart-mute extension mutes background tabs automatically** and remembers per-site audio (mute, volume, EQ) by hostname.
+
+A background tab suddenly blasts a video ad while you dig through thirty tabs to find it. To auto-mute noisy tabs in Chrome: right-click any tab and choose Mute site to silence that whole domain (Chrome remembers it), or run a smart-mute extension that mutes every background tab automatically and keeps only your active tab audible. As of July 2026, the three levels of control, weakest first.
+
+## Chrome's Built-In Per-Site Mute (and What It Remembers)
+
+Before you go hunting for it, know the fastest silence: **right-click any tab and choose Mute site**.
+
+On Chrome 150 (current stable, July 2026), that does more than mute the one tab. Muting is a per-domain setting, so Chrome remembers it. Every future tab from that same site opens muted until you right-click and choose **Unmute site**. If a particular news site autoplays video on every article, muting it once keeps it quiet on every visit after that.
+
+One detail people miss: the speaker icon on the tab only indicates sound. Clicking it does nothing, because Chrome dropped click-to-mute back in 2018. The right-click menu is the control.
+
+## Where Chrome's Muting Runs Out
+
+Per-site mute is solid for a known offender. It falls short the moment your noise problem is unpredictable.
+
+- **No automatic muting.** Chrome will not mute a tab just because it moved to the background. If a new site starts playing, it plays at full volume until you act.
+- **No "keep only my active tab audible" mode.** The per-domain toggle is blanket. It cannot mute a site while it is in the background yet let it play when you bring it forward.
+- **No manageable default-muted list.** Muted sites live in Site settings, but there is no single screen that lists them for quick review or bulk changes.
+- **Full mute only.** You get muted or unmuted. There is no per-site volume, so you cannot keep one site at a whisper and another loud.
+
+For a browser that surprises you with noise from a rotating cast of tabs, manual per-site muting turns into a chore.
+
+## Auto-Muting Every Background Tab
+
+The rule Chrome lacks is simple to state: keep the tab I am looking at audible, and mute everything else the instant it makes noise. A smart-mute extension adds exactly that.
+
+Turn it on and the tab you are actively viewing stays unmuted. Any other tab that starts producing sound is muted the moment it becomes audible. Switch tabs and the rule follows your focus, so the tab you move to becomes the audible one and the old tab goes quiet. An autoplaying ad two tabs over, or a livestream you left running, never reaches your speakers unless you bring it to the front. There is also a one-tap "silence everything" for instant quiet across every tab.
+
+## Per-Site Audio That Sticks (Mute, Volume, EQ)
+
+This is where per-site control gets past Chrome's mute-or-unmute ceiling. SuperchargeAudio stores audio settings per hostname, so each site reopens the way you last left it.
+
+- **Volume per site,** anywhere from 0 to 600%, so a quiet podcast site can be boosted while a loud one is pinned low, and each remembers its level.
+- **A 10-band equalizer per site,** with presets, saved against the domain rather than reset every visit.
+- **Smart Mute** to auto-mute background tabs, with a whitelist for sites that should always play (your music service) and an option to exclude pinned tabs.
+- **An audible-tabs list** in the popup showing every tab making sound, each with its own mute and volume, so you can jump to one or silence it without leaving your page.
+
+Settings stay on your device, there is no sign-in, and the audio never routes through a server. The per-site memory is the part Chrome cannot match: your choices are attached to each site and applied automatically the next time you land there.
+
+## The Muting Methods Compared
+
+| Method | Automatic | Persists per site | Keeps active tab audible | Per-site volume + EQ |
+|---|---|---|---|---|
+| Right-click Mute site | No | Yes (per domain) | No (blanket) | No |
+| Muting a site by default | No (manual) | Yes | No | No |
+| Smart-mute + per-site memory | Yes | Yes | Yes | Yes |
+
+## Which Setup Fits Your Noise Problem
+
+If a single site is your only offender, Chrome's right-click Mute site remembers it for good and you are done. If new noisy tabs catch you out through the day, or a stray tab could blast into a call, a smart-mute rule that mutes background tabs automatically is the fix worth installing. If you want a site quiet in one context but boosted in another, per-site memory that stores mute, volume, and EQ against each hostname is what carries those choices so you never reset them twice.
+
+#### FAQ
+Q: How do I mute a tab in Chrome?
+A: As of July 2026, right-click the tab and choose Mute site. Chrome silences that tab and remembers the choice for the whole site, so future tabs from the same domain open muted too. Clicking the tab's speaker icon no longer mutes (Chrome removed click-to-mute in 2018), so the right-click menu is the built-in way.
+
+Q: Does Chrome remember which sites I muted?
+A: As of July 2026, yes. Mute site is a per-domain setting, not a per-tab one. Once you mute a site, every tab you open from that domain starts muted until you right-click and choose Unmute site. You can review and change these under Site settings, though Chrome offers no single list of 'sites muted by default' to manage them in bulk.
+
+Q: Can Chrome auto-mute background tabs automatically?
+A: No. As of July 2026, Chrome has no setting that mutes a tab the moment it drops to the background. Muting is manual and per-site. To mute every background tab automatically while keeping the tab you are viewing audible, you need a smart-mute extension that follows your active tab and silences the rest.
+
+Q: How do I mute a site by default in Chrome?
+A: As of July 2026, right-click any tab from that site and choose Mute site. Because muting is per-domain, that site is now muted by default on every visit. For finer control, such as muting a site in the background but allowing sound when it is your active tab, a smart-mute extension applies the rule per your focus rather than a blanket per-domain toggle.
+
+Q: Can I set a different volume for different sites in Chrome?
+A: As of July 2026, not with Chrome alone; the browser only offers a full mute or unmute per site. To keep one site quiet and boost another, you need an extension with per-site audio memory. SuperchargeAudio stores volume (0 to 600%), the 10-band equalizer, and channel settings per hostname, so each site reopens at the levels you last set for it.
+
+Q: Does muting a tab stop the audio or just silence it?
+A: It depends on the tab. As of July 2026, muting the tab you are actively viewing only silences output while the media keeps advancing. On Chrome 145 and later, a muted background tab pauses its media when you switch away and resumes when you return. So a muted foreground video plays on silently, while a muted background video holds its place.
+
+---
+
+### How to Blur or Redact a Screenshot in Chrome (2026)
+
+URL: https://www.superchargebrowser.com/library/blur-redact-sensitive-info-screenshot-chrome-2026/
+Category: guide | Extension: capture | Updated: 2026-07-01
+Description: Cropping or a black box can be undone; pixelating the pixels cannot. Blur faces, emails, and card numbers inside the shot before you post. (July 2026)
+
+You are about to paste a screenshot into a ticket, and your email address, a card number, or a customer's name is sitting right there in the frame. Once you send it, you cannot un-send it. As of July 2026, the reliable way to handle this in Chrome is to blur the sensitive region **inside the screenshot tool, before the image is ever saved or shared**, so the unredacted version never leaves your screen. The wrong way, and the common one, is to share first and hope nobody zooms in.
+
+*Redaction steps walked through on Chrome 150, SuperchargeCapture 1.0.2, July 2026, blurring emails and card numbers in a live screenshot.*
+
+## What to Blur Before You Share
+
+Run this checklist over the frame before anything leaves your machine. Most leaks are not the obvious card number, they are the thing at the edge you forgot was on screen.
+
+| Redact this | Where it hides |
+|---|---|
+| Email addresses, phone numbers, full names | Headers, signatures, account pages |
+| Card, account, order, and invoice numbers | Billing screens, receipts, confirmations |
+| API keys, tokens, session values | DevTools panels, config screens, URLs |
+| Faces | Profile photos, video call tiles, webcam bubbles |
+| Autofill suggestions | The dropdown under a form field you clicked |
+| Other tabs and notifications | The tab strip and OS popups at the frame's edge |
+
+If any of these is in the shot, it gets a blur box. The last two rows are the ones that catch people: a screenshot of one page can leak the titles of six other tabs, or a Slack notification that slid in while you captured.
+
+## Blur It Inside the Screenshot, Before It Leaves Your Screen
+
+The safest redaction is one that happens between capture and export, with no upload in the middle. [SuperchargeCapture](/capture/) works this way by default.
+
+1. Capture the page: **Visible** for the viewport, **Region** to drag around one area, or **Element** to grab a single card or panel.
+2. The shot opens straight into an editor. Pick the **Blur** tool.
+3. Drag a box over each sensitive area. The region pixelates in place, averaged down into blocks.
+4. Repeat for every item on the checklist above, then **Copy** to clipboard or **Save**.
+
+The pixelation is baked into the pixels of the exported PNG, not floated on top as a removable layer. By the time the image exists as a file, the private data is already gone from it. The screenshot and its blur both happen on your device; the unredacted version never touches a network.
+
+## Why Pixelation Beats a Black Box or a Crop
+
+Not every "hide it" method actually hides it. Three common ones fail in ways that have burned real people:
+
+| Method | Does it hold up? |
+|---|---|
+| Pixelate, flattened into a PNG | Yes. Original pixels are averaged away and gone |
+| Highlighter stroke over the text | No. Many highlighters are semi-transparent; the text reads through |
+| "Black box" in an editable file | No. If the box is a separate layer, the recipient can move or delete it |
+| Crop the sensitive part out | Only if the data sits at an edge; useless when it is mid-frame |
+| Blur applied by a web upload tool | Risky. The raw image reached a server before you redacted it |
+
+Both failures share one rule. A redaction is only safe once it is destructive and flattened. A blur that removes the underlying pixels and exports a plain raster image cannot be peeled back. A movable overlay or a transparent stroke can. Draw the distinction before you trust the result.
+
+## Where the Screenshot and Its Blur Actually Live
+
+A tool that sees your screen and your secrets earns a hard look at where the bytes go. SuperchargeCapture keeps captures in **local storage on your device** (the Origin Private File System) and runs the Blur tool in your browser. It requires **no host permissions at install**, and its `activeTab` access means it only touches a page when you invoke a capture on that tab. There is no always-on content script reading what you browse, no `webRequest`, and no telemetry.
+
+That local-first posture is the point of redacting in the tool rather than on a website. A web-based blur service has to receive your unredacted image first, which defeats the exercise for anything sensitive. The only cloud path here is an optional Share to Drive that goes to your *own* Google Drive, and you would only reach for it after the blur is already applied.
+
+## Before You Hit Post
+
+Two seconds of checking beats an afternoon of rotating a leaked key:
+
+- **Zoom in on each blur** before you export. A box that half-covers a card number is worse than none, because it looks handled.
+- **Scan the edges**, not just the middle. Tab titles, autofill dropdowns, and notifications live in the margins.
+- **If you shared the raw shot already**, redacting the copy does nothing; assume the original is out and rotate the exposed secret.
+- **If the data is at an edge**, a tight crop is enough; if it is mid-frame, pixelate it.
+
+If your screenshots regularly carry emails, tokens, or customer data, redacting inside the capture tool means the sensitive version never exists as a shareable file. [SuperchargeCapture](/capture/) captures, blurs, and exports a flattened PNG on your device, so the only image that can leave is the one you already cleaned.
+
+#### FAQ
+Q: How do I blur sensitive information in a screenshot in Chrome?
+A: As of July 2026, the safest method is to blur inside the screenshot tool before the image is saved or shared. SuperchargeCapture takes the shot, opens an editor, and gives you a Blur tool: drag a box over each email, face, or number and it pixelates that region into the image. You then Copy or Save, and the redaction is baked into the pixels of the exported PNG. Because the blur is applied before export, the unredacted version never leaves your screen.
+
+Q: Is pixelating a screenshot safe, or can the blur be reversed?
+A: As of July 2026, a true pixelation that averages a region down to blocks and bakes it into the raster image is not reversible, because the original pixel values are gone. The danger is not pixelation itself but two weaker methods people mistake for it: a colored highlighter stroke that is semi-transparent and leaves text readable underneath, and a 'black box' drawn as a separate movable layer in an editable file, which can be removed by whoever opens it. Flatten your redaction into a plain PNG and it stays redacted.
+
+Q: What should I redact from a screenshot before sharing it?
+A: As of July 2026, blur anything that identifies a person or unlocks an account: email addresses, phone numbers, full names, faces, card and account numbers, API keys and tokens, session values in DevTools, order and invoice numbers, and identifiers buried in a URL. Two spots people forget are the browser's autofill dropdown, which can expose saved addresses, and the tab strip and notifications, which can leak other sites and messages at the edges of the frame.
+
+Q: Can I redact a screenshot without uploading it to a website?
+A: As of July 2026, yes, and you should prefer it for anything sensitive. Uploading a raw screenshot to a web-based blur tool means the unredacted image reaches someone else's server before you have hidden anything. SuperchargeCapture captures and redacts entirely on your device: the screenshot lives in local storage, the Blur tool runs in your browser, and nothing transits our servers. The private data never leaves your machine in the clear.
+
+Q: Does blurring a screenshot also remove hidden metadata?
+A: As of July 2026, pixelating a region hides what is visible in the image but is separate from file metadata. A screenshot exported as a fresh PNG from an in-browser editor generally does not carry camera EXIF or location data the way a phone photo does, but if you are handling highly sensitive material, treat the visible redaction and any metadata scrub as two distinct steps. For most screenshots, blurring the on-screen data is the risk that actually matters.
+
+---
+
+### Is That Chrome Extension Safe? 7 Checks Before Install (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-extension-security-audit-checklist-2026/
+Category: guide | Extension: general | Updated: 2026-07-01
+Description: The Featured badge didn't stop a Chrome extension stealing 900K ChatGPT chats. A 7-point audit of permissions, source, and ownership to vet any extension.
+
+> **Key takeaways**
+> - **Badges are a weak signal.** One of two fake AITOPIA extensions that stole 900,000 users' AI chats carried Google's Featured badge when it was caught.
+> - **Permissions are the fastest filter.** An extension asking to read every page when its job doesn't require it fails before you check anything else.
+> - **A CRX file is a ZIP.** You can read the full source in five minutes without installing anything.
+
+The single most reliable way to tell whether a Chrome extension is safe is to compare the permissions it demands against what it actually claims to do. If a screenshot tool wants to "read and change all your data on all websites," the mismatch is the answer. Below is the full seven-point audit, including how to read an extension's source before you trust it.
+
+## The Badge Problem: Why Featured Isn't a Green Light
+
+Most safety advice starts and ends with "check for the verified badge." That advice failed 900,000 people in January 2026 (six months before this article's July 2026 publication).
+
+Two extensions impersonating the legitimate AITOPIA developer harvested full ChatGPT and DeepSeek conversation content and shipped it to an attacker's server every 30 minutes. One of the two carried Google's Featured badge at the time of discovery. The badge is applied after a manual review for best practices, and the malicious behavior slipped through anyway.
+
+The two Chrome Web Store badges certify less than most people assume:
+
+| Badge | What it confirms | What it does not confirm |
+|---|---|---|
+| Established Publisher | Developer verified their identity and has a track record. ~75% of the store carries it. | That the code is safe or the permissions are reasonable |
+| Featured | Google manually reviewed the listing for best-practice and privacy guidelines | That a later update is safe, or that hidden behavior was caught |
+
+Badges are worth a glance. They confirm identity and a review, never safe code. The seven checks below are what actually protect you.
+
+## Checks 1-3: Read Permissions Like a Threat Model
+
+Every extension declares its access in four buckets: `permissions`, `optional_permissions`, `host_permissions`, and `optional_host_permissions`. Chrome collapses these into the plain-English prompt you see at install time. Read it instead of clicking through.
+
+**The all-access flag.** "Read and change all your data on all websites" maps to the `<all_urls>` host permission. It lets the extension see and modify every page you load, including your email, your bank, and any AI chat you have open. Some extensions require it by design: an ad blocker or a password manager works everywhere. A currency converter, a single-site helper, or a new-tab theme does not. The real test is whether this specific function needs it.
+
+**The mismatch test.** Line up the permission list against the one-sentence description of what the extension does. A wallpaper extension requesting `tabs` and `scripting` access is asking for capabilities its stated job never touches. That gap is where hidden behavior lives.
+
+**The manifest-version test.** Manifest V2 has been disabled in stable Chrome since October 2024. An extension still shipping V2 in mid-2026 is not being maintained. Abandoned extensions with broad permissions are exactly what attackers buy and repurpose, which is the next check.
+
+## Read the Source: A CRX File Is Just a ZIP
+
+You do not have to take the developer's word. A packaged Chrome extension (a `.crx` file) is a ZIP archive holding the manifest and every line of source. You can read it without installing anything.
+
+1. **Grab the extension ID.** It is the long string of letters in the Web Store URL, right after `/detail/name/`.
+2. **Open it in a viewer.** Paste the ID into CRXcavator, CRXPlorer, or Rob Wu's open-source crxviewer. Each fetches and unpacks the extension in the browser. To work offline, download the CRX and run `unzip` on it.
+3. **Read `manifest.json` first.** It lists the permissions, the `content_scripts` and the sites they run on, and the background service worker. This is the ground truth the marketing copy is written on top of.
+4. **Grep the JavaScript for two patterns.** Search for `fetch(` and `XMLHttpRequest` to find every outbound request, then check the destination domains. A legitimate tool talks to its own API or the service it integrates. Requests to unfamiliar domains, especially alongside code that reads `document.body` or scrapes page text, are the exfiltration pattern that hit AITOPIA users.
+
+Static source reading tells you what an extension *can* do. To watch what it actually sends while running, the companion audit in [how extensions steal AI chats](/library/chrome-extensions-stealing-ai-chats/) walks through the DevTools Network tab. Use both: read the manifest before install, watch the network after.
+
+## The Ownership-Transfer Trap
+
+The nastiest 2026 vector needs no coding skill. An attacker buys a clean, popular extension and pushes one poisoned update.
+
+QuickLens was listed for sale in late 2025. Its owner changed in February 2026, and a malicious update landed within days (roughly five months before this article's publication). That update stripped security headers from web responses, opening the door to cross-origin attacks against every user who had installed it months earlier for a completely benign feature.
+
+This works because **granted permissions survive updates**. When you approve `<all_urls>` once, every future version inherits it silently. There is no second prompt when new code arrives. Two defenses:
+
+- Prefer extensions from a named company or developer with a public history, not a solo listing that could quietly change hands.
+- Re-audit after any big behavior change, new permission request, or visible ownership shift. A sudden 1-star review wave after an update is often the first public sign.
+
+## Reviews and Developer Identity
+
+The last two checks are about accountability, and both have caveats.
+
+**Reviews are not verified.** Google does not confirm review authenticity, and paid review services exist. A cluster of near-identical five-star reviews posted in a short window is a manufactured-reputation signal. So is a burst of one-star reviews after a specific update, which usually means real users noticed something broke or turned hostile.
+
+**A real developer leaves a trail.** A named company, a working website, a support contact, and a privacy policy that names specific data practices are all positive signals. Anonymity plus broad permissions is the combination to avoid. The Established Publisher badge helps here, but remember it sits on ~75% of the store, so its absence is a bigger flag than its presence is a reassurance.
+
+The 2026 record these checks are built from:
+
+| Incident (2026) | Scale | How it worked |
+|---|---|---|
+| Fake AITOPIA extensions (Jan) | 900K downloads | AI chat + tab URLs exfiltrated every 30 min; one had a Featured badge |
+| History-harvest ring (Feb) | 287 extensions / 37M downloads | Browsing history leaked, many on install |
+| QuickLens ownership transfer (Feb) | 1 extension | Sold, then updated to strip security headers |
+| Wallpaper adware ring (Jun) | 152 extensions / 105K installs | Ad fraud and fake traffic |
+| OAuth token theft ring | 100+ extensions | Stole Google OAuth2 bearer tokens |
+
+## Running the Full Checklist
+
+Verified on Chrome 150 (current stable, July 2026), the seven points in order:
+
+1. Permissions match the stated function.
+2. Host access is no broader than the job requires.
+3. Manifest V3, not the abandoned V2.
+4. Source reads clean (manifest permissions, no exfiltration pattern in the JS).
+5. No recent unexplained ownership change or permission bump.
+6. Reviews look organic, not clustered or freshly astroturfed.
+7. The developer has a verifiable public identity.
+
+The other lever is simply owning fewer extensions. Every install is a standing permission grant that lasts until you revoke it, and each one is a separate thing to keep auditing. SuperchargePerformance folds ad blocking, tracker blocking, cookie-banner rejection, and popup blocking into one extension that stores everything locally, sends zero telemetry, needs no account, and holds the Featured badge on the Web Store. Fewer grants, fewer things to vet.
+
+If an extension asks to read every page and its function does not need that, stop at check one; you already have your answer. If the permissions are reasonable but the developer is anonymous, extract the CRX and read the manifest before trusting it. If it clears all seven, install it, then re-run the audit the next time it updates or changes hands.
+
+#### FAQ
+Q: How can I tell if a Chrome extension is safe before installing it?
+A: As of July 2026, run a seven-point check: match the requested permissions against what the extension actually does, confirm it uses Manifest V3, read the source by extracting the CRX file, check for a recent ownership change, scan reviews for fake-looking clusters, and verify the developer has a real identity. If a screenshot tool asks to 'read and change all your data on all websites,' that mismatch alone is a reason to stop.
+
+Q: Does the Featured or Verified badge mean a Chrome extension is safe?
+A: No. As of July 2026, the Established Publisher badge only confirms the developer verified their identity and has a track record; roughly 75% of the store carries it, so it is necessary but not sufficient. The Featured badge means Google manually reviewed the listing, yet one of the two fake AITOPIA extensions that stole 900,000 users' AI chats in January 2026 carried a Featured badge when it was discovered. Treat badges as one weak signal, not proof.
+
+Q: What Chrome extension permissions are red flags?
+A: As of July 2026, the biggest red flag is 'Read and change all your data on all websites' (the <all_urls> host permission) requested by an extension whose function does not need it. A dictionary, a theme, or a single-site tool has no reason to read every page you visit. Also watch for permissions unrelated to the stated purpose, like a wallpaper extension requesting tabs or scripting access.
+
+Q: How do I read the source code of a Chrome extension?
+A: As of July 2026, a CRX file is a ZIP archive containing the full source. Paste the extension's Web Store ID into a viewer like CRXcavator, CRXPlorer, or Rob Wu's crxviewer, or download the CRX and unzip it. Open manifest.json first to see the permissions, then search the JavaScript for fetch() calls to unfamiliar domains and code that reads page content. No installation required.
+
+Q: What is the extension ownership-transfer attack?
+A: As of July 2026, it is the most dangerous 2026 vector: a legitimate, well-reviewed extension is sold, and the new owner ships an update that adds malicious code. Because permissions you granted persist through every update, the new owner inherits your trust without a fresh prompt. The QuickLens case (ownership changed in February 2026, malicious update days later) stripped security headers from responses to enable cross-origin attacks.
+
+Q: Is Manifest V2 a sign an extension is abandoned?
+A: As of July 2026, yes. Manifest V2 has been disabled in stable Chrome since October 2024. Any extension still shipping Manifest V2 in mid-2026 has not been maintained and should be treated as abandoned, regardless of how many users it still shows.
+
+---
+
+### Screen Recording Has No Sound? 5 Fixes That Work (2026)
+
+URL: https://www.superchargebrowser.com/library/record-chrome-tab-with-audio-2026/
+Category: troubleshooting | Extension: capture | Updated: 2026-07-01
+Description: Silent screen recording? The unticked tab-audio box is the usual cause, not your mic or speakers. Record the right source and mix your mic in. (July 2026)
+
+You recorded a five-minute walkthrough, hit play, and got silence. The fix is almost always one unticked box: when Chrome's "Choose what to share" picker opens on a tab, the **Share tab audio** checkbox in the bottom-left is off by default. Tick it and re-record and the sound is back. As of July 2026, that single box accounts for most silent screen recordings in Chrome. The rest come from mixing up three different audio sources.
+
+*Checked on Chrome 150, SuperchargeCapture 1.0.2, recording a browser tab with mic and tab audio, July 2026.*
+
+## Fix 1: Turn On "Share Tab Audio" in the Picker
+
+Do this one first, because it solves the problem four times out of five.
+
+Any recorder built on the browser's `getDisplayMedia` API shows the "Choose what to share" dialog. Pick **Chrome Tab**, and look at the bottom-left corner: there is a small **Share tab audio** toggle. It is unchecked by default. The dialog is designed so that video sharing and audio sharing are separate consents, which is sensible for privacy and merciless for anyone in a hurry. Uncheck equals silence.
+
+Tick it, confirm, and record again. If your sound was coming from the tab you were capturing, you are done. No settings, no reinstall, just the box you skipped.
+
+## Fix 2: Capture System Audio, Not Just the Tab
+
+Tab audio only covers sound from that one Chrome tab. If your audio comes from a desktop app, a second browser, or anything outside the tab, "Share tab audio" will not catch it.
+
+For that, share **Entire Screen** instead of a tab, and tick **Share system audio** in the picker. That routes everything your machine is playing into the recording. Platform matters here. On Windows this works cleanly, but macOS restricts system-audio capture at the OS level. On a Mac you often need a loopback audio driver to record desktop sound, and its absence is why Mac users hit "no sound" far more than Windows users. If you are on macOS and only need one tab's audio, stay with the tab route from Fix 1.
+
+## Fix 3: Add Your Microphone as a Separate Track
+
+Your voice is a third source. The tab's audio and your mic are captured independently, so enabling one does nothing for the other.
+
+If your narration is missing, your microphone toggle was off, or the browser blocked mic access for that recorder. Check the site permissions (the icon left of the address bar) and confirm the mic is allowed and set to the right input device. A recorder that captures tab audio but never asked for mic access will happily produce a clip of the app's sound with none of your commentary.
+
+## Fix 4: Rule Out a Muted Tab or Wrong Output Device
+
+Two quieter culprits hide here. First, the tab-strip mute (the little speaker icon on the tab) silences local playback and can leave you thinking nothing is playing at all. Un-mute and confirm you actually hear sound before recording.
+
+The sneakier one is an output-device mismatch. Your app plays to Bluetooth headphones while the recorder captures your default speakers, so the meter looks alive but the recording is dead. Set your app and your capture to the same output, play a few seconds, and verify sound is reaching the device you are recording. This is the fix people find last because everything *looks* fine.
+
+## Fix 5: Record Audio as Explicit Toggles, Not a Hidden Checkbox
+
+Silent recordings keep happening because the audio decision is buried in a picker corner, unexplained and easy to skip. [SuperchargeCapture](/capture/) removes the trap by making every audio input a labeled switch before you record.
+
+Click the toolbar icon, choose **This Tab**, and you see plain toggles: the tab's audio, your microphone, and a countdown (off, 3s, or 5s). Tab recording runs through `chrome.tabCapture`, so there is no OS picker and no hidden audio box to miss. The tab audio and your mic are mixed into one track through the Web Audio API. If the mic is unavailable or you deny it, the recording keeps going with the tab audio instead of dying, so one bad input never wastes the take.
+
+The same panel carries the rest of a clean recording. A webcam bubble adds an **on-device background blur**, so the camera video is composited locally and never leaves your machine. **Highlight clicks** draws a ripple and auto-zooms toward each click. **Polished cursor** replaces the system pointer with a cleaner one in the recording. An optional **Record across sites** permission keeps the camera and cursor overlay alive when you navigate to another site, and it stays off until you grant it. All of it records with no account, keeps the file on your machine, and asks for no host permissions at install.
+
+## Which Audio Source You Actually Want
+
+| You want to record | Share this | Audio to enable |
+|---|---|---|
+| Sound from one Chrome tab (video, web app, browser meeting) | The tab (or This Tab in SuperchargeCapture) | Tab audio |
+| A desktop app or anything outside Chrome | Entire Screen | System audio (Windows; macOS needs loopback) |
+| Your narration over a demo | Any source | Microphone |
+| Tab sound plus your voice on one tab | The tab | Tab audio + microphone, mixed |
+| Whole desktop plus voice | Entire Screen | System audio + microphone |
+
+Read the row that matches your recording and the silence goes away. Most walkthroughs are the "tab sound plus your voice" row, which a `tabCapture` recorder handles in one screen with two switches.
+
+## If It's Still Silent After All Five
+
+Work down this short list before assuming the recorder is broken:
+
+- **Sound plays but the recording is silent** → you skipped "Share tab audio," or you captured system audio on macOS without a loopback driver. Re-check Fix 1 and Fix 2.
+- **The app's audio records but not your voice** → mic toggle off or blocked. Re-check Fix 3.
+- **Meters move but the file is dead** → output-device mismatch. Re-check Fix 4.
+- **You keep forgetting the checkbox on every take** → switch to a recorder with explicit audio toggles so the choice is visible, not hidden. That is Fix 5.
+
+If your recordings are browser tabs and the buried audio checkbox has cost you one take too many, [SuperchargeCapture](/capture/) puts tab audio and mic in front of you as switches and mixes them for you. Record the next one and hear it back.
+
+#### FAQ
+Q: Why does my Chrome screen recording have no sound?
+A: As of July 2026, the most common cause is a single unticked checkbox. When Chrome's 'Choose what to share' picker appears and you pick a tab, there is a 'Share tab audio' box in the bottom-left that is off by default. Miss it and you record perfect video with total silence. The second most common cause is a source mix-up: tab audio, system audio, and your microphone are three separate inputs, and a recorder that grabbed video only, or grabbed the wrong audio source, comes out silent even though sound was playing.
+
+Q: What is the difference between tab audio and system audio when recording?
+A: As of July 2026, tab audio is the sound coming from one Chrome tab (a YouTube video, a web app, a meeting in the browser). System audio is everything your computer plays, including desktop apps outside Chrome. They are captured by different mechanisms: a tab recording can grab that tab's audio directly, while capturing full system audio usually requires sharing 'Entire Screen' with 'Share system audio' ticked. On macOS, system-audio capture is restricted by the OS and often needs a loopback driver, which is why 'no sound' happens more on Mac.
+
+Q: How do I record a Chrome tab with both the tab's audio and my microphone?
+A: As of July 2026, you need a recorder that treats them as separate toggles and mixes them. SuperchargeCapture records the current tab through chrome.tabCapture and lets you switch the tab's audio and your microphone on independently, then mixes both into one track through the Web Audio API. If your mic is unavailable or denied, the recording continues with the tab audio rather than failing, so a bad mic never costs you the whole take.
+
+Q: Does muting a tab in Chrome stop it from being recorded with audio?
+A: As of July 2026, muting the tab (the speaker icon on the tab strip) silences local playback but is separate from what a screen recorder captures. The more common silent-recording trap is a wrong output device: your app is playing to headphones or a virtual device while the recorder captures a different system output. Confirm sound is actually reaching the output you are recording before you blame the recorder.
+
+Q: Can I record tab audio without the 'Choose what to share' picker?
+A: As of July 2026, yes, with an extension that uses chrome.tabCapture instead of getDisplayMedia. SuperchargeCapture starts a tab recording with no OS picker and no hidden audio checkbox: the tab audio and microphone are explicit switches in the popup. Window and full-screen recording still show the standard picker, because they reach beyond one tab and the browser requires that confirmation.
+
+---
+
+### How to Save a Full Scrolling Web Page as PDF (2026)
+
+URL: https://www.superchargebrowser.com/library/save-full-web-page-as-pdf-chrome-2026/
+Category: guide | Extension: capture | Updated: 2026-07-01
+Description: Chrome's Ctrl+P to PDF works until the page scrolls: sticky headers repeat and content cuts off mid-section. Stitch the full page, then export. (July 2026)
+
+> **Key takeaways**
+> - Chrome already saves a page as PDF: **Ctrl+P → Save as PDF**. For a simple article, stop there, it is clean and the text stays selectable.
+> - It **breaks on long or app-like pages**: sticky headers repeat, content splits across page breaks, backgrounds drop out, lazy sections come up blank.
+> - A **full-page stitch then export to PDF** rebuilds the whole page first, so the layout survives. The trade-off is an image-based PDF with no selectable text.
+
+Chrome does not need an extension to save a page as a PDF. Press **Ctrl+P** (Cmd+P on Mac), set the destination to **Save as PDF**, and click Save. As of July 2026, for a plain article or a short static page that is all you need, and the result even keeps selectable text. The trouble starts when the page is long, sticky, or app-like, because print-to-PDF paginates onto paper sheets, and paper is the one thing a scrolling web page was built to escape.
+
+*Compared against Chrome 150's own Save as PDF on a sticky-header dashboard, SuperchargeCapture 1.0.2, July 2026.*
+
+## The Built-In Way: Ctrl+P to Save as PDF
+
+Start here every time, because when it works it is the better output.
+
+1. Open the page and press **Ctrl+P** (Windows/Linux) or **Cmd+P** (Mac).
+2. Set **Destination** to **Save as PDF**.
+3. Open **More settings** and turn on **Background graphics** if the page has colored sections or a dark theme, otherwise they drop out.
+4. Click **Save**.
+
+You get a PDF with live, selectable, searchable text and no third-party tool. On a blog post, a documentation page, or a receipt, this is the right answer and you should not install anything. Keep it in your pocket as the default and only reach past it when it visibly fails.
+
+## Where Print-to-PDF Breaks on Long Pages
+
+Pagination is the fault line. The moment a page is taller than one sheet, print has to slice it, and slicing a fluid layout produces predictable damage:
+
+- **Repeated or overlapping headers.** A `position: fixed` nav bar can render on every sheet, stamping the same header down the document, or sit on top of the text under it.
+- **Content cut mid-section.** Page breaks fall wherever the sheet ends, splitting a table row, a card, or an image across two pages.
+- **Blank lazy-loaded areas.** Pages that defer images until you scroll near them can print those sections as empty rectangles.
+- **Clipped width.** A layout wider than the paper gets chopped at the right edge, with no horizontal continuation.
+- **The wrong scroll container.** Web apps that scroll an inner panel, not the document, print only the visible frame and miss the content inside the panel.
+
+These are not rare edge cases. They are the exact pages people most want to archive: dashboards, long threads, invoices with sticky totals, design docs with fixed sidebars.
+
+## Stitch the Whole Page First, Then Export
+
+The fix is to assemble the entire page before turning it into a document, instead of asking the printer to paginate live. [SuperchargeCapture](/capture/) does the assembly, then exports.
+
+1. Open the page and click the SuperchargeCapture icon.
+2. Choose **Full page**. It scrolls the page top to bottom, throttling so lazy content has time to load, and stitches the frames into one tall image.
+3. Sticky and fixed headers are **de-duplicated during the stitch**, so the repeated-header artifact does not happen.
+4. From the editor, export to **PDF**.
+
+Because the whole page exists as one continuous capture before it becomes a PDF, pagination no longer decides what survives. The document mirrors what you actually see in the browser, sticky chrome handled, nothing sliced mid-card. The PDF is built and saved locally; no account, no upload, and no page leaves your machine to become a document. Very tall pages are tiled into multiple PDF pages, and extreme heights are bounded by the PDF format's own size ceiling.
+
+## Native vs Stitched: What Each Produces
+
+Neither output is strictly better; they fail and succeed in opposite places.
+
+| | Chrome Ctrl+P → Save as PDF | SuperchargeCapture full-page → PDF |
+|---|---|---|
+| Simple article, clean layout | Excellent, selectable text | Works, but image-based |
+| Sticky / fixed header | Can repeat or overlap | De-duplicated during stitch |
+| Content split across page breaks | Common | Assembled whole, then paged |
+| Lazy-loaded sections | Can print blank | Scroll delay lets them load |
+| Background colors / images | Off unless you enable them | Captured as seen |
+| Selectable, searchable text | Yes | No, it is a visual capture |
+| Inner-scroll web apps | Prints visible frame only | Captures the scrolling content |
+
+The text row is the one that usually settles it. Native print keeps text you can select and search; the stitched PDF is a faithful picture of the page, and its text is not selectable.
+
+## When Ctrl+P Is All You Need
+
+The page itself tells you which to use:
+
+- **A clean article and you want to copy quotes later** → Ctrl+P → Save as PDF, for the selectable text.
+- **A dashboard, long thread, or invoice with a sticky header** → full-page stitch, for the fidelity print destroys.
+- **The PDF came out washed-out** → you skipped Background graphics in the print dialog; re-print with it on before reaching for anything else.
+- **The page scrolls an inner panel, not the document** → stitch it; print cannot reach that content.
+
+If your pages are simple and the native PDF looks right, Chrome already gave you the better file and you need nothing more. If you keep fighting repeated headers, split content, or blank lazy sections, [SuperchargeCapture](/capture/) stitches the full page and exports a PDF that matches what you see, in one action.
+
+#### FAQ
+Q: How do I save a full web page as a PDF in Chrome?
+A: As of July 2026, the built-in way is Ctrl+P (Cmd+P on Mac), then choose 'Save as PDF' as the destination and click Save. For a simple article this produces a clean, text-selectable PDF with no extension. It breaks on long or app-like pages, where sticky headers repeat, content splits across page breaks, or lazy-loaded sections come out blank. For those, a full-page capture that scrolls and stitches the whole page first, then exports to PDF, preserves the layout you actually see.
+
+Q: Why does Chrome's print to PDF cut off content or repeat the header?
+A: As of July 2026, print-to-PDF paginates the page onto paper-sized sheets, and that pagination is where it fails on modern layouts. A fixed or sticky header can render on every sheet or overlap the text beneath it. Page breaks slice tables, cards, and images down the middle. Content wider than the paper gets clipped at the right edge. And pages that scroll an inner panel rather than the document only print the visible frame. None of these are bugs; they are pagination meeting a page never designed to be paginated.
+
+Q: Why is my Chrome PDF missing background colors or images?
+A: As of July 2026, Chrome's print dialog disables background graphics by default, so colored sections, dark themes, and background images drop out and the PDF looks washed out. Open 'More settings' in the print dialog and turn on 'Background graphics' to restore them. This fixes color but not the pagination problems, so a page with sticky headers or split content still needs a stitched full-page capture to look right.
+
+Q: How do I save a full page as PDF that keeps sticky headers from repeating?
+A: As of July 2026, use a full-page capture that handles fixed elements during the stitch. SuperchargeCapture scrolls the entire page, stitches the frames into one tall image with sticky and fixed headers de-duplicated, then exports that to PDF. Because the whole page is assembled before it becomes a document, the repeated-header artifact that print-to-PDF and naive stitchers produce does not appear.
+
+Q: Is a stitched PDF text-selectable like a printed PDF?
+A: As of July 2026, no, and the trade-off is straightforward. Chrome's native Save as PDF keeps live, selectable, searchable text. A stitched full-page capture is a faithful visual rendering of the page assembled from screenshots, so its PDF is image-based and the text is not selectable. Choose by what you need: native print for a clean article where you want to copy text, a stitched capture for a broken or app-like layout where visual fidelity matters more than selectable text.
+
+---
+
+### Screen Recording to GIF for Slack & Discord (2026)
+
+URL: https://www.superchargebrowser.com/library/screen-recording-to-gif-slack-discord-2026/
+Category: guide | Extension: capture | Updated: 2026-07-01
+Description: A GIF autoplays inline in Slack and Discord with no player and no click. Record the repro, trim it, export straight to GIF under the size caps. (July 2026)
+
+> **Key takeaways**
+> - A GIF **autoplays inline** in Slack and Discord with no player, no click, and no hosted link, which is why it beats a video for a quick bug repro.
+> - **Discord's free 10MB cap** is the tight one; Slack allows 1GB per file. A short, downscaled GIF clears both.
+> - SuperchargeCapture records a tab, trims it, and **exports to GIF locally** (12 fps, 960px, 30s cap) with no account and no upload.
+
+You caught the bug reproducing and want a teammate to see it now, in the thread, without a "click here to watch" link and a loading spinner. That is the GIF's whole job in chat: it autoplays, it loops, it needs no player. As of July 2026, the fastest path from a live browser bug to a GIF in Slack or Discord is to record the tab, trim to the few seconds that matter, and export straight to GIF. No cloud round-trip in between.
+
+*GIF export run on Chrome 150 with SuperchargeCapture 1.0.2, July 2026; the Slack and Discord caps below were checked the same week.*
+
+## Why a GIF Wins in a Chat Thread
+
+Post an MP4 and the reader gets a file card and a play button. Post a GIF and the bug just happens in front of them as they scroll. For a repro, that difference is the entire point: you want zero friction between "here's the problem" and them seeing it.
+
+One trade-off is worth stating up front. A GIF has no audio, and because every frame is a full image, file size climbs fast with length and frame rate. So GIFs are for short and silent work: a dropdown that glitches, a hover state that breaks. Anything you need to narrate, or anything longer than a handful of seconds, belongs in an MP4.
+
+## The Upload Caps You Have to Clear
+
+The reason "just export a GIF" sometimes fails is the size limit on the other end. Each platform sits differently as of July 2026:
+
+| Platform | Free per-file limit | Paid tier | Notes |
+|---|---|---|---|
+| Discord | 10MB | Nitro Basic 50MB, Nitro 500MB | 10MB free is the tightest common cap |
+| Slack | 1GB | 1GB (all plans) | Free workspaces: 5GB total, files purged after 90 days |
+
+Discord's 10MB free ceiling is the one that bites. A naive full-frame-rate, full-resolution GIF of even a few seconds can sail past it. The fix is not a bigger plan, it is a smaller GIF: fewer frames per second and a smaller frame, which is what a purpose-built export does for you.
+
+## Record the Repro in Chrome
+
+You need the recording before you can trim it. [SuperchargeCapture](/capture/) records the current tab through `chrome.tabCapture`, so there is no "choose what to share" picker to click through first.
+
+1. Open the tab where the bug lives.
+2. Click the SuperchargeCapture icon and choose **This Tab**.
+3. Reproduce the bug once, cleanly, then stop.
+
+The recording opens in a local editor. Nothing has uploaded, there is no account gate, and the file is already on your machine. If the effect only shows on the tab you were looking at, this is quicker than any picker-based recorder because you skip the source-selection step entirely.
+
+## Trim to the Moment That Matters
+
+A GIF's size is mostly its length, so trimming is not polish, it is the difference between clearing 10MB and not.
+
+In the editor, drag the two trim handles to the start and end of the actual bug. Cut the "let me move my mouse over here" lead-in and the "okay that's it" tail. You are aiming for the three to eight seconds where the problem occurs. A tight trim also makes the GIF more readable: the loop repeats the failure, not your cursor wandering.
+
+## Export Straight to GIF
+
+Choose **GIF** as the export format and save. SuperchargeCapture encodes it in the browser and hands you a `.gif` file. Three things happen automatically to keep it under the caps:
+
+- **12 frames per second** instead of 30, which cuts frame count by more than half with no real loss for a UI repro.
+- **Longest side scaled to 960 pixels**, so a 1440p capture shrinks to a chat-friendly width.
+- **A 30-second ceiling.** Go over and it asks you to trim first, which is the size limit protecting you from yourself.
+
+The GIF is written locally; nothing uploads to our servers, and there is no account behind the export button. Drag the file into Slack or Discord and it plays inline the moment it posts.
+
+## GIF or MP4, Case by Case
+
+Not every clip should be a GIF. Pick by what the reader needs:
+
+| Your clip | Best format | Why |
+|---|---|---|
+| Short, silent UI bug (3-8s) | GIF | Autoplays inline, loops, clears Discord's 10MB free cap |
+| A narrated walkthrough | MP4 | GIFs carry no audio |
+| A 30-second-plus demo | MP4 (WebM) | GIF size explodes past upload limits |
+| Posting into Slack, quality matters | MP4 | Slack's 1GB cap gives you room for a crisp video |
+| A loop you want to fire without a click | GIF | No player, no thumbnail, no link |
+
+If your repro is short and wordless and headed for Discord, a downscaled GIF is the right call, and [SuperchargeCapture](/capture/) records, trims, and exports it without a single upload. If the clip is long or you are talking over it, export MP4 from the same editor and post that instead.
+
+#### FAQ
+Q: How do I turn a screen recording into a GIF for Slack or Discord?
+A: As of July 2026, record the tab or screen, trim it to the few seconds that matter, and export to GIF. SuperchargeCapture records a Chrome tab, opens a local editor where you trim with two handles, and exports directly to GIF with no upload. The GIF path caps output at 30 seconds, runs at 12 frames per second, and scales the longest side down to 960 pixels, which keeps the file small enough to drop into chat without hitting an upload limit.
+
+Q: What is the file size limit for uploads on Discord and Slack in 2026?
+A: As of July 2026, Discord's free tier caps a single file at 10MB, Nitro Basic raises it to 50MB, and full Nitro to 500MB. Slack allows up to 1GB per file on all plans, but free workspaces share 5GB of total storage and delete files after 90 days. Discord's 10MB free cap is the tight one for video, which is why a short, downscaled GIF beats an MP4 for quick bug repros there.
+
+Q: Why use a GIF instead of an MP4 in a chat message?
+A: As of July 2026, a GIF autoplays inline and loops with no player, no click, and no hosted link. A teammate sees the bug reproduce the moment they scroll past it. An MP4 usually needs a click to play and may be pushed to a file card. The trade-off is that GIFs have no sound and get large fast at high frame rates, so they suit short, silent repros. Anything long or narrated should stay an MP4.
+
+Q: How long can a GIF screen recording be?
+A: As of July 2026, there is no hard technical limit on GIF length, but practical size makes short clips the only sane option: every frame is a full image, so a long GIF balloons past chat upload caps quickly. SuperchargeCapture enforces this by capping GIF export at 30 seconds and asking you to trim the range first if you exceed it. For a bug repro, three to eight seconds is usually all you need.
+
+Q: Can I make a GIF of a screen recording without uploading it anywhere?
+A: As of July 2026, yes. SuperchargeCapture records and encodes the GIF entirely in your browser and writes it to local storage. Nothing goes to our servers, there is no account, and export is free. You get a .gif file on your device that you drag straight into Slack or Discord. An optional Share to Drive exists for larger video files, but it uploads only to your own Google Drive and only if you choose it.
+
+---
+
+### Cookie Popups Won't Stop in Chrome? 4 FIXES (2026)
+
+URL: https://www.superchargebrowser.com/library/stop-cookie-consent-popups-chrome-2026/
+Category: troubleshooting | Extension: performance | Updated: 2026-07-01
+Description: You reject cookies on every site and they keep coming back. Four ways to auto-reject cookie consent popups in Chrome, from settings to a default-on blocker.
+
+You click Reject on one site, load the next, and the consent banner is back. Chrome has no native "reject all" button, so stopping cookie consent popups for good takes an extension. Four options, weakest to strongest: Chrome's own cookie settings (they never touch the banner), a consent-automation tool that rejects for you, a banner-hider that removes the popup, or a performance blocker that auto-rejects by default. How each behaves, in order:
+
+## The Fastest Fix: Let an Extension Answer the Banner
+
+The popups come from each website, not from Chrome, so no amount of browser-settings tweaking dismisses them. Something has to read each banner and click through it for you.
+
+The quickest working setup is an extension that does exactly that. Install one that recognizes the consent platform a site uses, and the banner is handled before you finish reading it. Consent-O-Matic (built by Aarhus University, ~200,000 Chrome users as of July 2026) fills in your saved preference and declines non-essential cookies across 200-plus consent-management platforms. SuperchargePerformance does the same automatically using the DuckDuckGo AutoConsent ruleset, with no setup because it is already on.
+
+Checked on Chrome 150 (current stable, July 2026): with a consent-automation extension active, the OneTrust and Cookiebot banners that dominate the web are cleared on load without a click.
+
+## Why Chrome's Native Settings Don't Solve This
+
+Be precise about what Chrome can and cannot do here, because a lot of guides send you to the wrong menu.
+
+Under `chrome://settings/cookies`, Chrome lets you block third-party cookies, clear cookies when you close all windows, and set per-site exceptions. Those controls change how cookies are *stored*. None of them dismisses the consent banner, because that banner is HTML the website draws on top of its own page. Chrome never sees it as a cookie prompt; it sees it as part of the site.
+
+So blocking third-party cookies is worth doing for tracking reasons, but it will not stop a single popup. That job lives entirely in the extension layer.
+
+## Reject vs Hide: Two Different Promises
+
+Not every cookie extension does the same thing, and the difference matters if you care about the cookies themselves and not just the visual clutter.
+
+**Rejecting** means the extension operates the banner's controls and declines non-essential cookies. Fewer cookies get set. Consent-O-Matic and the DuckDuckGo AutoConsent engine (the one inside SuperchargePerformance) work this way.
+
+**Hiding** means the banner is removed from view, and where a site refuses to function without an answer, the extension supplies the minimum acceptance so the page loads. The popup is gone, but cookies may still be stored. I Still Don't Care About Cookies (the OhMyGuus open-source fork, created after Avast acquired the original in 2019) works mostly this way.
+
+Both make the annoyance disappear. Only the first reduces what actually lands in your browser. Pick based on whether you want the popups gone or the cookies gone.
+
+## The Extensions Compared
+
+| Tool | Users (Jul 2026) | Approach | Setup |
+|---|---|---|---|
+| Consent-O-Matic | ~200K | Rejects via CMP controls (200+ platforms) | Set preferences once |
+| I Still Don't Care About Cookies | ~200K | Hides banner, accepts minimum if required | None |
+| Ghostery | ~2M | Never-Consent rejects, inside a full tracker blocker | None |
+| SuperchargePerformance | Featured | Auto-rejects (DuckDuckGo AutoConsent), on by default | None |
+
+A dedicated cookie tool does one job well. The tradeoff is a second extension to keep installed and audited. If you already want ad and tracker blocking, folding consent handling into that saves you a separate add-on.
+
+## Cookie Auto-Reject as Part of a Lighter Browser
+
+SuperchargePerformance treats cookie banners as one layer of the same job as blocking ads, trackers, and popups. The DuckDuckGo AutoConsent engine runs on each page you load and declines non-essential cookies where it recognizes the consent platform, and it is enabled the moment you install, so there is nothing to switch on.
+
+It processes everything on your machine, keeps no account, and reports to no server of ours. Alongside consent handling, the same extension runs 186,645 filtering rules from 22 open-source blocklists for ads and trackers and suspends idle tabs to reclaim memory, so the cookie fix arrives as part of a browser that is also quieter and faster, not as a fourth thing to manage.
+
+## Which Method to Use
+
+If you only want the banners off your screen and don't mind a site occasionally storing a cookie to keep working, a hide-style extension is the lowest-effort choice. If you want the popups gone and non-essential cookies actually declined, use a consent-automation tool that rejects, or a blocker that ships auto-reject on by default. If you already run a tracker blocker like Ghostery or a broad performance extension, check whether it already handles consent before installing a dedicated cookie tool on top of it.
+
+#### FAQ
+Q: How do I stop cookie consent popups in Chrome?
+A: As of July 2026, Chrome has no built-in 'reject all cookies' button, so the reliable fix is an extension that handles banners for you. A consent-automation tool like Consent-O-Matic interacts with the banner and rejects non-essential cookies; a hide-style tool like I Still Don't Care About Cookies removes the banner from view. SuperchargePerformance ships cookie-banner auto-reject switched on by default using the DuckDuckGo AutoConsent ruleset.
+
+Q: Can Chrome block cookie consent banners on its own?
+A: No. As of July 2026, Chrome can block third-party cookies and clear cookies on exit, but it has no native feature that answers or dismisses the consent banner sites show you. Those banners are drawn by each website, not by Chrome, so the browser's own settings never see them. Removing them requires an extension that reads and acts on the banner.
+
+Q: What is the difference between rejecting and hiding a cookie banner?
+A: As of July 2026, rejecting means an extension clicks through the banner's controls to decline non-essential cookies, so fewer cookies are actually set. Hiding means the banner is visually removed while the site is often told 'accept' so it keeps working. Consent-O-Matic and the DuckDuckGo AutoConsent engine reject; I Still Don't Care About Cookies mostly hides and accepts when a site requires it. Both stop the popup, but only rejection reduces the cookies stored.
+
+Q: Is I Still Don't Care About Cookies safe to use?
+A: As of July 2026, yes. It is the open-source, community-maintained fork by OhMyGuus, created after the original 'I don't care about cookies' was acquired by Avast in 2019 and some users stopped trusting it with their data. The fork has around 200,000 Chrome users and works by hiding cookie banners, accepting the minimum when needed to keep a site functional.
+
+Q: Do cookie popup blockers slow down Chrome?
+A: As of July 2026, the impact is negligible for lightweight tools. Consent-automation and hide-style extensions run a small script per page load and add no noticeable delay. A cookie blocker built into a broader performance extension is typically cheaper still, because it shares one content script with ad and tracker blocking instead of running as a separate add-on.
+
+Q: Does SuperchargePerformance reject cookies by default?
+A: As of July 2026, yes. Cookie-banner auto-reject is on out of the box, powered by the DuckDuckGo AutoConsent ruleset (2,800+ consent-management platforms). It runs locally on each page you load, declines non-essential cookies where the platform is recognized, and needs no configuration to start working.
+
+---
+
+### How to Sync Tabs & Workspaces Across Devices (Chrome, 2026)
+
+URL: https://www.superchargebrowser.com/library/sync-tabs-workspaces-across-devices-chrome-2026/
+Category: guide | Extension: navigation | Updated: 2026-07-01
+Description: You left twelve tabs open on the work PC and need them at home. Chrome syncs open tabs but not your layout. How to sync entire workspaces across devices.
+
+> **Key takeaways**
+> - **Chrome's native sync mirrors open tabs and history across devices, but not your layout.** Tab groups, pins, and any workspace arrangement stay on the machine you built them on.
+> - **"Tabs from other devices" is read-only recovery, not a live shared session.** It lets you reopen a page you left elsewhere, one tab at a time.
+> - **A workspace extension syncs the whole named context** through your own Chrome account, with nothing landing on a third-party server.
+
+You left a dozen tabs open on the work PC and want them on the laptop at home. To sync tabs across devices in Chrome, sign into the same Google account on both machines and turn on sync; Chrome mirrors your open tabs and history under "Tabs from other devices." What it will not carry is your organization: tab groups, pinned layouts, and workspaces stay behind. For those you need a workspace extension that syncs the whole named context. As of July 2026, this is the exact split.
+
+## What Chrome Syncs Across Devices Natively
+
+Chrome's built-in sync is more useful than its reputation suggests. Sign in with the same Google account on your laptop and desktop, open Settings and confirm sync is on, and Chrome keeps bookmarks, history, passwords, and open tabs in step across both.
+
+To reach the tabs you left open elsewhere, open the tab-search menu (the caret at the right end of the tab strip, or **Ctrl+Shift+A**) and scroll to **Tabs from other devices**. The same list lives at `chrome://history` in the side menu. Every open tab from your other signed-in machines is there, one click from opening locally.
+
+For grabbing the article you were reading on the office PC, this is often all you need, and it requires no extension.
+
+## Where Chrome's Tab Sync Stops Short
+
+The native feature mirrors tabs. It does not mirror how you had them arranged, and that gap is what sends people looking for more.
+
+- **Tab groups don't rebuild.** You can spend an afternoon color-coding groups on one machine and open the other to a flat, ungrouped strip.
+- **Pinned layout doesn't travel.** The pinned tabs you keep on the left are a per-device setting.
+- **It is read-only.** "Tabs from other devices" shows what is open elsewhere. It does not switch your current machine into that setup; you reopen pages one at a time.
+- **There is no workspace concept.** Chrome has no named "Work" or "Research" context to sync, because it has no workspaces natively in the first place.
+
+So native sync answers "what was I looking at on the other computer?" It does not answer "put my whole project setup on this machine."
+
+## Syncing Entire Workspaces, Not Just Tabs
+
+A workspace is a named bundle: a set of tabs, their groups, their pinned items, and their mute state, switchable as one unit. SuperchargeNavigation added cross-device sync for those bundles in v1.1.0 (April 2026, roughly three months before this article), and it works differently from Chrome's tab mirror.
+
+Enable sync in the side panel and your named workspaces appear on every Chrome install tied to the same Google account, rebuilt with their groups and pins in place. The transport is the important part: it rides Chrome's own account sync, the same channel that already moves your bookmarks and passwords, not a SuperchargeBrowser server. The workspace data is chunked and compressed into Chrome sync storage that we have no ability to read.
+
+Sync is opt-in and stays off until you complete the setup prompt, which asks whether this is your first device, whether to wait for Chrome sync to finish downloading, or to skip for now. Turn it off later and the synced copy is wiped from Chrome sync while your local workspaces stay put.
+
+## Setting Up Cross-Device Workspace Sync
+
+Tested across two machines on Chrome 150 (July 2026):
+
+1. Install SuperchargeNavigation on both computers and sign into the same Google account in Chrome, with Chrome sync on.
+2. On your main machine, open the Nav side panel, go to the Workspaces settings, and enable sync. Name the device when prompted so the status row can tell your installs apart.
+3. On the second machine, open the side panel and enable sync there too. Choose the "not my first device" option so it waits for your existing workspaces to arrive rather than overwriting them.
+4. Give Chrome sync a moment to propagate. Your workspaces appear, groups and pins intact. A colored status dot and a **Sync now** button in the panel show the current state.
+
+## Native Sync vs Workspace Sync
+
+| | Chrome native sync | Nav workspace sync |
+|---|---|---|
+| Open tabs mirrored | Yes | Yes |
+| Tab groups carried | No (flat strip) | Yes |
+| Pinned layout carried | No | Yes |
+| Whole context as one unit | No | Yes (named workspace) |
+| Live switch into the setup | No (read-only list) | Yes (activate the workspace) |
+| Data path | Google account sync | Your Chrome account sync (no vendor server) |
+| Cost | Free | Free |
+
+## Which One You Actually Need
+
+If you just want to grab a couple of tabs you left open on another computer, Chrome's built-in "Tabs from other devices" already handles it, no extension required. If you move between two or more machines and want your whole project setup, the tabs plus the groups plus the pins, waiting on each one, native sync will not carry that and a workspace extension will. If you share a computer or want the synced data kept off any vendor's cloud, pick a tool that rides your own Chrome account instead of hosting your sessions itself.
+
+#### FAQ
+Q: Does Chrome sync open tabs across devices?
+A: As of July 2026, yes, in a limited way. Sign into the same Google account on each device and turn on sync, and Chrome mirrors your open tabs and history. You reach them under 'Tabs from other devices' in the tab-search menu or on the History page. It is a read-only list of what is open elsewhere, useful for grabbing a page you left behind, not a live shared session.
+
+Q: Why don't my Chrome tab groups sync across devices?
+A: As of July 2026, Chrome's cross-device sync covers open tabs, history, bookmarks, and passwords, but not the organization layered on top: tab groups, pinned-tab arrangements, and any window layout stay on the device where you made them. Saved tab groups sync in a basic form, but the live grouping and pinning you set up on one machine does not appear organized the same way on another.
+
+Q: How do I see tabs from another computer in Chrome?
+A: As of July 2026, open the tab-search dropdown (the caret at the end of the tab strip, or Ctrl+Shift+A) and scroll to 'Tabs from other devices,' or visit chrome://history and look for the same section in the side menu. Both require that you are signed in and syncing on both machines. Click any entry to open that page locally.
+
+Q: Can I sync entire workspaces, including groups and pins, across devices?
+A: As of July 2026, not with Chrome alone. Syncing a whole named context (its tabs, groups, pinned tabs, and mute state) as one unit needs a workspace extension. SuperchargeNavigation added cross-device workspace sync in v1.1.0 (April 2026). It carries the full workspace to your other Chrome installs and rebuilds it there, groups and pins intact.
+
+Q: Does SuperchargeNavigation send my tabs to its own server?
+A: No. As of July 2026, its cross-device sync rides Chrome's own account sync, the same infrastructure that already moves your bookmarks and passwords between devices. The data is chunked and compressed into Chrome sync storage tied to your Google account, which SuperchargeBrowser cannot read. Sync is opt-in and off until you complete the setup prompt; turning it off later wipes the synced copy and keeps your local workspaces.
+
+Q: Is cross-device workspace sync free?
+A: As of July 2026, yes. Cross-device workspace sync is part of SuperchargeNavigation's free core, with no account and no subscription. Because it uses Chrome's own sync channel rather than a hosted server, there is no per-user cost to pass on.
+
+---
+
+### Which Extension Is Slowing Chrome? Find It in 3 Steps (2026)
+
+URL: https://www.superchargebrowser.com/library/which-extension-slowing-chrome-task-manager-2026/
+Category: troubleshooting | Extension: performance | Updated: 2026-07-01
+Description: Chrome dragging and you blame an extension? The built-in Task Manager (Shift+Esc) shows each one's CPU and RAM. How to read it and shut the culprit down.
+
+When Chrome feels sluggish and you suspect an extension, open Chrome's own Task Manager with Shift+Esc (Search+Esc on ChromeOS). It lists every tab and extension with live CPU and memory columns, so you sort by usage and the resource hog rises to the top within seconds. From there you disable, remove, or work around it. The full three-step diagnosis follows.
+
+## Step 1: Open Chrome's Task Manager (Shift+Esc)
+
+Chrome ships a process monitor most people never open. On Chrome 150 (current stable, July 2026), press **Shift+Esc** on Windows or Linux, or **Search+Esc** on a Chromebook. On macOS there is no default key, so use the menu: **Window > Task Manager**, or the three-dot menu under **More Tools > Task Manager**.
+
+A window appears listing every tab, extension, and internal Chrome process. Each extension shows up on its own line, prefixed **Extension:** followed by its name. This is the ground truth. It shows what each add-on actually costs right now, not what its listing claims.
+
+## Step 2: Sort by CPU and Memory to Find the Culprit
+
+By default the Task Manager shows the CPU column. Click the **CPU** header once to sort descending, and whatever is working hardest jumps to the top.
+
+The Memory footprint column tells the other half of the story, and it is hidden by default. Right-click any column header and tick **Memory footprint** (and **Network**, if you want to catch an extension phoning out constantly). Now click that header to sort by RAM.
+
+Watch the rows for a few seconds while you do nothing. An extension that sits high on CPU while you are idle is the one to suspect. Note its name.
+
+## What High CPU vs High Memory Actually Means
+
+The two columns point at different problems, and confusing them sends you chasing the wrong fix.
+
+| Symptom | Likely cause | What it feels like |
+|---|---|---|
+| High CPU, idle browser | Content script looping on every page, background poller, bad update | Fans spinning, laptop hot, typing lag |
+| High memory, low CPU | Extension holding large data in memory, or a leak | Chrome balloons over hours, whole system slows |
+| High network, steady | Extension fetching or sending on a timer | Battery drain, sometimes a privacy flag |
+| Spikes only on one site | Content script reacting to that page | One site stutters, others fine |
+
+A healthy extension idles close to 0% CPU when you are not touching it. Sustained CPU on an idle add-on is a red flag: an old ad blocker with a bloated ruleset, a coupon extension polling in the background, or one stuck in a loop after an update. High memory that climbs over an afternoon points at a leak. Reading which column is high, not just that something is, points you at the right fix.
+
+## Step 3: Disable, Remove, or Suspend the Culprit
+
+Once you have a name, confirm it, then decide.
+
+**Disable to test.** Go to `chrome://extensions` and toggle the suspect off. Use Chrome for a while. If the sluggishness lifts, you found it. This is reversible, so it is the right first move before deleting anything.
+
+**Remove if you don't need it.** If the extension is one you forgot you had, click Remove. Fewer extensions means fewer background workers and injected scripts on every page.
+
+**Keep it but cut its reach.** For an extension you rely on that is heavy only on certain sites, check its options for a site allowlist, or set it to run **on click** instead of on every page (`chrome://extensions` > the extension > Details > Site access > On click).
+
+## When the Culprit Is a Tab, Not an Extension
+
+Run the Task Manager and a surprising number of times the extensions are idling near zero while a stack of tabs holds hundreds of megabytes each. That is not an extension problem, and disabling add-ons will not touch it.
+
+SuperchargePerformance targets exactly this case. It suspends idle tabs with `chrome.tabs.discard()`, and on its default Medium setting it goes after the memory hogs first: any tab holding 200 MB or more is unloaded once it has sat idle for three minutes, ahead of the regular timer. Tabs playing audio, holding unsaved form input, pinned, or on your allowlist are spared (25-plus web apps like Gmail, Docs, and Figma are protected automatically). Its toolbar badge shows a running estimate of the memory reclaimed, so the effect is visible rather than a claim. It runs locally, keeps no account, and sends nothing about your browsing off the machine.
+
+It does not disable your other extensions for you; that stays a decision you make in `chrome://extensions`. What it removes is the tab-memory pressure that the Task Manager so often reveals is the real cause.
+
+## What to Do Next
+
+If one extension sits at the top of the CPU column even while you sit idle, disable it and see whether Chrome recovers before you remove anything. If the memory column is dominated by tabs rather than extensions, the fix is suspending idle tabs, not uninstalling add-ons. If nothing stands out yet Chrome still drags, the bottleneck is likely elsewhere: hardware acceleration, an overloaded profile, or a heavy page itself, each of which is a different diagnosis.
+
+#### FAQ
+Q: How do I find which Chrome extension is using the most CPU or memory?
+A: As of July 2026, press Shift+Esc (Search+Esc on ChromeOS) to open Chrome's built-in Task Manager. Each extension appears as its own row, labelled 'Extension: [name].' Click the CPU column header to sort, and the heaviest one rises to the top. Right-click any column header to add a Memory footprint column and sort by that instead.
+
+Q: What is the keyboard shortcut for Chrome's Task Manager?
+A: As of July 2026, it is Shift+Esc on Windows and Linux, and Search+Esc on ChromeOS. On macOS there is no default shortcut, so open it from the menu: Window > Task Manager, or the three-dot menu under More Tools > Task Manager. The window that opens lists every tab, extension, and internal Chrome process with live CPU, memory, and network columns.
+
+Q: Why is one Chrome extension using so much CPU?
+A: As of July 2026, the usual cause is a content script that runs continuously on every page, such as an ad blocker with a large ruleset, a coupon or price tracker polling in the background, or an extension stuck in a loop after a bad update. A well-behaved extension idles near 0% CPU when you are not interacting with it. Sustained high CPU on an idle extension is the signal to disable it and test.
+
+Q: Does disabling extensions actually speed up Chrome?
+A: As of July 2026, yes, when an extension is the bottleneck. Each enabled extension can run a background service worker and inject scripts into pages, both of which cost CPU and memory. Disabling the ones you rarely use removes that overhead. If the Task Manager shows your extensions idling low and your tabs eating the memory, though, the faster win is suspending idle tabs rather than removing add-ons.
+
+Q: Can an extension slow Chrome even when I am not using it?
+A: As of July 2026, yes. Extensions run in the background independently of whether you click them. A service worker can wake on a timer, and content scripts run on every page that matches their rules, so an extension you never actively open can still consume CPU and memory on every tab you load. That is why the Task Manager settles it: it shows real-time cost, not intent.
+
+Q: How do I stop Chrome tabs from using so much memory?
+A: As of July 2026, the built-in Memory Saver discards inactive tabs to reclaim RAM, and you can enable it under Settings > Performance. For finer control, a tab-suspension extension unloads idle tabs on a timer you set while protecting the ones playing audio, holding form input, or pinned. SuperchargePerformance goes further by default: it suspends any tab over 200 MB after three minutes idle, ahead of the main timer, and reports the reclaimed memory on its toolbar badge.
+
+---
+
+### Chrome 152: What Changes for Tab and Memory Users? (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-152-whats-new-tab-memory-users/
+Category: guide | Extension: both | Updated: 2026-06-29
+Description: Chrome 152 (stable ~Aug 19, 2026) adds near-zero native tab or memory tools, but it seals the Manifest V2 shutdown. What changes, plus the 153 cadence shift.
+
+Chrome 152 reaches stable around August 19, 2026, roughly seven weeks after this article went up. For tab and memory users it adds almost nothing native. The one web-platform change worth knowing is the CPU Performance API (`navigator.cpuPerformance`, a 1–4 device tier). The bigger story: Chrome 152 closes the Manifest V2 era for good.
+
+This is a forward-looking read. Items below are traced to chromestatus.com milestone-152 entries and the published Chrome release schedule, not the full 152 release notes, which aren't out yet. Anything still in flux is labeled as flagged or expected.
+
+## Chrome 152 Release Date and the 153 Cadence Shift
+
+Chrome 152 is the **last release on the four-week cycle**. Starting with Chrome 153 in September 2026, Google moves to a two-week cadence. Version numbers will then climb about twice as fast.
+
+| Milestone | Stable date (as of June 2026) | Cadence |
+|-----------|-------------------------------|---------|
+| Chrome 150 | June 30, 2026 | 4-week |
+| Chrome 151 | ~July 28, 2026 | 4-week |
+| Chrome 152 | ~August 19, 2026 | 4-week (last) |
+| Chrome 153 | September 2026 | 2-week (new) |
+
+For most readers the cadence change matters more than any single 152 feature. Smaller, faster updates mean the gap between "a fix shipped" and "it reached you" shrinks. It also means version-pinned guides go stale faster, so check `chrome://version` rather than trusting a number you read months ago.
+
+## What Chrome 152 Actually Changes for Tab and Memory Users
+
+Short answer: one thing, and it's indirect.
+
+The **CPU Performance API** is flagged to ship enabled-by-default in milestone 152 (chromestatus.com). It adds `navigator.cpuPerformance`, a read-only integer from 1 (weak) to 4 (fast), where 0 means unknown. A site can read your device tier and decide to drop heavy animations or serve a lighter media stream on low-end hardware.
+
+What it does for you: on a tier-1 or tier-2 machine, well-built sites can choose to do less work, which can ease CPU and memory pressure. What it does not do: change anything about how Chrome itself manages tabs or RAM. There is no new suspension behavior, no Memory Saver upgrade, no tab-group change in the 152 entries.
+
+If you came looking for a native fix for tab reloads or runaway memory, Chrome 152 is not it. That part of Chrome has not moved since the 146–151 stretch.
+
+## Manifest V2 Is Fully Closed by Chrome 152
+
+This is the real headline, and it predates 152 by two milestones.
+
+- **Chrome 150** (stable June 30, 2026, one day after this article) removed the last flag keeping Manifest V2 extensions running. uBlock Origin's dynamic filtering stopped working.
+- **Chrome 151** (~July 2026) cleared the remaining overrides, including the enterprise policies power users leaned on.
+- **Chrome 152** (~August 2026) inherits a finished job. There is no MV2 left to disable.
+
+The practical consequence for memory-conscious users: every tab suspender, ad blocker, and content filter you rely on must be Manifest V3 by the time 152 lands. Tools that never migrated are dead, not degraded. If an extension silently stopped blocking ads or stopped reclaiming memory in late June or July, the MV2 shutdown is the likely cause, not a bug on your end.
+
+## What Chrome 152 Still Doesn't Add: Workspaces, Suspension, Snapshots
+
+The gaps tab-heavy users have tracked since Chrome 146 stay open in 152.
+
+| Capability | Native in Chrome 152? |
+|------------|----------------------|
+| Named workspaces that persist across restarts | No. Not on any milestone. |
+| Rolling session snapshots (time-travel) | No. Not on any milestone. |
+| Per-tab suspension with naming + scheduling | No. Memory Saver only, no controls. |
+| Cross-tab + history keyboard search | No. Extension territory. |
+
+Chrome's Memory Saver still discards inactive tabs, and that reclaims real RAM. But it gives you no naming, no per-site rules, and no session history. None of that changes in 152.
+
+This is where our two extensions fit, and both are Manifest V3-native, so the 152 shutdown leaves them working. **SuperchargePerformance** suspends tabs via `chrome.tabs.discard()` with multi-signal protection (audio, pinned, and form-input tabs are spared), and on its default setting it unloads any tab over 200 MB after three minutes idle, ahead of the main timer. It also ships a 186K-rule MV3 blocklist for ad and tracker filtering. **SuperchargeNavigation** adds named workspaces with full isolation, 50 automatic snapshots taken every five minutes, and Alt+K to search open tabs, bookmarks, and history from any page. Both are free at the core, store data locally, and need no account.
+
+## Before You Update: A Quick Check
+
+When 152 lands, open `chrome://settings/help` to pull it, then confirm milestone 152 at `chrome://version`. If an extension you depend on went quiet recently, check its Chrome Web Store listing for a Manifest V3 version before assuming Chrome broke it.
+
+If you need named sessions, scheduled suspension, or a search bar across every open tab, Chrome 152 still won't give you those. If you only want Chrome to free memory from idle tabs and nothing more, Memory Saver alone covers it.
+
+> **Verification note (checked June 29, 2026):** Chrome 152 features confirmed against chromestatus.com milestone-152 entries and the Chromium release schedule. The full Chrome 152 release notes publish closer to the August stable date; this page will be updated if the flagged items shift.
+
+#### FAQ
+Q: When does Chrome 152 release?
+A: As of June 2026, Chrome 152 stable is scheduled for around August 19, 2026, roughly seven weeks after this article's publication. It is the last release on Chrome's four-week cadence. Chrome 153 (September 2026) begins a two-week release cycle. Confirm the live schedule at chromiumdash.appspot.com/schedule.
+
+Q: What's new in Chrome 152 for tab and memory users?
+A: As of June 2026, Chrome 152 adds no native vertical tabs, workspaces, session snapshots, or memory tools. The one web-platform change of note is the CPU Performance API (navigator.cpuPerformance), flagged to ship enabled-by-default in milestone 152 per chromestatus.com. It lets sites read a 1–4 device performance tier (0 = unknown) so they can serve lighter pages to weaker hardware.
+
+Q: Does Chrome 152 break uBlock Origin or other extensions?
+A: uBlock Origin's dynamic filtering already broke earlier: Chrome 150 (stable June 30, 2026) removed the last flag keeping Manifest V2 extensions alive, and Chrome 151 cleared the remaining overrides. By Chrome 152 there is nothing left to disable; the MV2 era is fully closed. Any ad blocker or memory tool you run must be Manifest V3.
+
+Q: What is the CPU Performance API in Chrome 152?
+A: As of June 2026, the CPU Performance API exposes navigator.cpuPerformance, a read-only integer from 1 (low) to 4 (high) describing your device's performance bucket, with 0 meaning unknown. It is flagged for Chrome 152 on chromestatus.com. Sites can use it to downscale animations or media on low-tier machines. Enterprises can override the value via the CpuPerformanceTierOverride policy.
+
+Q: Is Chrome 152 the last four-week release?
+A: Yes. As of June 2026, Chrome 152 (~August 19, 2026) is the final release on the four-week schedule. Chrome 153 in September 2026 starts a two-week cadence, so version numbers will climb roughly twice as fast afterward. Practical effect: smaller, more frequent updates rather than large milestone drops.
+
+Q: Does Chrome 152 add native workspaces or tab suspension?
+A: No. As of June 2026, named workspaces, automatic session snapshots, and built-in per-tab suspension beyond Memory Saver are not on any Chrome milestone, including 152. These remain extension territory. Chrome's Memory Saver discards inactive tabs but offers no naming, no scheduling, and no rolling session history.
+
+---
 
 ### Awesome Screenshot in 2026: Still Worth It? (Review)
 
@@ -4781,7 +5756,7 @@ For a desktop-only viewer who watches on a laptop and never on a phone, these co
 
 ## A Blocker That Recovers Fast on Desktop
 
-If you choose the free route, the breakage windows are the thing to minimize. Blockers that strip ad data before YouTube's player reads it recover faster than ones that react after ads load. SuperchargePerformance (v1.4.4, verified June 2026) takes that preventive approach: it strips the ad data out before YouTube's player ever loads it, so pre-rolls and mid-rolls don't start in the first place. When YouTube changes how it serves ads, this design is the kind that patches in a day or two rather than staying broken for weeks. If a placement ever slips through, it skips and hides it instead of letting it play.
+If you choose the free route, the breakage windows are the thing to minimize. Blockers that strip ad data before YouTube's player reads it recover faster than ones that react after ads load. SuperchargePerformance (v1.4.5, verified June 2026) takes that preventive approach: it strips the ad data out before YouTube's player ever loads it, so pre-rolls and mid-rolls don't start in the first place. When YouTube changes how it serves ads, this design is the kind that patches in a day or two rather than staying broken for weeks. If a placement ever slips through, it skips and hides it instead of letting it play.
 
 It's free, needs no account, stores everything locally, and adds no telemetry. The same extension also suspends idle tabs and blocks general web ads, so it isn't a single-purpose YouTube tool. For the YouTube-specific ranking against AdBlock for YouTube, uBlock Origin, and AdGuard, see our [tested comparison of YouTube ad blockers](/library/best-youtube-ad-blockers-chrome-2026/). If your blocker is installed but ads still play, the [why-ads-still-show breakdown](/library/youtube-ads-still-showing-chrome/) explains the API-response mechanism.
 
@@ -5017,7 +5992,7 @@ Re-enabling an extension is one problem. The quieter problem is what the disable
 
 This is where the kind of extension matters. Tools that treat your data as account-synced or as recoverable state survive a disable. Tools that hold everything in volatile UI do not.
 
-[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.1 on the Chrome Web Store as of June 2026) is built for exactly this resilience. Your tabs live in named workspaces saved to `chrome.storage.local`, and the extension takes 50 automatic snapshots per workspace at 5-minute intervals — a rolling 4+ hours of history. If Chrome disables and you re-enable the extension, your workspaces are still there; if you ever uninstall and reinstall, opt-in Chrome-native sync (your browser account, not our servers) restores them rather than starting empty.
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.3 on the Chrome Web Store as of June 2026) is built for exactly this resilience. Your tabs live in named workspaces saved to `chrome.storage.local`, and the extension takes 50 automatic snapshots per workspace at 5-minute intervals — a rolling 4+ hours of history. If Chrome disables and you re-enable the extension, your workspaces are still there; if you ever uninstall and reinstall, opt-in Chrome-native sync (your browser account, not our servers) restores them rather than starting empty.
 
 Because it ships as a published Manifest V3 store extension, it does not hit the sideload, MV2, or developer-mode disable reasons above in the first place. The Alt+K command palette searches open tabs, history, and bookmarks from the keyboard, so even after a rough morning of re-enabling things, finding a tab is a search instead of a hunt. Free core, local by default, no account required, zero telemetry.
 
@@ -5171,7 +6146,7 @@ If you keep more than ~25 sets of tabs, Chrome's Save group feature will lose th
 
 The direct workaround is to keep only your active, short-lived groups in Chrome's saved list and move anything long-term into a tool that has no 25-item cap.
 
-[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.1, CWS-live as of June 2026) uses named workspaces instead of Chrome's saved-group slots. Each workspace is an isolated set of tabs with its own name, and there is no 25-entry limit pushing the oldest one off the list. You can hold 25, 50, or 200 separate workspaces and none of them evict each other.
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.3, CWS-live as of June 2026) uses named workspaces instead of Chrome's saved-group slots. Each workspace is an isolated set of tabs with its own name, and there is no 25-entry limit pushing the oldest one off the list. You can hold 25, 50, or 200 separate workspaces and none of them evict each other.
 
 Workspaces persist to `chrome.storage.local` by design, not as a side effect of Chrome's session machinery. They also do not depend on the saved-group buffer at all, so the eviction behavior that deletes your oldest Chrome group does not apply to them.
 
@@ -5591,8 +6566,8 @@ Brave runs Chrome Web Store extensions, and most "best extensions" lists waste y
 
 | Extension | Version (Jun 2026) | Users | Gap it fills in Brave | Cost |
 |---|---|---|---|---|
-| SuperchargePerformance | v1.4.4 | ~4,700 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
-| SuperchargeNavigation | v1.3.1 | ~7,700 | Named workspaces, tab command bar, session snapshots | Free |
+| SuperchargePerformance | v1.4.5 | ~4,700 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
+| SuperchargeNavigation | v1.3.3 | ~7,700 | Named workspaces, tab command bar, session snapshots | Free |
 | Dark Reader | v4.9.125 | ~7M | Dark mode for website content, per-site | Free |
 | Bitwarden | v2026.5.1 | ~6M | Open-source password manager beyond the browser | Free / paid |
 | Session Buddy | v4.1.2 | ~1M | Session backup and crash recovery | Free |
@@ -5614,7 +6589,7 @@ What the native trio lacks is depth. The strip has no workspaces. Memory Saver h
 
 ## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
 
-Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.4, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
+Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.5, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
 
 - **Suspension timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier; the PRO tier, waitlist-only for now, unlocks custom values down to seconds.
 - **Multi-signal protection.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 25+ web apps are auto-protected out of the box: Figma, Notion, Slack, Google Docs, Discord, Zoom, WhatsApp Web, and others where a discard would drop a call or kill a queue.
@@ -5627,7 +6602,7 @@ If you want to compare the category first, [the tab suspender field test](/libra
 
 ## SuperchargeNavigation: Workspaces on Top of Brave's Vertical Tabs
 
-Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.1, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close actions. Around that core:
+Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.3, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close actions. Around that core:
 
 - **Named workspaces with full isolation.** Client work, research, and personal tabs live in separate named sets that survive restarts. Brave has nothing equivalent.
 - **Alt+K command bar** searching open tabs, bookmarks, and recent history from the keyboard.
@@ -5672,7 +6647,7 @@ Q: Does Brave have a built-in memory saver?
 A: Yes. As of June 2026, Brave's Memory Saver (Settings > System > Performance) deactivates tabs you are not using and reloads them when you return, with a manual site-exception list. What it lacks is control: no user-set suspension timer and no automatic protection for web apps like Figma or Slack. Tab suspender extensions add those layers on top of the same Chromium discard mechanism.
 
 Q: Do tab suspender extensions work on Brave?
-A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of June 2026, SuperchargePerformance (v1.4.4 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 25+ auto-protected web apps including Figma, Notion, Slack, and Google Docs.
+A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of June 2026, SuperchargePerformance (v1.4.5 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 25+ auto-protected web apps including Figma, Notion, Slack, and Google Docs.
 
 Q: Does Brave have native vertical tabs?
 A: Yes. Brave shipped native vertical tabs in version 1.52 back in May 2023, three years before this article's publication. Enable them under brave://settings/appearance or by right-clicking any tab. They support collapsing to icons, pinning, and tab groups. They are a relocated tab strip rather than an organization system: no named workspaces, no session snapshots, no command-bar search across tabs.
@@ -6032,7 +7007,7 @@ Press Alt+K on any page and a search overlay opens. Type, and it fuzzy-matches:
 
 Type a URL into the Alt+K palette and it offers to open that address; type anything else and it offers a web search. The palette also matches your bookmarks and history alongside open tabs, so one typed fragment surfaces all of them at once. The single difference from Arc: a typed URL or search opens in a fresh tab rather than navigating the current one inline the way Arc's merged bar did. Everything that made the Command Bar fast for moving between things you already had open is here.
 
-The extension is free, stores everything locally, and needs no account. As of June 2026 the Chrome Web Store version is 1.3.1.
+The extension is free, stores everything locally, and needs no account. As of June 2026 the Chrome Web Store version is 1.3.3.
 
 ## How to Set It Up
 
@@ -6080,7 +7055,7 @@ Q: What is Arc's Command Bar?
 A: Arc's Command Bar is a keyboard-launched overlay (Cmd+T) that searches open tabs, history, and bookmarks, switches between them, and runs actions like opening a new tab or jumping to a Space. It replaced the traditional address bar as the primary way to navigate Arc. As of June 2026 it still works in Arc, but Arc itself has been in maintenance mode since May 2025.
 
 Q: How do I get Arc's Command Bar in Chrome?
-A: Chrome has no built-in equivalent. The closest match is SuperchargeNavigation's Alt+K command palette (extension v1.3.1 on the Chrome Web Store as of June 2026, free, no account). Press Alt+K on any page to open a fuzzy-search overlay that finds and switches open tabs across all windows, reopens recently-closed tabs, and switches or creates workspaces.
+A: Chrome has no built-in equivalent. The closest match is SuperchargeNavigation's Alt+K command palette (extension v1.3.3 on the Chrome Web Store as of June 2026, free, no account). Press Alt+K on any page to open a fuzzy-search overlay that finds and switches open tabs across all windows, reopens recently-closed tabs, and switches or creates workspaces.
 
 Q: What keyboard shortcut opens the command palette in SuperchargeNavigation?
 A: Alt+K opens the command palette on any page. It works whether or not the sidebar search field is visible. Inside the palette, type to fuzzy-match tabs and workspaces, use arrow keys to move through results, and press Enter to switch. As of June 2026 this is the default and is not rebindable from the options page.
@@ -6429,7 +7404,7 @@ So "Need 3043MB" is not a claim about your machine. It is the size of the contig
 
 The manual version of Fix 1 is discarding tabs by hand every time you open a large file. SuperchargePerformance does it on a timer: idle tabs suspend with `chrome.tabs.discard()` after a set interval, releasing their memory back to the pool so Photopea's tab can claim the contiguous block it needs.
 
-Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of June 2026 the live version is v1.4.4.
+Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of June 2026 the live version is v1.4.5.
 
 If Photopea is the only heavy tab you ever have open, the extension will not change much — at that point the answer is Fix 3 (shrink the file) or Fix 6 (split it). Suspension helps when Photopea competes with a wall of other tabs for the same block.
 
@@ -7130,7 +8105,7 @@ Two rows there are real gaps. Sidekick's app sidebar — Gmail, Notion, Slack pi
 
 ## Rebuilding Sessions and Workspaces in Chrome
 
-For the core of Sidekick — Sessions and the workspace sidebar — SuperchargeNavigation is the closest single-extension match. It is v1.3.1 on the Chrome Web Store as of June 2026, free, with no account.
+For the core of Sidekick — Sessions and the workspace sidebar — SuperchargeNavigation is the closest single-extension match. It is v1.3.3 on the Chrome Web Store as of June 2026, free, with no account.
 
 **Workspaces replace the workspace sidebar.** Each workspace holds its own tabs, independently. Switching workspaces switches the whole context, not a filter view: you see only the active workspace's tabs, exactly the separation Sidekick's sidebar gave you between Work, Personal, and a project. Workspace state is stored locally. If you want it on a second machine, you opt into Chrome's own account sync and the data rides your Google account, not a SuperchargeBrowser server.
 
@@ -7174,7 +8149,7 @@ Q: Is the Sidekick browser coming back?
 A: No. As of June 2026, there is no sign of a Sidekick revival. The team moved to Perplexity's Comet browser after the May 2025 acquisition, the app stopped receiving updates, and the original meetsidekick.com domain now points to Comet. Comet is an AI-assistant browser, not a continuation of Sidekick's Sessions-and-workspace tab model.
 
 Q: What is the best Sidekick browser alternative that stays on Chrome?
-A: For Sidekick's core workflow — a workspace sidebar and saved Sessions — SuperchargeNavigation (v1.3.1, free, on the Chrome Web Store as of June 2026) is the closest single-extension match. It adds named workspaces, an Alt+K command bar, automatic session snapshots, and link peek, all stored locally with no account.
+A: For Sidekick's core workflow — a workspace sidebar and saved Sessions — SuperchargeNavigation (v1.3.3, free, on the Chrome Web Store as of June 2026) is the closest single-extension match. It adds named workspaces, an Alt+K command bar, automatic session snapshots, and link peek, all stored locally with no account.
 
 Q: How do I get Sidekick's Sessions feature in Chrome?
 A: Sidekick Sessions saved a named set of tabs you could reopen later. In Chrome, SuperchargeNavigation replaces this two ways: named workspaces hold their own isolated tabs, and an automatic snapshot system saves your tab state every 5 minutes (up to 50 rolling snapshots, roughly the last four hours) so you can rewind to an earlier state. As of June 2026 this works on Chrome 149.
@@ -7455,7 +8430,7 @@ The fastest way to rebuild your set: open Arc's extensions page (`arc://extensio
 
 This is where the migration stops being a copy job. Chrome has no native Space. Tab Groups look similar but share one tab strip: every group's tabs stay visible at once, so there is no context isolation and no key to flip from Work mode to Personal mode.
 
-To get the actual Arc Spaces behavior back (switch context and the previous space's tabs vanish from view), you add named workspaces through an extension. [SuperchargeNavigation](/library/arc-spaces-chrome-extension/) (v1.3.1, free, no account) is the direct equivalent. Create one workspace per Arc Space you had, open the relevant tabs in each, and switching between them swaps the entire tab context the way Arc did. Your imported bookmark folders from Step 2 become the seed list: open a folder's links inside its matching workspace and you have reconstructed that Space.
+To get the actual Arc Spaces behavior back (switch context and the previous space's tabs vanish from view), you add named workspaces through an extension. [SuperchargeNavigation](/library/arc-spaces-chrome-extension/) (v1.3.3, free, no account) is the direct equivalent. Create one workspace per Arc Space you had, open the relevant tabs in each, and switching between them swaps the entire tab context the way Arc did. Your imported bookmark folders from Step 2 become the seed list: open a folder's links inside its matching workspace and you have reconstructed that Space.
 
 Each workspace holds its tabs independently. Switching hides the previous workspace's tabs entirely rather than filtering a shared list. Sessions persist across Chrome restarts, and a snapshot of your layout saves automatically every 5 minutes (up to 50 rolling saves, roughly the last four hours), so an accidental close is recoverable from a time-travel slider.
 
@@ -7501,7 +8476,7 @@ Leaving Arc usually comes down to one factor: the extension library. If that is 
 
 #### FAQ
 Q: How do I move my Arc bookmarks and spaces to Chrome?
-A: As of June 2026, export from Arc with File menu, Export Bookmarks (it writes a standard HTML file), then import it in Chrome via Bookmarks, Import Bookmarks and Settings, From HTML file. Your Arc Spaces flatten into ordinary bookmark folders during this transfer — Chrome has no native concept of a Space. To rebuild switchable, isolated spaces, add named workspaces through an extension like SuperchargeNavigation (v1.3.1, free).
+A: As of June 2026, export from Arc with File menu, Export Bookmarks (it writes a standard HTML file), then import it in Chrome via Bookmarks, Import Bookmarks and Settings, From HTML file. Your Arc Spaces flatten into ordinary bookmark folders during this transfer — Chrome has no native concept of a Space. To rebuild switchable, isolated spaces, add named workspaces through an extension like SuperchargeNavigation (v1.3.3, free).
 
 Q: Is Arc Browser shutting down in 2026?
 A: As of June 2026, Arc is in maintenance mode, not shut down. The Browser Company stopped active feature development in May 2025 and Atlassian closed its $610M acquisition on October 21, 2025. Arc still downloads at arc.net and gets Chromium security patches — the latest macOS build was v1.147.1 (May 22, 2026) — but no new features are planned and no sunset date has been announced. The team builds Dia, an AI-first browser, now.
@@ -7902,7 +8877,7 @@ Chrome 149 still has no equivalent. This is not a gap that Chrome's roadmap is a
 
 ## How SuperchargeNavigation Replicates Arc Spaces
 
-SuperchargeNavigation (v1.3.1, verified live on CWS as of June 2026) provides the workspace layer that Chrome does not. The match to Arc Spaces is not incidental: the extension's workspace model was designed for exactly this user.
+SuperchargeNavigation (v1.3.3, verified live on CWS as of June 2026) provides the workspace layer that Chrome does not. The match to Arc Spaces is not incidental: the extension's workspace model was designed for exactly this user.
 
 **Named, isolated workspaces.** Each workspace in Nav holds its own tab set. When you switch from Work to Personal, the Work tabs leave the view entirely — they remain running in memory, but they are not visible and do not compete for attention. This is the Arc Spaces behavior at the functional level. You can have as many workspaces as you need; there is no paid tier or limit on workspace count.
 
@@ -7956,23 +8931,23 @@ The path forward from Arc Spaces depends on what you actually needed from them:
 
 Arc entered maintenance mode May 2025 (12 months before this article's May 2026 publication). The team has moved to Dia. Waiting for Arc to return is not the practical path. The workflow is rebuildable in Chrome today, with tools that are actively maintained.
 
-SuperchargeNavigation v1.3.1 is free, zero telemetry, no account required. The workspace separation Arc users built their workflows around is available today.
+SuperchargeNavigation v1.3.3 is free, zero telemetry, no account required. The workspace separation Arc users built their workflows around is available today.
 
 #### FAQ
 Q: Does Chrome have something like Arc Spaces?
-A: As of June 2026, Chrome has no native equivalent to Arc Spaces. Chrome's Tab Groups add labels and color-coding but share the same tab strip — there is no context isolation, no per-Space tab hiding, and no session switching. Named workspaces via an extension like SuperchargeNavigation (v1.3.1, free) replicate the core Arc Spaces behavior: each workspace holds its own tabs independently, switching is instant, and sessions persist across browser restarts.
+A: As of June 2026, Chrome has no native equivalent to Arc Spaces. Chrome's Tab Groups add labels and color-coding but share the same tab strip — there is no context isolation, no per-Space tab hiding, and no session switching. Named workspaces via an extension like SuperchargeNavigation (v1.3.3, free) replicate the core Arc Spaces behavior: each workspace holds its own tabs independently, switching is instant, and sessions persist across browser restarts.
 
 Q: What happened to Arc Browser and Arc Spaces?
 A: As of June 2026, Arc Browser is in maintenance mode. The Browser Company stopped active development in May 2025 and pivoted to Dia, an AI-first product. Atlassian acquired The Browser Company in September 2025 for $610M. Arc still runs but receives no new features. Arc Spaces — the named, isolated tab contexts Arc was known for — are no longer receiving updates, and the broader Arc ecosystem has wound down.
 
 Q: What is the closest Chrome extension to Arc Spaces?
-A: SuperchargeNavigation (v1.3.1, free, no account required) is the closest Chrome equivalent to Arc Spaces as of June 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Alt+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
+A: SuperchargeNavigation (v1.3.3, free, no account required) is the closest Chrome equivalent to Arc Spaces as of June 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Alt+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
 
 Q: Can I use Chrome Profiles instead of Arc Spaces?
 A: Chrome Profiles provide stronger isolation — separate cookies, passwords, and extensions per profile — but they are not a practical Spaces replacement. Each profile is a separate Chrome window with its own session state. There is no keyboard shortcut to switch between profiles, no unified tab search across them, and no session snapshots. Profiles are the right tool for separate Google accounts or full identity separation. For fast workspace switching without the overhead, use named workspaces.
 
 Q: Does SuperchargeNavigation sync workspaces across devices like Arc Spaces did?
-A: Yes, with opt-in. As of June 2026, SuperchargeNavigation v1.3.1 includes cross-device workspace sync via your browser's own account sync (Google account on Chrome, Microsoft account on Edge). Sync is off by default — enable it in Settings after signing into your browser on both devices. Sync runs through the browser's own infrastructure, not SuperchargeBrowser servers, so we cannot read your data. With sync off, workspace data stays local. Either way: zero telemetry.
+A: Yes, with opt-in. As of June 2026, SuperchargeNavigation v1.3.3 includes cross-device workspace sync via your browser's own account sync (Google account on Chrome, Microsoft account on Edge). Sync is off by default — enable it in Settings after signing into your browser on both devices. Sync runs through the browser's own infrastructure, not SuperchargeBrowser servers, so we cannot read your data. With sync off, workspace data stays local. Either way: zero telemetry.
 
 ---
 
@@ -8184,7 +9159,7 @@ This is what you came for. Every claim verified against current Chrome Web Store
 
 | | uBlock Origin (full) | uBlock Origin Lite | AdGuard | Ghostery | SuperchargePerformance |
 |---|---|---|---|---|---|
-| Version (Jun 2026) | v1.71.0 | v2026.529.1448 | v5.4.2.0 | v10.5.45 | v1.4.4 |
+| Version (Jun 2026) | v1.71.0 | v2026.529.1448 | v5.4.2.0 | v10.5.45 | v1.4.5 |
 | **Runs on Chrome 149?** | **No — MV2, removed** | Yes | Yes | Yes | Yes |
 | CWS rating | n/a on Chrome | 4.5 stars | 4.7 stars | 4.7 stars | Featured badge |
 | Users | Firefox only now | ~16M (Chrome) | ~17M | ~2M | ~4,700 |
@@ -8236,7 +9211,7 @@ Smaller user base (~2M) than the others, but a loyal one. If your primary motiva
 
 ## SuperchargePerformance — When Ads Are Only Half the Problem
 
-v1.4.4. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
+v1.4.5. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
 
 **Layer 1: Ad and tracker blocking.** 186,645 rules compiled from 22 curated sources. Three tiers — 100K ad and tracker domains on the free tier, 65K privacy and telemetry domains on Medium, 22K malware, phishing, and fraud domains on Pro. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
 
@@ -8282,7 +9257,7 @@ If you searched for "Loon" expecting a YouTube ad blocker: [Loon](https://github
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
-A: As of June 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.71.0) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.4) covers all four — plus tab suspension and a RAM dashboard — in a single MV3 extension with 186K+ rules from 22 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
+A: As of June 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.71.0) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.5) covers all four — plus tab suspension and a RAM dashboard — in a single MV3 extension with 186K+ rules from 22 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
 
 Q: What is the best ad blocker for Chrome in 2026?
 A: As of June 2026, the major Chrome ad blockers are all Manifest V3 — AdGuard, Ghostery, Adblock Plus, and uBlock Origin Lite. Full uBlock Origin (v1.71.0) still has the deepest filter coverage of any blocker, but it is MV2 and no longer runs on Chrome, only on Firefox. On Chrome, uBlock Origin Lite is the zero-overhead option, AdGuard adds DNS-level protection in its paid apps, and SuperchargePerformance combines ad blocking (186K+ DNR rules) with tab suspension in a single extension.
@@ -8353,7 +9328,7 @@ The last three are named specifically as what to avoid, or use only on 8GB+ hard
 
 ## SuperchargePerformance: Tab Suspension + Ad Blocking Combined
 
-**CWS version: v1.4.4 (June 2026). We built this extension.**
+**CWS version: v1.4.5 (June 2026). We built this extension.**
 
 On a Chromebook, the two biggest RAM drains are idle tab renderers and ad iframes. SuperchargePerformance addresses both.
 
@@ -8438,10 +9413,10 @@ If you use Google Docs, Gmail, and YouTube regularly: SuperchargePerformance aut
 
 #### FAQ
 Q: What Chrome extensions are safe to install on a 4GB Chromebook?
-A: As of June 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.4) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
+A: As of June 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.5) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
 
 Q: Does SuperchargePerformance work on ChromeOS?
-A: As of June 2026, yes. SuperchargePerformance (v1.4.4) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
+A: As of June 2026, yes. SuperchargePerformance (v1.4.5) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
 
 Q: How many Chrome extensions should I have on a Chromebook?
 A: As of June 2026, 5-8 well-built extensions usually cause no noticeable Chrome overhead on Chromebook. Beyond 10, audit each one individually. On a 4GB Chromebook, each background-active extension adds 5-30 MB of memory overhead and some CPU. The practical limit depends on what each extension does — a declarative-only extension like uBlock Origin Lite costs near zero; a tab manager that syncs cloud state costs meaningfully more.
@@ -8704,7 +9679,7 @@ Where it fits: archiving research sessions and named project states for later re
 
 ## SuperchargeNavigation: Workspaces, Command Bar, Peek Preview
 
-**Version:** v1.3.1 | **CWS Status:** Live (Chrome + Edge) | **Rating:** 4.8/5 (4 ratings) | **Free, no account**
+**Version:** v1.3.3 | **CWS Status:** Live (Chrome + Edge) | **Rating:** 4.8/5 (4 ratings) | **Free, no account**
 
 SuperchargeNavigation covers the active organization and search-first categories in one extension. The entry point is a vertical tab sidebar that shows full tab titles, group structures, and pinned tabs without the truncation of the native tab strip. The three features that earn its place here:
 
@@ -8724,7 +9699,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 
 ## Full Comparison Table
 
-| Feature | OneTab v2.14 | Tab Wrangler v8.3.0 | Workona v3.1.33 | Session Buddy v4.1.2 | SuperchargeNavigation v1.3.1 | Chrome Native |
+| Feature | OneTab v2.14 | Tab Wrangler v8.3.0 | Workona v3.1.33 | Session Buddy v4.1.2 | SuperchargeNavigation v1.3.3 | Chrome Native |
 |---------|-------------|---------------------|-----------------|---------------|------------------------------|--------------|
 | Named workspaces | No | No | Yes | No | Yes (unlimited) | No |
 | Auto-close inactive tabs | No | Yes | No | No | No | No |
@@ -8739,7 +9714,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 | Cross-device sync | No | No | Yes (cloud) | No | Opt-in (Chrome/Edge sync) | Via Google account |
 | Account required | No | No | Yes | No | No | No |
 | Data storage | Local | Local | Cloud | Local | Local (default) | Local / Google |
-| Last updated | March 2026 | April 2026 | January 2025 | April 2026 | v1.3.1 2026 | Chrome 149 |
+| Last updated | March 2026 | April 2026 | January 2025 | April 2026 | v1.3.3 2026 | Chrome 149 |
 | Price | Free | Free | Free + paid plans | Free | Free | Built-in |
 
 ## How to Choose
@@ -8759,7 +9734,7 @@ Chrome's built-in Memory Saver suspends tabs automatically, but it has no worksp
 
 #### FAQ
 Q: What is the best Chrome tab manager extension in 2026?
-A: As of June 2026, the right answer depends on which tab problem you have. For bulk tab collapse and immediate RAM savings, OneTab (v2.14, 2M users) is the fastest tool. For named workspaces with team-grade cloud sync, Workona (v3.1.33, 200,000+ users) is the most-installed paid option. For local-first named workspaces with session recovery and keyboard search, SuperchargeNavigation (v1.3.1, free) covers those gaps in a single extension with no account required. For auto-closing old tabs on a timer, Tab Wrangler (v8.3.0) handles that specifically. Chrome 149's built-in tab groups handle basic organization for users managing under 15 tabs.
+A: As of June 2026, the right answer depends on which tab problem you have. For bulk tab collapse and immediate RAM savings, OneTab (v2.14, 2M users) is the fastest tool. For named workspaces with team-grade cloud sync, Workona (v3.1.33, 200,000+ users) is the most-installed paid option. For local-first named workspaces with session recovery and keyboard search, SuperchargeNavigation (v1.3.3, free) covers those gaps in a single extension with no account required. For auto-closing old tabs on a timer, Tab Wrangler (v8.3.0) handles that specifically. Chrome 149's built-in tab groups handle basic organization for users managing under 15 tabs.
 
 Q: Does Chrome have a built-in tab manager in 2026?
 A: As of June 2026, Chrome 149 includes native tab groups (Chrome 89), vertical tabs via chrome://flags (Chrome 146), and a keyboard tab-search dropdown (Ctrl+Shift+A, Chrome 89). What it does not include: named workspaces, session recovery that survives browser restarts, search across bookmarks/history alongside open tabs, or automatic tab suspension. Extensions are still required for those features.
@@ -8917,7 +9892,7 @@ Description: Chrome Memory Saver waits for RAM pressure. These 6 extensions susp
 
 > **Key takeaways**
 > - Chrome Memory Saver suspends tabs **only after RAM pressure builds**. Timer-based extensions act proactively after idle time, regardless of system state.
-> - **SuperchargePerformance** (v1.4.4, June 2026) adds ad blocking and a RAM dashboard to tab suspension. **Tab Wrangler** (v8.3.0, April 30 2026) auto-closes and logs old tabs.
+> - **SuperchargePerformance** (v1.4.5, June 2026) adds ad blocking and a RAM dashboard to tab suspension. **Tab Wrangler** (v8.3.0, April 30 2026) auto-closes and logs old tabs.
 > - **Auto Tab Discard** works but hasn't updated on CWS since February 2024. The Great Suspender forks (Reloaded and Marvellous) are volunteer-maintained and both live on CWS.
 
 Six open-source or free tab suspenders exist for Chrome in 2026. One hasn't shipped a CWS update in over two years. One was banned for malware and survived as two forks. The right pick depends on what you're actually after: proactive suspension, auto-close with a log, a memory dashboard, or ad blocking bundled in. This page covers the verified current state of each.
@@ -8964,7 +9939,7 @@ Before the extension reviews, these are the criteria that actually matter:
 
 ### SuperchargePerformance
 
-**v1.4.4 · ~4,700 weekly users · 4.5/5 (38 ratings) · Updated June 2026 · MV3**
+**v1.4.5 · ~4,700 weekly users · 4.5/5 (38 ratings) · Updated June 2026 · MV3**
 
 [Chrome Web Store](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 
@@ -9102,7 +10077,7 @@ A tab suspender also can't fix a Chrome process that has leaked memory through a
 
 #### FAQ
 Q: What is the best tab suspender extension for Chrome in 2026?
-A: As of June 2026, the most actively maintained options are SuperchargePerformance (v1.4.4, updated June 2026), Tab Wrangler (v8.3.0, updated April 30 2026), and Great Suspender Reloaded (updated May 1 2026). SuperchargePerformance combines tab suspension with ad blocking and a RAM dashboard. Tab Wrangler auto-closes old tabs and logs them. Great Suspender Reloaded is a fork of the original suspender with a custom suspension page.
+A: As of June 2026, the most actively maintained options are SuperchargePerformance (v1.4.5, updated June 2026), Tab Wrangler (v8.3.0, updated April 30 2026), and Great Suspender Reloaded (updated May 1 2026). SuperchargePerformance combines tab suspension with ad blocking and a RAM dashboard. Tab Wrangler auto-closes old tabs and logs them. Great Suspender Reloaded is a fork of the original suspender with a custom suspension page.
 
 Q: Is Auto Tab Discard still maintained in 2026?
 A: Auto Tab Discard (v0.6.8.2) is still on the Chrome Web Store as of June 2026 with 100,000 users. Its last CWS update was February 17, 2024 — over two years ago. It works on current Chrome but has not had a public update since then.
@@ -9210,7 +10185,7 @@ The bypass logic runs entirely in your browser — no playback metadata leaves t
 
 | | TwitchAdblock | TTV LOL Pro | Alternate Player | SuperchargePerformance |
 |---|---|---|---|---|
-| Version (Jun 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.4 |
+| Version (Jun 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.5 |
 | CWS users | 100K+ | 200K+ | 80K+ | — |
 | MV3 | Yes | Yes | Yes | Yes |
 | Bypass method | Worker hijack + M3U8 sub | Proxy + clean token | Embed player swap | Worker hijack + M3U8 sub |
@@ -9457,11 +10432,11 @@ YouTube coverage is a side effect of AdGuard's general blocking stack, not its c
 | uBlock Origin | v1.71.0 | 15M | No (MV2) | Scriptlets (reactive) | 1-4 weeks (Chrome) | Full | Yes |
 | uBlock Origin Lite | v2026.529.1448 | 17M | Yes | None — cannot block YT ads | N/A | Good | Yes |
 | AdGuard | v5.4.2.0 | 17M | Yes | Mixed (inconsistent) | 24-48h | Full | Free/Paid |
-| SuperchargePerformance | v1.4.4 | ~4.7K | Yes | DNR + API proxy (AdBlock for YT base) + fallback + cosmetic | 24-48h | 186K+ DNR rules | Yes |
+| SuperchargePerformance | v1.4.5 | ~4.7K | Yes | DNR + API proxy (AdBlock for YT base) + fallback + cosmetic | 24-48h | 186K+ DNR rules | Yes |
 
 ## SuperchargePerformance: The Multi-Utility Case
 
-**v1.4.4 · verified June 2026**
+**v1.4.5 · verified June 2026**
 
 SuperchargePerformance's YouTube blocking runs four layers in sequence, three of which are proprietary:
 
@@ -9537,7 +10512,7 @@ If you arrived here searching for "Loon" as a YouTube ad blocker: [Loon](https:/
 
 #### FAQ
 Q: What is the best YouTube ad blocker for Chrome in 2026?
-A: As of June 2026, the most reliable YouTube-specific ad blockers on Chrome are AdBlock for YouTube (v7.2.1, 11M users) and SuperchargePerformance (v1.4.4), which shares AdBlock for YouTube's upstream API-proxy engine but layers three additional proprietary blocking mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. AdBlock for YouTube focuses entirely on the API-proxy approach; SuperchargePerformance adds those three extra layers. uBlock Origin (v1.71.0) also blocks YouTube ads via scriptlets, but has had multi-week gaps during anti-adblock waves. uBlock Origin Lite cannot block YouTube ads at all — its declarative rule set has no mechanism to intercept player data. AdGuard (v5.4.2.0) is inconsistent on YouTube specifically.
+A: As of June 2026, the most reliable YouTube-specific ad blockers on Chrome are AdBlock for YouTube (v7.2.1, 11M users) and SuperchargePerformance (v1.4.5), which shares AdBlock for YouTube's upstream API-proxy engine but layers three additional proprietary blocking mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker and interstitial hider for ads the proxy misses, and cosmetic CSS targeting YouTube's feed and masthead. AdBlock for YouTube focuses entirely on the API-proxy approach; SuperchargePerformance adds those three extra layers. uBlock Origin (v1.71.0) also blocks YouTube ads via scriptlets, but has had multi-week gaps during anti-adblock waves. uBlock Origin Lite cannot block YouTube ads at all — its declarative rule set has no mechanism to intercept player data. AdGuard (v5.4.2.0) is inconsistent on YouTube specifically.
 
 Q: Why did my YouTube ad blocker stop working in 2026?
 A: As of June 2026, YouTube has pushed multiple anti-adblock updates since 2023, the most significant being the June 2025 wave — about a year before this update. Each update changes how ad metadata is packaged in the player's API response, breaking extensions that rely on static scriptlets. Extensions need to update their interception code within 24-48 hours or ads return. Since June 2025, YouTube's anti-adblock pressure has shifted from DOM-level scriptlet-busting waves to limited Server-Side Ad Insertion (SSAI) testing — the next structural threat rather than another wave. If SSAI is fully deployed, ads would be stitched into the video stream before delivery, which no browser extension can intercept.
@@ -10807,7 +11782,7 @@ Neither of these is a session manager. They are convenience features. A session 
 | Cloud sync | No | No | No | No (Sync ≠ sessions) |
 | Account required | No | No | No | Google account |
 | Free | Yes | Yes | Yes | Built-in |
-| Current version | 4.1.2 (Apr 2026) | 7.3.0 (Feb 2026) | v1.3.1 (2026) | Chrome 149 |
+| Current version | 4.1.2 (Apr 2026) | 7.3.0 (Feb 2026) | v1.3.3 (2026) | Chrome 149 |
 
 ## Session Buddy: The Reliable Standard
 
@@ -14917,7 +15892,7 @@ Chrome's `chrome.tabs.discard()` API works differently. The tab's renderer proce
 | Feature | Marvellous Suspender | SuperchargePerformance |
 |---------|---------------------|----------------------|
 | Suspension method | Custom suspension page | `chrome.tabs.discard()` (invisible) |
-| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.4, CWS-live June 2026) |
+| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.5, CWS-live June 2026) |
 | RAM freed per suspended tab | 90-95% | 90-95% |
 | Back button affected | Possible (history entry) | No |
 | Suspension screen | Yes | None |
@@ -17115,7 +18090,7 @@ This timing matters. The script doing the removal has to run before the player d
 
 Pre-rolls are handled at page load. Mid-rolls are a second problem: YouTube fetches additional ad batches through network calls as you watch. A complete fix also monitors this ongoing traffic and strips ad data from each subsequent response before the player processes it.
 
-SuperchargePerformance (v1.4.4) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
+SuperchargePerformance (v1.4.5) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
 
 ## How SuperchargePerformance Does It
 
@@ -17190,7 +18165,7 @@ Q: Does uBlock Origin block YouTube ads on Chrome in 2026?
 A: As of June 2026, uBlock Origin (v1.71.0) does block YouTube ads on Chrome using scriptlets — small scripts injected into the page to strip ad data from YouTube's API responses. It works most of the time. The complication: YouTube actively ships anti-adblock updates that temporarily defeat scriptlet-based blockers, and there have been windows of days or weeks where uBlock's scripts fell behind YouTube's changes. Firefox users with uBlock Origin have an additional backup layer that makes it more consistent. On Chrome, the scriptlet approach alone is the mechanism — effective, but fragile by nature.
 
 Q: What is the most reliable way to block YouTube ads on Chrome in 2026?
-A: As of June 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.4) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
+A: As of June 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.5) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
 
 Q: Will YouTube's anti-adblock detection catch this fix?
 A: As of June 2026, SuperchargePerformance bypasses YouTube's anti-adblock detection by removing ad data before the player initializes — the player sees a clean configuration with no ad slots, so the detection logic has nothing to find. A click-skip fallback handles rare cases where a placement slips through.
@@ -18921,7 +19896,7 @@ Named workspaces — where each project lives in its own isolated tab context �
 
 SuperchargeNavigation adds this to Chrome's side panel. Each workspace stores its tabs independently. Switching workspaces swaps the visible context completely, the same way Arc's Spaces did before Arc entered maintenance mode in May 2025.
 
-A few specifics verified against the v1.3.1 source (live on Chrome Web Store as of June 2026):
+A few specifics verified against the v1.3.3 source (live on Chrome Web Store as of June 2026):
 
 - **50 auto-snapshots**, stored locally, at up to 5-minute intervals via `chrome.alarms`. The ring buffer discards the oldest when full. No manual save step.
 - **Alt+K command bar** searches across all open tabs in all open windows — fuzzy match, instant results. Not just the active workspace.
