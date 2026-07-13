@@ -19,7 +19,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
-> - Website with 175 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 180 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -165,7 +165,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 175 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 180 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -252,12 +252,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 ## Library — Article Index
 
-175 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+180 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.superchargebrowser.com/library/<slug>/index.md).
 
 <details>
-<summary>View all 175 articles</summary>
+<summary>View all 180 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -311,7 +311,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Which Browser Uses the LEAST RAM in 2026? Real Data Compared](https://www.superchargebrowser.com/library/which-browser-uses-least-ram-2026/)
 - [Which Chrome Ad Blocker Blocks YouTube? 5 TESTED (2026)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/)
 - [Workona vs SuperchargeNavigation: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/vs-workona/)
-- [YouTube Ad Blocker Stopped Working? 5 TESTED Options (2026)](https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/)
+- [YouTube Ad Blocker Not Working? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/)
 - [YouTube Premium vs Ad Blockers in 2026: Which Costs Less?](https://www.superchargebrowser.com/library/youtube-premium-vs-ad-blockers-2026/)
 - [Zen Browser Chrome Extension Support? No — Here's Why (2026)](https://www.superchargebrowser.com/library/zen-browser-vs-chrome-extensions/)
 
@@ -330,6 +330,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Chrome Stuttering? FIX Scroll Lag and Mouse Jank (2026)](https://www.superchargebrowser.com/library/fix-chrome-stuttering-lag-2026/)
 - [Chrome Tabs Disappeared After Crash? Restore Them NOW (2026)](https://www.superchargebrowser.com/library/chrome-crashed-restore-tabs/)
 - [Chrome Using Too Much RAM? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-high-memory-usage/)
+- [Chrome Vertical Tabs Not Showing? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-not-showing-fix/)
 - [Cookie Popups Won't Stop in Chrome? 4 FIXES (2026)](https://www.superchargebrowser.com/library/stop-cookie-consent-popups-chrome-2026/)
 - [Error STATUS_BREAKPOINT en Chrome: 7 Soluciones (2026)](https://www.superchargebrowser.com/library/codigo-error-status-breakpoint-chrome/)
 - [FIX ChatGPT Network Error in Chrome: 3 Fixes (2026)](https://www.superchargebrowser.com/library/fix-chatgpt-network-error-chrome-background/)
@@ -365,6 +366,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [STOP Chrome Overheating Your MacBook: 5 Fixes (2026)](https://www.superchargebrowser.com/library/stop-chrome-overheating-macbook/)
 - [STOP Chrome Overheating Your Windows Laptop: 5 Fixes (2026)](https://www.superchargebrowser.com/library/stop-chrome-overheating-windows/)
 - [STOP Chrome Reloading Tabs When You Switch Back (2026 Fix)](https://www.superchargebrowser.com/library/fix-chrome-tabs-reloading-when-switching/)
+- [SuperchargeAudio No Difference? 5 Real Fixes (2026)](https://www.superchargebrowser.com/library/superchargeaudio-no-difference-fixes/)
 - [WebGL Context Lost in Chrome? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-webgl-context-lost/)
 - [Which Extension Is Slowing Chrome? Find It in 3 Steps (2026)](https://www.superchargebrowser.com/library/which-extension-slowing-chrome-task-manager-2026/)
 - [Why Does Gemini Keep Crashing on Chrome? Fix Guide (2026)](https://www.superchargebrowser.com/library/fix-gemini-crashing-chrome/)
@@ -378,27 +380,30 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Arc Browser Status 2026: DISCONTINUED, Live, Atlassian Pivot](https://www.superchargebrowser.com/library/arc-browser-status-2026/)
 - [Arc Command Bar in Chrome: How to Replicate It (2026)](https://www.superchargebrowser.com/library/arc-command-bar-chrome/)
 - [Arc Shut Down? Replicate Its 6 Best Features in Chrome (2026)](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/)
+- [Atlas Browser Shutting Down? 3 Steps to MIGRATE (2026)](https://www.superchargebrowser.com/library/atlas-browser-shutdown-migrate-2026/)
 - [Best Extensions for Brave Browser? 6 TESTED Picks (2026)](https://www.superchargebrowser.com/library/best-extensions-brave-browser-2026/)
 - [Boost Chrome Volume Past 100% (2026): How It Works](https://www.superchargebrowser.com/library/boost-chrome-volume-past-100/)
 - [Chrome 147 Release Notes: EVERY Change for Tab Users (2026)](https://www.superchargebrowser.com/library/chrome-147-whats-new-tab-users/)
 - [Chrome 148 RELEASED: What Changed for Tab Users (2026)](https://www.superchargebrowser.com/library/chrome-148-whats-new-tab-users/)
-- [Chrome 149 Release Date + What Lands for Tab Users (2026)](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/)
+- [Chrome 149 Release Date + Chrome 150–153 Calendar (2026)](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/)
 - [Chrome 150 Gemini Spark: What It Means for Tab Users](https://www.superchargebrowser.com/library/chrome-150-gemini-spark-for-tab-users/)
 - [Chrome 150 Is the Last Release for macOS Monterey (2026)](https://www.superchargebrowser.com/library/chrome-150-macos-monterey-end-support-2026/)
 - [Chrome 151 Has Vertical Tabs but Still No Workspaces (2026)](https://www.superchargebrowser.com/library/chrome-151-still-no-workspaces/)
 - [Chrome 152: What Changes for Tab and Memory Users? (2026)](https://www.superchargebrowser.com/library/chrome-152-whats-new-tab-memory-users/)
 - [Chrome Focus Mode: One Shortcut Hides All Off-Task Tabs (2026)](https://www.superchargebrowser.com/library/focus-mode-chrome/)
 - [Chrome Keyboard Shortcuts: 70+ That Actually Work (2026)](https://www.superchargebrowser.com/library/chrome-keyboard-shortcuts-guide/)
+- [Chrome Manifest V2 End of Life: What Dies in August 2026](https://www.superchargebrowser.com/library/chrome-manifest-v2-vs-v3-extensions/)
 - [Chrome Privacy Extensions Ranked by Data Collection (2026)](https://www.superchargebrowser.com/library/privacy-extensions-that-collect-data/)
 - [Chrome RAM Per Tab in 2026? We Measured (Real Data)](https://www.superchargebrowser.com/library/chrome-ram-usage-per-tab-2026/)
 - [Chrome Side Panel: Full Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-side-panel-guide/)
 - [Chrome Tab Groups: Complete Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-complete-guide/)
 - [Chrome Tab Scrolling Gone? 5 Ways That Still Work (2026)](https://www.superchargebrowser.com/library/restore-tab-scrolling-chrome/)
 - [Chrome Tab Search Shortcut: TESTED Guide (2026)](https://www.superchargebrowser.com/library/chrome-tab-search-shortcut-guide/)
-- [Chrome Vertical Tabs Missing Workspaces? 7 TESTED Extensions (2026)](https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/)
+- [Chrome Vertical Tabs: 6 Extensions Power Users TRUST (2026)](https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/)
 - [Chrome's 2-Week Release Cycle (Sept 2026): What Changes](https://www.superchargebrowser.com/library/chrome-two-week-release-cycle-2026-explained/)
+- [Chrome's New Privacy Rules: 3 Things to CHECK (2026)](https://www.superchargebrowser.com/library/chrome-web-store-privacy-rules-august-2026/)
 - [Does Chrome Have Workspaces? Not Yet — Here's What Works (2026)](https://www.superchargebrowser.com/library/chrome-workspaces-explained/)
-- [Does uBlock Origin Still Work on Chrome in 2026? Yes, Here's How](https://www.superchargebrowser.com/library/does-ublock-origin-still-work-chrome-2026/)
+- [Does uBlock Origin Still Work on Chrome? No (2026 Status)](https://www.superchargebrowser.com/library/does-ublock-origin-still-work-chrome-2026/)
 - [Google I/O 2026 Chrome Session: What to WATCH (May 19)](https://www.superchargebrowser.com/library/google-io-2026-chrome-preview/)
 - [How Chrome Manages Memory in 2026: Architecture and Leaks](https://www.superchargebrowser.com/library/chrome-memory-management-deep-dive/)
 - [How to Add Captions to a Screen Recording in Chrome (2026)](https://www.superchargebrowser.com/library/add-captions-screen-recording-chrome-2026/)
@@ -417,8 +422,8 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Is That Chrome Extension Safe? 7 Checks Before Install (2026)](https://www.superchargebrowser.com/library/chrome-extension-security-audit-checklist-2026/)
 - [Is uBlock Origin Removed from Chrome? 2026 MV3 Truth](https://www.superchargebrowser.com/library/is-ublock-origin-removed-chrome-2026/)
 - [Loon Chrome Extension: Status, Safety & What It Does (2026)](https://www.superchargebrowser.com/library/loon-chrome-extension-explained/)
-- [Manifest V2 vs V3 Chrome Extensions: What Changed (2026)](https://www.superchargebrowser.com/library/chrome-manifest-v2-vs-v3-extensions/)
 - [Missing Arc Spaces in Chrome? Get Them Back in 5 Minutes](https://www.superchargebrowser.com/library/arc-spaces-chrome-extension/)
+- [OpenAI's New ChatGPT Extension: 3 Things to Know (2026)](https://www.superchargebrowser.com/library/openai-chatgpt-chrome-extension-2026/)
 - [Record a Chrome Tab With NO Screen Picker (2026)](https://www.superchargebrowser.com/library/record-chrome-tab-without-screen-picker/)
 - [Record a Microsoft Teams Meeting From Chrome (No Admin)](https://www.superchargebrowser.com/library/record-teams-meeting-chrome-tab/)
 - [Record a Zoom Meeting as a Participant (Chrome, 2026)](https://www.superchargebrowser.com/library/record-zoom-meeting-chrome-tab-2026/)
