@@ -6,7 +6,7 @@ SuperchargeBrowser extensions are proprietary software. The source code is not o
 
 ### Report Bugs
 Found something broken? Email [support@superchargebrowser.com](mailto:support@superchargebrowser.com) with:
-- Which extension (SuperchargePerformance or SuperchargeNavigation)
+- Which extension (SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, or SuperchargeCapture)
 - Chrome version (`chrome://version`)
 - Steps to reproduce
 - Expected vs actual behavior
@@ -21,6 +21,8 @@ Have an idea for a feature? We'd love to hear it:
 If SuperchargeBrowser has improved your browsing experience, a Chrome Web Store review helps other users find us:
 - [Review SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 - [Review SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl)
+- [Review SuperchargeAudio](https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe)
+- [Review SuperchargeCapture](https://chromewebstore.google.com/detail/gebkchfkcnjdflkfdimabihllibgcdhp)
 
 ### Report Security Issues
 See [SECURITY.md](./SECURITY.md) for responsible disclosure guidelines.

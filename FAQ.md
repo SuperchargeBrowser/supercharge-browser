@@ -3,13 +3,13 @@
 ## General
 
 ### What is SuperchargeBrowser?
-SuperchargeBrowser makes Chrome and Edge extensions for browser performance, tab navigation, and audio control. We currently publish three extensions: **SuperchargePerformance** (tab suspender + ad blocker + memory optimizer), **SuperchargeNavigation** (vertical tabs + workspaces + session management), and **SuperchargeAudio** (per-tab volume boost + 10-band EQ + Smart Mute). All are free and collect zero data. SuperchargePerformance and SuperchargeAudio run 100% locally; SuperchargeNavigation runs locally by default with opt-in cross-device workspace sync via Chrome's own infrastructure. All three extensions are live on both the Chrome Web Store and Microsoft Edge Add-ons.
+SuperchargeBrowser makes Chrome and Edge extensions for browser performance, tab navigation, audio control, and screen capture. We currently publish four extensions: **SuperchargePerformance** (tab suspender + ad blocker + memory optimizer), **SuperchargeNavigation** (vertical tabs + workspaces + session management), **SuperchargeAudio** (per-tab volume boost + 10-band EQ + Smart Mute), and **SuperchargeCapture** (screenshots + screen recording + built-in editor). All are free and collect zero data. SuperchargePerformance and SuperchargeAudio run 100% locally; SuperchargeNavigation runs locally by default with opt-in cross-device workspace sync via Chrome's own infrastructure; SuperchargeCapture runs 100% locally with an optional Share-to-Drive upload to the user's own Google Drive. All four extensions are live on both the Chrome Web Store and Microsoft Edge Add-ons.
 
 ### Is SuperchargeBrowser safe to install?
-Yes. Both extensions are Manifest V3, reviewed by the Chrome Web Store team, and published under a Verified Publisher account. There is no telemetry, no analytics, no remote code loading, and no `eval()`. We have no SuperchargeBrowser servers — there is no backend infrastructure to breach. SuperchargeNavigation v1.1.0+ adds opt-in workspace sync through Chrome's own `storage.sync` (off by default, no SuperchargeBrowser involvement). See [SECURITY.md](./SECURITY.md) for the full security architecture.
+Yes. All four extensions are Manifest V3, reviewed by the Chrome Web Store team, and published under a Verified Publisher account. There is no telemetry, no analytics, no remote code loading, and no `eval()`. We have no SuperchargeBrowser servers — there is no backend infrastructure to breach. SuperchargeNavigation v1.1.0+ adds opt-in workspace sync through Chrome's own `storage.sync` (off by default, no SuperchargeBrowser involvement). See [SECURITY.md](./SECURITY.md) for the full security architecture.
 
 ### Does SuperchargeBrowser collect any data?
-No. Zero telemetry, zero tracking, zero analytics. No SuperchargeBrowser accounts, no SuperchargeBrowser servers, no external API calls to our infrastructure. In default configuration, all data stays on your device. SuperchargeNavigation v1.1.0+ has opt-in workspace sync (off by default) routing through Chrome's own `storage.sync` infrastructure — Google's infra, not ours. See our [Privacy Policy](https://www.superchargebrowser.com/privacy/).
+No. Zero telemetry, zero tracking, zero analytics. No SuperchargeBrowser accounts, no SuperchargeBrowser servers, no external API calls to our infrastructure. In default configuration, all data stays on your device. SuperchargeNavigation v1.1.0+ has opt-in workspace sync (off by default) routing through Chrome's own `storage.sync` infrastructure — Google's infra, not ours. SuperchargeCapture has an optional Share-to-Drive upload (off unless you use it), which goes to the user's own Google Drive account, never to SuperchargeBrowser. See our [Privacy Policy](https://www.superchargebrowser.com/privacy/).
 
 ### Where is SuperchargeBrowser based?
 Finland. SuperchargeBrowser is an independent software company, not backed by an advertising business.
@@ -78,6 +78,6 @@ SuperchargePerformance requires Chrome 120+. SuperchargeNavigation requires Chro
 
 ## More Resources
 
-- [95 Chrome guides](https://www.superchargebrowser.com/library/) covering memory management, performance optimization, and tab organization
-- [Feature documentation](https://www.superchargebrowser.com/features/) for both extensions
+- [180 Chrome guides](https://www.superchargebrowser.com/library/) covering memory management, performance optimization, and tab organization
+- [Feature documentation](https://www.superchargebrowser.com/features/) for all four extensions
 - [Changelog](https://www.superchargebrowser.com/changelog/) for version history

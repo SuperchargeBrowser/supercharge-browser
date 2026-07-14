@@ -39,8 +39,8 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2025-01-01",
-      "dateModified": "2026-06-09",
-      "softwareVersion": "1.4.1",
+      "dateModified": "2026-06-25",
+      "softwareVersion": "1.4.5",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.5",
@@ -80,8 +80,8 @@
         "@id": "https://www.superchargebrowser.com/#organization"
       },
       "datePublished": "2026-03-13",
-      "dateModified": "2026-06-09",
-      "softwareVersion": "1.3.0",
+      "dateModified": "2026-06-29",
+      "softwareVersion": "1.3.3",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
@@ -124,6 +124,8 @@
       "author": {
         "@id": "https://www.superchargebrowser.com/#organization"
       },
+      "dateModified": "2026-06-25",
+      "softwareVersion": "1.0.4",
       "featureList": [
         "Per-tab volume boost up to 600% via Web Audio API GainNode",
         "10-band equalizer: 32Hz–16kHz, each ±12dB",
@@ -135,6 +137,38 @@
         "Mono mix toggle"
       ],
       "permissions": "Zero telemetry. Permissions: storage, tabs, tabCapture, offscreen, host all_urls. No webRequest. All data stored locally in chrome.storage.local."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.superchargebrowser.com/capture/#software",
+      "name": "SuperchargeCapture",
+      "description": "Screen recorder and full-page screenshot tool for Chrome and Edge. Records a tab with no screen-picker dialog, or a window or the whole screen; captures full-page and region screenshots. Built-in editor with auto-zoom, annotation, and trim. Zero telemetry, 100% local, no watermark, requests no website access by default.",
+      "applicationCategory": "BrowserExtension",
+      "operatingSystem": "Microsoft Edge, Chrome, Windows, macOS, Linux, ChromeOS",
+      "url": "https://www.superchargebrowser.com/capture/",
+      "installUrl": "https://chromewebstore.google.com/detail/gebkchfkcnjdflkfdimabihllibgcdhp",
+      "sameAs": ["https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "author": {
+        "@id": "https://www.superchargebrowser.com/#organization"
+      },
+      "dateModified": "2026-06-25",
+      "softwareVersion": "1.0.2",
+      "featureList": [
+        "Tab, window, and screen recording with no screen-picker dialog for tab capture",
+        "Full-page and region screenshots",
+        "Built-in editor: annotation, automatic zoom on clicks, smoothed cursor, trim",
+        "Export a recording as GIF, MP4, or WebM; export a screenshot or full page as PDF",
+        "Optional webcam bubble with on-device background blur",
+        "Microphone and system audio capture",
+        "Save as a file download, or upload to your own Google Drive"
+      ],
+      "permissions": "Zero telemetry. Requests no website access by default. Recording continuously across page navigations is a separate opt-in. Files never pass through SuperchargeBrowser servers; Google Drive uploads go to the user's own account."
     }
   ]
 }

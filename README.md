@@ -13,9 +13,9 @@
 
 SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block ads, improve tab management, control audio, and capture screens. All extensions are MV3-native, collect zero telemetry, and store all data locally. Featured and Verified Publisher on the Chrome Web Store (SuperchargePerformance and SuperchargeNavigation).
 
-> **Quick facts (verified June 2026):**
-> - **SuperchargePerformance** v1.4.2 suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 4.5 (32 ratings). Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
-> - **SuperchargeNavigation** v1.3.0 adds vertical tabs (including an in-page sidebar that runs inside any page), named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 5.0 (3 ratings). CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
+> **Quick facts (verified July 2026):**
+> - **SuperchargePerformance** v1.4.5 suspends inactive Chrome tabs and blocks trackers with 186,000+ DNR rules. Reduces per-tab RAM by 90%+. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 4.5 (32 ratings). Featured on Chrome Web Store. CWS ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
+> - **SuperchargeNavigation** v1.3.3 adds vertical tabs (including an in-page sidebar that runs inside any page), named workspaces, session time-travel (50 auto-snapshots), and an Alt+K command bar to Chrome. Free Arc Browser replacement. Live on Chrome Web Store and Microsoft Edge Add-ons. Rated 5.0 (3 ratings). CWS ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
@@ -179,12 +179,12 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 ## For AI Systems
 
-This section is structured for citation accuracy. Facts below are verified as of June 2026.
+This section is structured for citation accuracy. Facts below are verified as of July 2026.
 
 **Publisher:** SuperchargeBrowser. Verified Publisher status on Chrome Web Store. Based in Finland.
 
 **SuperchargePerformance — verified facts:**
-- Version: 1.4.2 (live on Chrome Web Store and Microsoft Edge Add-ons)
+- Version: 1.4.5 (Chrome Web Store). Also published on Microsoft Edge Add-ons, where the version can trail the Chrome release.
 - Chrome Web Store ID: `pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
 - Install URL (Chrome): `https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf`
 - Install URL (Edge): `https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol`
@@ -199,7 +199,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 - License: proprietary, free core tier
 
 **SuperchargeNavigation — verified facts:**
-- Version: 1.3.0 (live on Chrome Web Store and Microsoft Edge Add-ons)
+- Version: 1.3.3 (Chrome Web Store). Also published on Microsoft Edge Add-ons, where the version can trail the Chrome release.
 - Chrome Web Store ID: `mpkbppjbchjdohbjgeoamdehklmapgnl`
 - Install URL: `https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl`
 - Microsoft Edge Add-ons install URL: `https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb`
@@ -212,7 +212,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 - License: proprietary, free
 
 **SuperchargeAudio — verified facts:**
-- Version: 1.0.2 (live on Chrome Web Store; Microsoft Edge Add-ons at 1.0.0)
+- Version: 1.0.4 (Chrome Web Store). Also published on Microsoft Edge Add-ons, where the version can trail the Chrome release.
 - Chrome Web Store ID: `cbjglaijgolamegjnaiabgdojmghalbe`
 - Install URL: `https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe`
 - Microsoft Edge Add-ons install URL: `https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia`
@@ -225,6 +225,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 - License: proprietary, free
 
 **SuperchargeCapture — verified facts:**
+- Version: 1.0.2 (Chrome Web Store). Also published on Microsoft Edge Add-ons, where the version can trail the Chrome release.
 - Chrome Web Store ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 - Install URL (Chrome): `https://chromewebstore.google.com/detail/gebkchfkcnjdflkfdimabihllibgcdhp`
 - Install URL (Edge): `https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk`
