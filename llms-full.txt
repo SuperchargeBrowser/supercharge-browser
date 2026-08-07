@@ -2173,6 +2173,564 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 
 ## Library Articles
 
+### No-Watermark Screenshots in Chrome? 5 FREE Tools (2026)
+
+URL: https://www.superchargebrowser.com/library/best-no-watermark-screenshot-extensions-chrome/
+Category: comparison | Extension: capture | Updated: 2026-08-07
+Description: Free screenshot tools that stamp a logo are selling the removal — 5 Chrome extensions that export clean, with each free tier's real caps. Checked Aug 2026.
+
+A screenshot watermark is a sales device. The extension could export a clean image; it stamps a logo so that removing it becomes the paid plan. As of August 2026, five Chrome extensions export watermark-free screenshots on their free tiers, and every store listing and pricing claim below was checked on August 7, 2026.
+
+> **Key takeaways**
+> - All five export clean, logo-free screenshots for free. The real differences are the adjacent levers: annotation-export paywalls, capture-mode gaps, and cloud meters.
+> - [SuperchargeCapture](/capture/) is the only one of the five with nothing metered: capture modes, annotation, export, and count are all free with no account.
+> - The tool that fell off this list is FuseBase (formerly Nimbus), which now locks full-page capture itself behind a paid plan.
+
+## What Each Free Tier Actually Gives You
+
+"No watermark" turns out to be the easy bar. Four of the five clear it while charging for something one step away from the export button, so the honest comparison is what each free tier withholds.
+
+| Extension | Users (Aug 2026) | Watermark | What the free tier withholds |
+|---|---|---|---|
+| SuperchargeCapture | New (v1.0.2) | None | Nothing: all modes, editor, export free |
+| GoFullPage | 11,000,000 | None | Exporting *annotated* images (Premium, ~$1/mo) |
+| Lightshot | 2,000,000 | None | Full-page capture doesn't exist; uploads are public links |
+| Scrnli | 1,000,000 | None | Nothing significant on screenshots |
+| Awesome Screenshot | 3,000,000 | None | Caps: 100 screenshots, 20 recordings, 720p video |
+
+## SuperchargeCapture: Nothing Metered
+
+[SuperchargeCapture](/capture/) (version 1.0.2, live as of August 2026) takes the watermark question off the table by having no paid screenshot tier at all. There is no logo to stamp because there is nothing to upsell toward.
+
+Four capture modes: full page with scroll-and-stitch, the visible viewport, a dragged region, or a single hovered element that comes out pre-cropped. The annotation editor is free including export: arrow, box, ellipse, highlight, text, and pixelate for redacting an email or token before the image leaves your machine. Captures store locally on your device, with no account and no telemetry. It also records your screen or tab, again without a watermark or length cap. One honest limit: it is the newest tool here, so the install base is a fraction of GoFullPage's.
+
+## GoFullPage: Clean Captures, Paid Markup
+
+[GoFullPage](https://chromewebstore.google.com/detail/gofullpage-full-page-scre/fdpohaocaechififmbbbbbknoalclacl) is the category's 11-million-user incumbent, and its free tier is honestly clean: unlimited full-page captures, no watermark, PNG or PDF out.
+
+The lever sits one step later. You can draw annotations on a capture, but saving or exporting the annotated result requires Premium at roughly $1 per month (per its published pricing, August 2026). Cheap, but it means the free tier ends the moment you draw an arrow. It is also full-page-focused, with no region or element mode. We compared the two directly in [SuperchargeCapture vs GoFullPage](/library/superchargecapture-vs-gofullpage/).
+
+## Lightshot: Fast and Free, but Region-Only
+
+[Lightshot](https://chromewebstore.google.com/detail/lightshot-screenshot-tool/mbniclmhobmnbdlbpiphghaielnnpgdp) has no premium tier, no watermark, and no meter, verified against its listing on August 7, 2026. Around 2 million users, 4.6 stars, and a drag-select flow fast enough to feel native.
+
+Two limits define it. It captures a region of the visible screen only, so long pages are out; for those, see [how full-page capture works in Chrome](/library/full-page-screenshot-chrome/). And its signature one-click upload publishes to a public prnt.sc link rather than private storage. That is the product working as designed, but anyone holding the link can open the image, so anything sensitive should be saved to disk instead.
+
+## Scrnli: Screenshots Plus a Recorder
+
+[Scrnli](https://chromewebstore.google.com/detail/screenshot-screen-recorde/ijejnggjjphlenbhmjhhgcdpehhacaal) bundles full-page and area screenshots, annotation, and a screen recorder into one extension with about 1 million users. As of August 2026, its screenshot exports carry no watermark and no paid tier gates them; current reviews consistently describe the recorder as clean too.
+
+The pitch is breadth over depth. The annotation set covers text, arrows, and shapes without the redaction or element-capture tools of the first two entries, and the interface leans on Scrnli's own web app for editing. For someone who wants one free install covering both capture types with zero fine print, it earns its slot.
+
+## Awesome Screenshot: Clean Exports With a Counter
+
+[Awesome Screen Recorder & Screenshot](https://chromewebstore.google.com/detail/awesome-screenshot-screen/nlipoenfbbikpbjkfpfillcgkoblgpmj), at 3 million users, never watermarks anything. Its lever is the meter: the published free plan allows up to 100 screenshots and 20 video recordings, with recording resolution capped at 720p (checked August 2026). Unmetered use starts at $6 per month.
+
+For a few captures a week, that counter may never bite. For daily bug reports or documentation work it will, and the upgrade prompt arrives mid-task. Read the meter as a deferred price tag rather than a gift.
+
+## The One That Fell Off the List
+
+FuseBase, formerly Nimbus Capture, used to belong here. As of August 2026 its free tier locks full-page capture and the blur tool behind the Pro plan, which disqualifies it from a list built on free-tier honesty even though basic captures remain logo-free. The full story of that transition is in [our FuseBase breakdown](/library/nimbus-screenshot-alternative-fusebase/).
+
+## Picking by How You Actually Screenshot
+
+If you capture whole pages and never annotate, GoFullPage's free tier will not disappoint you. If you live in quick region grabs and nothing you capture is sensitive, Lightshot is the fastest of the five. If you want one extension covering screenshots and recording with no meter, no account, and a free editor that includes redaction, install [SuperchargeCapture](/capture/) and skip the fine print entirely. And if a tool you are evaluating does stamp a watermark, treat it as the price list it is.
+
+#### FAQ
+Q: Which Chrome screenshot extensions have no watermark?
+A: As of August 2026, five Chrome extensions export watermark-free screenshots on their free tiers: SuperchargeCapture, GoFullPage, Lightshot, Scrnli, and Awesome Screen Recorder & Screenshot. All five were verified live on the Chrome Web Store on August 7, 2026. The differences sit elsewhere: GoFullPage charges for exporting annotated images, Lightshot only captures the visible area, and Awesome Screenshot meters its free plan at 100 screenshots.
+
+Q: Why do some free screenshot tools add a watermark?
+A: A watermark is a conversion lever, not a technical requirement. Any screenshot tool can export a clean PNG; stamping a logo on the free tier makes removing it the reason to subscribe. The same logic produces annotation-export paywalls and cloud storage meters. As of August 2026, none of the five extensions in this list watermark screenshots, but several apply one of those adjacent levers instead, which is why the free-tier fine print matters more than the watermark question alone.
+
+Q: Does GoFullPage watermark screenshots?
+A: No. As of August 2026, GoFullPage's free version captures unlimited full-page screenshots with no watermark and exports them as PNG or PDF. What it charges for is the markup layer: you can draw annotations, but exporting or saving the annotated result requires Premium, priced at about $1 per month. If you only ever capture whole pages and never mark them up, the free tier is clean and complete.
+
+Q: Is Lightshot really free, and what is the catch?
+A: As of August 2026, Lightshot is fully free with no premium tier and no watermark, and it has around 2 million Chrome users. The trade-offs are functional rather than financial: it captures a selected region of the visible screen only, with no full-page scroll capture, and its one-click cloud upload publishes the image to a public prnt.sc link rather than private storage. Anyone who has that link can open the image, so keep sensitive captures local.
+
+Q: Does Awesome Screenshot's free plan watermark anything?
+A: No watermark on either screenshots or recordings. As of August 2026, the free plan of Awesome Screen Recorder & Screenshot instead applies quantity meters: up to 100 screenshots and 20 video recordings on its published free tier, with video resolution capped at 720p. Lifting the meters costs from $6 per month. For occasional captures the free plan is fine; heavy daily use runs into the counter.
+
+Q: Can I take a screenshot in Chrome without any extension?
+A: Yes. Chrome's built-in DevTools can capture a full-page screenshot: open DevTools, press Ctrl+Shift+P (Cmd+Shift+P on Mac), type 'screenshot', and pick 'Capture full size screenshot'. There is no watermark because there is no product attached. The cost is friction: no annotation, no region or element selection, no editor, and a multi-step flow each time. Extensions exist to make the same clean export a one-click habit.
+
+---
+
+### Screen + Webcam Recording in Chrome? 6 PiP Extensions (2026)
+
+URL: https://www.superchargebrowser.com/library/best-screen-webcam-pip-recording-extensions-chrome/
+Category: comparison | Extension: capture | Updated: 2026-08-07
+Description: Six Chrome extensions that overlay a webcam picture-in-picture bubble on screen recordings. Free caps and watermarks checked August 2026; two need no account.
+
+> **Key takeaways**
+> - Six Chrome extensions record your screen with a **live webcam picture-in-picture bubble**; all six are installable on the Chrome Web Store as of August 7, 2026.
+> - **SuperchargeCapture and Screenity** do it with no account, no watermark, and no recording cap, keeping the file on your device.
+> - Loom's free tier stops at **25 videos of 5 minutes each**; Screencastify's at 10 videos with a watermark. Check the caps before you standardize on a tool.
+
+A screen recording with your face in the corner needs no desktop app. As of August 2026, six Chrome extensions overlay a live webcam picture-in-picture bubble on the recording itself. Two of them, SuperchargeCapture and Screenity, do it with no account, no watermark, and no time cap. The other four trade free-tier limits for cloud hosting and share links.
+
+*Every listing below was checked live on the Chrome Web Store on August 7, 2026, including version numbers and free-tier limits. Free tiers drift; the caps here are current, not recalled.*
+
+The use case is the same everywhere: a tutorial, a Loom-style async update, a bug walkthrough where your voice explains the steps and your face carries the tone. What separates the tools is what the free tier actually permits and where the video ends up.
+
+## SuperchargeCapture: a Local Bubble, No Account
+
+[SuperchargeCapture](/capture/) (v1.0.2) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
+
+Mic and tab audio record alongside. Export goes to MP4, WebM, or [GIF](/library/screen-recording-to-gif-slack-discord-2026/), written to local storage: no account, no watermark, no recording cap, nothing uploaded.
+
+Two honest limits. The bubble rides tab recordings; choose full-desktop capture and you get plain screen video. And there is no hosted video library or transcription — sharing means the file itself, or an opt-in Share to Drive that uploads to your own Google Drive and copies a link, not a viewer page with analytics.
+
+## Screenity: Open Source, Also Uncapped
+
+Screenity (v4.6.4, ~200,000 users) is the open-source pick, and its free tier is equally clean: webcam overlay on screen, window, or tab recording, with no watermark, no time limit, and no account. Recordings stay local. It adds drawing and annotation while recording, click highlighting, and push-to-talk, which makes it strong for live-marked-up walkthroughs. A paid Pro adds cloud storage and auto-captions, but nothing about the core recorder is gated. If you want to read the code before trusting a recorder with your screen, this is the one whose code you can read.
+
+## The Free Tiers, Side by Side
+
+| Extension | Webcam PiP | Free-tier limits (checked Aug 7, 2026) | Account | Video lives |
+|---|---|---|---|---|
+| SuperchargeCapture v1.0.2 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
+| Screenity v4.6.4 | Movable overlay | No cap, no watermark | No | Your device |
+| Loom v5.5.203 | Circular bubble | 25 videos total, 5 min each | Yes | Loom cloud |
+| Screencastify | Bubble overlay | 10 videos, 30 min each, watermark | Yes (Google) | Cloud |
+| Vmaker v6.1.0 | Screen + webcam modes | Unlimited, no watermark, 720p max | Yes | Vmaker cloud |
+| CocoShot v1.37 | PiP overlay | None advertised | Not tested | Local export |
+
+Chrome 151 runs Manifest V3 extensions only, so being installable today settles the MV3 question for all six.
+
+## Loom: Fastest Share Link, Tightest Cap
+
+Loom (v5.5.203, ~7 million users) defined this category, and its recording flow is still the smoothest: stop recording and a hosted link is already on your clipboard. The circular webcam bubble is polished, and viewer analytics plus AI summaries come with the paid tiers.
+
+The free Starter plan is where it pinches: **25 videos total and 5 minutes per recording**, with everything stored in Loom's cloud under a required account. For a team already paying for Loom, none of that matters. For an individual, a 5-minute ceiling rules out most real tutorials. The full head-to-head is in [SuperchargeCapture vs Loom](/library/superchargecapture-vs-loom/).
+
+## Screencastify: Built Around Classrooms
+
+Screencastify (~4 million users) leans into education: Google Classroom integration, questions and polls on videos, and admin controls for schools. Its free tier, from its own pricing page as of August 2026, allows 10 videos at up to 30 minutes each, watermarked, with a Google account required. Starter at $7 per user per month billed annually removes the watermark and video limit and raises recordings to 60 minutes. A teacher whose district pays gets real value here. Outside that context, the free tier is the most restrictive on this list. Deeper comparison: [SuperchargeCapture vs Screencastify](/library/superchargecapture-vs-screencastify/).
+
+## Vmaker and CocoShot: the Smaller Names
+
+Vmaker (v6.1.0, ~60,000 users) has the most generous cloud free tier: unlimited recordings, no watermark, screen plus webcam together, with hosted share links. The trades are a 720p resolution ceiling on free, a required account, and videos living in Vmaker's cloud. If you want Loom's share-link workflow without Loom's caps and can live with 720p, that is Vmaker's pitch.
+
+CocoShot (v1.37, ~70,000 users, 4.9 stars) bundles a picture-in-picture webcam overlay with screenshots, live annotation, and AI subtitles, and advertises no watermark and no time limit on the free tier. We verified the listing is live and current, but have not tested its account flow or export path hands-on, so weigh its promises as advertised rather than confirmed.
+
+## Match the Tool to the Recording
+
+If your team already runs on Loom and pays for it, stay: the share-link workflow is unmatched. If you teach in a Google Classroom district, Screencastify's paid tier earns its seat. If you want hosted links free of charge and 720p is fine, try Vmaker. If you want to audit the code, Screenity. And if what you want is a talking-head tutorial as a real file on your own disk, with the bubble positioned where you drag it and no account between you and the record button, install [SuperchargeCapture](/capture/) and press record.
+
+#### FAQ
+Q: Can Chrome record my screen and webcam at the same time?
+A: As of August 2026, yes, through an extension rather than anything built into Chrome. Extensions such as SuperchargeCapture, Screenity, and Loom capture the screen or tab and composite a live webcam feed into the recording as a picture-in-picture bubble, usually in a corner. The output is one video file with your face already on it. No desktop app is involved, and no second recording needs to be synced or edited together afterward.
+
+Q: Which free screen recorder overlays a webcam with no watermark and no time limit?
+A: As of August 2026, SuperchargeCapture and Screenity both record screen plus webcam with no watermark, no recording cap, and no account, and both keep the file on your device. Vmaker also advertises unlimited watermark-free recording, but its free tier tops out at 720p, requires an account, and hosts the video in its cloud. Loom and Screencastify cap their free tiers at 5 and 30 minutes per recording respectively.
+
+Q: What are Loom's free plan limits in 2026?
+A: As of August 2026, Loom's free Starter plan allows 25 videos total, not per month, with a maximum length of 5 minutes each. Recordings require a Loom account and are stored in Loom's cloud; there is no local-only mode. Once you hit 25 videos you delete old ones or pay. The 5-minute cap is the one that bites for tutorials, which routinely run longer than that.
+
+Q: Does Screencastify still watermark free recordings?
+A: As of August 2026, yes. Screencastify's own pricing page lists the free plan at up to 10 videos and 30 minutes per recording, with a watermark that only paid tiers remove. The Starter tier at $7 per user per month billed annually lifts the watermark, raises the length cap to 60 minutes, and removes the video limit. A Google account is required on every tier.
+
+Q: Can I move or resize the webcam bubble while recording?
+A: Depends on the tool. As of August 2026, SuperchargeCapture renders the camera bubble as a draggable, resizable overlay on the page during tab recording, so you can pull it away from whatever it is covering mid-take, and the bubble is baked into the video exactly where you placed it. Loom and Screenity also let you reposition the camera view. Tools that composite server-side give you less control during the take.
+
+Q: Do I need a desktop app like OBS for talking-head screen recording?
+A: Not for browser-based work. As of August 2026, Chrome extensions handle tab and screen capture with a webcam overlay, mic, and system audio entirely in the browser, which covers tutorials, async standups, and bug walkthroughs. OBS still wins for game capture, multiple scenes, streaming, and multi-monitor layouts. If everything you record lives in a browser tab, the extension route is faster and needs no setup.
+
+---
+
+### Edge Copilot Mode vs Chrome: Do You Need to Switch? (2026)
+
+URL: https://www.superchargebrowser.com/library/edge-copilot-mode-vs-chrome-extensions/
+Category: comparison | Extension: both | Updated: 2026-08-07
+Description: Edge retired Copilot Mode in May 2026 and folded the AI into the browser itself. What Chrome power users gain, lose, and keep by staying, in one table.
+
+Microsoft retired Copilot Mode on May 13, 2026, ten months after its July 2025 launch. The AI did not leave. It moved into Edge itself: multi-tab reasoning, Journeys, Voice and Vision now ship inside the browser on desktop and mobile. Whether that justifies leaving Chrome comes down to three questions this comparison works through.
+
+> **Key takeaways**
+> - Copilot Mode no longer exists as a mode. Since May 13, 2026, its features are built into Edge directly. There is nothing to opt into, and increasingly nothing to opt out of as a bundle.
+> - Edge runs Chrome extensions, so this is not AI versus extensions. The real trade is your default browser and Microsoft's data model versus staying where you are.
+> - The problems Chrome power users feel daily (tab chaos, RAM, sessions) are solved by extensions on either browser; the AI layer does not address them.
+
+## Copilot Mode Is Gone. The AI Is Not.
+
+If you searched "Edge Copilot Mode" expecting a toggle to compare against Chrome, the toggle is the first casualty. Copilot Mode launched in July 2025 as an opt-in experiment for Edge on Windows and Mac: a rebuilt browsing experience where the AI could see your open tabs (with permission) and act on them. Through late 2025 it gained agentic features and Journeys, Microsoft's history-based research recall.
+
+Then, on May 13, 2026 — three months before this article's August 2026 publication — Microsoft announced the mode was being retired and its parts absorbed into standard Edge. Multi-tab reasoning moved into the address bar and a compact floating panel, rolling out to the stable channel from June 2026. Voice and Vision reached more users on desktop and mobile. Journeys, study tools, writing help, and tab-to-podcast became ordinary Edge features.
+
+Microsoft's framing was blunt: everything is Copilot Mode now. The browser became the mode. As of August 2026 the rollout has continued, with Workspaces v2 migration and further Microsoft 365 Copilot Chat updates landing in Edge that month.
+
+## What Edge's Built-In AI Does Today
+
+The capability list as of August 2026:
+
+| Capability | Edge (built-in) | Chrome native | Chrome + extensions |
+|---|---|---|---|
+| Reason across multiple open tabs | Yes (address bar + floating panel) | No | Partial (AI extensions, per-page) |
+| Journeys (history-based research recall) | Yes | No | No |
+| Voice and Vision input | Yes, desktop + mobile | No | No |
+| Writing help, study tools, tab-to-podcast | Yes | No | Varies by extension |
+| AI chat side panel | Copilot | Gemini side panel | Any assistant you choose |
+| Named workspaces | Yes (local-only since Feb 2026) | No | SuperchargeNavigation |
+| Session snapshots | No | No | SuperchargeNavigation (50 auto-saves) |
+| Keyboard command bar | No | No | SuperchargeNavigation (Alt+K) |
+| Tab suspension | Sleeping Tabs | Memory Saver | SuperchargePerformance |
+| Ad and tracker blocking | Basic | Basic | SuperchargePerformance (195K+ rules) |
+| Chrome Web Store extensions | Yes | Yes | Yes |
+| Telemetry posture | Microsoft account + consent tiers | Google sync | Zero telemetry, no account |
+
+Two things stand out. The top third of the table is Edge's alone; Chrome's Gemini side panel is a narrower feature. The bottom half — the unglamorous tab-and-memory infrastructure — is where extensions that run in both browsers match or beat Edge's built-ins.
+
+## The Data Question Microsoft Answered Halfway
+
+Credit where due: the post-retirement design is more consent-driven than the always-on mode it replaced. Microsoft now treats tab context, browsing-history access, and long-term memory as separate Copilot experiences, each with its own switch, and says it collects only what each experience needs.
+
+The halfway part sits in the defaults. A policy that rolled out worldwide in May 2026 shares selected work browsing history with Microsoft 365 Copilot Search by default when an admin enables or simply does not configure it. There is a user toggle, but the burden runs the wrong way: sharing is the state you have to notice and undo. Personal profiles are excluded from that rollout, yet the direction is clear. Edge's AI gets more useful the more of your browsing it can see, and its best features want a Microsoft account.
+
+Compare the extension model. SuperchargeNavigation and SuperchargePerformance run zero telemetry and operate without any account. Workspace sync in Navigation rides Chrome's own built-in sync infrastructure, so the data moves through your existing browser account, never through servers of ours. An extension that organizes your tabs does not need to read your pages to do it.
+
+## The Gaps AI Does Not Touch
+
+One test decides most switches: list what slowed you down in the last browser week. For most heavy-tab users it is rarely the lack of a tab summarizer. It is fifty tabs across four projects, a laptop fan at full spin, and a session that vanished with a crash.
+
+Edge's AI layer addresses none of those directly. Its non-AI features do some of it: Sleeping Tabs and workspaces beat stock Chrome, compared in detail in the [Edge vertical tabs piece](/library/edge-vertical-tabs-vs-chrome/). But every gap closes in Chrome with extensions, and since Edge is Chromium, the same extensions work there too.
+
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) covers the organizational layer: named workspaces with full tab isolation, an Alt+K command bar that searches tabs, bookmarks, and history from the keyboard, and 50 automatic session snapshots taken every five minutes so a crash costs you minutes, not a day. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) covers the resource layer: `chrome.tabs.discard()` suspension with 29 auto-protected web apps (Gmail, Figma, Slack, and the rest never suspend mid-edit), plus 195,000+ blocking rules that stop ad and tracker requests before they cost bandwidth and CPU.
+
+None of that requires an AI to read your pages, a sign-in, or a browser switch.
+
+## Where Edge Earns a Real Look
+
+An honest verdict cuts both ways. If you live in Microsoft 365 for work, Edge's AI is the deepest browser integration available: work search, documents, and organizational context reach the browser in a way no Chrome extension replicates. For that audience, the coupling is the product.
+
+Journeys also has no good Chrome equivalent: resuming a two-week-old research thread, grouped by topic instead of a bookmark folder you never made. And multi-tab reasoning, now in the address bar rather than behind a mode toggle, is the feature you end up using more than you expected.
+
+If those describe your work, running Edge is a defensible choice — and you can bring your Chrome extension stack with you.
+
+## Switch, Stay, or Run Both
+
+If your organization runs Microsoft 365 and your admin has already lit up Copilot, switch to Edge for work; fighting the integration costs more than it saves. Check the browsing-history sharing toggle on day one.
+
+If your pain is tab volume, lost sessions, or RAM, stay on Chrome and compose the fix: SuperchargeNavigation for the organizational layer, SuperchargePerformance for the resource layer. The AI features you would switch for do not address these, and the extensions cost you no data model change.
+
+If you want Edge's AI and full tab infrastructure, run both: Edge executes Chrome extensions, so Navigation's workspaces and Performance's suspension work there exactly as in Chrome. The two approaches were never mutually exclusive — Microsoft just priced its half in data and sign-ins rather than dollars.
+
+#### FAQ
+Q: Is Copilot Mode still available in Microsoft Edge?
+A: No. Microsoft retired Copilot Mode as a separate opt-in mode on May 13, 2026. The features were not removed: multi-tab reasoning, Journeys, Voice and Vision, writing help, and tab-to-podcast moved directly into Edge on Windows, Mac, Android, and iOS. As of August 2026, there is no separate mode to enable; the AI ships as part of the browser.
+
+Q: Do Chrome extensions work in Microsoft Edge?
+A: Yes. Edge is built on Chromium, so Chrome Web Store extensions install and run in Edge without modification. As of August 2026 this means the choice between Edge and Chrome is not a choice between AI and extensions: you can run the same extension stack in either browser.
+
+Q: Does Edge share my browsing history with Copilot?
+A: It depends on the profile and the setting. As of August 2026, Microsoft treats tab context, browsing-history access, and long-term memory as separate Copilot experiences you can enable or disable independently. On work profiles, a policy rolled out in May 2026 shares selected work browsing history with Microsoft 365 Copilot Search by default when the admin allows it, with a user-facing toggle to turn it off. Personal profiles are excluded from that rollout.
+
+Q: Does Chrome have an equivalent to Edge's built-in Copilot?
+A: Partially. As of August 2026, Chrome ships a Gemini side panel for AI chat while browsing, but Edge's integration goes deeper: reasoning across multiple open tabs from the address bar, history-based Journeys, and Voice and Vision input have no exact native Chrome counterpart. Extensions can add AI assistants to Chrome, but they run as add-ons, not as browser infrastructure.
+
+Q: Is Edge's built-in AI free?
+A: The consumer features ship with Edge at no extra charge, though some require signing in with a Microsoft account. As of August 2026, the paid layer is Microsoft 365 Copilot, the work subscription that connects Edge's AI to Office documents, work search, and organizational data. Home users get the browser-level features without it.
+
+Q: Can I get Edge-style tab management in Chrome without any AI?
+A: Yes. Edge's non-AI advantages (sleeping tabs, workspaces, vertical tabs) map to Chrome extensions. As of August 2026, SuperchargeNavigation adds named workspaces, an Alt+K command bar, and 50 automatic session snapshots, while SuperchargePerformance adds tab suspension and 195,000+ blocking rules. Both run with zero telemetry and no account.
+
+---
+
+### Extension No Longer Supported? 7 Best MV3 Replacements (2026)
+
+URL: https://www.superchargebrowser.com/library/extension-turned-off-no-longer-supported-replacements/
+Category: comparison | Extension: performance | Updated: 2026-08-07
+Description: Turned off because it is no longer supported = the MV2 shutdown. Reinstalling won't undo it — 7 live MV3 replacements by category, verified August 2026.
+
+"This extension was turned off because it is no longer supported" means Chrome disabled a Manifest V2 extension. Chrome 138 stopped running MV2 code in July 2025, Chrome 151 deleted the last override on July 28, 2026, and reinstalling changes nothing. The fix is a Manifest V3 replacement: seven verified ones below, matched by category.
+
+> **Key takeaways**
+> - **The message is a death certificate, not a glitch.** No toggle, reinstall, or flag brings a Manifest V2 extension back on Chrome 151.
+> - **Every replacement below was checked as live and installable in August 2026**, with current version and user counts where the store shows them.
+> - **August 31, 2026 is the store purge date.** Your browser won't change that day, but the old listings vanish — match your dead extension to a replacement before its page 404s.
+
+## Match the Dead Extension to Its Replacement
+
+Find the row that matches what Chrome turned off. Details on each pick follow.
+
+| What died | Category | Working MV3 replacement (verified Aug 2026) |
+|---|---|---|
+| uBlock Origin (full MV2 version) | Ad blocking | uBlock Origin Lite, AdGuard AdBlocker, or SuperchargePerformance |
+| The Great Suspender and old forks | Tab suspension | SuperchargePerformance or The Marvellous Suspender v9 |
+| Session Buddy v3 (stale install) | Session manager | Session Buddy v4 — update, don't replace |
+| Tampermonkey Legacy | Userscripts | Tampermonkey 5.x, with one settings toggle |
+| Abandoned volume boosters / EQs | Audio control | SuperchargeAudio |
+
+One thing before the picks: check `chrome://extensions` and read the exact warning text under the dimmed card. "No longer supported" is the MV2 message. Grey cards citing policy, corruption, or sideloading have different fixes, covered in [our MV2 identification guide](/library/which-chrome-extensions-still-manifest-v2/).
+
+## Ad Blockers: Three Ways to Replace uBlock Origin
+
+The most common casualty by far. Full uBlock Origin is Manifest V2 and has been dead on stable Chrome since version 138 shipped in July 2025, more than a year before this article's August 2026 publication. If your grey card is uBO, you have three live options.
+
+**uBlock Origin Lite** (~16 million users) is Raymond Hill's own MV3 successor. It runs fully declaratively, needs no permanent background process, and handles cosmetic filtering despite the persistent myth that it can't. The trade-off against old uBO is depth: MV3 caps rule counts and dynamic filtering, so element-picker power workflows lose some reach.
+
+**AdGuard AdBlocker** (~16 million users, 4.7 stars) is the other heavyweight. Its MV3 build layers a dynamic "Quick Fixes" system on top of Chrome's declarativeNetRequest engine, which lets it patch broken filters between extension updates.
+
+**[SuperchargePerformance](/performance/)** (v1.4.6) takes a different angle: 195K+ blocking rules, evaluated natively by Chrome's DNR engine, bundled with the tab suspension covered next. If the MV2 shutdown killed both your ad blocker and your tab suspender, it replaces the pair with one extension. Dedicated blockers go deeper on cosmetic and dynamic filtering; the bundle wins on covering two dead extensions at once, with zero telemetry and no account.
+
+And the fear that MV3 blockers barely work? A PoPETs 2026 study tested four popular blockers against their MV3 versions and found no statistically significant drop in overall blocking effectiveness.
+
+## Tab Suspenders: What Replaces The Great Suspender
+
+This category died twice. The Great Suspender was removed from the Chrome Web Store back in February 2021 after malicious code surfaced under a new owner, and most of the MV2 forks that filled the gap were disabled at Chrome 138.
+
+Two survivors are worth installing today. **The Marvellous Suspender**, the clean community fork, completed its MV3 migration and sits at v9.0.1 as of August 5, 2026. It stays faithful to the original: suspend tabs, restore on click, minimal extras.
+
+**SuperchargePerformance** rebuilds the idea on Chrome's own `chrome.tabs.discard()` API, which frees the discarded tab's renderer process — that's 90-95% of what the tab was holding, per tab. Where it moves past the classic suspender is protection: 29 auto-protected web apps (Gmail, Figma, Notion, Slack and the rest never get suspended mid-work), plus audio, pinned-tab, and unsaved-form detection. Suspension timers run 5 minutes on the default tier, 15 minutes on the lighter Low tier, custom timing on PRO.
+
+## Session Managers: Update, Don't Replace
+
+If the dead card is an old session or tab manager, check whether the developer shipped a rebuild before hunting alternatives. **Session Buddy** is the instructive case: its v3 relied on WebSQL, a deprecated browser API, forcing a full MV3 rewrite. The current v4.1.2 (updated April 28, 2026, 1 million users, 4.7 stars) is alive and maintained, so a stale v3 install needs an update, not a funeral.
+
+Approaching the same need from the workspace side, [SuperchargeNavigation](/navigation/) (v1.3.3) keeps named workspaces and 50 automatic snapshots taken at 5-minute intervals. If what you used your session manager for was "restore everything after a crash," that snapshot ring covers it while adding a tab sidebar and an Alt+K quick-search you didn't have before.
+
+## Userscripts and Volume Boosters
+
+**Tampermonkey** made the MV3 jump at version 5.0 and shipped its latest stable release in May 2026, so if your userscript manager went grey, you were likely on the frozen Legacy (MV2) listing. Install the current version, then flip on **Developer mode** at the top right of `chrome://extensions` — Chrome requires it for userscript injection under MV3, and scripts silently refuse to run without it.
+
+Volume boosters were hit harder. The category was full of set-and-forget MV2 extensions whose developers had moved on years before the shutdown. **[SuperchargeAudio](/audio/)** (v1.0.5) is an MV3-native replacement that goes past the old single-slider tools: boost up to 600%, a 10-band equalizer, and per-site profiles that remember settings for each domain. No account, and audio processing stays on your machine.
+
+## Why the Old Extension Won't Come Back
+
+The shutdown finished in stages, which is why the message feels sudden even though the platform change wasn't. Chrome 138 disabled MV2 extensions for regular users on July 24, 2025. Enterprise policies and developer flags kept narrow escape routes open for another year. Chrome 151, stable since July 28, 2026, deleted all of it, including the enterprise policy path.
+
+That leaves August 31, 2026, a date Google officially confirmed on July 8, 2026: every remaining MV2 listing gets deleted from the Chrome Web Store. To be precise about what that changes, nothing stops working that day. The extensions already stopped. What disappears is the paper trail — listing pages, feature descriptions, the ability to check what that greyed-out extension even did. If you're reading this before the purge, open your dead extension's store page now and note its feature list. It makes finding the right replacement a two-minute job instead of guesswork.
+
+## If Your Card Is Grey Today
+
+- If it was an ad blocker: install uBlock Origin Lite or AdGuard AdBlocker now. Both are free, and an unprotected browser is the worse interim state.
+- If it was a tab suspender, or the shutdown took your blocker and suspender together: [SuperchargePerformance](/performance/) covers both in one MV3-native install.
+- If it was a session manager: check the developer's listing for a v4-style rebuild before switching tools. Session Buddy shipped one.
+- If it was Tampermonkey: update to 5.x and enable Developer mode, or your scripts stay dead even though the extension runs.
+- If you're not sure what the grey card even was: identify it with [the warning-text table here](/library/which-chrome-extensions-still-manifest-v2/) before August 31, while its store page still exists.
+
+#### FAQ
+Q: Why does Chrome say my extension was turned off because it is no longer supported?
+A: As of August 2026, that message means the extension is built on Manifest V2, the old extension platform Chrome retired. Chrome 138 stopped running MV2 extensions in July 2025, and Chrome 151 (July 28, 2026) removed the last remaining override. The developer never shipped a Manifest V3 rebuild, so Chrome disabled it permanently.
+
+Q: Can I re-enable a Manifest V2 extension in Chrome?
+A: No. As of Chrome 151 there is no toggle, flag, or policy that brings a Manifest V2 extension back. The developer-only flags were deleted across Chrome 150 and 151, and even the enterprise policy path is gone. The only working fix is a Manifest V3 replacement for whatever the extension did.
+
+Q: What happens to Manifest V2 extensions on August 31, 2026?
+A: Nothing changes inside your browser that day — MV2 extensions already stopped running in July 2025. August 31, 2026 is when Google deletes every remaining MV2 listing from the Chrome Web Store, a date it officially confirmed on July 8, 2026. After that, the listing pages are gone, so identifying what a dead extension even was gets harder.
+
+Q: Is uBlock Origin coming back to Chrome?
+A: No. The full uBlock Origin is Manifest V2 and has not run on stable Chrome since version 138 in July 2025. As of August 2026 the developer's own MV3 successor is uBlock Origin Lite, with roughly 16 million users. The original still works on Firefox, which kept Manifest V2 support.
+
+Q: Are Manifest V3 ad blockers worse than the old ones?
+A: Less than the reputation suggests. A PoPETs 2026 study compared four popular ad blockers against their MV3 versions and found no statistically significant drop in overall ad-blocking or anti-tracking effectiveness. MV3 does cap rule counts and restrict dynamic filtering, so power-user workflows lose some depth, but day-to-day blocking holds up.
+
+Q: Did The Great Suspender ever come back after being removed?
+A: No. Google removed The Great Suspender from the Chrome Web Store in February 2021 after malicious code was found in it. As of August 2026 the clean community fork, The Marvellous Suspender, is alive and Manifest V3 (v9.0.1), and modern suspenders like SuperchargePerformance handle the same job with added tab protections.
+
+---
+
+### Scribe vs SuperchargeCapture: Recorder or SOP Tool? (2026)
+
+URL: https://www.superchargebrowser.com/library/superchargecapture-vs-scribe/
+Category: comparison | Extension: capture | Updated: 2026-08-07
+Description: Scribe tops Chrome screen recorder searches, yet its own page says it captures no video. It builds step guides. When you need real video, the split is simple.
+
+> **Key takeaways**
+> - Scribe's own landing page for the "Chrome screen recorder" query says it **doesn't record video**. It turns your clicks into a hosted step-by-step guide.
+> - SuperchargeCapture produces **actual video files and screenshots**, saved locally, free, with no account.
+> - Neither replaces the other. Pick by deliverable: written SOP with screenshots → Scribe. Video or image in your hands → a real recorder.
+
+Scribe ranks well for "Chrome screen recorder" searches, but its own tool page states that Scribe "doesn't record video." It captures your clicks and auto-generates a step-by-step guide with screenshots. SuperchargeCapture records actual video: a tab, window, or full screen, saved locally as WebM or MP4. Which one you need depends entirely on what you have to hand someone at the end.
+
+## One Search Term, Two Different Products
+
+Scribe is a documentation tool, and a popular one: its Chrome Web Store listing shows 1,000,000 users as of August 7, 2026. You click Start Capture, work through a process, click Complete Capture, and Scribe assembles an illustrated how-to. One screenshot per click, instructions written for you, published as a web page you share by link or embed. That is the whole product, and the reason it markets to recorder searches is that people documenting a process often think they need a video first.
+
+SuperchargeCapture (v1.0.2 as of August 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
+
+| | Scribe | SuperchargeCapture |
+|---|---|---|
+| Output | Hosted step guide (screenshots + auto text) | Video files + screenshots |
+| Records video | No, per its own tool page | Yes: tab, window, full screen |
+| Voice | Optional, transcribed into text | Recorded as audio, live mic meter |
+| Webcam | Not available | Draggable bubble, on-device blur |
+| Where output lives | Scribe's cloud, account required | Your device, no account |
+| Free exports | Share link and embed only | WebM, MP4, GIF; PDF for screenshots |
+| Price to unlock exports | From $25/seat/mo (annual) | Nothing to unlock |
+
+Verified against scribe.com's pricing and tools pages on August 7, 2026. Their tiers change often, so treat the dollar figures as a snapshot.
+
+## Where Scribe Beats Any Video Recorder
+
+If the job is process documentation, Scribe is not a compromise. It is the better tool, and a recorder is the wrong one.
+
+A written guide is skimmable. Nobody scrubs a 90-second video to find the one field they mistyped; they scan step 6, see the screenshot, move on. Guides are also searchable by text and, crucially, updatable: when your expense tool moves a button, you retake one step instead of re-recording the entire walkthrough. Because Scribe hosts the guide in its cloud, an edit propagates to everyone holding the link. For an ops team maintaining fifty SOPs, that editing economy is the entire value, and no video workflow matches it.
+
+The capture experience is also fast in a way video cannot be. You perform the task once at normal speed and the documentation writes itself. No narration take, no trimming dead air, no exporting.
+
+## When Only a Real Recorder Will Do
+
+A screenshot per click misses everything that happens between the clicks, and some jobs live entirely in that gap.
+
+- **Visual bug reports.** Flicker, layout shift, a spinner that never resolves, an animation that stutters. The evidence is motion. A step guide of the same session shows a series of innocent-looking stills.
+- **Anything with your voice or face on it.** Product demos, async standups, customer replies. Scribe transcribes voice into caption text; it keeps no audio and has no webcam. That job needs a recorder by definition.
+- **One-off captures.** A quick clip for a teammate should not require an account or live in a documentation workspace.
+
+SuperchargeCapture is built for exactly this lane. Recording the current tab uses `chrome.tabCapture`, so there is no OS picker dialog: one click and it is rolling. Footage writes to the Origin Private File System in one-second chunks while you record, which means a Chrome crash mid-take loses almost nothing; reopen the extension and the partial recording is recoverable. Before you start, a live microphone meter confirms your mic is actually picking you up. Afterward, auto-zoom, cursor smoothing, and frame-accurate trim render locally on export. Screenshots cover visible area, full page, and region.
+
+## The Free Tier Fine Print
+
+Scribe's free Basic plan is real but narrow, as of August 2026: it captures web apps only, and it cannot export a guide as PDF, HTML, or Markdown. Custom branding is paid too, so free guides present with Scribe's look rather than yours. Getting a guide out of Scribe's cloud and into a file requires Pro Personal at $25 per seat per month billed annually ($35 monthly); Pro Team runs $13 per seat annually ($17 monthly) with a five-seat minimum, and Enterprise pricing is quote-based. An account is required from the first capture, since every guide lives in their hosted workspace.
+
+SuperchargeCapture's model is shorter to describe. The recorder, the editor effects, and the screenshot tools are free. No account exists to create, nothing uploads anywhere by default, and there is no watermark tier because there is no watermark. The one cloud feature, Share to Drive, is opt-in and sends the file to your own Google Drive with the `drive.file` scope, which can only touch files the extension created.
+
+## Pick by the Deliverable, Not the Search Term
+
+- If you maintain SOPs, onboarding docs, or help-center articles → Scribe, and pay for Pro if you need PDF exports or your own branding.
+- If you file visual bug reports, record demos with voice or webcam, or want a video file on your own disk → [SuperchargeCapture](/capture/), free.
+- If you do both jobs regularly → run both. They do not overlap, and the recorder half costs nothing.
+
+The search term lumps them together. The deliverables never were.
+
+#### FAQ
+Q: Is Scribe an actual screen recorder?
+A: No. As of August 2026, Scribe's own Chrome screen recorder landing page states that Scribe doesn't record video. It watches your clicks during a capture session and generates a step-by-step guide: one screenshot per click with auto-written instructions, hosted as a shareable web page. If you searched for a screen recorder expecting a video file at the end, Scribe produces something different by design. SuperchargeCapture records actual video of a tab, window, or full screen and saves it locally as WebM or MP4.
+
+Q: What does Scribe's free plan include and exclude?
+A: As of August 2026, Scribe's free Basic plan captures web apps only and shares guides by link or embed. It excludes desktop app capture, PDF, HTML, and Markdown export, and custom branding, all of which require a paid plan. Guides live in Scribe's cloud and an account is required to capture anything. SuperchargeCapture's recorder, editor, and screenshot tools are free with no account, and the files save to your own device.
+
+Q: How much does Scribe cost in 2026?
+A: As of August 2026, Scribe's pricing page lists a free Basic plan, Pro Personal at $25 per seat per month billed annually ($35 monthly), Pro Team at $13 per seat per month billed annually ($17 monthly) with a five-seat minimum, and a custom-priced Enterprise tier that adds auto-redaction of PII, SSO, and role-based access. The paid tiers unlock desktop capture, exports, screenshot editing, and branding.
+
+Q: Can Scribe record my voice and webcam for a walkthrough video?
+A: Not as video. As of August 2026, Scribe offers optional voice capture that is transcribed into the guide's text rather than kept as spoken audio, and it has no webcam recording because there is no video output at all. SuperchargeCapture records your microphone as actual audio with a live level meter shown before you start, and adds an optional draggable webcam bubble with on-device background blur.
+
+Q: Does SuperchargeCapture generate step-by-step guides like Scribe does?
+A: No. As of August 2026, SuperchargeCapture does not auto-generate documentation from your clicks. It records video and takes screenshots (visible area, full page, or region), then polishes recordings with auto-zoom, cursor smoothing, and trim, all rendered locally. If your deliverable is a written SOP with a screenshot per step, Scribe automates that job far better than any video tool. If your deliverable is a video or an image, Scribe cannot produce it and SuperchargeCapture can.
+
+---
+
+### We Tested 7 Chrome Ad Blockers Under Manifest V3 (2026)
+
+URL: https://www.superchargebrowser.com/library/tested-chrome-ad-blockers-manifest-v3-2026/
+Category: comparison | Extension: performance | Updated: 2026-08-07
+Description: We loaded 7 Manifest V3 ad blockers into Chrome and measured each one: the two biggest allow Google ad scripts by default; the winner neutralized 14 of 14.
+
+> **Key takeaways**
+> - **uBlock Origin Lite neutralized 14 of 14 test scripts**, the only clean sweep. SuperchargePerformance and Ghostery followed at 10 of 14.
+> - **Adblock Plus and AdBlock (96M combined users) blocked the fewest: 4 of 14.** Both ship an 8,257-rule Acceptable Ads allowlist, enabled by default, that explicitly permits Google's gpt.js ad tag.
+> - **Defaults beat filter size.** A fresh Ghostery install blocks nothing until you click consent. AdGuard's tracking filter ships disabled. Package rule counts predicted almost nothing.
+
+On August 7, 2026 we loaded seven Manifest V3 ad blockers into Chromium 148, one per isolated browser profile, and measured what each one stops. uBlock Origin Lite neutralized all 14 live test scripts. Adblock Plus and AdBlock blocked 4 — both ship Google's gpt.js ad tag on an Acceptable Ads allowlist that is enabled by default.
+
+Every extension was the current Chrome Web Store build, installed fresh with settings untouched, because that is how most of the internet runs an ad blocker: install, close the tab, never open the options page.
+
+## The Results, Ranked
+
+Fourteen real ad and analytics scripts (AdSense, Google Publisher Tag, Criteo, Taboola, Outbrain, Amazon's apstag, IAS, Rubicon/Magnite, Google Analytics, Meta Pixel, Hotjar, Scorecard, Chartbeat, LinkedIn Insight) injected as `<script>` elements from a live page, exactly the way publishers load them. Lower "loaded" is better.
+
+| Extension (CWS build tested) | Users | Rules on by default | Scripts stopped (of 14) | What got through |
+|---|---|---|---|---|
+| uBlock Origin Lite v2026.804.1652 | 16M | 18,389 | **14** (7 blocked + 7 stubbed) | Nothing |
+| SuperchargePerformance v1.4.6 | 4K | 195,058 | **10** | AdSense loader, Hotjar, Scorecard, LinkedIn |
+| Ghostery v10.5.55 (after consent) | 2M | 0 at install | **10** | AdSense loader, gpt.js, apstag, Google Analytics* |
+| AdGuard AdBlocker v5.4.3.119 | 16M | 77,214 | **6** | Criteo, Taboola, GA, Meta Pixel, Hotjar + 3 more |
+| Stands AdBlocker v2.1.68 | 3M | 15,416 | **6** | Criteo, Taboola, Outbrain, Meta Pixel + 4 more |
+| Adblock Plus v4.43.0 | 37M | 67,109 | **4** | gpt.js and Criteo via allow rules + 8 unblocked |
+| AdBlock v6.45.0 | 59M | 67,109 | **4** | Identical to Adblock Plus |
+
+*Ghostery's misses come with an asterisk: the AdSense and Google Analytics requests matched Ghostery rules in Chrome's DNR test API, yet the scripts loaded. That behavior is consistent with redirect-to-stub handling rather than a plain miss. We scored strictly: if the real script executed, it counts as through.
+
+The user-count column deserves a second look. The two most-installed ad blockers on Chrome finished last. The winner is tied for third-largest, level with AdGuard at 16M. Install base measures marketing reach and inertia, not blocking.
+
+## How We Ran the Test
+
+Test note for the record: all measurements taken August 7, 2026, on Chromium 148 (headless, CDP-driven), each extension loaded unpacked from its current Chrome Web Store package into its own throwaway profile. Three instruments, cross-checked:
+
+1. **Manifest audit.** We unpacked each CRX and counted every declarativeNetRequest ruleset: which ship, which are enabled, how many rules each contains. This is the extension's blocking capacity as Chrome sees it, not as the marketing page describes it.
+2. **Chrome's own rule engine.** `declarativeNetRequest.testMatchOutcome` against 10 ad-serving URLs per extension, asking Chrome directly: would you block this request? This is what caught the Acceptable Ads allow rules; a request can "match" a rule whose action is *allow*.
+3. **Live page probe.** From a real page, each browser injected the 20 script URLs and recorded load, block, or timeout. A no-extension baseline loaded the same set first; 6 endpoints failed even unblocked (dead test IDs), leaving 14 valid scripts. Every extension faced the identical 14.
+
+The combination matters. Instrument 2 told us *why* something loaded (allow rule vs. no rule). Instrument 3 told us what actually happens on a page. Where they disagreed (uBOL requests that "matched" but still loaded), the rule files themselves settled it: those are redirect actions pointing at neutered local stubs, gorhill's long-standing technique for breaking trackers without breaking the sites that expect them.
+
+One scope caveat: this test measures network-level blocking of ad and tracker scripts. It does not measure cosmetic filtering, YouTube video ads, or popups. Those are different mechanisms and a different test. Our earlier [five-blocker feature comparison](/library/best-ad-blocker-chrome-2026/) covers that ground.
+
+## The Allowlist Nobody Mentions at Install
+
+The most consequential finding sits in Adblock Plus and AdBlock, and it is identical in both because both belong to eyeo GmbH. Their shipped packages contain the same eyeo ruleset files — same UUIDs, same rule IDs — and three arrive enabled: EasyList (57,191 rules), an anti-circumvention list (1,661), and the Acceptable Ads exception list: 8,257 *allow* rules.
+
+When our probe requested `securepubads.g.doubleclick.net/tag/js/gpt.js`, the tag that loads Google display ads on millions of pages, Chrome's rule engine reported a match: allow rule #64135, filter `||g.doubleclick.net^*/gpt.js`. Criteo's publisher tag matched allow rule #58207. Both scripts then loaded and executed in the live test. That is not a gap in coverage. It is a business model: publishers and networks pay eyeo for placement on the exception list, and the default user never learns the toggle exists.
+
+To be fair where fairness is due: the setting is disclosed, documented, and takes one checkbox to turn off, and with Acceptable Ads disabled both extensions enforce the same EasyList core that caught apstag, Rubicon, and Meta Pixel in our test. But we tested defaults, and the defaults wave Google's ad infrastructure through.
+
+## Defaults Decide More Than Filters Do
+
+Three more extensions proved the same rule from different angles.
+
+**Ghostery ships every ruleset switched off.** All 33 rulesets, 90,435 rules, disabled in the manifest until you click "Enable Ghostery" on its consent screen. Fresh install: 0 of 20 endpoints blocked. After consent: 10 of 14. Ghostery does this for GDPR reasons and asks clearly at install. A defensible design, but it means a skipped welcome tab leaves you unprotected while the toolbar icon sits there looking helpful.
+
+**AdGuard enables its Base filter and nothing else.** One ruleset on (77,214 rules) of the 51 shipped (329,385 total). The Base filter swept the classic ad-tech domains — AdSense, gpt.js, Outbrain, apstag, IAS, Rubicon — and missed every pure analytics endpoint we threw: Google Analytics, Meta Pixel, Hotjar, Scorecard, Chartbeat, LinkedIn. Those live in AdGuard's Tracking Protection filter, which ships disabled. Turn it on and this picture should change substantially; out of the box, AdGuard is an ad blocker, not a tracker blocker. Worth noting for anyone comparing listings: the main AdGuard listing (16M users) and the separate "AdGuard AdBlocker (Beta)" listing shipped the identical 5.4.3.119 build when we pulled both.
+
+**Stands runs lean and it shows both ways.** The whole package is 15 MB, thirty-five times smaller than Adblock Plus, and its 15,416 rules, all enabled, outblocked ABP's default configuration 6 to 4, including Google Analytics, which ABP allowed through. It still missed the native-ad networks (Criteo, Taboola, Outbrain) and Meta Pixel.
+
+## Rule Counts Are Marketing Numbers
+
+Set the shipped-package sizes against the measured results and the correlation collapses:
+
+| Extension | Rules shipped | Unpacked size | Scripts stopped |
+|---|---|---|---|
+| AdBlock | 1,622,987 | 528 MB | 4 |
+| Adblock Plus | 1,618,369 | 522 MB | 4 |
+| AdGuard | 329,385 | 190 MB | 6 |
+| SuperchargePerformance | 195,088 | 57 MB | 10 |
+| Ghostery | 90,435 | 47 MB | 10 |
+| uBlock Origin Lite | 69,869 | 51 MB | 14 |
+| Stands | 15,416 | 15 MB | 6 |
+
+The 1.6-million-rule packages finished last; the winner ships 69,869. Most of ABP's bulk is 30-plus regional and alternate rulesets waiting disabled for users who never enable them. Chrome's architecture explains why vendors ship this way: Manifest V3 guarantees each extension 30,000 static rules and shares a larger global pool across all installed extensions, so bundling everything and enabling little is free. But it means the number on the listing page describes the warehouse, not the guard at the door.
+
+What the winner does differently is technique, not volume. Seven of uBOL's fourteen stops were redirect rules serving local stub scripts (a fake `analytics.js`, a fake Scorecard beacon) so pages that expect those objects keep working while the real payload never arrives. No other extension in this test showed that pattern as consistently.
+
+## Where Our Own Extension Landed
+
+SuperchargePerformance is ours, so hold it to the same standard. It stopped 10 of 14: the full prebid/ad-server cluster (gpt.js, Criteo, Taboola, Outbrain, apstag, IAS, Rubicon), plus Google Analytics, Meta Pixel, and Chartbeat. It let four through: the AdSense loader (`adsbygoogle.js`), Hotjar, Scorecard, and LinkedIn Insight. That places it joint second on network blocking with 195,058 of its 195,088 rules enabled by default, no paywall, and behind uBlock Origin Lite, which is the honest headline.
+
+The blocklist is one layer of a performance extension rather than the whole product; the same install suspends idle tabs and blocks YouTube and Twitch video ads through separate, platform-specific machinery that a network probe like this one does not exercise. No other extension in this table touches video ads at all. If your sole requirement is maximum general-purpose script blocking, this test says install uBOL. If ads are one of several things you want off your CPU, the trade reads differently.
+
+## Which One Should You Install
+
+The conditional version, from the data:
+
+- **You want one blocker and maximum coverage:** uBlock Origin Lite. 14 of 14, and the stub-redirect technique breaks trackers without breaking pages.
+- **You run AdBlock or Adblock Plus today:** open settings and untick Acceptable Ads. That single checkbox is the difference between shipping Google's ad tag and blocking it.
+- **You installed Ghostery at some point:** open its panel and confirm it is actually enabled. If you never clicked the consent screen, it has been decorative.
+- **You use AdGuard and care about analytics trackers:** enable the Tracking Protection filter; the default config allowed every analytics endpoint we tested.
+- **You also want tab suspension, video-ad handling, and a RAM readout in the same install:** SuperchargePerformance, with the measured caveat that its general blocking trails uBOL by four scripts.
+- **Manifest V2 nostalgia:** the browser side ended with Chrome 138 in July 2025 and the last enterprise remnants left in Chrome 151 on July 28, 2026. The August 31, 2026 deadline everyone cites only deletes the remaining store listings. Nothing you run today changes that weekend — every extension in this test is already MV3.
+
+#### FAQ
+Q: Which Chrome ad blocker blocks the most under Manifest V3?
+A: As of August 2026, uBlock Origin Lite (v2026.804.1652) neutralized all 14 ad and tracker scripts in our live Chrome test — 7 blocked at the network level and 7 replaced with harmless local stubs. SuperchargePerformance (v1.4.6) and Ghostery (v10.5.55, after its onboarding consent) each blocked 10 of 14. AdGuard's MV3 extension blocked 6 of 14 with default settings, Stands 6, and Adblock Plus and AdBlock 4 each.
+
+Q: Do Adblock Plus and AdBlock really allow some ads by default?
+A: Yes. As of August 2026, both extensions ship an Acceptable Ads exception list: 8,257 allow rules, enabled by default in the shipped package. In our test, requests for Google's gpt.js ad tag and Criteo's publisher tag matched explicit allow rules and loaded normally. Both extensions let you disable Acceptable Ads in settings, but out of the box those requests go through. Both products are operated by the same company, eyeo, and shipped byte-identical enabled rulesets in our comparison.
+
+Q: Does uBlock Origin Lite block as much as full uBlock Origin did?
+A: Not by default, but more than its reputation suggests. As of August 2026, uBOL enables 18,389 of its 69,869 shipped rules out of the box; annoyance and regional lists sit disabled until you turn them on. In our 14-script live test it still neutralized everything, partly by redirecting trackers like Google Analytics and Scorecard to local stub scripts instead of hard-blocking them. Full uBlock Origin is Manifest V2 and has not run on stable Chrome since Chrome 138 in July 2025; it remains a Firefox option.
+
+Q: Will my ad blocker stop working on August 31, 2026?
+A: No. That date only affects the Chrome Web Store. As of August 2026, every Manifest V2 extension already stopped running in the browser: Chrome 138 disabled them for consumers in July 2025, and Chrome 151 (July 28, 2026) removed the last enterprise-policy path. August 31, 2026 is when remaining MV2 listings are deleted from the store — no reinstalls, no updates. All seven blockers we tested are Manifest V3 and are not affected.
+
+Q: Why does Ghostery block nothing right after install?
+A: Because none of its rulesets are enabled until you consent. As of August 2026, Ghostery v10.5.55 ships 90,435 rules across 33 rulesets, every one marked disabled in the manifest. In our test a fresh install blocked 0 of 20 endpoints; after clicking 'Enable Ghostery' in its onboarding, it blocked 10 of 14 valid test scripts. If you installed Ghostery and skipped the welcome screen, it is not blocking anything.
+
+Q: Does a bigger filter list mean better ad blocking?
+A: Our data says no. As of August 2026, Adblock Plus ships 1.6 million rules in its package (35 rulesets, 522 MB unpacked) and blocked 4 of 14 test scripts with default settings. Stands ships 15,416 rules in 15 MB and blocked 6. What decided the results was which rules are enabled by default and whether an allowlist sits on top, not how many rules exist in the package.
+
+---
+
 ### Do AI Browsers Share Your Data? Comet vs Atlas vs Dia (2026)
 
 URL: https://www.superchargebrowser.com/library/ai-browsers-privacy-data-sharing-2026/
@@ -3653,7 +4211,7 @@ Smaller user base (~2M) than the others, but a loyal one. If your primary motiva
 
 v1.4.6. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
 
-**Layer 1: Ad and tracker blocking.** 195K+ rules compiled from 18 curated sources. Three tiers — 100K ad and tracker domains on the free tier, 72K privacy and telemetry domains on Medium, 22K malware, phishing, and fraud domains on Pro. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
+**Layer 1: Ad and tracker blocking.** 195K+ rules compiled from 18 curated sources, all free and enabled by default — no paywall. Coverage stacks in layers: 100K ad and tracker domains, 72K privacy and telemetry domains, 22K malware, phishing, and fraud domains. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
 
 **Layer 2: YouTube and Twitch video ads.** Pre-rolls, mid-rolls, overlay ads, and YouTube's anti-adblock popups — all handled. Twitch ad breaks are swapped for a clean backup stream, usually without interruption (a brief black screen or resolution dip can show during the swap). This is the biggest gap in every other blocker on this list. uBlock Origin Lite, AdGuard, Ghostery — none of them touch video ads on either platform, and neither does full uBlock Origin on Firefox.
 
@@ -3663,7 +4221,7 @@ v1.4.6. This is not a traditional ad blocker. It is a browser optimization suite
 
 **Layer 5: Cosmetic filtering.** Hides ad containers, newsletter signup popups, paywall nags, and sponsored content blocks across all sites. Dedicated rules for YouTube, Facebook, Twitter, and Reddit catch platform-specific ad elements that generic blockers miss.
 
-**Layer 6: Tab suspension and memory management.** Inactive tabs are discarded from memory automatically. 25+ web apps are protected by default — Figma, Notion, Slack, Google Docs, and others stay active. A real-time RAM dashboard shows exactly how much memory each tab is using and how much you have saved.
+**Layer 6: Tab suspension and memory management.** Inactive tabs are discarded from memory automatically. 29 web apps are protected by default — Figma, Notion, Slack, Google Docs, and others stay active. A real-time RAM dashboard shows exactly how much memory each tab is using and how much you have saved.
 
 Per-domain control lets you toggle 14 features independently for any site. Keep ad blocking on while disabling tab suspension. Whitelist a news site from content blocking but keep video ad blocking active for YouTube. The granularity is finer than anything else on this list.
 
@@ -4656,7 +5214,7 @@ What a dedicated extension adds on top of Memory Saver:
 - **Auto-protected web apps:** skip suspension for productivity tools automatically, without manual exception entry
 - **Audio and pinned tab protection:** explicit skip logic for tabs where `tab.audible` is true and for pinned tabs
 
-SuperchargePerformance auto-protects 25+ web apps from suspension (Figma, Notion, Slack, Discord, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Teams, Spotify, YouTube Music, and more). Manual exception lists in native Memory Saver require you to add each domain yourself.
+SuperchargePerformance auto-protects 29 web apps from suspension (Figma, Notion, Slack, Discord, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Teams, Spotify, YouTube Music, and more). Manual exception lists in native Memory Saver require you to add each domain yourself.
 
 The two work best in combination: Memory Saver as the browser's baseline safety net, the extension as the proactive first line that acts on a timer.
 
@@ -5179,7 +5737,7 @@ The per-tab savings are equivalent because the underlying mechanisms are the sam
 | Audio tab protection | Depends on extension | Yes — skips `tab.audible = true` |
 | Pinned tab protection | Depends on extension | Yes |
 | Form input protection | Depends on extension | Yes |
-| App auto-whitelist | No | Yes — 25+ web apps (Figma, Notion, Slack, etc.) |
+| App auto-whitelist | No | Yes — 29 web apps (Figma, Notion, Slack, etc.) |
 | Memory-saved estimate | No | Yes (session total) |
 | Per-domain feature control | Separate whitelists | Single unified whitelist |
 | Background service workers | 2 | 1 |
@@ -5198,7 +5756,7 @@ If you use Chrome primarily for casual browsing, the 195,000+ rules in Superchar
 
 ## Auto-Protected Apps: What Does Not Get Suspended
 
-SuperchargePerformance automatically skips suspension for 25+ web apps where unexpected reloads cause data loss:
+SuperchargePerformance automatically skips suspension for 29 web apps where unexpected reloads cause data loss:
 
 Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Microsoft Teams, Google Docs, Google Sheets, Google Slides, Gmail, Google Drive, Google Calendar, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby, and others.
 
@@ -5332,7 +5890,7 @@ Install it if: you want lightweight tracker and ad blocking with minimal resourc
 
 Ad blocking handles one slice of browser performance. If you also have 20+ tabs draining RAM, no uBO version addresses that — their scope is content filtering, not tab lifecycle management.
 
-Tab suspension (discarding inactive tabs to free memory), memory-saved reporting, and cookie consent auto-dismissal are a separate layer. SuperchargePerformance covers that layer: 195,000+ DNR rules for tracker and malware blocking, tab suspension via `chrome.tabs.discard()` with a configurable timer, 25+ auto-protected web apps (Figma, Notion, Slack, and others), and an estimate of the memory it has freed. Zero telemetry, 100% local, no account, Featured badge on CWS.
+Tab suspension (discarding inactive tabs to free memory), memory-saved reporting, and cookie consent auto-dismissal are a separate layer. SuperchargePerformance covers that layer: 195,000+ DNR rules for tracker and malware blocking, tab suspension via `chrome.tabs.discard()` with a configurable timer, 29 auto-protected web apps (Figma, Notion, Slack, and others), and an estimate of the memory it has freed. Zero telemetry, 100% local, no account, Featured badge on CWS.
 
 If you run uBO Lite: SuperchargePerformance's ad blocking overlaps with Lite's coverage, and running both means every request gets matched against both filter sets — duplicate work for little incremental gain. For the cleanest setup, either use SuperchargePerformance alone (it covers ads, trackers, video ads, popups, cookies, and tab suspension) or keep Lite for website ads and set Perf's content blocking to Off so it handles only video ads, popups, cookies, and tab memory.
 
@@ -7639,11 +8197,11 @@ A: As of June 2026, ScreenPal is the stronger fit if you want hosted video with 
 
 ---
 
-### Zen Browser Extensions: How to Install Them (2026 Guide)
+### 5 Best Zen Browser Extensions + How to Install Them (2026)
 
 URL: https://www.superchargebrowser.com/library/zen-browser-extensions-complete-guide/
 Category: guide | Extension: navigation | Updated: 2026-06-25
-Description: Zen Browser uses Firefox add-ons from addons.mozilla.org, not the Chrome Web Store. Full install steps, what works, what doesn't, and the Chrome alternative.
+Description: Zen browser extensions come from addons.mozilla.org. Get the exact install steps, the 5 best carry-overs, and full uBlock Origin, not Chrome's MV3 Lite.
 
 You switched to Zen for the clean vertical tabs, opened the Add-ons Manager to bring your extensions across, and hit a wall: where is the Chrome Web Store? It isn't there, and it isn't coming. Zen is a Firefox fork (built on Firefox 152 as of mid-June 2026), so it pulls extensions from addons.mozilla.org instead. Open the Add-ons Manager with Ctrl+Shift+A, browse addons.mozilla.org, and click "Add to Firefox" on any add-on. Chrome extensions do not install.
 
@@ -8071,7 +8629,7 @@ A timer-based suspender attacks the timing problem directly. Instead of waiting 
 | Acts before pressure | No | Yes |
 | Timing you control | Mode buckets only | 5 / 15 min, custom on PRO |
 | Memory-saved estimate | None | Yes (session total), in the popup |
-| Auto-protected web apps | Manual exclude list | 25+ built in (Gmail, Figma, Notion, Slack…) |
+| Auto-protected web apps | Manual exclude list | 29 built in (Gmail, Figma, Notion, Slack…) |
 | Ad / tracker blocking | None | 195K+ rules |
 | Account / telemetry | None | None, fully local, free core |
 
@@ -10171,7 +10729,7 @@ What the native trio lacks is depth. The strip has no workspaces. Memory Saver h
 Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.6, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
 
 - **Suspension timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier; the PRO tier, waitlist-only for now, unlocks custom values down to seconds.
-- **Multi-signal protection.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 25+ web apps are auto-protected out of the box: Figma, Notion, Slack, Google Docs, Discord, Zoom, WhatsApp Web, and others where a discard would drop a call or kill a queue.
+- **Multi-signal protection.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 29 web apps are auto-protected out of the box: Figma, Notion, Slack, Google Docs, Discord, Zoom, WhatsApp Web, and others where a discard would drop a call or kill a queue.
 - **A RAM dashboard.** The popup shows the total estimated memory freed by suspensions and per-page optimizations, so you can see the feature working instead of trusting it.
 - **Per-domain whitelist**, plus 13 individually toggleable features.
 
@@ -10226,7 +10784,7 @@ Q: Does Brave have a built-in memory saver?
 A: Yes. As of June 2026, Brave's Memory Saver (Settings > System > Performance) deactivates tabs you are not using and reloads them when you return, with a manual site-exception list. What it lacks is control: no user-set suspension timer and no automatic protection for web apps like Figma or Slack. Tab suspender extensions add those layers on top of the same Chromium discard mechanism.
 
 Q: Do tab suspender extensions work on Brave?
-A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of August 2026, SuperchargePerformance (v1.4.6 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 25+ auto-protected web apps including Figma, Notion, Slack, and Google Docs.
+A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of August 2026, SuperchargePerformance (v1.4.6 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 29 auto-protected web apps including Figma, Notion, Slack, and Google Docs.
 
 Q: Does Brave have native vertical tabs?
 A: Yes. Brave shipped native vertical tabs in version 1.52 back in May 2023, three years before this article's publication. Enable them under brave://settings/appearance or by right-clicking any tab. They support collapsing to icons, pinning, and tab groups. They are a relocated tab strip rather than an organization system: no named workspaces, no session snapshots, no command-bar search across tabs.
@@ -10403,7 +10961,7 @@ Worth keeping in perspective: Brave already starts from a lighter baseline than 
 | Mechanism | Chromium tab discard | Same: `chrome.tabs.discard()` |
 | Trigger | Brave's internal heuristics | Inactivity timer: 15 min or 5 min (custom seconds on PRO) |
 | Timer control | None | Yes |
-| Site exceptions | Manual list | Manual whitelist plus 25+ apps auto-protected |
+| Site exceptions | Manual list | Manual whitelist plus 29 apps auto-protected |
 | Audio / pinned / form protection | Partial (upstream behavior) | Explicit skips for all three |
 | Savings visibility | None | RAM counter on the toolbar badge |
 | Scope | Suspension only | Suspension plus ad/tracker blocking and script control |
@@ -10427,7 +10985,7 @@ Installing works exactly like Chrome: open the extension's Chrome Web Store page
 What you gain over the native toggle:
 
 - **A timer you choose.** 15 minutes on the low level, 5 minutes on the default, custom seconds with PRO. Idle tabs are freed before pressure builds, not in response to it.
-- **Protection without list maintenance.** 25+ web apps are auto-protected out of the box: Figma, Notion, Slack, Discord, Google Docs, Spotify, WhatsApp Web, Zoom, and more. Tabs playing audio, pinned tabs, and tabs with unsaved form input are skipped automatically.
+- **Protection without list maintenance.** 29 web apps are auto-protected out of the box: Figma, Notion, Slack, Discord, Google Docs, Spotify, WhatsApp Web, Zoom, and more. Tabs playing audio, pinned tabs, and tabs with unsaved form input are skipped automatically.
 - **Visible results.** A toolbar badge counts estimated RAM freed, so you can tell whether the thing is working instead of guessing.
 
 One overlap to flag: SuperchargePerformance also blocks ads and trackers via `declarativeNetRequest`. Brave Shields already does that natively, so on Brave the suspension features carry the value. Everything is toggleable per feature and per site, so you can run it as a pure suspender and leave blocking to Shields.
@@ -10455,7 +11013,7 @@ Q: How much RAM does suspending a tab in Brave save?
 A: A suspended tab keeps roughly 5-10MB for its title and favicon, versus 80-300MB for an active tab. That is a 90-95% reduction for that individual tab. Total savings across a session depend on how many tabs qualify for suspension and how heavy they are.
 
 Q: Will a suspended tab lose audio or unsaved form data?
-A: Brave's Memory Saver and suspender extensions both skip tabs that would visibly break. SuperchargePerformance additionally skips tabs playing audio, pinned tabs, and tabs with unsaved form input, and auto-protects 25+ web apps such as Figma, Notion, Slack, and Google Docs as of June 2026.
+A: Brave's Memory Saver and suspender extensions both skip tabs that would visibly break. SuperchargePerformance additionally skips tabs playing audio, pinned tabs, and tabs with unsaved form input, and auto-protects 29 web apps such as Figma, Notion, Slack, and Google Docs as of June 2026.
 
 ---
 
@@ -12216,7 +12774,7 @@ Chrome's `chrome.tabs.discard()` API does something different. It evicts a tab's
 
 Click that tab and it reloads from the stored URL, the same as clicking a just-closed tab from Tab Wrangler's Corral. But you didn't have to go find it in a list. It was sitting there the whole time.
 
-SuperchargePerformance uses `chrome.tabs.discard()` with configurable timers (5 or 15 minutes on the free tier, custom on PRO). The same protections apply: audio tabs never get suspended, pinned tabs stay loaded, and tabs with unsaved form inputs are detected and skipped. 25+ auto-protected web apps — Gmail, Google Docs, Figma, Notion, Slack, Spotify, and others — are excluded by default because suspending mid-edit is worse than leaving them loaded.
+SuperchargePerformance uses `chrome.tabs.discard()` with configurable timers (5 or 15 minutes on the free tier, custom on PRO). The same protections apply: audio tabs never get suspended, pinned tabs stay loaded, and tabs with unsaved form inputs are detected and skipped. 29 auto-protected web apps — Gmail, Google Docs, Figma, Notion, Slack, Spotify, and others — are excluded by default because suspending mid-edit is worse than leaving them loaded.
 
 The badge counter in the extension popup shows total RAM freed across your session. On a heavy workday with 30+ tabs, the savings compound quickly.
 
@@ -12243,7 +12801,7 @@ There are two situations where closing beats suspension:
 
 **Genuine tab hoarding.** If you routinely hit 80-100+ tabs and know you'll never return to the majority of them, suspension just hides the problem. The tabs are still there, still in the bar, still piling up. Tab Wrangler closes them and enforces a hard limit on what stays open. For true hoarders, that forcing function has real value.
 
-**The hybrid approach.** You don't have to pick one. SuperchargePerformance suspends tabs after 15 minutes to free memory throughout the day. Tab Wrangler handles the pruning side: close anything untouched for 24 hours. Run both and you get suspension for same-session tabs (memory freed, context preserved) and auto-close for anything that's been sitting around for a day or more.
+**The hybrid approach.** You don't have to pick one. SuperchargePerformance suspends tabs after 5 minutes by default to free memory throughout the day. Tab Wrangler handles the pruning side: close anything untouched for 24 hours. Run both and you get suspension for same-session tabs (memory freed, context preserved) and auto-close for anything that's been sitting around for a day or more.
 
 If you never go back to a tab, close it. If there's any chance you'll want it, suspend it instead of closing.
 
@@ -12253,10 +12811,10 @@ If you never go back to a tab, close it. If there's any chance you'll want it, s
 |------|-----------|---------|
 | Auto-close tabs after 20 min | Tab Wrangler | Default timer (20 min) |
 | Auto-close tabs after 24 hours | Tab Wrangler | Timer → 1,440 min |
-| Suspend tabs, keep in bar | SuperchargePerformance | Inactivity timer → 15 min |
-| Suspend fast + auto-close old | Both | Perf (15 min suspend) + Tab Wrangler (24h close) |
+| Suspend tabs, keep in bar | SuperchargePerformance | Inactivity timer → 5 min default |
+| Suspend fast + auto-close old | Both | Perf (5 min suspend) + Tab Wrangler (24h close) |
 | Protect specific sites from closing | Tab Wrangler | Lock domain in whitelist |
-| Protect specific apps from suspension | SuperchargePerformance | 25+ web apps protected by default |
+| Protect specific apps from suspension | SuperchargePerformance | 29 web apps protected by default |
 
 If memory is the primary concern and you want tabs to stay recoverable without list-hunting: SuperchargePerformance. If you want Chrome to enforce an actual tab limit and actually clear out the old ones: Tab Wrangler. If your tab count regularly climbs past 80: run both.
 
@@ -12271,7 +12829,7 @@ Q: Does Tab Wrangler still work in 2026?
 A: Yes. As of June 2026, Tab Wrangler (v8.3.0) is live on the Chrome Web Store and was updated on April 30, 2026. It has migrated to MV3 and works on current Chrome versions.
 
 Q: How do I auto-close tabs older than 24 hours?
-A: Tab Wrangler lets you set a custom inactivity timer — set it to 1,440 minutes (24 hours) to close tabs that go untouched for a day. For a hybrid approach: SuperchargePerformance suspends tabs after 15 minutes to free RAM, and Tab Wrangler handles the actual pruning on a longer timer.
+A: Tab Wrangler lets you set a custom inactivity timer — set it to 1,440 minutes (24 hours) to close tabs that go untouched for a day. For a hybrid approach: SuperchargePerformance suspends tabs after 5 minutes by default to free RAM, and Tab Wrangler handles the actual pruning on a longer timer.
 
 ---
 
@@ -12333,7 +12891,7 @@ On a Chromebook, the two biggest RAM drains are idle tab renderers and ad iframe
 
 Tab suspension runs via `chrome.tabs.discard()`, Chrome's own API for releasing a tab's renderer process from memory. The tab stays visible in the strip and reloads on click, but its renderer process is gone. On a 4GB device, suspending 10 idle tabs frees roughly 800 MB to 1.5 GB of renderer RAM from the active working set. ChromeOS stops having to compress those pages.
 
-Suspension timers: 15 minutes on the default level, 5 minutes on the medium level. The extension auto-protects 25+ web apps — Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, and others. These stay active regardless of the timer. Student users who keep a Docs tab open all day while browsing will not find it suspended mid-sentence.
+Suspension timers: 5 minutes on the default level, 15 minutes on the lighter Low level. The extension auto-protects 29 web apps — Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, and others. These stay active regardless of the timer. Student users who keep a Docs tab open all day while browsing will not find it suspended mid-sentence.
 
 The ad blocking layer runs 195,000+ declarative network request rules from 18 curated sources. On a Chromebook, blocking ad iframes does two things: it removes the subframe processes (each ad iframe spawns its own renderer process in Chrome's multi-process model), and it cuts CPU time spent parsing and executing ad scripts. A news site that would spawn 8-10 ad subframes just does not spawn them.
 
@@ -12484,7 +13042,7 @@ Extensions that reduce Chrome RAM fall into four functional categories. Most foc
 
 ## SuperchargePerformance: Suspension + Blocking Combined
 
-The only extension that handles both levers in a single install. Tab suspension via `chrome.tabs.discard()` — the official Chrome API — discards idle tabs after a configurable timer. 25+ web apps are auto-protected and never suspended: Figma, Notion, Slack, Google Docs, and others that break when discarded. The RAM dashboard shows live per-tab memory so you can see what the extension is actually doing.
+The only extension that handles both levers in a single install. Tab suspension via `chrome.tabs.discard()` — the official Chrome API — discards idle tabs after a configurable timer. 29 web apps are auto-protected and never suspended: Figma, Notion, Slack, Google Docs, and others that break when discarded. The RAM dashboard shows live per-tab memory so you can see what the extension is actually doing.
 
 The blocking layer runs 195K+ DNR rules from 18 sources across 3 tiers (basic, standard, aggressive). Ads, trackers, analytics scripts, fingerprinting libraries, and malware domains. On a news site that previously spawned 10 ad subframes, those processes simply don't start.
 
@@ -12535,7 +13093,7 @@ Chrome 108 added Memory Saver. Chrome 140 (September 2025) improved it with ML-b
 | Activation trigger | System memory pressure | Configurable inactivity timer |
 | ML tab prediction | Yes (Chrome 140+) | No |
 | Discard timing | When system is under pressure | Consistent, user-controlled |
-| Auto-protect specific apps | No | Yes (SuperchargePerformance: 25+ apps) |
+| Auto-protect specific apps | No | Yes (SuperchargePerformance: 29 apps) |
 | RAM dashboard | No | Yes (SuperchargePerformance) |
 | Ad blocking | No | Yes (SuperchargePerformance, uBlock Origin) |
 | Control over which tabs | Limited | Per-site rules, exclusions |
@@ -12942,7 +13500,7 @@ Before the extension reviews, these are the criteria that actually matter:
 
 [Chrome Web Store](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 
-SuperchargePerformance uses `chrome.tabs.discard()` with a multi-signal protection layer on top: 25+ web apps auto-protected without manual whitelist configuration (Figma, Notion, Slack, Discord, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Teams, Spotify, YouTube Music, and more), audio detection via `tab.audible`, form-input detection, and pinned-tab protection. Timers are configurable: 15 minutes on the free tier, 5 minutes on the medium tier, custom seconds on PRO.
+SuperchargePerformance uses `chrome.tabs.discard()` with a multi-signal protection layer on top: 29 web apps auto-protected without manual whitelist configuration (Figma, Notion, Slack, Discord, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Teams, Spotify, YouTube Music, and more), audio detection via `tab.audible`, form-input detection, and pinned-tab protection. Timers are configurable: 5 minutes on the default tier, 15 minutes on the lighter Low tier, custom seconds on PRO.
 
 The RAM badge updates in real time — a running counter of memory freed across the session, rendered via OffscreenCanvas so it doesn't inflate its own memory footprint. The popup shows per-tab savings.
 
@@ -13038,7 +13596,7 @@ Still a one-developer volunteer project, with the same structural caveats as any
 
 | Extension | Users | Rating | MV3 | Last CWS Update | Suspension Method | Idle Timer | Ad Blocking | RAM Dashboard | Cost |
 |-----------|-------|--------|-----|-----------------|-------------------|------------|-------------|---------------|------|
-| SuperchargePerformance | ~4,700 | 4.5/5 | Yes | August 2026 | chrome.tabs.discard() | Yes (15 min free, 5 min medium, custom PRO) | Yes (195K+ rules) | Yes | Free + PRO |
+| SuperchargePerformance | ~4,700 | 4.5/5 | Yes | August 2026 | chrome.tabs.discard() | Yes (5 min default, 15 min Low, custom PRO) | Yes (195K+ rules) | Yes | Free + PRO |
 | Tab Wrangler | 70,000 | 4.4/5 | Yes | April 30, 2026 | Auto-close + Corral log | Yes | No | No | Free |
 | Auto Tab Discard | 100,000 | 4.2/5 | Yes | Feb 17, 2024 | chrome.tabs.discard() | Yes | No | No | Free |
 | OneTab | 2,000,000 | 4.5/5 | Yes | March 22, 2026 | Tab consolidation (close) | No | No | No | Free |
@@ -13580,7 +14138,7 @@ A tab suspended via SuperchargePerformance retains roughly 5MB of metadata. The 
 
 The extension's background process still runs. But the per-tab injection cost across inactive tabs drops to zero for every tab that gets suspended.
 
-SuperchargePerformance suspends inactive tabs after a configurable inactivity timer (15 minutes at level 1, 5 minutes at level 2), using Chrome's `chrome.tabs.discard()` API. It skips tabs where audio is playing, pinned tabs, tabs with unsaved form inputs, and 25+ auto-protected app categories (Figma, Notion, Slack, Gmail, and others). It also blocks ads and trackers via 195K+ declarativeNetRequest rules, which prevents resource-heavy ad scripts from loading into active tabs in the first place — reducing how much content scripts from ad-network extensions even have to process.
+SuperchargePerformance suspends inactive tabs after a configurable inactivity timer (5 minutes by default, 15 minutes on the lighter Low tier), using Chrome's `chrome.tabs.discard()` API. It skips tabs where audio is playing, pinned tabs, tabs with unsaved form inputs, and 29 auto-protected app categories (Figma, Notion, Slack, Gmail, and others). It also blocks ads and trackers via 195K+ declarativeNetRequest rules, which prevents resource-heavy ad scripts from loading into active tabs in the first place — reducing how much content scripts from ad-network extensions even have to process.
 
 The RAM dashboard in the popup shows per-tab and total session savings, so you can verify the actual impact.
 
@@ -14524,14 +15082,14 @@ For users switching from Edge sleeping tabs, there are three gaps worth knowing 
 | Timer control | None | Yes |
 | Audible tab protection | Basic | Skips tabs where `tab.audible = true` |
 | Pinned tab protection | No | Yes |
-| Auto-protection for known apps | No | Yes — 25+ web apps including Figma, Google Docs, Notion, Slack, Spotify |
+| Auto-protection for known apps | No | Yes — 29 web apps including Figma, Google Docs, Notion, Slack, Spotify |
 | Per-tab RAM savings display | No | Yes |
 | Session total RAM saved | No | Yes |
 | Ad and tracker blocking | No | Yes (195K+ rules, 18 sources) |
 | Cost | Free (built-in) | Free + optional one-time PRO |
 | Zero telemetry | N/A | Yes — 100% local, no sync |
 
-The auto-protection list covers 25+ app categories that should not be interrupted: Google Docs, Notion, Slack, Figma, Spotify, and others (verified June 2026). No manual exception list to maintain.
+The auto-protection list covers 29 app categories that should not be interrupted: Google Docs, Notion, Slack, Figma, Spotify, and others (verified June 2026). No manual exception list to maintain.
 
 The RAM dashboard is the other gap filler. You can see exactly how much memory each suspended tab was holding, and what your total session has freed. Chrome Memory Saver gives you none of that visibility.
 
@@ -14554,7 +15112,7 @@ For light browsing, the built-in handles it fine. The tab suspension mechanism i
 
 **You have 20+ tabs open regularly and Chrome still feels slow:** Memory Saver's reactive model will not keep up. A timer-based extension suspends after 5 minutes of inactivity regardless of system state — the RAM stays low before pressure builds, not after.
 
-**You rely on Google Docs, Notion, ChatGPT, or other apps staying loaded:** Add them to the Memory Saver exceptions list manually, or use an extension with auto-protection that handles it for you. (Note: SuperchargePerformance auto-protects 25+ known productivity apps; ChatGPT can be added manually via the per-site whitelist.)
+**You rely on Google Docs, Notion, ChatGPT, or other apps staying loaded:** Add them to the Memory Saver exceptions list manually, or use an extension with auto-protection that handles it for you. (Note: SuperchargePerformance auto-protects 29 known productivity apps; ChatGPT can be added manually via the per-site whitelist.)
 
 **You want to see the actual numbers:** The built-in gives you no dashboard. If knowing how much RAM your browser is using matters to you, a dedicated extension with a per-tab display closes that gap.
 
@@ -14576,7 +15134,7 @@ Q: What's the difference between Chrome Memory Saver modes in Chrome 149?
 A: As of June 2026 (Chrome 149), there are three modes. Moderate: only discards tabs when the system is under significant memory pressure. Balanced: uses machine learning to predict which tabs you are unlikely to revisit soon, then discards those. Maximum: discards tabs aggressively regardless of system pressure. Maximum is roughly equivalent to Edge's sleeping tabs behavior.
 
 Q: Can I use SuperchargePerformance instead of Chrome Memory Saver?
-A: Yes, and they can run together. SuperchargePerformance uses the same chrome.tabs.discard() API but adds a configurable inactivity timer (suspend after 5 or 15 minutes), auto-protects 25+ web apps like Figma, Notion, and Google Docs from being suspended, and shows an estimate of the memory it has freed. Chrome Memory Saver has no configurable timer and no memory-saved reporting at all.
+A: Yes, and they can run together. SuperchargePerformance uses the same chrome.tabs.discard() API but adds a configurable inactivity timer (suspend after 5 or 15 minutes), auto-protects 29 web apps like Figma, Notion, and Google Docs from being suspended, and shows an estimate of the memory it has freed. Chrome Memory Saver has no configurable timer and no memory-saved reporting at all.
 
 ---
 
@@ -15599,7 +16157,7 @@ Memory Saver waits for system memory pressure before becoming aggressive. In a 5
 
 The difference shows up most on machines with plenty of RAM that is still being consumed by inactive tabs. Memory Saver is reactive: it acts when the system signals pressure. A timer-based suspender is proactive: it acts regardless of current memory load, keeping the footprint low throughout the session.
 
-SuperchargePerformance uses `chrome.tabs.discard()` on a configurable inactivity timer (15 minutes on the free tier, 5 minutes on Medium, custom-second precision on PRO). It auto-protects 25+ web apps from suspension: Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, Google Meet, Zoom, and others. Tabs playing audio, pinned tabs, and tabs with detected form input are also protected. No web app gets accidentally discarded mid-session.
+SuperchargePerformance uses `chrome.tabs.discard()` on a configurable inactivity timer (5 minutes by default, 15 minutes on the lighter Low tier, custom-second precision on PRO). It auto-protects 29 web apps from suspension: Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, Google Meet, Zoom, and others. Tabs playing audio, pinned tabs, and tabs with detected form input are also protected. No web app gets accidentally discarded mid-session.
 
 ## Should You Switch to Firefox?
 
@@ -15642,7 +16200,7 @@ Q: Does Firefox support Chrome extensions?
 A: No. As of June 2026, Firefox uses its own extension API (WebExtensions with Firefox-specific APIs). Many popular Chrome extensions, including Chrome-only tools like SuperchargePerformance, are not available on Firefox or have reduced functionality in Firefox ports. This is the primary cost of switching for users who rely on the Chrome extension ecosystem.
 
 Q: What is the fastest way to reduce Chrome RAM to Firefox levels?
-A: As of June 2026: enable Memory Saver at chrome://settings/performance (Maximum mode), or install a timer-based tab suspender. A suspender with a 5-minute inactivity timer reaches Firefox-comparable RAM within a normal browsing session. SuperchargePerformance applies chrome.tabs.discard() on a configurable timer, auto-protects 25+ web apps from suspension, and adds 195K+ ad-blocking rules that reduce active-tab weight.
+A: As of June 2026: enable Memory Saver at chrome://settings/performance (Maximum mode), or install a timer-based tab suspender. A suspender with a 5-minute inactivity timer reaches Firefox-comparable RAM within a normal browsing session. SuperchargePerformance applies chrome.tabs.discard() on a configurable timer, auto-protects 29 web apps from suspension, and adds 195K+ ad-blocking rules that reduce active-tab weight.
 
 ---
 
@@ -16213,7 +16771,7 @@ Most freeze patterns come back to the same root: too many active tabs keeping Ch
 
 SuperchargePerformance uses `chrome.tabs.discard()` to suspend inactive tabs automatically, dropping their RAM footprint to near zero without closing them. Suspended tabs produce no CPU load and no disk writes. Switching back to a suspended tab reloads it, the same as Chrome's built-in Memory Saver, but with more precise control over which tabs are protected.
 
-25+ web apps are auto-protected from suspension: Figma, Notion, Slack, and similar tools where losing state would be disruptive. Everything else goes idle automatically after a configurable period. The result is lower steady-state RAM, less disk I/O, and fewer of the memory-pressure hangs described in Fix 9.
+29 web apps are auto-protected from suspension: Figma, Notion, Slack, and similar tools where losing state would be disruptive. Everything else goes idle automatically after a configurable period. The result is lower steady-state RAM, less disk I/O, and fewer of the memory-pressure hangs described in Fix 9.
 
 If your freezes match Fixes 1, 3, 4, or 5, the problem is environmental (drivers, Windows settings, cache) rather than tab count. Fix those directly first.
 
@@ -16336,9 +16894,9 @@ When Chrome runs out of available RAM, the OS starts writing to the pagefile (on
 
 Discarding inactive tabs before they accumulate is the structural solution. Chrome's `chrome.tabs.discard()` API terminates a tab's renderer process while keeping the tab visible in the bar — it reloads on click. Each discarded tab drops from 70–400 MB to approximately 5 MB of metadata.
 
-SuperchargePerformance does this automatically. Tabs inactive for a configurable period (15 minutes at level 1, 5 minutes at level 2) get discarded while you edit. For Office 365 specifically: go to the extension's whitelist settings and add `office.com` — this ensures your Word Online or Excel tab is never discarded mid-session, while everything else clears aggressively.
+SuperchargePerformance does this automatically. Tabs inactive for a configurable period (5 minutes by default, 15 minutes on the lighter Low tier) get discarded while you edit. For Office 365 specifically: go to the extension's whitelist settings and add `office.com` — this ensures your Word Online or Excel tab is never discarded mid-session, while everything else clears aggressively.
 
-The 25+ auto-protected web apps in SuperchargePerformance include Google Docs, Sheets, and Slides. They are never suspended. Office 365 requires a manual whitelist addition since it is a Microsoft property rather than a default-protected app. Adding it takes 10 seconds and stays persistent.
+The 29 auto-protected web apps in SuperchargePerformance include Google Docs, Sheets, and Slides. They are never suspended. Office 365 requires a manual whitelist addition since it is a Microsoft property rather than a default-protected app. Adding it takes 10 seconds and stays persistent.
 
 The math across a typical session: suspending 12 inactive tabs frees 70–75% of total Chrome RAM, creating headroom that delays or prevents the point at which Office 365 memory pressure forces OS-level swapping. Per-discarded-tab savings are 90–95% of that tab's renderer memory.
 
@@ -16566,7 +17124,7 @@ Extension service workers run in Chrome's browser process context. A service wor
 
 Extensions most likely to cause main-process hangs: VPNs that intercept all network requests, clipboard managers, screen recorders, and extensions last updated before Chrome 125 (pre-MV3 service worker changes).
 
-**Suspended tabs and runaway extensions:** If you use tab suspension, suspended tabs cannot run scripts. That means their extension interactions go quiet. But the extension's own service worker can still misbehave independently of any tab. SuperchargePerformance's `chrome.tabs.discard()` suspension eliminates tab-level script pressure on the browser process — but it does so selectively: tabs playing audio (`tab.audible`), pinned tabs, tabs with unsaved form input (detected via injected script checking for changed form fields), and 25+ auto-protected domains (Gmail, Google Docs/Sheets/Slides/Drive/Calendar, Figma, Notion, Slack, Discord, Teams, Linear, Miro, Canva, Airtable, Asana, Monday, and others) are never suspended, even when background tabs are. That intelligence matters here: a naive suspender that freezes a Figma tab mid-edit is worse than no suspender at all. Perf's suspension cannot stop an extension service worker that is stuck in its own loop — the right fix for a runaway service worker is removing the extension.
+**Suspended tabs and runaway extensions:** If you use tab suspension, suspended tabs cannot run scripts. That means their extension interactions go quiet. But the extension's own service worker can still misbehave independently of any tab. SuperchargePerformance's `chrome.tabs.discard()` suspension eliminates tab-level script pressure on the browser process — but it does so selectively: tabs playing audio (`tab.audible`), pinned tabs, tabs with unsaved form input (detected via injected script checking for changed form fields), and 29 auto-protected domains (Gmail, Google Docs/Sheets/Slides/Drive/Calendar, Figma, Notion, Slack, Discord, Teams, Linear, Miro, Canva, Airtable, Asana, Monday, and others) are never suspended, even when background tabs are. That intelligence matters here: a naive suspender that freezes a Figma tab mid-edit is worse than no suspender at all. Perf's suspension cannot stop an extension service worker that is stuck in its own loop — the right fix for a runaway service worker is removing the extension.
 
 ## Fix 4: Update GPU Drivers
 
@@ -17051,7 +17609,7 @@ If Chrome's total memory is within 80% of your system RAM, paging is likely caus
 
 Close tabs you are not actively using. Each suspended or closed tab releases its renderer process. On machines with 8 GB RAM and 20+ tabs, this alone resolves stutter in most cases.
 
-SuperchargePerformance automates this with `chrome.tabs.discard()`: background tabs are suspended after a configurable inactivity timer (5 or 15 minutes on free tier, custom seconds on PRO). The 25+ auto-protected web apps (Gmail, Google Docs, Figma, Notion, Slack, Spotify, and others) are never suspended. Suspended tabs resume normally when you click them. This keeps total Chrome RAM within bounds without closing anything.
+SuperchargePerformance automates this with `chrome.tabs.discard()`: background tabs are suspended after a configurable inactivity timer (5 or 15 minutes on free tier, custom seconds on PRO). The 29 auto-protected web apps (Gmail, Google Docs, Figma, Notion, Slack, Spotify, and others) are never suspended. Suspended tabs resume normally when you click them. This keeps total Chrome RAM within bounds without closing anything.
 
 If RAM pressure is the cause, see [Fix Chrome High Memory Usage](/library/fix-high-memory-usage/) for a deeper walkthrough.
 
@@ -17201,7 +17759,7 @@ Before starting a long Gemini session, suspend those background tabs. Suspended 
 
 **Automated path:** [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) uses `chrome.tabs.discard()` to automatically suspend tabs that have been inactive past a configurable threshold. Inactive tabs are discarded in the background; you do not lose them, they just reload when you click back. With 20 tabs open, this typically frees 1–3 GB before Gemini even starts generating.
 
-The extension also has 25+ auto-protected apps (Google Docs, Gmail, Sheets, Calendar, and others) that are never suspended — you lose no active work.
+The extension also has 29 auto-protected apps (Google Docs, Gmail, Sheets, Calendar, and others) that are never suspended — you lose no active work.
 
 ## Fix 2: Break Long Gemini Sessions into Smaller Chunks
 
@@ -17610,7 +18168,7 @@ The core tab suspension behavior from The Great Suspender works identically in S
 - Pinned tabs are protected
 - Tabs with unsaved form inputs are protected
 - Per-site whitelist to exclude domains from suspension
-- Configurable inactivity timers (15 min free, 5 min medium, custom timer on PRO)
+- Configurable inactivity timers (5 min default, 15 min on the lighter Low tier, custom timer on PRO)
 
 Everything familiar is present, plus ad blocking with 195K+ rules and a popup showing an estimate of total memory freed.
 
@@ -17836,7 +18394,7 @@ Chrome's `chrome.tabs.discard()` API works differently. The tab's renderer proce
 | Form input protection | Yes | Yes |
 | Ad blocking | No | Yes (195K+ DNR rules, 18 sources) |
 | Memory-saved estimate | No | Yes (session total) |
-| Auto-protected web apps | Manual whitelist | 25+ auto-protected (Figma, Notion, Gmail, Slack, Spotify, and others) |
+| Auto-protected web apps | Manual whitelist | 29 auto-protected (Figma, Notion, Gmail, Slack, Spotify, and others) |
 | Maintenance model | Volunteer (1 developer) | Active commercial development |
 | Telemetry | Not independently audited | Zero (verified from source code) |
 | Cost | Free | Free core, optional PRO |
@@ -17874,7 +18432,7 @@ Switch if:
 - You want ad blocking alongside suspension (two fewer extensions to manage)
 - You want a RAM dashboard showing exactly how much is being freed per tab
 - You care that your tab suspender has active commercial maintenance and a public bug tracker
-- You have web apps like Figma, Notion, Slack, or Gmail that you want auto-protected without manual whitelist configuration (SuperchargePerformance auto-protects 25+)
+- You have web apps like Figma, Notion, Slack, or Gmail that you want auto-protected without manual whitelist configuration (SuperchargePerformance auto-protects 29)
 
 Both extensions free the same ~90-95% of each suspended tab's RAM; that part is equivalent. The gap is in everything around suspension: protection logic, reliability signals, and whether you want blocking and metrics in the same install.
 
@@ -17894,7 +18452,7 @@ Q: Does Marvellous Suspender work on current Chrome in 2026?
 A: Yes. Marvellous Suspender v8.1.3 is MV3-compatible and works on current Chrome. Chrome disabled MV2 extensions for standard users at Chrome 138 (mid-2025). Marvellous Suspender migrated to MV3 before that cutoff.
 
 Q: What is the difference between Marvellous Suspender and SuperchargePerformance?
-A: Both suspend inactive tabs to free RAM. Marvellous Suspender uses a custom suspension page; SuperchargePerformance uses chrome.tabs.discard() — invisible suspension with no custom screen. SuperchargePerformance also adds ad blocking (195K+ DNR rules), an estimate of the memory it has freed, and 25+ auto-protected web apps. It is actively maintained with a commercial development model.
+A: Both suspend inactive tabs to free RAM. Marvellous Suspender uses a custom suspension page; SuperchargePerformance uses chrome.tabs.discard() — invisible suspension with no custom screen. SuperchargePerformance also adds ad blocking (195K+ DNR rules), an estimate of the memory it has freed, and 29 auto-protected web apps. It is actively maintained with a commercial development model.
 
 ---
 
@@ -18397,9 +18955,9 @@ The solution is to keep Chrome's active memory footprint below zRAM territory en
 
 The steps above — disabling Android, auditing extensions, enabling Memory Saver — should be your first pass. They cost nothing and are often enough. If you want automatic, timer-based suspension with per-site control, SuperchargePerformance adds that layer:
 
-- Suspends idle tabs after 15 minutes (level 1) or 5 minutes (level 2) via `chrome.tabs.discard()`
+- Suspends idle tabs after 5 minutes by default (15 minutes on the lighter Low tier) via `chrome.tabs.discard()`
 - Suspended tabs use near-zero RAM, stay visible in the tab bar, and reload when you click them — restoring your scroll position
-- Automatically protects 25+ common web apps (Figma, Notion, Slack) from suspension, plus pinned, audible, and unsaved-form tabs
+- Automatically protects 29 common web apps (Figma, Notion, Slack) from suspension, plus pinned, audible, and unsaved-form tabs
 - Ad and tracker blocking reduces RAM and CPU usage from ad-heavy sites, free at all levels
 
 All processing is local. No data leaves your device. On a 4GB Chromebook, having a tab suspender is arguably more valuable than on any other hardware — the RAM-per-tab budget is just that tight.
@@ -18482,7 +19040,7 @@ Ads and tracking scripts are a major source of background CPU activity. They reg
 
 ## Cutting Thermal Load via Tab Suspension
 
-If you typically work with 15+ tabs open, tab suspension is the most effective thermal fix short of closing tabs entirely. SuperchargePerformance terminates renderer processes for inactive tabs via `chrome.tabs.discard()` — a suspended tab generates no CPU load and no heat. Productivity and media apps like Figma, Notion, Slack, and Spotify are protected from suspension automatically (25+ web apps, verified June 2026), so only idle tabs are freed.
+If you typically work with 15+ tabs open, tab suspension is the most effective thermal fix short of closing tabs entirely. SuperchargePerformance terminates renderer processes for inactive tabs via `chrome.tabs.discard()` — a suspended tab generates no CPU load and no heat. Productivity and media apps like Figma, Notion, Slack, and Spotify are protected from suspension automatically (29 web apps, verified June 2026), so only idle tabs are freed.
 
 Ad and tracker blocking at the network level stops tracking scripts from loading in any tab, which means fewer JavaScript timers running per page even before suspension kicks in. If you only keep a handful of tabs open, checking Activity Monitor for a specific runaway process (Fix 1) is the more direct path.
 
@@ -18600,7 +19158,7 @@ The difference is visible in Chrome Task Manager: an ad-heavy news site with scr
 
 If you typically have 15–25 tabs open across a workday, the above fixes address symptoms rather than the underlying pattern. Every idle tab is a potential heat source — renderer processes for background tabs continue running JavaScript unless they are explicitly discarded.
 
-SuperchargePerformance suspends inactive tabs via `chrome.tabs.discard()`, which terminates the renderer process entirely. Suspended tabs show zero CPU load and generate no heat. Productivity apps — Figma, Notion, Slack, Google Docs, and others (25+ web apps, verified June 2026) — are auto-protected from suspension so they never interrupt active work. When you click a suspended tab it reloads in a second or two, with no data loss.
+SuperchargePerformance suspends inactive tabs via `chrome.tabs.discard()`, which terminates the renderer process entirely. Suspended tabs show zero CPU load and generate no heat. Productivity apps — Figma, Notion, Slack, Google Docs, and others (29 web apps, verified June 2026) — are auto-protected from suspension so they never interrupt active work. When you click a suspended tab it reloads in a second or two, with no data loss.
 
 The 195K+ block rules (across 18 sources, in 3 tiers) stop ad and tracker scripts from loading network-wide, reducing Subframe process counts before suspension even becomes necessary. Both features are free, require no account, and collect zero telemetry.
 
@@ -19046,7 +19604,7 @@ Tab suspension is the feature most people install Perf for. Open Chrome Task Man
 
 Medium is the default. For most users with 15+ tabs, five minutes is the practical sweet spot — it catches research tabs opened and forgotten while keeping anything you're actively reading alive.
 
-**Auto-protected apps.** 25+ web apps are permanently excluded from suspension, regardless of idle time:
+**Auto-protected apps.** 29 web apps are permanently excluded from suspension, regardless of idle time:
 
 Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Google Docs, Google Sheets, Google Slides, Gmail, Google Drive, Google Calendar, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby.
 
@@ -19242,7 +19800,7 @@ Q: Does SuperchargePerformance conflict with uBlock Origin?
 A: As of August 2026, they can run simultaneously. Chrome guarantees each extension 30,000 static DNR rules and shares a larger global pool on top, so two blockers can coexist without either hitting a hard cap on a typical setup. The cost is duplicate evaluation — overlapping coverage and two service workers running. SuperchargePerformance's 195K+ rules from 18 curated sources cover ads, trackers, and malware comprehensively. If you prefer to keep uBlock for website ads, set SuperchargePerformance's content blocking to Off and use it for video ads, popups, cookies, and tab suspension.
 
 Q: How does tab suspension work in SuperchargePerformance?
-A: As of June 2026, SuperchargePerformance monitors tab activity and suspends idle tabs after a configurable timer using Chrome's native chrome.tabs.discard() API. Suspension is adaptive — when freeing memory, it ranks tabs by memory use combined with idle time rather than discarding the oldest first. The timer has three preset tiers: Low (15 minutes), Medium (5 minutes), and PRO (custom seconds). Suspended tabs show a reload prompt when you click them — Chrome reloads the page on demand, restoring your scroll position. 25+ web apps are auto-protected from suspension, including Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, Google Meet, and Zoom. Pinned tabs, tabs playing audio, and tabs with unsaved form data are also never suspended.
+A: As of June 2026, SuperchargePerformance monitors tab activity and suspends idle tabs after a configurable timer using Chrome's native chrome.tabs.discard() API. Suspension is adaptive — when freeing memory, it ranks tabs by memory use combined with idle time rather than discarding the oldest first. The timer has three preset tiers: Low (15 minutes), Medium (5 minutes), and PRO (custom seconds). Suspended tabs show a reload prompt when you click them — Chrome reloads the page on demand, restoring your scroll position. 29 web apps are auto-protected from suspension, including Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, Google Meet, and Zoom. Pinned tabs, tabs playing audio, and tabs with unsaved form data are also never suspended.
 
 Q: What are the three tiers in SuperchargePerformance?
 A: As of August 2026, SuperchargePerformance has three tiers for most sliders: Low, Medium, and High (or PRO for some features). For tab suspension: Low = 15-minute idle timer, Medium = 5-minute timer, PRO = custom timer in seconds. For content blocking: Low = common ads (~7 blocked per page), Medium = ads plus analytics (~10 blocked), High = full list including malware and phishing (~12 blocked). Script blocking has its own tiers: Low blocks analytics and tracking scripts, Medium adds social and video embed scripts, PRO blocks all third-party scripts with exceptions for login and payment flows.
@@ -19338,7 +19896,7 @@ SuperchargePerformance uses the same `chrome.tabs.discard()` call but layers dec
 - Skips pinned tabs
 - Skips tabs with active form input
 - Skips tabs flagged as frozen (Chrome 132+)
-- Auto-protects 25+ web apps — Figma, Notion, Slack, Gmail, and others — from suspension by default (verified June 2026)
+- Auto-protects 29 web apps — Figma, Notion, Slack, Gmail, and others — from suspension by default (verified June 2026)
 - Shows RAM freed per suspended tab and total session savings in the popup
 
 Beyond suspension, SuperchargePerformance also [blocks ads and trackers](/library/best-ad-blocker-chrome-2026/) via declarativeNetRequest rules. This reduces the memory cost of active tabs independently of suspension — ads and third-party scripts that never load cannot consume RAM. The memory savings table above does not account for this; active tab footprints in practice are lower with ad blocking enabled.
@@ -19353,7 +19911,7 @@ Beyond suspension, SuperchargePerformance also [blocks ads and trackers](/librar
 | Audible tab protection | Basic | Skips `tab.audible = true` |
 | Pinned tab protection | No | Yes |
 | Form input protection | No | Yes |
-| App auto-whitelist | No | Yes (25+ web apps) |
+| App auto-whitelist | No | Yes (29 web apps) |
 | Memory-saved estimate | No | Yes (session total) |
 | Ad blocking | No | Yes (declarativeNetRequest) |
 | Tracker blocking | No | Yes |
@@ -19559,7 +20117,7 @@ SuperchargePerformance layers protection logic on top of `chrome.tabs.discard()`
 - Skips tabs where audio is playing (`tab.audible`)
 - Skips pinned tabs
 - Skips tabs with active form input
-- Auto-protects 25+ web apps — Figma, Notion, Slack, Google Docs, Spotify, and others — by default
+- Auto-protects 29 web apps — Figma, Notion, Slack, Google Docs, Spotify, and others — by default
 - Shows an estimate of total session memory savings in the popup
 
 ### Ad and Tracker Blocking
@@ -20342,7 +20900,7 @@ That is a 90-95% reduction per discarded tab. Scale it: suspend 40 of 50 idle ta
 
 The catch worth naming: this is per-tab savings, not magic on total session RAM. Your active tabs, the browser process, and the GPU process all stay resident. The realistic total-session reduction on a heavy multi-tab workflow lands around 70-75% once you account for the tabs you keep awake.
 
-[SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) suspends tabs on a timer you set rather than waiting for memory pressure, which is what Chrome's built-in Memory Saver does. On a 16 GB machine, that pressure threshold often never trips even with 40 tabs open, so the built-in feature sits idle while your RAM fills. Timer-based suspension reclaims the renderer the moment a tab goes quiet. It also protects 25+ web app categories from suspension automatically (Gmail, Docs, Figma, Notion, Slack and more), detects audio and form input so it will not discard a tab you are typing in or listening to, and keeps everything local with no account and no telemetry.
+[SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) suspends tabs on a timer you set rather than waiting for memory pressure, which is what Chrome's built-in Memory Saver does. On a 16 GB machine, that pressure threshold often never trips even with 40 tabs open, so the built-in feature sits idle while your RAM fills. Timer-based suspension reclaims the renderer the moment a tab goes quiet. It also protects 29 web app categories from suspension automatically (Gmail, Docs, Figma, Notion, Slack and more), detects audio and form input so it will not discard a tab you are typing in or listening to, and keeps everything local with no account and no telemetry.
 
 ## Built-In vs Extension Suspension
 
@@ -21003,7 +21561,7 @@ Chrome Memory Saver discards background tabs to free RAM. If you switch away fro
 **Using SuperchargePerformance:**
 SuperchargePerformance's tab suspension uses `chrome.tabs.discard()` with explicit protection signals: tabs playing audio (`tab.audible`), pinned tabs, tabs with unsaved form input, and any domain in the per-site whitelist are never suspended. For a WebGL app you work with regularly, adding its domain to the extension's whitelist prevents suspension without disabling RAM savings across the rest of your open tabs.
 
-25+ web apps are auto-protected without any configuration (Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Spotify, YouTube Music, Google Meet, Zoom, and others). For any other WebGL app, the per-domain whitelist in the extension popup handles it.
+29 web apps are auto-protected without any configuration (Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Spotify, YouTube Music, Google Meet, Zoom, and others). For any other WebGL app, the per-domain whitelist in the extension popup handles it.
 
 ## Fix 5: Check WebGL Context Limit and App-Level Handling
 
@@ -21617,13 +22175,13 @@ Chrome's Memory Saver picks targets reactively based on its own model. An extens
 | Feature | Chrome Memory Saver | SuperchargePerformance |
 |---|---|---|
 | Suspension trigger | Reactive (Chrome decides when) | Proactive (5 or 15 min free, custom on PRO) |
-| Protected sites | Manual exception list | 25+ web apps auto-protected + custom whitelist |
+| Protected sites | Manual exception list | 29 web apps auto-protected + custom whitelist |
 | Audio tab protection | No | Yes — playing tabs never suspended |
 | Pre-suspend rules | None | Form detection (won't suspend tabs with input) |
 | RAM counter | None | Live stacked counter in badge |
 | Telemetry | Google Analytics | Zero — 100% local storage |
 
-The 25+ auto-protected apps cover the ones most people have open constantly: Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, Google Meet, Zoom, and others. You do not need to add these manually.
+The 29 auto-protected apps cover the ones most people have open constantly: Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, YouTube Music, Google Meet, Zoom, and others. You do not need to add these manually.
 
 For everything else, the extension suspends tabs on a predictable schedule. You always know which tabs are sleeping (they show a suspension indicator) and which are protected. There is no ML model making opaque decisions about what matters to you.
 
@@ -21774,7 +22332,7 @@ The command bar (Alt+K) keeps you in the current context even when switching tab
 
 Focus mode and memory savings are separate problems, but they interact. Inactive workspaces hold tabs in memory even when hidden. If you have three workspaces with 15 tabs each and you are working in one, the other 30 tabs are still consuming RAM in the background.
 
-SuperchargePerformance handles this side of the equation. It suspends inactive tabs on a configurable timer — 5 or 15 minutes by default. Tabs hidden in inactive workspaces are inactive by definition, so they are candidates for suspension. A suspended tab retains roughly 5–10MB versus 80–300MB active. Three workspaces that would otherwise hold 1.5–4GB of background tabs can be brought down to under 300MB.
+SuperchargePerformance handles this side of the equation. It suspends inactive tabs on a configurable timer — 5 minutes by default, 15 minutes on the lighter Low tier. Tabs hidden in inactive workspaces are inactive by definition, so they are candidates for suspension. A suspended tab retains roughly 5–10MB versus 80–300MB active. Three workspaces that would otherwise hold 1.5–4GB of background tabs can be brought down to under 300MB.
 
 The combination — workspace isolation for what you see, tab suspension for what you are not using — addresses both the attention problem and the memory problem in a single setup.
 
@@ -22549,7 +23107,7 @@ For ongoing memory management without closing tabs, Chrome's discard feature rel
 
 If you consistently work with 20+ tabs open and high memory is a recurring problem, automatic suspension helps. SuperchargePerformance ranks every tab by memory used times idle time, so a 400 MB tab idle for ten minutes gets suspended before a 30 MB tab idle for twelve. It discards the heaviest idle tabs first via Chrome's `chrome.tabs.discard()` API, and a memory fast-path can suspend a heavy tab before its idle timer even fires. It also blocks ad iframes at the network level, preventing Subframe processes from spawning in background tabs.
 
-Active, pinned, audible, and form-in-progress tabs are never touched, and 25+ app categories (Figma, Notion, Google Docs, Slack, and similar) are auto-protected so an unexpected reload never destroys in-progress work. Scroll position is restored when a suspended tab reopens. If you typically keep 10 or fewer tabs open and your usage is within normal ranges (under 2 GB), the built-in Memory Saver in Chrome Settings is sufficient.
+Active, pinned, audible, and form-in-progress tabs are never touched, and 29 app categories (Figma, Notion, Google Docs, Slack, and similar) are auto-protected so an unexpected reload never destroys in-progress work. Scroll position is restored when a suspended tab reopens. If you typically keep 10 or fewer tabs open and your usage is within normal ranges (under 2 GB), the built-in Memory Saver in Chrome Settings is sufficient.
 
 ## Technical Background
 
@@ -23198,7 +23756,7 @@ SuperchargePerformance's per-site whitelist (manual, one-click setup):
 3. All other inactive tabs get suspended, freeing RAM and CPU for the AI tab
 4. The WebSocket stays alive because the tab's JavaScript engine keeps running
 
-ChatGPT is not auto-protected by default — you add it once via the whitelist and it stays exempt. The 25+ apps that are auto-protected out of the box are productivity tools like Figma, Notion, Slack, and Google Docs.
+ChatGPT is not auto-protected by default — you add it once via the whitelist and it stays exempt. The 29 apps that are auto-protected out of the box are productivity tools like Figma, Notion, Slack, and Google Docs.
 
 This is more reliable than Chrome's native list under severe memory pressure, where Chrome can override its own exceptions. But for most users with 16 GB RAM and fewer than 30 tabs, Fix 1 alone is sufficient.
 
@@ -23940,7 +24498,7 @@ If the fixes above do not fully solve it, the remaining driver is usually backgr
 
 - **Tab suspension** uses `chrome.tabs.discard()` — a suspended tab stops all network activity, stops writing to cache, and stops IndexedDB updates. Zero disk I/O from that tab.
 - **Ad and tracker blocking** via `declarativeNetRequest` prevents ad network requests from reaching the disk cache in the first place.
-- The extension auto-protects 25+ web apps (Figma, Notion, Slack, and others) from suspension, so important tools stay active while idle tabs go quiet.
+- The extension auto-protects 29 web apps (Figma, Notion, Slack, and others) from suspension, so important tools stay active while idle tabs go quiet.
 
 The preload disable and cache clear in Fixes 1–3 cost nothing and should come first. The extension is worth adding if you have many tabs open regularly.
 
