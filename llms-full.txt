@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-08-07
+> Last updated: 2026-08-14
 > For a summary index, see /llms.txt
 
 ## Products
@@ -36,7 +36,7 @@
 - New Tab Page with clock, command palette, workspace pills
 - All features free, zero telemetry, zero tracking, no SuperchargeBrowser servers (Nav sync opt-in, Chrome-native)
 - Local-by-default storage; opt-in workspace sync (v1.1.0+) routes through Chrome storage.sync
-- Version: 1.3.3 (launched March 13, 2026)
+- Version: 1.3.4 (launched March 13, 2026)
 - Verified Publisher on Chrome Web Store
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live June 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/vertical-tabs-tab-manager/mpkbppjbchjdohbjgeoamdehklmapgnl
@@ -67,7 +67,7 @@
 - Microphone, system audio, and webcam capture
 - Optional Share-to-Drive: upload exports to your own Google Drive (no SuperchargeBrowser servers)
 - Local-first, zero telemetry, no account required
-- Version: 1.0.2
+- Version: 1.1.1
 - Available on Chrome Web Store (live June 22, 2026) and Microsoft Edge Add-ons (live June 25, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
@@ -1391,7 +1391,7 @@ The extension monitors the page to detect web apps that use drag-and-drop as par
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| Super Drag | On | Enable or disable directional link dragging |
+| Super Drag | Off | Enable or disable directional link dragging |
 
 ## When to Use This
 
@@ -1415,7 +1415,7 @@ Q: What web apps does Super Drag automatically disable on?
 A: Super Drag detects common web apps — including Google Docs, Google Sheets, and ChatGPT — where drag behavior is part of the app's own interface. It disables itself automatically on those pages to avoid interfering with the app.
 
 Q: Can I turn Super Drag off entirely?
-A: Yes. Super Drag is enabled by default but can be toggled off in the extension settings.
+A: Super Drag ships off by default on new installs — dragging a link already had a meaning in the browser, so this rebinds it rather than adding to it. Turn it on in the extension settings.
 
 Q: Does drag direction matter, or just dragging in general?
 A: Direction determines the behavior: upward = background tab, downward = foreground tab. The distinction lets you decide with the drag itself which type of tab you want.
@@ -1543,11 +1543,11 @@ URL: https://www.superchargebrowser.com/features/new-tab-page/
 Extension: navigation
 Description: Replace Chrome's blank new tab with a workspace dashboard: clock, search bar, workspace switcher, pinned tabs, and top sites. Each section toggleable.
 
-Every new tab you open in Chrome is a dead end by default — a blank rectangle with a Google logo. SuperchargeNavigation replaces it with a dashboard that shows your workspaces, pinned tabs, most-visited sites, a live clock, and a unified search bar. One new tab tells you where you were and gets you back there.
+Every new tab you open in Chrome is a dead end by default — a blank rectangle with a Google logo. SuperchargeNavigation can replace it with a dashboard that shows your workspaces, pinned tabs, most-visited sites, a live clock, and a unified search bar. It ships off, so nothing touches your new tab until you turn it on in Options. Once you do, one new tab tells you where you were and gets you back there.
 
 ## What's on the Dashboard
 
-The page loads instantly from a bundled HTML file: no network requests, no framework overhead. Six sections appear by default, each toggleable from settings:
+The page loads instantly from a bundled HTML file: no network requests, no framework overhead. Once the dashboard is on, six sections appear by default, each toggleable from settings:
 
 **Clock and date.** A large 72px clock centered on the page. Lightweight, always accurate, no widget overhead.
 
@@ -1565,7 +1565,7 @@ The page loads instantly from a bundled HTML file: no network requests, no frame
 
 | Setting | Default | Effect |
 |---------|---------|--------|
-| New tab page (master) | On | Dashboard stops rendering; the page forwards you on instead |
+| New tab page (master) | Off for new installs; on for existing users who already had it enabled | Dashboard stops rendering; the page forwards you on instead |
 | When the master toggle is off, open | Google | Where the forward lands; accepts any http or https address |
 | Clock | On | Shows or hides the large clock and date |
 | Search bar | On | Shows or hides the unified search input |
@@ -1592,14 +1592,14 @@ All settings live in **Options → New tab page** (gear icon, top-right of the n
 
 The design is intentional. No weather widgets, no inspirational quotes, no background photo subscription. The goal is a dashboard that loads before you think about loading, shows your actual browser state, and gets out of the way.
 
-## Disabling the Custom New Tab Page
+## Enabling or Disabling the Custom New Tab Page
 
-The custom NTP is enabled by default when you install SuperchargeNavigation. Two ways to turn it off:
+New installs start with the dashboard off — new tabs forward to Google (or an address you set) until you turn it on. If you were already using the dashboard, your setting was left as it was. Two ways to flip it:
 
-1. **From the new tab page:** scroll to the bottom, click "Restore default new tab." A confirmation dialog appears. Confirm, and the SuperchargeNavigation new tab page stops showing the dashboard.
-2. **From Options:** open the extension options page → **New tab page** section → flip the master toggle off.
+1. **From the new tab page:** when the dashboard is on, scroll to the bottom and click "Restore default new tab." A confirmation dialog appears. Confirm, and the SuperchargeNavigation new tab page stops showing the dashboard.
+2. **From Options:** open the extension options page → **New tab page** section → flip the master toggle on or off.
 
-Either path writes `nav.ntpEnabled: false` to local storage. Chrome has no API for an extension to release the new-tab registration while it's still installed and enabled, so the SuperchargeNavigation page keeps loading — it just detects the flag on load and forwards you on immediately, to Google by default or to an address you set in Options → New tab page → "When the master toggle is off, open." To hand the new tab to a different extension, install that extension after SuperchargeNavigation — Chrome awards it to whichever new-tab extension was installed most recently. Re-enable any time from Options with no reinstall needed.
+Either path writes `nav.ntpEnabled` to local storage. Chrome has no API for an extension to release the new-tab registration while it's still installed and enabled, so the SuperchargeNavigation page keeps loading — it just detects the flag on load and forwards you on immediately, to Google by default or to an address you set in Options → New tab page → "When the master toggle is off, open." To hand the new tab to a different extension, install that extension after SuperchargeNavigation — Chrome awards it to whichever new-tab extension was installed most recently. Re-enable any time from Options with no reinstall needed.
 
 ## Privacy
 
@@ -1607,7 +1607,7 @@ The new tab page reads your open tabs, pinned tabs, named workspaces, and Chrome
 
 ##### FAQ
 Q: Does the custom new tab page replace Chrome's default completely?
-A: Yes. SuperchargeNavigation uses Chrome's chrome_url_overrides API to serve its own new tab page. Chrome's default (with Google search and doodle) is replaced. As of May 2026, all six dashboard sections (clock, search, workspaces, pinned tabs, top sites, animation) are on by default and each can be toggled off individually.
+A: Only if you turn it on. As of August 2026, new installs ship with the dashboard off: new tabs forward to Google, or to any address you set, until you switch it on in Options → New tab page. Once it is on, SuperchargeNavigation serves its own page through Chrome's chrome_url_overrides API in place of Chrome's default (with Google search and doodle), and all six dashboard sections (clock, search, workspaces, pinned tabs, top sites, animation) are on by default and can be toggled off individually. Anyone who already had the dashboard keeps it.
 
 Q: How do I disable the custom new tab page?
 A: Two paths: click the 'Restore default new tab' link at the bottom of the new tab page, or go to the extension Options → New tab page → turn off the master toggle. Chrome gives extensions no way to release the new-tab registration while they're installed and enabled, so the SuperchargeNavigation page keeps loading either way — it just forwards you on immediately, to Google by default or to an address you set in Options → New tab page → 'When the master toggle is off, open.' To hand the new tab to a different extension, install that extension after SuperchargeNavigation — Chrome awards it to whichever new-tab extension was installed most recently.
@@ -2173,6 +2173,285 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 
 ## Library Articles
 
+### How to Add Captions to a Screen Recording in Chrome (2026)
+
+URL: https://www.superchargebrowser.com/library/add-captions-screen-recording-chrome-2026/
+Category: guide | Extension: capture | Updated: 2026-08-14
+Description: Adding captions to a screen recording is a separate step from recording it: auto-generate an SRT free, or type one, then attach or burn in. (August 2026)
+
+You want the screen recording to work with the sound off and to turn up when someone searches its words. Both come from captions. As of August 2026 there are two free ways to get them in Chrome, and they produce different objects: a subtitle file you attach to the video, or caption text rendered into the picture. The second one now runs entirely on your own machine, model included, which is new. Pick by the output you need and you avoid the wrong tool.
+
+*Routes re-verified August 2026 against SuperchargeCapture 1.1.1's shipping source, including the bundled Whisper tiny.en transcriber; the YouTube auto-caption SRT round-trip was tested on Chrome 150.*
+
+## Soft Captions vs Burned-In: Pick Before You Start
+
+The choice shapes every step after it, so make it first.
+
+| | Soft captions (SRT/VTT) | Burned-in (hardcoded) |
+|---|---|---|
+| What it is | A separate subtitle file | Text drawn into the video pixels |
+| Viewer can toggle | Yes | No, always visible |
+| Survives re-upload / download | Not always | Yes |
+| Searchable on YouTube | Yes, indexed | No, it is just pixels |
+| Best for | YouTube, players with a CC button | Slack, LinkedIn, feeds, autoplay |
+
+If the clip is going somewhere with a caption toggle, keep it soft and flexible. If it will autoplay in a feed or a chat where no CC button exists, burn it in so the words cannot be lost. Plenty of screen recordings end up needing both versions.
+
+## Caption Without Uploading: The On-Device Routes
+
+For years the private path meant typing subtitles by hand. Speech models small enough to ship inside a browser extension changed that:
+
+- **Transcribe locally in SuperchargeCapture.** Record the tab, open the recording in the editor, click **Transcribe**. A Whisper `tiny.en` model packaged in the extension turns the speech into timed cues while a progress bar runs. Remote model fetching is switched off in the code, so nothing is downloaded and nothing is sent: the audio and the transcript stay on your machine, and the first transcription after install works with no connection at all. The model is English-only, which is the price of shipping it inside an extension.
+- **Type the SRT yourself.** For a clip under a minute, writing the subtitle file by hand is quick and fully local. The format is plain text: an index, a `00:00:01,000 --> 00:00:04,000` timecode, then the line.
+- **Chrome Live Caption.** Turn it on under **Settings → Accessibility → Captions → Live Caption**. Chrome then captions any audio playing in the browser in real time, processed on your device, never uploaded. The limit worth knowing: it captions live playback for the viewer and cannot export an SRT, so it is for watching with captions, not for attaching them to a file.
+
+The local automatic route gives you captions rendered into the video. When what you need is the subtitle file itself, the next route is still the free way to get one.
+
+## The Free SRT Route: Auto-Caption on YouTube, Then Edit
+
+Let a machine draft the text and fix the draft yourself. YouTube does this well and for free:
+
+1. In [YouTube Studio](https://studio.youtube.com), upload the recording as an **unlisted** video.
+2. Wait for processing, then open **Subtitles**. You will see a track tagged **(Automatic)**.
+3. Click **Duplicate and Edit** to turn the auto-track into a correctable draft. Fix the timing, the product names, and anything the machine misheard.
+4. Use **Options → Download** to save the track as an **SRT**.
+
+You now have a real subtitle file. Attach it as soft captions on any player that accepts SRT, or feed it to a tool that burns it into the video. One cost comes with this route. The video has to go up to YouTube first, so it suits public or non-sensitive recordings. For anything private, transcribe on-device or type the file yourself.
+
+## Record and Caption in the Same Window
+
+Every route starts with the recording, and the recording decides your options. A local file you own can go to any captioner, or none. A file trapped in a cloud recorder's account can only be captioned that recorder's way. [SuperchargeCapture](/capture/) keeps you in the first camp and then closes the loop itself.
+
+It records the current tab through `chrome.tabCapture` with no screen-picker, mixes tab audio and your microphone, and writes the video to your device as MP4, WebM, or GIF. Open that recording in the editor and **Transcribe** produces the caption track. What you get is a draft, and the editor treats it as one: click a cue to jump the video to that moment, retype the line, drag its start and end times, delete the ones you do not want, or re-transcribe from scratch. A **Show captions** toggle controls whether the track appears at all. On export, the active cue draws as white text on a dark rounded pill near the bottom of the frame, rendered into the file locally along with everything else.
+
+Two honest limits. The bundled model handles English only, so a narration in another language will not transcribe usefully. And there is no SRT download here: the captions become part of the video rather than a separate track a viewer can switch off. For a demo clip headed to Slack or a feed, that is the format you wanted anyway.
+
+## Loom vs Local: Where Your Video and Its Captions Live
+
+Cloud recorders auto-caption too. The difference is where the transcription happens:
+
+| | Cloud recorder (e.g. Loom) | Local (SuperchargeCapture) |
+|---|---|---|
+| Auto-captions built in | Yes | Yes |
+| Where transcription runs | Vendor's servers, after upload | Your machine, offline |
+| Account required | Yes | None |
+| Where the video lives | The vendor's cloud | Your device |
+| Caption a sensitive clip privately | Video is already uploaded | Nothing is uploaded |
+| Languages | Many | English only |
+| Downloadable subtitle file | Usually | No, cues render into the video |
+
+Cloud captions are convenient because the video is already on the vendor's servers. That is fine for public demos and a real problem for a recording you cannot upload. Running the model locally trades language coverage and the SRT download for a clip that never leaves your machine.
+
+## Which Caption Route Fits Your Clip
+
+Pick by the clip in front of you:
+
+- **English narration that must stay private** → transcribe on-device in the editor, fix the cues, export.
+- **Public demo or tutorial that needs a searchable transcript** → upload to YouTube, auto-caption, Duplicate and Edit, download the SRT.
+- **Autoplaying in a feed or Slack** → captions rendered into the video, so no missing CC toggle can hide them.
+- **Another language, or you need the SRT file itself** → the YouTube round-trip, or type the file by hand for a short clip.
+- **You only need to watch it captioned** → turn on Chrome Live Caption; it stays on-device.
+
+If your recordings need captions and some of them are too sensitive to upload, do the whole job locally. [SuperchargeCapture](/capture/) records the tab or screen to a file you own and transcribes it with a model that ships inside the extension, free and with no account, so the audio never has to reach anyone's server to become text.
+
+#### FAQ
+Q: How do I add captions to a screen recording for free?
+A: As of August 2026 there are two free routes, and they hand you different things. For captions drawn into the video, transcribe the recording on your own machine: SuperchargeCapture 1.1.1 ships a Whisper model inside the extension, so clicking Transcribe in its editor turns the speech into timed cues with no upload. For a subtitle file you can attach elsewhere, upload the recording to YouTube Studio as unlisted, let it auto-caption, use Duplicate and Edit to fix the errors, then download the track as an SRT. Typing an SRT by hand still works for very short clips.
+
+Q: What is the difference between soft captions and burned-in captions?
+A: As of July 2026, soft captions are a separate subtitle file (SRT or VTT) that plays alongside the video; the viewer can turn them on or off, and platforms like YouTube read them for search. Burned-in (hardcoded) captions are drawn permanently into the video pixels, so they always show and survive re-uploads, which is what you want for autoplaying clips in Slack, LinkedIn, or a feed where no caption toggle exists. Soft is flexible; burned-in is guaranteed.
+
+Q: Can I caption a screen recording without uploading it anywhere?
+A: As of August 2026, yes. An extension can now do the transcription locally: SuperchargeCapture bundles the speech-recognition model in the extension package and disables remote model fetching, so the audio and the transcript never leave your machine and the first transcription works offline. Chrome's own Live Caption is also on-device, but it captions live playback for the viewer and exports nothing. Typing an SRT by hand remains the local route when you need the subtitle file itself, because the local automatic route renders its captions into the video rather than exporting a separate track.
+
+Q: Does SuperchargeCapture auto-generate captions?
+A: Yes, since version 1.1.1 (August 2026). Open a recording in its editor and click Transcribe: a Whisper tiny.en model that ships inside the extension converts the speech into timed caption cues, entirely on your device. Every cue is editable, so you can click one to jump to that moment, retype the text, drag its start and end times, or delete it, and a Show captions toggle decides whether the track appears in the export. Two limits worth knowing: the bundled model is English-only, and the captions render into the exported video rather than downloading as an SRT file.
+
+Q: How accurate are automatically generated captions?
+A: As of July 2026, automatic captions are a fast draft, not a finished one. Accuracy drops with background noise, accents, technical terms, and product names, so plan to edit them. On YouTube, the Duplicate and Edit button turns the automatic track into a correctable draft; fixing timing and terms there takes minutes and is the difference between captions that help and captions that mislead. Never publish an unread auto-caption on anything that matters.
+
+Q: Why bother captioning a screen recording?
+A: As of July 2026, captions do three things. They make the video accessible to viewers who are deaf or hard of hearing. They let the content play silently and still land, which is how most clips are watched in feeds and busy offices. And on platforms that index subtitle text, they make the video searchable. For a product demo or a bug walkthrough, captions are the difference between a clip that works muted and one that is skipped.
+
+---
+
+### How to Blur or Redact a Screenshot in Chrome (2026)
+
+URL: https://www.superchargebrowser.com/library/blur-redact-sensitive-info-screenshot-chrome-2026/
+Category: guide | Extension: capture | Updated: 2026-08-14
+Description: Cropping or a black box can be undone; pixelating the pixels cannot. Blur faces, emails, and card numbers inside the shot before you post. (August 2026)
+
+You are about to paste a screenshot into a ticket, and your email address, a card number, or a customer's name is sitting right there in the frame. Once you send it, you cannot un-send it. As of August 2026, the reliable way to handle this in Chrome is to blur the sensitive region **inside the screenshot tool, before the image is ever saved or shared**, so the unredacted version never leaves your screen. The wrong way, and the common one, is to share first and hope nobody zooms in.
+
+*Redaction steps walked through on Chrome 150, SuperchargeCapture 1.1.1, August 2026, blurring emails and card numbers in a live screenshot.*
+
+## What to Blur Before You Share
+
+Run this checklist over the frame before anything leaves your machine. Most leaks are not the obvious card number, they are the thing at the edge you forgot was on screen.
+
+| Redact this | Where it hides |
+|---|---|
+| Email addresses, phone numbers, full names | Headers, signatures, account pages |
+| Card, account, order, and invoice numbers | Billing screens, receipts, confirmations |
+| API keys, tokens, session values | DevTools panels, config screens, URLs |
+| Faces | Profile photos, video call tiles, webcam bubbles |
+| Autofill suggestions | The dropdown under a form field you clicked |
+| Other tabs and notifications | The tab strip and OS popups at the frame's edge |
+
+If any of these is in the shot, it gets a blur box. The last two rows are the ones that catch people: a screenshot of one page can leak the titles of six other tabs, or a Slack notification that slid in while you captured.
+
+## Blur It Inside the Screenshot, Before It Leaves Your Screen
+
+The safest redaction is one that happens between capture and export, with no upload in the middle. [SuperchargeCapture](/capture/) works this way by default.
+
+1. Capture the page: **Visible** for the viewport, **Region** to drag around one area, or **Element** to grab a single card or panel.
+2. The shot opens straight into an editor. Pick the **Redact** tool, then choose a style: **Pixelate** for the block mosaic, or **Blur** for a gaussian.
+3. Drag a box over each sensitive area. The region is obscured in place, and both styles paint over an opaque base so nothing shows through at the edges.
+4. Repeat for every item on the checklist above, then **Copy** to clipboard or **Save**.
+
+For text and numbers, stay on Pixelate. Blocks large enough to swallow a glyph leave nothing to reconstruct, while a soft gaussian over small type is the kind of thing people try to sharpen back. Blur suits faces and photos, where you want the shape without the identity.
+
+The redaction is baked into the pixels of the exported PNG, not floated on top as a removable layer. By the time the image exists as a file, the private data is already gone from it. The screenshot and its blur both happen on your device; the unredacted version never touches a network.
+
+## Why Pixelation Beats a Black Box or a Crop
+
+Not every "hide it" method actually hides it. Three common ones fail in ways that have burned real people:
+
+| Method | Does it hold up? |
+|---|---|
+| Pixelate, flattened into a PNG | Yes. Original pixels are averaged away and gone |
+| Highlighter stroke over the text | No. Many highlighters are semi-transparent; the text reads through |
+| "Black box" in an editable file | No. If the box is a separate layer, the recipient can move or delete it |
+| Crop the sensitive part out | Only if the data sits at an edge; useless when it is mid-frame |
+| Blur applied by a web upload tool | Risky. The raw image reached a server before you redacted it |
+
+Both failures share one rule. A redaction is only safe once it is destructive and flattened. A blur that removes the underlying pixels and exports a plain raster image cannot be peeled back. A movable overlay or a transparent stroke can. Draw the distinction before you trust the result.
+
+## Where the Screenshot and Its Blur Actually Live
+
+A tool that sees your screen and your secrets earns a hard look at where the bytes go. SuperchargeCapture keeps captures in **local storage on your device** (the Origin Private File System) and runs the Redact tool in your browser. It requires **no host permissions at install**, and its `activeTab` access means it only touches a page when you invoke a capture on that tab. There is no always-on content script reading what you browse, no `webRequest`, and no telemetry.
+
+That local-first posture is the point of redacting in the tool rather than on a website. A web-based blur service has to receive your unredacted image first, which defeats the exercise for anything sensitive. The only cloud path here is an optional Share to Drive that goes to your *own* Google Drive, and you would only reach for it after the blur is already applied.
+
+## Before You Hit Post
+
+Two seconds of checking beats an afternoon of rotating a leaked key:
+
+- **Zoom in on each blur** before you export. A box that half-covers a card number is worse than none, because it looks handled.
+- **Scan the edges**, not just the middle. Tab titles, autofill dropdowns, and notifications live in the margins.
+- **If you shared the raw shot already**, redacting the copy does nothing; assume the original is out and rotate the exposed secret.
+- **If the data is at an edge**, a tight crop is enough; if it is mid-frame, pixelate it.
+
+If your screenshots regularly carry emails, tokens, or customer data, redacting inside the capture tool means the sensitive version never exists as a shareable file. [SuperchargeCapture](/capture/) captures, blurs, and exports a flattened PNG on your device, so the only image that can leave is the one you already cleaned.
+
+#### FAQ
+Q: How do I blur sensitive information in a screenshot in Chrome?
+A: As of August 2026, the safest method is to blur inside the screenshot tool before the image is saved or shared. SuperchargeCapture takes the shot, opens an editor, and gives you a Redact tool with two styles: Pixelate averages the region down into blocks, and Blur applies a gaussian over it. Drag a box over each email, face, or number, then Copy or Save, and the redaction is baked into the pixels of the exported PNG. Because it is applied before export, the unredacted version never leaves your screen.
+
+Q: Is pixelating a screenshot safe, or can the blur be reversed?
+A: As of July 2026, a true pixelation that averages a region down to blocks and bakes it into the raster image is not reversible, because the original pixel values are gone. The danger is not pixelation itself but two weaker methods people mistake for it: a colored highlighter stroke that is semi-transparent and leaves text readable underneath, and a 'black box' drawn as a separate movable layer in an editable file, which can be removed by whoever opens it. Flatten your redaction into a plain PNG and it stays redacted.
+
+Q: What should I redact from a screenshot before sharing it?
+A: As of July 2026, blur anything that identifies a person or unlocks an account: email addresses, phone numbers, full names, faces, card and account numbers, API keys and tokens, session values in DevTools, order and invoice numbers, and identifiers buried in a URL. Two spots people forget are the browser's autofill dropdown, which can expose saved addresses, and the tab strip and notifications, which can leak other sites and messages at the edges of the frame.
+
+Q: Can I redact a screenshot without uploading it to a website?
+A: As of August 2026, yes, and you should prefer it for anything sensitive. Uploading a raw screenshot to a web-based blur tool means the unredacted image reaches someone else's server before you have hidden anything. SuperchargeCapture captures and redacts entirely on your device: the screenshot lives in local storage, the Redact tool runs in your browser, and nothing transits our servers. The private data never leaves your machine in the clear.
+
+Q: Does blurring a screenshot also remove hidden metadata?
+A: As of July 2026, pixelating a region hides what is visible in the image but is separate from file metadata. A screenshot exported as a fresh PNG from an in-browser editor generally does not carry camera EXIF or location data the way a phone photo does, but if you are handling highly sensitive material, treat the visible redaction and any metadata scrub as two distinct steps. For most screenshots, blurring the on-screen data is the risk that actually matters.
+
+---
+
+### Screen Recording to GIF for Slack & Discord (2026)
+
+URL: https://www.superchargebrowser.com/library/screen-recording-to-gif-slack-discord-2026/
+Category: guide | Extension: capture | Updated: 2026-08-14
+Description: A GIF autoplays inline in Slack and Discord with no player and no click. Record the repro, trim it, export straight to GIF under the size caps. (August 2026)
+
+> **Key takeaways**
+> - A GIF **autoplays inline** in Slack and Discord with no player, no click, and no hosted link, which is why it beats a video for a quick bug repro.
+> - **Discord's free 10MB cap** is the tight one; Slack allows 1GB per file. A short, downscaled GIF clears both.
+> - SuperchargeCapture records a tab, trims it, and **exports to GIF locally** (12 fps by default, three size presets, 120s cap) with no account and no upload.
+
+You caught the bug reproducing and want a teammate to see it now, in the thread, without a "click here to watch" link and a loading spinner. That is the GIF's whole job in chat: it autoplays, it loops, it needs no player. As of August 2026, the fastest path from a live browser bug to a GIF in Slack or Discord is to record the tab, trim to the few seconds that matter, and export straight to GIF. No cloud round-trip in between.
+
+*GIF export run on Chrome 150 with SuperchargeCapture 1.1.1, August 2026; the Slack and Discord caps below were checked the same week.*
+
+## Why a GIF Wins in a Chat Thread
+
+Post an MP4 and the reader gets a file card and a play button. Post a GIF and the bug just happens in front of them as they scroll. For a repro, that difference is the entire point: you want zero friction between "here's the problem" and them seeing it.
+
+One trade-off is worth stating up front. A GIF has no audio, and because every frame is a full image, file size climbs fast with length and frame rate. So GIFs are for short and silent work: a dropdown that glitches, a hover state that breaks. Anything you need to narrate, or anything longer than a handful of seconds, belongs in an MP4.
+
+## The Upload Caps You Have to Clear
+
+The reason "just export a GIF" sometimes fails is the size limit on the other end. Each platform sits differently as of July 2026:
+
+| Platform | Free per-file limit | Paid tier | Notes |
+|---|---|---|---|
+| Discord | 10MB | Nitro Basic 50MB, Nitro 500MB | 10MB free is the tightest common cap |
+| Slack | 1GB | 1GB (all plans) | Free workspaces: 5GB total, files purged after 90 days |
+
+Discord's 10MB free ceiling is the one that bites. A naive full-frame-rate, full-resolution GIF of even a few seconds can sail past it. The fix is not a bigger plan, it is a smaller GIF: fewer frames per second and a smaller frame, which is what a purpose-built export does for you.
+
+## Record the Repro in Chrome
+
+You need the recording before you can trim it. [SuperchargeCapture](/capture/) records the current tab through `chrome.tabCapture`, so there is no "choose what to share" picker to click through first.
+
+1. Open the tab where the bug lives.
+2. Click the SuperchargeCapture icon and choose **This Tab**.
+3. Reproduce the bug once, cleanly, then stop.
+
+The recording opens in a local editor. Nothing has uploaded, there is no account gate, and the file is already on your machine. If the effect only shows on the tab you were looking at, this is quicker than any picker-based recorder because you skip the source-selection step entirely.
+
+## Trim to the Moment That Matters
+
+A GIF's size is mostly its length, so trimming is not polish, it is the difference between clearing 10MB and not.
+
+In the editor, drag the trim handles on the timeline to the start and end of the actual bug. Cut the "let me move my mouse over here" lead-in and the "okay that's it" tail. If the dead air sits in the middle, split the clip at the playhead and ripple-delete that segment, so the gap closes instead of staying in the loop. You are aiming for the three to eight seconds where the problem occurs. A tight trim also makes the GIF more readable: the loop repeats the failure, not your cursor wandering.
+
+## Export Straight to GIF
+
+Choose **GIF** as the export format and save. SuperchargeCapture encodes it in the browser and hands you a `.gif` file. Three settings decide whether it clears the caps:
+
+- **12 frames per second**, which is what picking GIF selects for you, instead of the 30 a video export uses. That cuts frame count by more than half with no real loss for a UI repro. 24 and 30 are there when the motion needs them, and the file grows to match.
+- **A size preset that caps the longest side** at 480, 720, or 960 pixels. Large (960) is the default, so a 1440p capture shrinks to a chat-friendly width; drop to Small when Discord's 10MB is tight. Nothing is upscaled past the source, so a 720-pixel recording stays 720.
+- **A 120-second ceiling**, with a warning once you pass 30 seconds. Go over the ceiling and it asks you to trim first. Heed the warning too: past half a minute, GIF is the wrong container and a WebM will look better and weigh less.
+
+The GIF is written locally; nothing uploads to our servers, and there is no account behind the export button. Drag the file into Slack or Discord and it plays inline the moment it posts.
+
+## GIF or MP4, Case by Case
+
+Not every clip should be a GIF. Pick by what the reader needs:
+
+| Your clip | Best format | Why |
+|---|---|---|
+| Short, silent UI bug (3-8s) | GIF | Autoplays inline, loops, clears Discord's 10MB free cap |
+| A narrated walkthrough | MP4 | GIFs carry no audio |
+| A 30-second-plus demo | MP4 (WebM) | GIF is allowed up to 120s, but the file size stops being chat-friendly |
+| Posting into Slack, quality matters | MP4 | Slack's 1GB cap gives you room for a crisp video |
+| A loop you want to fire without a click | GIF | No player, no thumbnail, no link |
+
+If your repro is short and wordless and headed for Discord, a downscaled GIF is the right call, and [SuperchargeCapture](/capture/) records, trims, and exports it without a single upload. If the clip is long or you are talking over it, export MP4 from the same editor and post that instead.
+
+#### FAQ
+Q: How do I turn a screen recording into a GIF for Slack or Discord?
+A: As of August 2026, record the tab or screen, trim it to the few seconds that matter, and export to GIF. SuperchargeCapture records a Chrome tab, opens a local editor with a timeline where you trim the ends and split out any middle section you don't want, and exports directly to GIF with no upload. The GIF path allows up to 120 seconds, runs at 12 frames per second by default (24 and 30 are available), and caps the longest side at 480, 720, or 960 pixels depending on the size preset you pick, which keeps the file small enough to drop into chat without hitting an upload limit.
+
+Q: What is the file size limit for uploads on Discord and Slack in 2026?
+A: As of July 2026, Discord's free tier caps a single file at 10MB, Nitro Basic raises it to 50MB, and full Nitro to 500MB. Slack allows up to 1GB per file on all plans, but free workspaces share 5GB of total storage and delete files after 90 days. Discord's 10MB free cap is the tight one for video, which is why a short, downscaled GIF beats an MP4 for quick bug repros there.
+
+Q: Why use a GIF instead of an MP4 in a chat message?
+A: As of July 2026, a GIF autoplays inline and loops with no player, no click, and no hosted link. A teammate sees the bug reproduce the moment they scroll past it. An MP4 usually needs a click to play and may be pushed to a file card. The trade-off is that GIFs have no sound and get large fast at high frame rates, so they suit short, silent repros. Anything long or narrated should stay an MP4.
+
+Q: How long can a GIF screen recording be?
+A: As of August 2026, there is no hard technical limit on GIF length, but practical size makes short clips the only sane option: every frame is a full image, so a long GIF balloons past chat upload caps quickly. SuperchargeCapture caps GIF export at 120 seconds and asks you to trim the range first if you exceed it, and it warns you once a GIF passes 30 seconds because the file gets slow to encode and heavy to share. For a bug repro, three to eight seconds is usually all you need.
+
+Q: Can I make a GIF of a screen recording without uploading it anywhere?
+A: As of July 2026, yes. SuperchargeCapture records and encodes the GIF entirely in your browser and writes it to local storage. Nothing goes to our servers, there is no account, and export is free. You get a .gif file on your device that you drag straight into Slack or Discord. An optional Share to Drive exists for larger video files, but it uploads only to your own Google Drive and only if you choose it.
+
+---
+
 ### No-Watermark Screenshots in Chrome? 5 FREE Tools (2026)
 
 URL: https://www.superchargebrowser.com/library/best-no-watermark-screenshot-extensions-chrome/
@@ -2192,7 +2471,7 @@ A screenshot watermark is a sales device. The extension could export a clean ima
 
 | Extension | Users (Aug 2026) | Watermark | What the free tier withholds |
 |---|---|---|---|
-| SuperchargeCapture | New (v1.0.2) | None | Nothing: all modes, editor, export free |
+| SuperchargeCapture | New (v1.1.1) | None | Nothing: all modes, editor, export free |
 | GoFullPage | 11,000,000 | None | Exporting *annotated* images (Premium, ~$1/mo) |
 | Lightshot | 2,000,000 | None | Full-page capture doesn't exist; uploads are public links |
 | Scrnli | 1,000,000 | None | Nothing significant on screenshots |
@@ -2200,9 +2479,9 @@ A screenshot watermark is a sales device. The extension could export a clean ima
 
 ## SuperchargeCapture: Nothing Metered
 
-[SuperchargeCapture](/capture/) (version 1.0.2, live as of August 2026) takes the watermark question off the table by having no paid screenshot tier at all. There is no logo to stamp because there is nothing to upsell toward.
+[SuperchargeCapture](/capture/) (version 1.1.1, live as of August 2026) takes the watermark question off the table by having no paid screenshot tier at all. There is no logo to stamp because there is nothing to upsell toward.
 
-Four capture modes: full page with scroll-and-stitch, the visible viewport, a dragged region, or a single hovered element that comes out pre-cropped. The annotation editor is free including export: arrow, box, ellipse, highlight, text, and pixelate for redacting an email or token before the image leaves your machine. Captures store locally on your device, with no account and no telemetry. It also records your screen or tab, again without a watermark or length cap. One honest limit: it is the newest tool here, so the install base is a fraction of GoFullPage's.
+Four capture modes: full page with scroll-and-stitch, the visible viewport, a dragged region, or a single hovered element that comes out pre-cropped. The annotation editor is free including export: arrow, box, ellipse, highlight, step number, spotlight, text, and a redact tool that pixelates or blurs an email or token before the image leaves your machine, plus a select cursor for moving what you already placed. Captures store locally on your device, with no account and no telemetry. It also records your screen or tab, again without a watermark or length cap. One honest limit: it is the newest tool here, so the install base is a fraction of GoFullPage's.
 
 ## GoFullPage: Clean Captures, Paid Markup
 
@@ -2276,7 +2555,7 @@ The use case is the same everywhere: a tutorial, a Loom-style async update, a bu
 
 ## SuperchargeCapture: a Local Bubble, No Account
 
-[SuperchargeCapture](/capture/) (v1.0.2) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
+[SuperchargeCapture](/capture/) (v1.1.1) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
 
 Mic and tab audio record alongside. Export goes to MP4, WebM, or [GIF](/library/screen-recording-to-gif-slack-discord-2026/), written to local storage: no account, no watermark, no recording cap, nothing uploaded.
 
@@ -2290,7 +2569,7 @@ Screenity (v4.6.4, ~200,000 users) is the open-source pick, and its free tier is
 
 | Extension | Webcam PiP | Free-tier limits (checked Aug 7, 2026) | Account | Video lives |
 |---|---|---|---|---|
-| SuperchargeCapture v1.0.2 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
+| SuperchargeCapture v1.1.1 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
 | Screenity v4.6.4 | Movable overlay | No cap, no watermark | No | Your device |
 | Loom v5.5.203 | Circular bubble | 25 videos total, 5 min each | Yes | Loom cloud |
 | Screencastify | Bubble overlay | 10 videos, 30 min each, watermark | Yes (Google) | Cloud |
@@ -2488,7 +2767,7 @@ Two survivors are worth installing today. **The Marvellous Suspender**, the clea
 
 If the dead card is an old session or tab manager, check whether the developer shipped a rebuild before hunting alternatives. **Session Buddy** is the instructive case: its v3 relied on WebSQL, a deprecated browser API, forcing a full MV3 rewrite. The current v4.1.2 (updated April 28, 2026, 1 million users, 4.7 stars) is alive and maintained, so a stale v3 install needs an update, not a funeral.
 
-Approaching the same need from the workspace side, [SuperchargeNavigation](/navigation/) (v1.3.3) keeps named workspaces and 50 automatic snapshots taken at 5-minute intervals. If what you used your session manager for was "restore everything after a crash," that snapshot ring covers it while adding a tab sidebar and an Alt+K quick-search you didn't have before.
+Approaching the same need from the workspace side, [SuperchargeNavigation](/navigation/) (v1.3.4) keeps named workspaces and 50 automatic snapshots taken at 5-minute intervals. If what you used your session manager for was "restore everything after a crash," that snapshot ring covers it while adding a tab sidebar and an Alt+K quick-search you didn't have before.
 
 ## Userscripts and Volume Boosters
 
@@ -2548,7 +2827,7 @@ Scribe ranks well for "Chrome screen recorder" searches, but its own tool page s
 
 Scribe is a documentation tool, and a popular one: its Chrome Web Store listing shows 1,000,000 users as of August 7, 2026. You click Start Capture, work through a process, click Complete Capture, and Scribe assembles an illustrated how-to. One screenshot per click, instructions written for you, published as a web page you share by link or embed. That is the whole product, and the reason it markets to recorder searches is that people documenting a process often think they need a video first.
 
-SuperchargeCapture (v1.0.2 as of August 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
+SuperchargeCapture (v1.1.1 as of August 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
 
 | | Scribe | SuperchargeCapture |
 |---|---|---|
@@ -3261,7 +3540,7 @@ Everything above changes how the sidebar looks. None of it changes what's in it.
 | Session snapshots | No | 50 auto-snapshots, every 5 minutes |
 | Keyboard tab search | No (search icon only) | Alt+K command bar |
 
-SuperchargeNavigation (v1.3.3) runs through the side panel API, a separate surface from the native tab strip, so the two run side by side without conflict. It adds the workspace layer Chrome's sidebar doesn't have, keyboard search across open tabs, bookmarks, and history via Alt+K, and automatic snapshots taken every five minutes so an accidentally closed set of tabs isn't gone for good. Everything runs locally, no account, no telemetry.
+SuperchargeNavigation (v1.3.4) runs through the side panel API, a separate surface from the native tab strip, so the two run side by side without conflict. It adds the workspace layer Chrome's sidebar doesn't have, keyboard search across open tabs, bookmarks, and history via Alt+K, and automatic snapshots taken every five minutes so an accidentally closed set of tabs isn't gone for good. Everything runs locally, no account, no telemetry.
 
 ## Which Setting to Reach For
 
@@ -6230,7 +6509,7 @@ Then reopen your saved tab folder, right-click it, and choose "Open all". You ar
 
 Bookmarks were the easy part. What Atlas users actually lose is the setup around them: tab groups, profiles, and the sidebar way of moving through a day. Chrome covers some of this natively, with tab groups and, since Chrome 146, built-in vertical tabs.
 
-What Chrome lacks natively is workspace isolation. If you kept separate Atlas profiles or tab groups for work and personal browsing, [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.3 as of July 2026) rebuilds that in a side panel: named workspaces that each hold their own tab set, an Alt+K command bar that searches open tabs, bookmarks, and history from the keyboard, and session snapshots every 5 minutes (last 50 kept, about 4 hours of undo). The snapshots matter mid-migration, when a wrong click can wipe a half-rebuilt window. Everything is stored locally, no account, free core.
+What Chrome lacks natively is workspace isolation. If you kept separate Atlas profiles or tab groups for work and personal browsing, [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.4 as of August 2026) rebuilds that in a side panel: named workspaces that each hold their own tab set, an Alt+K command bar that searches open tabs, bookmarks, and history from the keyboard, and session snapshots every 5 minutes (last 50 kept, about 4 hours of undo). The snapshots matter mid-migration, when a wrong click can wipe a half-rebuilt window. Everything is stored locally, no account, free core.
 
 ## Where the AI Features Went
 
@@ -6444,7 +6723,7 @@ Native vertical tabs cover Windows, macOS, Linux, and ChromeOS only. Chrome on A
 
 ## Vertical Tabs That Ignore the Rollout Entirely
 
-There is also a version-proof path. SuperchargeNavigation (v1.3.3) draws a vertical tab list in Chrome's side panel, an API stable since Chrome 114 in 2023. No flag, no rollout wave, no admin-controlled tab strip. It also covers what the native sidebar skips: named workspaces, Alt+K search across tabs, bookmarks, and history, and 50 automatic session snapshots taken every five minutes.
+There is also a version-proof path. SuperchargeNavigation (v1.3.4) draws a vertical tab list in Chrome's side panel, an API stable since Chrome 114 in 2023. No flag, no rollout wave, no admin-controlled tab strip. It also covers what the native sidebar skips: named workspaces, Alt+K search across tabs, bookmarks, and history, and 50 automatic session snapshots taken every five minutes.
 
 Everything runs locally, no telemetry, no account, free. It coexists with native vertical tabs, so enabling the flag later costs you nothing.
 
@@ -6582,13 +6861,13 @@ The extension is an assistant layer. It does not organize tabs, create workspace
 | Keyboard-first tab switching | No | No | Alt+K command bar |
 | Vertical tabs | No | No | Yes |
 | Works in your existing Chrome | Yes | No, separate app | Yes |
-| Status (July 12, 2026) | Rolling out | Rolling out | Live, v1.3.3 |
+| Status (July 12, 2026) | Rolling out | Rolling out | Live, v1.3.4 (Aug 2026) |
 
 ## What This Means for How You Browse
 
 The pattern across OpenAI, Google, and Perplexity is converging: the assistant lives in a panel beside your page rather than in a separate browser. Chrome stays the platform, and the side panel becomes where work happens.
 
-An assistant can read the page in front of you, but something still has to get you to the right page among forty tabs and three projects. SuperchargeNavigation (v1.3.3) covers that half from the same side-panel surface: named workspaces that keep client tabs, research, and personal browsing isolated, an Alt+K command bar that jumps across tabs, bookmarks, and history by keyboard, and vertical tabs for long sessions. Assistant in one panel, navigation in the other, no new browser required.
+An assistant can read the page in front of you, but something still has to get you to the right page among forty tabs and three projects. SuperchargeNavigation (v1.3.4) covers that half from the same side-panel surface: named workspaces that keep client tabs, research, and personal browsing isolated, an Alt+K command bar that jumps across tabs, bookmarks, and history by keyboard, and vertical tabs for long sessions. Assistant in one panel, navigation in the other, no new browser required.
 
 Where this leaves you: if you mainly want ChatGPT to see your page, watch for the official extension and verify the publisher. If you were on Atlas, [export your bookmarks and data before August 9, 2026](/library/atlas-browser-shutdown-migrate-2026/). If your actual bottleneck is tab sprawl rather than missing AI, the fix has been an extension all along.
 
@@ -6610,103 +6889,6 @@ A: Only partly. As of July 2026, OpenAI routes deep agentic work to the new Chat
 
 Q: Does the ChatGPT extension manage my tabs?
 A: No. As of July 2026 it is an assistant layer, not a browser layer: no tab management, workspaces, vertical tabs, or memory tooling. Chrome's native features and extensions like SuperchargeNavigation continue to handle that side.
-
----
-
-### How to Add Captions to a Screen Recording in Chrome (2026)
-
-URL: https://www.superchargebrowser.com/library/add-captions-screen-recording-chrome-2026/
-Category: guide | Extension: capture | Updated: 2026-07-01
-Description: Adding captions to a screen recording is a separate step from recording it: auto-generate an SRT free, or type one, then attach or burn in. (July 2026)
-
-You want the screen recording to work with the sound off and to turn up when someone searches its words. Both come from captions. As of July 2026, adding them in Chrome is a two-part job that people conflate into one: you record the video, then you caption it as a separate step, either as a soft SRT the viewer can toggle or as text burned into the picture. There is a free way to do each. There is no single Chrome button that records and captions a file in one shot yet, so knowing the routes saves you the wrong tool.
-
-*Caption routes tested on Chrome 150 with SuperchargeCapture 1.0.2, July 2026, including a YouTube auto-caption SRT round-trip.*
-
-## Soft Captions vs Burned-In: Pick Before You Start
-
-The choice shapes every step after it, so make it first.
-
-| | Soft captions (SRT/VTT) | Burned-in (hardcoded) |
-|---|---|---|
-| What it is | A separate subtitle file | Text drawn into the video pixels |
-| Viewer can toggle | Yes | No, always visible |
-| Survives re-upload / download | Not always | Yes |
-| Searchable on YouTube | Yes, indexed | No, it is just pixels |
-| Best for | YouTube, players with a CC button | Slack, LinkedIn, feeds, autoplay |
-
-If the clip is going somewhere with a caption toggle, keep it soft and flexible. If it will autoplay in a feed or a chat where no CC button exists, burn it in so the words cannot be lost. Plenty of screen recordings end up needing both versions.
-
-## The Free Route: Auto-Caption, Edit, Download an SRT
-
-The no-cost way to get an accurate caption file is to let a machine draft it and then fix the draft. YouTube does this well and for free:
-
-1. In [YouTube Studio](https://studio.youtube.com), upload the recording as an **unlisted** video.
-2. Wait for processing, then open **Subtitles**. You will see a track tagged **(Automatic)**.
-3. Click **Duplicate and Edit** to turn the auto-track into a correctable draft. Fix the timing, the product names, and anything the machine misheard.
-4. Use **Options → Download** to save the track as an **SRT**.
-
-You now have a real subtitle file. Attach it as soft captions on any player that accepts SRT, or feed it to a tool that burns it into the video. One cost comes with this route. The video has to go up to YouTube first, so it suits public or non-sensitive recordings. For anything private, use one of the next options instead.
-
-## Caption Without Uploading: On-Device and Manual Options
-
-When the recording should not touch a cloud service, you trade convenience for privacy:
-
-- **Type the SRT yourself.** For a clip under a minute, writing the subtitle file by hand is quick and fully local. The format is plain text: an index, a `00:00:01,000 --> 00:00:04,000` timecode, then the line.
-- **Chrome Live Caption.** Turn it on under **Settings → Accessibility → Captions → Live Caption**. Chrome then captions any audio playing in the browser in real time, processed **on your device**, never uploaded. The limit worth knowing: it captions live playback for the viewer and cannot export an SRT, so it is for watching with captions, not for attaching them to a file.
-
-So a fully local, one-click auto-caption of a recorded file is not something Chrome ships yet. The workable private path is a hand-typed SRT for short clips, with Live Caption covering on-device viewing.
-
-## Record a Clean, Local File to Caption
-
-Every route above starts with the recording, and the recording decides your options. A local file you own can go to any captioner, or none. A file trapped in a cloud recorder's account can only be captioned that recorder's way. [SuperchargeCapture](/capture/) keeps you in the first camp.
-
-It records the current tab through `chrome.tabCapture` (no screen-picker), mixes tab audio and your microphone, and writes the video to your device as an **MP4 or WebM** you can hand to any of the caption routes here. The recording stays on your device, so you decide if it ever reaches a cloud captioner. No account, no forced upload. SuperchargeCapture records the file; it does not transcribe it. The captions come from YouTube's auto-track, a manual SRT, or another tool. Its job is keeping the source clean, local, and yours to caption however privacy demands.
-
-## Loom vs Local: Where Your Video and Its Captions Live
-
-A cloud recorder can auto-caption for you, but the trade-off is worth seeing side by side:
-
-| | Cloud recorder (e.g. Loom) | Local file (SuperchargeCapture) |
-|---|---|---|
-| Auto-captions built in | Yes | No, caption the exported file yourself |
-| Account required | Yes | None |
-| Where the video lives | The vendor's cloud | Your device |
-| Caption a sensitive clip privately | Video already uploaded | Type an SRT locally, upload nothing |
-| Choice of caption tool | The vendor's | Any route you like |
-
-Loom's built-in captions are convenient because the video is already on its servers. That is fine for public demos and a real problem for a recording you cannot upload. A local file costs you one manual step and buys back the choice.
-
-## Which Caption Route Fits Your Clip
-
-Pick by the clip in front of you:
-
-- **Short clip, or it must stay private** → type the SRT by hand; nothing leaves your machine.
-- **Public demo or tutorial** → upload to YouTube, auto-caption, Duplicate and Edit, download the SRT.
-- **Autoplaying in a feed or Slack** → burn the captions in so no missing CC toggle can hide them.
-- **You only need to watch it captioned** → turn on Chrome Live Caption; it stays on-device.
-- **You have not recorded it yet** → capture a clean local file first, so all of these stay open.
-
-If your recordings need captions and some of them are too sensitive to upload, start by keeping the source local. [SuperchargeCapture](/capture/) records the tab or screen to a file you own, free and with no account, so the captioning route stays your call rather than a recorder's default.
-
-#### FAQ
-Q: How do I add captions to a screen recording for free?
-A: As of July 2026, the free route is to auto-generate them and export a subtitle file. Upload the recording to YouTube Studio as an unlisted video, let it auto-generate the captions, use Duplicate and Edit to fix the errors, then download the track as an SRT. For a short clip, typing the SRT by hand is faster and needs no upload. Chrome's built-in Live Caption also shows on-device captions in real time, but it captions playback only and cannot export a file.
-
-Q: What is the difference between soft captions and burned-in captions?
-A: As of July 2026, soft captions are a separate subtitle file (SRT or VTT) that plays alongside the video; the viewer can turn them on or off, and platforms like YouTube read them for search. Burned-in (hardcoded) captions are drawn permanently into the video pixels, so they always show and survive re-uploads, which is what you want for autoplaying clips in Slack, LinkedIn, or a feed where no caption toggle exists. Soft is flexible; burned-in is guaranteed.
-
-Q: Can I caption a screen recording without uploading it anywhere?
-A: As of July 2026, partly. Typing an SRT by hand is fully local, and Chrome's Live Caption generates on-device captions that never leave your device, but Live Caption only captions live playback and offers no SRT export. The free automatic route that produces a downloadable caption file (YouTube auto-captions) requires uploading the video to a cloud service first. So a one-click, fully-local auto-caption of a recorded file is not a built-in Chrome feature yet; keeping the source file local at least lets you decide whether it ever reaches a captioner.
-
-Q: Does SuperchargeCapture auto-generate captions?
-A: No. As of July 2026, SuperchargeCapture records your screen or tab to a local MP4 or WebM file that you own, but it does not transcribe or generate captions itself. Its role in a captioning workflow is the recording step: it gives you a clean, crash-safe local file with no account and no forced upload, which you then caption through YouTube auto-captions, a manual SRT, or another tool. Because the file stays on your device, you control whether it ever goes to a cloud captioner.
-
-Q: How accurate are automatically generated captions?
-A: As of July 2026, automatic captions are a fast draft, not a finished one. Accuracy drops with background noise, accents, technical terms, and product names, so plan to edit them. On YouTube, the Duplicate and Edit button turns the automatic track into a correctable draft; fixing timing and terms there takes minutes and is the difference between captions that help and captions that mislead. Never publish an unread auto-caption on anything that matters.
-
-Q: Why bother captioning a screen recording?
-A: As of July 2026, captions do three things. They make the video accessible to viewers who are deaf or hard of hearing. They let the content play silently and still land, which is how most clips are watched in feeds and busy offices. And on platforms that index subtitle text, they make the video searchable. For a product demo or a bug walkthrough, captions are the difference between a clip that works muted and one that is skipped.
 
 ---
 
@@ -6789,91 +6971,6 @@ A: As of July 2026, not with Chrome alone; the browser only offers a full mute o
 
 Q: Does muting a tab stop the audio or just silence it?
 A: It depends on the tab. As of July 2026, muting the tab you are actively viewing only silences output while the media keeps advancing. On Chrome 145 and later, a muted background tab pauses its media when you switch away and resumes when you return. So a muted foreground video plays on silently, while a muted background video holds its place.
-
----
-
-### How to Blur or Redact a Screenshot in Chrome (2026)
-
-URL: https://www.superchargebrowser.com/library/blur-redact-sensitive-info-screenshot-chrome-2026/
-Category: guide | Extension: capture | Updated: 2026-07-01
-Description: Cropping or a black box can be undone; pixelating the pixels cannot. Blur faces, emails, and card numbers inside the shot before you post. (July 2026)
-
-You are about to paste a screenshot into a ticket, and your email address, a card number, or a customer's name is sitting right there in the frame. Once you send it, you cannot un-send it. As of July 2026, the reliable way to handle this in Chrome is to blur the sensitive region **inside the screenshot tool, before the image is ever saved or shared**, so the unredacted version never leaves your screen. The wrong way, and the common one, is to share first and hope nobody zooms in.
-
-*Redaction steps walked through on Chrome 150, SuperchargeCapture 1.0.2, July 2026, blurring emails and card numbers in a live screenshot.*
-
-## What to Blur Before You Share
-
-Run this checklist over the frame before anything leaves your machine. Most leaks are not the obvious card number, they are the thing at the edge you forgot was on screen.
-
-| Redact this | Where it hides |
-|---|---|
-| Email addresses, phone numbers, full names | Headers, signatures, account pages |
-| Card, account, order, and invoice numbers | Billing screens, receipts, confirmations |
-| API keys, tokens, session values | DevTools panels, config screens, URLs |
-| Faces | Profile photos, video call tiles, webcam bubbles |
-| Autofill suggestions | The dropdown under a form field you clicked |
-| Other tabs and notifications | The tab strip and OS popups at the frame's edge |
-
-If any of these is in the shot, it gets a blur box. The last two rows are the ones that catch people: a screenshot of one page can leak the titles of six other tabs, or a Slack notification that slid in while you captured.
-
-## Blur It Inside the Screenshot, Before It Leaves Your Screen
-
-The safest redaction is one that happens between capture and export, with no upload in the middle. [SuperchargeCapture](/capture/) works this way by default.
-
-1. Capture the page: **Visible** for the viewport, **Region** to drag around one area, or **Element** to grab a single card or panel.
-2. The shot opens straight into an editor. Pick the **Blur** tool.
-3. Drag a box over each sensitive area. The region pixelates in place, averaged down into blocks.
-4. Repeat for every item on the checklist above, then **Copy** to clipboard or **Save**.
-
-The pixelation is baked into the pixels of the exported PNG, not floated on top as a removable layer. By the time the image exists as a file, the private data is already gone from it. The screenshot and its blur both happen on your device; the unredacted version never touches a network.
-
-## Why Pixelation Beats a Black Box or a Crop
-
-Not every "hide it" method actually hides it. Three common ones fail in ways that have burned real people:
-
-| Method | Does it hold up? |
-|---|---|
-| Pixelate, flattened into a PNG | Yes. Original pixels are averaged away and gone |
-| Highlighter stroke over the text | No. Many highlighters are semi-transparent; the text reads through |
-| "Black box" in an editable file | No. If the box is a separate layer, the recipient can move or delete it |
-| Crop the sensitive part out | Only if the data sits at an edge; useless when it is mid-frame |
-| Blur applied by a web upload tool | Risky. The raw image reached a server before you redacted it |
-
-Both failures share one rule. A redaction is only safe once it is destructive and flattened. A blur that removes the underlying pixels and exports a plain raster image cannot be peeled back. A movable overlay or a transparent stroke can. Draw the distinction before you trust the result.
-
-## Where the Screenshot and Its Blur Actually Live
-
-A tool that sees your screen and your secrets earns a hard look at where the bytes go. SuperchargeCapture keeps captures in **local storage on your device** (the Origin Private File System) and runs the Blur tool in your browser. It requires **no host permissions at install**, and its `activeTab` access means it only touches a page when you invoke a capture on that tab. There is no always-on content script reading what you browse, no `webRequest`, and no telemetry.
-
-That local-first posture is the point of redacting in the tool rather than on a website. A web-based blur service has to receive your unredacted image first, which defeats the exercise for anything sensitive. The only cloud path here is an optional Share to Drive that goes to your *own* Google Drive, and you would only reach for it after the blur is already applied.
-
-## Before You Hit Post
-
-Two seconds of checking beats an afternoon of rotating a leaked key:
-
-- **Zoom in on each blur** before you export. A box that half-covers a card number is worse than none, because it looks handled.
-- **Scan the edges**, not just the middle. Tab titles, autofill dropdowns, and notifications live in the margins.
-- **If you shared the raw shot already**, redacting the copy does nothing; assume the original is out and rotate the exposed secret.
-- **If the data is at an edge**, a tight crop is enough; if it is mid-frame, pixelate it.
-
-If your screenshots regularly carry emails, tokens, or customer data, redacting inside the capture tool means the sensitive version never exists as a shareable file. [SuperchargeCapture](/capture/) captures, blurs, and exports a flattened PNG on your device, so the only image that can leave is the one you already cleaned.
-
-#### FAQ
-Q: How do I blur sensitive information in a screenshot in Chrome?
-A: As of July 2026, the safest method is to blur inside the screenshot tool before the image is saved or shared. SuperchargeCapture takes the shot, opens an editor, and gives you a Blur tool: drag a box over each email, face, or number and it pixelates that region into the image. You then Copy or Save, and the redaction is baked into the pixels of the exported PNG. Because the blur is applied before export, the unredacted version never leaves your screen.
-
-Q: Is pixelating a screenshot safe, or can the blur be reversed?
-A: As of July 2026, a true pixelation that averages a region down to blocks and bakes it into the raster image is not reversible, because the original pixel values are gone. The danger is not pixelation itself but two weaker methods people mistake for it: a colored highlighter stroke that is semi-transparent and leaves text readable underneath, and a 'black box' drawn as a separate movable layer in an editable file, which can be removed by whoever opens it. Flatten your redaction into a plain PNG and it stays redacted.
-
-Q: What should I redact from a screenshot before sharing it?
-A: As of July 2026, blur anything that identifies a person or unlocks an account: email addresses, phone numbers, full names, faces, card and account numbers, API keys and tokens, session values in DevTools, order and invoice numbers, and identifiers buried in a URL. Two spots people forget are the browser's autofill dropdown, which can expose saved addresses, and the tab strip and notifications, which can leak other sites and messages at the edges of the frame.
-
-Q: Can I redact a screenshot without uploading it to a website?
-A: As of July 2026, yes, and you should prefer it for anything sensitive. Uploading a raw screenshot to a web-based blur tool means the unredacted image reaches someone else's server before you have hidden anything. SuperchargeCapture captures and redacts entirely on your device: the screenshot lives in local storage, the Blur tool runs in your browser, and nothing transits our servers. The private data never leaves your machine in the clear.
-
-Q: Does blurring a screenshot also remove hidden metadata?
-A: As of July 2026, pixelating a region hides what is visible in the image but is separate from file metadata. A screenshot exported as a fresh PNG from an in-browser editor generally does not carry camera EXIF or location data the way a phone photo does, but if you are handling highly sensitive material, treat the visible redaction and any metadata scrub as two distinct steps. For most screenshots, blurring the on-screen data is the risk that actually matters.
 
 ---
 
@@ -7000,7 +7097,7 @@ Description: Silent screen recording? The unticked tab-audio box is the usual ca
 
 You recorded a five-minute walkthrough, hit play, and got silence. The fix is almost always one unticked box: when Chrome's "Choose what to share" picker opens on a tab, the **Share tab audio** checkbox in the bottom-left is off by default. Tick it and re-record and the sound is back. As of July 2026, that single box accounts for most silent screen recordings in Chrome. The rest come from mixing up three different audio sources.
 
-*Checked on Chrome 150, SuperchargeCapture 1.0.2, recording a browser tab with mic and tab audio, July 2026.*
+*Checked on Chrome 150, SuperchargeCapture 1.1.1, recording a browser tab with mic and tab audio, August 2026.*
 
 ## Fix 1: Turn On "Share Tab Audio" in the Picker
 
@@ -7090,7 +7187,7 @@ Description: Chrome's Ctrl+P to PDF works until the page scrolls: sticky headers
 
 Chrome does not need an extension to save a page as a PDF. Press **Ctrl+P** (Cmd+P on Mac), set the destination to **Save as PDF**, and click Save. As of July 2026, for a plain article or a short static page that is all you need, and the result even keeps selectable text. The trouble starts when the page is long, sticky, or app-like, because print-to-PDF paginates onto paper sheets, and paper is the one thing a scrolling web page was built to escape.
 
-*Compared against Chrome 150's own Save as PDF on a sticky-header dashboard, SuperchargeCapture 1.0.2, July 2026.*
+*Compared against Chrome 150's own Save as PDF on a sticky-header dashboard, SuperchargeCapture 1.1.1, August 2026.*
 
 ## The Built-In Way: Ctrl+P to Save as PDF
 
@@ -7168,96 +7265,6 @@ A: As of July 2026, use a full-page capture that handles fixed elements during t
 
 Q: Is a stitched PDF text-selectable like a printed PDF?
 A: As of July 2026, no, and the trade-off is straightforward. Chrome's native Save as PDF keeps live, selectable, searchable text. A stitched full-page capture is a faithful visual rendering of the page assembled from screenshots, so its PDF is image-based and the text is not selectable. Choose by what you need: native print for a clean article where you want to copy text, a stitched capture for a broken or app-like layout where visual fidelity matters more than selectable text.
-
----
-
-### Screen Recording to GIF for Slack & Discord (2026)
-
-URL: https://www.superchargebrowser.com/library/screen-recording-to-gif-slack-discord-2026/
-Category: guide | Extension: capture | Updated: 2026-07-01
-Description: A GIF autoplays inline in Slack and Discord with no player and no click. Record the repro, trim it, export straight to GIF under the size caps. (July 2026)
-
-> **Key takeaways**
-> - A GIF **autoplays inline** in Slack and Discord with no player, no click, and no hosted link, which is why it beats a video for a quick bug repro.
-> - **Discord's free 10MB cap** is the tight one; Slack allows 1GB per file. A short, downscaled GIF clears both.
-> - SuperchargeCapture records a tab, trims it, and **exports to GIF locally** (12 fps, 960px, 30s cap) with no account and no upload.
-
-You caught the bug reproducing and want a teammate to see it now, in the thread, without a "click here to watch" link and a loading spinner. That is the GIF's whole job in chat: it autoplays, it loops, it needs no player. As of July 2026, the fastest path from a live browser bug to a GIF in Slack or Discord is to record the tab, trim to the few seconds that matter, and export straight to GIF. No cloud round-trip in between.
-
-*GIF export run on Chrome 150 with SuperchargeCapture 1.0.2, July 2026; the Slack and Discord caps below were checked the same week.*
-
-## Why a GIF Wins in a Chat Thread
-
-Post an MP4 and the reader gets a file card and a play button. Post a GIF and the bug just happens in front of them as they scroll. For a repro, that difference is the entire point: you want zero friction between "here's the problem" and them seeing it.
-
-One trade-off is worth stating up front. A GIF has no audio, and because every frame is a full image, file size climbs fast with length and frame rate. So GIFs are for short and silent work: a dropdown that glitches, a hover state that breaks. Anything you need to narrate, or anything longer than a handful of seconds, belongs in an MP4.
-
-## The Upload Caps You Have to Clear
-
-The reason "just export a GIF" sometimes fails is the size limit on the other end. Each platform sits differently as of July 2026:
-
-| Platform | Free per-file limit | Paid tier | Notes |
-|---|---|---|---|
-| Discord | 10MB | Nitro Basic 50MB, Nitro 500MB | 10MB free is the tightest common cap |
-| Slack | 1GB | 1GB (all plans) | Free workspaces: 5GB total, files purged after 90 days |
-
-Discord's 10MB free ceiling is the one that bites. A naive full-frame-rate, full-resolution GIF of even a few seconds can sail past it. The fix is not a bigger plan, it is a smaller GIF: fewer frames per second and a smaller frame, which is what a purpose-built export does for you.
-
-## Record the Repro in Chrome
-
-You need the recording before you can trim it. [SuperchargeCapture](/capture/) records the current tab through `chrome.tabCapture`, so there is no "choose what to share" picker to click through first.
-
-1. Open the tab where the bug lives.
-2. Click the SuperchargeCapture icon and choose **This Tab**.
-3. Reproduce the bug once, cleanly, then stop.
-
-The recording opens in a local editor. Nothing has uploaded, there is no account gate, and the file is already on your machine. If the effect only shows on the tab you were looking at, this is quicker than any picker-based recorder because you skip the source-selection step entirely.
-
-## Trim to the Moment That Matters
-
-A GIF's size is mostly its length, so trimming is not polish, it is the difference between clearing 10MB and not.
-
-In the editor, drag the two trim handles to the start and end of the actual bug. Cut the "let me move my mouse over here" lead-in and the "okay that's it" tail. You are aiming for the three to eight seconds where the problem occurs. A tight trim also makes the GIF more readable: the loop repeats the failure, not your cursor wandering.
-
-## Export Straight to GIF
-
-Choose **GIF** as the export format and save. SuperchargeCapture encodes it in the browser and hands you a `.gif` file. Three things happen automatically to keep it under the caps:
-
-- **12 frames per second** instead of 30, which cuts frame count by more than half with no real loss for a UI repro.
-- **Longest side scaled to 960 pixels**, so a 1440p capture shrinks to a chat-friendly width.
-- **A 30-second ceiling.** Go over and it asks you to trim first, which is the size limit protecting you from yourself.
-
-The GIF is written locally; nothing uploads to our servers, and there is no account behind the export button. Drag the file into Slack or Discord and it plays inline the moment it posts.
-
-## GIF or MP4, Case by Case
-
-Not every clip should be a GIF. Pick by what the reader needs:
-
-| Your clip | Best format | Why |
-|---|---|---|
-| Short, silent UI bug (3-8s) | GIF | Autoplays inline, loops, clears Discord's 10MB free cap |
-| A narrated walkthrough | MP4 | GIFs carry no audio |
-| A 30-second-plus demo | MP4 (WebM) | GIF size explodes past upload limits |
-| Posting into Slack, quality matters | MP4 | Slack's 1GB cap gives you room for a crisp video |
-| A loop you want to fire without a click | GIF | No player, no thumbnail, no link |
-
-If your repro is short and wordless and headed for Discord, a downscaled GIF is the right call, and [SuperchargeCapture](/capture/) records, trims, and exports it without a single upload. If the clip is long or you are talking over it, export MP4 from the same editor and post that instead.
-
-#### FAQ
-Q: How do I turn a screen recording into a GIF for Slack or Discord?
-A: As of July 2026, record the tab or screen, trim it to the few seconds that matter, and export to GIF. SuperchargeCapture records a Chrome tab, opens a local editor where you trim with two handles, and exports directly to GIF with no upload. The GIF path caps output at 30 seconds, runs at 12 frames per second, and scales the longest side down to 960 pixels, which keeps the file small enough to drop into chat without hitting an upload limit.
-
-Q: What is the file size limit for uploads on Discord and Slack in 2026?
-A: As of July 2026, Discord's free tier caps a single file at 10MB, Nitro Basic raises it to 50MB, and full Nitro to 500MB. Slack allows up to 1GB per file on all plans, but free workspaces share 5GB of total storage and delete files after 90 days. Discord's 10MB free cap is the tight one for video, which is why a short, downscaled GIF beats an MP4 for quick bug repros there.
-
-Q: Why use a GIF instead of an MP4 in a chat message?
-A: As of July 2026, a GIF autoplays inline and loops with no player, no click, and no hosted link. A teammate sees the bug reproduce the moment they scroll past it. An MP4 usually needs a click to play and may be pushed to a file card. The trade-off is that GIFs have no sound and get large fast at high frame rates, so they suit short, silent repros. Anything long or narrated should stay an MP4.
-
-Q: How long can a GIF screen recording be?
-A: As of July 2026, there is no hard technical limit on GIF length, but practical size makes short clips the only sane option: every frame is a full image, so a long GIF balloons past chat upload caps quickly. SuperchargeCapture enforces this by capping GIF export at 30 seconds and asking you to trim the range first if you exceed it. For a bug repro, three to eight seconds is usually all you need.
-
-Q: Can I make a GIF of a screen recording without uploading it anywhere?
-A: As of July 2026, yes. SuperchargeCapture records and encodes the GIF entirely in your browser and writes it to local storage. Nothing goes to our servers, there is no account, and export is free. You get a .gif file on your device that you drag straight into Slack or Discord. An optional Share to Drive exists for larger video files, but it uploads only to your own Google Drive and only if you choose it.
 
 ---
 
@@ -7548,15 +7555,15 @@ Net: the core capture is solid and the recording is competent. The two documente
 
 ## Where a Local-First Recorder Fits Instead
 
-If your need is specifically *recording* rather than screenshots, and the account-and-cloud direction is the part you want to avoid, that is the gap a local-first tool fills. [SuperchargeCapture](/capture/) (version 1.0.2, live as of June 2026) records your tab, window, or screen in Chrome with pause and resume, edits locally, and exports MP4, WebM, or GIF with no account and no watermark. On the screenshot side it has keyboard shortcuts for visible-area, full-page, and drag-a-region capture, plus a click-any-element mode and one-click copy to the clipboard. The recording writes to your device's Origin Private File System in one-second chunks, so an interrupted take is recoverable rather than lost (a cloud recorder with a dropped connection rarely gives you that). It runs with no telemetry and no host permissions, and nothing uploads unless you choose Share to Drive, which goes to your own Google Drive.
+If your need is specifically *recording* rather than screenshots, and the account-and-cloud direction is the part you want to avoid, that is the gap a local-first tool fills. [SuperchargeCapture](/capture/) (version 1.1.1, live as of August 2026) records your tab, window, or screen in Chrome with pause and resume, edits locally, and exports MP4, WebM, or GIF with no account and no watermark. On the screenshot side it has keyboard shortcuts for visible-area, full-page, and drag-a-region capture, plus a click-any-element mode and one-click copy to the clipboard. The recording writes to your device's Origin Private File System in one-second chunks, so an interrupted take is recoverable rather than lost (a cloud recorder with a dropped connection rarely gives you that). It runs with no telemetry and no host permissions, and nothing uploads unless you choose Share to Drive, which goes to your own Google Drive.
 
-To be fair about the trade, it runs the other way too. Awesome Screenshot still has the broader, older *screenshot* layer: more years of full-page polish, more export and integration options, and a hosted sharing-and-collaboration layer SuperchargeCapture does not attempt. But the markup gap is smaller than you might assume. SuperchargeCapture captures full-page, region, or a clicked element, and its editor carries a real markup suite — arrow, box, ellipse, highlight, text, and a pixelate-and-blur tool for redacting sensitive data, each in four colors with undo, clear-all, and crop — exporting to PNG, JPG, WebP, or PDF. Awesome Screenshot's annotation set is wider and more mature; both let you mark up and redact a capture.
+To be fair about the trade, it runs the other way too. Awesome Screenshot still has the broader, older *screenshot* layer: more years of full-page polish, more export and integration options, and a hosted sharing-and-collaboration layer SuperchargeCapture does not attempt. But the markup gap is smaller than you might assume. SuperchargeCapture captures full-page, region, or a clicked element, and its editor carries a real markup suite — arrow, box, ellipse, highlight, step number, spotlight, text, and a redact tool that pixelates or blurs sensitive data, in seven colors plus a custom picker, with an object list, undo, clear-all, and crop — exporting to PNG, JPG, WebP, or PDF. Awesome Screenshot's annotation set is wider and more mature; both let you mark up and redact a capture.
 
 | | Awesome Screenshot | SuperchargeCapture |
 |---|---|---|
-| Screenshot capture + export | Wider, older markup set; PNG/JPG/PDF | Full-page/region/element, hotkeys, copy-to-clipboard; arrow, box, ellipse, highlight, text, blur; PNG/JPG/WebP/PDF |
+| Screenshot capture + export | Wider, older markup set; PNG/JPG/PDF | Full-page/region/element, hotkeys, copy-to-clipboard; arrow, box, ellipse, highlight, step number, spotlight, text, redact; PNG/JPG/WebP/PDF |
 | Screen / tab recording | Yes | Yes (tab via `chrome.tabCapture`), pause/resume |
-| Editor (recording + screenshot markup) | Recording editor + annotation | Trim, auto-zoom, cursor polish; arrow/box/ellipse/highlight/text/blur |
+| Editor (recording + screenshot markup) | Recording editor + annotation | Timeline cuts, per-clip speed, auto-zoom, cursor polish, offline captions; full screenshot markup set |
 | Interrupted-recording recovery | Cloud-dependent | Local OPFS chunks, recoverable |
 | Telemetry / host permissions | Account-based cloud | None; 100% local |
 | Account for sharing / cloud save | Yes | None (local; opt-in Drive) |
@@ -7839,7 +7846,7 @@ The tab approach trades away Teams' automatic transcript and its tidy SharePoint
 
 The whole setup, from nothing installed, takes about a minute:
 
-1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.2, live as of June 2026). No account, no email.
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.1.1, live as of August 2026). No account, no email.
 2. Open the Teams meeting link and join through the **web app** in Chrome rather than the desktop client, so the call runs in a tab.
 3. **Announce the recording** in chat or aloud and confirm everyone agrees. Confirm your workplace allows it too.
 4. Click the SuperchargeCapture icon and choose **This Tab**.
@@ -7925,7 +7932,7 @@ A bot note-taker makes sense if you mainly want a searchable transcript and don'
 
 From a cold install, the flow is short:
 
-1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.2, live as of June 2026). No account, no sign-in.
+1. Install [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.1.1, live as of August 2026). No account, no sign-in.
 2. Open your Zoom meeting link and choose **Join from your browser** so the call runs in a Chrome tab rather than the desktop app.
 3. **Say you are recording** and confirm everyone is okay with it. (See the consent section; this is the load-bearing step, not a formality.)
 4. Click the SuperchargeCapture toolbar icon and pick **This Tab**.
@@ -8128,7 +8135,7 @@ The account and hosting model is the quieter friction. ScreenPal is built around
 
 ## Record Clean, With No Cap or Account
 
-SuperchargeCapture comes at recording from the other direction: local-first, no account, no clock, no logo. You install it from the Chrome Web Store (version 1.0.2, live as of June 2026), click the toolbar icon, and the recorder opens straight to its controls. There is nothing to sign into, because there is no account system at all.
+SuperchargeCapture comes at recording from the other direction: local-first, no account, no clock, no logo. You install it from the Chrome Web Store (version 1.1.1, live as of August 2026), click the toolbar icon, and the recorder opens straight to its controls. There is nothing to sign into, because there is no account system at all.
 
 Pick what to capture. **This Tab** records the current Chrome tab through `chrome.tabCapture`, which skips the operating-system screen-picker dialog: one click, no "which window did I mean." Window and full-screen capture are there when you need them, through Chrome's standard picker, and they carry system audio too, mixed with your microphone into a single track rather than left silent. Before you start, a live microphone level meter moves when you talk, so a muted mic is caught before a long take, not after it.
 
@@ -8149,10 +8156,10 @@ When you stop, the recording opens in a local editor, and none of it is gated be
 - **Auto-zoom** eases the frame toward each click, the directed-walkthrough look that makes a demo feel produced.
 - **Cursor polish** smooths the pointer path and adds click ripples so fast mouse movement reads cleanly.
 - **Frame-accurate trim** uses dual handles to cut dead air off the front and back.
-- **Markup on screenshots** gives you a real annotation suite: arrow, box, ellipse, highlight, text, and a pixelate-and-blur tool to redact sensitive data, each in four colors with undo, clear-all, and crop. A grabbed screenshot can also copy straight to the clipboard, so it pastes into Slack or a doc without a save step.
+- **Markup on screenshots** gives you a real annotation suite: arrow, box, ellipse, highlight, step number, spotlight, text, and a redact tool that pixelates or blurs sensitive data, in seven colors plus a custom picker, with a select cursor, an object list, undo, clear-all, and crop. A grabbed screenshot can also copy straight to the clipboard, so it pastes into Slack or a doc without a save step.
 - **Webcam bubble** drops a resizable, draggable circle (round or square) with optional on-device background blur, and the blur runs locally with no frame uploaded to apply it.
 
-One honest caveat: auto-zoom and cursor effects rely on pointer samples that are captured for **tab** recordings. For window or full-screen captures they may not apply, so if the polished look is why you came, record the tab. Export is local too: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame GIF capped at 30 seconds for quick embeds. Every format comes out clean and uncapped.
+One honest caveat: auto-zoom and cursor effects rely on pointer samples that are captured for **tab** recordings. For window or full-screen captures they may not apply, so if the polished look is why you came, record the tab. Export is local too: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame GIF capped at 120 seconds for quick embeds. Every format comes out clean and uncapped.
 
 ## Where ScreenPal Is Still the Right Call
 
@@ -8969,7 +8976,7 @@ You hit record on a free screen recorder, talk through a five-minute walkthrough
 
 ## Step 1: Install and Open the Recorder
 
-Add [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.0.2, live as of June 2026) and click the toolbar icon. No sign-up screen, no email gate, no "start your free trial" wall. The recorder popup opens straight to its capture controls.
+Add [SuperchargeCapture](/capture/) from the Chrome Web Store (version 1.1.1, live as of August 2026) and click the toolbar icon. No sign-up screen, no email gate, no "start your free trial" wall. The recorder popup opens straight to its capture controls.
 
 There is nothing to log into because there is no account system at all. The extension stores everything on your own machine, so the moment it installs, it works.
 
@@ -9010,7 +9017,7 @@ Hit export and pick a format:
 
 - **MP4:** available when your browser's MediaRecorder supports it. No length limit.
 - **WebM:** always available. No length limit.
-- **GIF:** reduced frame rate for quick embeds, capped at 30 seconds (a longer GIF becomes an enormous file).
+- **GIF:** reduced frame rate for quick embeds, capped at 120 seconds (a longer GIF becomes an enormous file).
 
 Every export comes out clean. No logo in the corner, no "made with" banner, no stamp to pay to remove. The file saves to your device. If you want it shareable, the opt-in **Share to Drive** uploads to your *own* Google Drive through Chrome's identity OAuth on the `drive.file` scope, which only touches files the extension created. Nothing transits SuperchargeBrowser servers.
 
@@ -9045,7 +9052,7 @@ Q: How do I screen record with no watermark for free?
 A: As of June 2026, SuperchargeCapture records your screen, tab, or window in Chrome and exports the file with no watermark, no logo, and no length cap, all free with no account. The watermark on most free recorders is a paywall marker — it exists to push you to a paid plan. SuperchargeCapture has no paid recording tier gating the export, so there is nothing to stamp. The finished MP4, WebM, or GIF is clean.
 
 Q: Is there a free screen recorder with no time limit?
-A: Yes. As of June 2026, SuperchargeCapture has no recording-length cap on MP4 and WebM export — you can record a two-minute clip or a fifty-minute walkthrough on the free version. Many browser-based free recorders cap free recordings at 5 minutes (or 3, or 15) to convert you to a subscription. The one length limit in SuperchargeCapture is the GIF export, capped at 30 seconds, because a longer GIF becomes an enormous file. Video export is uncapped.
+A: Yes. As of August 2026, SuperchargeCapture has no recording-length cap on MP4 and WebM export — you can record a two-minute clip or a fifty-minute walkthrough on the free version. Many browser-based free recorders cap free recordings at 5 minutes (or 3, or 15) to convert you to a subscription. The one length limit in SuperchargeCapture is the GIF export, capped at 120 seconds, because a longer GIF becomes an enormous file. Video export is uncapped.
 
 Q: Do I need to create an account to record my screen?
 A: No. As of June 2026, SuperchargeCapture requires no account, no sign-in, and no email to record or to export. You install it from the Chrome Web Store and the recorder works immediately. The recording writes to your device's local storage (Origin Private File System), so there is no server to log into and nothing uploads anywhere unless you deliberately choose Share to Drive, which goes to your own Google Drive.
@@ -9113,7 +9120,7 @@ A raw screen recording looks raw. The editing layer is where a take becomes some
 
 One honest caveat: auto-zoom and cursor effects rely on captured pointer samples, which are recorded for tab captures. For window or full-screen recordings, those effects may not apply. If the polished look is the reason you came, record the tab.
 
-Export is local: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame GIF capped at 30 seconds for quick embeds. You can also grab a full-page screenshot or save a page to PDF. WebM and MP4 carry no length limit and no watermark.
+Export is local: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame GIF capped at 120 seconds for quick embeds. You can also grab a full-page screenshot or save a page to PDF. WebM and MP4 carry no length limit and no watermark.
 
 ## Where the File Lives, and Who Can See It
 
@@ -9907,7 +9914,7 @@ A raw screen recording looks like a raw screen recording. The editing layer is w
 
 One honest caveat: auto-zoom and cursor effects need captured pointer samples, which are recorded for **tab** recordings. For window or full-screen recordings, those effects may not be available. If the polished-walkthrough look is why you came, record the tab.
 
-Export is local too: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame-rate GIF (capped at 30 seconds) for quick embeds. WebM and MP4 have no length limit.
+Export is local too: WebM always, MP4 when your browser's MediaRecorder supports it, and a reduced-frame-rate GIF (capped at 120 seconds) for quick embeds. WebM and MP4 have no length limit.
 
 ## When You Do Want to Share It
 
@@ -10349,7 +10356,7 @@ Re-enabling an extension is one problem. The quieter problem is what the disable
 
 This is where the kind of extension matters. Tools that treat your data as account-synced or as recoverable state survive a disable. Tools that hold everything in volatile UI do not.
 
-[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.3 on the Chrome Web Store as of June 2026) is built for exactly this resilience. Your tabs live in named workspaces saved to `chrome.storage.local`, and the extension takes 50 automatic snapshots per workspace at 5-minute intervals — a rolling 4+ hours of history. If Chrome disables and you re-enable the extension, your workspaces are still there; if you ever uninstall and reinstall, opt-in Chrome-native sync (your browser account, not our servers) restores them rather than starting empty.
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.4 on the Chrome Web Store as of August 2026) is built for exactly this resilience. Your tabs live in named workspaces saved to `chrome.storage.local`, and the extension takes 50 automatic snapshots per workspace at 5-minute intervals — a rolling 4+ hours of history. If Chrome disables and you re-enable the extension, your workspaces are still there; if you ever uninstall and reinstall, opt-in Chrome-native sync (your browser account, not our servers) restores them rather than starting empty.
 
 Because it ships as a published Manifest V3 store extension, it does not hit the sideload, MV2, or developer-mode disable reasons above in the first place. The Alt+K command palette searches open tabs, history, and bookmarks from the keyboard, so even after a rough morning of re-enabling things, finding a tab is a search instead of a hunt. Free core, local by default, no account required, zero telemetry.
 
@@ -10406,7 +10413,7 @@ If you keep more than ~25 sets of tabs, Chrome's Save group feature will lose th
 
 The direct workaround is to keep only your active, short-lived groups in Chrome's saved list and move anything long-term into a tool that has no 25-item cap.
 
-[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.3, CWS-live as of June 2026) uses named workspaces instead of Chrome's saved-group slots. Each workspace is an isolated set of tabs with its own name, and there is no 25-entry limit pushing the oldest one off the list. You can hold 25, 50, or 200 separate workspaces and none of them evict each other.
+[SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.4, CWS-live as of August 2026) uses named workspaces instead of Chrome's saved-group slots. Each workspace is an isolated set of tabs with its own name, and there is no 25-entry limit pushing the oldest one off the list. You can hold 25, 50, or 200 separate workspaces and none of them evict each other.
 
 Workspaces persist to `chrome.storage.local` by design, not as a side effect of Chrome's session machinery. They also do not depend on the saved-group buffer at all, so the eviction behavior that deletes your oldest Chrome group does not apply to them.
 
@@ -10704,7 +10711,7 @@ Brave runs Chrome Web Store extensions, and most "best extensions" lists waste y
 | Extension | Version (Jun 2026) | Users | Gap it fills in Brave | Cost |
 |---|---|---|---|---|
 | SuperchargePerformance | v1.4.6 | ~4,700 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
-| SuperchargeNavigation | v1.3.3 | ~7,700 | Named workspaces, tab command bar, session snapshots | Free |
+| SuperchargeNavigation | v1.3.4 | ~1,000 | Named workspaces, tab command bar, session snapshots | Free |
 | Dark Reader | v4.9.125 | ~7M | Dark mode for website content, per-site | Free |
 | Bitwarden | v2026.5.1 | ~6M | Open-source password manager beyond the browser | Free / paid |
 | Session Buddy | v4.1.2 | ~1M | Session backup and crash recovery | Free |
@@ -10739,7 +10746,7 @@ If you want to compare the category first, [the tab suspender field test](/libra
 
 ## SuperchargeNavigation: Workspaces on Top of Brave's Vertical Tabs
 
-Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.3, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close actions. Around that core:
+Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.4, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close actions. Around that core:
 
 - **Named workspaces with full isolation.** Client work, research, and personal tabs live in separate named sets that survive restarts. Brave has nothing equivalent.
 - **Alt+K command bar** searching open tabs, bookmarks, and recent history from the keyboard.
@@ -11059,7 +11066,7 @@ Press Alt+K on any page and a search overlay opens. Type, and it fuzzy-matches:
 
 Type a URL into the Alt+K palette and it offers to open that address; type anything else and it offers a web search. The palette also matches your bookmarks and history alongside open tabs, so one typed fragment surfaces all of them at once. The single difference from Arc: a typed URL or search opens in a fresh tab rather than navigating the current one inline the way Arc's merged bar did. Everything that made the Command Bar fast for moving between things you already had open is here.
 
-The extension is free, stores everything locally, and needs no account. As of June 2026 the Chrome Web Store version is 1.3.3.
+The extension is free, stores everything locally, and needs no account. As of August 2026 the Chrome Web Store version is 1.3.4.
 
 ## How to Set It Up
 
@@ -11107,7 +11114,7 @@ Q: What is Arc's Command Bar?
 A: Arc's Command Bar is a keyboard-launched overlay (Cmd+T) that searches open tabs, history, and bookmarks, switches between them, and runs actions like opening a new tab or jumping to a Space. It replaced the traditional address bar as the primary way to navigate Arc. As of June 2026 it still works in Arc, but Arc itself has been in maintenance mode since May 2025.
 
 Q: How do I get Arc's Command Bar in Chrome?
-A: Chrome has no built-in equivalent. The closest match is SuperchargeNavigation's Alt+K command palette (extension v1.3.3 on the Chrome Web Store as of June 2026, free, no account). Press Alt+K on any page to open a fuzzy-search overlay that finds and switches open tabs across all windows, reopens recently-closed tabs, and switches or creates workspaces.
+A: Chrome has no built-in equivalent. The closest match is SuperchargeNavigation's Alt+K command palette (extension v1.3.4 on the Chrome Web Store as of August 2026, free, no account). Press Alt+K on any page to open a fuzzy-search overlay that finds and switches open tabs across all windows, reopens recently-closed tabs, and switches or creates workspaces.
 
 Q: What keyboard shortcut opens the command palette in SuperchargeNavigation?
 A: Alt+K opens the command palette on any page. It works whether or not the sidebar search field is visible. Inside the palette, type to fuzzy-match tabs and workspaces, use arrow keys to move through results, and press Enter to switch. As of June 2026 this is the default and is not rebindable from the options page.
@@ -11800,7 +11807,7 @@ Two rows there are real gaps. Sidekick's app sidebar — Gmail, Notion, Slack pi
 
 ## Rebuilding Sessions and Workspaces in Chrome
 
-For the core of Sidekick — Sessions and the workspace sidebar — SuperchargeNavigation is the closest single-extension match. It is v1.3.3 on the Chrome Web Store as of June 2026, free, with no account.
+For the core of Sidekick — Sessions and the workspace sidebar — SuperchargeNavigation is the closest single-extension match. It is v1.3.4 on the Chrome Web Store as of August 2026, free, with no account.
 
 **Workspaces replace the workspace sidebar.** Each workspace holds its own tabs, independently. Switching workspaces switches the whole context, not a filter view: you see only the active workspace's tabs, exactly the separation Sidekick's sidebar gave you between Work, Personal, and a project. Workspace state is stored locally. If you want it on a second machine, you opt into Chrome's own account sync and the data rides your Google account, not a SuperchargeBrowser server.
 
@@ -11844,7 +11851,7 @@ Q: Is the Sidekick browser coming back?
 A: No. As of June 2026, there is no sign of a Sidekick revival. The team moved to Perplexity's Comet browser after the May 2025 acquisition, the app stopped receiving updates, and the original meetsidekick.com domain now points to Comet. Comet is an AI-assistant browser, not a continuation of Sidekick's Sessions-and-workspace tab model.
 
 Q: What is the best Sidekick browser alternative that stays on Chrome?
-A: For Sidekick's core workflow — a workspace sidebar and saved Sessions — SuperchargeNavigation (v1.3.3, free, on the Chrome Web Store as of June 2026) is the closest single-extension match. It adds named workspaces, an Alt+K command bar, automatic session snapshots, and link peek, all stored locally with no account.
+A: For Sidekick's core workflow — a workspace sidebar and saved Sessions — SuperchargeNavigation (v1.3.4, free, on the Chrome Web Store as of August 2026) is the closest single-extension match. It adds named workspaces, an Alt+K command bar, automatic session snapshots, and link peek, all stored locally with no account.
 
 Q: How do I get Sidekick's Sessions feature in Chrome?
 A: Sidekick Sessions saved a named set of tabs you could reopen later. In Chrome, SuperchargeNavigation replaces this two ways: named workspaces hold their own isolated tabs, and an automatic snapshot system saves your tab state every 5 minutes (up to 50 rolling snapshots, roughly the last four hours) so you can rewind to an earlier state. As of June 2026 this works on Chrome 149.
@@ -12125,7 +12132,7 @@ The fastest way to rebuild your set: open Arc's extensions page (`arc://extensio
 
 This is where the migration stops being a copy job. Chrome has no native Space. Tab Groups look similar but share one tab strip: every group's tabs stay visible at once, so there is no context isolation and no key to flip from Work mode to Personal mode.
 
-To get the actual Arc Spaces behavior back (switch context and the previous space's tabs vanish from view), you add named workspaces through an extension. [SuperchargeNavigation](/library/arc-spaces-chrome-extension/) (v1.3.3, free, no account) is the direct equivalent. Create one workspace per Arc Space you had, open the relevant tabs in each, and switching between them swaps the entire tab context the way Arc did. Your imported bookmark folders from Step 2 become the seed list: open a folder's links inside its matching workspace and you have reconstructed that Space.
+To get the actual Arc Spaces behavior back (switch context and the previous space's tabs vanish from view), you add named workspaces through an extension. [SuperchargeNavigation](/library/arc-spaces-chrome-extension/) (v1.3.4, free, no account) is the direct equivalent. Create one workspace per Arc Space you had, open the relevant tabs in each, and switching between them swaps the entire tab context the way Arc did. Your imported bookmark folders from Step 2 become the seed list: open a folder's links inside its matching workspace and you have reconstructed that Space.
 
 Each workspace holds its tabs independently. Switching hides the previous workspace's tabs entirely rather than filtering a shared list. Sessions persist across Chrome restarts, and a snapshot of your layout saves automatically every 5 minutes (up to 50 rolling saves, roughly the last four hours), so an accidental close is recoverable from a time-travel slider.
 
@@ -12171,7 +12178,7 @@ Leaving Arc usually comes down to one factor: the extension library. If that is 
 
 #### FAQ
 Q: How do I move my Arc bookmarks and spaces to Chrome?
-A: As of June 2026, export from Arc with File menu, Export Bookmarks (it writes a standard HTML file), then import it in Chrome via Bookmarks, Import Bookmarks and Settings, From HTML file. Your Arc Spaces flatten into ordinary bookmark folders during this transfer — Chrome has no native concept of a Space. To rebuild switchable, isolated spaces, add named workspaces through an extension like SuperchargeNavigation (v1.3.3, free).
+A: As of August 2026, export from Arc with File menu, Export Bookmarks (it writes a standard HTML file), then import it in Chrome via Bookmarks, Import Bookmarks and Settings, From HTML file. Your Arc Spaces flatten into ordinary bookmark folders during this transfer — Chrome has no native concept of a Space. To rebuild switchable, isolated spaces, add named workspaces through an extension like SuperchargeNavigation (v1.3.4, free).
 
 Q: Is Arc Browser shutting down in 2026?
 A: As of June 2026, Arc is in maintenance mode, not shut down. The Browser Company stopped active feature development in May 2025 and Atlassian closed its $610M acquisition on October 21, 2025. Arc still downloads at arc.net and gets Chromium security patches — the latest macOS build was v1.147.1 (May 22, 2026) — but no new features are planned and no sunset date has been announced. The team builds Dia, an AI-first browser, now.
@@ -12572,7 +12579,7 @@ Chrome 149 still has no equivalent. This is not a gap that Chrome's roadmap is a
 
 ## How SuperchargeNavigation Replicates Arc Spaces
 
-SuperchargeNavigation (v1.3.3, verified live on CWS as of June 2026) provides the workspace layer that Chrome does not. The match to Arc Spaces is not incidental: the extension's workspace model was designed for exactly this user.
+SuperchargeNavigation (v1.3.4, verified live on CWS as of August 2026) provides the workspace layer that Chrome does not. The match to Arc Spaces is not incidental: the extension's workspace model was designed for exactly this user.
 
 **Named, isolated workspaces.** Each workspace in Nav holds its own tab set. When you switch from Work to Personal, the Work tabs leave the view entirely — they remain running in memory, but they are not visible and do not compete for attention. This is the Arc Spaces behavior at the functional level. You can have as many workspaces as you need; there is no paid tier or limit on workspace count.
 
@@ -12626,23 +12633,23 @@ The path forward from Arc Spaces depends on what you actually needed from them:
 
 Arc entered maintenance mode May 2025 (12 months before this article's May 2026 publication). The team has moved to Dia. Waiting for Arc to return is not the practical path. The workflow is rebuildable in Chrome today, with tools that are actively maintained.
 
-SuperchargeNavigation v1.3.3 is free, zero telemetry, no account required. The workspace separation Arc users built their workflows around is available today.
+SuperchargeNavigation v1.3.4 is free, zero telemetry, no account required. The workspace separation Arc users built their workflows around is available today.
 
 #### FAQ
 Q: Does Chrome have something like Arc Spaces?
-A: As of June 2026, Chrome has no native equivalent to Arc Spaces. Chrome's Tab Groups add labels and color-coding but share the same tab strip — there is no context isolation, no per-Space tab hiding, and no session switching. Named workspaces via an extension like SuperchargeNavigation (v1.3.3, free) replicate the core Arc Spaces behavior: each workspace holds its own tabs independently, switching is instant, and sessions persist across browser restarts.
+A: As of August 2026, Chrome has no native equivalent to Arc Spaces. Chrome's Tab Groups add labels and color-coding but share the same tab strip — there is no context isolation, no per-Space tab hiding, and no session switching. Named workspaces via an extension like SuperchargeNavigation (v1.3.4, free) replicate the core Arc Spaces behavior: each workspace holds its own tabs independently, switching is instant, and sessions persist across browser restarts.
 
 Q: What happened to Arc Browser and Arc Spaces?
 A: As of June 2026, Arc Browser is in maintenance mode. The Browser Company stopped active development in May 2025 and pivoted to Dia, an AI-first product. Atlassian acquired The Browser Company in September 2025 for $610M. Arc still runs but receives no new features. Arc Spaces — the named, isolated tab contexts Arc was known for — are no longer receiving updates, and the broader Arc ecosystem has wound down.
 
 Q: What is the closest Chrome extension to Arc Spaces?
-A: SuperchargeNavigation (v1.3.3, free, no account required) is the closest Chrome equivalent to Arc Spaces as of June 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Alt+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
+A: SuperchargeNavigation (v1.3.4, free, no account required) is the closest Chrome equivalent to Arc Spaces as of August 2026. It provides named workspaces with full tab isolation, a side panel with vertical tabs, a keyboard command bar (Alt+K), Alt+Click peek previews, and 50-snapshot time-travel history. Each workspace holds its own tabs independently — switching contexts hides the previous workspace's tabs entirely.
 
 Q: Can I use Chrome Profiles instead of Arc Spaces?
 A: Chrome Profiles provide stronger isolation — separate cookies, passwords, and extensions per profile — but they are not a practical Spaces replacement. Each profile is a separate Chrome window with its own session state. There is no keyboard shortcut to switch between profiles, no unified tab search across them, and no session snapshots. Profiles are the right tool for separate Google accounts or full identity separation. For fast workspace switching without the overhead, use named workspaces.
 
 Q: Does SuperchargeNavigation sync workspaces across devices like Arc Spaces did?
-A: Yes, with opt-in. As of June 2026, SuperchargeNavigation v1.3.3 includes cross-device workspace sync via your browser's own account sync (Google account on Chrome, Microsoft account on Edge). Sync is off by default — enable it in Settings after signing into your browser on both devices. Sync runs through the browser's own infrastructure, not SuperchargeBrowser servers, so we cannot read your data. With sync off, workspace data stays local. Either way: zero telemetry.
+A: Yes, with opt-in. As of August 2026, SuperchargeNavigation v1.3.4 includes cross-device workspace sync via your browser's own account sync (Google account on Chrome, Microsoft account on Edge). Sync is off by default — enable it in Settings after signing into your browser on both devices. Sync runs through the browser's own infrastructure, not SuperchargeBrowser servers, so we cannot read your data. With sync off, workspace data stays local. Either way: zero telemetry.
 
 ---
 
@@ -13236,7 +13243,7 @@ Where it fits: archiving research sessions and named project states for later re
 
 ## SuperchargeNavigation: Workspaces, Command Bar, Peek Preview
 
-**Version:** v1.3.3 | **CWS Status:** Live (Chrome + Edge) | **Rating:** 4.8/5 (4 ratings) | **Free, no account**
+**Version:** v1.3.4 | **CWS Status:** Live (Chrome + Edge) | **Rating:** 4.8/5 (4 ratings) | **Free, no account**
 
 SuperchargeNavigation covers the active organization and search-first categories in one extension. The entry point is a vertical tab sidebar that shows full tab titles, group structures, and pinned tabs without the truncation of the native tab strip. The three features that earn its place here:
 
@@ -13256,7 +13263,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 
 ## Full Comparison Table
 
-| Feature | OneTab v2.14 | Tab Wrangler v8.3.0 | Workona v3.1.33 | Session Buddy v4.1.2 | SuperchargeNavigation v1.3.3 | Chrome Native |
+| Feature | OneTab v2.14 | Tab Wrangler v8.3.0 | Workona v3.1.33 | Session Buddy v4.1.2 | SuperchargeNavigation v1.3.4 | Chrome Native |
 |---------|-------------|---------------------|-----------------|---------------|------------------------------|--------------|
 | Named workspaces | No | No | Yes | No | Yes (unlimited) | No |
 | Auto-close inactive tabs | No | Yes | No | No | No | No |
@@ -13271,7 +13278,7 @@ Who it suits: power users running multiple projects simultaneously, Arc Browser 
 | Cross-device sync | No | No | Yes (cloud) | No | Opt-in (Chrome/Edge sync) | Via Google account |
 | Account required | No | No | Yes | No | No | No |
 | Data storage | Local | Local | Cloud | Local | Local (default) | Local / Google |
-| Last updated | March 2026 | April 2026 | January 2025 | April 2026 | v1.3.3 2026 | Chrome 149 |
+| Last updated | March 2026 | April 2026 | January 2025 | April 2026 | v1.3.4 2026 | Chrome 149 |
 | Price | Free | Free | Free + paid plans | Free | Free | Built-in |
 
 ## How to Choose
@@ -13291,7 +13298,7 @@ Chrome's built-in Memory Saver suspends tabs automatically, but it has no worksp
 
 #### FAQ
 Q: What is the best Chrome tab manager extension in 2026?
-A: As of June 2026, the right answer depends on which tab problem you have. For bulk tab collapse and immediate RAM savings, OneTab (v2.14, 2M users) is the fastest tool. For named workspaces with team-grade cloud sync, Workona (v3.1.33, 200,000+ users) is the most-installed paid option. For local-first named workspaces with session recovery and keyboard search, SuperchargeNavigation (v1.3.3, free) covers those gaps in a single extension with no account required. For auto-closing old tabs on a timer, Tab Wrangler (v8.3.0) handles that specifically. Chrome 149's built-in tab groups handle basic organization for users managing under 15 tabs.
+A: As of August 2026, the right answer depends on which tab problem you have. For bulk tab collapse and immediate RAM savings, OneTab (v2.14, 2M users) is the fastest tool. For named workspaces with team-grade cloud sync, Workona (v3.1.33, 200,000+ users) is the most-installed paid option. For local-first named workspaces with session recovery and keyboard search, SuperchargeNavigation (v1.3.4, free) covers those gaps in a single extension with no account required. For auto-closing old tabs on a timer, Tab Wrangler (v8.3.0) handles that specifically. Chrome 149's built-in tab groups handle basic organization for users managing under 15 tabs.
 
 Q: Does Chrome have a built-in tab manager in 2026?
 A: As of June 2026, Chrome 149 includes native tab groups (Chrome 89), vertical tabs via chrome://flags (Chrome 146), and a keyboard tab-search dropdown (Ctrl+Shift+A, Chrome 89). What it does not include: named workspaces, session recovery that survives browser restarts, search across bookmarks/history alongside open tabs, or automatic tab suspension. Extensions are still required for those features.
@@ -14780,7 +14787,7 @@ Neither of these is a session manager. They are convenience features. A session 
 | Cloud sync | No | No | No | No (Sync ≠ sessions) |
 | Account required | No | No | No | Google account |
 | Free | Yes | Yes | Yes | Built-in |
-| Current version | 4.1.2 (Apr 2026) | 7.3.0 (Feb 2026) | v1.3.3 (2026) | Chrome 149 |
+| Current version | 4.1.2 (Apr 2026) | 7.3.0 (Feb 2026) | v1.3.4 (2026) | Chrome 149 |
 
 ## Session Buddy: The Reliable Standard
 
@@ -21707,7 +21714,7 @@ Named workspaces — where each project lives in its own isolated tab context �
 
 SuperchargeNavigation adds this to Chrome's side panel. Each workspace stores its tabs independently. Switching workspaces swaps the visible context completely, the same way Arc's Spaces did before Arc entered maintenance mode in May 2025.
 
-A few specifics verified against the v1.3.3 source (live on Chrome Web Store as of June 2026):
+A few specifics verified against the v1.3.4 source (live on Chrome Web Store as of August 2026):
 
 - **50 auto-snapshots**, stored locally, at up to 5-minute intervals via `chrome.alarms`. The ring buffer discards the oldest when full. No manual save step.
 - **Alt+K command bar** searches across all open tabs in all open windows — fuzzy match, instant results. Not just the active workspace.
