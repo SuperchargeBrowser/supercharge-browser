@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-08-14
+> Last updated: 2026-08-22
 > For a summary index, see /llms.txt
 
 ## Products
@@ -2172,6 +2172,451 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 ---
 
 ## Library Articles
+
+### Brave Extensions: 6 BEST Picks for What's Missing (2026)
+
+URL: https://www.superchargebrowser.com/library/best-extensions-brave-browser-2026/
+Category: guide | Extension: both | Updated: 2026-08-22
+Description: Brave extensions: skip the ad blocker, Shields already covers it. 6 picks fill the real gaps: timed suspension, workspaces, session recovery. Aug 2026.
+
+You just opened the Chrome Web Store in Brave, and your cursor is on uBlock Origin, the muscle-memory install you made a hundred times in Chrome. Skip it. Brave Shields blocks ads and trackers natively with no extension process, and the 6 extensions below fill what that native layer leaves open, all store-verified on August 21, 2026.
+
+Each redundant extension you copy from Chrome starts its own renderer process and re-intercepts requests Shields already dropped at the network layer, so the baseline you were escaping reassembles under the new tab strip. A half-finished form in a Figma tab clears when Memory Saver discards it, because no timer you can set and no web-app list stands in the way. You switched to shed that process cost. The first three installs you copy back put it right where it was.
+
+> **Key takeaways**
+> - **Skip the ad blocker.** Brave Shields handles ads and trackers at the browser level, no extension process behind it.
+> - **Install for gaps only.** Timed tab suspension, workspaces, session recovery, and per-site dark mode top the list.
+> - **Store-verified, August 21, 2026.** All four third-party picks returned a live listing that day. Our two cite CWS versions, not repo builds.
+
+## The 6 Picks and the Gap Each One Fills on Brave
+
+| Extension | CWS Version | Users | Gap it fills on Brave | Cost |
+|---|---|---|---|---|
+| SuperchargePerformance | v1.4.6 | — | Timed tab suspension, multi-signal protection, estimated RAM popup | Free, PRO waitlist |
+| SuperchargeNavigation | v1.3.4 | — | Named workspaces, command bar, 50 session snapshots | Free |
+| Dark Reader | v4.9.129 | 7,000,000 | Per-site dark mode for page content | Free |
+| Bitwarden Password Manager | v2026.8.0 | 7,000,000 | Password vault beyond the browser edge | Free / paid |
+| Session Buddy - Tab & Bookmark Manager | v4.1.2 | 900,000 | Session and tab/bookmark recovery | Free |
+| Video Speed Controller | v0.11.1 | 3,000,000 | Keyboard playback-speed control on HTML5 video | Free |
+
+Browse the Chrome Web Store in Brave and the install button reads "Add to Brave." The four third-party listings all returned HTTP 200 on the August 21, 2026 check.
+
+## What Brave Already Covers, So You Can Skip It
+
+Three categories dominate generic extension lists, and Brave ships all three natively.
+
+**Ad and tracker blocking.** Shields blocks ads and trackers at the browser level, with per-site controls and no extension process behind it. Adding a separate blocker on top mostly re-checks requests Shields already dropped. The underlying shift that changed what any extension can block is covered in [Chrome Manifest V2 vs V3: what changed for extensions](/library/chrome-manifest-v2-vs-v3-extensions/).
+
+**Vertical tabs.** Native since Brave 1.52, May 2023 (39 months before this article's August 2026 refresh). Right-click any tab or visit `brave://settings/appearance` to enable. You get a collapsible left-side strip with pinning and tab groups. Version 1.84 added hiding the panel when minimized.
+
+**Basic memory saving.** Brave's Memory Saver lives at `brave://settings/system`. It deactivates unused tabs and reloads them on click, with a manual exception list for sites that must stay live. The structural breakdown of why Brave's baseline RAM beats stock Chrome is in [Brave vs Chrome RAM: What Actually Drives the Gap](/library/brave-vs-chrome-ram-benchmark-2026/).
+
+You will hit two walls the native trio leaves standing. The vertical strip cannot group tabs into named project sets, so your work context and your personal context share one flat list. Memory Saver will discard a Figma tab or a Slack call with no timer you can set and no web-app awareness to save it.
+
+## brave://extensions: Where to Actually Install
+
+Type `brave://extensions` in the address bar and you land inside Brave. That page shows what is installed and toggles permissions. It is not where you install from. To add an extension, browse the Chrome Web Store while in Brave, and the button reads "Add to Brave." MV3 extensions behave as they do in Chrome, and there is no separate Brave store for them. If a guide tells you to visit a Brave-specific extension marketplace for MV3, it is not describing a real install surface.
+
+## Brave Add-ons: Same Chrome Web Store, Different MV2 Story
+
+The MV2 story is where Brave breaks from the Chrome Web Store model, and it is the single biggest factual change since this page first published. For MV3, the addon shelf is the same store, the same listings, the same ratings. But four extensions Brave hosts on its own backend sit outside that store entirely: uBlock Origin, AdGuard, NoScript, and uMatrix, installable from `brave://settings/extensions/v2`. Reports say the mechanism has been active since Brave v1.81, and Brave describes support as best-effort, so do not treat it as a permanent guarantee. [Does uBlock Origin Still Work on Chrome?](/library/does-ublock-origin-still-work-chrome-2026/) covers the Chrome-side situation in detail.
+
+The timeline that makes the distinction sharp:
+
+- Chrome 138 disabled consumer MV2 extensions in the browser on July 24, 2025, 13 months before this article's August 2026 refresh.
+- Chrome 139 removed the `ExtensionManifestV2Availability` enterprise policy, the last escape hatch for organizations.
+- Chrome 151 deleted the remaining MV2 code paths and flag constants on July 28, 2026, about three weeks before this refresh.
+- On August 31, 2026, the Chrome Web Store deletes all surviving MV2 listings. That is a store purge: listings, reinstalls, and updates die. The browser-side death already happened.
+
+On Brave, the four hosted MV2 extensions sidestep the store purge because they run from Brave's own backend rather than a CWS listing. uBlock Origin Lite, the MV3 rewrite, can still do cosmetic filtering in any Chromium browser. For the six picks in this article, the Chrome Web Store is the same store Chrome uses.
+
+## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
+
+Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.6, free core) uses the same Chromium mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
+
+- **Timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier. PRO is waitlist-only and unlocks custom values down to seconds.
+- **Protection signals.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 34 web apps are auto-protected out of the box, including Figma, Notion, Slack, Google Docs, Discord, Zoom, and WhatsApp Web, where a discard would drop a call or kill a queue.
+- **Estimated session popup.** The popup shows a conservative estimated session total from suspensions. It is a model, not a measurement, and there is no per-tab RAM readout.
+- **Local by default.** Everything stays in local storage, zero telemetry, no account.
+
+One limitation worth naming: PRO granularity is waitlist-only, and the popup number is an estimate, not a benchmark. Because Shields already handles general ad blocking, set the content-blocking tier to Off or Low on Brave. The reason to install is the suspension control layer, the 34-domain protection and the timers, which is what Memory Saver cannot do.
+
+If you want to compare the category first, [the tab suspender field test](/library/best-tab-suspender-extensions-chrome-2026/) covers the alternatives, and [the Great Suspender's removal for malware](/library/great-suspender-alternative/) explains why the old default pick is gone.
+
+## SuperchargeNavigation: Workspaces on Top of Brave's Vertical Tabs
+
+Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.4, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close.
+
+- **Named workspaces with full isolation.** Client work, research, and personal tabs live in separate named sets that survive restarts. Brave has nothing equivalent.
+- **Command bar.** Alt+K searches open tabs, bookmarks, and recent history from the keyboard.
+- **Snapshot rewind.** 50 automatic session snapshots are taken every 5 minutes, covering roughly 4 hours of rewind. A crashed window or an accidental "close all" stops being a catastrophe.
+- **Link peek.** Alt+Click previews a link in an overlay without leaving the page.
+
+Default shortcuts are Chrome *suggested* keys: Alt+G for smart grouping, Alt+Shift+G to degroup, Alt+K for quick search, Alt+B for the side panel. They are rebindable, and Chrome silently drops one that collides with another extension. Workspace sync is ON by default on a fresh install, with an off switch in settings if you want strictly local. Everything lives in the browser profile, zero telemetry, no account. It runs in the Chromium side panel, which Brave inherits, so it coexists with Brave's native vertical strip rather than fighting it.
+
+## Dark Reader, Bitwarden, Session Buddy, and Video Speed Controller
+
+**Dark Reader** (v4.9.129, 7,000,000 users, 4.7 rating, listing updated July 15, 2026) generates dark mode for page content itself, with per-site brightness, contrast, and sepia controls plus a per-site off switch for sites that ship a good native dark mode. It is open source and has held the top spot in this category for years.
+
+**Bitwarden Password Manager** (v2026.8.0, 7,000,000 users, 4.3 rating, listing updated August 21, 2026) extends the vault past the browser's edge. Native apps for every desktop and mobile OS, secure sharing, independently audited open-source code, and a free tier covering unlimited passwords on unlimited devices. Brave's built-in manager and Brave Sync cover in-browser basics, but they stop at the profile boundary.
+
+**Session Buddy - Tab & Bookmark Manager** (v4.1.2, 900,000 users, 4.7 rating, listing updated April 28, 2026) had not received a store update since April. The June page listed roughly 1M users. The store now shows 900,000, which makes it the narrowest pick on this shelf and matches its reactive, single-purpose scope: save and restore whole sessions, no workspaces, no grouping logic.
+
+**Video Speed Controller** (v0.11.1, 3,000,000 users, 4.5 rating, listing updated August 15, 2026) targets a narrow use case with high payoff. Tap a key to speed up, slow down, or rewind ten seconds on nearly any HTML5 video. YouTube's own menu stops at 2x unless you pay for Premium, and most lecture platforms bury or omit the setting entirely. For coursework and conference talks this is the highest value-per-kilobyte pick on the list.
+
+All four returned a live CWS listing on the August 21, 2026 check. The versions and user counts above come from that fetch.
+
+## Which Extension Fits Your Actual Symptom
+
+You add a fourth extension to Brave and open the process list. Shields shows no entry of its own. Every extension you installed shows one, each holding its own share of the RAM budget. The asymmetry is small per tab and compounds fast, and the same gap shapes [which browser uses the least RAM](/library/which-browser-uses-least-ram-2026/). Pick by symptom below rather than installing all six.
+
+- If tabs pile up until Brave slows down → SuperchargePerformance, with content blocking set to Off so Shields keeps that job. The timer and the 34-domain protection are the two things Memory Saver cannot set.
+- If you juggle projects and already live in vertical tabs → SuperchargeNavigation for workspaces and snapshots.
+- If you read at night → Dark Reader.
+- If passwords live on a sticky note or only inside Brave → Bitwarden.
+- If you watch lectures or talks → Video Speed Controller.
+- If you only fear the crash, nothing else → Session Buddy.
+
+Skip anything that duplicates Shields. Brave gave you the ad blocker. Spend your extension budget on what it left out.
+
+#### FAQ
+Q: Do I need an ad blocker extension on Brave?
+A: As of August 2026, no. Brave Shields blocks ads and trackers natively at the browser level with per-site controls and no extension process. A separate blocker mostly re-checks requests Shields already dropped. Spend your slots on gaps: timed suspension, workspaces, session recovery.
+
+Q: Can Brave run Chrome extensions?
+A: As of August 2026, yes. Brave installs extensions directly from the Chrome Web Store, and the button reads 'Add to Brave.' MV3 extensions behave as they do in Chrome, and there is no separate Brave store for them.
+
+Q: Does Brave have a built-in memory saver?
+A: As of August 2026, yes. Brave's Memory Saver lives at brave://settings/system and offers preset modes. It has no user-set inactivity timer, and the feature request (brave/brave-browser issue #30929, opened June 2023) is still marked not scheduled as of August 2026.
+
+Q: Does Brave have native vertical tabs?
+A: As of August 2026, yes. Brave shipped native vertical tabs in version 1.52, May 2023 (39 months before this article's August 2026 refresh). Enable them at brave://settings/appearance or by right-clicking a tab. Version 1.84 added hiding the panel when minimized.
+
+---
+
+### Chrome Vertical Tabs: 5 Options Ranked by Capability (2026)
+
+URL: https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/
+Category: guide | Extension: navigation | Updated: 2026-08-22
+Description: Chrome vertical tabs are built in, but the flat sidebar skips workspaces, session recovery, and tab search. Five ranked options, verified August 2026.
+
+You scan a strip of 40 truncated tabs and still cannot name the doc you opened this morning. Chrome vertical tabs are built in. Right-click any Chrome window and choose Show tabs vertically. The native list sits in a sidebar, but it does not save workspaces, recover sessions, or search tabs by keyboard.
+
+> **Key takeaways**
+> - Use Chrome native when you only need a readable vertical tab list.
+> - Install SuperchargeNavigation when you need saved workspaces, session recovery, and Alt+K search.
+> - On Firefox, compare Sidebery and Tree Style Tab from the options table below.
+
+## Show tabs vertically in Chrome
+
+The enable route is the window context menu. Right-click any Chrome window and choose Show tabs vertically. If your build hides the option, use the Chrome vertical tabs not showing troubleshooting article rather than guessing at a settings breadcrumb. The native view moves the tab list into a sidebar. It remains a flat list of open tabs.
+
+## What the native vertical tab view skips
+
+The recurring cost appears when you rebuild the same working set each day, or when a closed window takes its context with it. Chrome native vertical tabs do not carry named workspaces, session recovery, or keyboard tab search. They are enough for a small, single-purpose tab set. They stop being enough once your tabs belong to separate projects, a research session, or a long workday.
+
+## Chrome and Firefox vertical tab options
+
+The table below is a store-listing verification. Every named listing was confirmed live on 2026-08-22, and the Firefox rows were confirmed on Firefox Add-ons the same day. The side-panel constraints noted after the table apply to side-panel extensions generally.
+
+| Option | Browser | Store rating (count) | Users | Version / last updated | Retrieved | Status | Verified scope |
+|---|---|---|---|---|---|---|---|
+| Chrome native vertical tabs | Chrome | Built-in | Built-in | Chrome 151 current stable | 2026-08-21 | Built-in | Flat vertical tab sidebar. No named workspaces, no session recovery, no keyboard tab search. |
+| SuperchargeNavigation | Chrome | Not cited | Not cited | 1.3.4 / 2026-08-08 | 2026-08-22 | Live, free | Named workspaces. Time-Travel snapshots. Alt+K search. Glance/Peek preview. Scroll gestures. |
+| Vertical Tabs in Side Panel | Chrome | 4.4 (277) | 100,000 | 1.0.8 / 2026-04-30 | 2026-08-22 | Live, Featured | Listing names vertical tabs in a side panel. |
+| Vertical Tabs (samihaddad.dev) | Chrome | 4.1 (230) | 60,000 | 2.2.13 / 2026-05-03 | 2026-08-22 | Live, Featured | Listing names vertical tabs. Its listing notes two side-panel constraints. |
+| SideTab Pro | Chrome | 4.6 (164) | 20,000 | 4.3.5 / 2026-06-01 | 2026-08-22 | Live, Featured | Listing names vertical tabs, bookmarks, and a reading list. |
+| Arcify | Chrome | 4.2 (41) | 3,000 | 5.0.0 / 2026-02-15 | 2026-08-22 | Live | Listing names Arc-like vertical tab spaces. |
+| Sidebery | Firefox | 4.7 (1,068) | 51,814 | 5.6.1 / 2026-07-16 | 2026-08-22 | Live, Recommended, MIT | Firefox AMO listing names Sidebery. |
+| Tree Style Tab | Firefox | 4.5 (2,266) | 138,728 | 4.3.6 / 2026-07-15 | 2026-08-22 | Live, Recommended | Firefox AMO listing names Tree Style Tab. |
+
+One side-panel listing states two Chrome side-panel constraints: the horizontal tab bar cannot be hidden while that extension is in use, and the panel has a minimum width. Those constraints belong to Chrome's side-panel model, not to one product.
+
+### 1. SuperchargeNavigation
+
+Free on the Chrome Web Store. Its live store version is 1.3.4, last updated 2026-08-08. Its verified scope includes the capability set below, from a sidebar list through workspaces, snapshots, and keyboard navigation.
+
+### 2. Vertical Tabs in Side Panel
+
+The listing names vertical tabs in a side panel. The table shows the largest user count among the Chrome side-panel rows.
+
+### 3. Vertical Tabs
+
+The listing names vertical tabs. Its own listing notes the two side-panel constraints above.
+
+### 4. SideTab Pro
+
+The listing names vertical tabs, bookmarks, and a reading list in one panel.
+
+### 5. Arcify
+
+The listing names Arc-like vertical tab spaces.
+
+## SuperchargeNavigation: verified capabilities
+
+SuperchargeNavigation puts the tab list in a side panel. Each row shows a favicon, title, domain, and state icons for pinned, muted, frozen, and discarded tabs. Tab groups and ungrouped tabs both appear in the same view.
+
+Quick Search opens on Alt+K. It searches open tabs, then falls back to a web search when nothing matches. The side-panel search field is always visible. Glance/Peek uses Shift+Click on a link. Escape closes the overlay, and Enter promotes it to a real tab. Duplicate-tab detection is on by default and offers to switch to an open tab already holding that URL. Alt+Scroll switches tabs. Shift+Scroll cycles within the current group or pin boundary, and both scroll gestures are on by default.
+
+Named workspaces save a tab set by name per window. Switching workspaces auto-saves the current window into the active workspace, then recreates the target tabs and rebuilds groups with their original titles, colors, and collapsed state. Workspace sync uses the browser's own sync, and it is on for a fresh install. Tab freeze pins a tab out of Smart Group and Degroup operations, marks it in the side panel, and a bulk-freeze action applies it to a multi-selection.
+
+Time-Travel snapshots hold up to 50 snapshots in local storage. An alarm writes one every 5 minutes, and two or more tab closes within one second write an extra snapshot after a 10-second debounce. A snapshot is written only when the tab count changed. Restoring a snapshot creates a new workspace rather than overwriting current tabs. Time-Travel is on by default, and turning it off clears stored snapshots.
+
+Smart grouping is Alt+G, degroup is Alt+Shift+G, and side-panel toggle is Alt+B. These are Chrome suggested keys. A user can rebind them, and Chrome silently drops one that collides with another extension. Rocker gestures are off by default and opt in from Settings > Gestures. Super Drag is on by default, with an option to skip known web apps. Alt+middle-click is on by default. Content scripts cannot run on chrome:// pages or the Chrome Web Store, so link preview and page-level gestures are unavailable there.
+
+## Choose the right vertical tab setup
+
+If you only want a readable tab list, use Chrome native or a simple side-panel listing.
+If you switch between separate projects and want saved workspaces plus Alt+K search, install SuperchargeNavigation.
+If you use Firefox, compare Sidebery and Tree Style Tab from the table.
+
+#### FAQ
+Q: How do I show tabs vertically in Chrome?
+A: Right-click any Chrome window and choose Show tabs vertically. Google's Chrome blog post dated 2026-04-07 names that route.
+
+Q: Which vertical tab manager should I install?
+A: As of August 2026, use Chrome native for a flat sidebar. For saved workspaces, session recovery, and Alt+K search, install SuperchargeNavigation. On Firefox, compare Sidebery and Tree Style Tab.
+
+Q: Do Chrome native vertical tabs save workspaces?
+A: No. As of August 2026, the built-in vertical tab view does not carry named workspaces, session recovery, or keyboard tab search.
+
+Q: Which vertical tab listings are still live on Chrome Web Store?
+A: As of August 22, 2026, the Chrome listings named in the table are live: Vertical Tabs in Side Panel shows 100,000 users, Vertical Tabs shows 60,000, SideTab Pro shows 20,000, and Arcify shows 3,000.
+
+---
+
+### Brave vs Chrome for 60 Tabs: Which Do You Need? (2026)
+
+URL: https://www.superchargebrowser.com/library/brave-vs-chrome-tab-heavy-users-2026/
+Category: comparison | Extension: navigation | Updated: 2026-08-22
+Description: Brave vs Chrome at 60 tabs: vertical tabs are now parity, but 50 snapshots and the suggested Alt+K search keep projects recoverable after a full rebuild.
+
+You open 60 tabs and the strip flattens into unreadable marks. Switch back to the document you were editing and it has reloaded at the top, the half-typed form blank again. As of August 2026 both Brave and Chrome ship vertical tabs, so the real question is what is still open after a window closes, and which dial you actually get.
+
+> **Key takeaways**
+> - Vertical tabs are parity. Brave has had them since 1.52. Chrome 146 now ships them natively, desktop only.
+> - The verified control gap sits in Brave's Memory Saver: preset modes, no user-settable inactivity timer.
+> - If you stay on Chrome, SuperchargeNavigation v1.3.4 adds named workspaces, the suggested Alt+K search, and 50 automatic snapshots. If you move to Brave, retest your extension list first.
+
+## The 60-tab comparison table
+
+With the strip no longer a differentiator, the table settles the rest on three rows: vertical-tab parity, idle-tab suspension control, and the organisation layer. RAM consumption is covered separately in [Brave vs Chrome RAM](/library/brave-vs-chrome-ram-benchmark-2026/).
+
+| Axis | Brave | Chrome | Verification note |
+|---|---|---|---|
+| Vertical tabs | Native since 1.52, May 2023 (39 months before this article's August 2026 publication). Toggle from `brave://settings/appearance` | Added in Chrome 146 (March 2026, 5 months before this article's August 2026 publication), staged from April 2026. Available by default; the horizontal strip stays the default layout. Desktop only | Parity confirmed as of August 2026 |
+| Suspension control | Memory Saver at `brave://settings/system`: preset modes, no user-settable inactivity timer (issue #30929, opened 2023-06-09, still not scheduled as of 2026-08-21) | Built-in saver uses `chrome.tabs.discard()`, same mechanism as any suspender. Settable windows: SuperchargePerformance free tiers 15 min (Low) / 5 min (Medium), PRO settable in seconds. Auto-protects 34 web-app domains. Adds 186K+ `declarativeNetRequest` rules, content blocking at High, script blocking at Med on install | Brave built-in is preset-only as of August 2026; settable values and the blocking layers come from SuperchargePerformance. Consumption lives in the RAM article |
+| Organisation layer | Test the extensions you rely on in a scratch profile before committing | SuperchargeNavigation v1.3.4: named workspaces, side-panel tab list, suggested Alt+K search, 50 automatic snapshots every 5 min | Live as of August 2026 |
+
+## Vertical tabs: the parity point
+
+Brave introduced the vertical strip in 1.52 (May 2023, 39 months before this article's August 2026 publication). Chrome added its own in 146 (March 2026, 5 months before this article's August 2026 publication), staged from April 2026. Chrome 151 is current stable as of August 2026. In both browsers the feature is available by default, and in both the horizontal strip remains the default layout until you switch. Desktop only, not on mobile.
+
+The practical implication: if the strip was your only reason to look at the other browser, you do not need to switch. Open the vertical option where your muscle memory already lives. For the depth of what each implementation does with tab groups, names, and collapsed state, see [Chrome 146 vertical tabs vs extensions](/library/chrome-146-vertical-tabs-vs-extensions/).
+
+## Close-all and the rebuild cost
+
+You hit close-all, or a window dies, and the next thing you see is one fresh blank tab where the whole project was. What is gone is the arrangement: which of the 60 belonged to the same thread, which you had grouped, which held the document you were half-through on. You end up re-guessing which tab held which URL from scratch, and it happens every time the window goes down.
+
+On the Chrome side, SuperchargeNavigation keeps 50 automatic snapshots, one every 5 minutes, for roughly four hours of rewind. Close everything by accident and you restore the last snapshot instead of rebuilding the list by hand. It never leaves your machine, there is no account, and the core is free.
+
+Before you commit to a switch either way, run a scratch-profile test: open the tab set you actually rely on, close the window, restart, and note what returns. If your current browser brings back the pieces you need, that is a valid reason to stay, independent of what the other one offers.
+
+## Suspension control at 60 tabs
+
+Both built-in savers release an idle tab through `chrome.tabs.discard()`, which frees the renderer while the tab's entry stays in the bar, so the parking runs on the same mechanism on each side. Where the control splits is the dial. Brave's Memory Saver (under `brave://settings/system`) exposes preset modes and no user-settable inactivity timer, and the request to add one has sat open as issue #30929 since June 9, 2023 (38 months before this article's August 2026 publication), still labelled "not scheduled" as of August 2026. If the window has to be yours, SuperchargePerformance's free tiers give two fixed values, 15 minutes (Low) and 5 minutes (Medium), and the PRO tier takes a number you set in seconds. A short window is survivable because it auto-protects 34 web-app domains from suspension, so a 5-minute timer parks the news tab rather than the app you are actually working in.
+
+The timer is the smallest of what the extension carries. The request-blocking layer declares 186K+ rules to Chrome's `declarativeNetRequest` engine, which drops an ad or tracker request before the page loads the script that would have made it. On a fresh install that blocking is already at its strongest: content blocking ships at its top level, High ("maximum protection"), and script blocking at Medium, so the heavy resources are gone before the 60 tabs finish rendering.
+
+SuperchargePerformance also carries a background-JS throttling control, and it is off by default (`jsThrottling` at 0) with its only active level behind PRO, so it runs for you only if you switch it on. When you do, background timers get stretched: timeouts under 100 ms become 500 ms, under 1,000 ms become 2,000 ms, under 5,000 ms become 5,000 ms, and anything longer is doubled up to a 10-second ceiling, while `requestAnimationFrame` drops to roughly 10 fps. Zero-length timeouts pass straight through so framework micro-tasks still fire.
+
+The consumption side is what [Brave vs Chrome RAM](/library/brave-vs-chrome-ram-benchmark-2026/) measures, so the memory question lives there.
+
+## Extension side: what you keep or give up
+
+First a concession: if your only need is parking idle tabs, no extension is required. Either browser's built-in saver already calls `chrome.tabs.discard()`, and for a session under about 15 tabs that covers it.
+
+Stay on Chrome and the structure layer is easy to name. SuperchargeNavigation is live on the Chrome Web Store at v1.3.4. It adds named workspaces that survive a restart, a side-panel tab list, the suggested Alt+K quick search across open tabs, bookmarks and recent history, and 50 automatic snapshots every 5 minutes. All of it is local: no sign-up, no telemetry, free core. The shortcuts (Alt+G smart grouping, Alt+Shift+G degroup, Alt+K search, Alt+B side panel) are Chrome-suggested keys: you can rebind them, and Chrome silently drops any that collide with another extension.
+
+Move to Brave and keep a list of the extensions you use daily, then test each in a scratch profile before committing. Brave hosts four MV2 extensions (uBlock Origin, AdGuard, NoScript, uMatrix) on its own backend, installable from `brave://settings/extensions/v2` and independent of the Chrome Web Store. As of August 2026 all four are still active, none has been dropped, and Brave has published no end date. The company frames this hosting as best-effort, kept for as long as it can, so plan to re-check the list rather than assume it is permanent. Everything else (productivity tools, session managers, password helpers) needs a scratch-profile check first, because the store behind it is the same one Chrome runs on. A switch is only complete once the daily tools behave the way you need.
+
+## Choose your branch
+
+Stay on Chrome if the missing piece is what comes back after a bad close, your scratch-profile test returns the pieces you need, and your extension list is stable. Add SuperchargeNavigation for the structure layer without touching anything else.
+
+Move to Brave when a confirmed preference for its hosted ad blockers (uBlock Origin and AdGuard) or its own MV2 extension backend outweighs the retest cost, and you will verify each tool in a scratch profile before making it default.
+
+Take SuperchargeNavigation the moment the gap is structure: named workspaces that survive a restart, the suggested Alt+K search across the full tab set, and 50 automatic snapshots that turn a bad close-all into a one-click restore instead of a from-scratch rebuild.
+
+#### FAQ
+Q: Do Brave and Chrome both support vertical tabs?
+A: As of August 2026, yes. Brave has shipped them from version 1.52 (May 2023, 39 months before this article's August 2026 publication), and Chrome added native vertical tabs in Chrome 146 (March 2026, 5 months before this article's August 2026 publication). The strip is a parity point.
+
+Q: Can Brave Memory Saver use a custom inactivity timer?
+A: As of August 2026, no. Brave Memory Saver offers preset modes only. The request for a user-settable timer (brave-browser issue #30929, opened June 9, 2023, 38 months before this article's August 2026 publication) was still labelled not scheduled.
+
+Q: How much rewind does SuperchargeNavigation's snapshot system provide?
+A: As of August 2026, it keeps 50 automatic snapshots taken every 5 minutes, for roughly four hours of rewind. Data stays local, with no account and no telemetry. The extension is live on the Chrome Web Store at v1.3.4.
+
+---
+
+### Partizion vs SuperchargeNavigation: Which Fits You? (2026)
+
+URL: https://www.superchargebrowser.com/library/supercharge-navigation-vs-partizion/
+Category: comparison | Extension: navigation | Updated: 2026-08-22
+Description: Partizion's 14-day trial closes the account, and server data is deleted 14 days later. Starter and Pro are paid only. SuperchargeNavigation is free and local.
+
+You reach the Partizion pricing page and see Starter, Pro, and a beta lock-in offer, with nothing free. The 14-day trial ends, and you face a fork: take the paid plan, or the account closes and the server data is deleted 14 days later. SuperchargeNavigation is free, needs no account, and keeps workspaces in your Chrome profile.
+
+- Partizion auto-saves collections when tabs open or close and can restore them from any browser, with encryption, auto-delete settings, or full sync disable.
+- SuperchargeNavigation keeps workspaces in local storage, syncs them through Chrome profile sync on fresh installs, and adds snapshots, search, grouping, dedupe, freeze, and bulk actions.
+- Choose by restore scope: cross-browser or cross-machine sessions fit Partizion; one Chrome profile with no subscription fits the local option.
+
+## Partizion vs SuperchargeNavigation at a glance
+
+| | Partizion (retrieved 2026-08-22) | SuperchargeNavigation (live 1.3.4, August 2026) |
+|---|---|---|
+| Cost model | Subscription-only: Starter, Pro, and a beta lock-in offer. 14-day trial, then account closure and server deletion 14 days later. No free plan. | Free, no subscription, no sign-up. |
+| Account requirement | Account-backed cloud store. | No account. Local storage in the Chrome profile. |
+| Sync mechanism | Cloud sync restores collections from any browser. | Chrome profile sync is on for fresh installs, capped at 13 chunks and 100 writes/minute. |
+| Session-restore model | Auto-updating collections save on tab open or close, with Grid, List, Kanban, and Full views. | Workspaces store tab URLs, pinned, muted, frozen state, group title, colour, and collapsed state. Time-Travel snapshots are on by default. |
+| Controls and privacy | Encryption, auto-delete settings, or disabling sync entirely. | No vendor server. Sync can be disabled per device. Quick Search, tab de-duplication, Smart grouping, and bulk actions are built in. |
+
+## Partizion: cloud restore across machines
+
+Your tabs live on a laptop and a desktop that do not share one Chrome profile, and you want the same collection back on both. Partizion stores collections in an account-backed cloud. Its auto-updating collections save tabs when they open or close, and the same session can come back from another browser.
+
+The store listing shows 4.2 from 142 ratings, 2,000 users, a Featured badge, and publisher MBF Technologies. The latest store update was January 18, 2026 (7 months before this article's August 2026 publication).
+
+Partizion also exposes privacy controls: encryption, auto-delete settings, or complete sync disable. Its no-free-plan position is stated plainly: paying users support the product, and it does not sell or share data.
+
+**Best for:** choose Partizion when you need cross-browser cloud restore, team pricing, auto-updating collections, or Kanban and Grid views.
+
+## SuperchargeNavigation: local workspaces and built-in utilities
+
+SuperchargeNavigation stores each workspace in Chrome local storage. A workspace captures tabs, URLs, pinned, muted, and frozen state, plus group membership, title, colour, and collapsed state. Restoring one rebuilds the tab groups and the tab list.
+
+Cross-device sync is on for fresh installs. It uses `chrome.storage.sync`, so it rides the Chrome profile you already use, without a separate account or vendor server. The sync path compresses and chunks workspace data, capped at 13 chunks and 100 writes/minute. Turn it off on one device, and that state persists across Chrome restarts. When another browser must restore the same tabs, Partizion's cloud restore fits better.
+
+Time-Travel is already on when you install it. It keeps a ring buffer of 50 snapshots, takes one every 5 minutes, and also triggers on a 2+ tab close burst with a 10-second debounce. A snapshot is written only when the total tab count changed. Restoring one creates a new workspace.
+
+Quick Search is enabled by default. The suggested Alt+K key opens a global overlay that lists tabs with favicon and group colour, with a web-search fallback. The side panel filters title and URL. Smart grouping uses the suggested Alt+G key to group unpinned tabs by registrable domain where a domain has 2+ tabs, titles each group by domain, and collapses it. Alt+Shift+G degroups them. Frozen tabs are skipped.
+
+Tab de-duplication runs by default. Navigating to a URL that is already open raises an in-page prompt to switch to the existing tab and close the duplicate. The prompt auto-dismisses after 10 seconds.
+
+Tab freeze keeps chosen tabs out of grouping operations. Multi-select drives bulk pin, mute, group, freeze, and close actions. Glance previews a link on Shift+click, and it is on by default.
+
+These shortcuts are Chrome-suggested keys, so Chrome may drop one that collides with another extension, and you can rebind them.
+
+**Best for:** choose SuperchargeNavigation when your tabs stay in one Chrome profile and you want free local workspaces with snapshots, search, grouping, and bulk actions.
+
+## Which one should you choose
+
+Choose Partizion when your work crosses browsers or machines that do not share one Chrome profile, when you want team pricing, auto-updating collections, or Kanban and Grid views.
+
+Choose SuperchargeNavigation when your tabs live in one Chrome profile and you want free local workspaces with snapshots, search, grouping, and bulk actions.
+
+If the split is cross-browser restore, go to Partizion. If the split is one profile and no subscription, install the local workspace switcher.
+
+#### FAQ
+Q: Is Partizion free?
+A: As of August 2026, Partizion offers a 14-day trial, then a paid Starter or Pro subscription, with a separate beta lock-in offer listed on its pricing page. It does not offer a free plan.
+
+Q: How does SuperchargeNavigation sync workspaces?
+A: As of August 2026, SuperchargeNavigation stores workspaces locally and syncs them through Chrome profile sync. The feature is on for fresh installs and can be disabled per device.
+
+---
+
+### Best ChatGPT Chrome Extensions: 9 Ranked by Metrics (2026)
+
+URL: https://www.superchargebrowser.com/library/best-chatgpt-chrome-extensions-2026/
+Category: guide | Extension: navigation | Updated: 2026-08-21
+Description: ChatGPT Chrome extensions blur together in the store. Nine live entries are ranked by users, rating, live version, last update, and permission prompts.
+
+You are scrolling the store's ChatGPT results. Two listings say 3M+, the next says 5M+, and every badge looks the same. Nine live entries separate on users, rating, version, and last store update. As of August 21, 2026, Sider leads at 5M+ and ChatGPT Exporter pairs 200K+ with a 4.9.
+
+You approve the install prompt and the permission list scrolls past unread. Months later the sidebar is still there, and the permission entries you approved are no longer visible. The last-update date is a number you saw once and never re-checked. Each entry is small. Stacked together, they become the list you will not audit again.
+
+> **What to know**
+> - All nine entries were live and installable on August 21, 2026, but store buckets and ratings shift. Re-open the listing before you add anything.
+> - The separator is the job: agent, multi-model sidebar, prompt library, summariser, voice, export, plus a general assistant that crosses several.
+> - Chrome shows requested permissions in the install prompt and on the store page before you add an extension. Run that check for every row below.
+
+## The nine compared
+
+All fields below were retrieved from the public Chrome Web Store detail page on August 21, 2026. User counts are the store's rounded buckets, so read them as approximations. Ratings are the aggregate star value on that date.
+
+The first-party OpenAI row leads the table. The remaining eight are ordered by the store's rounded user buckets, largest first, and tied buckets keep the order shown.
+
+| Extension | What it does | Users | Rating | Live version | Last store update |
+|---|---|---|---|---|---|
+| ChatGPT (by OpenAI) | Browser-control surface driven from ChatGPT | 3M+ | 3.1 | 1.2.27268.51612 | Aug 21, 2026 |
+| Sider: Chat with all AI | Side panel fronting multiple models for search, reading, writing | 5M+ | 4.9 | 5.32.1 | Aug 19, 2026 |
+| Monica: All-In-One AI Assistant | General assistant: chat, write, translate, summarise, generate | 3M+ | 4.9 | 9.0.22 | Aug 6, 2026 |
+| AIPRM for ChatGPT | Curated prompt-template library injected into the ChatGPT page | 1M+ | 3.9 | 1.4.7.23 | Jul 28, 2026 |
+| YouTube Summary with ChatGPT & Claude | Summarises videos, articles, PDFs through several models | 1M+ | 4.3 | 2.3.1 | Aug 5, 2026 |
+| Merlin AI | Browser-agent assistant | 900K+ | 4.8 | 8.2.3 | Aug 18, 2026 |
+| MaxAI | Ask-anything assistant for web browsing | 700K+ | 4.7 | 8.37.2 | Jun 3, 2026 |
+| Voice Control for ChatGPT | Voice input and read-aloud layered onto ChatGPT | 400K+ | 4.0 | 4.4.1 | Aug 8, 2026 |
+| ChatGPT Exporter | Exports conversations to PDF, Markdown, text | 200K+ | 4.9 | 6.10.0 | Aug 12, 2026 |
+
+## 1. ChatGPT by OpenAI
+
+OpenAI ships the first-party row. It drives the browser from the ChatGPT surface instead of adding a separate assistant panel. Store snapshot from August 21, 2026: 3M+ users, 3.1 rating, live version 1.2.27268.51612, updated August 21, 2026, the retrieval date. The 3.1 rating is the lowest on this list. If you want the tool that treats the ChatGPT surface as the primary agent and the browser as its hand, this is the match.
+
+## 2. Sider: Chat with all AI
+
+Sider's shape is one persistent sidebar fronting several models. Search, reading, and writing stay inside the same surface. 5M+ users, 4.9 rating, version 5.32.1, updated August 19, 2026 (two days before the retrieval). The user count is the largest on this list. If your main friction is juggling a ChatGPT tab plus a separate model tab for summarisation, a single panel that absorbs both is the fit.
+
+## 3. Monica: All-In-One AI Assistant
+
+Monica updated August 6, 2026, which is 15 days before the August 21 retrieval. That recency matters: the last store update is the first staleness signal to watch. Monica sits at 3M+ users, 4.9 rating, version 9.0.22. It spans chat, writing, translation, summarisation, and generation in one helper. Pick it when you do not want to remember which extension does which job.
+
+## 4. AIPRM for ChatGPT
+
+AIPRM sits at a 3.9 rating, second-lowest on the list. The entry is a template library rather than a general assistant. It injects curated prompts into the ChatGPT page so you repeat wording without retyping it. 1M+ users, version 1.4.7.23, last updated July 28, 2026 (24 days before the August 21 retrieval). If your workflow is a short set of repeatable prompts and you already keep a ChatGPT tab open, this is the narrowest tool on this list.
+
+## 5. YouTube Summary with ChatGPT & Claude
+
+Long video. Long article. A lengthy PDF. You do not want to read all of it before deciding what to keep. This entry summarises videos, articles, and PDFs through several models, so the answer is one short block instead of a scroll. 1M+ users, 4.3 rating, version 2.3.1, updated August 5, 2026 (16 days before the retrieval). The fit is the specific pain of needing the gist before committing to the full read.
+
+## 6. Merlin AI
+
+Merlin lands in the agent-assistant lane: 900K+ users, between the 1M+ entries above and the 700K+ below. The 4.8 rating is second only to the 4.9 cluster. Version 8.2.3, updated August 18, 2026 (three days before the retrieval). It behaves like a browser-agent helper rather than a chat-only sidebar. If you want the agent-style shape rather than a chat-only panel, this is the closest fit.
+
+## 7. MaxAI
+
+MaxAI carries the oldest last-update date on this list: June 3, 2026, 79 days before the August 21 retrieval. 700K+ users, 4.7 rating, version 8.37.2. The entry is an ask-anything assistant for web browsing: ask a question, get a short answer, move on. If the June date has not moved by the time you open the listing, that is the staleness signal to watch.
+
+## 8. Voice Control for ChatGPT
+
+Voice Control for ChatGPT changes the input modality. Instead of typing into the ChatGPT surface, you speak to it, and it reads the answer back. 400K+ users, 4.0 rating, version 4.4.1, updated August 8, 2026 (13 days before the retrieval). The use-case is hands-free drafting, or listening while your eyes are on a document, a spreadsheet, a video. If voice is the bottleneck in your ChatGPT workflow, this is the only entry here that addresses it.
+
+## 9. ChatGPT Exporter
+
+ChatGPT Exporter has the smallest user bucket on this list and a tied-highest rating: 200K+ users and a 4.9 star value. The job is narrow: it exports conversations to PDF, Markdown, or plain text so they survive a closed tab. Version 6.10.0, updated August 12, 2026 (nine days before the retrieval). If the problem is that a useful conversation vanishes when you close the window, this is the entry that keeps it.
+
+## Pick the branch that matches your next state
+
+If one of the nine above matches the job you came in with, add that one and close the store page. Re-check the last-update date before your next major project, not only at add time. If none of the nine covers the gap, the workarounds are a second extension for a different job, or accepting the limitation as-is.
+
+If instead you now have more than one AI panel open in the same window and the tab window is what feels crowded, the next step is not another ChatGPT extension. It is keeping the tab session structured and easy to restore.
+
+SuperchargeNavigation is live at version 1.3.4, last updated August 8, 2026 (13 days before the retrieval). It adds a side panel that lists grouped and ungrouped tabs for the current window. It stores named workspace snapshots, switched Arc-style so the current tabs are replaced by the target workspace. Restoring a workspace auto-saves the current session before opening the saved tabs. Quick Search opens on suggested `Alt+K`. `Alt+G` starts smart grouping, `Alt+Shift+G` clears groups, and `Alt+B` toggles the side panel. `Alt+Scroll` and `Shift+Scroll` switch tabs from the keyboard. Freezing a tab makes smart-group and degroup skip it. Workspace sync is enabled by default on a fresh install, not opt-in.
+
+One caveat on every shortcut above: these are Chrome suggested keys. You can rebind them, and Chrome silently drops one that collides with another extension. They are not fixed. If a binding does not fire, check whether another extension also uses it.
+
+#### FAQ
+Q: Which ChatGPT Chrome extension has the most users?
+A: As of August 2026, Sider leads at 5M+ users with a 4.9 rating and live version 5.32.1. Store buckets shift, so re-open the listing before you add it.
+
+Q: How do I see what a ChatGPT Chrome extension may request before installing?
+A: Chrome displays the requested permissions in the install prompt and on the store page before you add any extension. Check that prompt for each one you consider.
+
+Q: Are the nine extensions on this list still live?
+A: All nine were live and installable when captured on August 21, 2026. Store status can change, so open the current listing before adding any of them.
+
+---
 
 ### How to Add Captions to a Screen Recording in Chrome (2026)
 
@@ -6542,131 +6987,6 @@ A: OpenAI says it does not want users staying on a discontinued browser that may
 
 ---
 
-### Chrome Vertical Tabs: 6 Extensions Power Users TRUST (2026)
-
-URL: https://www.superchargebrowser.com/library/best-vertical-tab-managers-chrome-2026/
-Category: guide | Extension: navigation | Updated: 2026-07-12
-Description: Chrome ships native vertical tabs, but no workspaces or tab search. We ranked 6 vertical tabs Chrome extensions power users trust, live-verified July 2026.
-
-Chrome's native vertical tabs reached stable without a flag in April 2026, but they remain a flat list: no workspaces, no session recovery, no keyboard search. Six extensions still cover what the built-in sidebar skips. We verified every listing live in July 2026 and ranked them by capability.
-
-> **Key takeaways**
-> - Chrome now ships native vertical tabs, but they're a **flat list with no workspaces or session recovery**.
-> - **SuperchargeNavigation is the only Chrome option** with named workspaces, session time-travel, and Alt+K command bar.
-> - For a simple sidebar with no extras, **Vertical Tabs in Side Panel** (~100K users) or Chrome native are enough.
-
-The horizontal tab bar was designed for 5-10 tabs. At 50+, you're working with truncated titles, no visual hierarchy, and constant hunting. Vertical tab managers move that list to a sidebar where full titles, favicons, and group structures are actually readable.
-
-Chrome 146 (March 2026) introduced native vertical tabs behind a flag; the April 2026 rollout dropped the flag requirement. It's a clean sidebar with tab group support, but no workspaces or session recovery. Each option stands as ranked below for 2026.
-
-## Chrome's Native Vertical Tabs: Status
-
-As of Chrome 150 (July 2026), vertical tabs are built in: right-click the tab strip and pick "Show tabs vertically", or go to Settings → Appearance → Tab position (labeled "Tab strip position" on Chrome 146-149). The rollout is staged server-side, so an up-to-date Chrome can still hide the option — `chrome://flags/#vertical-tabs` → Enabled forces it. Full walkthrough: [Chrome vertical tabs not showing](/library/chrome-vertical-tabs-not-showing-fix/).
-
-| Capability | Chrome Native Vertical Tabs |
-|-----------|---------------------------|
-| Collapsible sidebar | Yes |
-| Tab group integration | Yes |
-| Named workspaces | No |
-| Session recovery | No |
-| Keyboard search | No |
-| Bulk tab actions | No |
-| Time-travel snapshots | No |
-| Per-tab notes | No |
-
-For casual users who just want tabs in a sidebar, the native implementation will be enough. For anyone switching between multiple projects, running research sessions, or doing anything that benefits from saved workspaces and keyboard search, extensions are still the only option.
-
-## Extensions Ranked
-
-Extensions are ordered from the most-installed simple sidebar to the deepest feature set. If you just need a sidebar, #1 covers it. If you need workspaces, session recovery, or keyboard navigation, jump to #2. Every rating and user count below was pulled live from the stores in July 2026.
-
-### 1. Vertical Tabs in Side Panel
-
-**4.4 stars | ~100K users | Free**
-
-The market leader by install count. Clean UI with tab group support, drag-and-drop reordering, and tab search. No workspace saving, no session recovery, and no keyboard shortcuts beyond the extension's own interface. Best for users who want a reliable, simple sidebar without additional features.
-
-### 2. SuperchargeNavigation
-
-**4.2 stars | Free on Chrome Web Store**
-
-The only Chrome vertical tab extension that also handles workspaces, session recovery, and keyboard-driven navigation. Where other extensions focus on the sidebar view, SuperchargeNavigation treats it as the anchor for a broader workflow:
-
-- **Named workspaces** — save and restore complete tab sets by name, switch between project contexts instantly
-- **Session time-travel** — 50 auto-snapshots every 5 minutes (a rolling ~4-hour buffer), rewind to any earlier state with a slider
-- **Alt+K command bar** — search open tabs, bookmarks, and history from anywhere in Chrome
-- **Glance/Peek preview** — Alt+Click any link to preview it in an overlay without leaving the page
-- **Smart grouping** — auto-group by domain (Alt+G), bulk multi-select, tab lock, tab deduplication
-- **Mouse gestures** — rocker navigation (back/forward), Super Drag to open links in background
-- **Scroll gestures** — Alt+Scroll to switch tabs, Shift+Scroll to cycle within active group
-- **Zero telemetry; local by default, with optional browser-native sync**
-
-Best for power users who manage multiple projects, want Arc-style workspaces and session recovery, or need keyboard-first tab switching.
-
-### 3. Vertical Tabs
-
-**4.1 stars | ~70K users | Free**
-
-A straightforward vertical list in the side panel from an independent developer. Covers the basics (reordering, pinning, a compact layout) without deep session management. The second-largest install base in the category, though its rating trails #1.
-
-### 4. SideTab Pro
-
-**4.6 stars | ~20K users | Free/Pro**
-
-Arc-inspired design that combines tabs, bookmarks, and reading list in a single panel. The most feature-complete single-panel experience among pure vertical tab extensions. More complex to configure than the options above.
-
-### 5. Sidebery (Firefox only)
-
-**4.7 stars | ~50K users | Free, open source**
-
-The benchmark for what a tab sidebar can be. Tree-style tab nesting, Firefox container support, deep customization. Firefox only — mentioned here because it's what Chrome users are often trying to approximate.
-
-### 6. Tree Style Tab (Firefox only)
-
-**4.5 stars | ~145K users | Free, open source**
-
-The original. The largest user base among Firefox tab sidebars, a mature ecosystem, and extensive community themes. Also Firefox only.
-
-## Full Comparison Table
-
-| Extension | Browser | Rating | Workspaces | Session Recovery | Keyboard Search | Price |
-|-----------|---------|--------|-----------|-----------------|----------------|-------|
-| Vertical Tabs in Side Panel | Chrome | 4.4 | No | No | No | Free |
-| SuperchargeNavigation | Chrome | 4.2 | Yes | Yes (time-travel) | Yes (Alt+K) | Free |
-| Vertical Tabs | Chrome | 4.1 | No | No | No | Free |
-| SideTab Pro | Chrome | 4.6 | Partial | No | No | Free/Pro |
-| Chrome Native | Chrome | Built-in | No | No | No | Free |
-| Sidebery | Firefox | 4.7 | No | No | No | Free |
-| Tree Style Tab | Firefox | 4.5 | No | No | No | Free |
-
-## How to Choose
-
-| Your situation | Best option |
-|---------------|------------|
-| Want workspaces, session recovery, and keyboard navigation | SuperchargeNavigation |
-| Want basic vertical tabs, nothing else | Vertical Tabs in Side Panel |
-| Want the best-looking sidebar | Vertical Tabs in Side Panel |
-| Want tabs + bookmarks + reading list in one panel | SideTab Pro |
-| On Firefox | Sidebery |
-| Do not need workspaces or an extension | Chrome native (enable via chrome://flags) |
-
-## Related Articles
-
-- [Toby Alternative: Free Tab Manager Without Limits](/library/toby-alternative/) — for users coming from card-grid tab organizers
-- [Cluster Tab Manager Alternative](/library/cluster-tab-manager-alternative/) — for users who lost their setup when Cluster was removed
-
-#### FAQ
-Q: Will Chrome's native vertical tabs replace extensions?
-A: For basic use, probably. Chrome 146 (March 2026) shipped native vertical tabs behind a flag, and Google removed the flag requirement in the April 2026 stable rollout. As of July 2026 (Chrome 150) the setting lives at Settings > Appearance > Tab position, but it does not save workspaces, recover sessions, or offer keyboard search, so power-user extensions remain more capable.
-
-Q: Are vertical tab extensions safe?
-A: The extensions reviewed here are established and actively maintained — we verified every listing live on the Chrome Web Store or Firefox Add-ons in July 2026. Any tab extension needs tab list access to function. Check the store permissions dialog and privacy policy for any extension before installing.
-
-Q: What happened to Arc and Arcify?
-A: Arc Browser entered maintenance mode in May 2025 (security and Chromium updates only, no new features). As of July 2026, Arcify is still on the Chrome Web Store (v5.0.0, ~7,000 users) and replicates Arc-style spaces with tab groups. SuperchargeNavigation takes a different approach: named workspaces with session recovery and a command bar.
-
----
-
 ### Chrome Vertical Tabs Not Showing? 5 Fixes That Work (2026)
 
 URL: https://www.superchargebrowser.com/library/chrome-vertical-tabs-not-showing-fix/
@@ -10693,114 +11013,6 @@ A: As of June 2026, both are free. SuperchargeAudio stores every setting in chro
 
 ---
 
-### Best Extensions for Brave Browser? 6 TESTED Picks (2026)
-
-URL: https://www.superchargebrowser.com/library/best-extensions-brave-browser-2026/
-Category: guide | Extension: both | Updated: 2026-06-09
-Description: Brave blocks ads natively, so skip the ad blockers. These 6 extensions cover what Shields can't: timed tab suspension, workspaces, session recovery. June 2026.
-
-> **Key takeaways**
-> - Skip ad blockers on Brave because **Shields already blocks ads and trackers** at the browser level with no extension process
-> - Install extensions only for real gaps where **timed tab suspension, workspaces, and session recovery** top the list
-> - Every pick below is **live on the Chrome Web Store** and installs in Brave with one click, verified June 2026
-
-Brave runs Chrome Web Store extensions, and most "best extensions" lists waste your first install on an ad blocker Brave does not need: Shields blocks ads and trackers natively. The real gaps, verified on the Chrome Web Store in June 2026, are timed tab suspension, workspaces, per-site dark mode, password management, and session recovery. Six picks cover them.
-
-## The 6 Picks and the Gap Each One Fills in Brave
-
-| Extension | Version (Jun 2026) | Users | Gap it fills in Brave | Cost |
-|---|---|---|---|---|
-| SuperchargePerformance | v1.4.6 | ~4,700 | Timed tab suspension with protections + RAM dashboard | Free (PRO waitlist) |
-| SuperchargeNavigation | v1.3.4 | ~1,000 | Named workspaces, tab command bar, session snapshots | Free |
-| Dark Reader | v4.9.125 | ~7M | Dark mode for website content, per-site | Free |
-| Bitwarden | v2026.5.1 | ~6M | Open-source password manager beyond the browser | Free / paid |
-| Session Buddy | v4.1.2 | ~1M | Session backup and crash recovery | Free |
-| Video Speed Controller | v0.10.2 | ~3M | Keyboard playback-speed control on HTML5 video | Free |
-
-Installation works exactly as on Chrome. Browse the Chrome Web Store in Brave and the install button reads "Add to Brave" — Brave's documentation confirms Manifest V3 extensions run identically to Chrome.
-
-## What Brave Already Covers, So You Can Skip It
-
-Three categories dominate generic extension lists, and Brave ships all three natively.
-
-**Ad and tracker blocking.** Shields intercepts ads, trackers, and third-party cookies at the network layer before content loads, in Standard or Aggressive mode, with per-site toggles. There is no extension process behind it. Adding an ad blocker on top mostly re-checks requests Shields already dropped. Brave has even committed to keeping select Manifest V2 blockers such as uBlock Origin installable after Chrome removed them — context in [Does uBlock Origin Still Work in Chrome?](/library/does-ublock-origin-still-work-chrome-2026/) — but on Brave that is belt-and-suspenders, not a necessity. The underlying shift that changed what any extension can block is covered in [Chrome Manifest V2 vs V3: what changed for extensions](/library/chrome-manifest-v2-vs-v3-extensions/).
-
-**Vertical tabs.** Native since Brave 1.52 in May 2023, three years before this article. Right-click any tab or visit `brave://settings/appearance` to enable. You get a collapsible left-side tab strip with pinning and tab groups.
-
-**Basic memory saving.** Brave's Memory Saver (Settings > System > Performance) deactivates unused tabs and reloads them on click, with a manual exception list for sites that must stay live. Combined with Shields stripping ad weight from every page, this is why Brave's baseline RAM use beats stock Chrome. The structural breakdown is in [Brave vs Chrome RAM: What Actually Drives the Gap](/library/brave-vs-chrome-ram-benchmark-2026/).
-
-What the native trio lacks is depth. The strip has no workspaces. Memory Saver has no timer you can set and no awareness of which web apps break when discarded. The picks below fill those gaps.
-
-## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
-
-Brave decides for itself when an idle tab gets deactivated, and its only safeguard is the exception list you fill in by hand. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.6, free core) uses the same Chromium discard mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
-
-- **Suspension timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier; the PRO tier, waitlist-only for now, unlocks custom values down to seconds.
-- **Multi-signal protection.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 29 web apps are auto-protected out of the box: Figma, Notion, Slack, Google Docs, Discord, Zoom, WhatsApp Web, and others where a discard would drop a call or kill a queue.
-- **A RAM dashboard.** The popup shows the total estimated memory freed by suspensions and per-page optimizations, so you can see the feature working instead of trusting it.
-- **Per-domain whitelist**, plus 13 individually toggleable features.
-
-One setup note for Brave specifically: SuperchargePerformance also ships network-level ad blocking (195K+ rules from 18 curated sources) plus dedicated YouTube and Twitch video-ad layers and automatic cookie-consent rejection via DuckDuckGo's AutoConsent rules. Shields already handles general ad blocking, so set the content-blocking tier to Off or Low and let the extension do what Brave cannot: suspension control. It stores everything locally with zero telemetry and no account.
-
-If you want to compare the category first, [the tab suspender field test](/library/best-tab-suspender-extensions-chrome-2026/) covers the alternatives, and [the Great Suspender's removal for malware](/library/great-suspender-alternative/) explains why the old default pick is gone.
-
-## SuperchargeNavigation: Workspaces on Top of Brave's Vertical Tabs
-
-Brave's vertical tabs relocate the strip. [SuperchargeNavigation](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl) (v1.3.4, free, no paid tier) organizes it. The side panel hosts a workspace switcher, the full tab list, and a multi-select toolbar for bulk pin, mute, group, and close actions. Around that core:
-
-- **Named workspaces with full isolation.** Client work, research, and personal tabs live in separate named sets that survive restarts. Brave has nothing equivalent.
-- **Alt+K command bar** searching open tabs, bookmarks, and recent history from the keyboard.
-- **50 automatic session snapshots** taken every 5 minutes, with a slider to rewind to any of them. A crashed window or an accidental "close all" stops being a catastrophe.
-- **Alt+Click peek** to preview a link in an overlay without leaving the page.
-
-Everything lives in your browser profile with zero telemetry; cross-device workspace sync rides the browser's own sync framework, with an off switch in settings if you want strictly local. It runs in the Chromium side panel, which Brave inherits, so it coexists with Brave's native vertical tab strip rather than fighting it. Use Brave's strip for the visual tab list, the workspaces for project separation.
-
-## Dark Reader and Video Speed Controller: Page-Level Control
-
-Brave's dark theme styles the browser frame, not the websites inside it. **Dark Reader** (v4.9.125, ~7M users) generates dark mode for page content itself, with per-site brightness, contrast, and sepia controls plus a per-site off switch for sites that ship a good native dark mode. It is open source and has held the top spot in this category for years.
-
-**Video Speed Controller** (v0.10.2, ~3M users) adds keyboard playback control to nearly any HTML5 video: tap a key to speed up, slow down, or rewind ten seconds. YouTube's own menu stops at 2x unless you pay for Premium, and most lecture platforms bury or omit the setting. For coursework and conference talks this is the highest value-per-kilobyte pick on the list.
-
-## Bitwarden and Session Buddy: The Safety Nets
-
-**Bitwarden** (v2026.5.1, ~6M users) is the open-source password manager. Brave's built-in manager covers in-browser basics, and Brave Sync moves passwords between your Brave installs — but the vault stops at the browser's edge. Bitwarden adds native apps for every desktop and mobile OS, secure sharing, and independently audited open-source code, with a free tier that covers unlimited passwords on unlimited devices.
-
-**Session Buddy** (v4.1.2, ~1M users) saves and restores whole browsing sessions. It is reactive rather than organizational, with no workspaces and no grouping logic, which makes it the simplest possible insurance against a crash or an unwanted restart eating 40 tabs. If you install SuperchargeNavigation, its 5-minute snapshots cover this ground automatically; Session Buddy is the standalone pick if all you want is the safety net.
-
-## Which of the Six You Actually Need
-
-Extension count matters more on a browser whose pitch is being lighter than Chrome. Every extension runs its own process, while Shields runs as a native browser layer with no process cost. The same asymmetry shapes [which browser uses the least RAM](/library/which-browser-uses-least-ram-2026/). So pick by symptom instead of installing all six:
-
-- If tabs pile up until Brave slows down → SuperchargePerformance, with content blocking set to Off so Shields keeps that job.
-- If you juggle projects and already live in vertical tabs → SuperchargeNavigation for workspaces and snapshots.
-- If you read at night → Dark Reader.
-- If passwords live on a sticky note or only inside Brave → Bitwarden.
-- If you watch lectures or talks → Video Speed Controller.
-- If you only fear the crash, nothing else → Session Buddy.
-
-Skip anything that duplicates Shields. Brave gave you the ad blocker; spend your extension budget on what it left out.
-
-#### FAQ
-Q: Do I need an ad blocker extension on Brave?
-A: As of June 2026, no. Brave Shields blocks ads and trackers natively at the browser level, before page content reaches the renderer, with no extension process. Brave has also committed to keeping select Manifest V2 blockers like uBlock Origin working, but running one on Brave mostly duplicates coverage Shields already provides. Spend your extension slots on categories Brave does not ship: timed tab suspension, workspaces, session backup, and per-site dark mode.
-
-Q: Can Brave run Chrome extensions?
-A: Yes. Brave is built on Chromium and installs extensions directly from the Chrome Web Store — the install button reads 'Add to Brave' when you browse the store in Brave. Brave's own documentation states that any extension found in the Chrome Web Store will also work in Brave, and that Manifest V3 extensions behave exactly as they do in Chrome. As of June 2026 there is no separate Brave extension store.
-
-Q: Does Brave have a built-in memory saver?
-A: Yes. As of June 2026, Brave's Memory Saver (Settings > System > Performance) deactivates tabs you are not using and reloads them when you return, with a manual site-exception list. What it lacks is control: no user-set suspension timer and no automatic protection for web apps like Figma or Slack. Tab suspender extensions add those layers on top of the same Chromium discard mechanism.
-
-Q: Do tab suspender extensions work on Brave?
-A: Yes. Tab suspenders call chrome.tabs.discard(), a Chromium API that Brave implements identically to Chrome. As of August 2026, SuperchargePerformance (v1.4.6 on the Chrome Web Store) runs this with multi-signal protection: it skips tabs playing audio, pinned tabs, tabs with unsaved form input, and 29 auto-protected web apps including Figma, Notion, Slack, and Google Docs.
-
-Q: Does Brave have native vertical tabs?
-A: Yes. Brave shipped native vertical tabs in version 1.52 back in May 2023, three years before this article's publication. Enable them under brave://settings/appearance or by right-clicking any tab. They support collapsing to icons, pinning, and tab groups. They are a relocated tab strip rather than an organization system: no named workspaces, no session snapshots, no command-bar search across tabs.
-
-Q: How many extensions should I install on Brave?
-A: As of June 2026, fewer than you would on Chrome. Brave covers ad blocking, basic memory saving, and vertical tabs natively with zero extension overhead, and each extension you add runs its own process. Two to four targeted picks covering real gaps (suspension control, workspaces, passwords, sessions) beat a ten-extension stack that duplicates what Shields already does.
-
----
-
 ### Brave Browser Using Too Much RAM? 7 Fixes That Work (2026)
 
 URL: https://www.superchargebrowser.com/library/brave-browser-high-ram-usage-fix/
@@ -13445,218 +13657,6 @@ A: Chrome 149 (June 2026) includes native tab groups and vertical tabs (via chro
 
 Q: What happened to Workona's update cadence?
 A: As of June 2026, Workona (Tab Manager by Workona) is on version 3.1.33, last updated January 15, 2025 — about 17 months ago. The extension still functions but its Chrome listing has not received new features or bug fixes in that period. Teams relying on Workona should monitor for continued maintenance.
-
----
-
-### Tab Suspender Chrome Extensions: 6 Options Compared (2026)
-
-URL: https://www.superchargebrowser.com/library/best-tab-suspender-extensions-chrome-2026/
-Category: comparison | Extension: performance | Updated: 2026-06-02
-Description: Chrome Memory Saver waits for RAM pressure. These 6 extensions suspend proactively — compared by timer control, audio protection, MV3 status, and update date.
-
-> **Key takeaways**
-> - Chrome Memory Saver suspends tabs **only after RAM pressure builds**. Timer-based extensions act proactively after idle time, regardless of system state.
-> - **SuperchargePerformance** (v1.4.6, August 2026) adds ad blocking and a RAM dashboard to tab suspension. **Tab Wrangler** (v8.3.0, April 30 2026) auto-closes and logs old tabs.
-> - **Auto Tab Discard** works but hasn't updated on CWS since February 2024. The Great Suspender forks (Reloaded and Marvellous) are volunteer-maintained and both live on CWS.
-
-Six open-source or free tab suspenders exist for Chrome in 2026. One hasn't shipped a CWS update in over two years. One was banned for malware and survived as two forks. The right pick depends on what you're actually after: proactive suspension, auto-close with a log, a memory dashboard, or ad blocking bundled in. This page covers the verified current state of each.
-
-## Why RAM Matters for Tab-Heavy Chrome
-
-Each Chrome tab runs in its own renderer process. An active tab with a complex SPA, auto-refreshing feed, or video player can hold 200-400MB of RAM. At 30 tabs, Chrome can push past 6GB even before you open DevTools or a Figma file.
-
-Tab suspension calls `chrome.tabs.discard()` — Chrome's native tab lifecycle API. The tab's renderer process exits, freeing 90-95% of that tab's RAM. The tab stays visible in the strip with its favicon and title. Clicking it triggers a normal page reload. No scroll position is preserved (a Chrome API limitation that applies to every tab-discard tool, not just extensions).
-
-Battery life tracks with RAM usage. Fewer active renderer processes mean fewer wakeups, less JavaScript executing in background tabs, and lower CPU temperature on laptops — the reason tab suspension matters beyond just raw memory numbers.
-
-## Chrome's Built-in Memory Saver: The Baseline
-
-Chrome 110 (launched February 2023) introduced Memory Saver under Settings > Performance. It discards inactive tabs when the system signals memory pressure. It ships with three modes — Moderate, Balanced (recommended), and Maximum — that adjust how soon a tab goes inactive.
-
-The core limitation: it's reactive. Memory Saver waits until Chrome detects the system is under RAM pressure before discarding anything. At 30 tabs, that can mean 2-3GB already consumed before the first discard fires.
-
-Chrome 140 (September 2025) added an ML model that predicts how likely you are to revisit each tab. Tabs more likely to be revisited stay active; less-likely tabs get discarded first. This improves the reactive model but doesn't change the fundamental timing — it acts when pressure arrives, not before.
-
-What Memory Saver lacks: no configurable idle timer, no adjustable protection rules (it auto-exempts audio, video, screen share, downloads, forms, and pinned tabs, but you can't tune that), no memory-saved reporting, no visibility into which tabs were discarded and how much RAM was freed. It does let you mark specific sites "always keep active."
-
-For 10-15 tabs on a machine with 16GB RAM, Memory Saver set to Maximum is probably enough. At 20+ tabs or on a 8GB machine, the proactive vs. reactive gap becomes a real constraint.
-
-## What Separates Good Tab Suspenders
-
-Before the extension reviews, these are the criteria that actually matter:
-
-**Idle timer control.** Can you set how long a tab is idle before suspension? 5 minutes vs. 15 minutes changes the tradeoff between RAM savings and the annoyance of reloading tabs mid-task.
-
-**Audio tab protection.** A tab playing music or a call should never be suspended mid-playback. This requires checking `tab.audible` before discarding — most extensions do it but not all do it reliably.
-
-**Pinned tab and form-input protection.** Suspending a pinned Gmail tab or a tab with an unsaved form is disruptive. These protections are table-stakes but worth verifying.
-
-**Per-site whitelist.** Figma, Notion, Slack, and other web apps break on reload. You need a way to exclude them without disabling suspension globally.
-
-**MV3 compatibility.** Chrome disabled Manifest V2 extensions for standard users at Chrome 138 (June 2025). Any extension still on MV2 is dead for most users.
-
-**Update cadence.** Chrome ships every four weeks. An extension unupdated for a year may still work, but it accumulates silent drift against API changes, permission model updates, and new Chrome flags.
-
-**Additional features.** Does the extension bundle anything useful beyond suspension — ad blocking, a memory dashboard, tab logging?
-
-## The 6 Extensions
-
-### SuperchargePerformance
-
-**v1.4.6 · ~4,700 weekly users · 4.5/5 (38 ratings) · Updated August 2026 · MV3**
-
-[Chrome Web Store](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
-
-SuperchargePerformance uses `chrome.tabs.discard()` with a multi-signal protection layer on top: 29 web apps auto-protected without manual whitelist configuration (Figma, Notion, Slack, Discord, Gmail, Google Docs, Sheets, Slides, Drive, Calendar, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Teams, Spotify, YouTube Music, and more), audio detection via `tab.audible`, form-input detection, and pinned-tab protection. Timers are configurable: 5 minutes on the default tier, 15 minutes on the lighter Low tier, custom seconds on PRO.
-
-The RAM badge updates in real time — a running counter of memory freed across the session, rendered via OffscreenCanvas so it doesn't inflate its own memory footprint. The popup shows per-tab savings.
-
-On top of suspension, SuperchargePerformance runs a 195K+ rule DNR blocklist (compiled from 18 sources) that blocks ads, trackers, and malware at the network layer with zero per-request JavaScript overhead. This reduces active tab RAM by removing heavy assets before they load. AutoConsent handles cookie banners (2,800+ CMP rules). Stop Autoplay blocks video and audio from starting on load.
-
-Zero telemetry, 100% local storage by default, no account required. Free core tier handles tab suspension and basic blocking.
-
-Pick this if you want tab suspension, ad blocking, and memory metrics in one install with active maintenance.
-
-One tradeoff: smallest user base (~4,700 weekly users) and fewest public reviews of any option listed here.
-
-### Tab Wrangler
-
-**v8.3.0 · 70,000 users · 4.4/5 (947 ratings) · Updated April 30, 2026 · MV3**
-
-[Chrome Web Store](https://chromewebstore.google.com/detail/tab-wrangler/egnjhciaieeiiohknchakcodbpgjnchh)
-
-Tab Wrangler operates differently from the others: it auto-closes tabs after a configurable inactivity period rather than suspending them. Closed tabs go into a local log called the Corral, sortable by recency. Any tab in the Corral can be reopened with a click.
-
-This distinction matters. Suspension keeps the tab in the strip (memory freed, tab still visible). Closing removes the tab entirely and saves its URL. If you prefer a cleaner tab count and don't mind tabs disappearing from the strip, Wrangler's approach is tidier. If you want to see suspended tabs at a glance, a suspender is the right choice.
-
-Protections are configurable: pinned tabs, tabs with unsaved forms, and tabs that have been active recently can all be excluded. Lock any tab to prevent auto-close. MV3, open-source (MIT), actively maintained with GitHub commits through April 2026.
-
-Pick this if you want a clean tab count with a recoverable log, not just suspended tabs in the strip.
-
-Note: closing and restoring from the Corral is a different workflow from suspension. Pages reload on restore just as they do on discard — but the tab is gone from the strip until you explicitly recover it.
-
-### Auto Tab Discard
-
-**v0.6.8.2 · 100,000 users · 4.2/5 (364 ratings) · Last CWS update February 17, 2024 · MV3**
-
-[Chrome Web Store](https://chromewebstore.google.com/detail/auto-tab-discard-suspend/jhnleheckmknfcgijgkadoemagpecfol)
-
-Auto Tab Discard does one thing cleanly: it calls `chrome.tabs.discard()` on idle tabs after a configurable timer. Audio protection, pinned tab protection, and form-input detection are all present. Per-domain whitelist. No dashboard, no ad blocking, no additional features.
-
-It is MV3 and shows 100,000 users on CWS — the largest user base of any dedicated tab suspender on this list. The project is open-source.
-
-The concern: its last CWS update was February 17, 2024 — more than two years before now. Chrome has shipped over 25 stable releases since then. The extension continues to work on current Chrome, and its MV3 architecture makes it less fragile to Chrome updates than MV2 extensions were, but no one has pushed a CWS patch in over two years. For users who want ongoing maintenance, that gap is worth knowing.
-
-Pick this if you want a single-purpose, open-source suspension tool with no extras and the update gap doesn't concern you.
-
-Worth knowing: no CWS update since February 2024. Works on Chrome 149, but maintenance trajectory is unclear.
-
-### OneTab
-
-**2,000,000 users · 4.5/5 · Updated March 22, 2026 · MV3**
-
-[Chrome Web Store](https://chromewebstore.google.com/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall)
-
-OneTab is not a suspender — it's a tab consolidator. Clicking the OneTab icon closes all current tabs and converts them into a list on a single web page. You can restore individual tabs or all of them at once. Tabs can be shared as a URL or exported.
-
-It belongs on this list because many people install it when they want to reduce RAM, and it does reduce RAM — by closing all your tabs. The tradeoff is that every restored tab requires a network reload, and the "tab list" page is a new tab you have to manage. There is no automatic suspension after idle time and no per-tab protection logic.
-
-The practical question: if you're comfortable with all your tabs disappearing into a list and selectively restoring them, OneTab works. If you want tabs to remain in the strip while sleeping, it's the wrong tool.
-
-March 2026 update keeps it current on Chrome 149. The rating across 2 million users reflects years of mixed opinions about the single-click-closes-everything behavior.
-
-Pick this if you want to batch-close all tabs into a recoverable list rather than keep them suspended in the strip.
-
-The limitation: all tabs close on activation; no automatic idle-based suspension.
-
-### The Marvellous Suspender
-
-**v8.1.3 · 90,000 users · 4.3/5 · Updated December 22, 2025 · MV3**
-
-[Chrome Web Store](https://chromewebstore.google.com/detail/the-marvellous-suspender/noogafoofpebimajpfpamcfhoaifemoa)
-
-Marvellous Suspender is a community fork of The Great Suspender, maintained by a single volunteer (gioxx). It uses a custom suspension page rather than `chrome.tabs.discard()` — inactive tabs show a dedicated screen before reloading. This method can create an extra history entry depending on configuration: pressing Back after a suspended tab reactivates sometimes lands you on the suspension screen rather than the previous page.
-
-The extension is MV3, open-source, and actively used at 90K users. The December 22, 2025 update is roughly six months old as of June 2026, which is within normal volunteer software cadence. See the [full status page](/library/marvellous-suspender-status-2026/) for a deeper look at the fork's history and security posture.
-
-Pick this if you want the original Great Suspender UX and trust the open-source volunteer maintenance model.
-
-One friction point: the custom suspension page can create an extra history entry in some configurations, and updates depend on one volunteer developer.
-
-### Great Suspender Reloaded
-
-**v2.0.0 · 40,000 users · 4.2/5 · Updated May 1, 2026 · MV3**
-
-[Chrome Web Store](https://chromewebstore.google.com/detail/tab-suspender-the-great-s/hlofigcdgjlnalbkeeinfcjceabpamci)
-
-The other surviving fork. Great Suspender Reloaded (maintained by tim-dim-ext on GitHub) shipped v2.0.0 on May 1, 2026 — the most recently updated free suspender on this list. It uses the same custom suspension-page approach as Marvellous Suspender.
-
-Smaller user base than Marvellous (40K vs. 90K), but faster update cadence in 2026. The GitHub repo shows commits through April 30, 2026. The CWS title reads "Tab Suspender | The Great Suspender 2026," which explains its search visibility.
-
-For more context on both forks and the original Great Suspender's history, see [Great Suspender Alternatives in 2026](/library/great-suspender-alternative/).
-
-Pick this if you want the most recently updated Great Suspender fork and can accept a smaller community than Marvellous.
-
-Still a one-developer volunteer project, with the same structural caveats as any community fork.
-
-## Full Comparison Table
-
-| Extension | Users | Rating | MV3 | Last CWS Update | Suspension Method | Idle Timer | Ad Blocking | RAM Dashboard | Cost |
-|-----------|-------|--------|-----|-----------------|-------------------|------------|-------------|---------------|------|
-| SuperchargePerformance | ~4,700 | 4.5/5 | Yes | August 2026 | chrome.tabs.discard() | Yes (5 min default, 15 min Low, custom PRO) | Yes (195K+ rules) | Yes | Free + PRO |
-| Tab Wrangler | 70,000 | 4.4/5 | Yes | April 30, 2026 | Auto-close + Corral log | Yes | No | No | Free |
-| Auto Tab Discard | 100,000 | 4.2/5 | Yes | Feb 17, 2024 | chrome.tabs.discard() | Yes | No | No | Free |
-| OneTab | 2,000,000 | 4.5/5 | Yes | March 22, 2026 | Tab consolidation (close) | No | No | No | Free |
-| Marvellous Suspender | 90,000 | 4.3/5 | Yes | Dec 22, 2025 | Custom suspension page | Yes | No | No | Free |
-| Great Suspender Reloaded | 40,000 | 4.2/5 | Yes | May 1, 2026 | Custom suspension page | Yes | No | No | Free |
-| Chrome Memory Saver | Built-in | — | N/A | Chrome 149 (June 2026) | chrome.tabs.discard() | Reactive only | No | No | Free |
-
-Data: Chrome Web Store listings verified June 2, 2026.
-
-## Picks
-
-| Your situation | Pick |
-|---------------|------|
-| Want suspension + ad blocking + memory dashboard | SuperchargePerformance |
-| Want auto-close with a recoverable log | Tab Wrangler |
-| Want a pure open-source suspender, update gap acceptable | Auto Tab Discard |
-| Want to batch-close tabs into a list | OneTab |
-| Want the original Great Suspender UX, larger community | Marvellous Suspender |
-| Want the Great Suspender UX, most recent update | Great Suspender Reloaded |
-| 10 tabs or fewer, 16GB+ RAM | Chrome Memory Saver (no extension needed) |
-
-## When Not to Install a Tab Suspender
-
-Chrome Memory Saver handles most single-user scenarios adequately if:
-
-- Your tab count stays below 15 on a regular basis
-- You have 16GB RAM and typically run Chrome with one or two windows
-- You don't care about a RAM counter or per-tab metrics
-
-Adding an extension has a cost: startup time, a small background process, and permissions. If your setup rarely hits memory pressure, the native option is the right default.
-
-The case for an extension is clearest when you routinely open 30+ research tabs, work with Figma or linear open alongside 20 other tabs, or run Chrome on a machine with 8GB RAM shared with other apps. At that point, the proactive timer model and the savings gap over Memory Saver's reactive baseline become concrete.
-
-A tab suspender also can't fix a Chrome process that has leaked memory through a bug. If Chrome's total RAM keeps climbing after tabs are suspended, see [Fix Chrome Memory Leaks on Windows 11](/library/fix-chrome-memory-leaks-windows-11/) or the macOS equivalent.
-
-#### FAQ
-Q: What is the best tab suspender extension for Chrome in 2026?
-A: As of August 2026, the most actively maintained options are SuperchargePerformance (v1.4.6, updated August 2026), Tab Wrangler (v8.3.0, updated April 30 2026), and Great Suspender Reloaded (updated May 1 2026). SuperchargePerformance combines tab suspension with ad blocking and a RAM dashboard. Tab Wrangler auto-closes old tabs and logs them. Great Suspender Reloaded is a fork of the original suspender with a custom suspension page.
-
-Q: Is Auto Tab Discard still maintained in 2026?
-A: Auto Tab Discard (v0.6.8.2) is still on the Chrome Web Store as of June 2026 with 100,000 users. Its last CWS update was February 17, 2024 — over two years ago. It works on current Chrome but has not had a public update since then.
-
-Q: Does Chrome have a built-in tab suspender?
-A: Yes. Chrome's Memory Saver (Settings > Performance) discards inactive tabs when system RAM runs low. It is reactive: it waits for memory pressure before acting. Timer-based extensions suspend tabs after a fixed idle period regardless of system state, which keeps Chrome lean before pressure builds.
-
-Q: What happened to The Great Suspender?
-A: The original Great Suspender was permanently removed from the Chrome Web Store in February 2021 for malware injection. Two community forks remain active as of June 2026: Great Suspender Reloaded (v2.0.0, updated May 1 2026, 40K users) and The Marvellous Suspender (v8.1.3, updated December 22 2025, 90K users). Both are MV3 and open-source.
-
-Q: How much RAM does suspending a tab actually save?
-A: Suspending a tab via chrome.tabs.discard() frees 90-95% of that tab's RAM. An active tab uses 80-300MB depending on page content; a suspended tab retains roughly 5-10MB for metadata and favicon. Across a full Chrome session with many open tabs, expect a 70-75% reduction in total Chrome RAM.
-
-Q: What is Tab Wrangler and how is it different from a tab suspender?
-A: Tab Wrangler auto-closes tabs that haven't been active for a configurable time period and saves them to a local log (the Corral). Unlike tab suspenders, it actually removes the tab from Chrome. You can restore any closed tab from the log. It is MV3, version 8.3.0, last updated April 30 2026.
 
 ---
 
