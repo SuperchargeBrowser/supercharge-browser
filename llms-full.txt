@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-08-22
+> Last updated: 2026-08-25
 > For a summary index, see /llms.txt
 
 ## Products
@@ -53,7 +53,7 @@
 - Stereo width control (0–200%)
 - Mono mix toggle
 - Permissions: storage, tabs, tabCapture, offscreen, host all_urls — no webRequest, zero telemetry
-- Version: 1.0.5
+- Version: 1.0.6
 - Available on Chrome Web Store (launched June 10, 2026) and Microsoft Edge Add-ons (live June 4, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
@@ -67,7 +67,7 @@
 - Microphone, system audio, and webcam capture
 - Optional Share-to-Drive: upload exports to your own Google Drive (no SuperchargeBrowser servers)
 - Local-first, zero telemetry, no account required
-- Version: 1.1.1
+- Version: 1.1.2
 - Available on Chrome Web Store (live June 22, 2026) and Microsoft Edge Add-ons (live June 25, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
@@ -1721,7 +1721,7 @@ For already-loud content, leave the slider at 100% and use the [equalizer](/feat
 
 ## Protected Content
 
-Standard volume boost works via an in-page gain node and needs no special permissions. On DRM-protected streaming sites where the content security policy blocks in-page audio manipulation, SuperchargeAudio provides an optional tab-audio-capture mode. This captures the tab's rendered audio output — the audio you already have access to — and applies the same gain controls.
+Standard volume boost works via an in-page gain node and needs no special permissions. On DRM-protected streaming sites, or any site whose audio the in-page path can't reach — a cross-origin file or a player inside an embedded frame — SuperchargeAudio provides an optional tab-audio-capture mode. This captures the tab's rendered audio output — the audio you already have access to — and applies the same gain controls.
 
 To be clear on what this does not do: it does not decrypt content, bypass access controls, or enable anything you could not already hear. It is opt-in and off by default.
 
@@ -1736,7 +1736,7 @@ Q: How much can SuperchargeAudio boost volume?
 A: SuperchargeAudio extends Chrome's default 100% limit up to 600% using a Web Audio gain node (gain 1.0 to 6.0). The boost is applied in real time to the tab's audio stream.
 
 Q: Does volume boost work on streaming sites like Netflix or Spotify?
-A: Most sites work with the standard in-page gain node, which requires no extra permissions. For DRM-protected content where that path is blocked by the site's content security policy, SuperchargeAudio includes an optional tab-audio-capture mode — off by default — that applies the same boost to the tab's audio output. This does not bypass or remove DRM; it only adjusts the volume of what you already have permission to hear.
+A: Most sites work with the standard in-page gain node, which requires no extra permissions. For DRM-protected content, or any audio the in-page path can't reach (such as cross-origin or embedded players), SuperchargeAudio includes an optional tab-audio-capture mode — off by default — that applies the same boost to the tab's audio output. This does not bypass or remove DRM; it only adjusts the volume of what you already have permission to hear.
 
 Q: Will boosting above 100% distort the audio?
 A: SuperchargeAudio applies a soft-clip stage at the output, so heavy boost produces gentle saturation rather than hard digital clipping. Quiet recordings benefit most with very little audible change. Already-loud content pushed to 4–6× will saturate at the peaks — the result is softer than hard clipping but the sound will compress. Use the equalizer alongside the boost to shape the output if needed.
@@ -1882,7 +1882,7 @@ Q: Should I use the Bass Boost preset or adjust the bands manually?
 A: The Bass Boost preset is the fast option — one tap for a ready-made low-end curve. Adjusting the 32, 64, and 125 Hz bands by hand gives precise, surgical control when you want a specific shape. You can start from the preset and then fine-tune the bands.
 
 Q: Does bass boost work on all sites?
-A: It works on most sites via the in-page Web Audio path. For DRM-protected streaming sites where that path is unavailable, the optional tab-audio-capture mode (opt-in, off by default) applies the same processing to the tab's audio output.
+A: It works on most sites via the in-page Web Audio path. For DRM-protected streaming sites, or any site whose audio that path can't reach, the optional tab-audio-capture mode (opt-in, off by default) applies the same processing to the tab's audio output.
 
 Q: Will turning bass all the way up damage my speakers?
 A: Heavy low-end through laptop speakers or earbuds at high volume can stress small drivers. Use moderate settings on low-impedance buds or laptop speakers; over-ear headphones and external speakers handle more headroom.
@@ -2916,7 +2916,7 @@ A screenshot watermark is a sales device. The extension could export a clean ima
 
 | Extension | Users (Aug 2026) | Watermark | What the free tier withholds |
 |---|---|---|---|
-| SuperchargeCapture | New (v1.1.1) | None | Nothing: all modes, editor, export free |
+| SuperchargeCapture | New (v1.1.2) | None | Nothing: all modes, editor, export free |
 | GoFullPage | 11,000,000 | None | Exporting *annotated* images (Premium, ~$1/mo) |
 | Lightshot | 2,000,000 | None | Full-page capture doesn't exist; uploads are public links |
 | Scrnli | 1,000,000 | None | Nothing significant on screenshots |
@@ -3000,7 +3000,7 @@ The use case is the same everywhere: a tutorial, a Loom-style async update, a bu
 
 ## SuperchargeCapture: a Local Bubble, No Account
 
-[SuperchargeCapture](/capture/) (v1.1.1) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
+[SuperchargeCapture](/capture/) (v1.1.2) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
 
 Mic and tab audio record alongside. Export goes to MP4, WebM, or [GIF](/library/screen-recording-to-gif-slack-discord-2026/), written to local storage: no account, no watermark, no recording cap, nothing uploaded.
 
@@ -3014,7 +3014,7 @@ Screenity (v4.6.4, ~200,000 users) is the open-source pick, and its free tier is
 
 | Extension | Webcam PiP | Free-tier limits (checked Aug 7, 2026) | Account | Video lives |
 |---|---|---|---|---|
-| SuperchargeCapture v1.1.1 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
+| SuperchargeCapture v1.1.2 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
 | Screenity v4.6.4 | Movable overlay | No cap, no watermark | No | Your device |
 | Loom v5.5.203 | Circular bubble | 25 videos total, 5 min each | Yes | Loom cloud |
 | Screencastify | Bubble overlay | 10 videos, 30 min each, watermark | Yes (Google) | Cloud |
@@ -3218,7 +3218,7 @@ Approaching the same need from the workspace side, [SuperchargeNavigation](/navi
 
 **Tampermonkey** made the MV3 jump at version 5.0 and shipped its latest stable release in May 2026, so if your userscript manager went grey, you were likely on the frozen Legacy (MV2) listing. Install the current version, then flip on **Developer mode** at the top right of `chrome://extensions` — Chrome requires it for userscript injection under MV3, and scripts silently refuse to run without it.
 
-Volume boosters were hit harder. The category was full of set-and-forget MV2 extensions whose developers had moved on years before the shutdown. **[SuperchargeAudio](/audio/)** (v1.0.5) is an MV3-native replacement that goes past the old single-slider tools: boost up to 600%, a 10-band equalizer, and per-site profiles that remember settings for each domain. No account, and audio processing stays on your machine.
+Volume boosters were hit harder. The category was full of set-and-forget MV2 extensions whose developers had moved on years before the shutdown. **[SuperchargeAudio](/audio/)** (v1.0.6) is an MV3-native replacement that goes past the old single-slider tools: boost up to 600%, a 10-band equalizer, and per-site profiles that remember settings for each domain. No account, and audio processing stays on your machine.
 
 ## Why the Old Extension Won't Come Back
 
@@ -3272,7 +3272,7 @@ Scribe ranks well for "Chrome screen recorder" searches, but its own tool page s
 
 Scribe is a documentation tool, and a popular one: its Chrome Web Store listing shows 1,000,000 users as of August 7, 2026. You click Start Capture, work through a process, click Complete Capture, and Scribe assembles an illustrated how-to. One screenshot per click, instructions written for you, published as a web page you share by link or embed. That is the whole product, and the reason it markets to recorder searches is that people documenting a process often think they need a video first.
 
-SuperchargeCapture (v1.1.1 as of August 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
+SuperchargeCapture (v1.1.2 as of August 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
 
 | | Scribe | SuperchargeCapture |
 |---|---|---|
