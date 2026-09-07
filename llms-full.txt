@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-09-06
+> Last updated: 2026-09-07
 > For a summary index, see /llms.txt
 
 ## Products
