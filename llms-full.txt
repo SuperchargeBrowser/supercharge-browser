@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-09-15
+> Last updated: 2026-09-18
 > For a summary index, see /llms.txt
 
 ## Products
@@ -17,7 +17,7 @@
 - 13 individually toggleable features per domain
 - 25+ auto-protected web apps across productivity, media, and calls (Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby)
 - Zero telemetry, zero tracking, zero data collection, fully local
-- Version: 1.4.7
+- Version: 1.4.8
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live May 2026)
 - Weekly active users: 10,000+ combined across the extension family (Chrome Web Store)
 - Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
@@ -67,7 +67,7 @@
 - Microphone, system audio, and webcam capture
 - Optional Share-to-Drive: upload exports to your own Google Drive (no SuperchargeBrowser servers)
 - Local-first, zero telemetry, no account required
-- Version: 1.1.2
+- Version: 1.1.3
 - Available on Chrome Web Store (live June 22, 2026) and Microsoft Edge Add-ons (live June 25, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
@@ -454,7 +454,7 @@ Stop Autoplay blocks video and audio autoplay the same way Chrome's own autoplay
 
 Beyond the play() override, the script neutralizes the `autoplay` attribute and per-element `playing` events on newly inserted media, so videos that use the native autoplay path are also caught. YouTube's next-video autoplay is handled separately: when you finish a video and YouTube queues the next one, the incoming video is frozen until you click. On Twitter, LinkedIn, and feed-style sites, videos that scroll into view are paused at the moment of intersection.
 
-At the "Allow Common" level, major video platforms and conferencing tools (YouTube, Netflix, Twitch, Vimeo, Zoom, Slack, and others) play normally. Autoplay is blocked on all other sites. At "Block All", every site is blocked with no exceptions.
+At the "Allow Common" level, major video platforms and conferencing tools (YouTube, Netflix, Twitch, Vimeo, Zoom, Slack, and others) play normally. Autoplay is blocked on all other sites. At "Block All", autoplay is blocked on every site except sites you have whitelisted. Live video calls always play and are never interrupted.
 
 ## Settings
 
@@ -462,7 +462,7 @@ At the "Allow Common" level, major video platforms and conferencing tools (YouTu
 |---------------|---------------------------------------------------------------------------------------------------|--------------|
 | Off           | No autoplay blocking — all videos play as the site intends                                        | Free         |
 | Allow Common  | Major video platforms and conferencing tools allowed; muted previews allowed; all other autoplay blocked | Free    |
-| Block All     | All video autoplay blocked on every site, no exceptions                                           | Free         |
+| Block All     | All video autoplay blocked on every site except whitelisted sites; live calls always play        | Free         |
 
 The default is **Off**. Enable this feature if unexpected video playback on general websites disrupts your browsing.
 
@@ -2173,6 +2173,198 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 
 ## Library Articles
 
+### YouTube Ad Blocker Not Working? 5 Fixes, Tested Live (2026)
+
+URL: https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/
+Category: comparison | Extension: performance | Updated: 2026-09-15
+Description: Chrome killed uBlock Origin in 2025. 5 MV3 YouTube ad blockers still work, tested September 2026. Loon section for searchers who landed here by mistake.
+
+> **Key takeaways**
+> - **Chrome, not YouTube, killed the most popular blocker.** Full uBlock Origin has been disabled on stable Chrome since Chrome 138 (July 2025). Its Chrome Web Store listing was removed on August 31, 2026.
+> - **uBlock Origin Lite does ship scriptlets**, but its fixes wait on Chrome Web Store review, so it lags during anti-adblock waves.
+> - **The approach that survives YouTube's detection removes ad data before the player reads its configuration**, not after ads load.
+
+Your YouTube ad blocker stopped mid-video, and now ads are back on every video you start. The dead extension still sits in your toolbar, taking up a slot and doing nothing. You might be juggling a popup blocker, a cookie-consent tool, and a tab manager on top of it, four separate tools where one should cover all four. Five MV3 blockers below still work on YouTube, verified live in September 2026.
+
+## Did Chrome Kill It, or Did YouTube?
+
+Two separate failure modes get lumped under "my ad blocker stopped working," and they need different fixes.
+
+**Chrome killed it (Manifest V2 shutdown).** If your blocker was full uBlock Origin, an old MV2 build of AdGuard, or any extension Chrome flagged as unsupported, the browser disabled it. Chrome 138 (July 24, 2025) turned off all MV2 extensions on every channel with no user re-enable toggle. Chrome 150 (stable June 30, 2026) removed the first developer escape-hatch flag. Chrome 151 (stable July 28, 2026) deleted the rest of the MV2 machinery. On August 31, 2026, Google removed all remaining MV2 listings from the Chrome Web Store, including uBlock Origin's.
+
+The uBlock Origin situation confuses people because the listing looked healthy for over a year after the shutdown. As of July 2026 it still showed v1.72.2, updated July 8, 2026, 12 million users, 4.7 stars, Featured badge. gorhill kept shipping MV2 updates. None of that meant it ran. Stable Chrome has refused to execute it since July 2025, and the 12 million count reflected legacy installs on old, enterprise, or forked Chromium builds. Reinstalling on a current Chrome does nothing. The listing is now gone from the store. If you want full uBlock Origin, the answer is Firefox, where it works completely.
+
+**YouTube broke it (anti-adblock wave).** If your blocker is MV3 and shows as enabled, the cause is YouTube-side. YouTube pushed five distinct enforcement waves between mid-2023 and June 2025, each changing how ad metadata is packaged in the player's API responses. The June 2025 wave (10 months before this article's September 2026 update) was the most aggressive, invalidating nearly every scriptlet-based approach at once. As of September 2026, no major DOM-level wave has hit since. A break today is more likely a routine tweak that your blocker patches within days. The five options below are ranked by how they survive that cycle.
+
+## AdBlock for YouTube: Purpose-Built for One Job
+
+**v7.2.3 · 10 million users · verified July 2026**
+
+AdBlock for YouTube does one thing and builds everything around doing it well. The extension proxies six of YouTube's core JavaScript APIs (JSON.parse, TextEncoder.encode, XHR.send, Array.push, Promise.then, Node.appendChild), intercepting the player's configuration data before YouTube's own code reads it. Ad slots are stripped from the instruction sheet. The player starts up clean and finds nothing to display.
+
+This approach is preventive rather than reactive. There is no ad to detect and skip because the ad data is removed before the player's ad-serving logic ever runs. Anti-adblock detection looks for loaded ad slots that were never played. With the slots absent, detection finds nothing.
+
+Response time after YouTube's anti-adblock updates: typically 24 to 48 hours. At 10 million users, it is one of the larger dedicated YouTube ad blockers on the Chrome Web Store, and it is MV3-native, so Chrome's MV2 shutdown never touched it.
+
+**Where it falls short:** YouTube is the entire scope. No website ad blocking, no tab suspension, no cookie banner removal, no general tracker rules. If you only care about YouTube and nothing else, that is fine. If you are also fighting ads on news sites, consent banners on every page, and Chrome eating RAM across 30 open tabs, you are layering four separate tools to cover what one extension could handle.
+
+**One thing to know before you install it.** In June 2026, researchers reported that the extension's YouTube check tested whether the string "youtube.com" appeared anywhere in a URL. A crafted address like bank.example.com/search?q=youtube.com would satisfy that test. Paired with its remote rule fetching, that gave the extension the ingredients for running JavaScript on sites well outside YouTube, switchable from the developer's server without shipping an update. No abuse was observed. The developer responded in v7.2.3 by validating the hostname properly and dropping the flagged scriptlet. The extension still pulls rules from a remote server and executes them, so you are trusting the publisher's server, not just the code Google reviewed. That is a normal trade for this category.
+
+## uBlock Origin Lite: Real Scriptlets, Review-Gated Fixes
+
+**v2026.711.25 · 15 million users · verified July 2026**
+
+A common claim needs correcting first: uBlock Origin Lite is not a purely declarative blocker with no injected scripts. Per gorhill's documentation, uBOL ships scriptlets (small JavaScript functions bundled with its rulesets) alongside Chrome's native DNR engine. It can and does apply page-level fixes, including on YouTube.
+
+The real limits are different, and they matter for YouTube specifically:
+
+- Every fix waits on store review. Rulesets and scriptlets update only when the extension itself updates. uBOL never fetches filters from remote servers, so when YouTube pushes an anti-adblock change, the fix has to ship as a full extension update through Chrome Web Store review. That can take days.
+- No custom filters or list imports. A deliberate design sacrifice for permission-less operation.
+- No dynamic filtering. The per-site switches from full uBlock Origin could not be ported to MV3 because declarativeNetRequest lacks top-context enforcement.
+- Generic cosmetic filtering is off by default. You get it only by raising a site's blocking mode to Complete.
+
+Practical upshot: during stable periods, uBOL handles general web ads with minimal overhead (default ruleset around 17,000 rules, roughly 30,000 with all optional sets enabled). During a YouTube wave, its recovery is capped by the review cycle rather than by how fast its developer writes the fix.
+
+**Best for:** lightweight general blocking on machines where overhead matters. Workable on YouTube between waves. Slow to recover during them.
+
+## AdGuard: Strong Generalist, Inconsistent on YouTube
+
+**v5.4.3 · 16 million users · verified July 2026**
+
+AdGuard is the largest extension on this list by install count. Its MV3 version replaced the old MV2 build as the main Chrome Web Store listing in September 2024, so it also sailed through Chrome's shutdown. General website ad blocking is strong: a dedicated filter team and a 24 to 48 hour response cadence after YouTube changes.
+
+On YouTube specifically, AdGuard's track record is mixed. Its approach has varied across versions: sometimes scriptlet-style interception, sometimes cosmetic filtering to hide ad containers, sometimes filter list rules. It works well during stable periods and struggles more than AdBlock for YouTube during YouTube's major updates. AdGuard's own MV3 documentation is candid about the constraints: automatic filter updates are gone (filters now ship with extension updates), dynamic rules are capped at 5,000, and the filtering log shows assumed rather than exact rule matches.
+
+The paid tier adds DNS-level blocking, expanded popup controls, and mobile coverage beyond the browser. If you run a home network and want one subscription covering DNS, browser, and mobile simultaneously, AdGuard's ecosystem makes sense. That case is about the platform, not YouTube-specific blocking.
+
+## Ghostery: The Privacy-First MV3 Option
+
+**v10.5.51 · 2 million users · verified July 2026**
+
+Ghostery rebuilt itself MV3-native: declarativeNetRequest for network blocking plus its tracker database and Never-Consent cookie banner rejection. The release cadence is active. v10.5.50 shipped June 30, 2026, with the store build already a point ahead. Like AdGuard, it was never an MV2 casualty.
+
+Ghostery earns its place here as a working, actively maintained blocker for ads and trackers with a privacy-first posture. On YouTube video ads specifically, it is not a specialist. It lacks a dedicated player-interception engine, so during anti-adblock waves it faces the same reactive-patching cycle as other generalists. Pick it for tracker blocking and clean browsing, and pair it with a YouTube-specific engine if video ads are your main complaint.
+
+## How They Compare on YouTube Specifically
+
+| Extension | Version (Sep 2026) | Users | Runs on Chrome 153 | YT Block Method | Anti-Adblock Cadence | General Blocking |
+|---|---|---|---|---|---|---|
+| AdBlock for YouTube | v7.2.3 | 10M | Yes (MV3) | API proxy (preventive) | 24-48h | None |
+| uBlock Origin | v1.72.2 | 12M* | No. MV2, disabled since Chrome 138 | Scriptlets (when it ran) | N/A on stable | Full (Firefox only) |
+| uBlock Origin Lite | v2026.711.25 | 15M | Yes (MV3) | Bundled scriptlets, review-gated | Days (store review) | Good |
+| AdGuard | v5.4.3 | 16M | Yes (MV3) | Mixed (inconsistent) | 24-48h | Full |
+| Ghostery | v10.5.51 | 2M | Yes (MV3) | Generalist rules only | Reactive | Full + anti-tracking |
+| SuperchargePerformance | v1.4.8 | Not cited | Yes (MV3) | DNR + API proxy + fallback + cosmetic | 24-48h | 195K+ DNR rules |
+
+\*uBlock Origin's 12M count reflects legacy installs that no longer execute on stable Chrome. Google removed the listing from the Chrome Web Store on August 31, 2026.
+
+## SuperchargePerformance: The Multi-Utility Case
+
+**v1.4.8 · verified September 2026**
+
+SuperchargePerformance's YouTube blocking runs four layers in sequence, three of which are proprietary:
+
+- **DNR network rules** (proprietary): 14 declarative rules compiled into the extension manifest. Chrome evaluates these at the network layer before any script on the page runs.
+- **API proxy** (derived from AdBlock for YouTube's upstream engine, synced March 31, 2026): proxies JSON.parse, TextEncoder.encode, XHR.send, Array.push, Promise.then, and Node.appendChild to strip ad metadata from YouTube's player configuration before playback starts. Pre-rolls are handled at page load. Mid-rolls are handled as YouTube fetches additional ad batches during watching.
+- **Fallback bridge** (proprietary): an ISOLATED-world script polls for .ytp-ad-skip-button and related skip selectors, clicks them when present, and hides interstitial overlays that slip past the proxy.
+- **Cosmetic CSS** (proprietary): site-specific rules hide masthead-ad, banner-promo-renderer, branding-banner, and statement-banner elements from YouTube's feeds, search results, and sidebar.
+
+AdBlock for YouTube uses the proxy layer alone. Three of SuperchargePerformance's four layers are built independently.
+
+The difference in scope beyond YouTube:
+
+- 195K+ DNR rules (v1.4.8 compilation, September 2026) for general web ad and tracker blocking
+- AutoConsent: automated cookie banner rejection across 100+ consent management platforms, powered by DuckDuckGo's AutoConsent
+- Popup blocker covering popup-unders, redirect chains, and full-screen overlay spawns, while passing legitimate same-domain popups
+- Tab suspension via chrome.tabs.discard() with default timers of 15 minutes (low) and 5 minutes (med), and 34 auto-protected web apps including Figma, Notion, Slack, Google Docs, and Linear
+- A popup RAM-saved counter, a conservative session-total estimate (80 MB per suspension event)
+
+The API proxy layer syncs from AdBlock for YouTube's upstream, which patches within 24 to 48 hours of YouTube changes. The DNR rules and cosmetic CSS update on SuperchargePerformance's own release cadence, independent of upstream. A fix for a missed ad format or a new YouTube feed placement does not have to wait for an upstream sync cycle.
+
+**On filter count:** SuperchargePerformance's 195K+ rules are all native DNR entries, deduplicated at build time, and evaluated by Chrome's network layer with zero per-request JavaScript overhead. Full uBlock Origin's larger figure included procedural cosmetic rules and scriptlets that cannot be expressed as DNR. Those capabilities are now confined to Firefox.
+
+**Best for:** someone who wants one extension handling YouTube ads, general web blocking, popups, cookie banners, and idle tab RAM without stacking four tools.
+
+## Why YouTube Ad Blocking Is Uniquely Hard
+
+YouTube is not a website with ads loaded from third-party domains. It is a platform that packages ad instructions inside its own API responses. A traditional ad blocker's URL-matching rules see a request going to youtube.com and cannot distinguish whether the payload contains a cat video or 30 seconds of pre-roll instructions.
+
+Three things make YouTube specifically harder than general web ad blocking:
+
+**DOM injection timing.** The interception has to happen in the narrow window between when the page starts loading and when YouTube's player JavaScript runs. Too early and the necessary APIs are not available. Too late and the player has already read its configuration. Extensions configured to inject at document_start get this window right. Those that wait for document_idle often miss it.
+
+**Ongoing API calls.** Pre-rolls are not the only problem. YouTube fetches additional ad batches in the background as you continue watching. A complete YouTube ad block solution has to monitor this ongoing traffic, not just clean up the initial page load.
+
+**Active countermeasures.** YouTube's anti-adblock system checks for evidence of interference: ad slots that loaded but were not played, timing anomalies in the player's ad-request cycle, discrepancies between what the player reports and what it actually did. Extensions that patch reactively leave fingerprints. The preventive approach (removing ad data before the player reads it) leaves none.
+
+The SSAI horizon adds a fourth dimension. YouTube is testing Server-Side Ad Insertion: ads stitched into the video stream before delivery, inseparable from content at the network level. When SSAI is fully deployed on a video, there is no API response to intercept and no client-side metadata to strip. The ad and the content arrive under the same CDN address in the same transport stream. Frame-by-frame AI analysis could theoretically detect the boundary, but not inside a browser extension. YouTube Premium becomes the only functional escape.
+
+As of September 2026, SSAI is still in limited testing. The research-backed estimate puts broad rollout 6 to 12 months out. Every extension on this list would be affected simultaneously.
+
+## The Arms Race: A Timeline
+
+| Period | Event | Effect on Blockers |
+|---|---|---|
+| May 2023 | YouTube begins anti-adblock warnings on select accounts | First wave. Most blockers recover in days |
+| Oct-Nov 2023 | YouTube scales enforcement globally with a three-strike policy | Major disruption. Several smaller extensions never recover |
+| Jan 2024 | YouTube rotates ad serving infrastructure | uBlock Origin scriptlets require emergency patch |
+| June 2025 | YouTube's most significant anti-adblock update to date | Player API restructured. Most scriptlet-based blockers broken for 1-4 weeks |
+| July 24, 2025 | Chrome 138 disables all MV2 extensions on stable, no re-enable toggle | Full uBlock Origin stops running for every stable-channel user |
+| Early 2026 | YouTube SSAI limited testing begins | No immediate impact. Signals long-term trajectory |
+| June 30, 2026 | Chrome 150 removes the first MV2 developer escape-hatch flag | Last unofficial re-enable paths begin closing |
+| July 28, 2026 | Chrome 151 deletes the remaining MV2 machinery from Chromium | No flag, policy, or command line brings MV2 back |
+| August 31, 2026 | Google removes all remaining MV2 listings from the Chrome Web Store | uBlock Origin's listing disappears |
+
+The MV2 shutdown was the structural event. The July 2025 disabling sent millions of users searching for alternatives, and the final flag removal (Chrome 151, July 28, 2026) closed the last loophole. Many users ended up on uBlock Origin Lite (a different product with review-gated updates) or AdBlock for YouTube (a dedicated engine). YouTube's June 2025 anti-adblock update hit while users were still adjusting, compounding the disruption. Advice you will still find in forums, "just reinstall uBlock Origin," has been wrong on stable Chrome for nearly a year.
+
+## Is Loon a YouTube Ad Blocker?
+
+No. Loon is not an ad blocker. It is a browser extension that surfaces Canadian-made product alternatives while you shop on Amazon and similar sites. People search for "Loon ad blocker" or "Loon YouTube adblock" because the name overlaps with the ad-blocking ecosystem, but the two products are unrelated and share no codebase.
+
+Loon's Chrome build has been frozen at the August 2025 version since the developer archived the code. No updates are coming to the Chrome extension. If you were looking for a YouTube ad blocker and found Loon in your search results, the five options above are what you actually need. No "raw link" or older build of Loon changes that, because the product was never an ad blocker to begin with.
+
+## When You Don't Need an Extension at All
+
+**YouTube Premium subscribers.** YouTube Premium removes ads at the server level, before any client-side processing, before any extension can see the ad data, and before SSAI becomes relevant. If you are already paying for Premium, every extension on this list is redundant for YouTube specifically. Do not install an ad blocker for YouTube and pay for Premium simultaneously.
+
+**Mobile-first YouTube viewers.** Every extension on this list runs in Chrome on desktop. YouTube's mobile app on iOS or Android does not support browser extensions. If you watch YouTube primarily on your phone, none of these tools help you there. The only ad-free option on YouTube mobile is YouTube Premium.
+
+---
+
+If your blocker was full uBlock Origin: it is not coming back on Chrome. Move to Firefox to keep it, or pick an MV3 blocker from the list above.
+
+If your blocker is MV3 and ads suddenly reappeared: wait 24 to 48 hours first. Routine YouTube tweaks get patched on that cadence by AdBlock for YouTube, SuperchargePerformance, and AdGuard. uBlock Origin Lite takes longer because its fixes ship through store review.
+
+If you are on uBlock Origin Lite and YouTube ads keep slipping through: its scriptlets are real but its update cycle is slow. Pair it with a dedicated YouTube engine, or switch to one.
+
+If you watch YouTube on mobile and want no ads: YouTube Premium is the only functional option.
+
+If you want one extension handling YouTube ads, popups, cookie banners, and idle tab RAM without stacking four tools: SuperchargePerformance pairs the YouTube-specific engine with general blocking and tab suspension in a single install.
+
+#### FAQ
+Q: Why is my YouTube ad blocker not working in 2026?
+A: As of September 2026, two causes dominate. If you used full uBlock Origin or any other Manifest V2 extension, Chrome disabled it: Chrome 138 (July 2025) turned off all MV2 extensions on every channel with no re-enable toggle, and Chrome 151 (July 28, 2026) deleted the last developer flags. If your blocker is MV3 and installed, the cause is YouTube-side: anti-adblock updates change how ad metadata is packaged, and blockers need 24 to 48 hours or more to patch.
+
+Q: Why is YouTube detecting my ad blocker?
+A: As of September 2026, YouTube's detection looks for evidence of interference: ad slots that loaded but never played, timing anomalies in the player's ad-request cycle, and discrepancies between what the player reports and what actually happened. Reactive blockers that let ad data load and then suppress it leave those fingerprints. Preventive blockers strip ad slots from the player's configuration before its ad-serving logic runs, so detection finds nothing to flag.
+
+Q: Does uBlock Origin still block YouTube ads on Chrome?
+A: No, not on stable Chrome. Google removed uBlock Origin's Chrome Web Store listing on August 31, 2026. Chrome has refused to run Manifest V2 extensions on stable since Chrome 138 in July 2025, and the 12 million legacy install count reflected old, enterprise, or forked Chromium builds. On Firefox, uBlock Origin works fully.
+
+Q: Can uBlock Origin Lite block YouTube ads?
+A: Partially. As of September 2026, uBlock Origin Lite ships scriptlets bundled with its rulesets, contrary to the common claim that it has no injected scripts at all. Its real limits: scriptlets and filter lists update only when the extension itself updates through Chrome Web Store review, so fixes during an anti-adblock wave can lag by days. There are no custom filters or list imports, no dynamic filtering, and generic cosmetic filtering is off unless you raise a site to Complete mode.
+
+Q: What is the best YouTube ad blocker for Chrome in 2026?
+A: As of September 2026, the most reliable YouTube-specific options on Chrome are AdBlock for YouTube (v7.2.3, 10 million users) and SuperchargePerformance (v1.4.8), which shares AdBlock for YouTube's upstream API-proxy engine and layers three additional proprietary mechanisms: 14 DNR network rules, a fallback skip-button clicker with interstitial hider, and cosmetic CSS for YouTube's feed and masthead. AdGuard (v5.4.3) and Ghostery (v10.5.51) are strong MV3 general blockers but less consistent on YouTube specifically.
+
+Q: What is SSAI and will it kill ad blockers on YouTube?
+A: As of September 2026, Server-Side Ad Insertion is YouTube's most significant long-term threat to ad blocking. Rather than sending ad metadata separately for the browser to parse, YouTube stitches ads directly into the video stream on its servers before delivery. The resulting stream contains ad and content segments under the same CDN address, indistinguishable at the network level. No browser extension can strip ads at that point. YouTube has been testing SSAI in limited rollouts since early 2026, with broad rollout estimated at 6 to 12 months out. If fully deployed, YouTube Premium becomes the only ad-free option.
+
+Q: Can I run uBlock Origin Lite and SuperchargePerformance together?
+A: As of September 2026, yes. Chrome guarantees every extension 30,000 static DNR rules and draws anything beyond that from a pool shared across all installed extensions. SuperchargePerformance uses 195,000+ rules, and uBlock Origin Lite's full optional set stays near 30,000. The cost of running both is duplicate rule evaluation and two extension service workers. The cleanest configuration: set SuperchargePerformance's content blocking to Off and let it handle only YouTube video ads, popups, and cookie banners, while uBlock Origin Lite owns general website blocking.
+
+---
+
 ### How to Auto-Close Chrome Tabs (Suspension Is Better)
 
 URL: https://www.superchargebrowser.com/library/auto-close-inactive-chrome-tabs/
@@ -2292,7 +2484,7 @@ This is what you came for. Every claim verified against current Chrome Web Store
 
 | | uBlock Origin (full) | uBlock Origin Lite | AdGuard | Ghostery | SuperchargePerformance |
 |---|---|---|---|---|---|
-| Version (Sep 2026) | v1.72.2 | v2026.711.25 | v5.4.3 | v10.5.51 | v1.4.7 |
+| Version (Sep 2026) | v1.72.2 | v2026.711.25 | v5.4.3 | v10.5.51 | v1.4.8 |
 | **Runs on Chrome 150?** | **No — MV2, disabled** | Yes | Yes | Yes | Yes |
 | CWS rating | 4.7 (can't run on Chrome) | 4.5 stars | 4.7 stars | 4.7 stars | Featured badge |
 | Users | 12M legacy installs | ~16M (Chrome) | ~16M | ~2M | ~4,700 |
@@ -2344,7 +2536,7 @@ Smaller user base (~2M) than the others, but a loyal one. If your primary motiva
 
 ## SuperchargePerformance — When Ads Are Only Half the Problem
 
-v1.4.7. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
+v1.4.8. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
 
 **Layer 1: Ad and tracker blocking.** 195K+ rules compiled from 18 curated sources, all free and enabled by default — no paywall. Coverage stacks in layers: 100K ad and tracker domains, 72K privacy and telemetry domains, 22K malware, phishing, and fraud domains. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
 
@@ -2390,7 +2582,7 @@ If you searched for "Loon" expecting an ad blocker: [Loon](/library/loon-chrome-
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
-A: As of August 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.72.2) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.7) covers all four — plus tab suspension and a session RAM-saved counter — in a single MV3 extension with 195K+ rules from 18 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
+A: As of August 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.72.2) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.4.8) covers all four — plus tab suspension and a session RAM-saved counter — in a single MV3 extension with 195K+ rules from 18 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
 
 Q: What is the best ad blocker for Chrome in 2026?
 A: As of August 2026, the major Chrome ad blockers are all Manifest V3 — AdGuard, Ghostery, Adblock Plus, and uBlock Origin Lite. Full uBlock Origin (v1.72.2) still has the deepest filter coverage of any blocker, but it is MV2 and no longer runs on Chrome, only on Firefox. On Chrome, uBlock Origin Lite is the zero-overhead option, AdGuard adds DNS-level protection in its paid apps, and SuperchargePerformance combines ad blocking (195K+ DNR rules) with tab suspension in a single extension.
@@ -2549,7 +2741,7 @@ The last three are named specifically as what to avoid, or use only on 8GB+ hard
 
 ## SuperchargePerformance: Tab Suspension + Ad Blocking Combined
 
-**CWS version: v1.4.7 (2026-08-26). We built this extension.**
+**CWS version: v1.4.8 (2026-09-18). We built this extension.**
 
 On a Chromebook, the two biggest RAM drains are idle tab renderers and ad iframes. SuperchargePerformance addresses both.
 
@@ -2634,10 +2826,10 @@ If you use Google Docs, Gmail, and YouTube regularly: SuperchargePerformance aut
 
 #### FAQ
 Q: What Chrome extensions are safe to install on a 4GB Chromebook?
-A: As of August 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.7) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
+A: As of August 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.4.8) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
 
 Q: Does SuperchargePerformance work on ChromeOS?
-A: As of August 2026, yes. SuperchargePerformance (v1.4.7) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
+A: As of August 2026, yes. SuperchargePerformance (v1.4.8) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
 
 Q: How many Chrome extensions should I have on a Chromebook?
 A: As of June 2026, 5-8 well-built extensions usually cause no noticeable Chrome overhead on Chromebook. Beyond 10, audit each one individually. On a 4GB Chromebook, each background-active extension adds 5-30 MB of memory overhead and some CPU. The practical limit depends on what each extension does — a declarative-only extension like uBlock Origin Lite costs near zero; a tab manager that syncs cloud state costs meaningfully more.
@@ -2823,7 +3015,7 @@ Each redundant extension you copy from Chrome starts its own renderer process an
 
 | Extension | CWS Version | Users | Gap it fills on Brave | Cost |
 |---|---|---|---|---|
-| SuperchargePerformance | v1.4.7 | — | Timed tab suspension, multi-signal protection, estimated RAM popup | Free, PRO waitlist |
+| SuperchargePerformance | v1.4.8 | — | Timed tab suspension, multi-signal protection, estimated RAM popup | Free, PRO waitlist |
 | SuperchargeNavigation | v1.3.4 | — | Named workspaces, command bar, 50 session snapshots | Free |
 | Dark Reader | v4.9.129 | 7,000,000 | Per-site dark mode for page content | Free |
 | Bitwarden Password Manager | v2026.8.0 | 7,000,000 | Password vault beyond the browser edge | Free / paid |
@@ -2863,7 +3055,7 @@ On Brave, the four hosted MV2 extensions sidestep the store purge because they r
 
 ## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
 
-Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.7, free core) uses the same Chromium mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
+Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.4.8, free core) uses the same Chromium mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
 
 - **Timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier. PRO is waitlist-only and unlocks custom values down to seconds.
 - **Protection signals.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 34 web apps are auto-protected out of the box, including Figma, Notion, Slack, Google Docs, Discord, Zoom, and WhatsApp Web, where a discard would drop a call or kill a queue.
@@ -3014,7 +3206,7 @@ The bypass logic runs entirely in your browser — no playback metadata leaves t
 
 | | TwitchAdblock | TTV LOL Pro | Alternate Player | SuperchargePerformance |
 |---|---|---|---|---|
-| Version (Sep 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.7 |
+| Version (Sep 2026) | v2.1 | v2.6.1 | v2025.6.16 | v1.4.8 |
 | CWS users | 100K+ | 200K+ | 80K+ | — |
 | MV3 | Yes | Yes | Yes | Yes |
 | Bypass method | Worker hijack + M3U8 sub | Proxy + clean token | Embed player swap | Worker hijack + M3U8 sub |
@@ -3060,192 +3252,6 @@ A: As of June 2026, Twitch's SSAI has already made traditional ad blockers irrel
 
 Q: Is BetterTTV a Twitch ad blocker?
 A: No. As of June 2026, BetterTTV and 7TV are emote and chat enhancement extensions. Neither blocks Twitch ads. They add custom emotes, chat filters, and interface improvements but have no ad-blocking mechanism.
-
----
-
-### YouTube Ad Blocker Not Working? 5 Fixes, Tested Live (2026)
-
-URL: https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/
-Category: comparison | Extension: performance | Updated: 2026-09-04
-Description: Your ad blocker isn't broken by YouTube alone — Chrome disabled the most popular one. See which 5 blockers still work on YouTube right now, tested live.
-
-> **Key takeaways**
-> - **Chrome, not YouTube, killed the most popular blocker.** Full uBlock Origin has been disabled on stable Chrome since Chrome 138 (July 2025); its store listing disappears August 31, 2026.
-> - **uBlock Origin Lite does ship scriptlets** — but its fixes wait on Chrome Web Store review, so it lags during anti-adblock waves.
-> - **The only approach that survives YouTube's detection** removes ad data before the player reads its configuration, not after ads load.
-
-If your YouTube ad blocker stopped working, check what you are running before blaming YouTube. Full uBlock Origin has been disabled on every stable Chrome since Chrome 138 (July 2025). Chrome 151 deletes the last re-enable flags on July 28, 2026, and the Chrome Web Store removes remaining Manifest V2 listings on August 31. Five MV3 blockers below still work, verified live in July 2026.
-
-## First: Did Chrome Kill It, or Did YouTube?
-
-Two separate failure modes get lumped under "my ad blocker stopped working," and they need different fixes.
-
-**Chrome killed it (Manifest V2 shutdown).** If your blocker was full uBlock Origin, AdGuard's old MV2 build, or any extension Chrome flagged as "no longer supported," the browser disabled it. Per Google's own deprecation timeline: Chrome 138 (July 24, 2025) turned off all MV2 extensions on every channel with no user re-enable toggle. Undocumented developer flags kept a narrow escape hatch alive for another year; Chrome 150 (stable June 30, 2026) removed the first, and Chrome 151 (stable July 28, 2026) deletes the rest of the MV2 machinery entirely. On August 31, 2026, Google removes all remaining MV2 listings from the Chrome Web Store.
-
-The uBlock Origin situation confuses people because the listing looks healthy. It is still on the store as of July 2026: v1.72.2, updated July 8, 2026, 12 million users, 4.7 stars, Featured badge. gorhill keeps shipping MV2 updates to it. None of that means it runs. Stable Chrome has refused to execute it since Chrome 138, and the 12 million count reflects legacy installs on old, enterprise, or forked Chromium builds. Reinstalling it on a current Chrome does nothing — and after August 31 there will be nothing to reinstall. The [full uBlock Origin status history](/library/does-ublock-origin-still-work-chrome-2026/) covers the timeline in detail. If you want full uBO, the answer is Firefox, where it works completely.
-
-**YouTube broke it (anti-adblock wave).** If your blocker is MV3 and shows as enabled, the cause is YouTube-side. YouTube pushed five distinct enforcement waves between mid-2023 and June 2025, each changing how ad metadata is packaged in the player's API responses. The June 2025 wave was the most aggressive, invalidating nearly every scriptlet-based approach at once. As of July 2026, no major DOM-level wave has hit since — a break today is more likely a routine tweak that your blocker patches within days. The five options below are ranked by how they handle exactly that cycle.
-
-## AdBlock for YouTube: Purpose-Built for One Job
-
-**v7.2.3 · 10 million users · verified July 2026**
-
-AdBlock for YouTube (CWS ID: `cmedhionkhpnakcndndgjdbohmhepckk`) does one thing and builds everything around doing it well. The extension proxies several of YouTube's core JavaScript APIs (`JSON.parse`, `TextEncoder.encode`, `XHR.send`, `Array.push`, `Promise.then`, `Node.appendChild`), intercepting the player's configuration data before YouTube's own code reads it. Ad slots are stripped from the instruction sheet. The player starts up clean and finds nothing to display.
-
-This approach is preventive rather than reactive. There's no ad to detect and skip because the ad data is removed before the player's ad-serving logic ever runs. Anti-adblock detection looks for loaded ad slots that weren't played. With the slots absent, the detection finds nothing.
-
-Response time after YouTube's anti-adblock updates: typically 24-48 hours. The development team tracks YouTube's changes actively. At 10 million users, it's one of the larger dedicated YouTube ad blockers on CWS, and it is MV3-native, so Chrome's MV2 shutdown never touched it.
-
-**Where it falls short:** YouTube is the entire scope. No website ad blocking, no tab suspension, no cookie banner removal, no general tracker rules. If you only care about YouTube and nothing else, that's fine. If you're also fighting ads on news sites, consent banners on every page, and Chrome eating 4 GB of RAM, you're layering four separate tools.
-
-**One thing to know before you install it.** In June 2026, researchers reported that the extension's YouTube check tested whether the string `youtube.com` appeared anywhere in a URL, which a crafted address like `bank.example.com/search?q=youtube.com` would satisfy. Paired with its remote rule fetching, that gave the extension the ingredients for running JavaScript on sites well outside YouTube, switchable from the developer's server without shipping an update. No abuse was observed, and the developer responded: v7.2.3 validates the hostname properly and drops the flagged scriptlet. The extension still pulls rules from a remote server and executes them, so you are trusting the publisher's server, not just the code Google reviewed. That is a normal trade for this category — worth knowing, not a reason to panic.
-
-## uBlock Origin Lite: Real Scriptlets, Review-Gated Fixes
-
-**v2026.711.25 · 15 million users · verified July 2026**
-
-A common claim needs correcting first: uBlock Origin Lite is not a purely declarative blocker with "no injected scripts." Per gorhill's own documentation, uBOL ships scriptlets — small JavaScript functions bundled with its rulesets — alongside Chrome's native DNR engine. It can and does apply page-level fixes, including on YouTube.
-
-The real limits are different, and they matter for YouTube specifically:
-
-- **Every fix waits on store review.** Rulesets and scriptlets update only when the extension itself updates; uBOL never fetches filters from remote servers. When YouTube pushes an anti-adblock change, the fix has to ship as a full extension update through Chrome Web Store review. That can take days.
-- **No custom filters or list imports.** A deliberate design sacrifice for permission-less operation.
-- **No dynamic filtering.** The per-site switches from full uBO could not be ported to MV3, because declarativeNetRequest lacks top-context enforcement.
-- **Generic cosmetic filtering is off by default.** You get it only by raising a site's blocking mode to Complete.
-
-Practical upshot: during stable periods, uBOL handles general web ads with minimal overhead (default ruleset around 17K rules, roughly 30K with all optional sets enabled). During a YouTube wave, its recovery is capped by the review cycle rather than by how fast its developer writes the fix.
-
-**Best for:** lightweight general blocking on machines where overhead matters. Workable on YouTube between waves; slow to recover during them.
-
-## AdGuard: Strong Generalist, Inconsistent on YouTube
-
-**v5.4.3 · 16 million users · verified July 2026**
-
-AdGuard is the largest extension on this list by install count. Its MV3 version replaced the old MV2 build as the main Chrome Web Store listing back in September 2024, so it also sailed through Chrome's shutdown. General website ad blocking is strong: a dedicated filter team and a 24-48 hour response cadence after YouTube changes.
-
-On YouTube specifically, AdGuard's track record is mixed. Its approach has varied across versions: sometimes scriptlet-style interception, sometimes cosmetic filtering to hide ad containers, sometimes filter list rules. It works well during stable periods and struggles more than AdBlock for YouTube during YouTube's major updates. AdGuard's own MV3 documentation is candid about the constraints: automatic filter updates are gone (filters now ship with extension updates), dynamic rules are capped at 5,000, and the filtering log shows assumed rather than exact rule matches.
-
-The paid tier adds DNS-level blocking, expanded popup controls, and mobile coverage beyond the browser. If you run a home network and want one subscription covering DNS, browser, and mobile simultaneously, AdGuard's ecosystem makes sense. That case is about the platform, not YouTube-specific blocking.
-
-## Ghostery: The Privacy-First MV3 Option
-
-**v10.5.51 · 2 million users · verified July 2026**
-
-Ghostery rebuilt itself MV3-native: declarativeNetRequest for network blocking plus its tracker database and Never-Consent cookie banner rejection. The release cadence is active — v10.5.50 shipped June 30, 2026, with the store build already a point ahead. Like AdGuard, it was never an MV2 casualty.
-
-Ghostery earns its place here as a working, actively maintained blocker for ads and trackers with a privacy-first posture. On YouTube video ads specifically, it is not a specialist: it lacks a dedicated player-interception engine, so during anti-adblock waves it faces the same reactive-patching cycle as other generalists. Pick it for tracker blocking and clean browsing, and pair it with a YouTube-specific engine if video ads are your main complaint.
-
-## How They Compare on YouTube Specifically
-
-| Extension | Version (Sep 2026) | Users | Runs on Chrome 150 | YT Block Method | Anti-Adblock Cadence | General Blocking |
-|---|---|---|---|---|---|---|
-| AdBlock for YouTube | v7.2.3 | 10M | Yes (MV3) | API proxy (preventive) | 24-48h | None |
-| uBlock Origin | v1.72.2 | 12M* | **No — MV2, disabled since Chrome 138** | Scriptlets (when it ran) | N/A on stable | Full (Firefox only) |
-| uBlock Origin Lite | v2026.711.25 | 15M | Yes (MV3) | Bundled scriptlets, review-gated updates | Days (store review) | Good |
-| AdGuard | v5.4.3 | 16M | Yes (MV3) | Mixed (inconsistent) | 24-48h | Full |
-| Ghostery | v10.5.51 | 2M | Yes (MV3) | Generalist rules only | Reactive | Full + anti-tracking |
-| SuperchargePerformance | v1.4.7 | 4K | Yes (MV3) | DNR + API proxy + fallback + cosmetic | 24-48h | 195K+ DNR rules |
-
-*uBlock Origin's 12M count reflects legacy installs that no longer execute on stable Chrome. The listing itself is removed from CWS on August 31, 2026.
-
-## SuperchargePerformance: The Multi-Utility Case
-
-**v1.4.7 · verified September 2026**
-
-SuperchargePerformance's YouTube blocking runs four layers in sequence, three of which are proprietary:
-
-- **DNR network rules** (proprietary): 14 declarative rules compiled into the extension manifest. Chrome evaluates these at the network layer before any script on the page runs.
-- **API proxy** (derived from AdBlock for YouTube's upstream engine, synced March 31, 2026): proxies `JSON.parse`, `TextEncoder.encode`, `XHR.send`, `Array.push`, `Promise.then`, and `Node.appendChild` to strip ad metadata from YouTube's player configuration before playback starts. Pre-rolls are handled at page load; mid-rolls as YouTube fetches additional ad batches during watching.
-- **Fallback bridge** (proprietary): an ISOLATED-world script polls for `.ytp-ad-skip-button` and related skip selectors, clicks them when present, and hides interstitial overlays that slip past the proxy.
-- **Cosmetic CSS** (proprietary): site-specific rules hide `masthead-ad`, `banner-promo-renderer`, `branding-banner`, and `statement-banner` elements from YouTube's feeds, search results, and sidebar.
-
-AdBlock for YouTube uses the proxy layer alone. Three of Perf's four layers are built independently.
-
-The difference in scope beyond YouTube: SuperchargePerformance also bundles the YouTube engine with:
-
-- **195K+ DNR rules** (v1.4.7 compilation, September 2026) from 18 curated sources covering ad networks, trackers, analytics, fingerprinting, malware, phishing, and fraud domains
-- **AutoConsent:** automated cookie banner rejection across 100+ consent management platforms (powered by DuckDuckGo's AutoConsent)
-- **Popup blocker** covering popup-unders, redirect chains, and full-screen overlay spawns (while passing legitimate same-domain popups)
-- **Tab suspension** via `chrome.tabs.discard()` with configurable timers and 34 auto-protected web apps (Figma, Notion, Slack, Google Docs, Linear, and others)
-- **Popup RAM-saved counter**, a conservative session-total estimate
-
-No account required. Zero telemetry by default. 100% local processing. Featured badge on CWS.
-
-The API proxy layer syncs from AdBlock for YouTube's upstream, which patches within 24-48 hours of YouTube changes. The DNR rules and cosmetic CSS update on Perf's own release cadence, independent of upstream. That means a fix for a missed ad format or a new YouTube feed placement doesn't have to wait for an upstream sync cycle.
-
-**On filter count:** Perf's 195K+ rules are all native DNR entries, compiled from 18 upstream sources, deduplicated at build time, and evaluated by Chrome's network layer with zero per-request JavaScript overhead. Full uBlock Origin's larger figure included procedural cosmetic rules and scriptlets that cannot be expressed as DNR — capabilities now confined to Firefox. On raw domain-level blocking, Perf's compiled ruleset covers the full stack of YouTube ads, popups, cookie banners, and tab memory without requiring multiple extensions.
-
-## Why YouTube Ad Blocking Is Uniquely Hard
-
-YouTube is not a website with ads loaded from third-party domains. It's a platform that packages ad instructions inside its own API responses. A traditional ad blocker's URL-matching rules see a request going to `youtube.com` and can't distinguish whether the payload contains a cat video or 30 seconds of pre-roll instructions.
-
-Three things make YouTube specifically harder than general web ad blocking:
-
-**DOM injection timing.** The interception has to happen in the narrow window between when the page starts loading and when YouTube's player JavaScript runs. Too early and the necessary APIs aren't available. Too late and the player has already read its configuration. Extensions configured to inject at `document_start` get this window right. Those that wait for `document_idle` often miss it.
-
-**Ongoing API calls.** Pre-rolls aren't the only problem. YouTube fetches additional ad batches in the background as you continue watching. A complete YouTube ad block solution has to monitor this ongoing traffic, not just clean up the initial page load.
-
-**Active countermeasures.** YouTube's anti-adblock system checks for evidence of interference: ad slots that loaded but weren't played, timing anomalies in the player's ad-request cycle, discrepancies between what the player reports and what it did. Extensions that patch reactively leave fingerprints. The preventive approach (removing ad data before the player reads it) leaves none.
-
-The SSAI horizon adds a fourth dimension. YouTube is testing Server-Side Ad Insertion: ads stitched into the video stream before delivery, inseparable from content at the network level. When SSAI is fully deployed on a video, there is no API response to intercept, no client-side metadata to strip. The ad and the content arrive under the same CDN address in the same transport stream. Frame-by-frame AI analysis could theoretically detect the boundary, but not inside a browser extension. YouTube Premium becomes the only functional escape.
-
-As of July 2026, SSAI is still in limited testing. The research-backed estimate puts broad rollout 6-12 months out. Every extension on this list would be affected simultaneously.
-
-## The Arms Race: A Timeline
-
-| Period | Event | Effect on Blockers |
-|---|---|---|
-| May 2023 | YouTube begins anti-adblock warnings on select accounts | First wave; most blockers recover in days |
-| Oct-Nov 2023 | YouTube scales enforcement globally — three-strike policy | Major disruption; several smaller extensions never recover |
-| Jan 2024 | YouTube rotates ad serving infrastructure | uBlock scriptlets require emergency patch |
-| June 2025 | YouTube's most significant anti-adblock update to date | Player API restructured; most scriptlet-based blockers broken for 1-4 weeks |
-| July 24, 2025 | Chrome 138 disables all MV2 extensions on stable, no re-enable toggle | Full uBlock Origin stops running for every stable-channel user |
-| Early 2026 | YouTube SSAI limited testing begins | No immediate impact; signals long-term trajectory |
-| June 30, 2026 | Chrome 150 removes the first MV2 developer escape-hatch flag | Last unofficial re-enable paths begin closing |
-| July 28, 2026 | Chrome 151 deletes the remaining MV2 machinery from Chromium | No flag, policy, or command line brings MV2 back |
-| August 31, 2026 | Google removes all remaining MV2 listings from the Chrome Web Store | uBlock Origin's listing (still updated as of July 8, 2026) disappears |
-
-The MV2 shutdown was the structural event, and it is still unfolding: the July 2025 disabling sent millions of users searching for alternatives, and the final flag removal (Chrome 151, July 28, 2026) closes the last loophole. Many users ended up on uBlock Origin Lite (a different product with review-gated updates) or AdBlock for YouTube (a dedicated engine). YouTube's June 2025 anti-adblock update hit while users were still adjusting, compounding the disruption. Advice you'll still find in forums, "just reinstall uBlock Origin," has been wrong on stable Chrome for nearly a year.
-
-## Two Scenarios Where You Don't Need an Ad Blocker
-
-**YouTube Premium subscribers.** At $15.99/month, YouTube Premium removes ads at the server level, before any client-side processing, before any extension can see the ad data, before SSAI becomes relevant. If you're already paying for YouTube Premium, every extension on this list is redundant for YouTube specifically. Don't install an ad blocker for YouTube and pay for Premium simultaneously.
-
-**Mobile-first YouTube viewers.** Every extension on this list runs in Chrome on desktop. YouTube's mobile app on iOS or Android does not support browser extensions. If you watch YouTube primarily on your phone, none of these tools help you there. The only ad-free option on YouTube mobile is YouTube Premium. Ad-blocking browsers like Brave have limited YouTube coverage on mobile and face the same anti-adblock pressure without the extension ecosystem to respond quickly.
-
----
-
-If your blocker was full uBlock Origin: it is not coming back on Chrome. Move to Firefox to keep it, or pick an MV3 blocker above.
-
-If your blocker is MV3 and ads suddenly appeared: wait 24-48 hours first. Routine YouTube tweaks get patched on that cadence by AdBlock for YouTube, SuperchargePerformance, and AdGuard. uBlock Origin Lite takes longer because its fixes ship through store review.
-
-If you're on uBlock Origin Lite and YouTube ads keep slipping through: its scriptlets are real but its update cycle is slow. Pair it with a dedicated YouTube engine, or switch to one.
-
-If you watch YouTube on mobile and want no ads: YouTube Premium is the only functional option.
-
-If you arrived here searching for "Loon" as a YouTube ad blocker: [Loon](/library/loon-chrome-extension-explained/) finds Canadian-made product alternatives while you shop on Amazon and similar sites. It is not an ad blocker, and its Chrome build has been frozen at the August 2025 version since the developer archived the code.
-
-#### FAQ
-Q: Why is my YouTube ad blocker not working in 2026?
-A: As of July 2026, two causes dominate. If you used full uBlock Origin or any other Manifest V2 extension, Chrome itself disabled it: Chrome 138 (July 2025) turned off all MV2 extensions on every channel with no re-enable toggle, and Chrome 151 (July 28, 2026) deletes the last developer flags. If your blocker is MV3 and installed, the cause is YouTube-side: anti-adblock updates change how ad metadata is packaged, and blockers need 24-48 hours or more to patch.
-
-Q: Why is YouTube detecting my ad blocker?
-A: As of July 2026, YouTube's detection looks for evidence of interference: ad slots that loaded but never played, timing anomalies in the player's ad-request cycle, and discrepancies between what the player reports and what actually happened. Reactive blockers that let ad data load and then suppress it leave those fingerprints. Preventive blockers strip ad slots from the player's configuration before its ad-serving logic runs, so detection finds nothing to flag.
-
-Q: Does uBlock Origin still block YouTube ads on Chrome?
-A: No, not on stable Chrome. The Chrome Web Store listing is still live as of July 2026 (v1.72.2, updated July 8, 2026, 12 million users) and gorhill still ships MV2 updates to it, but Chrome has refused to run Manifest V2 extensions on stable since Chrome 138 in July 2025. The 12 million install count reflects legacy installs on old, enterprise, or forked Chromium builds. Google removes all remaining MV2 listings from the Chrome Web Store on August 31, 2026. On Firefox, uBlock Origin works fully.
-
-Q: Can uBlock Origin Lite block YouTube ads?
-A: Partially. As of July 2026, uBlock Origin Lite does ship scriptlets bundled with its rulesets, contrary to the common claim that it has no injected scripts at all. Its real limits: scriptlets and filter lists update only when the extension itself updates through Chrome Web Store review, so fixes during an anti-adblock wave can lag by days; there are no custom filters or list imports; dynamic filtering could not be ported to MV3; and generic cosmetic filtering is off unless you raise a site to Complete mode.
-
-Q: What is the best YouTube ad blocker for Chrome in 2026?
-A: As of August 2026, the most reliable YouTube-specific options on Chrome are AdBlock for YouTube (v7.2.3, 10 million users) and SuperchargePerformance (v1.4.7), which shares AdBlock for YouTube's upstream API-proxy engine and layers three additional proprietary mechanisms around it: 14 DNR network rules evaluated before any script runs, a fallback skip-button clicker with an interstitial hider, and cosmetic CSS for YouTube's feed and masthead. AdGuard (v5.4.3) and Ghostery (v10.5.51) are strong MV3 general blockers but less consistent on YouTube specifically. Full uBlock Origin no longer runs on stable Chrome.
-
-Q: What is SSAI and will it kill ad blockers on YouTube?
-A: As of July 2026, Server-Side Ad Insertion (SSAI) is YouTube's most significant long-term threat to ad blocking. Rather than sending ad metadata separately for the browser to parse, YouTube stitches ads directly into the video stream on its own servers before delivery. The resulting stream contains both ad and content segments under the same CDN address, indistinguishable at the network level. No browser extension can strip ads at that point. YouTube has been testing SSAI in limited rollouts since early 2026. If broadly deployed, it would make YouTube Premium the only ad-free option.
-
-Q: Can I run uBlock Origin Lite and SuperchargePerformance together?
-A: As of August 2026, yes. Chrome's static DNR rule budget is shared but generous: Chrome guarantees every extension 30,000 static rules and draws anything beyond that from a pool shared across all installed extensions, so the headroom you have depends on what else is enabled. SuperchargePerformance uses 195K+, and uBlock Origin Lite's full optional set stays near 30K. The cost of running both is duplicate evaluation and two extension service workers. The cleanest configuration: set SuperchargePerformance's content blocking to Off and let it handle only YouTube/Twitch video ads, popups, and cookie banners, while uBlock Origin Lite owns general website ad blocking.
 
 ---
 
@@ -3320,7 +3326,7 @@ SuperchargePerformance is our tab suspender, built and tested for Chrome; Brave 
 - Suspends inactive tabs on a timer you choose: 15 minutes free, 5 minutes on the default tier, custom seconds on PRO, versus Brave deciding on its own schedule
 - Skips tabs that shouldn't sleep: playing audio, pinned, holding unsaved form input, plus 34 auto-protected web apps
 - 100% local, zero telemetry, free core, no account required
-- As of September 2026, the current Chrome Web Store release is version 1.4.7
+- As of September 2026, the current Chrome Web Store release is version 1.4.8
 
 If Fix 2 is the lever you actually need, meaning drain that tracks tab count rather than a single runaway process, this is the same mechanism with a timer you control instead of one Brave controls for you.
 
@@ -3808,7 +3814,7 @@ Every option below runs on current stable Chrome and survives both remaining 202
 | uBlock Origin Lite | Active; gorhill's DNR-only rebuild | No custom filters or list imports; filter lists update only with extension updates; generic cosmetic filtering off by default (on in Complete mode); default ruleset ~17K rules |
 | AdGuard (MV3) | Main Chrome listing since Sep 2024; v5.4.3 | No automatic filter updates; 5,000 dynamic rule cap; max 50 enabled filters |
 | Ghostery | MV3 + DNR; v10.5.51 (July 2026) | Tracker-focused rather than full filter-list coverage |
-| SuperchargePerformance | MV3-native from launch; v1.4.7 | Nothing lost to the transition — built on DNR from day one |
+| SuperchargePerformance | MV3-native from launch; v1.4.8 | Nothing lost to the transition — built on DNR from day one |
 
 A common misreading is that uBO Lite "has no cosmetic filtering." It does: generic cosmetic filtering ships in the extension but is off by default, and raising a site's blocking mode to Complete turns it on. What Lite lacks is the dynamic layer — custom rules, list imports, per-site scripting switches — which declarativeNetRequest cannot express.
 
@@ -4347,7 +4353,7 @@ The table below maps each common class of deleted tool to the MV3 options that c
 | Ad blocking | Adblock Plus | MV3 build live on the Chrome Web Store. |
 | Tracker blocking | Privacy Badger | MV3 build live on the Chrome Web Store. |
 | Ad + tracker blocking | Ghostery | MV3 rebuild shipped 2025. |
-| Ad blocking + tab suspension + optimization | SuperchargePerformance | v1.4.7. 195K+ declarativeNetRequest rules. 34 web-app domains never auto-suspended. |
+| Ad blocking + tab suspension + optimization | SuperchargePerformance | v1.4.8. 195K+ declarativeNetRequest rules. 34 web-app domains never auto-suspended. |
 | Tab organization + workspace management | SuperchargeNavigation | v1.3.4. |
 
 If your deleted tool was a blocker or an optimizer, the SuperchargePerformance row is the direct path forward. It combines the 195K+ rule set with tab suspension and per-domain auto-protection in a single MV3 build that updates through the normal store channel. If the tool organized tabs or switched between workspaces, SuperchargeNavigation covers that ground.
@@ -4358,7 +4364,7 @@ The installed copy does not run. Chrome 138 (July 24, 2025) stopped MV2 backgrou
 
 Map the next step to what the deleted tool actually did:
 
-If it blocked ads or optimized page loads, install SuperchargePerformance (v1.4.7, MV3, live on the store as of September 2026). The 195K+ declarativeNetRequest rule set and 34-domain auto-protection cover the blocking and optimization work in one extension that receives updates through the normal channel.
+If it blocked ads or optimized page loads, install SuperchargePerformance (v1.4.8, MV3, live on the store as of September 2026). The 195K+ declarativeNetRequest rule set and 34-domain auto-protection cover the blocking and optimization work in one extension that receives updates through the normal channel.
 
 If it organized tabs, managed workspaces, or switched between sets of tabs, install SuperchargeNavigation (v1.3.4, MV3).
 
@@ -4406,7 +4412,7 @@ Every Chrome Web Store listing has a Privacy practices section. The developer mu
 
 Open each installed extension's listing and compare the declared categories against what the tool does. A screenshot tool declaring "website content" is coherent. A volume booster declaring "browsing history" is the mismatch the new Limited Use rule targets.
 
-Declarations are self-reported, so treat a clean panel as necessary rather than sufficient. The strongest claim an extension can make is collecting nothing at all, because it is independently verifiable: open DevTools on the extension's service worker and watch the Network tab. SuperchargePerformance (v1.4.7, as of September 2026) makes zero outbound requests and stores everything locally, which is why the new rules require nothing from it.
+Declarations are self-reported, so treat a clean panel as necessary rather than sufficient. The strongest claim an extension can make is collecting nothing at all, because it is independently verifiable: open DevTools on the extension's service worker and watch the Network tab. SuperchargePerformance (v1.4.8, as of September 2026) makes zero outbound requests and stores everything locally, which is why the new rules require nothing from it.
 
 ## Check 2: Match Permissions Against the Stated Purpose
 
@@ -4605,7 +4611,7 @@ The MV3 field is more capable than the 2024 doom posts suggested, though the tab
 
 | | uBO Lite | AdGuard MV3 | Ghostery | SuperchargePerformance |
 |---|---|---|---|---|
-| Version (Sep 2026 snapshot) | Current, MV3 | 5.4.3 | 10.5.51 (July 10, 2026) | 1.4.7 |
+| Version (Sep 2026 snapshot) | Current, MV3 | 5.4.3 | 10.5.51 (July 10, 2026) | 1.4.8 |
 | Cosmetic filtering | Yes (generic off until Complete mode) | Yes | Yes | Basic |
 | Custom filters | No | Yes (5,000 dynamic rules) | No | No |
 | YouTube ad blocking | Partial (bundled scriptlets) | Yes | Limited | Yes (dedicated layers) |
@@ -5019,7 +5025,7 @@ The most common casualty by far. Full uBlock Origin is Manifest V2 and has been 
 
 **AdGuard AdBlocker** (~16 million users, 4.7 stars) is the other heavyweight. Its MV3 build layers a dynamic "Quick Fixes" system on top of Chrome's declarativeNetRequest engine, which lets it patch broken filters between extension updates.
 
-**[SuperchargePerformance](/performance/)** (v1.4.7) takes a different angle: 195K+ blocking rules, evaluated natively by Chrome's DNR engine, bundled with the tab suspension covered next. If the MV2 shutdown killed both your ad blocker and your tab suspender, it replaces the pair with one extension. Dedicated blockers go deeper on cosmetic and dynamic filtering; the bundle wins on covering two dead extensions at once, with zero telemetry and no account.
+**[SuperchargePerformance](/performance/)** (v1.4.8) takes a different angle: 195K+ blocking rules, evaluated natively by Chrome's DNR engine, bundled with the tab suspension covered next. If the MV2 shutdown killed both your ad blocker and your tab suspender, it replaces the pair with one extension. Dedicated blockers go deeper on cosmetic and dynamic filtering; the bundle wins on covering two dead extensions at once, with zero telemetry and no account.
 
 And the fear that MV3 blockers barely work? A PoPETs 2026 study tested four popular blockers against their MV3 versions and found no statistically significant drop in overall blocking effectiveness.
 
@@ -6746,7 +6752,7 @@ So "Need 3043MB" is not a claim about your machine. It is the size of the contig
 
 The manual version of Fix 1 is discarding tabs by hand every time you open a large file. SuperchargePerformance does it on a timer: idle tabs suspend with `chrome.tabs.discard()` after a set interval, releasing their memory back to the pool so Photopea's tab can claim the contiguous block it needs.
 
-Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of September 2026 the live version is v1.4.7.
+Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of September 2026 the live version is v1.4.8.
 
 If Photopea is the only heavy tab you ever have open, the extension will not change much — at that point the answer is Fix 3 (shrink the file) or Fix 6 (split it). Suspension helps when Photopea competes with a wall of other tabs for the same block.
 
@@ -7081,7 +7087,7 @@ Install it once and it covers the broad ad and tracker surface without per-site 
 
 ## Option 3: SuperchargePerformance
 
-This one solves a different problem than pure ad blocking. SuperchargePerformance (CWS v1.4.7) ships 195K+ rules (34 web-app domains never auto-suspend), dedicated YouTube and Twitch video-ad handlers, and a cookie-banner auto-dismiss. On the RAM side, tab suspension runs on a 15-minute (low) or 5-minute (med) timer, with a PRO tier for user-set seconds. The popup shows an estimated RAM-saved figure. That number is a model, not a per-tab measurement. Free core, no account, zero telemetry, local-only.
+This one solves a different problem than pure ad blocking. SuperchargePerformance (CWS v1.4.8) ships 195K+ rules (34 web-app domains never auto-suspend), dedicated YouTube and Twitch video-ad handlers, and a cookie-banner auto-dismiss. On the RAM side, tab suspension runs on a 15-minute (low) or 5-minute (med) timer, with a PRO tier for user-set seconds. The popup shows an estimated RAM-saved figure. That number is a model, not a per-tab measurement. Free core, no account, zero telemetry, local-only.
 
 This is the pick when memory pressure is the real problem. The video-ad and cookie-banner handling ride along on top of the suspension engine.
 
@@ -7276,7 +7282,7 @@ Chrome's `chrome.tabs.discard()` API works differently. The tab's renderer proce
 | Feature | Marvellous Suspender | SuperchargePerformance |
 |---------|---------------------|----------------------|
 | Suspension method | Custom suspension page | `chrome.tabs.discard()` (invisible) |
-| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.7, CWS-live since 2026-08-26) |
+| MV3 compatible | Yes (v8.1.3) | Yes (v1.4.8, CWS-live since 2026-09-18) |
 | Memory reclaimed per tab | 90-95% | 90-95% |
 | Back button affected | Possible (history entry) | No |
 | Suspension screen | Yes | None |
@@ -7399,7 +7405,7 @@ Neither loss is fixable after the fact. Once the bot is in the call and the file
 
 Both tools record what is in your browser tab without injecting a participant into the meeting. The meeting platform has no idea a recording is happening. The other side's participant list is unchanged.
 
-**SuperchargeCapture** is a Manifest V3 Chrome extension (Chrome Web Store build 1.1.2 as of September 2026). It captures the active tab's video and audio locally. The file writes to your disk, not a vendor server. Its capture shortcuts (Alt+Shift+S for visible, Alt+Shift+F for full-page, Alt+Shift+R for region, Alt+Shift+V to toggle recording) are Chrome-suggested and rebindable.
+**SuperchargeCapture** is a Manifest V3 Chrome extension (Chrome Web Store build 1.1.3 as of September 2026). It captures the active tab's video and audio locally. The file writes to your disk, not a vendor server. Its capture shortcuts (Alt+Shift+S for visible, Alt+Shift+F for full-page, Alt+Shift+R for region, Alt+Shift+V to toggle recording) are Chrome-suggested and rebindable.
 
 The trade: it records the browser tab, not the native app. If you run Zoom or Teams in the browser, the tab capture works. If you use the desktop client, you need the platform's own recorder (below).
 
@@ -7431,7 +7437,7 @@ Q: Can I record a Zoom meeting without installing any extension?
 A: Yes. Zoom, Google Meet, and Microsoft Teams each include a built-in recorder that the host starts. It captures the meeting without adding a bot participant. As of September 2026, the file is stored in the platform's cloud or saved locally, depending on the platform's settings. No extension is required.
 
 Q: Where does the recording file go with a local-capture recorder?
-A: With SuperchargeCapture, the file is written to your local disk. It does not upload to a vendor server. You control where it lives and who can access it. As of September 2026, the extension (Chrome Web Store build 1.1.2) operates entirely on your machine.
+A: With SuperchargeCapture, the file is written to your local disk. It does not upload to a vendor server. You control where it lives and who can access it. As of September 2026, the extension (Chrome Web Store build 1.1.3) operates entirely on your machine.
 
 ---
 
@@ -9389,7 +9395,7 @@ On August 31, 2026, Google removed every remaining Manifest V2 listing from the 
 
 - Card shows "no longer supported": check the extension's Chrome Web Store listing for a shipped Manifest V3 version. Many developers rebuilt under a new listing rather than updating the old one.
 - No Manifest V3 rebuild exists: the extension is abandoned on Chrome. Replace it with an MV3-native alternative.
-- The disabled extension is an ad or content blocker: most blockers that never shipped an MV3 version relied on the `webRequest` API that Manifest V3 replaced with `declarativeNetRequest`. SuperchargePerformance (v1.4.7) was built on `declarativeNetRequest` from launch, evaluating 195K+ curated blocking rules natively in Chrome with zero per-request JavaScript, so it never had a Manifest V2 version to lose.
+- The disabled extension is an ad or content blocker: most blockers that never shipped an MV3 version relied on the `webRequest` API that Manifest V3 replaced with `declarativeNetRequest`. SuperchargePerformance (v1.4.8) was built on `declarativeNetRequest` from launch, evaluating 195K+ curated blocking rules natively in Chrome with zero per-request JavaScript, so it never had a Manifest V2 version to lose.
 - Nothing on your list is dimmed: you're done. Every extension you run is already Manifest V3, and neither Chrome 152 nor any later release changes that.
 
 #### FAQ
@@ -9535,7 +9541,7 @@ This timing matters. The script doing the removal has to run before the player d
 
 Pre-rolls are handled at page load. Mid-rolls are a second problem: YouTube fetches additional ad batches through network calls as you watch. A complete fix also monitors this ongoing traffic and strips ad data from each subsequent response before the player processes it.
 
-SuperchargePerformance (v1.4.7) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
+SuperchargePerformance (v1.4.8) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
 
 ## How SuperchargePerformance Does It
 
@@ -9610,7 +9616,7 @@ Q: Does uBlock Origin block YouTube ads on Chrome in 2026?
 A: As of July 2026, no — not on stable Chrome. Chrome disabled all Manifest V2 extensions, including uBlock Origin, with Chrome 138 in July 2025, and the last re-enable flags are gone in Chrome 150 and 151. The Chrome Web Store listing is still live (v1.72.2) until Google removes remaining MV2 extensions on August 31, 2026, but installing it on current Chrome gets you a disabled extension. On Firefox, uBlock Origin still runs fully and blocks YouTube ads with scriptlets. On Chrome, the working options are MV3 blockers: uBlock Origin Lite, AdGuard's MV3 extension, or Ghostery.
 
 Q: What is the most reliable way to block YouTube ads on Chrome in 2026?
-A: As of September 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.7) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
+A: As of September 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.4.8) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
 
 Q: Will YouTube's anti-adblock detection catch this fix?
 A: As of June 2026, SuperchargePerformance bypasses YouTube's anti-adblock detection by removing ad data before the player initializes — the player sees a clean configuration with no ad slots, so the detection logic has nothing to find. A click-skip fallback handles rare cases where a placement slips through.
@@ -9661,7 +9667,7 @@ For a desktop-only viewer who watches on a laptop and never on a phone, these co
 
 ## A Blocker That Recovers Fast on Desktop
 
-If you choose the free route, the breakage windows are the thing to minimize. Blockers that strip ad data before YouTube's player reads it recover faster than ones that react after ads load. SuperchargePerformance (v1.4.7, verified September 2026) takes that preventive approach: it strips the ad data out before YouTube's player ever loads it, so pre-rolls and mid-rolls don't start in the first place. When YouTube changes how it serves ads, this design is the kind that patches in a day or two rather than staying broken for weeks. If a placement ever slips through, it skips and hides it instead of letting it play.
+If you choose the free route, the breakage windows are the thing to minimize. Blockers that strip ad data before YouTube's player reads it recover faster than ones that react after ads load. SuperchargePerformance (v1.4.8, verified September 2026) takes that preventive approach: it strips the ad data out before YouTube's player ever loads it, so pre-rolls and mid-rolls don't start in the first place. When YouTube changes how it serves ads, this design is the kind that patches in a day or two rather than staying broken for weeks. If a placement ever slips through, it skips and hides it instead of letting it play.
 
 It's free, needs no account, stores everything locally, and adds no telemetry. The same extension also suspends idle tabs and blocks general web ads, so it isn't a single-purpose YouTube tool. For the YouTube-specific ranking against AdBlock for YouTube, uBlock Origin, and AdGuard, see our [tested comparison of YouTube ad blockers](/library/best-youtube-ad-blockers-chrome-2026/). If your blocker is installed but ads still play, the [why-ads-still-show breakdown](/library/youtube-ads-still-showing-chrome/) explains the API-response mechanism.
 
@@ -10399,7 +10405,7 @@ A screenshot watermark is a sales device. The extension could export a clean ima
 
 | Extension | Users (Aug 2026) | Watermark | What the free tier withholds |
 |---|---|---|---|
-| SuperchargeCapture | New (v1.1.2) | None | Nothing: all modes, editor, export free |
+| SuperchargeCapture | New (v1.1.3) | None | Nothing: all modes, editor, export free |
 | GoFullPage | 11,000,000 | None | Exporting *annotated* images (Premium, ~$1/mo) |
 | Lightshot | 2,000,000 | None | Full-page capture doesn't exist; uploads are public links |
 | Scrnli | 1,000,000 | None | Nothing significant on screenshots |
@@ -10483,7 +10489,7 @@ The use case is the same everywhere: a tutorial, a Loom-style async update, a bu
 
 ## SuperchargeCapture: a Local Bubble, No Account
 
-[SuperchargeCapture](/capture/) (v1.1.2) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
+[SuperchargeCapture](/capture/) (v1.1.3) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
 
 Mic and tab audio record alongside. Export goes to MP4, WebM, or [GIF](/library/screen-recording-to-gif-slack-discord-2026/), written to local storage: no account, no watermark, no recording cap, nothing uploaded.
 
@@ -10497,7 +10503,7 @@ Screenity (v4.6.4, ~200,000 users) is the open-source pick, and its free tier is
 
 | Extension | Webcam PiP | Free-tier limits (checked Aug 7, 2026) | Account | Video lives |
 |---|---|---|---|---|
-| SuperchargeCapture v1.1.2 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
+| SuperchargeCapture v1.1.3 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
 | Screenity v4.6.4 | Movable overlay | No cap, no watermark | No | Your device |
 | Loom v5.5.203 | Circular bubble | 25 videos total, 5 min each | Yes | Loom cloud |
 | Screencastify | Bubble overlay | 10 videos, 30 min each, watermark | Yes (Google) | Cloud |
@@ -10564,7 +10570,7 @@ Scribe ranks well for "Chrome screen recorder" searches, but its own tool page s
 
 Scribe is a documentation tool, and a popular one: its Chrome Web Store listing shows 1,000,000 users as of August 7, 2026. You click Start Capture, work through a process, click Complete Capture, and Scribe assembles an illustrated how-to. One screenshot per click, instructions written for you, published as a web page you share by link or embed. That is the whole product, and the reason it markets to recorder searches is that people documenting a process often think they need a video first.
 
-SuperchargeCapture (v1.1.2 as of August 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
+SuperchargeCapture (v1.1.3 as of September 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
 
 | | Scribe | SuperchargeCapture |
 |---|---|---|
@@ -13251,110 +13257,141 @@ URL: https://www.superchargebrowser.com/library/zen-browser-extensions-complete-
 Category: guide | Extension: navigation | Updated: 2026-06-25
 Description: Zen browser extensions come from addons.mozilla.org. Get the exact install steps, the 5 best carry-overs, and full uBlock Origin, not Chrome's MV3 Lite.
 
-You switched to Zen for the clean vertical tabs, opened the Add-ons Manager to bring your extensions across, and hit a wall: where is the Chrome Web Store? It isn't there, and it isn't coming. Zen is a Firefox fork (built on Firefox 152 as of mid-June 2026), so it pulls extensions from addons.mozilla.org instead. Open the Add-ons Manager with Ctrl+Shift+A, browse addons.mozilla.org, and click "Add to Firefox" on any add-on. Chrome extensions do not install.
+You installed Zen for the vertical tabs, open the Add-ons Manager to move your extensions across, and the Chrome Web Store simply isn't there. Zen is a Firefox fork (v1.22.1b on Firefox 155.0, September 2026) that pulls add-ons from addons.mozilla.org. The five carry-overs below, the install routes, and one decision rule tell you whether Zen is the right call.
 
-Whether that wall is a minor detour or a dealbreaker depends entirely on which extensions you rely on. The rest of this guide covers the exact install steps, which extensions carry over from Chrome, which break, and what to do if your stack is Chrome-only.
+What is at stake before you commit: your saved passwords if they live in a Chrome-only password manager, and any SSO helper or dev tool built exclusively for Chrome's APIs. Those losses stay invisible until you are past the switch and a login screen or workflow just does not load.
 
-## How to Install an Extension in Zen Browser
+> **Key takeaways**
+> - Zen's add-ons come from addons.mozilla.org. The install button still reads "Add to Firefox" because Zen reuses Firefox's installation machinery.
+> - Five well-maintained extensions (uBlock Origin, Bitwarden, Dark Reader, Privacy Badger, Vimium-FF) carry over. A Chrome-only tool with no Firefox port will not.
+> - Zen ships vertical tabs, named workspaces, and a 4-tab split view natively, so a typical Chrome stack needs fewer add-ons in Zen.
 
-There are two ways into the Add-ons Manager, and both end at addons.mozilla.org.
+## Installing Add-ons in Zen: Three Routes to addons.mozilla.org
 
-**The keyboard route:**
+Three paths reach the Add-ons Manager, and all of them land on addons.mozilla.org.
 
-1. Press **Ctrl+Shift+A** to open the Add-ons Manager (this is the Firefox shortcut, and it works unchanged in Zen).
-2. Click **Find more add-ons**, which sends you to addons.mozilla.org.
-3. Search for the add-on you want, open its page, and click **Add to Firefox**.
-4. Confirm the permission prompt. The add-on appears in your toolbar or menu, exactly as it would in Firefox.
+**Keyboard route:**
 
-**The URL-bar route:**
+1. Press **Ctrl+Shift+A**. The Add-ons Manager opens (this is the Firefox shortcut, unchanged in Zen).
+2. Click **Find more add-ons**. Your browser navigates to addons.mozilla.org.
+3. Search for the add-on, open its page, click **Add to Firefox**.
+4. Confirm the permission prompt. The add-on appears in your toolbar or menu.
+
+**URL-bar route:**
 
 1. Click the **settings icon** in the URL bar.
 2. Select the **plus icon** to jump to the Add-ons Manager page.
-3. From there, follow steps 2–4 above.
+3. From there, follow steps 2 through 4 of the keyboard route.
 
-You can also reach the manager through the main menu under **Add-ons and themes**. All three paths land in the same place. The "Add to Firefox" button label is correct here — Zen reuses Firefox's installation machinery, so the button keeps its Firefox wording even though you are running Zen.
+**Main-menu route:**
 
-Once installed, an add-on manages itself like any Firefox extension: pin it to the toolbar, set per-site permissions, or disable it from the Add-ons Manager. Nothing about the management flow is Zen-specific.
+Open the main menu and select **Add-ons and themes**. This also lands on the Add-ons Manager.
 
-## Which Chrome Extensions Carry Over (and Which Don't)
+The "Add to Firefox" label is correct and intentional. Zen reuses Firefox's extension infrastructure, so the button keeps its Firefox wording even though you are running Zen. After install, you manage the add-on the same way you would in Firefox: pin it, set per-site permissions, or disable it from the Add-ons Manager. Extension toggles are off by default on Private Windows and restricted sites, a privacy behavior inherited from Firefox.
 
-This is the question that actually decides whether Zen is switchable for you. The store is different, so an extension is only available in Zen if it has a Firefox build on addons.mozilla.org.
+## The 5 Carry-Over Extensions (and the One That Is Not)
 
-Many of the most-used extensions ship in both stores and move over without friction:
+An extension works in Zen only if a Firefox build exists on addons.mozilla.org. The five below are the ones most Chrome users will recognize:
 
-| Extension | On Firefox/Zen? | Notes |
+| Extension | Available in Zen? | Why it matters |
 |---|---|---|
-| uBlock Origin | Yes | Full version, unlike Chrome's MV3-limited Lite |
-| Bitwarden | Yes | First-class Firefox build |
-| Dark Reader | Yes | Cross-store parity |
-| Privacy Badger | Yes | EFF maintains both |
-| Vimium | Yes (as Vimium-FF) | Keyboard navigation |
-| A Chrome-only extension with no Firefox port | No | The blocker for most switchers |
+| uBlock Origin | Yes | Full version on the Firefox side, unlike Chrome's MV3-restricted Lite |
+| Bitwarden | Yes | First-class Firefox build with full sync |
+| Dark Reader | Yes | Cross-store parity, same dark-mode engine |
+| Privacy Badger | Yes | EFF maintains both store builds |
+| Vimium | Yes (as Vimium-FF) | Keyboard-driven navigation |
+| A Chrome-only extension with no Firefox port | No | The blocker that stops most switchers |
 
-The reliable carry-overs are the big, well-maintained, cross-platform tools. Where people get stuck is the long tail: a niche productivity extension, a company SSO helper, a Chrome-specific developer tool, or anything built for Chrome's APIs with no one porting it to Firefox. If your daily workflow leans on one of those, Zen cannot run it, and no setting changes that — it is a Firefox-engine limitation Zen inherits.
+The carry-overs are the big, well-maintained, cross-platform tools. The long tail is where people get stuck: a niche productivity add-on, a company SSO helper, a Chrome-specific developer tool. If your daily workflow depends on one of those, Zen cannot run it. That is a Firefox-engine limitation, not a Zen bug, and no setting changes it.
 
-One upside worth naming: because Zen is Firefox-based, you get Firefox's full uBlock Origin rather than the Manifest V3-restricted version Chrome now enforces. For ad and tracker blocking specifically, the Firefox side is currently stronger.
+One upside worth naming: because Zen is Firefox-based, you get the full uBlock Origin rather than the Manifest V3-restricted version Chrome enforces. For ad and tracker blocking specifically, the Firefox side is the stronger build right now.
 
-If you carry over Vimium for keyboard-driven browsing, note that the Chrome side has a direct answer too: SuperchargeNavigation includes a hint mode where you hold Shift to label every link with a letter badge, then type the badge to click, or press Shift+Alt and a badge to peek the link in an overlay without leaving the page. So losing Vimium to a Chrome-only edge case is not the dead end it first looks like.
+If you rely on Vimium for keyboard browsing, Chrome has an answer too. SuperchargeNavigation ships a hint mode where you hold Shift to label every link with a letter badge, then type the badge to click or press Shift+Alt and a badge to peek the link in an overlay without leaving the page. Losing Vimium to a Chrome-only edge case is not a dead end.
 
-## What Breaks: Themes and the Occasional Edge Case
+## What Does Not Transfer: Themes and Edge Cases
 
-Two things do not transfer cleanly even within the Firefox ecosystem.
+Two categories do not survive the move even within the Firefox ecosystem.
 
-**Firefox themes do not work in Zen.** Zen handles its appearance through its own Zen Mods system, which is separate from Firefox's theme engine. Functional add-ons install fine; visual themes from addons.mozilla.org do not apply. If you want to restyle Zen, use Zen Mods, not Firefox themes.
+**Firefox themes are unsupported in Zen.** Zen handles its appearance through Zen Mods, a CSS-based theming system for the browser UI that is separate from Firefox's theme engine. Functional add-ons install fine; visual themes from addons.mozilla.org do not apply. If you want to restyle Zen, Zen Mods is the path.
 
-**A small number of add-ons hit edge cases.** Zen changes the browser interface substantially, and add-ons are tested against stock Firefox first. Most install and run without issue, but an add-on that assumes Firefox's exact UI layout or pokes at unmodified browser chrome can misbehave in Zen. This is a minority, and it concentrates in add-ons that manipulate the toolbar or sidebar directly. Core functional categories — content blockers, password managers, readers, screenshot tools — are dependable. If an add-on glitches, the Zen GitHub discussions are the place reports collect.
+**A small number of add-ons hit edge cases.** Zen modifies the browser interface substantially, and add-ons are tested against stock Firefox first. An add-on that assumes Firefox's exact UI layout or pokes at unmodified browser chrome can misbehave in Zen. This is a minority, and it concentrates in add-ons that manipulate the toolbar or sidebar directly. Core functional categories (content blockers, password managers, readers, screenshot tools) are dependable.
 
-## Zen's Built-In Features Replace Some Extensions
+## What Zen Ships That Replaces Chrome Extensions
 
-Part of why Zen needs fewer extensions is that it bakes in features Chrome users reach for add-ons to get. Before hunting for an add-on, check whether Zen already ships the capability:
+Part of why Zen needs fewer add-ons is that features Chrome users reach for extensions to get are built in:
 
-- **Vertical tabs** are the default, not an option.
-- **Named workspaces** with tab isolation are first-class — no extension needed.
-- **Split view** tiles up to four tabs in a grid, beyond what any Chrome extension offers.
-- **Glance** gives a live tab preview without switching away.
-- **Zen Mods** handle site CSS/JS customization, replacing the Stylus/UserScripts pairing.
+- **Vertical tabs** are the default layout, not a flag or an add-on.
+- **Named workspaces** with tab isolation are first-class. Switching swaps the entire tab context.
+- **Split view** tiles up to four tabs in a grid layout.
+- **Glance** gives a live tab preview without switching away from the active tab.
+- **Zen Mods** handle per-site CSS and JS customization, replacing the Stylus and UserScripts pairing.
 
-So a chunk of a typical Chrome extension stack — a vertical-tab manager, a workspace tool, a site-styling extension — is redundant in Zen. The extensions you still need are the cross-cutting utilities (blocker, password manager, reader), and those are exactly the ones with reliable Firefox builds.
+A chunk of a typical Chrome extension stack (a vertical-tab manager, a workspace tool, a site-styling extension) is redundant in Zen. The add-ons you still need are the cross-cutting utilities: a blocker, a password manager, a reader. Those are exactly the ones with reliable Firefox builds.
 
-## If Your Stack Is Chrome-Only: The Chrome Path
+Chrome has closed part of this gap on its own. Native vertical tabs (shipped in Chrome 146, per the June 2026 version of this guide) are in the current stable, Chrome 153. Say you keep ten tabs open across two projects. Chrome's built-in tab management covers that load without an extension.
 
-When the deciding extension has no Firefox port, switching to Zen costs you that tool, your saved passwords if they live in a Chrome-only manager, and your existing sync. For a lot of people that price is too high, and the better move is to recreate Zen's *workflow* inside Chrome rather than switch engines.
+## If Your Stack Is Chrome-Only: The Nav Path
 
-Chrome already covers the structural part natively: vertical tabs shipped in Chrome 146 (enable via `chrome://flags`, then Settings → Appearance → Tab position). That gives you Zen's sidebar layout without leaving the Chrome Web Store behind.
+When the deciding extension has no Firefox port, switching to Zen costs you that tool, your saved passwords if they live in a Chrome-only manager, and your existing sync setup. For a lot of people that price is too high. The alternative is to recreate Zen's workflow inside Chrome.
 
-The features Chrome still lacks natively — named workspaces, a command bar, session recovery — come from an extension. SuperchargeNavigation adds named workspaces with full tab isolation (switching swaps the whole context, the way Zen's do), an Alt+K command bar for keyboard-driven search across tabs, history, and bookmarks, a hint mode that labels links for mouse-free clicking and peeking, and 50 rolling auto-snapshots for session time-travel. It can also dock its sidebar in-page on the left or right, narrower than Chrome's native side panel allows. The one Zen feature with no Chrome equivalent is the 4-pane split-view grid; Chrome's built-in split is 2-pane only.
+Chrome covers the layout natively: vertical tabs for the sidebar feel, and native split view for side-by-side tabs. The features Chrome still lacks natively (named workspaces, a command bar, session recovery, keyboard-driven link navigation) come from SuperchargeNavigation. It adds named workspaces with full tab isolation, an Alt+K command bar for search across tabs, history, and bookmarks, hint-mode link navigation, 50 rolling auto-snapshots for session time-travel, and a dockable in-page sidebar on the left or right. It runs locally with no account and zero telemetry, and Chrome-native sync is optional and on by default for fresh installs.
 
-It runs locally with no account and zero telemetry, optional Chrome-native sync if you want it, and it keeps your entire Chrome extension library intact. For the memory and blocking side that Firefox handles structurally, SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()` and ships 195K+ blocking rules.
+On the memory and blocking side, SuperchargePerformance suspends idle tabs via `chrome.tabs.discard()` (low-timer 15 min, medium 5 min) and ships 195K+ blocking rules. The popup shows a conservative RAM estimate (suspensions times 80 MB, a model not a measurement). Tab suspension frees roughly 90 to 95 percent of a discarded tab's renderer memory, per the architecture of `chrome.tabs.discard()`.
 
-## Picking Your Path
+## The One Decision
 
-The decision comes down to one question about your extensions.
+The whole question reduces to one check: open your Chrome extension list and ask which ones have a Firefox build on addons.mozilla.org.
 
-**If your must-have extensions all have Firefox builds** (or Zen's built-ins replace them), Zen is a clean switch and a well-designed browser in its own right. Install the cross-store essentials from addons.mozilla.org, lean on Zen Mods for theming, and you lose very little.
+**If every must-have extension carries over** (or Zen's built-ins replace it), Zen is a clean switch. Install the cross-store essentials from addons.mozilla.org, lean on Zen Mods for theming, and the losses are minor.
 
-**If even one critical extension is Chrome-only**, that wall at the Add-ons Manager is the whole story: switching means giving the extension up, and that is rarely worth it. Stay on Chrome, turn on native vertical tabs for the sidebar layout, and add SuperchargeNavigation for the workspaces, command bar, and keyboard hints that made Zen feel good in the first place.
+**If even one critical extension is Chrome-only**, that wall at the Add-ons Manager is the whole story. Stay on Chrome, enable native vertical tabs for the sidebar layout, and add SuperchargeNavigation for the workspaces, command bar, and keyboard hints that made Zen feel good in the first place. SuperchargePerformance covers the RAM and blocking side if you want it.
 
-For a feature-by-feature comparison of the two paths rather than the install mechanics, see the [Zen vs Chrome extensions breakdown](/library/zen-browser-vs-chrome-extensions/). For the broader workspace question, [does Chrome have workspaces?](/library/chrome-workspaces-explained/) covers what native Chrome can and cannot do.
+For a feature-by-feature comparison of the two paths, see the [Zen vs Chrome extensions breakdown](/library/zen-browser-vs-chrome-extensions/). For the broader workspace question, [does Chrome have workspaces?](/library/chrome-workspaces-explained/) covers what native Chrome can and cannot do.
+
+## FAQ
+
+**Where do Zen browser extensions (addons) come from?**
+
+As of September 2026, Zen Browser installs all extensions from addons.mozilla.org, the Firefox add-on store. Zen is a Firefox fork (v1.22.1b on Firefox 155.0), so it uses the Firefox add-on ecosystem. The Chrome Web Store is not available in Zen. The terms "addons" and "extensions" are interchangeable; both refer to add-ons from addons.mozilla.org.
+
+**Is there a "Zen internet extension"?**
+
+As of September 2026, there is no product called a "Zen internet extension." Zen Browser is a browser, not a single extension. Its add-ons come from addons.mozilla.org. If you are looking for a specific tool, search addons.mozilla.org directly or check whether Zen's built-in features (vertical tabs, workspaces, split view, Zen Mods) cover the need before installing an add-on.
+
+**How do I install an extension in Zen Browser?**
+
+As of September 2026, open the Add-ons Manager with Ctrl+Shift+A (or main menu then Add-ons and themes, or the URL-bar settings icon then the plus icon), browse to addons.mozilla.org, and click "Add to Firefox" on any add-on. The button keeps its Firefox label because Zen reuses Firefox's installation machinery.
+
+**Do Chrome extensions work in Zen Browser?**
+
+No. As of September 2026, Zen is Firefox-based and cannot run Chrome Web Store extensions. Extensions that ship in both stores (uBlock Origin, Bitwarden, Dark Reader, Privacy Badger, Vimium as Vimium-FF) carry over. A Chrome-only extension with no Firefox port will not work in Zen.
+
+**Do Firefox themes work in Zen Browser?**
+
+No. As of September 2026, Firefox themes are not compatible with Zen. Zen handles appearance through Zen Mods, its own CSS-based theming system for the browser UI. Functional add-ons from addons.mozilla.org install fine; visual themes do not.
+
+**What is the Chrome equivalent of Zen's features?**
+
+As of September 2026, the closest Chrome setup is native vertical tabs plus SuperchargeNavigation for named workspaces, an Alt+K command bar, hint-mode link navigation, and 50 rolling auto-snapshots. SuperchargePerformance covers RAM suspension and ad blocking with 195K+ blocking rules. This keeps the full Chrome Web Store library while adding Zen-style tab management.
 
 #### FAQ
-Q: Where do Zen Browser extensions come from?
-A: As of June 2026, Zen Browser installs extensions from addons.mozilla.org, Mozilla's official Firefox add-on store. Zen is a Firefox fork (built on Firefox 152, version 1.21.3b as of mid-June 2026), so it uses the Firefox add-on ecosystem. The Chrome Web Store is not supported — Chrome extensions cannot be installed in Zen.
+Q: Where do Zen browser extensions (addons) come from?
+A: As of September 2026, Zen Browser installs all extensions from addons.mozilla.org, the Firefox add-on store. Zen is a Firefox fork (v1.22.1b on Firefox 155.0), so it uses the Firefox add-on ecosystem. The Chrome Web Store is not available in Zen. The terms 'addons' and 'extensions' are interchangeable; both refer to add-ons from addons.mozilla.org.
+
+Q: Is there a 'Zen internet extension'?
+A: As of September 2026, there is no product called a 'Zen internet extension.' Zen Browser is a browser, not a single extension. Its add-ons come from addons.mozilla.org. If you are looking for a specific tool, search addons.mozilla.org directly or check whether Zen's built-in features (vertical tabs, workspaces, split view, Zen Mods) cover the need before installing an add-on.
 
 Q: How do I install an extension in Zen Browser?
-A: As of June 2026, open the Add-ons Manager with Ctrl+Shift+A (or main menu → Add-ons and themes), then browse to addons.mozilla.org and click 'Add to Firefox' on any add-on. You can also click the settings icon in the URL bar and select the plus icon to reach the Add-ons Manager. The add-on installs the same way it would in Firefox.
+A: As of September 2026, open the Add-ons Manager with Ctrl+Shift+A (or main menu then Add-ons and themes, or the URL-bar settings icon then the plus icon), browse to addons.mozilla.org, and click 'Add to Firefox' on any add-on. The button keeps its Firefox label because Zen reuses Firefox's installation machinery.
 
 Q: Do Chrome extensions work in Zen Browser?
-A: No. As of June 2026, Zen Browser is Firefox-based and cannot run Chrome Web Store extensions. Some popular extensions ship in both stores (uBlock Origin, Bitwarden, Dark Reader), so those carry over. But any Chrome-only extension with no Firefox port will not work, and switching to Zen means losing it.
+A: No. As of September 2026, Zen is Firefox-based and cannot run Chrome Web Store extensions. Extensions that ship in both stores (uBlock Origin, Bitwarden, Dark Reader, Privacy Badger, Vimium as Vimium-FF) carry over. A Chrome-only extension with no Firefox port will not work in Zen.
 
 Q: Do Firefox themes work in Zen Browser?
-A: No. As of June 2026, Firefox themes are not compatible with Zen because Zen handles theming through its own Zen Mods system rather than Firefox's theme engine. Add-ons (functional extensions) from addons.mozilla.org work; visual themes do not. Use Zen Mods for appearance customization instead.
+A: No. As of September 2026, Firefox themes are not compatible with Zen. Zen handles appearance through Zen Mods, its own CSS-based theming system for the browser UI. Functional add-ons from addons.mozilla.org install fine; visual themes do not.
 
-Q: Why won't some Firefox add-ons install in Zen?
-A: As of June 2026, most addons.mozilla.org add-ons install cleanly, but Zen modifies the browser interface heavily, so occasional edge cases break. Add-ons that depend on Firefox's exact UI layout or unmodified chrome can misbehave. Add-ons are tested against Firefox first, not Zen, so expect a small number to glitch. Core functional add-ons (blockers, password managers, readers) are reliable.
-
-Q: What's the Chrome equivalent of Zen Browser?
-A: As of June 2026, there is no single browser that matches Zen. The closest setup is Chrome with native vertical tabs (shipped in Chrome 146) plus SuperchargeNavigation for named workspaces, an Alt+K command bar, and session time-travel. This keeps the full Chrome Web Store extension library while adding Zen-style tab management. SuperchargePerformance covers the RAM and ad-blocking side.
+Q: What is the Chrome equivalent of Zen's features?
+A: As of September 2026, the closest Chrome setup is native vertical tabs plus SuperchargeNavigation for named workspaces, an Alt+K command bar, hint-mode link navigation, and 50 rolling auto-snapshots. SuperchargePerformance covers RAM suspension and ad blocking with 195K+ blocking rules. This keeps the full Chrome Web Store library while adding Zen-style tab management.
 
 ---
 
