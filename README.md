@@ -19,7 +19,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
-> - Website with 200 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 203 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -165,7 +165,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 200 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 203 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -253,12 +253,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 ## Library — Article Index
 
-200 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+203 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.superchargebrowser.com/library/<slug>/index.md).
 
 <details>
-<summary>View all 200 articles</summary>
+<summary>View all 203 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -390,6 +390,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Why Is YouTube Stuttering on Chrome? 6 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-youtube-stutter-high-end-pc-chrome/)
 - [WindowServer High CPU on Mac? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/)
 - [YouTube Ads Still Showing With Ad Blocker? 3 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/youtube-ads-still-showing-chrome/)
+- [YouTube Volume Too Low in Chrome? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/youtube-volume-too-low-chrome/)
 
 ### Guides
 
@@ -424,6 +425,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Chrome's New Privacy Rules: 3 Things to CHECK (2026)](https://www.superchargebrowser.com/library/chrome-web-store-privacy-rules-august-2026/)
 - [Does Chrome Have Workspaces? Not Yet — Here's What Works (2026)](https://www.superchargebrowser.com/library/chrome-workspaces-explained/)
 - [Does uBlock Origin Still Work on Chrome? No (2026 Status)](https://www.superchargebrowser.com/library/does-ublock-origin-still-work-chrome-2026/)
+- [Full Screen Screenshot in Chrome: 4 Tools That Fit (2026)](https://www.superchargebrowser.com/library/full-screen-screenshot-chrome/)
 - [How Chrome Manages Memory in 2026: Architecture and Leaks](https://www.superchargebrowser.com/library/chrome-memory-management-deep-dive/)
 - [How Do You Customize Chrome's Vertical Tab Sidebar? (2026)](https://www.superchargebrowser.com/library/customize-vertical-tabs-chrome-settings/)
 - [How to Add Captions to a Screen Recording in Chrome (2026)](https://www.superchargebrowser.com/library/add-captions-screen-recording-chrome-2026/)
@@ -459,6 +461,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Too Many Tabs in Chrome? 5 Fixes for RAM and Search (2026)](https://www.superchargebrowser.com/library/too-many-tabs-chrome/)
 - [Which Chrome Extensions Still Use Manifest V2? (2026)](https://www.superchargebrowser.com/library/which-chrome-extensions-still-manifest-v2/)
 - [Why Audio Extensions Need 'All Sites' Access (2026)](https://www.superchargebrowser.com/library/why-audio-extensions-need-all-sites-access/)
+- [Why Is Chrome Running Slow on a Laptop? 4 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-slow-laptop-thermal/)
 
 ### Reviews
 
