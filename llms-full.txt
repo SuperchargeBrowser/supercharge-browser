@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-09-28
+> Last updated: 2026-09-29
 > For a summary index, see /llms.txt
 
 ## Products
@@ -2368,6 +2368,200 @@ A: No. Per-site gain profiles are stored locally. As of September 2026, the Chro
 
 ---
 
+### Chrome 156 Blocks Local Network? How to Grant Access (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-156-local-network-access/
+Category: guide | Extension: general | Updated: 2026-09-25
+Description: Chrome 156 will drop the enterprise opt-out from Local Network Access, the per-site prompt Chrome 142 added for public-site requests to routers and dev servers.
+
+You open your router's admin page from a public site and the connection dies without a word. Your 127.0.0.1 dev server, your smart-home dashboard: same. It is Chrome's Local Network Access restriction, which has put a per-site permission prompt in front of these requests since Chrome 142. Chrome 156, scheduled for stable on October 20, 2026, will remove the last enterprise opt-out, and each site's grant or denial sticks.
+
+> **Key takeaways**
+> - **Chrome 156 removes the opt-out.** The temporary `LocalNetworkAccessRestrictionsTemporaryOptOut` policy is dropped in Chrome 156 (stable, scheduled October 20, 2026), so managed browsers lose the option to downgrade blocked local network requests to a DevTools warning.
+> - **Granting is per site.** The first local network request from a given site triggers a permission prompt. Accepting it lets that one origin reach your LAN, and you can revoke it later.
+> - **Denying is sticky.** If you deny, Chrome does not re-prompt that site. The local destination stays down until you flip the permission back on.
+
+## What the restriction actually blocks
+
+Chrome 142 turned this on by default and put it behind a permission prompt. A local network request is any request from a public website to a local IP address or to loopback, or from a local (intranet) site to loopback. Google's stated aim is to blunt cross-site request forgery against devices on your network (the router is the classic target) and to stop sites from using these requests to fingerprint your LAN.
+
+Two details shape what you will feel. The permission only exists in secure contexts, and once you grant it Chrome relaxes mixed-content blocking for requests it already knows are local: a private IP literal, a `.local` name, or a fetch with `targetAddressSpace: "local"`.
+
+The address spaces that count as local are the private IPv4 ranges (RFC1918), the link-local `169.254.0.0/16`, the IPv6 unique-local `fc00::/7`, the IPv6 link-local `fe80::/10`, and IPv4-mapped IPv6 addresses that map to a local address. Loopback is `127.0.0.0/8` and `::1`. One edge case: carrier-grade NAT uses `100.64.0.0/10`, which can still trip the prompt on a public site. The `LocalNetworkAccessIpAddressSpaceOverrides` policy lets a fleet reclassify it.
+
+Not every connection is covered. As of the May 2026 adoption guide:
+
+- In scope: subresource requests, `fetch()` calls, and subframe navigations (since 142), plus WebSocket and WebTransport (since 147).
+- Out of scope: WebRTC, main-frame navigations, extensions that already hold host permissions, and Android WebView (Android applies its own local network permission there).
+
+## How to grant a site local network access
+
+The prompt appears the first time a site makes a local network request, and it is tied to that site's origin. Two grants sit behind it. `local-network` covers a public site reaching a device on your LAN, such as a router or an internal server. `loopback-network` covers a public site reaching an app running on the machine you are using. Chrome 145 split the original single `local-network-access` permission into these two and kept the old name as an alias.
+
+Accept the prompt and that origin can reach the local network from then on. The decision is persistent and per site, so a site you allow keeps working and a site you deny stays blocked. To change it after the fact, re-grant the local network permission from the site's permission entry in Chrome's settings.
+
+For developers, the prompt can be triggered on purpose (Chrome 144 and later). A request to a local or loopback address pre-fires it, and it only fires if a connection would actually be established:
+
+```js
+// pre-trigger the local network prompt; fires only if the request would connect
+await fetch("http://localhost");
+await fetch("https://10.0.0.1");
+```
+
+If the local request lives in an iframe, the embedding page delegates the permission through its Permissions-Policy, and the grant is tied to the embedding origin:
+
+```html
+<iframe ... allow="local-network"></iframe>
+```
+
+## What a denial does, and the version timeline
+
+A denial has no second chance built in. If you deny a site, Chrome will not show the prompt for that site again, so a denied local destination stays broken until you go back and re-grant it. There is no automatic re-prompt.
+
+The restriction has moved across a handful of releases. As of this article's September 2026 publication, these are the versions that shaped the behavior:
+
+| Chrome | What changed |
+|---|---|
+| 142 | Local Network Access restricted by default, gated behind a permission prompt. |
+| 145 | The single `local-network-access` permission split into `local-network` and `loopback-network`; the old name became an alias. |
+| 146 | Added `LocalNetworkAccessIpAddressSpaceOverrides` and `LocalNetworkAccessPermissionsPolicyDefaultEnabled`. |
+| 147 | Extended the restriction to WebSocket and WebTransport connections. |
+| 156 | Removes `LocalNetworkAccessRestrictionsTemporaryOptOut`. Scheduled for the stable release on October 20, 2026. |
+
+## The managed (enterprise) path
+
+For a single person at home, the prompt is the whole story. For a fleet, the enterprise policies are where the control lives, and Chrome 156 tightens it.
+
+The temporary opt-out policy (`LocalNetworkAccessRestrictionsTemporaryOptOut`, boolean, off by default since 142) made local network requests only warn in DevTools instead of blocking. That was the escape hatch for teams that were not ready. Chrome 156 is scheduled to remove it, so managed browsers will have no soft warning mode left. The remaining managed levers:
+
+| Policy | Since | What it does |
+|---|---|---|
+| `LocalNetworkAccessAllowedForUrls` / `LocalNetworkAccessBlockedForUrls` | 139 | Allow or block local network requests by URL pattern. |
+| `LocalNetworkAllowedForUrls` / `LocalNetworkBlockedForUrls` | 146 | Finer-grain allow and block lists for local network endpoints. |
+| `LocalNetworkAccessIpAddressSpaceOverrides` | 146 | Reclassify an IP or port as public, local, or loopback (the CG-NAT fix). |
+| `LocalNetworkAccessPermissionsPolicyDefaultEnabled` | 146 | Subframes inherit the local network permission by default. |
+| `LocalNetworkAccessRestrictionsEnabled` | 138 | Makes a local network failure block the main request instead of warning (138 to 144). |
+
+Precedence, from the enterprise policy template, runs in a fixed order: within each pair the block list beats the allow list, and the granular `LocalNetwork` pair sits above the `LocalNetworkAccess` pair. Until these policies appear in the main Admin Console UI, you set them through custom configurations.
+
+One footnote on the date. The adoption guide says the opt-out is removed "after M152" and the policy template says "after M163," but the chromestatus record (the newest source, last updated July 2026) is the one that names 156, so 156 is the number to plan around.
+
+## When the built-in restriction is enough
+
+If you rarely reach your router or a dev server from a public site, you may never see the prompt, and that is fine. The restriction does not touch WebRTC, main-frame navigations, or extensions with host permissions.
+
+The decisions that matter:
+
+- If one specific LAN site needs to just work, grant that site's local network permission. It is per site and you can revoke it, so you are not opening the door to every origin.
+- If you are locking down a fleet and want only approved devices reachable, set `LocalNetworkAccessAllowedForUrls` (and the block lists) as custom configurations. The temporary opt-out you may be relying on today ends with 156.
+- If you are still on a pre-156 build and using the temporary opt-out to keep a not-ready fleet functional, migrate now. The policy that softens the block into a DevTools warning is gone in 156, so the allowlist becomes the lever.
+
+#### FAQ
+Q: Does Chrome 156 block all local network traffic?
+A: No. It blocks requests a public site makes to a local IP or loopback by default. You can grant a specific site, and the enterprise allowlist can exempt origins. As of September 2026, Chrome 156 is scheduled for the stable release on October 20, 2026.
+
+Q: How do I stop the local network prompt from appearing?
+A: Managed fleets can exempt origins with LocalNetworkAccessAllowedForUrls, and the temporary opt-out is scheduled for removal in Chrome 156. You decide what it does per site: grant the origin so it works, or deny it so it stays blocked. The choice is persistent.
+
+Q: Does this affect WebRTC, my extensions, or a full page load?
+A: No. Per the May 2026 adoption guide, WebRTC, main-frame navigations, extensions with host permissions, and Android WebView are not covered by the restriction.
+
+Q: Can I allow a device like my router for a whole team?
+A: Yes. Set LocalNetworkAccessAllowedForUrls (with the matching block lists) as a custom configuration until these policies ship in the main Admin Console UI. Use LocalNetworkAccessIpAddressSpaceOverrides if a CG-NAT range is wrongly triggering prompts.
+
+---
+
+### How to Stop Autoplay in Chrome and Edge: 3 Levels (2026)
+
+URL: https://www.superchargebrowser.com/library/stop-autoplay-chrome-edge/
+Category: guide | Extension: audio | Updated: 2026-09-25
+Description: Chrome and Edge ship a 3-level Autoplay setting, but YouTube and installed PWAs commonly slip past it. See when the block fails and how to mute the rest.
+
+You open Chrome to read a doc, you switch tabs to check a message, and a YouTube video is already talking. Not playing. Autoplaying. It just started, with sound, while you were typing.
+
+Two things cost you. Background tabs keep decoding video all afternoon, dragging battery and CPU in ways you only notice when the laptop gets warm. And the fix most people find: set the browser to block autoplay. Except it does not block YouTube. It does not block any app you installed to your home screen. The block you applied does not silence the tab that is actually bothering you.
+
+> **Key takeaways**
+> - Chrome and Edge each ship a native Autoplay site permission with three levels: allow, mute by default, and block. No extension required for the common case.
+> - The block commonly fails on high-engagement sites such as YouTube, where repeated unmuted playback builds a high Media Engagement Index, and on installed PWAs. Muted autoplay is always allowed, by design.
+> - For the gaps: right-click any tab and choose "Mute site" to silence an entire domain manually. SuperchargeAudio's Smart Mute automates background-tab muting and adds a per-tab audible list.
+
+## Step 1: Set the Autoplay Permission in Chrome
+
+Open Chrome's settings and navigate to the Autoplay site permission. You will see three options, corresponding to three policy levels:
+
+| Level | What it does |
+|---|---|
+| **Allow** | Sites can start video with sound without you clicking play.|
+| **Mute by default** | Sites can start video, but it begins muted. You can unmute the individual video. |
+| **Block** | Sites cannot start video with sound unless an exception applies (see below). |
+
+Pick the level that matches your setup. "Mute by default" is the least disruptive: autoplay still happens, but silently. "Block" is the strictest. In either case, the permission is per-site. You can set a global default and then override it for specific domains (set one site to "Allow" if a particular tool needs sound on load).
+
+## Step 2: Set the Autoplay Permission in Edge
+
+Edge is Chromium-based and inherits the same autoplay policy. Its Autoplay site permission mirrors Chrome's three-level control. Open Edge's settings, find the Autoplay entry under site permissions, and you will see the same three options: allow, mute by default, block.
+
+The mechanics are identical. The failure modes are identical. If YouTube slips past the block in Chrome, it slips past it in Edge for the same reason: Edge uses the same MEI threshold and the same PWA exemption.
+
+If you use both browsers, set the same level in each.
+
+## When the Block Fails
+
+Setting the permission to "Block" is the right move for most sites. It is not the right move for all of them. The policy has built-in exceptions, and they are where the block stops working:
+
+| Scenario | Why the block does not apply | Workaround |
+|---|---|---|
+| High-engagement site (such as YouTube, where repeated unmuted playback has built a high Media Engagement Index) | The site's Media Engagement Index crosses the threshold. Chrome grants autoplay with sound automatically. | Per-tab "Mute site," or Smart Mute (below). |
+| PWA or home-screen-installed app | A home-screen install is an explicit user grant. The policy treats it as a permission to autoplay with sound. | Per-tab "Mute site," or remove the home-screen shortcut. |
+| You clicked "Allow" once on a site | The per-site exception sticks. The site now has a standing "Allow" that overrides the global "Block." | Go back to the Autoplay permission, find the domain, and reset it to the default level. |
+| Muted autoplay | Chrome's autoplay policy always allows muted autoplay. | Stop Autoplay in SuperchargePerformance (off by default) has a Block All option. |
+
+The MEI rule is the big one. Chrome tracks how much video you actually watch on a domain: a video that plays for more than 7 seconds, with audio on and unmuted, in the active tab, at dimensions greater than 200 by 140 pixels, counts as a "significant media playback event." Once the domain accumulates enough of those events, its MEI score crosses the threshold and the autoplay-with-sound exception activates. High-engagement sites such as YouTube sit above that line, which is why the block commonly fails there.
+
+## Per-Tab Mute: The Manual Fallback
+
+Right-click any tab in the strip and choose **Mute site**.
+
+- Every open tab on that domain goes silent, including the tab you are looking at.
+- Any new tab you open on the same domain starts muted.
+- To reverse it, right-click the tab again and choose **Unmute site**.
+
+"Mute site" is a domain-level switch, not a tab-level one. If you have YouTube tabs open and mute the domain, all go quiet. Chrome has no native way to auto-mute only the background tabs while leaving the active one at volume. It also has no single list where you can see "all domains currently set to muted." You manage it tab by tab, domain by domain, manually.
+
+That is fine if you have noisy sites. It gets tedious.
+
+## When You Need More Than the Built-In Control
+
+The three-level permission plus "Mute site" covers the common case. You set a global default, you mute the domains that still talk, and you are done. For a tab session on a work laptop, that is enough.
+
+The gap shows up when you keep tabs open across domains and the background tabs keep decoding video. "Mute site" is manual: you have to think about it, go to the tab, right-click, and pick the option. And because it mutes the whole domain, you lose the active tab's sound too. There is no "mute everything except the tab I am looking at" in Chrome's native controls.
+
+SuperchargeAudio 1.0.8 (live on the Chrome Web Store as of September 2026) fills that gap with Smart Mute, which is off by default: once on, the active tab keeps playing and non-pinned background tabs are muted automatically, with pinned tabs exempt by default. It also adds these features:
+
+- **Audible-tabs list.** The popup lists every tab currently producing audio. You jump to a tab or mute it directly from the list, without closing the tab you are working in.
+- **Per-site audio memory.** Per-site volume and audio profiles persist when a tab becomes active.
+- **Silent mode.** Mutes every tab including the active one. One-click to activate and release. Tabs are not closed and players are not stopped.
+
+All processing is local. No tab data, URLs, audio signals, or browsing activity are transmitted. No telemetry, no account, no remote configuration.
+
+If you search "autoplay stopper extension," you will also find SuperchargePerformance 1.4.9 on the store. It ships a Stop Autoplay feature (off by default) with a toggle and a two-option control: "Allow Common" (lets major video platforms and muted hover previews play) or "Block All." That is a different tool.SuperchargeAudio handles the audio side: which tabs sound, at what volume, and which stay silent while you work.
+
+#### FAQ
+Q: Does Chrome have a built-in autoplay blocker?
+A: Yes. Chrome and Edge ship a native Autoplay site permission with three levels: allow, mute by default, and block. You do not need an extension for the common case. As of September 2026, the control lives under site permissions in each browser's settings.
+
+Q: Why does YouTube still autoplay even when I set it to block?
+A: Chrome's policy allows autoplay with sound once a site's Media Engagement Index crosses a threshold, and high-engagement sites such as YouTube commonly sit above it. The index builds from repeated playbacks longer than 7 seconds, unmuted, in the active tab. The block applies to low-engagement sites; high-engagement ones get an automatic exception.
+
+Q: What does 'Mute site' actually do?
+A: It mutes every open tab on that domain, including the tab you are currently viewing. Every new tab you open on the same domain starts muted until you right-click and choose Unmute site. It is a manual, per-domain switch. Chrome has no automatic background-tab muting and no single list of sites that are muted by default.
+
+Q: Does SuperchargeAudio's Smart Mute work without an account?
+A: Yes. All processing is local. No tab data, URLs, audio signals, or browsing activity leave your machine. There is no telemetry, no account system, and no remote configuration.
+
+---
+
 ### YouTube Ad Blocker Not Working? 5 Fixes, Tested Live (2026)
 
 URL: https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/
@@ -4500,6 +4694,86 @@ A: As of June 2026 (Chrome 149), there are three modes. Moderate: only discards 
 
 Q: Can I use SuperchargePerformance instead of Chrome Memory Saver?
 A: Yes, and they can run together. SuperchargePerformance uses the same chrome.tabs.discard() API but adds a configurable inactivity timer (suspend after 5 or 15 minutes), auto-protects 34 web apps like Figma, Notion, and Google Docs from being suspended, and shows an estimate of the memory it has freed. Chrome Memory Saver has no configurable timer and no memory-saved reporting at all.
+
+---
+
+### Chrome Slowing Your Whole PC? 5 Fixes That Work (2026)
+
+URL: https://www.superchargebrowser.com/library/chrome-slowing-down-whole-computer/
+Category: troubleshooting | Extension: performance | Updated: 2026-09-04
+Description: Whole PC stutters, Chrome may be innocent. Confirm attribution first, then free tab memory, test built-in savers, rule out drivers. 5 fixes (2026)
+
+Is Chrome slowing down your whole computer? You switch to the spreadsheet, it stutters, the fan kicks in, and a long tab strip you forgot about is holding memory it needs. Discarding one idle tab frees 90-95% of that tab's RAM. First test: open your OS monitor, discard that tab, watch whether the other application recovers.
+
+The working headroom you already paid for is what the spreadsheet is waiting on. Chrome is holding RAM for tabs you are not looking at, and the other application is the one that stutters. You need to know who is holding the memory.
+
+## Fix 1: Confirm Chrome Is the Cause
+
+Your machine feels slow everywhere, but Chrome may be the passenger, not the driver. Run this sequence before touching any setting:
+
+1. Open your operating system's own activity or task monitor. Note the top memory and processor consumers.
+2. Open Chrome's own Task Manager. Look for chrome processes in the top entries.
+3. Discard one heavy non-active tab. A discarded tab keeps its favicon, title, and URL while the renderer process ends.
+4. Go back to the other application. If the monitor shows a chrome process as a top consumer and the lag eases, tabs are contributing. If Chrome is not a top entry and the other application still stutters, the cause is elsewhere.
+
+Use this table when the first pass is ambiguous:
+
+| Observable state | Likely cause | First step |
+|---|---|---|
+| Chrome is a low consumer; another app still stutters | Driver, OS background app, or hardware load | Update or roll back graphics drivers; test a clean startup |
+| A chrome process tops the monitor | Background tabs, one heavy page, or one extension | Discard the largest tabs, then isolate extensions one at a time |
+| Lag appears with many tabs open and a low battery | CPU-intensive background tabs; Energy Saver stops eligible ones on low battery | Check Settings > Performance; Energy Saver runs automatically when unplugged |
+| One site is slow, the rest of Chrome is fine | Page-specific JavaScript or media load | Close other tabs, reload in a new window, compare |
+
+## Free Memory from Background Tabs
+
+A long tab strip is usually where the pressure starts. Chrome gives each open tab its own renderer process. `chrome.tabs.discard()` terminates that process; the browser keeps only the tab entry (favicon, title, URL). A terminated renderer returns its memory to the operating system, so the freed headroom reaches the spreadsheet, not just the browser. This is the whole-machine mechanism in one line.
+
+Work through your tab strip in order:
+
+1. Close tabs you no longer need.
+2. Discard tabs you will return to later. They stay visible in the strip; the renderer cost is gone.
+3. Re-check your OS monitor after one or two discards. A mass close hides the pattern.
+
+One discard that restores the other application is your confirmed cause. If the stutter persists after the test, move to the built-in controls next.
+
+## Built-In Controls: Memory Saver and Energy Saver
+
+Settings > Performance is where Chrome handles tab deactivation on its own. Memory Saver deactivates tabs you are not currently using and reloads them when you access them. Three levels exist: Moderate, Balanced, and Maximum. Google publishes no minute value for any level, so treat the setting as a behavior test rather than a timer promise.
+
+Deactivation is conditional. Chrome will not deactivate a tab with active audio or video, screen share, page notifications, active downloads, a partially filled form, a pinned tab, or a connected device. Add a workflow you need live under "Always keep these sites active" in the same Performance panel.
+
+Energy Saver runs automatically whenever your device is unplugged or battery is low. It stops eligible CPU-intensive background tabs. Available on Windows, Mac, and Chromebook devices with a battery installed.
+
+Performance issue alerts are on by default. Chrome recommends tab deactivation when it detects poor browsing performance. Accept the prompt, then run the other-application check: go back to the stalled app and see whether it still stutters.
+
+A modest tab count on a machine with enough RAM: Chrome's Memory Saver at Balanced is enough. Set it, wait one full session, re-test the other application, and stop here.
+
+## Drivers, Extensions, and the RAM Ceiling
+
+Some whole-machine lag traces to a driver, not a tab. GPU work and driver state can make the entire system feel slow regardless of browser load. Update or roll back the graphics driver, then re-test the stalled application.
+
+Test one extension at a time in Chrome. A single bad add-on creates the same whole-machine symptom from a small tab count. Disable them in batches, restart the browser, and check the monitor again.
+
+Run a malware or unwanted-app scan if the machine feels wrong even with a fresh browser profile. Physical RAM is limited and the workload exceeds it: no tab manager fixes that ceiling. Reduce the open application set or move to hardware that fits the task.
+
+## A Timer You Set, Not a Timer Chrome Picks
+
+Chrome's Memory Saver deactivates on its own schedule. You cannot set the interval, and the exclusion list is limited to the built-in protection rules plus site entries you add manually. When the diagnosis points at background tabs holding memory and processor that other applications need, a timer-based saver is the direct branch.
+
+SuperchargePerformance calls `chrome.tabs.discard()` on idle tabs after a user-set interval: 15 minutes on the low tier, 5 on the medium, user-set in seconds on PRO. 34 web-app domains are auto-protected so your work tools stay responsive while idle tabs suspend. Its 195K+ DNR rules across 15 rule files block third-party scripts on the pages you do load, so fewer of them execute. Live store version is 1.4.9 as of September 2026.
+
+The conditional branch from the diagnosis above determines which path fits. Background tabs holding memory confirmed: the timer-and-exclusions route is the fix. Driver, one bad extension, malware, or a RAM ceiling confirmed: a tab manager will not help; use the driver, extension, or hardware path. Modest tab count, enough RAM, Memory Saver at Balanced resolved the stutter: you are done. No extension needed.
+
+#### FAQ
+Q: Is Chrome slowing down my whole computer?
+A: As of September 2026, Chrome 154 is the current stable release. Open your OS monitor and Chrome's own Task Manager. If a chrome process is a top consumer, background tabs or one heavy page are likely. If not, check drivers, extensions, or another app.
+
+Q: Does Chrome Memory Saver explain the slowdown?
+A: Chrome's Memory Saver deactivates inactive tabs and reloads them when you return. It offers Moderate, Balanced, and Maximum levels with no published minute values, so set it, then re-check your OS monitor to see whether the whole-machine lag changes.
+
+Q: When does a tab saver extension help?
+A: It helps when background tabs are the confirmed cause and you want a user-set timer with a named exclusion list. If the monitor points at drivers, one bad extension, malware, or a physical RAM ceiling, a tab manager is not the fix.
 
 ---
 
@@ -10299,6 +10573,100 @@ A: Chrome displays the requested permissions in the install prompt and on the st
 
 Q: Are the nine extensions on this list still live?
 A: All nine were live and installable when captured on August 21, 2026. Store status can change, so open the current listing before adding any of them.
+
+---
+
+### Figma Out of Memory in Chrome? 5 Fixes That Work (2026)
+
+URL: https://www.superchargebrowser.com/library/fix-figma-out-of-memory-chrome/
+Category: troubleshooting | Extension: performance | Updated: 2026-08-21
+Description: Figma out of memory in Chrome? Separate file-side load from machine-side pressure, then lighten the file, split heavy files, or free idle tabs around it.
+
+You are mid-edit in Figma when a **Figma out of memory** warning in Chrome stops the canvas — the frame you were placing is stranded, and the usual loop of closing tabs, reloading, and restarting Chrome starts again. Figma's guidance points to a 2GB active memory limit per tab, so separate file-side pressure from machine-side pressure first.
+
+## Fix 1: Recover the File With a Lighter Load
+
+Open the file URL with `?thumbnails-only=1`. Figma's memory guidance says that query parameter loads the file with low-resolution images. Use it when the file is large, because the lighter image load can restore canvas access while you inspect the file.
+
+If the tab is already dead, reload once first. A single reload can restore the session when the error was a one-off event on an otherwise healthy setup. If the file is consistently heavy, the reload is a bridge while you cut the file-side load in Fix 2.
+
+If Figma's recovery path says the browser version is not supported, update Chrome or open the same file in the desktop app. The desktop route is a separate recovery path, so use it while the browser warning is tied to the version.
+
+## Match the Error to the Pressure Side
+
+Use this diagnostic before closing random tabs. The right first move changes with the pressure source, so match the symptom to the side first.
+
+| What you observe | Likely pressure side | First step |
+|---|---|---|
+| One Figma file fails while smaller files open normally | File-side | Check page count, hidden layers, and high-resolution images, then try `?thumbnails-only=1` |
+| The Figma canvas stutters but the tab stays open | File-side | Review component count, variant count, and pages before reloading again |
+| Several heavy tabs feel sluggish, especially with many tabs open | Machine-side | Add figma.com to the Always keep these sites active list and reduce the number of open tabs |
+| The error appears after Figma's recovery path says the browser is unsupported | Browser-side | Update Chrome, or open the file in the Figma desktop app |
+| A one-off crash on an otherwise normal session | Transient | Reload once before changing file structure or installing anything |
+
+The table keeps the file-side route first. A consistently heavy file is not solved by suspending other tabs, even when the browser itself is under pressure.
+
+A reload can still be the whole fix when the session is otherwise healthy. It does not repair a file that is consistently heavy, but it puts you back in the canvas while you identify the actual pressure source.
+
+## Fix 2: Cut What the File Is Loading
+
+Figma's own memory guidance names the file-side drivers that usually push a tab toward the ceiling: hidden layers, component count, variant count, page count, and high-resolution images. Hidden layers still store and render information even when they are not visible, so hiding a group leaves information loaded in the file.
+
+The heaviest part is often hidden. Delete layers that are not part of the active design, and move frames that are rarely used into a separate file instead of keeping them as extra pages.
+
+Start with the parts of the file that do not need to stay loaded. Reduce components and variants where component properties can carry the variation, and split a large file into smaller files when one file carries many pages or lots of high-resolution images.
+
+A split file lowers the standing load. It also makes the next recovery easier, because the tab is carrying one working set of frames instead of the entire archive.
+
+## Fix 3: Use Chrome's Built-In Memory Saver
+
+Freeing other tabs does not raise the 2GB active memory limit on the Figma tab that is already close to it. The built-in path helps when system-wide memory pressure is making several tabs struggle at once. It does not help a single file.
+
+Chrome's Memory Saver deactivates tabs you are not using, and it automatically reloads them when you access them. To keep the design tab from being deactivated, add it to the **Always keep these sites active** exclusion list.
+
+The Chrome support page describes the three Memory Saver levels in relative terms — no minute value and no recovered-memory figure is published. Choose the level that matches your tab habits, then verify that the design site is excluded from deactivation.
+
+If your session is mostly a few important tabs, Chrome's native setting may be enough. If the error came from one heavy file, move back to Fix 2 first, because the file-side load is the constraint.
+
+## Fix 4: Release Idle Tabs on a Timer
+
+SuperchargePerformance suspends idle tabs with `chrome.tabs.discard()` — that call ends the renderer process for the suspended tab, and the browser keeps only the tab entry. The suspended tab releases roughly **90-95%** of its own RAM, and the scope of that figure is per discarded tab. The low and medium tiers suspend after 15 and 5 minutes, while the PRO tier is user-set in seconds.
+
+The per-tab scope makes this step a machine-side move. It reduces demand from other tabs while the active Figma tab remains outside the automatic-discard path.
+
+Thirty-four web-app domains are auto-protected from suspension, and **figma.com** is one of them. The design tab is exempt from automatic discard, but that exemption does not make the Figma tab perform better, load faster, or survive a memory event.
+
+Treat the timer as a machine-side reduction in demand from other tabs.
+
+## Fix 5: Update Chrome or Switch to the Desktop App
+
+Chrome 154 is the current stable milestone as of September 2026. If Figma's recovery mode tells you the browser version is not supported, update the browser first, then reload the file. If the file still will not recover, open the same file in the Figma desktop app.
+
+The desktop app is a separate recovery route when the browser warning is tied to the version. Use it to continue while you reduce file-side weight, because it keeps the working file accessible while the browser path is repaired.
+
+## Read the 2GB Limit Correctly
+
+Treat the **2GB** figure as the ceiling that Figma's guidance associates with a browser tab. Figma's guidance notes that the limit can differ across devices, so treat 2GB as a general figure rather than an exact threshold for your machine.
+
+That distinction is why the diagnostic table forces you to separate one bad file from a crowded browser. The same warning can point to a heavy file, a crowded tab set, or a one-off allocation that a reload clears.
+
+## Pick the Branch That Matches Your First Test
+
+If the problem follows one file, use the file-side route from Fix 1 through Fix 2. Browser-side tooling does not change that file's load. The file edit is the durable fix.
+
+If every heavy tab struggles and your session carries many tabs, use the idle-tab release route from Fix 3 and Fix 4, with figma.com excluded from automatic discard. The native saver and timer reduce surrounding demand.
+
+If the error was a single one-off event on an otherwise healthy setup, a reload is the whole fix and nothing further is needed. Stop there.
+
+#### FAQ
+Q: Does the 2GB limit apply to the Figma desktop app?
+A: Figma's guidance states the 2GB active memory limit for browser tabs. As of August 2026, that guidance does not confirm the same ceiling for the desktop app, so treat the desktop app as a separate recovery path.
+
+Q: Can Chrome Memory Saver deactivate Figma?
+A: It can, unless you add the site to the Always keep these sites active exclusion list. When you return to an inactive tab, Chrome reloads it. As of September 2026, Chrome 154 is current stable.
+
+Q: Can an extension raise the Figma tab limit?
+A: No. An extension can release memory from other tabs, but it does not raise the active memory limit on the Figma tab itself.
 
 ---
 
