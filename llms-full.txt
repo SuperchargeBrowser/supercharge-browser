@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-09-29
+> Last updated: 2026-10-01
 > For a summary index, see /llms.txt
 
 ## Products
@@ -3453,7 +3453,7 @@ Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [
 
 One limitation worth naming: PRO granularity is waitlist-only, and the popup number is an estimate, not a benchmark. Because Shields already handles general ad blocking, set the content-blocking tier to Off or Low on Brave. The reason to install is the suspension control layer, the 34-domain protection and the timers, which is what Memory Saver cannot do.
 
-If you want to compare the category first, [the tab suspender field test](/library/best-tab-suspender-extensions-chrome-2026/) covers the alternatives, and [the Great Suspender's removal for malware](/library/great-suspender-alternative/) explains why the old default pick is gone.
+If you want to compare the category first, [the tab suspender field test](/library/best-chrome-extensions-reduce-ram/) covers the alternatives, and [the Great Suspender's removal for malware](/library/great-suspender-alternative/) explains why the old default pick is gone.
 
 ## SuperchargeNavigation: Workspaces on Top of Brave's Vertical Tabs
 
