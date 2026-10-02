@@ -19,7 +19,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
-> - Website with 207 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 210 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -165,7 +165,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 207 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 210 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -253,12 +253,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 ## Library — Article Index
 
-207 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+210 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.superchargebrowser.com/library/<slug>/index.md).
 
 <details>
-<summary>View all 207 articles</summary>
+<summary>View all 210 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -274,6 +274,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [BEST Tab Organizer for Chrome in 2026: 5 Options Compared](https://www.superchargebrowser.com/library/best-tab-organizer-chrome-2026/)
 - [Brave Shields vs uBlock Origin 2026: 3 Reasons to Add It](https://www.superchargebrowser.com/library/brave-shields-vs-ublock-origin-2026/)
 - [Brave vs Chrome for 60 Tabs: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-tab-heavy-users-2026/)
+- [Brave vs Chrome Performance: Which Is Faster? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-performance-2026/)
 - [Brave vs Chrome RAM: What Actually Drives the Gap (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-ram-benchmark-2026/)
 - [ChatGPT Atlas vs Chrome Extensions: What You Gain and Lose (2026)](https://www.superchargebrowser.com/library/chatgpt-atlas-vs-chrome-extensions/)
 - [Chrome 146 Vertical Tabs vs Extensions: Real Data (2026)](https://www.superchargebrowser.com/library/chrome-146-vertical-tabs-vs-extensions/)
@@ -434,6 +435,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [How to Add Captions to a Screen Recording in Chrome (2026)](https://www.superchargebrowser.com/library/add-captions-screen-recording-chrome-2026/)
 - [How to Auto-Close Chrome Tabs (Suspension Is Better)](https://www.superchargebrowser.com/library/auto-close-inactive-chrome-tabs/)
 - [How to Auto-Mute Noisy Tabs in Chrome by Site (2026)](https://www.superchargebrowser.com/library/auto-mute-noisy-tabs-chrome-per-site-2026/)
+- [How to Bass Boost Your Chromebook: 2 Free Ways (2026)](https://www.superchargebrowser.com/library/bass-boost-chromebook/)
 - [How to Blur or Redact a Screenshot in Chrome (2026)](https://www.superchargebrowser.com/library/blur-redact-sensitive-info-screenshot-chrome-2026/)
 - [How to DISABLE Chrome AI Features & Gemini (2026)](https://www.superchargebrowser.com/library/disable-chrome-ai-features-gemini/)
 - [How to Enable Chrome Memory Saver: Step-by-Step (2026)](https://www.superchargebrowser.com/library/enable-chrome-memory-saver-guide/)
@@ -454,6 +456,7 @@ Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.super
 - [Record a Microsoft Teams Meeting From Chrome (No Admin)](https://www.superchargebrowser.com/library/record-teams-meeting-chrome-tab/)
 - [Record a Zoom Meeting as a Participant (Chrome, 2026)](https://www.superchargebrowser.com/library/record-zoom-meeting-chrome-tab-2026/)
 - [Record Google Meet Without Admin Permission (2026)](https://www.superchargebrowser.com/library/record-google-meet-without-permission-chrome/)
+- [Reduce Bass in Chrome: Cut the 250 and 500 Hz Bands (2026)](https://www.superchargebrowser.com/library/reduce-bass-chrome-audio/)
 - [Screen Record No Watermark, Free? 5 Steps (2026)](https://www.superchargebrowser.com/library/screen-record-no-watermark-free-chrome/)
 - [Screen Recording to GIF for Slack & Discord (2026)](https://www.superchargebrowser.com/library/screen-recording-to-gif-slack-discord-2026/)
 - [Should You Enable Preload Pages in Chrome? (2026 Guide)](https://www.superchargebrowser.com/library/chrome-preload-pages-setting/)
