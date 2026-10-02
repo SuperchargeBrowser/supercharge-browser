@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Last updated: 2026-10-01
+> Last updated: 2026-10-02
 > For a summary index, see /llms.txt
 
 ## Products
@@ -2173,6 +2173,227 @@ A: No. The audible-tabs list is built in real time from your open tabs and is ne
 ---
 
 ## Library Articles
+
+### How to Bass Boost Your Chromebook: 2 Free Ways (2026)
+
+URL: https://www.superchargebrowser.com/library/bass-boost-chromebook/
+Category: guide | Extension: audio | Updated: 2026-10-02
+Description: Bass on a Chromebook stays thin at max volume. Two free routes: OS settings, or a 10-band EQ plus a 600% per-tab volume ceiling. No hardware, no paid app.
+
+Your Chromebook's volume is full and the music still sounds thin: the kick and the bass line stay under the surface. Two free routes close that gap. One is built into some higher-end models. The other is a per-tab extension with a 10-band EQ and up to 600% volume.
+
+## Quick takeaways
+
+- A built-in equalizer is a higher-end feature. On the models that have it, it sits in the volume control's Output menu as an Equalizer icon with sliders.
+- A per-tab EQ extension adds a 10-band EQ and up to 600% volume, remembered per site. On a 4 or 8 GB machine, turn on Chrome's Memory Saver before you install it.
+
+## Option 1: Bass Boost From Native Chrome OS Settings
+
+Start with what is already on the machine, because it costs nothing to look and some of it is worth keeping.
+
+**The volume cap.** Chrome OS ships a fixed maximum volume set by the manufacturer. It is not a knob you dial up in the normal settings. Forcing the output past that value amplifies beyond what the voice coil handles cleanly, and that is where the distortion and the long-term speaker wear come from. Keep that in mind with any per-tab boost above 100%: raise it in small steps and back off when the sound starts to break up.
+
+**The built-in equalizer, if you have it.** Some higher-end Chromebooks include an on-device EQ. When it is present you reach it from the volume control: open the expanded Output options and look for an Equalizer icon with a set of sliders. Drag the low-frequency sliders up to lift the bass. If that icon is not there, your model has no native EQ, and the next option is what fills the hole.
+
+**The Memory Saver precondition.** On a 4 or 8 GB Chromebook, turn on Chrome's Memory Saver before you put anything on top of it. It lives at `chrome://settings/performance`. Memory Saver is pressure-reactive; the [Chromebook extensions guide](/library/best-chrome-extensions-for-chromebook-2026/) covers how it behaves on 4 and 8 GB models.
+
+## Option 2: Add a Per-Tab EQ Extension for the Built-in Speakers
+
+This route works on any Chromebook, including models without a native equalizer, because it applies per tab.
+
+SuperchargeAudio, a per-tab extension, applies a 10-band equalizer to each tab's audio and can raise that tab's volume up to 600%. The controls:
+
+| Control | Range | What it does |
+|---|---|---|
+| Per-tab volume | 0 to 600% (100% = passthrough) | Adds level on top of the native slider |
+| Low shelf | 32 Hz | Boosts or cuts the very lowest frequencies |
+| High shelf | 16 kHz | Adjusts the top end |
+| Peaking bands | 8, from 64 to 8,000 Hz, Q 1.4 | Boost or cut specific mids |
+| Per-band gain | clamped at 12 dB each | Caps how far any single band can move |
+| Built-in presets | 10, including Bass Boost and Small Speakers | One-click low-end shapes |
+| Custom presets | up to 24, names up to 32 characters | Your own curves |
+| Per-site memory | volume, EQ, width | Each site keeps its own tuning |
+
+Start from a preset instead of a blank curve. For the built-in speakers the **Small Speakers** preset is the one shaped for small drivers, and **Bass Boost** pushes the low end harder. Both are just presets on the same 10-band EQ, so you can nudge them after.
+
+Two limits are worth knowing up front. The EQ and volume apply per tab and are remembered per site, so a video tab and a podcast tab can hold different curves. And the extension cannot touch `chrome://` pages, browser settings, or the new-tab page, and it cannot process DRM-protected playback except one streaming service on the allowlist (Spotify). It is free, with no paid tier and no telemetry. On a 4 GB machine, turn on the Memory Saver from Option 1 first.
+
+## How the 10-Band EQ Shapes Low End
+
+The layout: a 32 Hz low shelf, a 16 kHz high shelf, and eight peaking bands from 64 to 8,000 Hz at Q 1.4. Every band's gain is clamped at ±12 dB, the outer limit on how far any one slider moves. The two presets that matter here: Small Speakers and Bass Boost, both among the ten built-in options. Load one, then nudge individual bands if the curve is not quite right for your drivers.
+
+## Which Route Fits Your Model
+
+If you want bass on the built-in speakers and your model has the native EQ, use it first and only reach for an extension if the lift is not enough. If the Output menu has no equalizer icon, the per-tab extension is your route, and the Small Speakers preset is the one to load first. If you listen over Bluetooth or headphones, check the output device and its own EQ before you touch the tab. And if the machine is a 4 GB Chromebook, confirm Chrome's Memory Saver is on at `chrome://settings/performance` before you install anything.
+
+#### FAQ
+Q: Does a Chromebook need new hardware to get more bass?
+A: No. As of October 2026 the thin sound comes from the small driver and the manufacturer's volume cap, not a broken part. A native equalizer (on higher-end models) and a per-tab EQ extension both add low end without new hardware.
+
+Q: Why does pushing a Chromebook's volume past 100% distort?
+A: The max-volume setting is a manufacturer limit, not the driver's physical ceiling. Driving the output past that point amplifies beyond what the voice coil handles cleanly, which is where the breakup comes from.
+
+Q: Which EQ preset should I start with on a Chromebook's built-in speakers?
+A: Start from the Small Speakers preset, or Bass Boost for a stronger low-end lift. Both are built-in presets on a 10-band EQ, and each band's gain is clamped to plus or minus 12 dB.
+
+---
+
+### Brave vs Chrome Performance: Which Is Faster? (2026)
+
+URL: https://www.superchargebrowser.com/library/brave-vs-chrome-performance-2026/
+Category: comparison | Extension: performance | Updated: 2026-10-02
+Description: Brave vs Chrome performance: both share one engine, but defaults set the floor. 34 auto-protected apps, 186K+ rules, a 5-min timer neither ships. (2026)
+
+Both browsers run Blink + V8 with per-origin site isolation (since Chrome 67), so the gap is not the engine. It is the defaults: what each downloads per tab, and whether an idle tab stops burning CPU.
+
+> **Key takeaways**
+> - Both run the same Chromium core (Blink + V8). The performance difference is in what each loads per tab, not in rendering speed.
+> - Brave's Shields block ads and trackers at the network level. Chrome loads those resources unless you add a separate blocker.
+> - Brave Memory Saver has no user timer. A 5-minute or 15-minute suspender puts the clock in your hands.
+
+## The Engine Is the Same
+
+Brave and Chrome both compile from the same Chromium codebase. One Blink renderer. One V8 engine. A given page's JS runs on the same engine in both.
+
+Since Chrome 67, site isolation places each origin in its own renderer process. That overhead is identical in both browsers.
+
+On a blank page or an internal tool, load times in Brave and Chrome will be close. The gap you notice in daily use comes from what each browser pulls before the page finishes rendering.
+
+## Where the Defaults Differ
+
+| Dimension | Brave | Chrome |
+|---|---|---|
+| Rendering engine | Blink + V8 (Chromium) | Blink + V8 (Chromium) |
+| Ad/tracker blocking | Built-in via Shields (Standard or Aggressive) | None; ad and tracker iframes load by default |
+| Built-in background-tab saver | Memory Saver (toggle + exceptions, no user timer) | Efficiency Mode (timer resolution drops from 1 ms to 1,000 ms, no per-tab override) |
+| User-controlled idle timer | Not available | Not available |
+| Site isolation | Per-origin renderer (since Chrome 67) | Per-origin renderer (since Chrome 67) |
+
+Chrome's Efficiency Mode (also called Energy Saver) throttles background tabs by dropping JS timer resolution from 1 ms to 1,000 ms. There is no per-tab override, so you cannot exempt one tab from the throttle.
+
+Brave's Memory Saver lives under Settings → System → Performance. It offers an on/off toggle and an exceptions list, but no user-set timer.
+
+The ad layer is where the per-tab payload diverges most. Shields intercept ad and tracker network requests before they reach the renderer.
+
+## Where Each One Wins
+
+Chrome's built-in stack covers the basics for a light user. If your tab count stays light and your content is mostly ad-free or internal tools, Efficiency Mode is enough.
+
+Brave's advantage is the ad layer. Shields work at the network level, so the requests never reach the renderer. Suppose a page pulls ad and tracker subresources. Shields intercepts them before they download.
+
+Engine speed is a tie between the two.
+
+## The Timer Neither Ships
+
+Brave Memory Saver has no user timer. Chrome's Efficiency Mode throttles background-tab CPU.
+
+SuperchargePerformance (live at v1.4.9 on the Chrome Web Store) adds that timer. It suspends idle tabs at 15 minutes (low preset) or 5 minutes (medium preset). On PRO, you set the interval in seconds.
+
+The suspension calls `chrome.tabs.discard()`, which terminates the tab's renderer process. The tab stays visible in the strip. A discarded tab frees roughly 90–95% of its own RAM, because the browser process retains only the tab entry (title, favicon, URL) and the renderer is gone.
+
+Thirty-four web apps are auto-protected, so they don't get suspended. The extension also carries 186K+ blocking rules (DNR-based). The popup shows a session RAM-freed estimate (suspensions × 80 MB). That figure is a model, not a per-tab readout.
+
+## Pick by What You Load
+
+If you open mostly ad-heavy content (news, social, video) and want the ad layer handled without a separate blocker, Brave's Shields save you that setup step. The browser choice alone trims the per-tab payload.
+
+If your content is internal tools, docs, or ad-free sites, and your tab count stays light, Chrome plus Efficiency Mode covers it.
+
+If your tab count runs high across several projects, pair either browser with a suspender that runs on a timer you set. The timer is the piece Brave doesn't ship. SuperchargePerformance (v1.4.9) covers the suspension presets, the 34 protected apps, and the 186K+ blocking rules in one install.
+
+#### FAQ
+Q: Does Brave actually use less RAM than Chrome?
+A: As of October 2026, both run the same Chromium engine (Blink renders, V8 executes JS), so per-tab memory is driven by page content, not the browser shell. The difference is what loads per tab: Brave's Shields strip ad and tracker requests at the network level before they consume memory. Chrome loads those resources unless you add a third-party blocker.
+
+Q: Which is faster for page loads?
+A: On ad-heavy pages, Brave's Shields (Standard or Aggressive) intercept the ad and tracker network requests, so fewer subresources download and render. On ad-free or internal pages, load times in both browsers are close because the rendering engine is identical.
+
+Q: Can I set when idle tabs suspend?
+A: Neither Chrome's Efficiency Mode nor Brave's Memory Saver exposes a user-set timer. A timer-based extension such as SuperchargePerformance (5 or 15 minute presets, custom seconds on PRO) is the way to put the suspension clock in your hands.
+
+---
+
+### Reduce Bass in Chrome: Cut the 250 and 500 Hz Bands (2026)
+
+URL: https://www.superchargebrowser.com/library/reduce-bass-chrome-audio/
+Category: guide | Extension: audio | Updated: 2026-10-02
+Description: Reduce bass in Chrome by cutting the 250 and 500 Hz bands a few dB each. Removes low-end mud without dropping loudness. A 10-band EQ does it per site.
+
+You're mid-call, the other person's voice buried under a thick, resonant low end, and turning down the master volume only made everything quieter. To reduce bass in Chrome, cut the 250 Hz and 500 Hz peaking bands. The 32 Hz shelf stays intact. A 10-band EQ with per-site memory sticks the cut to that one site.
+
+> **Key takeaways**
+> - Chrome's sound settings expose per-tab volume and mute but no frequency-band control. A 10-band EQ extension is the path to a surgical cut.
+> - Per-site memory means the tuning you dial in for one podcast site applies only to that hostname.
+
+## Which Two Bands to Cut
+
+The low-end rumble that buries a voice or a podcast host sits in two specific places on the frequency spectrum: the 250 Hz peaking band and the 500 Hz peaking band. These are not the 64 Hz band. They are the upper bass and lower midrange where room resonances and compressed production pile up.
+
+Cutting both (negative gain on a peaking filter is attenuation) turns down the frequencies in those bands while leaving:
+
+- The 32 Hz low shelf at 0 dB, so the fundamental body of music and low-end instrumentals survives.
+- The 1000 Hz and above bands unchanged, so midrange clarity, presence, and brightness hold.
+- Overall loudness stable, because you are removing energy from two narrow bands rather than turning down the whole signal.
+
+The master-volume workaround dims everything at once. Treble and speech drop along with the bass. Two targeted band cuts avoid that trade-off entirely.
+
+## How the 10-Band Layout Works
+
+SuperchargeAudio (free on Chrome and Microsoft Edge, no paid tier, live version 1.1.0 as of October 2026) builds its equalizer on the Web Audio API. The signal path runs through `BiquadFilterNode` objects inside an `AudioContext`, ending at the output destination. Each node is one of three filter types:
+
+- **Low shelf** (32 Hz): boosts or attenuates everything below the centre frequency. Frequencies above are unchanged.
+- **High shelf** (16 kHz): the mirror. Everything above the centre is boosted or attenuated.
+- **Peaking** (eight bands at 64 / 125 / 250 / 500 / 1000 / 2000 / 4000 / 8000 Hz, Q 1.4): boosts or attenuates a narrow range around the centre. The Q parameter controls band width.
+
+Each band's gain is clamped to plus or minus 12 dB and defaults to 0 dB (flat). The Q of 1.4 on the peaking bands sets each one's width.
+
+| Band | Type | Centre | Q | Action for bass reduction |
+|---|---|---|---|---|
+| 1 | Low shelf | 32 Hz | — | Leave at 0 dB |
+| 2 | Peaking | 64 Hz | 1.4 | Leave at 0 dB |
+| 3 | Peaking | 125 Hz | 1.4 | Leave at 0 dB |
+| 4 | Peaking | 250 Hz | 1.4 | Cut |
+| 5 | Peaking | 500 Hz | 1.4 | Cut |
+| 6 | Peaking | 1000 Hz | 1.4 | Leave at 0 dB |
+| 7 | Peaking | 2000 Hz | 1.4 | Leave at 0 dB |
+| 8 | Peaking | 4000 Hz | 1.4 | Leave at 0 dB |
+| 9 | Peaking | 8000 Hz | 1.4 | Leave at 0 dB |
+| 10 | High shelf | 16 kHz | — | Leave at 0 dB |
+
+## Dialing In the Cut
+
+Open the SuperchargeAudio popup. It lists every audible tab with a per-tab volume slider, a per-tab mute toggle, and a mute-all button. Open the 10-band EQ for the tab that is causing the problem.
+
+You see ten sliders, one per band. Drag the 250 Hz slider down. Then the 500 Hz slider the same. The rest stay at 0. If the podcast still feels boxy after the first pass, lower both a little further. Do not push the cut too far without re-listening, because on two adjacent bands you start hollowing out the low-mid region that gives voice its body.
+
+Ten built-in presets ship with the extension: Flat, Bass Boost, Vocal/Voice, Treble, Loudness, Rock, Pop, Electronic, Acoustic, and Small Speakers. You can also save up to 24 custom presets; names are trimmed and capped at 32 characters, and a name matching a built-in preset is rejected. Call yours "Podcast" and load it next time.
+
+The popup has a global switch. Flipping it off returns every open tab to passthrough (100% volume, flat EQ). Toggle it on and off while the podcast plays to A/B test whether the cut is doing what you want.
+
+## Per-Site Memory
+
+Volume, EQ, and stereo width are remembered per hostname. The cut you dial in for `podcastexample.com` sticks for that site only. A different podcast on a different domain still runs flat until you tune it.
+
+chrome:// pages, browser settings, and the new-tab page cannot be boosted directly, but the other tabs and the default EQ still apply there. On regular web pages the band cut applies, but DRM-protected content cannot be processed, except on spotify.com.
+
+The extension sends no usage analytics or telemetry. Nothing about what you are listening to or how you are tuning it goes to a server or a third-party service.
+
+## If the Problem Is Loudness, Not Tone
+
+If after cutting the 250 and 500 Hz bands the sound still feels off, the issue is likely in a different range. A harsh, sibilant quality points at the 4000 or 8000 Hz bands. A tinny, lifeless feeling usually means the 125 Hz band was accidentally turned down. The 10-band layout lets you isolate each region and work through them one at a time.
+
+If your real complaint is that the overall volume is too low rather than that the tone is muddy, the band cuts will not help. The per-tab volume boost (0 to 600%, 100% is passthrough) on the same extension handles that side. The slider has 70 detents: 1% steps to 9, then 10% steps. The [Chrome audio too quiet](/library/fix-chrome-audio-too-quiet/) guide covers the volume-specific walkthrough.
+
+If the low end on one particular site keeps coming back, the per-site memory is your safety net. The cut you set holds the next time you visit that hostname. You do not have to re-dial it.
+
+#### FAQ
+Q: Does Chrome have a built-in equalizer?
+A: Chrome's sound settings expose per-tab volume, mute, and per-site sound permission; we found no frequency-band EQ among them. A 10-band EQ extension is the path to surgical cuts like the 250 and 500 Hz reduction described here.
+
+Q: Will the bass cut affect every tab at once?
+A: No. With per-site memory, the EQ tuning you set for one hostname applies only to that site. Other domains run at the default flat EQ (all 10 bands at 0 dB) until you change them individually.
+
+---
 
 ### Why Is Chrome Running Slow on a Laptop? 4 Fixes (2026)
 
