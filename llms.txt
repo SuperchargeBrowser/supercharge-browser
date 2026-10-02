@@ -83,9 +83,12 @@
 
 ## Library
 
-207 guides on Chrome performance, memory management, and tab organization.
+210 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [How to Bass Boost Your Chromebook: 2 Free Ways (2026)](https://www.superchargebrowser.com/library/bass-boost-chromebook/): Bass on a Chromebook stays thin at max volume. Two free routes: OS settings, or a 10-band EQ plus a 600% per-tab volume ceiling. No hardware, no paid app.
+- [Brave vs Chrome Performance: Which Is Faster? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-performance-2026/): Brave vs Chrome performance: both share one engine, but defaults set the floor. 34 auto-protected apps, 186K+ rules, a 5-min timer neither ships. (2026)
+- [Reduce Bass in Chrome: Cut the 250 and 500 Hz Bands (2026)](https://www.superchargebrowser.com/library/reduce-bass-chrome-audio/): Reduce bass in Chrome by cutting the 250 and 500 Hz bands a few dB each. Removes low-end mud without dropping loudness. A 10-band EQ does it per site.
 - [Why Is Chrome Running Slow on a Laptop? 4 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-slow-laptop-thermal/): Why is Chrome running slow on a laptop? Four causes: throttle, power mode, tabs, and GPU. Apply the fixes in order to cut background work and quiet the fan.
 - [Full Screen Screenshot in Chrome: 4 Tools That Fit (2026)](https://www.superchargebrowser.com/library/full-screen-screenshot-chrome/): Full screen screenshot Chrome: you want the page, display, or window. 4 tools compared, each with exact keys. Pick the right target before you grab.
 - [YouTube Volume Too Low in Chrome? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/youtube-volume-too-low-chrome/): YouTube volume too low in Chrome often means the player sits at 100 while source mastering leaves headroom unused. 5 fixes restore loudness; per-tab gain helps.
@@ -103,12 +106,12 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Brave vs Chrome for 60 Tabs: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-tab-heavy-users-2026/): Brave vs Chrome at 60 tabs: vertical tabs are now parity, but 50 snapshots and the suggested Alt+K search keep projects recoverable after a full rebuild.
 - [Chrome Release Dates (2026): Every Version + What's Next](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/): Current Chrome is 152 (shipped August 25, 2026); 153 lands September 8 on the two-week cycle. Release calendar through 155, updated as schedules shift.
 - [Chrome 152: What Changes for Tab and Memory Users? (2026)](https://www.superchargebrowser.com/library/chrome-152-whats-new-tab-memory-users/): Chrome 152 (shipped Aug 25, 2026) added near-zero native tab or memory tools, but it sealed the Manifest V2 shutdown. What changed, plus the 153 cadence shift.
-- [Chrome Extensions Using Too Much RAM? 5 Tested Fixes (2026)](https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/): Extensions inject into every tab: 15 tabs means 15× the footprint. Shift+Esc reveals the culprits. 5 tested fixes to cut Chrome extension RAM in minutes.
-- [Manifest V2 vs V3: What Actually Dies in August 2026](https://www.superchargebrowser.com/library/chrome-manifest-v2-vs-v3-extensions/): Manifest V2 didn't just get a deadline — it stopped running on stable Chrome in July 2025. What the two 2026 dates actually change, and what still blocks ads.
-- [Is Chrome Memory Saver Good in 2026? Tested Review](https://www.superchargebrowser.com/library/chrome-native-memory-saver-review/): Tested Chrome Memory Saver on 32 tabs at chrome://settings/performance. Good under 10 tabs, reactive above 20 — it waits for RAM pressure, no timer you set.
 
 ## Library (additional guides)
 
+- [Chrome Extensions Using Too Much RAM? 5 Tested Fixes (2026)](https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/): Extensions inject into every tab: 15 tabs means 15× the footprint. Shift+Esc reveals the culprits. 5 tested fixes to cut Chrome extension RAM in minutes.
+- [Manifest V2 vs V3: What Actually Dies in August 2026](https://www.superchargebrowser.com/library/chrome-manifest-v2-vs-v3-extensions/): Manifest V2 didn't just get a deadline — it stopped running on stable Chrome in July 2025. What the two 2026 dates actually change, and what still blocks ads.
+- [Is Chrome Memory Saver Good in 2026? Tested Review](https://www.superchargebrowser.com/library/chrome-native-memory-saver-review/): Tested Chrome Memory Saver on 32 tabs at chrome://settings/performance. Good under 10 tabs, reactive above 20 — it waits for RAM pressure, no timer you set.
 - [Chrome Profiles vs Workspace Extensions: Which Wins? (2026)](https://www.superchargebrowser.com/library/chrome-profiles-vs-workspace-extensions-2026/): Chrome profile switches cost a window swap and two isolated renderer sets. A workspace extension organizes tabs under one login. The decision rule is two lines.
 - [Chrome RAM Per Tab in 2026? We Measured (Real Data)](https://www.superchargebrowser.com/library/chrome-ram-usage-per-tab-2026/): A single Chrome tab uses 80 MB idle, a YouTube tab over 300 MB. We measured 7 tab types and a 200-tab run on Chrome 149. Suspension cuts each tab 90-95%.
 - [Sleeping Tabs Don't Exist in Chrome — But This Does (2026)](https://www.superchargebrowser.com/library/chrome-sleeping-tabs-guide/): Edge calls it sleeping tabs. Chrome calls it Memory Saver. Same concept, different name — but Chrome adds ML tab prediction that Edge still lacks.
