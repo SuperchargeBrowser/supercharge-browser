@@ -53,7 +53,7 @@
 - Stereo width control (0–200%)
 - Mono mix toggle
 - Permissions: storage, tabs, tabCapture, offscreen, host all_urls — no webRequest, zero telemetry
-- Version: 1.0.8
+- Version: 1.1.0
 - Available on Chrome Web Store (launched June 10, 2026) and Microsoft Edge Add-ons (live June 4, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
@@ -67,7 +67,7 @@
 - Microphone, system audio, and webcam capture
 - Optional Share-to-Drive: upload exports to your own Google Drive (no SuperchargeBrowser servers)
 - Local-first, zero telemetry, no account required
-- Version: 1.1.3
+- Version: 1.2.0
 - Available on Chrome Web Store (live June 22, 2026) and Microsoft Edge Add-ons (live June 25, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
@@ -2493,7 +2493,7 @@ The table maps each target to one tool. A bug report that needs the whole deskto
 
 ## Capture the Page With Chrome Tools
 
-SuperchargeCapture 1.1.3 is the live Chrome Web Store build. It is free, has no paid tier, and stores screenshot files locally with no telemetry. These are suggested keys. You can rebind them, and Chrome drops one that collides with another extension. Use `Alt+Shift+S` for the visible page area. Use `Alt+Shift+F` for the full scrolling page. Region mode, suggested key `Alt+Shift+R`, lets you drag a rectangle. Element mode lets you click a single element.
+SuperchargeCapture 1.2.0 is the live Chrome Web Store build. It is free, has no paid tier, and stores screenshot files locally with no telemetry. These are suggested keys. You can rebind them, and Chrome drops one that collides with another extension. Use `Alt+Shift+S` for the visible page area. Use `Alt+Shift+F` for the full scrolling page. Region mode, suggested key `Alt+Shift+R`, lets you drag a rectangle. Element mode lets you click a single element.
 
 Export PNG, JPG, or WebP. Multiple screenshots can become one PDF. Nine annotation tools include redact/blur and spotlight. If your target is motion, `Alt+Shift+V` toggles recording. The source can be the tab, the window, or the screen, and the default is the tab. Capture does not run on `chrome://`, `edge://`, `about:` pages, or the Chrome Web Store.
 
@@ -2558,7 +2558,7 @@ Loudness normalization evens a source to a target level, which can reduce headro
 
 ## Fix 5: Add per-tab gain on the YouTube tab
 
-If the system, tab, player, and normalization checks are done and YouTube still trails other sites, the remaining difference is in how the source was mastered. SuperchargeAudio applies per-tab audio gain to the tab's audio through a Web Audio GainNode. The gain range is 0 to 6 times, where 1.0 is unity and 6.0 is 600%. Per-site gain profiles are stored locally, and no account is needed. As of September 2026, the Chrome Web Store version is 1.0.8.
+If the system, tab, player, and normalization checks are done and YouTube still trails other sites, the remaining difference is in how the source was mastered. SuperchargeAudio applies per-tab audio gain to the tab's audio through a Web Audio GainNode. The gain range is 0 to 6 times, where 1.0 is unity and 6.0 is 600%. Per-site gain profiles are stored locally, and no account is needed. As of October 2026, the Chrome Web Store version is 1.1.0.
 
 1. Install SuperchargeAudio from the Chrome Web Store.
 2. Set a gain value for the YouTube tab.
@@ -2585,7 +2585,7 @@ Q: Can I raise YouTube volume above 100 in Chrome?
 A: The player's own scale stops at 100. SuperchargeAudio applies per-tab gain from 0 to 6 times on a tab, and it stores per-site gain profiles locally without an account.
 
 Q: Does SuperchargeAudio need an account?
-A: No. Per-site gain profiles are stored locally. As of September 2026, the Chrome Web Store version is 1.0.8.
+A: No. Per-site gain profiles are stored locally. As of October 2026, the Chrome Web Store version is 1.1.0.
 
 ---
 
@@ -2758,7 +2758,7 @@ The three-level permission plus "Mute site" covers the common case. You set a gl
 
 The gap shows up when you keep tabs open across domains and the background tabs keep decoding video. "Mute site" is manual: you have to think about it, go to the tab, right-click, and pick the option. And because it mutes the whole domain, you lose the active tab's sound too. There is no "mute everything except the tab I am looking at" in Chrome's native controls.
 
-SuperchargeAudio 1.0.8 (live on the Chrome Web Store as of September 2026) fills that gap with Smart Mute, which is off by default: once on, the active tab keeps playing and non-pinned background tabs are muted automatically, with pinned tabs exempt by default. It also adds these features:
+SuperchargeAudio 1.1.0 (live on the Chrome Web Store as of October 2026) fills that gap with Smart Mute, which is off by default: once on, the active tab keeps playing and non-pinned background tabs are muted automatically, with pinned tabs exempt by default. It also adds these features:
 
 - **Audible-tabs list.** The popup lists every tab currently producing audio. You jump to a tab or mute it directly from the list, without closing the tab you are working in.
 - **Per-site audio memory.** Per-site volume and audio profiles persist when a tab becomes active.
@@ -5737,7 +5737,7 @@ Approaching the same need from the workspace side, [SuperchargeNavigation](/navi
 
 **Tampermonkey** made the MV3 jump at version 5.0 and shipped its latest stable release in May 2026, so if your userscript manager went grey, you were likely on the frozen Legacy (MV2) listing. Install the current version, then flip on **Developer mode** at the top right of `chrome://extensions` — Chrome requires it for userscript injection under MV3, and scripts silently refuse to run without it.
 
-Volume boosters were hit harder. The category was full of set-and-forget MV2 extensions whose developers had moved on years before the shutdown. **[SuperchargeAudio](/audio/)** (v1.0.8) is an MV3-native replacement that goes past the old single-slider tools: boost up to 600%, a 10-band equalizer, and per-site profiles that remember settings for each domain. No account, and audio processing stays on your machine.
+Volume boosters were hit harder. The category was full of set-and-forget MV2 extensions whose developers had moved on years before the shutdown. **[SuperchargeAudio](/audio/)** (v1.1.0) is an MV3-native replacement that goes past the old single-slider tools: boost up to 600%, a 10-band equalizer, and per-site profiles that remember settings for each domain. No account, and audio processing stays on your machine.
 
 ## Why the Old Extension Won't Come Back
 
@@ -8095,7 +8095,7 @@ Neither loss is fixable after the fact. Once the bot is in the call and the file
 
 Both tools record what is in your browser tab without injecting a participant into the meeting. The meeting platform has no idea a recording is happening. The other side's participant list is unchanged.
 
-**SuperchargeCapture** is a Manifest V3 Chrome extension (Chrome Web Store build 1.1.3 as of September 2026). It captures the active tab's video and audio locally. The file writes to your disk, not a vendor server. Its capture shortcuts (Alt+Shift+S for visible, Alt+Shift+F for full-page, Alt+Shift+R for region, Alt+Shift+V to toggle recording) are Chrome-suggested and rebindable.
+**SuperchargeCapture** is a Manifest V3 Chrome extension (Chrome Web Store build 1.2.0 as of October 2026). It captures the active tab's video and audio locally. The file writes to your disk, not a vendor server. Its capture shortcuts (Alt+Shift+S for visible, Alt+Shift+F for full-page, Alt+Shift+R for region, Alt+Shift+V to toggle recording) are Chrome-suggested and rebindable.
 
 The trade: it records the browser tab, not the native app. If you run Zoom or Teams in the browser, the tab capture works. If you use the desktop client, you need the platform's own recorder (below).
 
@@ -8127,7 +8127,7 @@ Q: Can I record a Zoom meeting without installing any extension?
 A: Yes. Zoom, Google Meet, and Microsoft Teams each include a built-in recorder that the host starts. It captures the meeting without adding a bot participant. As of September 2026, the file is stored in the platform's cloud or saved locally, depending on the platform's settings. No extension is required.
 
 Q: Where does the recording file go with a local-capture recorder?
-A: With SuperchargeCapture, the file is written to your local disk. It does not upload to a vendor server. You control where it lives and who can access it. As of September 2026, the extension (Chrome Web Store build 1.1.3) operates entirely on your machine.
+A: With SuperchargeCapture, the file is written to your local disk. It does not upload to a vendor server. You control where it lives and who can access it. As of October 2026, the extension (Chrome Web Store build 1.2.0) operates entirely on your machine.
 
 ---
 
@@ -11189,7 +11189,7 @@ A screenshot watermark is a sales device. The extension could export a clean ima
 
 | Extension | Users (Aug 2026) | Watermark | What the free tier withholds |
 |---|---|---|---|
-| SuperchargeCapture | New (v1.1.3) | None | Nothing: all modes, editor, export free |
+| SuperchargeCapture | New (v1.2.0) | None | Nothing: all modes, editor, export free |
 | GoFullPage | 11,000,000 | None | Exporting *annotated* images (Premium, ~$1/mo) |
 | Lightshot | 2,000,000 | None | Full-page capture doesn't exist; uploads are public links |
 | Scrnli | 1,000,000 | None | Nothing significant on screenshots |
@@ -11273,7 +11273,7 @@ The use case is the same everywhere: a tutorial, a Loom-style async update, a bu
 
 ## SuperchargeCapture: a Local Bubble, No Account
 
-[SuperchargeCapture](/capture/) (v1.1.3) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
+[SuperchargeCapture](/capture/) (v1.2.0) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
 
 Mic and tab audio record alongside. Export goes to MP4, WebM, or [GIF](/library/screen-recording-to-gif-slack-discord-2026/), written to local storage: no account, no watermark, no recording cap, nothing uploaded.
 
@@ -11287,7 +11287,7 @@ Screenity (v4.6.4, ~200,000 users) is the open-source pick, and its free tier is
 
 | Extension | Webcam PiP | Free-tier limits (checked Aug 7, 2026) | Account | Video lives |
 |---|---|---|---|---|
-| SuperchargeCapture v1.1.3 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
+| SuperchargeCapture v1.2.0 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
 | Screenity v4.6.4 | Movable overlay | No cap, no watermark | No | Your device |
 | Loom v5.5.203 | Circular bubble | 25 videos total, 5 min each | Yes | Loom cloud |
 | Screencastify | Bubble overlay | 10 videos, 30 min each, watermark | Yes (Google) | Cloud |
@@ -11354,7 +11354,7 @@ Scribe ranks well for "Chrome screen recorder" searches, but its own tool page s
 
 Scribe is a documentation tool, and a popular one: its Chrome Web Store listing shows 1,000,000 users as of August 7, 2026. You click Start Capture, work through a process, click Complete Capture, and Scribe assembles an illustrated how-to. One screenshot per click, instructions written for you, published as a web page you share by link or embed. That is the whole product, and the reason it markets to recorder searches is that people documenting a process often think they need a video first.
 
-SuperchargeCapture (v1.1.3 as of September 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
+SuperchargeCapture (v1.2.0 as of October 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
 
 | | Scribe | SuperchargeCapture |
 |---|---|---|
@@ -12734,7 +12734,7 @@ SuperchargeAudio 1.0.4 boosts each Chrome tab up to 600%. When the slider seems 
 | Symptom | Likely cause | Go to |
 |---|---|---|
 | Slider moves, sound stays identical | No playback when you adjusted, or an already-loud source | Fix 1, Fix 5 |
-| Works on YouTube, nothing on Spotify or Netflix | DRM stream needs capture mode | Fix 3 |
+| Works on YouTube, nothing on Spotify or Netflix | DRM stream needs Protected boost | Fix 3 |
 | One specific site ignores the boost | Saved per-site profile | Fix 2 |
 | Tab is completely silent | Chrome mute or smart-mute | Fix 4 |
 | Louder, but harsher instead of clearer | Source or bitrate at its limit | Fix 5 |
@@ -12753,11 +12753,11 @@ Settings save per hostname and reload on every visit. A profile you once set bac
 
 Open the popup's saved-sites list. Each entry shows its stored gain; edit it in place or remove the row to restore defaults. Ten seconds.
 
-## Fix 3: Switch Protected Streams to Capture Mode
+## Fix 3: Switch Protected Streams to Protected Boost
 
 Spotify, Netflix, and most paid streaming services encrypt their audio (DRM). The Web Audio API cannot read encrypted streams (a naive attempt outputs pure silence), so SuperchargeAudio does not route them through the normal engine.
 
-Instead, the popup shows a capture banner on protected sites. One click switches the tab to capture mode, which processes the tab's audio output as a whole. Consent is remembered per site, so Spotify needs this click exactly once.
+Instead, the popup shows a Protected boost banner on protected sites. One click switches the tab to Protected boost, which processes the tab's audio output as a whole. Consent is remembered per site, so Spotify needs this click exactly once.
 
 ## Fix 4: Check Chrome's Mute and Smart-Mute
 
@@ -12780,11 +12780,11 @@ Some limits are physics, and no volume extension of any brand moves them:
 - **Audio mixed into one channel.** That needs a channel fix, not gain — see [Chrome audio in one ear](/library/fix-chrome-audio-one-ear).
 - **Wrong output device.** If the OS is routing sound to a sleeping Bluetooth headset, nothing browser-side matters.
 
-If boost works on YouTube but not Spotify, capture mode (Fix 3) is the whole answer. If one site ignores the slider, delete its saved profile (Fix 2). If every level is maxed and it is still too quiet, the source or the hardware is the limit, and reinstalling will not change that.
+If boost works on YouTube but not Spotify, Protected boost (Fix 3) is the whole answer. If one site ignores the slider, delete its saved profile (Fix 2). If every level is maxed and it is still too quiet, the source or the hardware is the limit, and reinstalling will not change that.
 
 #### FAQ
 Q: Why does SuperchargeAudio show no difference on Spotify or Netflix?
-A: As of July 2026, Spotify, Netflix, and most paid streaming services deliver DRM-protected (encrypted) audio that the Web Audio API cannot read. SuperchargeAudio 1.0.4 detects this and shows a capture banner in the popup on protected sites. One click switches that tab to capture mode, which processes the tab's whole audio output instead, and the choice is remembered per site.
+A: As of July 2026, Spotify, Netflix, and most paid streaming services deliver DRM-protected (encrypted) audio that the Web Audio API cannot read. SuperchargeAudio 1.0.4 detects this and shows a Protected boost banner in the popup on protected sites. One click switches that tab to Protected boost, which processes the tab's whole audio output instead, and the choice is remembered per site.
 
 Q: Does the boost work if the tab is muted in Chrome?
 A: No. Chrome's own tab and site mute sits after all extension processing in the browser's audio mixer, so 600% gain on a muted tab is still silence. As of July 2026, check the tab's right-click menu for 'Unmute site' and the site list at chrome://settings/content/sound before adjusting any extension setting.
@@ -14873,7 +14873,7 @@ Most browser recorders, Screencastify included, route through the operating syst
 
 SuperchargeCapture records the current tab through `chrome.tabCapture`, which skips that dialog entirely. You click This Tab in the popup and recording starts. No OS prompt, no second-guessing which window you meant. Window and full-screen capture are there when you actually want them, using the standard picker because they have to, but the common case of recording the tab in front of you is a single click.
 
-Before recording, the popup shows a live microphone level meter, so you catch a dead mic before you talk for ten minutes instead of after. A system-audio toggle and an optional countdown round out the pre-record controls. None of this is gated behind a plan.
+Before recording, the popup shows a live microphone level meter, so you catch a dead mic before you talk for ten minutes instead of after. A Tab sound toggle and a countdown round out the pre-record controls. None of this is gated behind a plan.
 
 ## The Editor: Polish Without a Paywall
 
@@ -15430,10 +15430,10 @@ GoFullPage is named for what it does: it grabs the full page, and it does that j
 
 | Capture mode | GoFullPage | SuperchargeCapture |
 |---|---|---|
-| Full page (scroll + stitch) | Yes | Yes |
-| Visible viewport | Yes | Yes |
-| Drag a region | No | Yes |
-| Single element (hover + click) | No | Yes |
+| Whole page (scroll + stitch) | Yes | Yes |
+| What you see | Yes | Yes |
+| Drag an area | No | Yes |
+| Pick a part (hover + click) | No | Yes |
 | Export formats | PNG, PDF | PNG, JPG, WebP, PDF |
 
 **Element capture** is the underrated one. Hover over the page, SuperchargeCapture highlights the DOM node under your cursor, you click, and it grabs exactly that element — a pricing card, a chart, a single comment — already cropped, no manual trimming. For documentation and bug reports, that is faster than capturing the whole viewport and cropping down every time.
@@ -15511,7 +15511,7 @@ Q: Why does GoFullPage leave blank sections or miss content on some pages?
 A: As of June 2026, GoFullPage scrolls the page and stitches the frames together, which breaks on two common patterns: pages with their own inner scroll container (so it captures the wrong scrollable element) and pages that lazy-load content as you scroll (so sections that hadn't loaded yet come out blank). SuperchargeCapture is built to handle fixed and sticky elements correctly during the full-page stitch, the part that produces repeated headers and gaps in naive tools.
 
 Q: Can SuperchargeCapture screenshot just one element or a region?
-A: Yes. As of June 2026, SuperchargeCapture has four modes: Full page (scroll and stitch the whole page), Visible (one capture of the current viewport), Region (drag a rectangle around any area), and Element (hover to highlight a DOM node, click to grab just it). GoFullPage centers on full-page capture and does not offer region or element selection.
+A: Yes. As of June 2026, SuperchargeCapture has four modes: Whole page (scroll and stitch the whole page), What you see (one capture of the current viewport), Drag an area (drag a rectangle around any area), and Pick a part (hover to highlight a DOM node, click to grab just it). GoFullPage centers on full-page capture and does not offer region or element selection.
 
 Q: Does SuperchargeCapture also record the screen?
 A: Yes. As of June 2026, SuperchargeCapture is a screenshot and screen-recording tool in one. Beyond screenshots it records your tab, window, or screen locally, with auto-zoom on clicks, cursor polish, trim, and webcam bubble — all free and on-device. GoFullPage is screenshot-only. If you want both capture types in one extension instead of two, that consolidation is a reason to switch.
@@ -15557,7 +15557,7 @@ Most browser recorders, Loom included, lean on `getDisplayMedia`, which pops the
 
 SuperchargeCapture records the current tab through `chrome.tabCapture`, which skips that dialog entirely. You pick This Tab in the popup and recording starts — no OS prompt, no "which window did I mean again." Window and full-screen capture are also available when you actually want them, and those use the standard picker because they have to. But the most common case, recording the tab you are already looking at, is one click.
 
-Before you record, the popup shows a **live microphone level meter**. You can see the bar move when you talk, so the silent-mic disaster, recording five minutes of a walkthrough only to find no audio, is caught before you start rather than after. A system-audio toggle and a countdown (off, 3s, or 5s) round out the pre-record controls.
+Before you record, the popup shows a **live microphone level meter**. You can see the bar move when you talk, so the silent-mic disaster, recording five minutes of a walkthrough only to find no audio, is caught before you start rather than after. A Tab sound toggle and a countdown round out the pre-record controls.
 
 ## Crash-Safe by Design
 
@@ -22778,11 +22778,11 @@ That rule is what a smart-mute extension adds:
 - Any other tab that starts producing sound gets muted the instant it becomes audible.
 - Switch tabs and the rule follows your focus. The new active tab becomes the audible one, the old one goes quiet. So an autoplaying ad in a background tab, or a livestream you left running, never reaches your speakers unless you bring it to the front.
 
-**[SuperchargeAudio](/audio/)** ships this as a smart-mute rule plus an audible-tab list in the popup:
+**[SuperchargeAudio](/audio/)** ships this as a smart-mute rule plus an Also playing list in the popup:
 
 1. Install [SuperchargeAudio](/audio/).
 2. Open the popup and turn on **Smart Mute**.
-3. The popup shows an **Audible tabs** list. Click any entry to jump to that tab, adjust its volume, or mute it individually.
+3. The popup shows an **Also playing** list. Click any entry to jump to that tab, adjust its volume, or mute it individually.
 4. Whitelist sites that should always play (your music service), and exclude pinned tabs if you keep media pinned.
 
 A silent mode mutes everything, including the active tab, when you need instant quiet. Settings stay local, no account needed.
