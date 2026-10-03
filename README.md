@@ -255,7 +255,7 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 210 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
-Raw markdown for any guide: append `index.md` to its URL (e.g. https://www.superchargebrowser.com/library/<slug>/index.md).
+Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
 <details>
 <summary>View all 210 articles</summary>
