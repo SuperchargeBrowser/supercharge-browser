@@ -443,7 +443,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [How to Remove Gemini Nano Files from Chrome (Reclaim 4GB)](https://www.superchargebrowser.com/library/remove-gemini-nano-files-chrome/)
 - [How to Save a Full Scrolling Web Page as PDF (2026)](https://www.superchargebrowser.com/library/save-full-web-page-as-pdf-chrome-2026/)
 - [How to Speed Up a 4GB Chromebook (Without Buying New) (2026)](https://www.superchargebrowser.com/library/speed-up-4gb-chromebook/)
-- [How to Stop Autoplay in Chrome and Edge: 3 Levels (2026)](https://www.superchargebrowser.com/library/stop-autoplay-chrome-edge/)
+- [How to Stop Autoplay in Chrome and Edge (2026)](https://www.superchargebrowser.com/library/stop-autoplay-chrome-edge/)
 - [How to STOP Work and Personal Tabs Mixing in Chrome (2026)](https://www.superchargebrowser.com/library/separate-work-personal-tabs-chrome/)
 - [How to Sync Tabs & Workspaces Across Devices (Chrome, 2026)](https://www.superchargebrowser.com/library/sync-tabs-workspaces-across-devices-chrome-2026/)
 - [How to Take a Full-Page Screenshot in Chrome FAST (2026)](https://www.superchargebrowser.com/library/full-page-screenshot-chrome/)
