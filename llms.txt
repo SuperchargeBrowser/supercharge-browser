@@ -97,10 +97,13 @@
 
 ## Library
 
-211 guides on Chrome performance, memory management, and tab organization.
+214 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [Chrome Declarative Net Request Rules: 5 Hard Limits (2026)](https://www.superchargebrowser.com/library/chrome-dnr-rules-explained/): Declarative net request rules decide which Chrome requests get blocked, redirected, or modified: 5 hard quotas, 1 tie-break order, and the coverage link.
+- [Chrome Extension Shortcut Dead? 3 Fixes That Work (2026)](https://www.superchargebrowser.com/library/chrome-extensions-shortcuts-page-guide/): Your extension shortcut died after an update. chrome://extensions/shortcuts shows the empty binding and rebinds it. No restart, no guesswork.
 - [How to Screen Record Chrome on Windows: 3 Ways (2026)](https://www.superchargebrowser.com/library/screen-record-chrome-windows/): Chrome has no built-in screen recorder on Windows. Record a tab, window, or screen with audio. Built-in tools or a free extension, local export, no watermark.
+- [Treble Booster vs Bass Booster: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/treble-vs-bass-booster-chrome/): Treble booster vs bass booster: which band is your audio missing? Lift 2-8 kHz for thin podcasts, 60-250 Hz for flat music, or combine both in one EQ.
 - [How to Stop Autoplay in Chrome and Edge (2026)](https://www.superchargebrowser.com/library/stop-autoplay-chrome-edge/): Chrome has no autoplay setting. The control is Sound: three options, per-site overrides. Edge: Media autoplay, allow or limit. Mute site mutes a whole domain.
 - [How to Bass Boost Your Chromebook: 2 Free Ways (2026)](https://www.superchargebrowser.com/library/bass-boost-chromebook/): Bass on a Chromebook stays thin at max volume. Two free routes: OS settings, or a 10-band EQ plus a 600% per-tab volume ceiling. No hardware, no paid app.
 - [Brave vs Chrome Performance: Which Is Faster? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-performance-2026/): Brave vs Chrome performance: both share one engine, but defaults set the floor. 34 auto-protected apps, 186K+ rules, a 5-min timer neither ships. (2026)
@@ -117,12 +120,12 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [6 BEST Chrome Extensions to Reduce RAM (2026, Tested)](https://www.superchargebrowser.com/library/best-chrome-extensions-reduce-ram/): Chrome eating 3GB with 20 tabs? We tested 6 RAM-reducing extensions — tab suspenders, blockers, and managers. Cuts memory 70%+ without losing a single tab.
 - [Brave Extensions: 6 BEST Picks for What's Missing (2026)](https://www.superchargebrowser.com/library/best-extensions-brave-browser-2026/): Brave extensions: skip the ad blocker, Shields already covers it. 6 picks fill the real gaps: timed suspension, workspaces, session recovery. Aug 2026.
 - [Twitch Ads Still Playing? 4 TESTED Blockers (2026)](https://www.superchargebrowser.com/library/best-twitch-ad-blockers-chrome-2026/): Twitch stitches ads into the video stream itself — uBlock Origin can't see them. 4 extensions that bypass SSAI via M3U8 substitution, verified June 2026.
-- [Brave Draining Your Laptop Battery? 6 Fixes That Work (2026)](https://www.superchargebrowser.com/library/brave-browser-battery-drain-fix/): Brave battery drain is rarely Shields. It's Rewards, Wallet, and Leo AI running behind it. 6 fixes verified on Brave 1.93 (Chromium 151), July 30, 2026.
-- [Brave vs Chrome for 60 Tabs: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-tab-heavy-users-2026/): Brave vs Chrome at 60 tabs: vertical tabs are now parity, but 50 snapshots and the suggested Alt+K search keep projects recoverable after a full rebuild.
-- [Chrome Release Dates (2026): Every Version + What's Next](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/): Current Chrome is 152 (shipped August 25, 2026); 153 lands September 8 on the two-week cycle. Release calendar through 155, updated as schedules shift.
 
 ## Library (additional guides)
 
+- [Brave Draining Your Laptop Battery? 6 Fixes That Work (2026)](https://www.superchargebrowser.com/library/brave-browser-battery-drain-fix/): Brave battery drain is rarely Shields. It's Rewards, Wallet, and Leo AI running behind it. 6 fixes verified on Brave 1.93 (Chromium 151), July 30, 2026.
+- [Brave vs Chrome for 60 Tabs: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-tab-heavy-users-2026/): Brave vs Chrome at 60 tabs: vertical tabs are now parity, but 50 snapshots and the suggested Alt+K search keep projects recoverable after a full rebuild.
+- [Chrome Release Dates (2026): Every Version + What's Next](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/): Current Chrome is 152 (shipped August 25, 2026); 153 lands September 8 on the two-week cycle. Release calendar through 155, updated as schedules shift.
 - [Chrome 152: What Changes for Tab and Memory Users? (2026)](https://www.superchargebrowser.com/library/chrome-152-whats-new-tab-memory-users/): Chrome 152 (shipped Aug 25, 2026) added near-zero native tab or memory tools, but it sealed the Manifest V2 shutdown. What changed, plus the 153 cadence shift.
 - [Chrome Extensions Using Too Much RAM? 5 Tested Fixes (2026)](https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/): Extensions inject into every tab: 15 tabs means 15× the footprint. Shift+Esc reveals the culprits. 5 tested fixes to cut Chrome extension RAM in minutes.
 - [Manifest V2 vs V3: What Actually Dies in August 2026](https://www.superchargebrowser.com/library/chrome-manifest-v2-vs-v3-extensions/): Manifest V2 didn't just get a deadline — it stopped running on stable Chrome in July 2025. What the two 2026 dates actually change, and what still blocks ads.
