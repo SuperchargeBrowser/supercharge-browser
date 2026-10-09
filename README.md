@@ -4,10 +4,12 @@
 [![Chrome Web Store — SuperchargeNavigation](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargeNavigation-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/mpkbppjbchjdohbjgeoamdehklmapgnl)
 [![Chrome Web Store — SuperchargeAudio](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargeAudio-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/cbjglaijgolamegjnaiabgdojmghalbe)
 [![Chrome Web Store — SuperchargeCapture](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargeCapture-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/gebkchfkcnjdflkfdimabihllibgcdhp)
+[![Chrome Web Store — SuperchargeInspect](https://img.shields.io/badge/Chrome%20Web%20Store-SuperchargeInspect-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/chliiokcegkincifjcpmoldbmdjficld)
 [![Microsoft Edge Add-ons — SuperchargeNavigation](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeNavigation-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb)
 [![Microsoft Edge Add-ons — SuperchargePerformance](https://img.shields.io/badge/Edge%20Add--ons-SuperchargePerformance-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol)
 [![Microsoft Edge Add-ons — SuperchargeAudio](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeAudio-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia)
 [![Microsoft Edge Add-ons — SuperchargeCapture](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeCapture-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk)
+[![Microsoft Edge Add-ons — SuperchargeInspect](https://img.shields.io/badge/Edge%20Add--ons-SuperchargeInspect-0078D7?logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/bmjjlladnefejnepncnoeffhpaifchce)
 [![Website](https://img.shields.io/badge/Website-superchargebrowser.com-F59E0B)](https://www.superchargebrowser.com)
 [![License](https://img.shields.io/badge/License-Proprietary-lightgrey)](https://www.superchargebrowser.com/privacy/)
 
@@ -96,6 +98,27 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 | OPFS Recovery | Crash-safe recording backed by the Origin Private File System. Recordings survive browser restarts. |
 | Annotation Editor | Free annotation editor with auto-zoom on clicks, cursor polish, and padded backgrounds (Screen-Studio-grade export effects). |
 | Share to Drive | Optional upload to the user's own Google Drive. Zero telemetry; files never pass through SuperchargeBrowser servers. |
+
+---
+
+### SuperchargeInspect
+
+**Element inspector + CSS-value copier for Chrome and Edge**
+
+- [Chrome Web Store listing](https://chromewebstore.google.com/detail/chliiokcegkincifjcpmoldbmdjficld)
+- [Microsoft Edge Add-ons listing](https://microsoftedge.microsoft.com/addons/detail/bmjjlladnefejnepncnoeffhpaifchce) — live
+- [Product page](https://www.superchargebrowser.com/inspect/)
+
+**Core features:**
+
+| Feature | Description |
+|---------|-------------|
+| Element Inspection | Point at any element with the mouse or the arrow keys, and lock it with a click or Enter. |
+| Font, Colors & Spacing | The panel shows the declared font family, the text and background colors in hex, and the box model: padding, border, and margin on all four sides, plus the content width and height. |
+| Copy a Value | Click any value in the panel to copy just that value. |
+| Copy the Reference | Copies the text and an annotated screenshot together, with your note, the page address, the element locator, and a short style line. |
+| AI Coding Tool Hand-off | Paste the reference into your AI coding tool; tools that keep only the image or only the text can copy text only or image only. |
+| 100% Local | Everything stays on your device: no network calls and no account. |
 
 ---
 
@@ -498,6 +521,8 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 | Audio — Edge Add-ons | https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia |
 | Capture — CWS | https://chromewebstore.google.com/detail/gebkchfkcnjdflkfdimabihllibgcdhp |
 | Capture — Edge Add-ons | https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk |
+| Inspect — CWS | https://chromewebstore.google.com/detail/chliiokcegkincifjcpmoldbmdjficld |
+| Inspect — Edge Add-ons | https://microsoftedge.microsoft.com/addons/detail/bmjjlladnefejnepncnoeffhpaifchce |
 | Feature docs | https://www.superchargebrowser.com/features/ |
 | Library | https://www.superchargebrowser.com/library/ |
 | Changelog | https://www.superchargebrowser.com/changelog/ |
