@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Generated: 2026-10-08
+> Generated: 2026-10-09
 > Content updated: 2026-10-05
 > For a summary index, see /llms.txt
 
@@ -20,7 +20,7 @@
 - Zero telemetry, zero tracking, zero data collection, fully local
 - Version: 1.5.0
 - Available on both Chrome Web Store and Microsoft Edge Add-ons (Edge listing live May 2026)
-- Weekly active users: 11,000+ combined across the extension family (Chrome Web Store and Microsoft Edge Add-ons)
+- Weekly active users: 13,000+ combined across the extension family (Chrome Web Store and Microsoft Edge Add-ons)
 - Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol
 
@@ -81,7 +81,7 @@
 - Copy the reference: the text and an annotated screenshot together, with your note, the page address, the element locator, and a short style line.
 - Paste the reference into your AI coding tool. Some tools keep only the image or only the text, then copy text only or image only.
 - Everything stays on your device: no network calls and no account.
-- Status: Coming soon
+- Install (Chrome): https://chromewebstore.google.com/detail/inspect-element-css-viewe/chliiokcegkincifjcpmoldbmdjficld
 - Product page: https://www.superchargebrowser.com/inspect/
 
 ### SuperchargePerformance PRO
@@ -27667,29 +27667,30 @@ Canonical URL: https://www.superchargebrowser.com/capture/
 
 # Changelog
 
-> Release notes for SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, and SuperchargeCapture. See what shipped, what changed, what is on the way.
+> Release notes for SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, SuperchargeCapture, and SuperchargeInspect. See what shipped, what changed, what is on the way.
 
 - Canonical: https://www.superchargebrowser.com/changelog/
 - Source: SuperchargeBrowser (https://www.superchargebrowser.com)
 
-Release notes for SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, and SuperchargeCapture.
+Release notes for SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, SuperchargeCapture, and SuperchargeInspect.
 
-Redesigned · Sharper
+Look · Copy
 
-# Nav, Redesigned From the Side Panel Out
+# Pick Any Element, Take It With You
 
-Navigation v1.4.0 October 3, 2026
+Inspect v1.0.0 October 9, 2026
 
-Nav 1.4.0 is the biggest redesign of the extension so far, redrawing the side panel, the new tab page, the options page, the keyboard hints and the command bar. One accent color now carries the whole look, and you can drag the in-page sidebar down to just its icons. Nothing to set up, your settings carry over, and there are no new permissions. It runs on Chrome or Edge 123 or newer.
+SuperchargeInspect opens on any page and lets you pick any element, then take it with you. Hover and click, or move with the arrow keys and lock with Enter. The overlay draws the box model right on the page, and the panel reads out the font, colors, and spacing. One copy puts text and a clean snapshot on your clipboard, with a note if you want one.
 
-* Every main screen was redrawn, from the side panel to the command bar.
-* The side panel opens on a row of workspace tiles, plus a More menu.
-* The new tab page is a clean column over a drifting dot field.
-* The options page is a thin topbar with a plain left nav.
-* The keyboard hints get an ink-stamp look and a sharper highlight.
-* The command bar and the Glance preview are restyled to match.
+* Pick with the mouse, or move with arrow keys and lock with Enter
+* The overlay draws padding, margin, and the content box right on the page
+* Font, size, weight, tracking, colors, and box model read out per element
+* Any value tile copies on click
+* Copy a full reference: text plus a clean PNG snapshot in one item
+* Notes up to 1200 characters ride along in the reference and the image footer
+* Shadow roots, slots, SVG, and same-origin iframes are all selectable
 
-[ View full release notes  ](/changelog/navigation/1.4.0/)
+[ View full release notes  ](/changelog/inspect/1.0.0/)
 
 Also from the same team
 
@@ -27699,61 +27700,61 @@ Suspends idle tabs, blocks ads, and tames sites. Each suspended tab frees 90 to 
 
 [ See how it works  ](/performance/)
 
-Free · Works alongside SuperchargeNavigation
-
 ## Past releases
 
-1. [Capturev1.2.2Your Selection Holds Even When You PauseOct 8, 2026](/changelog/capture/1.2.2/)
-2. [Capturev1.2.1Screenshots That Get the Whole ThingOct 6, 2026](/changelog/capture/1.2.1/)
-3. [Navigationv1.4.1Your Keys Stay in NavOct 6, 2026](/changelog/navigation/1.4.1/)
-4. [Performancev1.5.0Redesigned From the Popup to the PageOct 3, 2026](/changelog/performance/1.5.0/)
-5. [Audiov1.1.0The Audio Popup, RedesignedOct 2, 2026](/changelog/audio/1.1.0/)
-6. [Capturev1.2.0Every Screen of Capture, RedesignedOct 2, 2026](/changelog/capture/1.2.0/)
-7. [Audiov1.0.8Capture Mode Stays On Between TracksSep 25, 2026](/changelog/audio/1.0.8/)
-8. [Navigationv1.3.5Safer Sync, Gentler Workspaces & a Calmer First RunSep 23, 2026](/changelog/navigation/1.3.5/)
-9. [Performancev1.4.9Changes apply right awaySep 23, 2026](/changelog/performance/1.4.9/)
-10. [Audiov1.0.7Spotify Works With the Normal ControlsSep 22, 2026](/changelog/audio/1.0.7/)
-11. [Capturev1.1.3Full-page screenshots stay true to the pageSep 18, 2026](/changelog/capture/1.1.3/)
-12. [Performancev1.4.8Autoplay stays off after a clickSep 18, 2026](/changelog/performance/1.4.8/)
-13. [Performancev1.4.7Video Calls Stay AliveAug 26, 2026](/changelog/performance/1.4.7/)
-14. [Audiov1.0.6Boost What the Normal Boost Can't ReachAug 25, 2026](/changelog/audio/1.0.6/)
-15. [Capturev1.1.2Routine maintenanceAug 25, 2026](/changelog/capture/1.1.2/)
-16. [Capturev1.1.1A rebuilt editor — timeline editing, offline captions & moreAug 14, 2026](/changelog/capture/1.1.1/)
-17. [Navigationv1.3.4Learn Nav, Workspace Undo & an Opt-In New Tab PageAug 10, 2026](/changelog/navigation/1.3.4/)
-18. [Performancev1.4.6Ad Blocking That Repairs ItselfAug 7, 2026](/changelog/performance/1.4.6/)
-19. [Audiov1.0.5Save Your Own EQ PresetsAug 6, 2026](/changelog/audio/1.0.5/)
-20. [Navigationv1.3.3Search Goes to Your Default EngineJun 29, 2026](/changelog/navigation/1.3.3/)
-21. [Audiov1.0.4Glitch-Free EQ While You Drag the SlidersJun 25, 2026](/changelog/audio/1.0.4/)
-22. [Capturev1.0.2Smoother auto-zoom & calmer permission asksJun 25, 2026](/changelog/capture/1.0.2/)
-23. [Navigationv1.3.2Your Open Tabs Are Backed Up Before a Sync RestoreJun 25, 2026](/changelog/navigation/1.3.2/)
-24. [Performancev1.4.5Refreshed Blocklists & Popup PolishJun 25, 2026](/changelog/performance/1.4.5/)
-25. [Audiov1.0.3Smoother Channel Switching and Consistent 8D Spatial ToneJun 22, 2026](/changelog/audio/1.0.3/)
-26. [Capturev1.0.0Screenshots, Screen Recording & Annotation, All LocalJun 22, 2026](/changelog/capture/1.0.0/)
-27. [Capturev1.0.1Reliable Drive sharing & a tidier editorJun 22, 2026](/changelog/capture/1.0.1/)
-28. [Navigationv1.3.1Discoverable Rename, a Best-Match Palette & a Type-to-Select HUDJun 19, 2026](/changelog/navigation/1.3.1/)
-29. [Performancev1.4.4Auto-Reject Cookie Banners On by DefaultJun 19, 2026](/changelog/performance/1.4.4/)
-30. [Performancev1.4.3Whitelist Wildcard Fix & Smarter Per-Site DefaultsJun 15, 2026](/changelog/performance/1.4.3/)
-31. [Navigationv1.3.0The In-Page Sidebar — Nav Lives Inside the Page NowJun 11, 2026](/changelog/navigation/1.3.0/)
-32. [Performancev1.4.2Instant Whitelisting, Fewer False Hides & Stop Autoplay RebuiltJun 11, 2026](/changelog/performance/1.4.2/)
-33. [Audiov1.0.2SuperchargeAudio — Live on the Chrome Web StoreJun 10, 2026](/changelog/audio/1.0.2/)
-34. [Audiov1.0.1SuperchargeAudio — Clean High Boost and Protected-Audio SupportJun 8, 2026](/changelog/audio/1.0.1/)
-35. [Audiov1.0.0SuperchargeAudio — Volume, EQ, and Spatial Controls for Every TabMay 28, 2026](/changelog/audio/1.0.0/)
-36. [Performancev1.4.1Scroll Restore, Smarter Media Detection & Overlay Scroll FixMay 28, 2026](/changelog/performance/1.4.1/)
-37. [Navigationv1.2.2Auto-Open Workspace on Launch & Two Bug FixesMay 25, 2026](/changelog/navigation/1.2.2/)
-38. [Performancev1.4.0Adaptive Suspension, Ambient Feedback & Popup RedesignMay 24, 2026](/changelog/performance/1.4.0/)
-39. [Navigationv1.2.1Edge Support, NTP Restore Button & Per-Site Pause RebindMay 21, 2026](/changelog/navigation/1.2.1/)
-40. [Navigationv1.2.0Hint Mode, Type-to-Select & a Real Keyboard LayerMay 10, 2026](/changelog/navigation/1.2.0/)
-41. [Performancev1.3.259 Locales & Listing RewriteApr 30, 2026](/changelog/performance/1.3.2/)
-42. [Navigationv1.1.0Cross-Device Sync, New Tab Page & Multi-Window WorkspacesApr 24, 2026](/changelog/navigation/1.1.0/)
-43. [Performancev1.3.1Stability, Speed & Stronger Ad BlockingApr 17, 2026](/changelog/performance/1.3.1/)
-44. [Performancev1.3.0Video Ad Blocking, Popup Blocker & Cookie Consent UpgradeApr 16, 2026](/changelog/performance/1.3.0/)
-45. [Performancev1.2.2Theme-Aware Icons, Cross-Promo & Fresh BlocklistsMar 17, 2026](/changelog/performance/1.2.2/)
-46. [Navigationv1.0.0Initial Release — Vertical Tabs, Workspaces & Instant SearchMar 13, 2026](/changelog/navigation/1.0.0/)
-47. [Performancev1.2.1Rebrand, Refreshed Blocklists & Stability FixesMar 12, 2026](/changelog/performance/1.2.1/)
-48. [Performancev1.2.0WXT Migration, Cookie Autopilot & Zero-Latency NavigationFeb 28, 2026](/changelog/performance/1.2.0/)
-49. [Performancev1.1.0Performance Dashboard, Global Controls & 27 LanguagesJan 15, 2026](/changelog/performance/1.1.0/)
+1. [Inspectv1.0.1Arrows Now Move SidewaysPending](/changelog/inspect/1.0.1/)
+2. [Capturev1.2.2Your Selection Holds Even When You PauseOct 8, 2026](/changelog/capture/1.2.2/)
+3. [Capturev1.2.1Screenshots That Get the Whole ThingOct 6, 2026](/changelog/capture/1.2.1/)
+4. [Navigationv1.4.1Your Keys Stay in NavOct 6, 2026](/changelog/navigation/1.4.1/)
+5. [Navigationv1.4.0Nav, Redesigned From the Side Panel OutOct 3, 2026](/changelog/navigation/1.4.0/)
+6. [Performancev1.5.0Redesigned From the Popup to the PageOct 3, 2026](/changelog/performance/1.5.0/)
+7. [Audiov1.1.0The Audio Popup, RedesignedOct 2, 2026](/changelog/audio/1.1.0/)
+8. [Capturev1.2.0Every Screen of Capture, RedesignedOct 2, 2026](/changelog/capture/1.2.0/)
+9. [Audiov1.0.8Capture Mode Stays On Between TracksSep 25, 2026](/changelog/audio/1.0.8/)
+10. [Navigationv1.3.5Safer Sync, Gentler Workspaces & a Calmer First RunSep 23, 2026](/changelog/navigation/1.3.5/)
+11. [Performancev1.4.9Changes apply right awaySep 23, 2026](/changelog/performance/1.4.9/)
+12. [Audiov1.0.7Spotify Works With the Normal ControlsSep 22, 2026](/changelog/audio/1.0.7/)
+13. [Capturev1.1.3Full-page screenshots stay true to the pageSep 18, 2026](/changelog/capture/1.1.3/)
+14. [Performancev1.4.8Autoplay stays off after a clickSep 18, 2026](/changelog/performance/1.4.8/)
+15. [Performancev1.4.7Video Calls Stay AliveAug 26, 2026](/changelog/performance/1.4.7/)
+16. [Audiov1.0.6Boost What the Normal Boost Can't ReachAug 25, 2026](/changelog/audio/1.0.6/)
+17. [Capturev1.1.2Routine maintenanceAug 25, 2026](/changelog/capture/1.1.2/)
+18. [Capturev1.1.1A rebuilt editor — timeline editing, offline captions & moreAug 14, 2026](/changelog/capture/1.1.1/)
+19. [Navigationv1.3.4Learn Nav, Workspace Undo & an Opt-In New Tab PageAug 10, 2026](/changelog/navigation/1.3.4/)
+20. [Performancev1.4.6Ad Blocking That Repairs ItselfAug 7, 2026](/changelog/performance/1.4.6/)
+21. [Audiov1.0.5Save Your Own EQ PresetsAug 6, 2026](/changelog/audio/1.0.5/)
+22. [Navigationv1.3.3Search Goes to Your Default EngineJun 29, 2026](/changelog/navigation/1.3.3/)
+23. [Audiov1.0.4Glitch-Free EQ While You Drag the SlidersJun 25, 2026](/changelog/audio/1.0.4/)
+24. [Capturev1.0.2Smoother auto-zoom & calmer permission asksJun 25, 2026](/changelog/capture/1.0.2/)
+25. [Navigationv1.3.2Your Open Tabs Are Backed Up Before a Sync RestoreJun 25, 2026](/changelog/navigation/1.3.2/)
+26. [Performancev1.4.5Refreshed Blocklists & Popup PolishJun 25, 2026](/changelog/performance/1.4.5/)
+27. [Audiov1.0.3Smoother Channel Switching and Consistent 8D Spatial ToneJun 22, 2026](/changelog/audio/1.0.3/)
+28. [Capturev1.0.0Screenshots, Screen Recording & Annotation, All LocalJun 22, 2026](/changelog/capture/1.0.0/)
+29. [Capturev1.0.1Reliable Drive sharing & a tidier editorJun 22, 2026](/changelog/capture/1.0.1/)
+30. [Navigationv1.3.1Discoverable Rename, a Best-Match Palette & a Type-to-Select HUDJun 19, 2026](/changelog/navigation/1.3.1/)
+31. [Performancev1.4.4Auto-Reject Cookie Banners On by DefaultJun 19, 2026](/changelog/performance/1.4.4/)
+32. [Performancev1.4.3Whitelist Wildcard Fix & Smarter Per-Site DefaultsJun 15, 2026](/changelog/performance/1.4.3/)
+33. [Navigationv1.3.0The In-Page Sidebar — Nav Lives Inside the Page NowJun 11, 2026](/changelog/navigation/1.3.0/)
+34. [Performancev1.4.2Instant Whitelisting, Fewer False Hides & Stop Autoplay RebuiltJun 11, 2026](/changelog/performance/1.4.2/)
+35. [Audiov1.0.2SuperchargeAudio — Live on the Chrome Web StoreJun 10, 2026](/changelog/audio/1.0.2/)
+36. [Audiov1.0.1SuperchargeAudio — Clean High Boost and Protected-Audio SupportJun 8, 2026](/changelog/audio/1.0.1/)
+37. [Audiov1.0.0SuperchargeAudio — Volume, EQ, and Spatial Controls for Every TabMay 28, 2026](/changelog/audio/1.0.0/)
+38. [Performancev1.4.1Scroll Restore, Smarter Media Detection & Overlay Scroll FixMay 28, 2026](/changelog/performance/1.4.1/)
+39. [Navigationv1.2.2Auto-Open Workspace on Launch & Two Bug FixesMay 25, 2026](/changelog/navigation/1.2.2/)
+40. [Performancev1.4.0Adaptive Suspension, Ambient Feedback & Popup RedesignMay 24, 2026](/changelog/performance/1.4.0/)
+41. [Navigationv1.2.1Edge Support, NTP Restore Button & Per-Site Pause RebindMay 21, 2026](/changelog/navigation/1.2.1/)
+42. [Navigationv1.2.0Hint Mode, Type-to-Select & a Real Keyboard LayerMay 10, 2026](/changelog/navigation/1.2.0/)
+43. [Performancev1.3.259 Locales & Listing RewriteApr 30, 2026](/changelog/performance/1.3.2/)
+44. [Navigationv1.1.0Cross-Device Sync, New Tab Page & Multi-Window WorkspacesApr 24, 2026](/changelog/navigation/1.1.0/)
+45. [Performancev1.3.1Stability, Speed & Stronger Ad BlockingApr 17, 2026](/changelog/performance/1.3.1/)
+46. [Performancev1.3.0Video Ad Blocking, Popup Blocker & Cookie Consent UpgradeApr 16, 2026](/changelog/performance/1.3.0/)
+47. [Performancev1.2.2Theme-Aware Icons, Cross-Promo & Fresh BlocklistsMar 17, 2026](/changelog/performance/1.2.2/)
+48. [Navigationv1.0.0Initial Release — Vertical Tabs, Workspaces & Instant SearchMar 13, 2026](/changelog/navigation/1.0.0/)
+49. [Performancev1.2.1Rebrand, Refreshed Blocklists & Stability FixesMar 12, 2026](/changelog/performance/1.2.1/)
+50. [Performancev1.2.0WXT Migration, Cookie Autopilot & Zero-Latency NavigationFeb 28, 2026](/changelog/performance/1.2.0/)
+51. [Performancev1.1.0Performance Dashboard, Global Controls & 27 LanguagesJan 15, 2026](/changelog/performance/1.1.0/)
 
-50 releases since launch
+52 releases since launch
 
 Found a bug or have feedback? <support@superchargebrowser.com>
 
@@ -27764,7 +27765,7 @@ Canonical URL: https://www.superchargebrowser.com/changelog/
 
 # Every feature, explained
 
-> Complete list of Performance, Navigation, Audio, Capture, and Inspect features for Chrome and Edge. No account needed. 11,000+ weekly users.
+> Complete list of Performance, Navigation, Audio, Capture, and Inspect features for Chrome and Edge. No account needed. 13,000+ weekly users.
 
 - Canonical: https://www.superchargebrowser.com/features/
 - Source: SuperchargeBrowser (https://www.superchargebrowser.com)
@@ -27968,7 +27969,7 @@ Screen recording and screenshots. Local-first, no watermark.
 
 Element inspection and CSS values. Local-first, no account.
 
-[ Get notified  ](/inspect/#notify)
+[ Add to Chrome — Free  ](https://chromewebstore.google.com/detail/inspect-element-css-viewe/chliiokcegkincifjcpmoldbmdjficld)
 
 * [ CSS Inspector for Any Element: View and Copy CSS Values ](/features/css-inspector/)
 
@@ -28369,6 +28370,8 @@ Point at any element to read its font, colors, and spacing. Copy them for your A
 
 No account needed · Zero network calls
 
+[ Add to Chrome — free  ](https://chromewebstore.google.com/detail/inspect-element-css-viewe/chliiokcegkincifjcpmoldbmdjficld)
+
 Supreme Bold · 700
 
 Ag
@@ -28379,7 +28382,7 @@ Ag
 
 The button opens the real panel on the card. Point at anything on the page.
 
-* Status Coming soon
+* [ Chrome Web Store Free ](https://chromewebstore.google.com/detail/inspect-element-css-viewe/chliiokcegkincifjcpmoldbmdjficld)
 * Start Alt+Shift+E
 * Browsers Chrome · Edge · Firefox
 
@@ -28466,6 +28469,8 @@ No. Everything you inspect stays on your device. The extension makes no network 
 When and where will it be available?
 
 It is coming soon, and there is no date yet. Leave your email on this page and we will tell you when it is live. It will run in Chrome, Edge, and Firefox, on Windows, macOS, and Linux.
+
+[ Add to Chrome — free  ](https://chromewebstore.google.com/detail/inspect-element-css-viewe/chliiokcegkincifjcpmoldbmdjficld)
 
 Proof for the ticket
 
@@ -30823,13 +30828,13 @@ Featured on the Chrome Web Store
 
 The only Chrome extension combining tab suspension, ad blocking, and script control in one lightweight package. 14 features. Zero data collected.
 
-4.5 on the Chrome Web Store · Verified Publisher · Zero data collected
+4.6 on the Chrome Web Store · Verified Publisher · Zero data collected
 
 [ Add to Chrome — free  ](https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 
 * [ Chrome Web Store Free ](https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 * [ Microsoft Edge Free ](https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol)
-* 4.5★ rating 66 reviews
+* 4.6★ rating 67 reviews
 * Version 1.5.0 Updated October 2026
 
 Per-site control
