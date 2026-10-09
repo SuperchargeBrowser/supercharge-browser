@@ -21,7 +21,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
-> - Website with 211 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 214 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -188,7 +188,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 211 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 214 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -276,12 +276,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 ## Library — Article Index
 
-211 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+214 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
 <details>
-<summary>View all 211 articles</summary>
+<summary>View all 214 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -341,6 +341,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [The Great Suspender (2026): Forks, Status, Safe Alternatives](https://www.superchargebrowser.com/library/great-suspender-alternative/)
 - [Toby Alternative for Chrome: Free, Local, No Limits (2026)](https://www.superchargebrowser.com/library/toby-alternative/)
 - [Too Many Chrome Tabs Open? 6 TESTED Tab Managers (2026)](https://www.superchargebrowser.com/library/best-chrome-tab-managers-2026/)
+- [Treble Booster vs Bass Booster: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/treble-vs-bass-booster-chrome/)
 - [Tree Style Tab for Chrome: 4 BEST Alternatives (2026)](https://www.superchargebrowser.com/library/tree-style-tab-chrome-alternative/)
 - [Twitch Ads Still Playing? 4 TESTED Blockers (2026)](https://www.superchargebrowser.com/library/best-twitch-ad-blockers-chrome-2026/)
 - [uBlock Origin vs Lite: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/ublock-origin-lite-vs-full-chrome/)
@@ -360,6 +361,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Chrome Audio Too Quiet? 6 TESTED Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-chrome-audio-too-quiet/)
 - [Chrome Crashing When Printing? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-crashing-printing/)
 - [Chrome Extension Keeps Getting Disabled After an Update? (2026)](https://www.superchargebrowser.com/library/chrome-extension-disabled-after-update/)
+- [Chrome Extension Shortcut Dead? 3 Fixes That Work (2026)](https://www.superchargebrowser.com/library/chrome-extensions-shortcuts-page-guide/)
 - [Chrome Extensions Using Too Much RAM? 5 Tested Fixes (2026)](https://www.superchargebrowser.com/library/chrome-extensions-high-memory-usage/)
 - [Chrome Not Responding? 5 TESTED Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-chrome-not-responding/)
 - [Chrome Only Saves 25 Tab Groups? Here's the Fix (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-25-limit-workaround/)
@@ -437,6 +439,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Chrome 152: What Changes for Tab and Memory Users? (2026)](https://www.superchargebrowser.com/library/chrome-152-whats-new-tab-memory-users/)
 - [Chrome 156 Blocks Local Network? How to Grant Access (2026)](https://www.superchargebrowser.com/library/chrome-156-local-network-access/)
 - [Chrome Blocking New Tab Hijacker Extensions? Not Yet (2026)](https://www.superchargebrowser.com/library/chrome-blocking-new-tab-hijacker-extensions-2026/)
+- [Chrome Declarative Net Request Rules: 5 Hard Limits (2026)](https://www.superchargebrowser.com/library/chrome-dnr-rules-explained/)
 - [Chrome Extension No Longer Available? 3 Checks (2026)](https://www.superchargebrowser.com/library/chrome-web-store-deleted-my-extension-2026/)
 - [Chrome Focus Mode: One Shortcut Hides All Off-Task Tabs (2026)](https://www.superchargebrowser.com/library/focus-mode-chrome/)
 - [Chrome Keyboard Shortcuts: 70+ That Actually Work (2026)](https://www.superchargebrowser.com/library/chrome-keyboard-shortcuts-guide/)
