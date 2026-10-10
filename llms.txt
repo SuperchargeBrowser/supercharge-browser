@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-10-09
+> Last updated: 2026-10-10
 
 > SuperchargeBrowser makes five free Chrome extensions: SuperchargePerformance v1.5.0 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.4.1 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.1.0 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons) and SuperchargeCapture v1.2.2 (one-click local screen recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom and cursor polish, optional Share-to-Drive to your own Google Drive) and SuperchargeInspect (local element inspection with fonts, colors, and spacing for your AI coding tool). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 13,000+ combined weekly active users. Founded 2025 in Finland.
 
@@ -329,6 +329,7 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 
 - [Release History](https://www.superchargebrowser.com/changelog/): Version history for all extensions. RSS: https://www.superchargebrowser.com/changelog/rss.xml
 
+- [SuperchargeInspect 1.0.1 — Arrows Now Move Sideways](https://www.superchargebrowser.com/changelog/inspect/1.0.1/) (2026-10-10): 1.0.1 polishes how SuperchargeInspect moves and reports colors. Left and right arrows step to the element beside the current one, and elements without a background of their own now show the color you actually see behind them. The breadcrumb can grow onto more rows, and after a few copies the extension may ask once for a rating.
 - [SuperchargeInspect 1.0.0 — Pick Any Element, Take It With You](https://www.superchargebrowser.com/changelog/inspect/1.0.0/) (2026-10-09): SuperchargeInspect opens on any page and lets you pick any element, then take it with you. Hover and click, or move with the arrow keys and lock with Enter. The overlay draws the box model right on the page, and the panel reads out the font, colors, and spacing. One copy puts text and a clean snapshot on your clipboard, with a note if you want one.
 - [SuperchargeCapture 1.2.2 — Your Selection Holds Even When You Pause](https://www.superchargebrowser.com/changelog/capture/1.2.2/) (2026-10-08): 1.2.2 is a small fix release for Supercharge Capture. In "Drag an area", your selection is kept even if you take a while before releasing it, and a bug that could start the same capture twice is fixed. There are no new permissions.
 - [SuperchargeCapture 1.2.1 — Screenshots That Get the Whole Thing](https://www.superchargebrowser.com/changelog/capture/1.2.1/) (2026-10-06): 1.2.1 is a small fix release for screenshots on top of the 1.2.0 redesign. Full-page shots now work on web apps with a fixed sidebar or header, and "Pick a part" and "Drag an area" save what you chose. There are no new permissions.
