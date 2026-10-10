@@ -1,7 +1,7 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Generated: 2026-10-09
+> Generated: 2026-10-10
 > Content updated: 2026-10-09
 > For a summary index, see /llms.txt
 
@@ -28005,7 +28005,7 @@ Suspends idle tabs, blocks ads, and tames sites. Each suspended tab frees 90 to 
 
 ## Past releases
 
-1. [Inspectv1.0.1Arrows Now Move SidewaysPending](/changelog/inspect/1.0.1/)
+1. [Inspectv1.0.1Arrows Now Move SidewaysOct 10, 2026](/changelog/inspect/1.0.1/)
 2. [Capturev1.2.2Your Selection Holds Even When You PauseOct 8, 2026](/changelog/capture/1.2.2/)
 3. [Capturev1.2.1Screenshots That Get the Whole ThingOct 6, 2026](/changelog/capture/1.2.1/)
 4. [Navigationv1.4.1Your Keys Stay in NavOct 6, 2026](/changelog/navigation/1.4.1/)
@@ -28721,7 +28721,7 @@ The demo simulates a screenshot by redrawing the page. The installed extension c
 ## Run it on the keyboard
 
 * `Alt+Shift+E`Starts inspecting on the active page. You can also use the toolbar button.
-* `Arrow keys`Move to the previous or the next element on the page.
+* `Arrow keys`Up and down move to the previous or the next element in reading order. Left and right move to the element beside the current one on screen.
 * `Ctrl+Up / Ctrl+Down`Move to the parent or the child element. On macOS, use Option+Up and Option+Down.
 * `Enter`Lock the element you are pointing at. Press it again to write a note.
 * `Ctrl+Enter`Copies the reference. On macOS use Cmd+Enter. Before locking, it locks and copies.
