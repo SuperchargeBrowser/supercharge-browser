@@ -97,9 +97,15 @@
 
 ## Library
 
-214 guides on Chrome performance, memory management, and tab organization.
+220 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [8D Audio Extension: 3 Chrome Paths, 2 Add Spatial Sound (2026)](https://www.superchargebrowser.com/library/8d-audio-chrome-extension/): 8D audio is a rotating stereo pan, not a real dimension. See 3 Chrome paths: built-in volume, OS spatial sound, or a per-site extension effect, plus trade-offs.
+- [How to Set Bass Boost in Chrome (Without Clipping) (2026)](https://www.superchargebrowser.com/library/bass-booster-settings-chrome/): Set bass boost in Chrome: target 64 to 250 Hz, +10 to +3 dB taper, per-site profile. Punch without clipping, tuned once, remembered per hostname. (2026)
+- [Chrome Screen Recorder Extension: 4 Controls (2026)](https://www.superchargebrowser.com/library/chrome-screen-recorder-extension-explainer/): Chrome screen recorder extension: four controls for screenshots and tab or screen video, all local. Watermark-free, no account. As of October 2026, Chrome 155.
+- [Chrome Tab Side Panel Shortcut: 3 Toggle Methods (2026)](https://www.superchargebrowser.com/library/chrome-side-panel-toggle-shortcut/): Chrome tab side panel shortcut: Ctrl+Shift+S. Rebind extension keys, compare the panel to a vertical sidebar, and map four keys for tab tools beside your page.
+- [How to Ungroup Chrome Tab Groups (3 Ways, 1 Keypress, 2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-degroup-shortcut/): Chrome tab groups: ungroup in 3 ways, from per-group right-click to one keystroke. Native steps, keyboard menu path, and the one-key extension shortcut (2026).
+- [How to Record a Chrome Tab for Support in 2 Steps (2026)](https://www.superchargebrowser.com/library/record-chrome-tab-support-ticket/): Screen-record one Chrome tab in 2 steps. You get a local WebM or MP4 with audio, no picker, no watermark, no account. The file stays on your device.
 - [Chrome Declarative Net Request Rules: 5 Hard Limits (2026)](https://www.superchargebrowser.com/library/chrome-dnr-rules-explained/): Declarative net request rules decide which Chrome requests get blocked, redirected, or modified: 5 hard quotas, 1 tie-break order, and the coverage link.
 - [Chrome Extension Shortcut Dead? 3 Fixes That Work (2026)](https://www.superchargebrowser.com/library/chrome-extensions-shortcuts-page-guide/): Your extension shortcut died after an update. chrome://extensions/shortcuts shows the empty binding and rebinds it. No restart, no guesswork.
 - [How to Screen Record Chrome on Windows: 3 Ways (2026)](https://www.superchargebrowser.com/library/screen-record-chrome-windows/): Chrome has no built-in screen recorder on Windows. Record a tab, window, or screen with audio. Built-in tools or a free extension, local export, no watermark.
@@ -114,15 +120,15 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Chrome 156 Blocks Local Network? How to Grant Access (2026)](https://www.superchargebrowser.com/library/chrome-156-local-network-access/): Chrome 156 will drop the enterprise opt-out from Local Network Access, the per-site prompt Chrome 142 added for public-site requests to routers and dev servers.
 - [YouTube Ad Blocker Not Working? 5 Fixes, Tested Live (2026)](https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/): Chrome killed uBlock Origin in 2025. 5 MV3 YouTube ad blockers still work, tested September 2026. Loon section for searchers who landed here by mistake.
 - [How to Auto-Close Chrome Tabs (Suspension Is Better)](https://www.superchargebrowser.com/library/auto-close-inactive-chrome-tabs/): Tab Wrangler auto-closes tabs after a timer. But suspension frees the same RAM while keeping tabs in the bar. Here's when each approach makes sense.
+
+## Library (additional guides)
+
 - [Which Chrome Ad Blocker Blocks YouTube? 5 TESTED (2026)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/): Most Chrome ad blockers miss YouTube and Twitch video ads — including uBlock Origin. We tested 5 on 14 features. One blocks video ads, popups, and cookies.
 - [Chrome Bookmark Managers After Pocket: 5 Ranked (2026)](https://www.superchargebrowser.com/library/best-bookmark-managers-chrome-after-pocket-2026/): Five bookmark managers ranked after Pocket's 2025 shutdown, scored on save, find, and persistence. One workspace option syncs across devices by default.
 - [Best Chrome Extensions for Chromebook 2026 (4GB & 8GB)](https://www.superchargebrowser.com/library/best-chrome-extensions-for-chromebook-2026/): Chromebooks cap out at 5-8 active tabs before lag hits. We tested 6 extensions on 4GB and 8GB hardware — tab suspenders, blockers, and readers that run light.
 - [6 BEST Chrome Extensions to Reduce RAM (2026, Tested)](https://www.superchargebrowser.com/library/best-chrome-extensions-reduce-ram/): Chrome eating 3GB with 20 tabs? We tested 6 RAM-reducing extensions — tab suspenders, blockers, and managers. Cuts memory 70%+ without losing a single tab.
 - [Brave Extensions: 6 BEST Picks for What's Missing (2026)](https://www.superchargebrowser.com/library/best-extensions-brave-browser-2026/): Brave extensions: skip the ad blocker, Shields already covers it. 6 picks fill the real gaps: timed suspension, workspaces, session recovery. Aug 2026.
 - [Twitch Ads Still Playing? 4 TESTED Blockers (2026)](https://www.superchargebrowser.com/library/best-twitch-ad-blockers-chrome-2026/): Twitch stitches ads into the video stream itself — uBlock Origin can't see them. 4 extensions that bypass SSAI via M3U8 substitution, verified June 2026.
-
-## Library (additional guides)
-
 - [Brave Draining Your Laptop Battery? 6 Fixes That Work (2026)](https://www.superchargebrowser.com/library/brave-browser-battery-drain-fix/): Brave battery drain is rarely Shields. It's Rewards, Wallet, and Leo AI running behind it. 6 fixes verified on Brave 1.93 (Chromium 151), July 30, 2026.
 - [Brave vs Chrome for 60 Tabs: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-tab-heavy-users-2026/): Brave vs Chrome at 60 tabs: vertical tabs are now parity, but 50 snapshots and the suggested Alt+K search keep projects recoverable after a full rebuild.
 - [Chrome Release Dates (2026): Every Version + What's Next](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/): Current Chrome is 152 (shipped August 25, 2026); 153 lands September 8 on the two-week cycle. Release calendar through 155, updated as schedules shift.
@@ -465,6 +471,7 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Productivity Apps](https://www.superchargebrowser.com/library/topic/productivity-apps/index.md): Fix Chrome performance issues with Figma, Miro, Google Sheets, and Framer. Stop out-of-memory crashes and tab reloading for heavy web apps.
 - [Productivity](https://www.superchargebrowser.com/library/topic/productivity/index.md): Focus mode, workspace isolation, and tab organization for Chrome. Practical setups that cut context switching and stop browser distraction.
 - [Recording](https://www.superchargebrowser.com/library/topic/recording/index.md): Troubleshooting guides, comparisons, and practical tips for recording issues in Chrome. Free solutions from SuperchargeBrowser.
+- [Screen Recorder](https://www.superchargebrowser.com/library/topic/screen-recorder/index.md): Troubleshooting guides, comparisons, and practical tips for screen recorder issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Screen Recording](https://www.superchargebrowser.com/library/topic/screen-recording/index.md): Troubleshooting guides, comparisons, and practical tips for screen recording issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Screenshot](https://www.superchargebrowser.com/library/topic/screenshot/index.md): Troubleshooting guides, comparisons, and practical tips for screenshot issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Tab Management](https://www.superchargebrowser.com/library/topic/tab-management/index.md): Organize Chrome tabs with vertical tab managers, workspaces, and tab suspenders. Compare extensions and find the best free tools for 2026.
