@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-10-13
+> Last updated: 2026-10-16
 
 > SuperchargeBrowser makes five free Chrome extensions: SuperchargePerformance v1.5.0 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.4.2 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.1.0 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons) and SuperchargeCapture v1.2.2 (one-click local screen recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom and cursor polish, optional Share-to-Drive to your own Google Drive) and SuperchargeInspect (local element inspection with fonts, colors, and spacing for your AI coding tool). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 13,000+ combined weekly active users. Founded 2025 in Finland.
 
@@ -97,9 +97,11 @@
 
 ## Library
 
-220 guides on Chrome performance, memory management, and tab organization.
+222 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [Chrome Full-Page Screenshot Too Large? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-large-full-page-screenshot-chrome/): Full-page Chrome screenshots come out too large: one lossless PNG sized to the full scroll height, with no compression. Five fixes shrink the file. (2026)
+- [How to Stop YouTube Autoplay in Chrome: 1 Switch (2026)](https://www.superchargebrowser.com/library/youtube-autoplay-stopper-chrome/): YouTube autoplay is a site-level switch, not a Chrome setting. Turn it off at the player's bottom; Chrome's Sound default only mutes videos that still start.
 - [8D Audio Extension: 3 Chrome Paths, 2 Add Spatial Sound (2026)](https://www.superchargebrowser.com/library/8d-audio-chrome-extension/): 8D audio is a rotating stereo pan, not a real dimension. See 3 Chrome paths: built-in volume, OS spatial sound, or a per-site extension effect, plus trade-offs.
 - [How to Set Bass Boost in Chrome (Without Clipping) (2026)](https://www.superchargebrowser.com/library/bass-booster-settings-chrome/): Set bass boost in Chrome: target 64 to 250 Hz, +10 to +3 dB taper, per-site profile. Punch without clipping, tuned once, remembered per hostname. (2026)
 - [Chrome Screen Recorder Extension: 4 Controls (2026)](https://www.superchargebrowser.com/library/chrome-screen-recorder-extension-explainer/): Chrome screen recorder extension: four controls for screenshots and tab or screen video, all local. Watermark-free, no account. As of October 2026, Chrome 155.
@@ -118,11 +120,11 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Full Screen Screenshot in Chrome: 4 Tools That Fit (2026)](https://www.superchargebrowser.com/library/full-screen-screenshot-chrome/): Full screen screenshot Chrome: you want the page, display, or window. 4 tools compared, each with exact keys. Pick the right target before you grab.
 - [YouTube Volume Too Low in Chrome? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/youtube-volume-too-low-chrome/): YouTube volume too low in Chrome often means the player sits at 100 while source mastering leaves headroom unused. 5 fixes restore loudness; per-tab gain helps.
 - [Chrome 156 Blocks Local Network? How to Grant Access (2026)](https://www.superchargebrowser.com/library/chrome-156-local-network-access/): Chrome 156 will drop the enterprise opt-out from Local Network Access, the per-site prompt Chrome 142 added for public-site requests to routers and dev servers.
-- [YouTube Ad Blocker Not Working? 5 Fixes, Tested Live (2026)](https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/): Chrome killed uBlock Origin in 2025. 5 MV3 YouTube ad blockers still work, tested September 2026. Loon section for searchers who landed here by mistake.
-- [How to Auto-Close Chrome Tabs (Suspension Is Better)](https://www.superchargebrowser.com/library/auto-close-inactive-chrome-tabs/): Tab Wrangler auto-closes tabs after a timer. But suspension frees the same RAM while keeping tabs in the bar. Here's when each approach makes sense.
 
 ## Library (additional guides)
 
+- [YouTube Ad Blocker Not Working? 5 Fixes, Tested Live (2026)](https://www.superchargebrowser.com/library/best-youtube-ad-blockers-chrome-2026/): Chrome killed uBlock Origin in 2025. 5 MV3 YouTube ad blockers still work, tested September 2026. Loon section for searchers who landed here by mistake.
+- [How to Auto-Close Chrome Tabs (Suspension Is Better)](https://www.superchargebrowser.com/library/auto-close-inactive-chrome-tabs/): Tab Wrangler auto-closes tabs after a timer. But suspension frees the same RAM while keeping tabs in the bar. Here's when each approach makes sense.
 - [Which Chrome Ad Blocker Blocks YouTube? 5 TESTED (2026)](https://www.superchargebrowser.com/library/best-ad-blocker-chrome-2026/): Most Chrome ad blockers miss YouTube and Twitch video ads — including uBlock Origin. We tested 5 on 14 features. One blocks video ads, popups, and cookies.
 - [Chrome Bookmark Managers After Pocket: 5 Ranked (2026)](https://www.superchargebrowser.com/library/best-bookmark-managers-chrome-after-pocket-2026/): Five bookmark managers ranked after Pocket's 2025 shutdown, scored on save, find, and persistence. One workspace option syncs across devices by default.
 - [Best Chrome Extensions for Chromebook 2026 (4GB & 8GB)](https://www.superchargebrowser.com/library/best-chrome-extensions-for-chromebook-2026/): Chromebooks cap out at 5-8 active tabs before lag hits. We tested 6 extensions on 4GB and 8GB hardware — tab suspenders, blockers, and readers that run light.
@@ -461,6 +463,7 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Chrome](https://www.superchargebrowser.com/library/topic/chrome/index.md): Troubleshooting guides, comparisons, and practical tips for chrome issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Equalizer](https://www.superchargebrowser.com/library/topic/equalizer/index.md): Troubleshooting guides, comparisons, and practical tips for equalizer issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Extensions](https://www.superchargebrowser.com/library/topic/extensions/index.md): Compare Chrome extensions for performance, tab management, and ad blocking. In-depth reviews and alternatives for popular tools like OneTab and Great Suspender.
+- [Full Page Screenshot](https://www.superchargebrowser.com/library/topic/full-page-screenshot/index.md): Troubleshooting guides, comparisons, and practical tips for full page screenshot issues in Chrome. Free solutions from SuperchargeBrowser.
 - [GPU](https://www.superchargebrowser.com/library/topic/gpu/index.md): Troubleshoot Chrome GPU issues including dwm.exe high usage, WebGPU device lost errors, checkerboard glitches, and video stuttering on high-end PCs.
 - [Keyboard Shortcuts](https://www.superchargebrowser.com/library/topic/keyboard-shortcuts/index.md): Chrome has 70+ keyboard shortcuts; most people use five. Task-grouped reference for tabs, navigation, and URL tricks — plus a command bar where they stop.
 - [macOS](https://www.superchargebrowser.com/library/topic/macos/index.md): Fix Chrome problems on Mac — WindowServer high CPU, system memory pressure, SSD wear, battery drain, and memory leaks on macOS Tahoe.
@@ -481,6 +484,7 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Volume Booster](https://www.superchargebrowser.com/library/topic/volume-booster/index.md): Which Chrome volume boosters are safe, and how loud can they go? Vet permissions, push a tab to 600% without clipping, and avoid the spyware ones in 2026.
 - [Windows](https://www.superchargebrowser.com/library/topic/windows/index.md): Fix Chrome performance issues on Windows — high disk usage, dwm.exe GPU spikes, antimalware CPU conflicts, and memory leaks on Windows 11.
 - [Workspaces](https://www.superchargebrowser.com/library/topic/workspaces/index.md): Chrome has no native workspaces in 2026. Get named, isolated tab contexts with Alt+K switching and auto-snapshots — the closest thing to Arc Spaces, free.
+- [Youtube](https://www.superchargebrowser.com/library/topic/youtube/index.md): Troubleshooting guides, comparisons, and practical tips for youtube issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Workspaces that sync across your devices.](https://www.superchargebrowser.com/navigation/index.md): Vertical tabs, workspaces that sync via your browser account, a full new tab page, and instant search. The free Arc alternative.
 - [Open Source Attributions](https://www.superchargebrowser.com/open-source/index.md): Third-party open source software and filter lists used in SuperchargeBrowser extensions, with license and author attribution.
 - [Tab Suspender & Ad Blocker for a faster Chrome.](https://www.superchargebrowser.com/performance/index.md): Free Chrome extension combining tab suspension, ad blocking, and script control. Frees 90%+ of inactive tab memory. Zero telemetry, zero tracking.
