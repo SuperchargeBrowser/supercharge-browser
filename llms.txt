@@ -1,8 +1,8 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-10-20
+> Last updated: 2026-10-23
 
-> SuperchargeBrowser makes five free Chrome extensions: SuperchargePerformance v1.5.1 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.4.2 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.1.0 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons) and SuperchargeCapture v1.2.3 (one-click local screen recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom and cursor polish, optional Share-to-Drive to your own Google Drive) and SuperchargeInspect (local element inspection with fonts, colors, and spacing for your AI coding tool). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 13,000+ combined weekly active users. Founded 2025 in Finland.
+> SuperchargeBrowser makes five free Chrome extensions: SuperchargePerformance v1.5.1 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.4.3 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.1.0 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons) and SuperchargeCapture v1.2.3 (one-click local screen recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom and cursor polish, optional Share-to-Drive to your own Google Drive) and SuperchargeInspect (local element inspection with fonts, colors, and spacing for your AI coding tool). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 13,000+ combined weekly active users. Founded 2025 in Finland.
 
 ## Products
 
@@ -97,9 +97,10 @@
 
 ## Library
 
-225 guides on Chrome performance, memory management, and tab organization.
+226 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [How to Select Multiple Tabs and Group Them in Chrome (2026)](https://www.superchargebrowser.com/library/batch-move-chrome-tabs-to-group/): Select multiple tabs in Chrome and group them at once. Native Ctrl-click, batch multi-select, and Alt+G smart grouping by domain, compared for your next batch.
 - [How to Enable Chrome Vertical Tabs on a Chromebook (2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-chromebook/): Enable Chrome vertical tabs on a Chromebook in one Settings toggle. Exact path, sidebar limits, and when a side panel earns its keep. Chrome 146+, no flag.
 - [Reduce Chrome Memory While Watching Video: 3 Steps (2026)](https://www.superchargebrowser.com/library/reduce-chrome-memory-while-watching-video/): Chrome memory spikes while watching video. A 1080p tab holds 300-530 MB. The saver skips audio tabs. Three steps free idle RAM, playback keeps running.
 - [How to Stop Video Ads From Playing in Chrome: 3 Levers (2026)](https://www.superchargebrowser.com/library/stop-video-ads-playing-chrome/): Stop video ads that play with sound in Chrome. Mute one site, block unmuted autoplay sitewide, or cut the ad's request at the source with a 195K-rule blocklist.
@@ -119,10 +120,10 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [How to Bass Boost Your Chromebook: 2 Free Ways (2026)](https://www.superchargebrowser.com/library/bass-boost-chromebook/): Bass on a Chromebook stays thin at max volume. Two free routes: OS settings, or a 10-band EQ plus a 600% per-tab volume ceiling. No hardware, no paid app.
 - [Brave vs Chrome Performance: Which Is Faster? (2026)](https://www.superchargebrowser.com/library/brave-vs-chrome-performance-2026/): Brave vs Chrome performance: both share one engine, but defaults set the floor. 34 auto-protected apps, 186K+ rules, a 5-min timer neither ships. (2026)
 - [Reduce Bass in Chrome: Cut the 250 and 500 Hz Bands (2026)](https://www.superchargebrowser.com/library/reduce-bass-chrome-audio/): Reduce bass in Chrome by cutting the 250 and 500 Hz bands a few dB each. Removes low-end mud without dropping loudness. A 10-band EQ does it per site.
-- [Why Is Chrome Running Slow on a Laptop? 4 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-slow-laptop-thermal/): Why is Chrome running slow on a laptop? Four causes: throttle, power mode, tabs, and GPU. Apply the fixes in order to cut background work and quiet the fan.
 
 ## Library (additional guides)
 
+- [Why Is Chrome Running Slow on a Laptop? 4 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-slow-laptop-thermal/): Why is Chrome running slow on a laptop? Four causes: throttle, power mode, tabs, and GPU. Apply the fixes in order to cut background work and quiet the fan.
 - [Full Screen Screenshot in Chrome: 4 Tools That Fit (2026)](https://www.superchargebrowser.com/library/full-screen-screenshot-chrome/): Full screen screenshot Chrome: you want the page, display, or window. 4 tools compared, each with exact keys. Pick the right target before you grab.
 - [YouTube Volume Too Low in Chrome? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/youtube-volume-too-low-chrome/): YouTube volume too low in Chrome often means the player sits at 100 while source mastering leaves headroom unused. 5 fixes restore loudness; per-tab gain helps.
 - [Chrome 156 Blocks Local Network? How to Grant Access (2026)](https://www.superchargebrowser.com/library/chrome-156-local-network-access/): Chrome 156 will drop the enterprise opt-out from Local Network Access, the per-site prompt Chrome 142 added for public-site requests to routers and dev servers.
@@ -340,6 +341,7 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 
 - [Release History](https://www.superchargebrowser.com/changelog/): Version history for all extensions. RSS: https://www.superchargebrowser.com/changelog/rss.xml
 
+- [SuperchargeNavigation 1.4.3 — Big Workspaces Open in a Second](https://www.superchargebrowser.com/changelog/navigation/1.4.3/) (2026-10-21): 1.4.3 opens big workspaces in about one second, where before the same load took about four seconds: the tab you are on loads, and every other tab opens asleep. Nav's search now works on the browser's own new tab page, where Alt+K used to open a blank tab. Your settings carry over, and there are no new permissions.
 - [SuperchargeCapture 1.2.3 — Drag an Area Works Where It Used to Fail](https://www.superchargebrowser.com/changelog/capture/1.2.3/) (2026-10-17): 1.2.3 is a small fix release for Supercharge Capture. In "Drag an area" and "Pick a part", the tools now show and work on sites where they used to disappear or where clicks were blocked. There are no new permissions.
 - [SuperchargePerformance 1.5.1 — Blocklists and cookie banner rules refreshed](https://www.superchargebrowser.com/changelog/performance/1.5.1/) (2026-10-16): The ad, tracker, and malware blocklists are refreshed to 195,057 rules. The cookie banner auto-reject engine moved to autoconsent 16.53, adding 284 new rules for a total of 1,501. Cookie banner handling remains off by default. The built-in exception list is unchanged from 1.5.0. No new permissions. No listing changes. Everything from 1.5.0 carries straight across.
 - [SuperchargeNavigation 1.4.2 — Your Bookmarks Bar Returns to the New Tab Page](https://www.superchargebrowser.com/changelog/navigation/1.4.2/) (2026-10-13): 1.4.2 is a focused release for the new tab page. Your bookmarks bar is back at the top, on by default when the new tab page is on, and the gear button now opens quick settings for every section. There are no new permissions.
