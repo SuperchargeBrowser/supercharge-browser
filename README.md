@@ -21,7 +21,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
-> - Website with 226 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 228 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -188,7 +188,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 226 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 228 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -276,12 +276,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 ## Library — Article Index
 
-226 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+228 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
 <details>
-<summary>View all 226 articles</summary>
+<summary>View all 228 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -289,7 +289,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [AdGuard vs SuperchargePerformance: BEST Chrome Pick? (2026)](https://www.superchargebrowser.com/library/vs-adguard/)
 - [AI Tab Organizer vs Tab Manager: 6 TESTED (2026)](https://www.superchargebrowser.com/library/ai-tab-organizer-vs-tab-manager-chrome/)
 - [Arc Tab Archive Gone? 4 Chrome Replacements TESTED (2026)](https://www.superchargebrowser.com/library/arc-tab-archive-chrome-equivalent/)
-- [Arc-Like Chromium Browsers Ranked: Vivaldi Wins (2026)](https://www.superchargebrowser.com/library/open-source-chromium-arc-like-browsers-2026/)
+- [Arc-Like Chromium Browsers Compared: Vivaldi Wins (2026)](https://www.superchargebrowser.com/library/open-source-chromium-arc-like-browsers-2026/)
 - [Auto Tab Discard vs SuperchargePerformance: Compared (2026)](https://www.superchargebrowser.com/library/vs-auto-tab-discard/)
 - [Best AI Browsers 2026: Atlas, Comet, Dia Ranked](https://www.superchargebrowser.com/library/best-ai-browsers-2026/)
 - [Best Chrome Extensions for Chromebook 2026 (4GB & 8GB)](https://www.superchargebrowser.com/library/best-chrome-extensions-for-chromebook-2026/)
@@ -313,6 +313,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Edge Vertical Tabs vs Chrome: Need an Extension in 2026?](https://www.superchargebrowser.com/library/edge-vertical-tabs-vs-chrome/)
 - [Extension No Longer Supported? 7 Best MV3 Replacements (2026)](https://www.superchargebrowser.com/library/extension-turned-off-no-longer-supported-replacements/)
 - [FasterWeb vs SuperchargePerformance: Which Is BEST? (2026)](https://www.superchargebrowser.com/library/vs-fasterweb/)
+- [Firefox Tab Manager: 6 Options When Native Groups Fall Short (2026)](https://www.superchargebrowser.com/library/best-firefox-tab-managers-2026/)
 - [Firefox vs Chrome RAM Usage: What the Data Shows (2026)](https://www.superchargebrowser.com/library/firefox-vs-chrome-ram-usage-2026/)
 - [GoFullPage Alternative? 4 Modes, FREE Export (2026)](https://www.superchargebrowser.com/library/superchargecapture-vs-gofullpage/)
 - [Is Marvellous Suspender Safe in 2026? What You Need](https://www.superchargebrowser.com/library/marvellous-suspender-status-2026/)
@@ -377,6 +378,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Cookie Popups Won't Stop in Chrome? 4 FIXES (2026)](https://www.superchargebrowser.com/library/stop-cookie-consent-popups-chrome-2026/)
 - [Error STATUS_BREAKPOINT en Chrome: 7 Soluciones (2026)](https://www.superchargebrowser.com/library/codigo-error-status-breakpoint-chrome/)
 - [Figma Out of Memory in Chrome? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-figma-out-of-memory-chrome/)
+- [Firefox Using Too Much Memory? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/firefox-using-too-much-memory-fix/)
 - [FIX ChatGPT Network Error in Chrome: 3 Fixes (2026)](https://www.superchargebrowser.com/library/fix-chatgpt-network-error-chrome-background/)
 - [FIX Chrome 100% Disk Usage on Windows 10 and 11 (2026)](https://www.superchargebrowser.com/library/fix-chrome-100-disk-usage-windows/)
 - [FIX Chrome Aw, Snap! Crash Error: 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-aw-snap-crash/)
@@ -426,9 +428,9 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [5 Best Zen Browser Extensions + How to Install Them (2026)](https://www.superchargebrowser.com/library/zen-browser-extensions-complete-guide/)
 - [6 BEST Chrome Extensions to Reduce RAM (2026, Tested)](https://www.superchargebrowser.com/library/best-chrome-extensions-reduce-ram/)
 - [8D Audio Extension: 3 Chrome Paths, 2 Add Spatial Sound (2026)](https://www.superchargebrowser.com/library/8d-audio-chrome-extension/)
-- [Arc Browser Status 2026: DISCONTINUED, Live, Atlassian Pivot](https://www.superchargebrowser.com/library/arc-browser-status-2026/)
+- [Arc Browser Is Shutting Down: December 22, 2026 Confirmed](https://www.superchargebrowser.com/library/arc-browser-status-2026/)
 - [Arc Command Bar in Chrome: How to Replicate It (2026)](https://www.superchargebrowser.com/library/arc-command-bar-chrome/)
-- [Arc Shut Down? Replicate Its 6 Best Features in Chrome (2026)](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/)
+- [Arc Shut Down? Replicate Its 6 Key Features in Chrome (2026)](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/)
 - [Atlas Browser Shutting Down? 3 Steps to MIGRATE (2026)](https://www.superchargebrowser.com/library/atlas-browser-shutdown-migrate-2026/)
 - [Best ChatGPT Chrome Extensions: 9 Ranked by Metrics (2026)](https://www.superchargebrowser.com/library/best-chatgpt-chrome-extensions-2026/)
 - [Boost Chrome Volume Past 100% (2026): How It Works](https://www.superchargebrowser.com/library/boost-chrome-volume-past-100/)
