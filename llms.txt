@@ -1,45 +1,48 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-10-25
+> Last updated: 2026-10-26
 
-> SuperchargeBrowser makes five free Chrome extensions: SuperchargePerformance v1.5.1 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.4.3 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.1.0 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory — on Chrome Web Store and Microsoft Edge Add-ons) and SuperchargeCapture v1.2.3 (one-click local screen recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom and cursor polish, optional Share-to-Drive to your own Google Drive) and SuperchargeInspect (local element inspection with fonts, colors, and spacing for your AI coding tool). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 13,000+ combined weekly active users. Founded 2025 in Finland.
+> SuperchargeBrowser makes six free browser extensions for Chrome and Edge, and Firefox for five of them: SuperchargePerformance v1.5.1 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.4.3 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.1.1 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory, on Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons) and SuperchargeCapture v1.2.3 (one-click local screen recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom and cursor polish, optional Share-to-Drive to your own Google Drive) and SuperchargeInspect (local element inspection with fonts, colors, and spacing for your AI coding tool) and SuperchargeFocus v1.0.0 (site blocker and time limits: 25 or 50 minute focus sessions, daily per-site minute allowances, Gentle pause and Strict block modes, per-site dark mode, larger text, higher contrast, night tint, and optional on-device history, live on the Chrome Web Store). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 34,000+ combined weekly active users. Founded 2025 in Finland.
 
 ## Products
 
 - [SuperchargePerformance](https://www.superchargebrowser.com/performance/): Tab suspender + ad blocker + script control. Frees 90%+ RAM from inactive tabs, blocks ads and trackers, speeds up pages. Available on Chrome, Microsoft Edge, and Firefox.
   Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol
-  Install (Firefox): https://addons.mozilla.org/firefox/addon/supercharge-performance/
+  Install (Firefox): https://addons.mozilla.org/en-US/firefox/addon/supercharge-performance/
 
 - [SuperchargeNavigation](https://www.superchargebrowser.com/navigation/): Vertical tabs + persistent workspaces + tab search + session time-travel + cross-device sync. Alt+K command bar, Alt+Click link preview, Alt+G smart grouping, 50 auto-snapshots. Free Arc replacement for Chrome. Available on Chrome, Microsoft Edge, and Firefox.
   Install (Chrome): https://chromewebstore.google.com/detail/vertical-tabs-tab-manager/mpkbppjbchjdohbjgeoamdehklmapgnl
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargenavigation-ve/bddiemdiiknoibmljhejfgjegoghjdlb
-  Install (Firefox): https://addons.mozilla.org/firefox/addon/supercharge-navigation/
+  Install (Firefox): https://addons.mozilla.org/en-US/firefox/addon/supercharge-navigation/
 
 - [In-Page Sidebar for Chrome](https://www.superchargebrowser.com/in-page-sidebar/): How SuperchargeNavigation runs a vertical tab sidebar inside any page, why Chrome blocks extensions on chrome:// / Web Store / PDF pages, and every Nav keyboard shortcut.
 
-- [SuperchargeAudio](https://www.superchargebrowser.com/audio/): Per-tab volume boost up to 600%, 10-point EQ (32Hz–16kHz, ±12dB), Smart Mute, per-site memory, Headphones, 8D, and One ear effects. Zero telemetry, fully local. Available on Chrome and Microsoft Edge.
+- [SuperchargeAudio](https://www.superchargebrowser.com/audio/): Per-tab volume boost up to 600%, 10-band EQ (32Hz–16kHz, ±12dB), Smart Mute, per-site memory, Headphones, 8D, and One ear effects. Zero telemetry, fully local. Available on Chrome, Microsoft Edge, and Firefox.
   Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
-  Install (Firefox): https://addons.mozilla.org/firefox/addon/supercharge-audio/
+  Install (Firefox): https://addons.mozilla.org/en-US/firefox/addon/supercharge-audio/
 
-- [SuperchargeCapture](https://www.superchargebrowser.com/capture/): One-click local screen recording (no screen-picker dialog) + full-page and region screenshots + crash-safe OPFS recovery + free annotation editor with auto-zoom, cursor polish, and padded backgrounds. Optional Share-to-Drive to your own Google Drive. Local-first, zero telemetry. Available on Chrome and Microsoft Edge.
+- [SuperchargeCapture](https://www.superchargebrowser.com/capture/): One-click local screen recording (no screen-picker dialog) + full-page and region screenshots + crash-safe OPFS recovery + free annotation editor with auto-zoom, cursor polish, and padded backgrounds. Optional Share-to-Drive to your own Google Drive. Local-first, zero telemetry. Available on Chrome, Microsoft Edge, and Firefox.
   Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
-  Install (Firefox): https://addons.mozilla.org/firefox/addon/supercharge-capture/
+  Install (Firefox): https://addons.mozilla.org/en-US/firefox/addon/supercharge-capture/
 
 - [SuperchargeInspect](https://www.superchargebrowser.com/inspect/): Local element inspection that shows the font, colors, and spacing of any element in one panel, and copies the values with a note and an annotated screenshot for your AI coding tool.
   Install (Chrome): https://chromewebstore.google.com/detail/inspect-element-css-viewe/chliiokcegkincifjcpmoldbmdjficld
   Install (Edge): https://microsoftedge.microsoft.com/addons/detail/bmjjlladnefejnepncnoeffhpaifchce
   SuperchargeInspect works on Firefox 140 or newer and installs from Firefox Add-ons.
-  Install (Firefox): https://addons.mozilla.org/firefox/addon/supercharge-inspect/
+  Install (Firefox): https://addons.mozilla.org/en-US/firefox/addon/supercharge-inspect/
+
+- [SuperchargeFocus](https://www.superchargebrowser.com/focus/): Site blocker and time limits: 25 or 50 minute focus sessions, daily per-site minute allowances, Gentle pause and Strict block modes, per-site light or dark theme, larger text, higher contrast, night tint, and optional on-device activity history (7, 30, or 90 days). Free, no account, runs locally, data stays on device. Available on Chrome.
+  Install (Chrome): https://chromewebstore.google.com/detail/focus-mode-block-websites/mbfcgpcnjbogmbmlchjoinegclfdfnfb
 
 - [SuperchargePerformance PRO](https://www.superchargebrowser.com/pro/): Advanced performance features — custom timing for Sleep idle tabs, third-party scripts at the All level, lighter background tabs, the High levels, faster connections. Waitlist · 50% off at launch.
 
 ## Features
 
 ### SuperchargePerformance
-- [Tab Suspender Chrome Extension — Free, Set Your Timer](https://www.superchargebrowser.com/features/tab-suspension/): Free Chrome tab suspender: suspend inactive tabs on a 15- or 5-minute timer, or in seconds with PRO. Pinned and audio tabs stay protected.
+- [Tab Suspender Extension for Chrome: Free RAM Saver](https://www.superchargebrowser.com/features/tab-suspension/): Free tab suspender for Chrome, Edge and Firefox. Unloads tabs idle for 15 or 5 minutes to free RAM; pinned and audio tabs stay. PRO adds a custom timer.
 - [Ad Blocker — Block Ads and Trackers in Chrome](https://www.superchargebrowser.com/features/ad-blocking/): Block ads, trackers, analytics, and malware in Chrome at three levels. All blocking rules ship inside the extension — nothing fetched from the web, ever.
 - [Script Blocker — Block Third-Party Scripts](https://www.superchargebrowser.com/features/script-control/): Block third-party scripts that slow down pages at three coverage levels, from analytics-only blocking to all third-party scripts.
 - [Font Optimizer — Use System Fonts for Speed](https://www.superchargebrowser.com/features/font-optimization/): Replace remote web fonts with system fonts to reduce page download size and speed up rendering, at three coverage levels.
@@ -71,14 +74,14 @@
 - [Mouse Wheel Tab Switcher Chrome Extension — Alt+Scroll](https://www.superchargebrowser.com/features/alt-scroll-tab-cycling/): Turn the mouse wheel while holding Alt to switch tabs instead of scrolling the page. On by default, a mouse gesture that ships free in SuperchargeNavigation.
 
 ### SuperchargeAudio
-- [Volume Boost — Amplify Chrome Tabs to 600%](https://www.superchargebrowser.com/features/volume-boost/): Boost Chrome tab audio up to 600% for quiet videos, podcasts, and calls. The level is remembered per site; processing stays local with no account or telemetry.
+- [Volume Booster Extension for Chrome: Free, Up to 600%](https://www.superchargebrowser.com/features/volume-boost/): Free volume booster for Chrome, Edge and Firefox. Boost audio to 600% for quiet videos, podcasts and calls, saved per site. Local, no account or telemetry.
 - [10-Band Equalizer for Chrome — Shape Any Audio](https://www.superchargebrowser.com/features/equalizer/): A 10-band EQ (32 Hz–16 kHz, ±12 dB) with 11 named presets and per-site custom curves. Tune every Chrome tab to your headphones and content.
 - [Bass Boost for Chrome — Deeper Low-End Audio](https://www.superchargebrowser.com/features/bass-boost/): Add bass to any Chrome tab with the one-tap Bass Boost EQ preset or the equalizer's low bands. Saved per site. Works on music, video, and podcasts.
 - [Spatial Audio for Chrome — Headphone Modes](https://www.superchargebrowser.com/features/spatial-audio/): Four headphone audio modes in Chrome: Fix one ear, stereo width, 8D Audio, and Headphones crossfeed for natural listening.
-- [Smart Mute Chrome Extension — Mute Noisy Tabs Automatically](https://www.superchargebrowser.com/features/smart-mute/): Free Chrome smart mute extension: active tab keeps audio, noisy background tabs mute automatically, and focus follows you between tabs. Free on Chrome and Edge.
+- [Smart Mute Chrome Extension — Mute Noisy Tabs Automatically](https://www.superchargebrowser.com/features/smart-mute/): Free Chrome smart mute extension: active tab keeps audio, background tabs mute automatically, and focus follows you between tabs. On Chrome, Edge and Firefox.
 - [Per-Site Audio Settings — Saved Profiles in Chrome](https://www.superchargebrowser.com/features/per-site-audio/): Volume, EQ, and stereo width saved per website and restored automatically on your next visit. Local only, no account required.
 - [All playing — See Every Tab Playing Audio in Chrome](https://www.superchargebrowser.com/features/audible-tabs/): The SuperchargeAudio popup lists every tab currently making sound. Jump to it or mute it directly — no tab-hunting required.
-- [Mono Audio Chrome Extension — Fix One-Ear Audio](https://www.superchargebrowser.com/features/mono-audio/): Free SuperchargeAudio mono control and stereo width for Chrome and Edge. Mono is a temporary per-tab fix, not a saved site setting.
+- [Mono Audio Chrome Extension — Fix One-Ear Audio](https://www.superchargebrowser.com/features/mono-audio/): Free SuperchargeAudio mono control and stereo width for Chrome, Edge and Firefox. Mono is a temporary per-tab fix, not a saved site setting.
 
 ### SuperchargeCapture
 - [Full Page Screenshot Chrome Extension: The Whole Page, Free](https://www.superchargebrowser.com/features/full-page-screenshot/): Full page screenshot Chrome extension: capture a whole scrolling page as one tall image. Four modes, PNG/JPG/WebP or PDF, saved locally. Free, no paid tier.
@@ -101,11 +104,34 @@
 - [Video Editor Presets Chrome Extension — Clean to Tutorial](https://www.superchargebrowser.com/features/video-editor-presets/): Three named presets in SuperchargeCapture's video editor: Clean, Cinematic, and Tutorial. Pick one, edit, and export as WebM, MP4, or GIF. Free.
 - [Recover Unsaved Recordings — Chrome Extension](https://www.superchargebrowser.com/features/recover-unsaved-recording/): Recover interrupted SuperchargeCapture recordings from local browser storage. Footage flushes about every second, so most of it survives a crash.
 
+### SuperchargeInspect
+- [CSS Inspector for Any Element: View and Copy CSS Values](https://www.superchargebrowser.com/features/css-inspector/): A CSS inspector that lets you view the CSS of any element on a website. Read the font, colors, spacing and box model, then copy CSS values to your clipboard.
+- [Show Your AI Coding Tool the Exact Element to Change](https://www.superchargebrowser.com/features/ai-element-reference/): Point at the element, add a note, and copy a reference with an annotated screenshot and observed styles, then paste it into the AI coding tool you use today.
+- [Font Finder from Website: See the Declared Font Stack](https://www.superchargebrowser.com/features/website-font-finder/): SuperchargeInspect is a font finder from website text. It shows the declared font-family stack, size, weight and line height, and copies them with one click.
+- [Inspect Website Colors: Find the Hex Code of Any Element](https://www.superchargebrowser.com/features/website-color-inspector/): Inspect website colors on any live page. Point at the element and its Colors section shows text, background and border colors. One click copies the hex code.
+- [CSS Spacing Inspector: Read and Copy the Box Model](https://www.superchargebrowser.com/features/css-spacing-inspector/): A CSS spacing inspector that shows an element's box model, padding and margin on each side, gap, border radius and display, and copies each value on click.
+- [Screenshot One Element: A Note for Your AI Coding Tool](https://www.superchargebrowser.com/features/element-screenshot/): Screenshot one element, lock it, and write your note for an AI coding tool. Copy the annotated screenshot, or the clean PNG crop. Local, no account.
+
+### SuperchargeFocus
+- [Website Blocker for Chrome and Edge: Block Sites While You Focus](https://www.superchargebrowser.com/features/website-blocker/): Block distracting websites during focus time in Chrome and Edge. Block list or allow list, path exceptions, gentle or strict blocking. No account.
+- [Daily Time Limits for Websites in Chrome and Edge](https://www.superchargebrowser.com/features/website-time-limits/): Give a website a daily allowance in minutes. SuperchargeFocus counts foreground time, shows what is left, and blocks the site when the time is used.
+- [Focus Sessions: A Focus Timer for Chrome and Edge](https://www.superchargebrowser.com/features/focus-sessions/): Start a 25 or 50 minute focus session, or set your own length. Your block rules apply until it ends, and breaks pause them. Chrome and Edge.
+- [Block Websites During Certain Hours in Chrome and Edge](https://www.superchargebrowser.com/features/scheduled-blocking/): Set recurring focus hours on chosen weekdays and your block rules apply on their own. Overnight hours, pause one occurrence. Chrome and Edge.
+- [Dark Mode for Websites: Per-Site Themes in Chrome and Edge](https://www.superchargebrowser.com/features/dark-mode-every-website/): Light, Auto or Dark for websites, with a per-site choice that sticks. Uses a site's own dark theme first and protects photos and video.
+- [Night Tint and Page Dimming for Websites in Chrome and Edge](https://www.superchargebrowser.com/features/night-tint/): Add a warm tint to web pages and dim their brightness, with per-site exceptions and a sunset to sunrise schedule. Chrome and Edge, no account.
+- [Hide Elements on Websites: Point and Click in Chrome and Edge](https://www.superchargebrowser.com/features/hide-page-elements/): Hide a sidebar, a feed or a popup on any site you choose. Pick it with the mouse or type a request, preview, then save for the site or one page.
+- [Hide YouTube Shorts, Recommendations and Comments](https://www.superchargebrowser.com/features/youtube-distractions/): Watch intentionally on YouTube: hide Shorts, recommendations and comments, and pause videos that start on their own. Per part, in Chrome and Edge.
+
 ## Library
 
 228 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [Chrome Not Working or Not Responding? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-not-responding/): Chrome not working or not responding? Match your symptom (won't open, frozen window, stuck tab, pages won't load) to the right fix in under 5 minutes.
+- [Chrome Tab Groups Disappeared? 5 Tested Fixes to Restore Them](https://www.superchargebrowser.com/library/fix-chrome-saved-tab-groups-disappearing/): Chrome tab groups disappeared? Most are closed, not deleted, and reopen from More > Tab groups. Why groups vanish, plus 5 tested fixes.
+- [WindowServer High CPU on Mac? 6 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/): WindowServer is the macOS process that puts every window on screen. 6 fixes tested on macOS Tahoe (26). Drops it 40-60% in under a minute.
+- [Chrome Vertical Tabs: How to Show Tabs Vertically (2026)](https://www.superchargebrowser.com/library/how-to-enable-vertical-tabs-chrome/): Chrome vertical tabs need no flag: right-click the tab strip and pick Show Tabs Vertically. Four ways to turn them on, fixes if missing, and what's native.
+- [How to Sync Chrome Tabs and Tab Groups Across Devices (2026)](https://www.superchargebrowser.com/library/sync-tabs-workspaces-across-devices-chrome-2026/): Sync Chrome tabs across devices: turn on History and tabs, then open Tabs from other devices. What Chrome sync carries, what it skips, and workspace sync.
 - [Firefox Tab Manager: 6 Options When Native Groups Fall Short (2026)](https://www.superchargebrowser.com/library/best-firefox-tab-managers-2026/): Six Firefox tab managers compared on tree view, workspaces, and session restore for 40-tab sessions. Native groups shipped in 138. 158 is current. October 2026.
 - [Firefox Using Too Much Memory? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/firefox-using-too-much-memory-fix/): Firefox using too much memory? Five fixes free RAM now on Firefox 158: process limits, low-memory unloading, about:memory, and automatic tab unload.
 - [Arc Shut Down? Replicate Its 6 Key Features in Chrome (2026)](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/): Arc Browser stops working on December 22, 2026. Its spaces, command bar, and peek previews all replicate in Chrome with extensions. No browser switch needed.
@@ -121,14 +147,14 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Chrome Full-Page Screenshot Too Large? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-large-full-page-screenshot-chrome/): Full-page Chrome screenshots come out too large: one lossless PNG sized to the full scroll height, with no compression. Five fixes shrink the file. (2026)
 - [How to Stop YouTube Autoplay in Chrome: 1 Switch (2026)](https://www.superchargebrowser.com/library/youtube-autoplay-stopper-chrome/): YouTube autoplay is a site-level switch, not a Chrome setting. Turn it off at the player's bottom; Chrome's Sound default only mutes videos that still start.
 - [8D Audio Extension: 3 Chrome Paths, 2 Add Spatial Sound (2026)](https://www.superchargebrowser.com/library/8d-audio-chrome-extension/): 8D audio is a rotating stereo pan, not a real dimension. See 3 Chrome paths: built-in volume, OS spatial sound, or a per-site extension effect, plus trade-offs.
+
+## Library (additional guides)
+
 - [How to Set Bass Boost in Chrome (Without Clipping) (2026)](https://www.superchargebrowser.com/library/bass-booster-settings-chrome/): Set bass boost in Chrome: target 64 to 250 Hz, +10 to +3 dB taper, per-site profile. Punch without clipping, tuned once, remembered per hostname. (2026)
 - [Chrome Screen Recorder Extension: 4 Controls (2026)](https://www.superchargebrowser.com/library/chrome-screen-recorder-extension-explainer/): Chrome screen recorder extension: four controls for screenshots and tab or screen video, all local. Watermark-free, no account. As of October 2026, Chrome 155.
 - [Chrome Tab Side Panel Shortcut: 3 Toggle Methods (2026)](https://www.superchargebrowser.com/library/chrome-side-panel-toggle-shortcut/): Chrome tab side panel shortcut: Ctrl+Shift+S. Rebind extension keys, compare the panel to a vertical sidebar, and map four keys for tab tools beside your page.
 - [How to Ungroup Chrome Tab Groups (3 Ways, 1 Keypress, 2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-degroup-shortcut/): Chrome tab groups: ungroup in 3 ways, from per-group right-click to one keystroke. Native steps, keyboard menu path, and the one-key extension shortcut (2026).
 - [How to Record a Chrome Tab for Support in 2 Steps (2026)](https://www.superchargebrowser.com/library/record-chrome-tab-support-ticket/): Screen-record one Chrome tab in 2 steps. You get a local WebM or MP4 with audio, no picker, no watermark, no account. The file stays on your device.
-
-## Library (additional guides)
-
 - [Chrome Declarative Net Request Rules: 5 Hard Limits (2026)](https://www.superchargebrowser.com/library/chrome-dnr-rules-explained/): Declarative net request rules decide which Chrome requests get blocked, redirected, or modified: 5 hard quotas, 1 tie-break order, and the coverage link.
 - [Chrome Extension Shortcut Dead? 3 Fixes That Work (2026)](https://www.superchargebrowser.com/library/chrome-extensions-shortcuts-page-guide/): Your extension shortcut died after an update. chrome://extensions/shortcuts shows the empty binding and rebinds it. No restart, no guesswork.
 - [How to Screen Record Chrome on Windows: 3 Ways (2026)](https://www.superchargebrowser.com/library/screen-record-chrome-windows/): Chrome has no built-in screen recorder on Windows. Record a tab, window, or screen with audio. Built-in tools or a free extension, local export, no watermark.
@@ -173,7 +199,6 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Chrome Crashing When Printing? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-crashing-printing/): Chrome crashes on Ctrl+P because print preview doubles your tab's memory usage — not a printer problem. 5 fixes ranked by root cause, tested on Chrome 149.
 - [STOP Chrome Freezing on Windows 11: 9 Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-freezing-windows-11/): Chrome freezing on Windows 11 with 'Not Responding'? GPU drivers and tab overload are the usual culprits. 9 tested fixes, ranked by cause, no reinstall needed.
 - [FIX Chrome Memory Leak with Word Online and Office 365 (2026)](https://www.superchargebrowser.com/library/fix-chrome-memory-leak-word-office-365/): Chrome hits 2–4 GB editing a single Word Online doc. Auto-save + undo history trap RAM V8 never reclaims. 5 fixes — including one that works in the background.
-- [Chrome Not Responding? 5 TESTED Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-chrome-not-responding/): Chrome's 'Not Responding' is a browser-process hang — not an Aw, Snap crash or tab freeze. Identify which it is and apply the right fix in under 5 minutes.
 - [Fix: STATUS_BREAKPOINT on WhatsApp Web in Chrome (2026)](https://www.superchargebrowser.com/library/fix-chrome-status-breakpoint-whatsapp/): WhatsApp Web crashing with STATUS_BREAKPOINT after you link a device? It's a GPU renderer crash, not a hack. The fix order that works, fastest first (2026).
 - [Chrome Stuttering? FIX Scroll Lag and Mouse Jank (2026)](https://www.superchargebrowser.com/library/fix-chrome-stuttering-lag-2026/): Chrome scroll lag and mouse jank are usually hardware acceleration or RAM pressure, not Chrome bugs. 7 ranked fixes, most under 2 minutes. Verified Chrome 149.
 - [STOP Chrome Reloading Tabs When You Switch Back (2026 Fix)](https://www.superchargebrowser.com/library/fix-chrome-tabs-reloading-when-switching/): Chrome reloads tabs because Memory Saver discards them after 5 min. Add sites to the exception list in 30 seconds — or suspend tabs smarter with an extension.
@@ -238,7 +263,6 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Screen Recording Has No Sound? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/record-chrome-tab-with-audio-2026/): Silent screen recording? The unticked tab-audio box is the usual cause, not your mic or speakers. Record the right source and mix your mic in. (July 2026)
 - [How to Save a Full Scrolling Web Page as PDF (2026)](https://www.superchargebrowser.com/library/save-full-web-page-as-pdf-chrome-2026/): Chrome's Ctrl+P to PDF works until the page scrolls: sticky headers repeat and content cuts off mid-section. Stitch the full page, then export. (July 2026)
 - [Cookie Popups Won't Stop in Chrome? 4 FIXES (2026)](https://www.superchargebrowser.com/library/stop-cookie-consent-popups-chrome-2026/): You reject cookies on every site and they keep coming back. Four ways to auto-reject cookie consent popups in Chrome, from settings to a default-on blocker.
-- [How to Sync Tabs & Workspaces Across Devices (Chrome, 2026)](https://www.superchargebrowser.com/library/sync-tabs-workspaces-across-devices-chrome-2026/): You left twelve tabs open on the work PC and need them at home. Chrome syncs open tabs but not your layout. How to sync entire workspaces across devices.
 - [Awesome Screenshot in 2026: Still Worth It? (Review)](https://www.superchargebrowser.com/library/awesome-screenshot-review-2026/): Hands-on review of Awesome Screenshot (4M+ users, 4.7 stars): what capture and recording do well, the capture-area bug, and the account catch. As of June 2026.
 - [Chrome 151 Has Vertical Tabs but Still No Workspaces (2026)](https://www.superchargebrowser.com/library/chrome-151-still-no-workspaces/): Chrome 151 ships vertical tabs but no named workspaces — switching projects still mixes every tab on one strip. Add real workspace isolation in under a minute.
 - [Record a Microsoft Teams Meeting From Chrome (No Admin)](https://www.superchargebrowser.com/library/record-teams-meeting-chrome-tab/): IT disabled Teams recording? Capture the Teams web tab locally in Chrome: no admin policy, no Stream upload, no bot joins. Consent first. As of June 2026.
@@ -292,12 +316,9 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Chrome Sound Only in One Ear? Fix It in 60 Seconds (2026)](https://www.superchargebrowser.com/library/fix-chrome-audio-one-ear/): Audio from one side in Chrome: 3 root causes and the fastest fix. Per-tab mono downmix routes both channels to both ears, leaving all other audio in stereo.
 - [Chrome Audio Too Quiet? 6 TESTED Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-chrome-audio-too-quiet/): Chrome audio too quiet at 100% volume: 6 causes and fixes. OS mixer, per-app volume, site muting, hardware, source mastering, and browser-side gain boost.
 - [FIX Chrome Memory Leaks on Windows 11: 5 Solutions (2026)](https://www.superchargebrowser.com/library/fix-chrome-memory-leaks-windows-11/): Chrome memory leaks on Windows 11 mean high RAM even after closing tabs. Zombie processes and leaky extensions cause most. 5 fixes tested on Chrome 149.
-- [FIX Chrome Saved Tab Groups Disappearing: 5 Tested Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-saved-tab-groups-disappearing/): Chrome saved tab groups vanish after crashes, updates, and sync conflicts. 5 tested fixes — plus why the Save group button isn't enough to protect your work.
 - [FIX Chrome Slow Loading Pages: 7 Fixes Ranked (2026)](https://www.superchargebrowser.com/library/fix-chrome-slow-loading-pages/): Chrome slow loading pages are usually trackers, not your internet. Blocking 195K ad scripts cuts page load times by up to 40% — 7 causes ranked by impact.
 - [FIX STATUS_ACCESS_VIOLATION in Chrome: 5 Solutions (2026)](https://www.superchargebrowser.com/library/fix-status-access-violation/): STATUS_ACCESS_VIOLATION crashes Chrome with no warning. It's a memory access error, not malware. Extensions and GPU drivers cause 80% of cases. 5 tested fixes.
-- [WindowServer High CPU on Mac? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/): Chrome backgrounded tabs + transparent windows = WindowServer CPU spike. 5 ranked fixes tested on macOS Tahoe (26). Drops it 40-60% in under a minute.
 - [The Great Suspender (2026): Forks, Status, Safe Alternatives](https://www.superchargebrowser.com/library/great-suspender-alternative/): Banned Feb 2021 for malware. Two forks survived: Reloaded (v2.0.0, May 2026) and Marvellous (v8.1.3, Dec 2025). Fork status table + safe path forward.
-- [How to Enable Vertical Tabs in Chrome 147 (Without Flags)](https://www.superchargebrowser.com/library/how-to-enable-vertical-tabs-chrome/): Chrome vertical tabs are now a right-click away, no flag needed. Enable them in seconds — then see why workspaces and session recovery need an extension.
 - [Perplexity Comet vs Chrome: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/perplexity-comet-vs-chrome-extensions/): Comet went free March 2026. Chromium-based so your extensions work — but AI overhead, clunky sync, and no workspaces leave gaps Chrome extensions fill better.
 - [Chrome Privacy Extensions Ranked by Data Collection (2026)](https://www.superchargebrowser.com/library/privacy-extensions-that-collect-data/): Most "privacy" extensions collect more than they block. We ranked popular extensions by actual telemetry — from zero collection to selling browsing history.
 - [SuperchargeAudio vs Volume Master: Which One? (2026)](https://www.superchargebrowser.com/library/supercharge-audio-vs-volume-master/): Volume Master has 7M users and a simple slider. SuperchargeAudio adds EQ, 8D audio, per-site profiles, and smart mute. Real feature table. Pick the right one.
@@ -349,6 +370,8 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 
 - [Release History](https://www.superchargebrowser.com/changelog/): Version history for all extensions. RSS: https://www.superchargebrowser.com/changelog/rss.xml
 
+- [SuperchargeAudio 1.1.1 — Boost Keeps Working on Spotify and Similar Sites](https://www.superchargebrowser.com/changelog/audio/1.1.1/) (2026-10-26): On some music sites, like Spotify, the audio is protected, so SuperchargeAudio checks whether its boost is actually producing sound. Before, the check listened only once, so a brief gap between songs or a track still loading could look like silence, and the site was remembered for good and the boost stopped working. Now the check listens over about 4.5 seconds and only counts a site as silent when at least three of five reads are silent while the track is really playing, and a remembered site is retried after 7 days instead of being remembered forever. No new permissions.
+- [SuperchargeFocus 1.0.0 — Block the Sites That Pull You Away](https://www.superchargebrowser.com/changelog/focus/1.0.0/) (2026-10-26): SuperchargeFocus blocks the sites that pull you away. Start a 25 or 50 minute focus session, or set a daily minute allowance per site that resets each morning. Gentle pause shows a screen you can continue on purpose, Strict block does not. Your history, if you turn it on, stays on your device, and nothing is sent to our servers.
 - [SuperchargeNavigation 1.4.3 — Big Workspaces Open in a Second](https://www.superchargebrowser.com/changelog/navigation/1.4.3/) (2026-10-21): 1.4.3 opens big workspaces in about one second, where before the same load took about four seconds: the tab you are on loads, and every other tab opens asleep. Nav's search now works on the browser's own new tab page, where Alt+K used to open a blank tab. Your settings carry over, and there are no new permissions.
 - [SuperchargeCapture 1.2.3 — Drag an Area Works Where It Used to Fail](https://www.superchargebrowser.com/changelog/capture/1.2.3/) (2026-10-17): 1.2.3 is a small fix release for Supercharge Capture. In "Drag an area" and "Pick a part", the tools now show and work on sites where they used to disappear or where clicks were blocked. There are no new permissions.
 - [SuperchargePerformance 1.5.1 — Blocklists and cookie banner rules refreshed](https://www.superchargebrowser.com/changelog/performance/1.5.1/) (2026-10-16): The ad, tracker, and malware blocklists are refreshed to 195,057 rules. The cookie banner auto-reject engine moved to autoconsent 16.53, adding 284 new rules for a total of 1,501. Cookie banner handling remains off by default. The built-in exception list is unchanged from 1.5.0. No new permissions. No listing changes. Everything from 1.5.0 carries straight across.
@@ -412,14 +435,15 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - SuperchargeNavigation is completely free — no PRO tier.
 - SuperchargePerformance PRO is on a waitlist — 50% off at launch.
 - All extensions: zero telemetry, zero tracking, no SuperchargeBrowser servers. SuperchargePerformance is fully local. SuperchargeNavigation is local-by-default; opt-in workspace sync uses Chrome's own storage.sync infrastructure. SuperchargeAudio is fully local.
-- Featured & Verified Publisher on Chrome Web Store; 13,000+ combined weekly active users.
+- Featured & Verified Publisher on Chrome Web Store; 34,000+ combined weekly active users.
 - SuperchargePerformance and SuperchargeNavigation are also on Microsoft Edge Add-ons (live May–June 2026).
+- SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, SuperchargeCapture and SuperchargeInspect are also on Firefox Add-ons.
 - SuperchargeAudio launched June 10, 2026 on Chrome Web Store; live on Microsoft Edge Add-ons since June 4, 2026.
 
 ## Verifiable Claims
 
 - SuperchargePerformance reduces per-tab RAM by 90%+ via chrome.tabs.discard(). Total Chrome RAM reduction: 30-60% in default configuration, up to 70-75% with aggressive settings.
-- SuperchargePerformance rates 4.6/5 from 67 reviews on the Chrome Web Store.
+- SuperchargePerformance rates 4.6/5 from 75 reviews on the Chrome Web Store.
 - Ad blocking uses 195,000+ static declarativeNetRequest rules from 18 curated sources across 3 tiers.
 - SuperchargeNavigation workspaces persist across Chrome restarts. Local-by-default storage; opt-in workspace sync (off by default) uses Chrome's own storage.sync infrastructure (no SuperchargeBrowser servers).
 - SuperchargeNavigation takes 50 auto-snapshots at 5-minute intervals for session time-travel recovery.
@@ -441,10 +465,11 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - Open Source Attributions: https://www.superchargebrowser.com/open-source/
 - Security: https://www.superchargebrowser.com/security/
 
-- [Audio control for every tab. Finally clean.](https://www.superchargebrowser.com/audio/index.md): Per-tab volume boost to 600%, a 10-band EQ with presets, Smart Mute, 8D, and per-site memory. No tracking. Free on Chrome and Microsoft Edge.
-- [Record and capture anything. It stays on your machine.](https://www.superchargebrowser.com/capture/index.md): Free screen recording and screenshots for Chrome that stay on your machine. Zero-picker tab recording, crash-safe, auto-zoom. No account, no forced upload.
-- [Changelog](https://www.superchargebrowser.com/changelog/index.md): Release notes for SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, SuperchargeCapture, and SuperchargeInspect. See what shipped, what changed, what is on the way.
-- [Every feature, explained](https://www.superchargebrowser.com/features/index.md): Complete list of Performance, Navigation, Audio, Capture, and Inspect features for Chrome and Edge. No account needed. 13,000+ weekly users.
+- [Audio control for every tab. Finally clean.](https://www.superchargebrowser.com/audio/index.md): Per-tab volume boost to 600%, a 10-band EQ with presets, Smart Mute, 8D, and per-site memory. No tracking. Free on Chrome, Microsoft Edge and Firefox.
+- [Record and capture anything. It stays on your machine.](https://www.superchargebrowser.com/capture/index.md): Free screen recording and screenshots for Chrome, Edge and Firefox. Zero-picker tab recording, crash-safe, auto-zoom. No account, no forced upload.
+- [Changelog](https://www.superchargebrowser.com/changelog/index.md): Release notes for SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio, SuperchargeCapture, SuperchargeInspect, and SuperchargeFocus. See what shipped, what changed, what is on the way.
+- [Every feature, explained](https://www.superchargebrowser.com/features/index.md): Complete list of Performance, Navigation, Audio, Capture, Inspect, and Focus features for Chrome and Edge, five also on Firefox. 34,000+ weekly users.
+- [Focus on what matters most.](https://www.superchargebrowser.com/focus/index.md): Block distracting sites, set daily time limits, and give websites dark mode or a night tint. For Chrome. No account needed.
 - [Your tabs, on the side of every page.](https://www.superchargebrowser.com/in-page-sidebar/index.md): A vertical tab manager inside the page, not a separate window. Search, group, and switch tabs without leaving what you're reading.
 - [Inspect any element. Copy values for your AI coding tool.](https://www.superchargebrowser.com/inspect/index.md): Inspect element extension to copy fonts, colors and spacing on any page. Copy the values, and share a reference with your AI coding tool.
 - [Library](https://www.superchargebrowser.com/library/index.md): Free guides for Chrome and Edge covering performance, tab management, audio control, screenshots, and screen recording.
@@ -499,10 +524,10 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Volume Booster](https://www.superchargebrowser.com/library/topic/volume-booster/index.md): Which Chrome volume boosters are safe, and how loud can they go? Vet permissions, push a tab to 600% without clipping, and avoid the spyware ones in 2026.
 - [Windows](https://www.superchargebrowser.com/library/topic/windows/index.md): Fix Chrome performance issues on Windows — high disk usage, dwm.exe GPU spikes, antimalware CPU conflicts, and memory leaks on Windows 11.
 - [Workspaces](https://www.superchargebrowser.com/library/topic/workspaces/index.md): Chrome has no native workspaces in 2026. Get named, isolated tab contexts with Alt+K switching and auto-snapshots — the closest thing to Arc Spaces, free.
-- [Youtube](https://www.superchargebrowser.com/library/topic/youtube/index.md): Troubleshooting guides, comparisons, and practical tips for youtube issues in Chrome. Free solutions from SuperchargeBrowser.
+- [YouTube](https://www.superchargebrowser.com/library/topic/youtube/index.md): Troubleshooting guides, comparisons, and practical tips for youtube issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Workspaces that sync across your devices.](https://www.superchargebrowser.com/navigation/index.md): Vertical tabs, workspaces that sync via your browser account, a full new tab page, and instant search. The free Arc alternative.
 - [Open Source Attributions](https://www.superchargebrowser.com/open-source/index.md): Third-party open source software and filter lists used in SuperchargeBrowser extensions, with license and author attribution.
-- [Tab Suspender & Ad Blocker for a faster Chrome.](https://www.superchargebrowser.com/performance/index.md): Free Chrome extension combining tab suspension, ad blocking, and script control. Frees 90%+ of inactive tab memory. Zero telemetry, zero tracking.
+- [Tab Suspender & Ad Blocker for a faster Chrome.](https://www.superchargebrowser.com/performance/index.md): Free Chrome, Edge and Firefox extension: tab suspension, ad blocking, script control. Frees 90%+ of inactive tab memory.
 - [Privacy Policy](https://www.superchargebrowser.com/privacy/index.md): Privacy policy for all SuperchargeBrowser extensions. No browsing data collected. Zero telemetry, zero tracking.
 - [Unlock Maximum Performance](https://www.superchargebrowser.com/pro/index.md): Unlock custom sleep timing, Lighter background tabs, Block images, Faster connections, and top levels on three more features. $29 one-time launch price.
 - [Security](https://www.superchargebrowser.com/security/index.md): How SuperchargeBrowser extensions protect your data. Zero telemetry, no remote servers, no tracking. Built on Chrome Manifest V3.
