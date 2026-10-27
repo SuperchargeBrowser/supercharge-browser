@@ -1,6 +1,6 @@
 # SuperchargeBrowser
 
-> Last updated: 2026-10-26
+> Last updated: 2026-10-27
 
 > SuperchargeBrowser makes six free browser extensions for Chrome and Edge, and Firefox for five of them: SuperchargePerformance v1.5.1 (tab suspension, ad blocking, YouTube/Twitch video ad blocking, popup blocking, cookie consent auto-rejection, memory optimization) and SuperchargeNavigation v1.4.3 (vertical tabs, persistent workspaces, tab search, session time-travel, opt-in cross-device sync via Chrome's storage.sync) and SuperchargeAudio v1.1.1 (per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory, on Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons) and SuperchargeCapture v1.2.3 (one-click local screen recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom and cursor polish, optional Share-to-Drive to your own Google Drive) and SuperchargeInspect (local element inspection with fonts, colors, and spacing for your AI coding tool) and SuperchargeFocus v1.0.0 (site blocker and time limits: 25 or 50 minute focus sessions, daily per-site minute allowances, Gentle pause and Strict block modes, per-site dark mode, larger text, higher contrast, night tint, and optional on-device history, live on the Chrome Web Store). Zero telemetry, no SuperchargeBrowser servers. Featured & Verified Publisher on Chrome Web Store; 34,000+ combined weekly active users. Founded 2025 in Finland.
 
@@ -124,9 +124,15 @@
 
 ## Library
 
-228 guides on Chrome performance, memory management, and tab organization.
+234 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [Ad Blocker Rule Count and Chrome CPU: What 195K Rules Do (2026)](https://www.superchargebrowser.com/library/ad-blocker-rule-count-cpu-chrome/): An ad blocker's rule count shapes how much Chrome CPU each tab burns. It covers the 30K floor, the shared global pool, and why 195K rules stop requests first.
+- [Does Brave Have Extensions? Yes, 3 Things to Know (2026)](https://www.superchargebrowser.com/library/brave-browser-extensions-support/): Brave installs Chrome Web Store extensions directly. The button reads 'Add to Brave.' What breaks silently: MV2 holdovers, optional permissions, and Shields.
+- [Chrome Tab Manager on Small Screens: 3 Layout Fixes (2026)](https://www.superchargebrowser.com/library/chrome-tab-manager-small-screen/): A cramped Chrome tab manager hides tabs in an overflowing strip. Three layouts keep groups and ungrouped tabs visible on small screens. Chrome 156, 2026.
+- [How to Search Chrome Tabs by URL in 2 Quick Steps (2026)](https://www.superchargebrowser.com/library/chrome-tab-search-by-domain/): Search Chrome tabs by URL: Ctrl+Shift+A finds it in one window. Two paths cover the rest: native exact-match, plus fuzzy search across all windows and history.
+- [How to Give Each Chrome Tab Its Own Volume Control (2026)](https://www.superchargebrowser.com/library/set-different-volume-each-chrome-tab/): Chrome per-tab volume caps at 100% of system output. Use right-click Set volume for 0-100% control, then SuperchargeAudio extends one tab to 600% per site.
+- [Why Is Chrome Running Slow? 6 Causes to Check First (2026)](https://www.superchargebrowser.com/library/why-chrome-running-slow-diagnose/): Chrome running slow? Six causes, each with a Task Manager signal and a fix. No reinstall, no switch. One session names the bottleneck and stops the waste.
 - [Chrome Not Working or Not Responding? 5 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-chrome-not-responding/): Chrome not working or not responding? Match your symptom (won't open, frozen window, stuck tab, pages won't load) to the right fix in under 5 minutes.
 - [Chrome Tab Groups Disappeared? 5 Tested Fixes to Restore Them](https://www.superchargebrowser.com/library/fix-chrome-saved-tab-groups-disappearing/): Chrome tab groups disappeared? Most are closed, not deleted, and reopen from More > Tab groups. Why groups vanish, plus 5 tested fixes.
 - [WindowServer High CPU on Mac? 6 TESTED Fixes (2026)](https://www.superchargebrowser.com/library/fix-windowserver-high-cpu-mac/): WindowServer is the macOS process that puts every window on screen. 6 fixes tested on macOS Tahoe (26). Drops it 40-60% in under a minute.
@@ -141,15 +147,15 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [How to Select Multiple Tabs and Group Them in Chrome (2026)](https://www.superchargebrowser.com/library/batch-move-chrome-tabs-to-group/): Select multiple tabs in Chrome and group them at once. Native Ctrl-click, batch multi-select, and Alt+G smart grouping by domain, compared for your next batch.
 - [Arc-Like Chromium Browsers Compared: Vivaldi Wins (2026)](https://www.superchargebrowser.com/library/open-source-chromium-arc-like-browsers-2026/): Vivaldi is the closest Chromium browser to Arc's UI: vertical tabs, workspaces, Quick Commands (F2). Thorium and Brave cover parts. Arc stops working Dec 2026.
 - [Switch From Arc to Chrome: The 5-Minute Migration (2026)](https://www.superchargebrowser.com/library/switch-from-arc-to-chrome/): Arc stops working December 22, 2026. Switch from Arc to Chrome: export bookmarks first, then rebuild spaces and command bar in 5 steps before the cutoff.
+
+## Library (additional guides)
+
 - [How to Enable Chrome Vertical Tabs on a Chromebook (2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-chromebook/): Enable Chrome vertical tabs on a Chromebook in one Settings toggle. Exact path, sidebar limits, and when a side panel earns its keep. Chrome 146+, no flag.
 - [Reduce Chrome Memory While Watching Video: 3 Steps (2026)](https://www.superchargebrowser.com/library/reduce-chrome-memory-while-watching-video/): Chrome memory spikes while watching video. A 1080p tab holds 300-530 MB. The saver skips audio tabs. Three steps free idle RAM, playback keeps running.
 - [How to Stop Video Ads From Playing in Chrome: 3 Levers (2026)](https://www.superchargebrowser.com/library/stop-video-ads-playing-chrome/): Stop video ads that play with sound in Chrome. Mute one site, block unmuted autoplay sitewide, or cut the ad's request at the source with a 195K-rule blocklist.
 - [Chrome Full-Page Screenshot Too Large? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-large-full-page-screenshot-chrome/): Full-page Chrome screenshots come out too large: one lossless PNG sized to the full scroll height, with no compression. Five fixes shrink the file. (2026)
 - [How to Stop YouTube Autoplay in Chrome: 1 Switch (2026)](https://www.superchargebrowser.com/library/youtube-autoplay-stopper-chrome/): YouTube autoplay is a site-level switch, not a Chrome setting. Turn it off at the player's bottom; Chrome's Sound default only mutes videos that still start.
 - [8D Audio Extension: 3 Chrome Paths, 2 Add Spatial Sound (2026)](https://www.superchargebrowser.com/library/8d-audio-chrome-extension/): 8D audio is a rotating stereo pan, not a real dimension. See 3 Chrome paths: built-in volume, OS spatial sound, or a per-site extension effect, plus trade-offs.
-
-## Library (additional guides)
-
 - [How to Set Bass Boost in Chrome (Without Clipping) (2026)](https://www.superchargebrowser.com/library/bass-booster-settings-chrome/): Set bass boost in Chrome: target 64 to 250 Hz, +10 to +3 dB taper, per-site profile. Punch without clipping, tuned once, remembered per hostname. (2026)
 - [Chrome Screen Recorder Extension: 4 Controls (2026)](https://www.superchargebrowser.com/library/chrome-screen-recorder-extension-explainer/): Chrome screen recorder extension: four controls for screenshots and tab or screen video, all local. Watermark-free, no account. As of October 2026, Chrome 155.
 - [Chrome Tab Side Panel Shortcut: 3 Toggle Methods (2026)](https://www.superchargebrowser.com/library/chrome-side-panel-toggle-shortcut/): Chrome tab side panel shortcut: Ctrl+Shift+S. Rebind extension keys, compare the panel to a vertical sidebar, and map four keys for tab tools beside your page.
@@ -500,6 +506,7 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Chrome Tabs](https://www.superchargebrowser.com/library/topic/chrome-tabs/index.md): Troubleshooting guides, comparisons, and practical tips for chrome tabs issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Chrome Troubleshooting](https://www.superchargebrowser.com/library/topic/chrome-troubleshooting/index.md): Troubleshooting guides, comparisons, and practical tips for chrome troubleshooting issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Chrome Updates](https://www.superchargebrowser.com/library/topic/chrome-updates/index.md): Track what each Chrome release changes — HTTPS-First in 147, vertical tabs in 146, MV2 sunset — and which updates quietly break extensions you depend on.
+- [Chrome Web Store](https://www.superchargebrowser.com/library/topic/chrome-web-store/index.md): Troubleshooting guides, comparisons, and practical tips for chrome web store issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Chrome](https://www.superchargebrowser.com/library/topic/chrome/index.md): Troubleshooting guides, comparisons, and practical tips for chrome issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Equalizer](https://www.superchargebrowser.com/library/topic/equalizer/index.md): Troubleshooting guides, comparisons, and practical tips for equalizer issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Extensions](https://www.superchargebrowser.com/library/topic/extensions/index.md): Compare Chrome extensions for performance, tab management, and ad blocking. In-depth reviews and alternatives for popular tools like OneTab and Great Suspender.
@@ -517,6 +524,7 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [Screen Recorder](https://www.superchargebrowser.com/library/topic/screen-recorder/index.md): Troubleshooting guides, comparisons, and practical tips for screen recorder issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Screen Recording](https://www.superchargebrowser.com/library/topic/screen-recording/index.md): Troubleshooting guides, comparisons, and practical tips for screen recording issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Screenshot](https://www.superchargebrowser.com/library/topic/screenshot/index.md): Troubleshooting guides, comparisons, and practical tips for screenshot issues in Chrome. Free solutions from SuperchargeBrowser.
+- [Side Panel](https://www.superchargebrowser.com/library/topic/side-panel/index.md): Troubleshooting guides, comparisons, and practical tips for side panel issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Tab Management](https://www.superchargebrowser.com/library/topic/tab-management/index.md): Organize Chrome tabs with vertical tab managers, workspaces, and tab suspenders. Compare extensions and find the best free tools for 2026.
 - [Tab Suspension](https://www.superchargebrowser.com/library/topic/tab-suspension/index.md): Troubleshooting guides, comparisons, and practical tips for tab suspension issues in Chrome. Free solutions from SuperchargeBrowser.
 - [Troubleshooting](https://www.superchargebrowser.com/library/topic/troubleshooting/index.md): Diagnose Chrome problems fast — isolate bad extensions in Incognito, fix one-ear audio and quiet sound, and skip the reinstall most guides jump to.
