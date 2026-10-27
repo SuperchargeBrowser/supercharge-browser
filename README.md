@@ -21,7 +21,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: zero telemetry, zero outbound network requests, 100% local storage, no account required, MV3-native, Chrome 146 compatible
-> - Website with 228 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 234 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -188,7 +188,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 228 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 234 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -276,12 +276,12 @@ This section is structured for citation accuracy. Facts below are verified as of
 
 ## Library — Article Index
 
-228 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+234 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
 <details>
-<summary>View all 228 articles</summary>
+<summary>View all 234 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -428,6 +428,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [5 Best Zen Browser Extensions + How to Install Them (2026)](https://www.superchargebrowser.com/library/zen-browser-extensions-complete-guide/)
 - [6 BEST Chrome Extensions to Reduce RAM (2026, Tested)](https://www.superchargebrowser.com/library/best-chrome-extensions-reduce-ram/)
 - [8D Audio Extension: 3 Chrome Paths, 2 Add Spatial Sound (2026)](https://www.superchargebrowser.com/library/8d-audio-chrome-extension/)
+- [Ad Blocker Rule Count and Chrome CPU: What 195K Rules Do (2026)](https://www.superchargebrowser.com/library/ad-blocker-rule-count-cpu-chrome/)
 - [Arc Browser Is Shutting Down: December 22, 2026 Confirmed](https://www.superchargebrowser.com/library/arc-browser-status-2026/)
 - [Arc Command Bar in Chrome: How to Replicate It (2026)](https://www.superchargebrowser.com/library/arc-command-bar-chrome/)
 - [Arc Shut Down? Replicate Its 6 Key Features in Chrome (2026)](https://www.superchargebrowser.com/library/arc-browser-dead-get-features-in-chrome/)
@@ -453,6 +454,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Chrome Screen Recorder Extension: 4 Controls (2026)](https://www.superchargebrowser.com/library/chrome-screen-recorder-extension-explainer/)
 - [Chrome Side Panel: Full Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-side-panel-guide/)
 - [Chrome Tab Groups: Complete Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-complete-guide/)
+- [Chrome Tab Manager on Small Screens: 3 Layout Fixes (2026)](https://www.superchargebrowser.com/library/chrome-tab-manager-small-screen/)
 - [Chrome Tab Scrolling Gone? 5 Ways That Still Work (2026)](https://www.superchargebrowser.com/library/restore-tab-scrolling-chrome/)
 - [Chrome Tab Search Shortcut: TESTED Guide (2026)](https://www.superchargebrowser.com/library/chrome-tab-search-shortcut-guide/)
 - [Chrome Tab Side Panel Shortcut: 3 Toggle Methods (2026)](https://www.superchargebrowser.com/library/chrome-side-panel-toggle-shortcut/)
@@ -460,6 +462,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Chrome Vertical Tabs: How to Show Tabs Vertically (2026)](https://www.superchargebrowser.com/library/how-to-enable-vertical-tabs-chrome/)
 - [Chrome's 2-Week Release Cycle (Sept 2026): What Changes](https://www.superchargebrowser.com/library/chrome-two-week-release-cycle-2026-explained/)
 - [Chrome's New Privacy Rules: 3 Things to CHECK (2026)](https://www.superchargebrowser.com/library/chrome-web-store-privacy-rules-august-2026/)
+- [Does Brave Have Extensions? Yes, 3 Things to Know (2026)](https://www.superchargebrowser.com/library/brave-browser-extensions-support/)
 - [Does Chrome Have Workspaces? Not Yet — Here's What Works (2026)](https://www.superchargebrowser.com/library/chrome-workspaces-explained/)
 - [Does uBlock Origin Still Work on Chrome? No (2026 Status)](https://www.superchargebrowser.com/library/does-ublock-origin-still-work-chrome-2026/)
 - [Full Screen Screenshot in Chrome: 4 Tools That Fit (2026)](https://www.superchargebrowser.com/library/full-screen-screenshot-chrome/)
@@ -473,10 +476,12 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [How to DISABLE Chrome AI Features & Gemini (2026)](https://www.superchargebrowser.com/library/disable-chrome-ai-features-gemini/)
 - [How to Enable Chrome Memory Saver: Step-by-Step (2026)](https://www.superchargebrowser.com/library/enable-chrome-memory-saver-guide/)
 - [How to Enable Chrome Vertical Tabs on a Chromebook (2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-chromebook/)
+- [How to Give Each Chrome Tab Its Own Volume Control (2026)](https://www.superchargebrowser.com/library/set-different-volume-each-chrome-tab/)
 - [How to Record a Chrome Tab for Support in 2 Steps (2026)](https://www.superchargebrowser.com/library/record-chrome-tab-support-ticket/)
 - [How to Remove Gemini Nano Files from Chrome (Reclaim 4GB)](https://www.superchargebrowser.com/library/remove-gemini-nano-files-chrome/)
 - [How to Save a Full Scrolling Web Page as PDF (2026)](https://www.superchargebrowser.com/library/save-full-web-page-as-pdf-chrome-2026/)
 - [How to Screen Record Chrome on Windows: 3 Ways (2026)](https://www.superchargebrowser.com/library/screen-record-chrome-windows/)
+- [How to Search Chrome Tabs by URL in 2 Quick Steps (2026)](https://www.superchargebrowser.com/library/chrome-tab-search-by-domain/)
 - [How to Select Multiple Tabs and Group Them in Chrome (2026)](https://www.superchargebrowser.com/library/batch-move-chrome-tabs-to-group/)
 - [How to Set Bass Boost in Chrome (Without Clipping) (2026)](https://www.superchargebrowser.com/library/bass-booster-settings-chrome/)
 - [How to Speed Up a 4GB Chromebook (Without Buying New) (2026)](https://www.superchargebrowser.com/library/speed-up-4gb-chromebook/)
@@ -510,6 +515,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Which Chrome Extensions Still Use Manifest V2? (2026)](https://www.superchargebrowser.com/library/which-chrome-extensions-still-manifest-v2/)
 - [Why Audio Extensions Need 'All Sites' Access (2026)](https://www.superchargebrowser.com/library/why-audio-extensions-need-all-sites-access/)
 - [Why Is Chrome Running Slow on a Laptop? 4 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-slow-laptop-thermal/)
+- [Why Is Chrome Running Slow? 6 Causes to Check First (2026)](https://www.superchargebrowser.com/library/why-chrome-running-slow-diagnose/)
 
 ### Reviews
 
