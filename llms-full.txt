@@ -20,7 +20,7 @@ Across our extensions: 4.6/5 · 125 store ratings. Checked 2026-11-05 across Chr
 - 14 individually toggleable features per domain
 - 25+ auto-protected web apps across productivity, media, and calls (Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby)
 - Zero telemetry, zero tracking, zero data collection, fully local
-- Version: 1.5.3
+- Version: 1.5.4
 - Available on Chrome Web Store, Microsoft Edge Add-ons (live May 2026) and Firefox Add-ons
 - Weekly active users: 34,000+ combined across the extension family (Chrome Web Store and Microsoft Edge Add-ons)
 - Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
@@ -4767,7 +4767,7 @@ The Performance panel tells you the consequence, not the count. The long tasks i
 
 ## What a full block changes
 
-If your current blocker ships a small rule set, the upgrade is a block that stops more requests before they reach the network. SuperchargePerformance ships 195,123 declarative rules across 15 rule files, all running within Chrome's MV3 limits as of its live 1.5.3 build. Its blocking tiers run from Off through Low, Med, and High, and none of them require a paid plan. A full block keeps its 34 protected web-app domains (mail, docs, sign-in) working while it stops the rest, so the renderer never parses or runs the scripts a thin set would have let through.
+If your current blocker ships a small rule set, the upgrade is a block that stops more requests before they reach the network. SuperchargePerformance ships 195,123 declarative rules across 15 rule files, all running within Chrome's MV3 limits as of its live 1.5.4 build. Its blocking tiers run from Off through Low, Med, and High, and none of them require a paid plan. A full block keeps its 34 protected web-app domains (mail, docs, sign-in) working while it stops the rest, so the renderer never parses or runs the scripts a thin set would have let through.
 
 If your blocker's rule set is thin and your tabs sit open for a long time, a full-tier block is a steady efficiency win rather than a fix to a fire. If your traffic is light and you keep few tabs open, Chrome's own defaults plus a modest block may already be enough.
 
@@ -5140,7 +5140,7 @@ The Task Manager shows it plainly. No single row dominates, but the tab stack ho
 
 **Free the memory:** Close tabs you are not actively using (Ctrl+W on Windows and ChromeOS, Command+W on macOS). Chrome's built-in Memory Saver, found under Settings > Performance, discards idle tabs automatically to reclaim RAM. It has three levels: Moderate, Balanced, and Maximum. You can exempt specific sites with the "Always keep these sites active" list.
 
-For a longer-term reduction in the baseline load, SuperchargePerformance (v1.5.3) suspends idle tabs on a 5- or 15-minute timer and blocks background ad and tracker work with 186K+ declarativeNetRequest rules while keeping 34 protected web-app domains active. Each suspended tab releases 90-95% of its renderer memory. The extension lowers the starting load for every session. It does not replace the diagnosis above.
+For a longer-term reduction in the baseline load, SuperchargePerformance (v1.5.4) suspends idle tabs on a 5- or 15-minute timer and blocks background ad and tracker work with 186K+ declarativeNetRequest rules while keeping 34 protected web-app domains active. Each suspended tab releases 90-95% of its renderer memory. The extension lowers the starting load for every session. It does not replace the diagnosis above.
 
 ## Name the Bottleneck
 
@@ -5881,7 +5881,7 @@ The tab context menu has "Unload Tab". You can also unload a tab from `about:pro
 
 If the tab holds a form, document, or video you still need, do not unload it yet. Use Fix 1 or Fix 2 first. If you no longer need the tab, unload it.
 
-If the manual levers hold, you are done. If you do not want to repeat them, SuperchargePerformance is live on AMO as version 1.5.3 and requires Firefox 140+. It runs timer-based tab suspension with 15 minutes for Low, 5 minutes for Medium, and custom seconds on PRO. It keeps 34 protected webapp domains from suspension and carries hundreds of thousands of network-level ad/tracker blocking rules. On Firefox, suspension ranking is not memory-based.
+If the manual levers hold, you are done. If you do not want to repeat them, SuperchargePerformance is live on AMO as version 1.5.4 and requires Firefox 140+. It runs timer-based tab suspension with 15 minutes for Low, 5 minutes for Medium, and custom seconds on PRO. It keeps 34 protected webapp domains from suspension and carries hundreds of thousands of network-level ad/tracker blocking rules. On Firefox, suspension ranking is not memory-based.
 
 #### FAQ
 Q: Why is Firefox using so much RAM?
@@ -6202,7 +6202,7 @@ Three steps total: open the settings page, flip the toggle, pick a mode. The cha
 
 Memory Saver is reactive. It waits for system RAM pressure or the ML revisit prediction before discarding anything.
 
-A timer-based suspender closes that gap. SuperchargePerformance (Chrome Web Store version 1.5.3) runs a `chrome.alarms` check every 30 seconds. When a tab has been inactive past the timer, the extension calls `chrome.tabs.discard()`, which terminates the renderer and frees 90-95% of that tab's RAM. The tab stays in your strip. It just no longer burns memory.
+A timer-based suspender closes that gap. SuperchargePerformance (Chrome Web Store version 1.5.4) runs a `chrome.alarms` check every 30 seconds. When a tab has been inactive past the timer, the extension calls `chrome.tabs.discard()`, which terminates the renderer and frees 90-95% of that tab's RAM. The tab stays in your strip. It just no longer burns memory.
 
 The suspension safety gate mirrors Memory Saver's: a tab is not suspended if it is active, pinned, or producing audio. The extension also skips `chrome://`, `chrome-extension://`, and `file://` URLs, tabs created within the last 30 seconds, 34 auto-protected web-app domains (Figma, Notion, Slack, Discord, Google Docs, …), any site on your personal whitelist, and tabs holding unsaved form data.
 
@@ -6271,7 +6271,7 @@ Q: How much RAM does a video tab actually use?
 A: A 1080p YouTube tab holds 300-530 MB on a Chromium 148 build. A static article tab holds roughly 80 MB.
 
 Q: Can I set my own tab-suspension timer?
-A: SuperchargePerformance's PRO tier (Chrome Web Store 1.5.3 as of November 2026) lets you set the interval in seconds. The free default (Med mode) suspends idle tabs after 5 minutes; Low mode waits 15 minutes.
+A: SuperchargePerformance's PRO tier (Chrome Web Store 1.5.4 as of November 2026) lets you set the interval in seconds. The free default (Med mode) suspends idle tabs after 5 minutes; Low mode waits 15 minutes.
 
 ---
 
@@ -6414,7 +6414,7 @@ The video ends. The next one starts. You did not press play, and the clip you ac
 > **Key takeaways**
 > - YouTube's Autoplay toggle is a site-level "next video" control. It is not the same as HTML5 media autoplay.
 > - Chrome's Sound setting silences audio but does not stop a video from starting. A muted video still plays.
-> - SuperchargePerformance's Stop Autoplay (v1.5.3, off by default) blocks page-load HTML5 autoplay across every site at its Block All level.
+> - SuperchargePerformance's Stop Autoplay (v1.5.4, off by default) blocks page-load HTML5 autoplay across every site at its Block All level.
 
 ## What YouTube Autoplay Actually Controls
 
@@ -6467,7 +6467,7 @@ The three controls solve three different problems. The YouTube toggle is the onl
 
 The YouTube toggle is a single-site, single-device setting. If you also want news portals, product pages, and documentation sites to stop firing muted autoplay on page load, that is the HTML5 layer, and the Sound setting only mutes it.
 
-SuperchargePerformance (Chrome Web Store, v1.5.3) ships a **Stop Autoplay** feature, off by default, with three levels:
+SuperchargePerformance (Chrome Web Store, v1.5.4) ships a **Stop Autoplay** feature, off by default, with three levels:
 
 - **Level 0 (off):** no intervention.
 - **Level 1 (Allow Common):** major video platforms and muted hover previews can still play.
@@ -6485,7 +6485,7 @@ Q: Does the Autoplay toggle work the same on mobile?
 A: Settings are per-device, so you set the toggle independently on each phone, tablet, and desktop. On mobile, Autoplay also auto-stops after 30 minutes of inactivity on a mobile data connection or 4 hours on Wi-Fi. Accounts aged 13 to 17 have Autoplay off by default.
 
 Q: What is the difference between Allow Common and Block All in Stop Autoplay?
-A: Level 1 (Allow Common) permits major video platforms and muted hover previews to play. Level 2 (Block All) stops all page-load HTML5 autoplay. Both are off by default in SuperchargePerformance v1.5.3. As of October 2026, the feature ships in the current Chrome Web Store build.
+A: Level 1 (Allow Common) permits major video platforms and muted hover previews to play. Level 2 (Block All) stops all page-load HTML5 autoplay. Both are off by default in SuperchargePerformance v1.5.4. As of October 2026, the feature ships in the current Chrome Web Store build.
 
 Q: Does SuperchargePerformance stop YouTube's next video?
 A: No. Stop Autoplay blocks page-load HTML5 autoplay, but it does not control YouTube's site-level next-video toggle; turn that off with the Autoplay switch at the bottom of the player.
@@ -7037,7 +7037,7 @@ One trap is a bare domain string. A filter written as `example.com` can match a 
 
 Rule count is a coverage signal. More bundled URL patterns mean a wider set of ad and tracker requests can be matched before the page loads. A blocker that ships far fewer rules leaves more room for a new domain to leak through.
 
-SuperchargePerformance bundles 195,000+ DNR rules across 15 static ruleset files. Its tiered setup includes low, medium, and pro blocklist tiers, script tiers, font tiers, `image_block`, and `yt_ad` rulesets. The extension's manifest marks the low blocklist and `script_low` as enabled by default. Other tiers switch on at runtime through `chrome.declarativeNetRequest.updateEnabledRulesets`. The runtime also verifies that Chrome indexed the enabled rulesets. It uses `getAvailableStaticRuleCount()` and retry passes because Chrome deferred indexing can silently delay or fail rule activation. The live Chrome Web Store build is 1.5.3 as of November 2026.
+SuperchargePerformance bundles 195,000+ DNR rules across 15 static ruleset files. Its tiered setup includes low, medium, and pro blocklist tiers, script tiers, font tiers, `image_block`, and `yt_ad` rulesets. The extension's manifest marks the low blocklist and `script_low` as enabled by default. Other tiers switch on at runtime through `chrome.declarativeNetRequest.updateEnabledRulesets`. The runtime also verifies that Chrome indexed the enabled rulesets. It uses `getAvailableStaticRuleCount()` and retry passes because Chrome deferred indexing can silently delay or fail rule activation. The live Chrome Web Store build is 1.5.4 as of November 2026.
 
 If ads return on a site after a new network appears, check rule coverage before switching blockers. A tiered setup lets you switch to a larger rule set on demand. For more on MV3 blocker behavior, see [Chrome ad blockers for Manifest V3](/library/tested-chrome-ad-blockers-manifest-v3-2026/).
 
@@ -7360,7 +7360,7 @@ SuperchargeAudio 1.1.3 (live on the Chrome Web Store as of November 2026) fills 
 
 All processing is local. No tab data, URLs, audio signals, or browsing activity are transmitted. No telemetry, no account, no remote configuration.
 
-If you search "autoplay stopper extension," you will also find SuperchargePerformance 1.5.3 on the store. It ships a Stop Autoplay feature (off by default) with a toggle and a two-option control: "Allow Common" (lets major video platforms and muted hover previews play) or "Block All." That is a different tool. SuperchargeAudio handles the audio side: which tabs sound, at what volume, and which stay silent while you work.
+If you search "autoplay stopper extension," you will also find SuperchargePerformance 1.5.4 on the store. It ships a Stop Autoplay feature (off by default) with a toggle and a two-option control: "Allow Common" (lets major video platforms and muted hover previews play) or "Block All." That is a different tool. SuperchargeAudio handles the audio side: which tabs sound, at what volume, and which stay silent while you work.
 
 #### FAQ
 Q: Does Chrome have a built-in autoplay blocker?
@@ -7490,7 +7490,7 @@ Engine speed is a tie between the two.
 
 Brave Memory Saver has no user timer. Chrome's Efficiency Mode throttles background-tab CPU.
 
-SuperchargePerformance (live at v1.5.3 on the Chrome Web Store) adds that timer. It suspends idle tabs at 15 minutes (low preset) or 5 minutes (medium preset). On PRO, you set the interval in seconds.
+SuperchargePerformance (live at v1.5.4 on the Chrome Web Store) adds that timer. It suspends idle tabs at 15 minutes (low preset) or 5 minutes (medium preset). On PRO, you set the interval in seconds.
 
 The suspension calls `chrome.tabs.discard()`, which terminates the tab's renderer process. The tab stays visible in the strip. A discarded tab frees roughly 90–95% of its own RAM, because the browser process retains only the tab entry (title, favicon, URL) and the renderer is gone.
 
@@ -7502,7 +7502,7 @@ If you open mostly ad-heavy content (news, social, video) and want the ad layer 
 
 If your content is internal tools, docs, or ad-free sites, and your tab count stays light, Chrome plus Efficiency Mode covers it.
 
-If your tab count runs high across several projects, pair either browser with a suspender that runs on a timer you set. The timer is the piece Brave doesn't ship. SuperchargePerformance (v1.5.3) covers the suspension presets, the 34 protected apps, and the 186K+ blocking rules in one install.
+If your tab count runs high across several projects, pair either browser with a suspender that runs on a timer you set. The timer is the piece Brave doesn't ship. SuperchargePerformance (v1.5.4) covers the suspension presets, the 34 protected apps, and the 186K+ blocking rules in one install.
 
 #### FAQ
 Q: Does Brave actually use less RAM than Chrome?
@@ -7976,7 +7976,7 @@ Ghostery earns its place here as a working, actively maintained blocker for ads 
 | uBlock Origin Lite | v2026.711.25 | 15M | Yes (MV3) | Bundled scriptlets, review-gated | Days (store review) | Good |
 | AdGuard | v5.4.3 | 16M | Yes (MV3) | Mixed (inconsistent) | 24-48h | Full |
 | Ghostery | v10.5.51 | 2M | Yes (MV3) | Generalist rules only | Reactive | Full + anti-tracking |
-| SuperchargePerformance | v1.5.3 | Not cited | Yes (MV3) | DNR + API proxy + fallback + cosmetic | 24-48h | 195K+ DNR rules |
+| SuperchargePerformance | v1.5.4 | Not cited | Yes (MV3) | DNR + API proxy + fallback + cosmetic | 24-48h | 195K+ DNR rules |
 
 \*uBlock Origin's 12M count reflects legacy installs that no longer execute on stable Chrome. Google removed the listing from the Chrome Web Store on August 31, 2026.
 
@@ -8077,7 +8077,7 @@ Q: Can uBlock Origin Lite block YouTube ads?
 A: Partially. As of September 2026, uBlock Origin Lite ships scriptlets bundled with its rulesets, contrary to the common claim that it has no injected scripts at all. Its real limits: scriptlets and filter lists update only when the extension itself updates through Chrome Web Store review, so fixes during an anti-adblock wave can lag by days. There are no custom filters or list imports, no dynamic filtering, and generic cosmetic filtering is off unless you raise a site to Complete mode.
 
 Q: What is the best YouTube ad blocker for Chrome in 2026?
-A: As of September 2026, the most reliable YouTube-specific options on Chrome are AdBlock for YouTube (v7.2.3, 10 million users) and SuperchargePerformance (v1.5.3), which shares AdBlock for YouTube's upstream API-proxy engine and layers three additional proprietary mechanisms: 14 DNR network rules, a fallback skip-button clicker with interstitial hider, and cosmetic CSS for YouTube's feed and masthead. AdGuard (v5.4.3) and Ghostery (v10.5.51) are strong MV3 general blockers but less consistent on YouTube specifically.
+A: As of September 2026, the most reliable YouTube-specific options on Chrome are AdBlock for YouTube (v7.2.3, 10 million users) and SuperchargePerformance (v1.5.4), which shares AdBlock for YouTube's upstream API-proxy engine and layers three additional proprietary mechanisms: 14 DNR network rules, a fallback skip-button clicker with interstitial hider, and cosmetic CSS for YouTube's feed and masthead. AdGuard (v5.4.3) and Ghostery (v10.5.51) are strong MV3 general blockers but less consistent on YouTube specifically.
 
 Q: What is SSAI and will it kill ad blockers on YouTube?
 A: As of September 2026, Server-Side Ad Insertion is YouTube's most significant long-term threat to ad blocking. Rather than sending ad metadata separately for the browser to parse, YouTube stitches ads directly into the video stream on its servers before delivery. The resulting stream contains ad and content segments under the same CDN address, indistinguishable at the network level. No browser extension can strip ads at that point. YouTube has been testing SSAI in limited rollouts since early 2026, with broad rollout estimated at 6 to 12 months out. If fully deployed, YouTube Premium becomes the only ad-free option.
@@ -8461,7 +8461,7 @@ The table below maps each common class of deleted tool to the MV3 options that c
 | Ad blocking | Adblock Plus | MV3 build live on the Chrome Web Store. |
 | Tracker blocking | Privacy Badger | MV3 build live on the Chrome Web Store. |
 | Ad + tracker blocking | Ghostery | MV3 rebuild shipped 2025. |
-| Ad blocking + tab suspension + optimization | SuperchargePerformance | v1.5.3. 195K+ declarativeNetRequest rules. 34 web-app domains never auto-suspended. |
+| Ad blocking + tab suspension + optimization | SuperchargePerformance | v1.5.4. 195K+ declarativeNetRequest rules. 34 web-app domains never auto-suspended. |
 | Tab organization + workspace management | SuperchargeNavigation | v1.4.4. |
 
 If your deleted tool was a blocker or an optimizer, the SuperchargePerformance row is the direct path forward. It combines the 195K+ rule set with tab suspension and per-domain auto-protection in a single MV3 build that updates through the normal store channel. If the tool organized tabs or switched between workspaces, SuperchargeNavigation covers that ground.
@@ -8472,7 +8472,7 @@ The installed copy does not run. Chrome 138 (July 24, 2025) stopped MV2 backgrou
 
 Map the next step to what the deleted tool actually did:
 
-If it blocked ads or optimized page loads, install SuperchargePerformance (v1.5.3, MV3, live on the store as of October 2026). The 195K+ declarativeNetRequest rule set and 34-domain auto-protection cover the blocking and optimization work in one extension that receives updates through the normal channel.
+If it blocked ads or optimized page loads, install SuperchargePerformance (v1.5.4, MV3, live on the store as of October 2026). The 195K+ declarativeNetRequest rule set and 34-domain auto-protection cover the blocking and optimization work in one extension that receives updates through the normal channel.
 
 If it organized tabs, managed workspaces, or switched between sets of tabs, install SuperchargeNavigation (v1.4.4, MV3).
 
@@ -8732,7 +8732,7 @@ Install it once and it covers the broad ad and tracker surface without per-site 
 
 ## Option 3: SuperchargePerformance
 
-This one solves a different problem than pure ad blocking. SuperchargePerformance (CWS v1.5.3) ships 195K+ rules (34 web-app domains never auto-suspend), dedicated YouTube and Twitch video-ad handlers, and a cookie-banner auto-dismiss. On the RAM side, tab suspension runs on a 15-minute (low) or 5-minute (med) timer, with a PRO tier for user-set seconds. The popup shows an estimated RAM-saved figure. That number is a model, not a per-tab measurement. Free core, no account, zero telemetry, local-only.
+This one solves a different problem than pure ad blocking. SuperchargePerformance (CWS v1.5.4) ships 195K+ rules (34 web-app domains never auto-suspend), dedicated YouTube and Twitch video-ad handlers, and a cookie-banner auto-dismiss. On the RAM side, tab suspension runs on a 15-minute (low) or 5-minute (med) timer, with a PRO tier for user-set seconds. The popup shows an estimated RAM-saved figure. That number is a model, not a per-tab measurement. Free core, no account, zero telemetry, local-only.
 
 This is the pick when memory pressure is the real problem. The video-ad and cookie-banner handling ride along on top of the suspension engine.
 
@@ -9020,7 +9020,7 @@ On August 31, 2026, Google removed every remaining Manifest V2 listing from the 
 
 - Card shows "no longer supported": check the extension's Chrome Web Store listing for a shipped Manifest V3 version. Many developers rebuilt under a new listing rather than updating the old one.
 - No Manifest V3 rebuild exists: the extension is abandoned on Chrome. Replace it with an MV3-native alternative.
-- The disabled extension is an ad or content blocker: most blockers that never shipped an MV3 version relied on the `webRequest` API that Manifest V3 replaced with `declarativeNetRequest`. SuperchargePerformance (v1.5.3) was built on `declarativeNetRequest` from launch, evaluating 195K+ curated blocking rules natively in Chrome with zero per-request JavaScript, so it never had a Manifest V2 version to lose.
+- The disabled extension is an ad or content blocker: most blockers that never shipped an MV3 version relied on the `webRequest` API that Manifest V3 replaced with `declarativeNetRequest`. SuperchargePerformance (v1.5.4) was built on `declarativeNetRequest` from launch, evaluating 195K+ curated blocking rules natively in Chrome with zero per-request JavaScript, so it never had a Manifest V2 version to lose.
 - Nothing on your list is dimmed: you're done. Every extension you run is already Manifest V3, and neither Chrome 152 nor any later release changes that.
 
 #### FAQ
@@ -9060,7 +9060,7 @@ Each redundant extension you copy from Chrome starts its own renderer process an
 
 | Extension | CWS Version | Users | Gap it fills on Brave | Cost |
 |---|---|---|---|---|
-| SuperchargePerformance | v1.5.3 | — | Timed tab suspension, multi-signal protection, estimated RAM popup | Free, PRO waitlist |
+| SuperchargePerformance | v1.5.4 | — | Timed tab suspension, multi-signal protection, estimated RAM popup | Free, PRO waitlist |
 | SuperchargeNavigation | v1.4.4 | — | Named workspaces, command bar, 50 session snapshots | Free |
 | Dark Reader | v4.9.129 | 7,000,000 | Per-site dark mode for page content | Free |
 | Bitwarden Password Manager | v2026.8.0 | 7,000,000 | Password vault beyond the browser edge | Free / paid |
@@ -9100,7 +9100,7 @@ On Brave, the four hosted MV2 extensions sidestep the store purge because they r
 
 ## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
 
-Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.5.3, free core) uses the same Chromium mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
+Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.5.4, free core) uses the same Chromium mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
 
 - **Timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier. PRO is waitlist-only and unlocks custom values down to seconds.
 - **Protection signals.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 34 web apps are auto-protected out of the box, including Figma, Notion, Slack, Google Docs, Discord, Zoom, and WhatsApp Web, where a discard would drop a call or kill a queue.
@@ -9550,7 +9550,7 @@ Run a malware or unwanted-app scan if the machine feels wrong even with a fresh 
 
 Chrome's Memory Saver deactivates on its own schedule. You cannot set the interval, and the exclusion list is limited to the built-in protection rules plus site entries you add manually. When the diagnosis points at background tabs holding memory and processor that other applications need, a timer-based saver is the direct branch.
 
-SuperchargePerformance calls `chrome.tabs.discard()` on idle tabs after a user-set interval: 15 minutes on the low tier, 5 on the medium, user-set in seconds on PRO. 34 web-app domains are auto-protected so your work tools stay responsive while idle tabs suspend. Its 195K+ DNR rules across 15 rule files block third-party scripts on the pages you do load, so fewer of them execute. Live store version is 1.5.3 as of November 2026.
+SuperchargePerformance calls `chrome.tabs.discard()` on idle tabs after a user-set interval: 15 minutes on the low tier, 5 on the medium, user-set in seconds on PRO. 34 web-app domains are auto-protected so your work tools stay responsive while idle tabs suspend. Its 195K+ DNR rules across 15 rule files block third-party scripts on the pages you do load, so fewer of them execute. Live store version is 1.5.4 as of November 2026.
 
 The conditional branch from the diagnosis above determines which path fits. Background tabs holding memory confirmed: the timer-and-exclusions route is the fix. Driver, one bad extension, malware, or a RAM ceiling confirmed: a tab manager will not help; use the driver, extension, or hardware path. Modest tab count, enough RAM, Memory Saver at Balanced resolved the stutter: you are done. No extension needed.
 
@@ -10061,7 +10061,7 @@ The most common casualty by far. Full uBlock Origin is Manifest V2 and has been 
 
 **AdGuard AdBlocker** (~16 million users, 4.4 stars as of October 29, 2026) is the other heavyweight. Its MV3 build layers a dynamic "Quick Fixes" system on top of Chrome's declarativeNetRequest engine, which lets it patch broken filters between extension updates.
 
-**[SuperchargePerformance](/performance/)** (v1.5.3) takes a different angle: 195K+ blocking rules, evaluated natively by Chrome's DNR engine, bundled with the tab suspension covered next. If the MV2 shutdown killed both your ad blocker and your tab suspender, it replaces the pair with one extension. Dedicated blockers go deeper on cosmetic and dynamic filtering; the bundle wins on covering two dead extensions at once, with zero telemetry and no account.
+**[SuperchargePerformance](/performance/)** (v1.5.4) takes a different angle: 195K+ blocking rules, evaluated natively by Chrome's DNR engine, bundled with the tab suspension covered next. If the MV2 shutdown killed both your ad blocker and your tab suspender, it replaces the pair with one extension. Dedicated blockers go deeper on cosmetic and dynamic filtering; the bundle wins on covering two dead extensions at once, with zero telemetry and no account.
 
 And the fear that MV3 blockers barely work? A PoPETs 2026 study tested four popular blockers against their MV3 versions and found no statistically significant drop in overall blocking effectiveness.
 
@@ -11001,7 +11001,7 @@ Every option below runs on current stable Chrome and survives both remaining 202
 | uBlock Origin Lite | Active; gorhill's DNR-only rebuild | No custom filters or list imports; filter lists update only with extension updates; generic cosmetic filtering off by default (on in Complete mode); default ruleset ~17K rules |
 | AdGuard (MV3) | Main Chrome listing since Sep 2024; v5.4.3 | No automatic filter updates; 5,000 dynamic rule cap; max 50 enabled filters |
 | Ghostery | MV3 + DNR; v10.5.51 (July 2026) | Tracker-focused rather than full filter-list coverage |
-| SuperchargePerformance | MV3-native from launch; v1.5.3 | Nothing lost to the transition — built on DNR from day one |
+| SuperchargePerformance | MV3-native from launch; v1.5.4 | Nothing lost to the transition — built on DNR from day one |
 
 A common misreading is that uBO Lite "has no cosmetic filtering." It does: generic cosmetic filtering ships in the extension but is off by default, and raising a site's blocking mode to Complete turns it on. What Lite lacks is the dynamic layer — custom rules, list imports, per-site scripting switches — which declarativeNetRequest cannot express.
 
@@ -11422,7 +11422,7 @@ Every Chrome Web Store listing has a Privacy practices section. The developer mu
 
 Open each installed extension's listing and compare the declared categories against what the tool does. A screenshot tool declaring "website content" is coherent. A volume booster declaring "browsing history" is the mismatch the new Limited Use rule targets.
 
-Declarations are self-reported, so treat a clean panel as necessary rather than sufficient. The strongest claim an extension can make is collecting nothing at all, because it is independently verifiable: open DevTools on the extension's service worker and watch the Network tab. SuperchargePerformance (v1.5.3, as of October 2026) makes zero outbound requests and stores everything locally, which is why the new rules require nothing from it.
+Declarations are self-reported, so treat a clean panel as necessary rather than sufficient. The strongest claim an extension can make is collecting nothing at all, because it is independently verifiable: open DevTools on the extension's service worker and watch the Network tab. SuperchargePerformance (v1.5.4, as of October 2026) makes zero outbound requests and stores everything locally, which is why the new rules require nothing from it.
 
 ## Check 2: Match Permissions Against the Stated Purpose
 
@@ -16003,7 +16003,7 @@ So "Need 3043MB" is not a claim about your machine. It is the size of the contig
 
 The manual version of Fix 1 is discarding tabs by hand every time you open a large file. SuperchargePerformance does it on a timer: idle tabs suspend with `chrome.tabs.discard()` after a set interval, releasing their memory back to the pool so Photopea's tab can claim the contiguous block it needs.
 
-Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of October 2026 the live version is v1.5.3.
+Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of October 2026 the live version is v1.5.4.
 
 If Photopea is the only heavy tab you ever have open, the extension will not change much — at that point the answer is Fix 3 (shrink the file) or Fix 6 (split it). Suspension helps when Photopea competes with a wall of other tabs for the same block.
 
@@ -16907,7 +16907,7 @@ Smaller user base (~2M) than the others, but a loyal one. If your primary motiva
 
 ## SuperchargePerformance — When Ads Are Only Half the Problem
 
-v1.5.3. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
+v1.5.4. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
 
 **Layer 1: Ad and tracker blocking.** 195K+ rules compiled from 18 curated sources, all free and enabled by default — no paywall. Coverage stacks in layers: 100K ad and tracker domains, 72K privacy and telemetry domains, 22K malware, phishing, and fraud domains. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
 
@@ -16953,7 +16953,7 @@ If you searched for "Loon" expecting an ad blocker: [Loon](/library/loon-chrome-
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
-A: As of August 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.72.2) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.5.3) covers all four — plus tab suspension and a session RAM-saved counter — in a single MV3 extension with 195K+ rules from 18 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
+A: As of August 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.72.2) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.5.4) covers all four — plus tab suspension and a session RAM-saved counter — in a single MV3 extension with 195K+ rules from 18 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
 
 Q: What is the best ad blocker for Chrome in 2026?
 A: As of August 2026, the major Chrome ad blockers are all Manifest V3 — AdGuard, Ghostery, Adblock Plus, and uBlock Origin Lite. Full uBlock Origin (v1.72.2) still has the deepest filter coverage of any blocker, but it is MV2 and no longer runs on Chrome, only on Firefox. On Chrome, uBlock Origin Lite is the zero-overhead option, AdGuard adds DNS-level protection in its paid apps, and SuperchargePerformance combines ad blocking (195K+ DNR rules) with tab suspension in a single extension.
@@ -20088,7 +20088,7 @@ The last three are named specifically as what to avoid, or use only on 8GB+ hard
 
 ## SuperchargePerformance: Tab Suspension + Ad Blocking Combined
 
-**CWS version: v1.5.3 (2026-11-04). We built this extension.**
+**CWS version: v1.5.4 (2026-11-04). We built this extension.**
 
 On a Chromebook, the two biggest RAM drains are idle tab renderers and ad iframes. SuperchargePerformance addresses both.
 
@@ -20173,10 +20173,10 @@ If you use Google Docs, Gmail, and YouTube regularly: SuperchargePerformance aut
 
 #### FAQ
 Q: What Chrome extensions are safe to install on a 4GB Chromebook?
-A: As of August 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.5.3) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
+A: As of August 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.5.4) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
 
 Q: Does SuperchargePerformance work on ChromeOS?
-A: As of August 2026, yes. SuperchargePerformance (v1.5.3) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
+A: As of August 2026, yes. SuperchargePerformance (v1.5.4) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
 
 Q: How many Chrome extensions should I have on a Chromebook?
 A: As of June 2026, 5-8 well-built extensions usually cause no noticeable Chrome overhead on Chromebook. Beyond 10, audit each one individually. On a 4GB Chromebook, each background-active extension adds 5-30 MB of memory overhead and some CPU. The practical limit depends on what each extension does — a declarative-only extension like uBlock Origin Lite costs near zero; a tab manager that syncs cloud state costs meaningfully more.
@@ -20890,7 +20890,7 @@ Chrome's `chrome.tabs.discard()` API works differently. The tab's renderer proce
 | Feature | Marvellous Suspender | SuperchargePerformance |
 |---------|---------------------|----------------------|
 | Suspension method | Custom suspension page | `chrome.tabs.discard()` (invisible) |
-| MV3 compatible | Yes (v9.0.3) | Yes (v1.5.3, CWS-live since 2026-11-04) |
+| MV3 compatible | Yes (v9.0.3) | Yes (v1.5.4, CWS-live since 2026-11-11) |
 | Memory reclaimed per tab | 90-95% | 90-95% |
 | Back button affected | Possible (history entry) | No |
 | Suspension screen | Yes | None |
@@ -21910,7 +21910,7 @@ This timing matters. The script doing the removal has to run before the player d
 
 Pre-rolls are handled at page load. Mid-rolls are a second problem: YouTube fetches additional ad batches through network calls as you watch. A complete fix also monitors this ongoing traffic and strips ad data from each subsequent response before the player processes it.
 
-SuperchargePerformance (v1.5.3) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
+SuperchargePerformance (v1.5.4) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
 
 ## How SuperchargePerformance Does It
 
@@ -21985,7 +21985,7 @@ Q: Does uBlock Origin block YouTube ads on Chrome in 2026?
 A: As of July 2026, no — not on stable Chrome. Chrome disabled all Manifest V2 extensions, including uBlock Origin, with Chrome 138 in July 2025, and the last re-enable flags are gone in Chrome 150 and 151. The Chrome Web Store listing is still live (v1.72.2) until Google removes remaining MV2 extensions on August 31, 2026, but installing it on current Chrome gets you a disabled extension. On Firefox, uBlock Origin still runs fully and blocks YouTube ads with scriptlets. On Chrome, the working options are MV3 blockers: uBlock Origin Lite, AdGuard's MV3 extension, or Ghostery.
 
 Q: What is the most reliable way to block YouTube ads on Chrome in 2026?
-A: As of September 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.5.3) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
+A: As of September 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.5.4) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
 
 Q: Will YouTube's anti-adblock detection catch this fix?
 A: As of June 2026, SuperchargePerformance bypasses YouTube's anti-adblock detection by removing ad data before the player initializes — the player sees a clean configuration with no ad slots, so the detection logic has nothing to find. A click-skip fallback handles rare cases where a placement slips through.
@@ -30731,8 +30731,8 @@ Suspends idle tabs, blocks ads, and tames sites. Each suspended tab frees 90 to 
 
 1. [Capturev1.2.5Firefox Recordings Open at Full Length in the EditorNov 11, 2026](/changelog/capture/1.2.5/)
 2. [Focusv1.0.4Dark Theme While Slow Pages Load in Firefox ESRNov 11, 2026](/changelog/focus/1.0.4/)
-3. [Audiov1.1.3A Boost That Tells the TruthNov 10, 2026](/changelog/audio/1.1.3/)
-4. [Performancev1.5.4Shorts Play Again and Tabs Sleep on TimePending](/changelog/performance/1.5.4/)
+3. [Performancev1.5.4Shorts Play Again and Tabs Sleep on TimeNov 11, 2026](/changelog/performance/1.5.4/)
+4. [Audiov1.1.3A Boost That Tells the TruthNov 10, 2026](/changelog/audio/1.1.3/)
 5. [Performancev1.5.3Sites turned off list now fills the popupNov 4, 2026](/changelog/performance/1.5.3/)
 6. [Focusv1.0.2Smoother Dark Theme on Chart-Heavy PagesNov 2, 2026](/changelog/focus/1.0.2/)
 7. [Focusv1.0.1Faster Dark Theme and Six More LanguagesNov 1, 2026](/changelog/focus/1.0.1/)
@@ -34328,7 +34328,7 @@ The only Chrome extension combining tab suspension, ad blocking, and script cont
 * [ Microsoft Edge Free ](https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol)
 * [ Firefox 140+ Free ](https://addons.mozilla.org/en-US/firefox/addon/supercharge-performance/)
 * 4.6★ rating 83 ratings
-* Version 1.5.3 Updated November 2026
+* Version 1.5.4 Updated November 2026
 
 Per-site control
 
