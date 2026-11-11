@@ -127,9 +127,12 @@ Across our extensions: 4.6/5 · 125 store ratings. Checked 2026-11-05 across Chr
 
 ## Library
 
-234 guides on Chrome performance, memory management, and tab organization.
+237 guides on Chrome performance, memory management, and tab organization.
 Raw markdown for any guide, feature page or changelog entry: append `.md` to its path (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
+- [How to Blur Sensitive Info in a Screen Recording (2026)](https://www.superchargebrowser.com/library/blur-sensitive-info-screen-recording-chrome/): Blur sensitive info in screen recordings before you share: drag a blur box, keyframe it if content moves, export the redacted file. No upload required.
+- [Chrome Dark Mode vs Night Mode: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/chrome-dark-theme-vs-night-tint/): Chrome dark mode darkens the toolbar, not web pages. A night tint covers rendered page content. Learn which layer you need and when Chrome alone is enough.
+- [How to Set a Time Limit on a Website in Chrome (2026)](https://www.superchargebrowser.com/library/website-time-limit-chrome/): Chrome has no website time limit. Site settings cover permissions only. Add a per-site daily cap (1-1440 min, resets daily) without stopping your whole browser.
 - [Switch From Arc to Chrome: Move Bookmarks and Spaces (2026)](https://www.superchargebrowser.com/library/switch-from-arc-to-chrome/): Arc's Export Data saves a link list, not bookmarks. Move your links, passwords and Spaces into Chrome before December 22, 2026.
 - [Ad Blocker Rule Count and Chrome CPU: What 195K Rules Do (2026)](https://www.superchargebrowser.com/library/ad-blocker-rule-count-cpu-chrome/): An ad blocker's rule count shapes how much Chrome CPU each tab burns. It covers the 30K floor, the shared global pool, and why 195K rules stop requests first.
 - [Does Brave Have Extensions? Yes, 3 Things to Know (2026)](https://www.superchargebrowser.com/library/brave-browser-extensions-support/): Brave installs Chrome Web Store extensions directly. The button reads 'Add to Brave.' What breaks silently: MV2 holdovers, optional permissions, and Shields.
@@ -147,12 +150,12 @@ Raw markdown for any guide, feature page or changelog entry: append `.md` to its
 - [How to Select Multiple Tabs and Group Them in Chrome (2026)](https://www.superchargebrowser.com/library/batch-move-chrome-tabs-to-group/): Select multiple tabs in Chrome and group them at once. Native Ctrl-click, batch multi-select, and Alt+G smart grouping by domain, compared for your next batch.
 - [How to Enable Chrome Vertical Tabs on a Chromebook (2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-chromebook/): Enable Chrome vertical tabs on a Chromebook in Settings. Sidebar limits and when a side panel helps. No flag in stable; gradual rollout began in ChromeOS 148.
 - [Reduce Chrome Memory While Watching Video: 3 Steps (2026)](https://www.superchargebrowser.com/library/reduce-chrome-memory-while-watching-video/): Chrome memory spikes while watching video. A 1080p tab holds 300-530 MB. The saver skips audio tabs. Three steps free idle RAM, playback keeps running.
-- [How to Stop Video Ads From Playing in Chrome: 3 Levers (2026)](https://www.superchargebrowser.com/library/stop-video-ads-playing-chrome/): Stop video ads that play with sound in Chrome. Mute one site, block unmuted autoplay sitewide, or cut the ad's request at the source with a 195K-rule blocklist.
-- [Chrome Full-Page Screenshot Too Large? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-large-full-page-screenshot-chrome/): Full-page Chrome screenshots come out too large: one lossless PNG sized to the full scroll height, with no compression. Five fixes shrink the file. (2026)
-- [How to Stop YouTube Autoplay in Chrome: 1 Switch (2026)](https://www.superchargebrowser.com/library/youtube-autoplay-stopper-chrome/): YouTube autoplay is a site-level switch, not a Chrome setting. Turn it off at the player's bottom; Chrome's Sound default only mutes videos that still start.
 
 ## Library (additional guides)
 
+- [How to Stop Video Ads From Playing in Chrome: 3 Levers (2026)](https://www.superchargebrowser.com/library/stop-video-ads-playing-chrome/): Stop video ads that play with sound in Chrome. Mute one site, block unmuted autoplay sitewide, or cut the ad's request at the source with a 195K-rule blocklist.
+- [Chrome Full-Page Screenshot Too Large? 5 Fixes That Work (2026)](https://www.superchargebrowser.com/library/fix-large-full-page-screenshot-chrome/): Full-page Chrome screenshots come out too large: one lossless PNG sized to the full scroll height, with no compression. Five fixes shrink the file. (2026)
+- [How to Stop YouTube Autoplay in Chrome: 1 Switch (2026)](https://www.superchargebrowser.com/library/youtube-autoplay-stopper-chrome/): YouTube autoplay is a site-level switch, not a Chrome setting. Turn it off at the player's bottom; Chrome's Sound default only mutes videos that still start.
 - [8D Audio Extension: 3 Chrome Paths, 2 Add Spatial Sound (2026)](https://www.superchargebrowser.com/library/8d-audio-chrome-extension/): 8D audio is a rotating stereo pan, not a real dimension. See 3 Chrome paths: built-in volume, OS spatial sound, or a per-site extension effect, plus trade-offs.
 - [How to Set Bass Boost in Chrome (Without Clipping) (2026)](https://www.superchargebrowser.com/library/bass-booster-settings-chrome/): Set bass boost in Chrome: target 64 to 250 Hz, +10 to +3 dB taper, per-site profile. Punch without clipping, tuned once, remembered per hostname. (2026)
 - [Chrome Screen Recorder Extension: 4 Controls (2026)](https://www.superchargebrowser.com/library/chrome-screen-recorder-extension-explainer/): Chrome screen recorder extension: four controls for screenshots and tab or screen video, all local. Watermark-free, no account. As of October 2026, Chrome 155.
