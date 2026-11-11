@@ -1,9 +1,11 @@
 # SuperchargeBrowser — Full Content Index
 
 > This file contains the complete text of all features and library articles for LLM ingestion.
-> Generated: 2026-11-04
+> Generated: 2026-11-11
 > Content updated: 2026-10-28
 > For a summary index, see /llms.txt
+
+Across our extensions: 4.6/5 · 125 store ratings. Checked 2026-11-05 across Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons. Weighted by rating count; counts are across listings, not unique reviewers. Sources: https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf, https://chromewebstore.google.com/detail/vertical-tabs-tab-manager/mpkbppjbchjdohbjgeoamdehklmapgnl, https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe, https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia, https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
 
 ## Products
 
@@ -18,7 +20,7 @@
 - 14 individually toggleable features per domain
 - 25+ auto-protected web apps across productivity, media, and calls (Google Docs, Sheets, Slides, Drive, Gmail, Calendar, Figma, Notion, Linear, Miro, Canva, Lucid, Airtable, Asana, Monday, Slack, Discord, Teams, Spotify, Apple Music, YouTube Music, SoundCloud, WhatsApp, Telegram, Google Meet, Zoom, Whereby)
 - Zero telemetry, zero tracking, zero data collection, fully local
-- Version: 1.5.2
+- Version: 1.5.3
 - Available on Chrome Web Store, Microsoft Edge Add-ons (live May 2026) and Firefox Add-ons
 - Weekly active users: 34,000+ combined across the extension family (Chrome Web Store and Microsoft Edge Add-ons)
 - Install (Chrome): https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf
@@ -58,7 +60,7 @@
 - Stereo width control (0–200%)
 - Fix one ear (mono) toggle
 - Permissions: storage, tabs, tabCapture, offscreen, host all_urls — no webRequest, zero telemetry
-- Version: 1.1.2
+- Version: 1.1.3
 - Available on Chrome Web Store (launched June 10, 2026), Microsoft Edge Add-ons (live June 4, 2026) and Firefox Add-ons
 - Install (Chrome): https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia
@@ -73,7 +75,7 @@
 - Microphone, tab sound, and webcam capture
 - Optional Share-to-Drive: upload exports to your own Google Drive (no SuperchargeBrowser servers)
 - Local-first, zero telemetry, no account required
-- Version: 1.2.4
+- Version: 1.2.5
 - Available on Chrome Web Store (live June 22, 2026), Microsoft Edge Add-ons (live June 25, 2026) and Firefox Add-ons
 - Install (Chrome): https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk
@@ -101,7 +103,7 @@
 - Page tweaks: per-site light or dark theme, larger text, higher contrast; night tint and dimming at one strength for all sites
 - Activity history: optional, off by default, stored only on your device, kept 7, 30, or 90 days at your choice
 - Free, no account, runs locally, data stays on device, zero telemetry
-- Version: 1.0.3
+- Version: 1.0.4
 - Available on the Chrome Web Store (live October 26, 2026) and Microsoft Edge Add-ons (live October 27, 2026)
 - Install (Chrome): https://chromewebstore.google.com/detail/focus-mode-block-websites/mbfcgpcnjbogmbmlchjoinegclfdfnfb
 - Install (Edge): https://microsoftedge.microsoft.com/addons/detail/hidnikjngpbpifbfgkgcionfcekchnfj
@@ -4765,7 +4767,7 @@ The Performance panel tells you the consequence, not the count. The long tasks i
 
 ## What a full block changes
 
-If your current blocker ships a small rule set, the upgrade is a block that stops more requests before they reach the network. SuperchargePerformance ships 195,123 declarative rules across 15 rule files, all running within Chrome's MV3 limits as of its live 1.5.2 build. Its blocking tiers run from Off through Low, Med, and High, and none of them require a paid plan. A full block keeps its 34 protected web-app domains (mail, docs, sign-in) working while it stops the rest, so the renderer never parses or runs the scripts a thin set would have let through.
+If your current blocker ships a small rule set, the upgrade is a block that stops more requests before they reach the network. SuperchargePerformance ships 195,123 declarative rules across 15 rule files, all running within Chrome's MV3 limits as of its live 1.5.3 build. Its blocking tiers run from Off through Low, Med, and High, and none of them require a paid plan. A full block keeps its 34 protected web-app domains (mail, docs, sign-in) working while it stops the rest, so the renderer never parses or runs the scripts a thin set would have let through.
 
 If your blocker's rule set is thin and your tabs sit open for a long time, a full-tier block is a steady efficiency win rather than a fix to a fire. If your traffic is light and you keep few tabs open, Chrome's own defaults plus a modest block may already be enough.
 
@@ -5138,7 +5140,7 @@ The Task Manager shows it plainly. No single row dominates, but the tab stack ho
 
 **Free the memory:** Close tabs you are not actively using (Ctrl+W on Windows and ChromeOS, Command+W on macOS). Chrome's built-in Memory Saver, found under Settings > Performance, discards idle tabs automatically to reclaim RAM. It has three levels: Moderate, Balanced, and Maximum. You can exempt specific sites with the "Always keep these sites active" list.
 
-For a longer-term reduction in the baseline load, SuperchargePerformance (v1.5.2) suspends idle tabs on a 5- or 15-minute timer and blocks background ad and tracker work with 186K+ declarativeNetRequest rules while keeping 34 protected web-app domains active. Each suspended tab releases 90-95% of its renderer memory. The extension lowers the starting load for every session. It does not replace the diagnosis above.
+For a longer-term reduction in the baseline load, SuperchargePerformance (v1.5.3) suspends idle tabs on a 5- or 15-minute timer and blocks background ad and tracker work with 186K+ declarativeNetRequest rules while keeping 34 protected web-app domains active. Each suspended tab releases 90-95% of its renderer memory. The extension lowers the starting load for every session. It does not replace the diagnosis above.
 
 ## Name the Bottleneck
 
@@ -5879,7 +5881,7 @@ The tab context menu has "Unload Tab". You can also unload a tab from `about:pro
 
 If the tab holds a form, document, or video you still need, do not unload it yet. Use Fix 1 or Fix 2 first. If you no longer need the tab, unload it.
 
-If the manual levers hold, you are done. If you do not want to repeat them, SuperchargePerformance is live on AMO as version 1.5.2 and requires Firefox 140+. It runs timer-based tab suspension with 15 minutes for Low, 5 minutes for Medium, and custom seconds on PRO. It keeps 34 protected webapp domains from suspension and carries hundreds of thousands of network-level ad/tracker blocking rules. On Firefox, suspension ranking is not memory-based.
+If the manual levers hold, you are done. If you do not want to repeat them, SuperchargePerformance is live on AMO as version 1.5.3 and requires Firefox 140+. It runs timer-based tab suspension with 15 minutes for Low, 5 minutes for Medium, and custom seconds on PRO. It keeps 34 protected webapp domains from suspension and carries hundreds of thousands of network-level ad/tracker blocking rules. On Firefox, suspension ranking is not memory-based.
 
 #### FAQ
 Q: Why is Firefox using so much RAM?
@@ -6200,7 +6202,7 @@ Three steps total: open the settings page, flip the toggle, pick a mode. The cha
 
 Memory Saver is reactive. It waits for system RAM pressure or the ML revisit prediction before discarding anything.
 
-A timer-based suspender closes that gap. SuperchargePerformance (Chrome Web Store version 1.5.2) runs a `chrome.alarms` check every 30 seconds. When a tab has been inactive past the timer, the extension calls `chrome.tabs.discard()`, which terminates the renderer and frees 90-95% of that tab's RAM. The tab stays in your strip. It just no longer burns memory.
+A timer-based suspender closes that gap. SuperchargePerformance (Chrome Web Store version 1.5.3) runs a `chrome.alarms` check every 30 seconds. When a tab has been inactive past the timer, the extension calls `chrome.tabs.discard()`, which terminates the renderer and frees 90-95% of that tab's RAM. The tab stays in your strip. It just no longer burns memory.
 
 The suspension safety gate mirrors Memory Saver's: a tab is not suspended if it is active, pinned, or producing audio. The extension also skips `chrome://`, `chrome-extension://`, and `file://` URLs, tabs created within the last 30 seconds, 34 auto-protected web-app domains (Figma, Notion, Slack, Discord, Google Docs, …), any site on your personal whitelist, and tabs holding unsaved form data.
 
@@ -6269,7 +6271,7 @@ Q: How much RAM does a video tab actually use?
 A: A 1080p YouTube tab holds 300-530 MB on a Chromium 148 build. A static article tab holds roughly 80 MB.
 
 Q: Can I set my own tab-suspension timer?
-A: SuperchargePerformance's PRO tier (Chrome Web Store 1.5.2 as of October 2026) lets you set the interval in seconds. The free default (Med mode) suspends idle tabs after 5 minutes; Low mode waits 15 minutes.
+A: SuperchargePerformance's PRO tier (Chrome Web Store 1.5.3 as of November 2026) lets you set the interval in seconds. The free default (Med mode) suspends idle tabs after 5 minutes; Low mode waits 15 minutes.
 
 ---
 
@@ -6412,7 +6414,7 @@ The video ends. The next one starts. You did not press play, and the clip you ac
 > **Key takeaways**
 > - YouTube's Autoplay toggle is a site-level "next video" control. It is not the same as HTML5 media autoplay.
 > - Chrome's Sound setting silences audio but does not stop a video from starting. A muted video still plays.
-> - SuperchargePerformance's Stop Autoplay (v1.5.2, off by default) blocks page-load HTML5 autoplay across every site at its Block All level.
+> - SuperchargePerformance's Stop Autoplay (v1.5.3, off by default) blocks page-load HTML5 autoplay across every site at its Block All level.
 
 ## What YouTube Autoplay Actually Controls
 
@@ -6465,7 +6467,7 @@ The three controls solve three different problems. The YouTube toggle is the onl
 
 The YouTube toggle is a single-site, single-device setting. If you also want news portals, product pages, and documentation sites to stop firing muted autoplay on page load, that is the HTML5 layer, and the Sound setting only mutes it.
 
-SuperchargePerformance (Chrome Web Store, v1.5.2) ships a **Stop Autoplay** feature, off by default, with three levels:
+SuperchargePerformance (Chrome Web Store, v1.5.3) ships a **Stop Autoplay** feature, off by default, with three levels:
 
 - **Level 0 (off):** no intervention.
 - **Level 1 (Allow Common):** major video platforms and muted hover previews can still play.
@@ -6483,7 +6485,7 @@ Q: Does the Autoplay toggle work the same on mobile?
 A: Settings are per-device, so you set the toggle independently on each phone, tablet, and desktop. On mobile, Autoplay also auto-stops after 30 minutes of inactivity on a mobile data connection or 4 hours on Wi-Fi. Accounts aged 13 to 17 have Autoplay off by default.
 
 Q: What is the difference between Allow Common and Block All in Stop Autoplay?
-A: Level 1 (Allow Common) permits major video platforms and muted hover previews to play. Level 2 (Block All) stops all page-load HTML5 autoplay. Both are off by default in SuperchargePerformance v1.5.2. As of October 2026, the feature ships in the current Chrome Web Store build.
+A: Level 1 (Allow Common) permits major video platforms and muted hover previews to play. Level 2 (Block All) stops all page-load HTML5 autoplay. Both are off by default in SuperchargePerformance v1.5.3. As of October 2026, the feature ships in the current Chrome Web Store build.
 
 Q: Does SuperchargePerformance stop YouTube's next video?
 A: No. Stop Autoplay blocks page-load HTML5 autoplay, but it does not control YouTube's site-level next-video toggle; turn that off with the Autoplay switch at the bottom of the player.
@@ -6630,7 +6632,7 @@ If the gap is level, use the per-tab slider and stop. If the gap is shape, load 
 
 **If you need both:** set the per-tab volume first, then apply the Bass Boost preset at a moderate gain. The soft-clipper keeps the combined signal from hard-clipping the DAC.
 
-SuperchargeAudio is free on Chrome, Edge and Firefox, processes audio locally through Web Audio, and runs at CWS version 1.1.2 as of October 2026. No paid tier. No telemetry. The built-in presets, Bass Boost included, and 24 custom preset slots come with it.
+SuperchargeAudio is free on Chrome, Edge and Firefox, processes audio locally through Web Audio, and runs at CWS version 1.1.3 as of November 2026. No paid tier. No telemetry. The built-in presets, Bass Boost included, and 24 custom preset slots come with it.
 
 #### FAQ
 Q: What is the best bass boost frequency for Chrome?
@@ -7035,7 +7037,7 @@ One trap is a bare domain string. A filter written as `example.com` can match a 
 
 Rule count is a coverage signal. More bundled URL patterns mean a wider set of ad and tracker requests can be matched before the page loads. A blocker that ships far fewer rules leaves more room for a new domain to leak through.
 
-SuperchargePerformance bundles 195,000+ DNR rules across 15 static ruleset files. Its tiered setup includes low, medium, and pro blocklist tiers, script tiers, font tiers, `image_block`, and `yt_ad` rulesets. The extension's manifest marks the low blocklist and `script_low` as enabled by default. Other tiers switch on at runtime through `chrome.declarativeNetRequest.updateEnabledRulesets`. The runtime also verifies that Chrome indexed the enabled rulesets. It uses `getAvailableStaticRuleCount()` and retry passes because Chrome deferred indexing can silently delay or fail rule activation. The live Chrome Web Store build is 1.5.2 as of October 2026.
+SuperchargePerformance bundles 195,000+ DNR rules across 15 static ruleset files. Its tiered setup includes low, medium, and pro blocklist tiers, script tiers, font tiers, `image_block`, and `yt_ad` rulesets. The extension's manifest marks the low blocklist and `script_low` as enabled by default. Other tiers switch on at runtime through `chrome.declarativeNetRequest.updateEnabledRulesets`. The runtime also verifies that Chrome indexed the enabled rulesets. It uses `getAvailableStaticRuleCount()` and retry passes because Chrome deferred indexing can silently delay or fail rule activation. The live Chrome Web Store build is 1.5.3 as of November 2026.
 
 If ads return on a site after a new network appears, check rule coverage before switching blockers. A tiered setup lets you switch to a larger rule set on demand. For more on MV3 blocker behavior, see [Chrome ad blockers for Manifest V3](/library/tested-chrome-ad-blockers-manifest-v3-2026/).
 
@@ -7083,7 +7085,7 @@ To resolve the collision:
 2. Pick the one you use less, or the one whose command you can reach through a different path.
 3. Rebind that extension's command to a free combo using the pencil-icon flow from Fix 1.
 
-A concrete example: SuperchargeNavigation (v1.4.4) registers Alt+K for quick-search, Alt+B for the side panel, Alt+G for smart-grouping, and Alt+Shift+G for degrouping tabs. SuperchargeCapture (v1.2.4) registers Alt+Shift+S, Alt+Shift+F, Alt+Shift+R, and Alt+Shift+V for its four commands. If another extension already holds Alt+Shift+S, Capture's visible-area screenshot command is the one dropped, and its binding shows empty. Move the other extension off that combo, then assign Alt+Shift+S to Capture's command at chrome://extensions/shortcuts.
+A concrete example: SuperchargeNavigation (v1.4.4) registers Alt+K for quick-search, Alt+B for the side panel, Alt+G for smart-grouping, and Alt+Shift+G for degrouping tabs. SuperchargeCapture (v1.2.5) registers Alt+Shift+S, Alt+Shift+F, Alt+Shift+R, and Alt+Shift+V for its four commands. If another extension already holds Alt+Shift+S, Capture's visible-area screenshot command is the one dropped, and its binding shows empty. Move the other extension off that combo, then assign Alt+Shift+S to Capture's command at chrome://extensions/shortcuts.
 
 For the complete set of Chrome built-in shortcuts that always take priority over extension shortcuts, see [Chrome Keyboard Shortcuts: 70+ That Actually Work](/library/chrome-keyboard-shortcuts-guide/).
 
@@ -7350,7 +7352,7 @@ The Sound setting plus Mute site covers the common case. You set a default, you 
 
 The gap shows up when you keep tabs open across domains and the background tabs keep decoding video. "Mute site" is manual: you have to think about it, go to the tab, right-click, and pick the option. And because it mutes the whole domain, you lose the active tab's sound too. There is no "mute everything except the tab I am looking at" in Chrome's native controls.
 
-SuperchargeAudio 1.1.2 (live on the Chrome Web Store as of October 2026) fills that gap with Smart Mute, which is off by default: once on, the active tab keeps playing and non-pinned background tabs are muted automatically, with pinned tabs exempt by default. It also adds these features:
+SuperchargeAudio 1.1.3 (live on the Chrome Web Store as of November 2026) fills that gap with Smart Mute, which is off by default: once on, the active tab keeps playing and non-pinned background tabs are muted automatically, with pinned tabs exempt by default. It also adds these features:
 
 - **All playing list.** The popup lists every tab currently producing audio. You jump to a tab or mute it directly from the list, without closing the tab you are working in.
 - **Per-site audio memory.** Per-site volume and audio profiles persist when a tab becomes active.
@@ -7358,7 +7360,7 @@ SuperchargeAudio 1.1.2 (live on the Chrome Web Store as of October 2026) fills t
 
 All processing is local. No tab data, URLs, audio signals, or browsing activity are transmitted. No telemetry, no account, no remote configuration.
 
-If you search "autoplay stopper extension," you will also find SuperchargePerformance 1.5.2 on the store. It ships a Stop Autoplay feature (off by default) with a toggle and a two-option control: "Allow Common" (lets major video platforms and muted hover previews play) or "Block All." That is a different tool. SuperchargeAudio handles the audio side: which tabs sound, at what volume, and which stay silent while you work.
+If you search "autoplay stopper extension," you will also find SuperchargePerformance 1.5.3 on the store. It ships a Stop Autoplay feature (off by default) with a toggle and a two-option control: "Allow Common" (lets major video platforms and muted hover previews play) or "Block All." That is a different tool. SuperchargeAudio handles the audio side: which tabs sound, at what volume, and which stay silent while you work.
 
 #### FAQ
 Q: Does Chrome have a built-in autoplay blocker?
@@ -7488,7 +7490,7 @@ Engine speed is a tie between the two.
 
 Brave Memory Saver has no user timer. Chrome's Efficiency Mode throttles background-tab CPU.
 
-SuperchargePerformance (live at v1.5.2 on the Chrome Web Store) adds that timer. It suspends idle tabs at 15 minutes (low preset) or 5 minutes (medium preset). On PRO, you set the interval in seconds.
+SuperchargePerformance (live at v1.5.3 on the Chrome Web Store) adds that timer. It suspends idle tabs at 15 minutes (low preset) or 5 minutes (medium preset). On PRO, you set the interval in seconds.
 
 The suspension calls `chrome.tabs.discard()`, which terminates the tab's renderer process. The tab stays visible in the strip. A discarded tab frees roughly 90–95% of its own RAM, because the browser process retains only the tab entry (title, favicon, URL) and the renderer is gone.
 
@@ -7500,7 +7502,7 @@ If you open mostly ad-heavy content (news, social, video) and want the ad layer 
 
 If your content is internal tools, docs, or ad-free sites, and your tab count stays light, Chrome plus Efficiency Mode covers it.
 
-If your tab count runs high across several projects, pair either browser with a suspender that runs on a timer you set. The timer is the piece Brave doesn't ship. SuperchargePerformance (v1.5.2) covers the suspension presets, the 34 protected apps, and the 186K+ blocking rules in one install.
+If your tab count runs high across several projects, pair either browser with a suspender that runs on a timer you set. The timer is the piece Brave doesn't ship. SuperchargePerformance (v1.5.3) covers the suspension presets, the 34 protected apps, and the 186K+ blocking rules in one install.
 
 #### FAQ
 Q: Does Brave actually use less RAM than Chrome?
@@ -7974,7 +7976,7 @@ Ghostery earns its place here as a working, actively maintained blocker for ads 
 | uBlock Origin Lite | v2026.711.25 | 15M | Yes (MV3) | Bundled scriptlets, review-gated | Days (store review) | Good |
 | AdGuard | v5.4.3 | 16M | Yes (MV3) | Mixed (inconsistent) | 24-48h | Full |
 | Ghostery | v10.5.51 | 2M | Yes (MV3) | Generalist rules only | Reactive | Full + anti-tracking |
-| SuperchargePerformance | v1.5.2 | Not cited | Yes (MV3) | DNR + API proxy + fallback + cosmetic | 24-48h | 195K+ DNR rules |
+| SuperchargePerformance | v1.5.3 | Not cited | Yes (MV3) | DNR + API proxy + fallback + cosmetic | 24-48h | 195K+ DNR rules |
 
 \*uBlock Origin's 12M count reflects legacy installs that no longer execute on stable Chrome. Google removed the listing from the Chrome Web Store on August 31, 2026.
 
@@ -8075,7 +8077,7 @@ Q: Can uBlock Origin Lite block YouTube ads?
 A: Partially. As of September 2026, uBlock Origin Lite ships scriptlets bundled with its rulesets, contrary to the common claim that it has no injected scripts at all. Its real limits: scriptlets and filter lists update only when the extension itself updates through Chrome Web Store review, so fixes during an anti-adblock wave can lag by days. There are no custom filters or list imports, no dynamic filtering, and generic cosmetic filtering is off unless you raise a site to Complete mode.
 
 Q: What is the best YouTube ad blocker for Chrome in 2026?
-A: As of September 2026, the most reliable YouTube-specific options on Chrome are AdBlock for YouTube (v7.2.3, 10 million users) and SuperchargePerformance (v1.5.2), which shares AdBlock for YouTube's upstream API-proxy engine and layers three additional proprietary mechanisms: 14 DNR network rules, a fallback skip-button clicker with interstitial hider, and cosmetic CSS for YouTube's feed and masthead. AdGuard (v5.4.3) and Ghostery (v10.5.51) are strong MV3 general blockers but less consistent on YouTube specifically.
+A: As of September 2026, the most reliable YouTube-specific options on Chrome are AdBlock for YouTube (v7.2.3, 10 million users) and SuperchargePerformance (v1.5.3), which shares AdBlock for YouTube's upstream API-proxy engine and layers three additional proprietary mechanisms: 14 DNR network rules, a fallback skip-button clicker with interstitial hider, and cosmetic CSS for YouTube's feed and masthead. AdGuard (v5.4.3) and Ghostery (v10.5.51) are strong MV3 general blockers but less consistent on YouTube specifically.
 
 Q: What is SSAI and will it kill ad blockers on YouTube?
 A: As of September 2026, Server-Side Ad Insertion is YouTube's most significant long-term threat to ad blocking. Rather than sending ad metadata separately for the browser to parse, YouTube stitches ads directly into the video stream on its servers before delivery. The resulting stream contains ad and content segments under the same CDN address, indistinguishable at the network level. No browser extension can strip ads at that point. YouTube has been testing SSAI in limited rollouts since early 2026, with broad rollout estimated at 6 to 12 months out. If fully deployed, YouTube Premium becomes the only ad-free option.
@@ -8459,7 +8461,7 @@ The table below maps each common class of deleted tool to the MV3 options that c
 | Ad blocking | Adblock Plus | MV3 build live on the Chrome Web Store. |
 | Tracker blocking | Privacy Badger | MV3 build live on the Chrome Web Store. |
 | Ad + tracker blocking | Ghostery | MV3 rebuild shipped 2025. |
-| Ad blocking + tab suspension + optimization | SuperchargePerformance | v1.5.2. 195K+ declarativeNetRequest rules. 34 web-app domains never auto-suspended. |
+| Ad blocking + tab suspension + optimization | SuperchargePerformance | v1.5.3. 195K+ declarativeNetRequest rules. 34 web-app domains never auto-suspended. |
 | Tab organization + workspace management | SuperchargeNavigation | v1.4.4. |
 
 If your deleted tool was a blocker or an optimizer, the SuperchargePerformance row is the direct path forward. It combines the 195K+ rule set with tab suspension and per-domain auto-protection in a single MV3 build that updates through the normal store channel. If the tool organized tabs or switched between workspaces, SuperchargeNavigation covers that ground.
@@ -8470,7 +8472,7 @@ The installed copy does not run. Chrome 138 (July 24, 2025) stopped MV2 backgrou
 
 Map the next step to what the deleted tool actually did:
 
-If it blocked ads or optimized page loads, install SuperchargePerformance (v1.5.2, MV3, live on the store as of October 2026). The 195K+ declarativeNetRequest rule set and 34-domain auto-protection cover the blocking and optimization work in one extension that receives updates through the normal channel.
+If it blocked ads or optimized page loads, install SuperchargePerformance (v1.5.3, MV3, live on the store as of October 2026). The 195K+ declarativeNetRequest rule set and 34-domain auto-protection cover the blocking and optimization work in one extension that receives updates through the normal channel.
 
 If it organized tabs, managed workspaces, or switched between sets of tabs, install SuperchargeNavigation (v1.4.4, MV3).
 
@@ -8730,7 +8732,7 @@ Install it once and it covers the broad ad and tracker surface without per-site 
 
 ## Option 3: SuperchargePerformance
 
-This one solves a different problem than pure ad blocking. SuperchargePerformance (CWS v1.5.2) ships 195K+ rules (34 web-app domains never auto-suspend), dedicated YouTube and Twitch video-ad handlers, and a cookie-banner auto-dismiss. On the RAM side, tab suspension runs on a 15-minute (low) or 5-minute (med) timer, with a PRO tier for user-set seconds. The popup shows an estimated RAM-saved figure. That number is a model, not a per-tab measurement. Free core, no account, zero telemetry, local-only.
+This one solves a different problem than pure ad blocking. SuperchargePerformance (CWS v1.5.3) ships 195K+ rules (34 web-app domains never auto-suspend), dedicated YouTube and Twitch video-ad handlers, and a cookie-banner auto-dismiss. On the RAM side, tab suspension runs on a 15-minute (low) or 5-minute (med) timer, with a PRO tier for user-set seconds. The popup shows an estimated RAM-saved figure. That number is a model, not a per-tab measurement. Free core, no account, zero telemetry, local-only.
 
 This is the pick when memory pressure is the real problem. The video-ad and cookie-banner handling ride along on top of the suspension engine.
 
@@ -9018,7 +9020,7 @@ On August 31, 2026, Google removed every remaining Manifest V2 listing from the 
 
 - Card shows "no longer supported": check the extension's Chrome Web Store listing for a shipped Manifest V3 version. Many developers rebuilt under a new listing rather than updating the old one.
 - No Manifest V3 rebuild exists: the extension is abandoned on Chrome. Replace it with an MV3-native alternative.
-- The disabled extension is an ad or content blocker: most blockers that never shipped an MV3 version relied on the `webRequest` API that Manifest V3 replaced with `declarativeNetRequest`. SuperchargePerformance (v1.5.2) was built on `declarativeNetRequest` from launch, evaluating 195K+ curated blocking rules natively in Chrome with zero per-request JavaScript, so it never had a Manifest V2 version to lose.
+- The disabled extension is an ad or content blocker: most blockers that never shipped an MV3 version relied on the `webRequest` API that Manifest V3 replaced with `declarativeNetRequest`. SuperchargePerformance (v1.5.3) was built on `declarativeNetRequest` from launch, evaluating 195K+ curated blocking rules natively in Chrome with zero per-request JavaScript, so it never had a Manifest V2 version to lose.
 - Nothing on your list is dimmed: you're done. Every extension you run is already Manifest V3, and neither Chrome 152 nor any later release changes that.
 
 #### FAQ
@@ -9058,7 +9060,7 @@ Each redundant extension you copy from Chrome starts its own renderer process an
 
 | Extension | CWS Version | Users | Gap it fills on Brave | Cost |
 |---|---|---|---|---|
-| SuperchargePerformance | v1.5.2 | — | Timed tab suspension, multi-signal protection, estimated RAM popup | Free, PRO waitlist |
+| SuperchargePerformance | v1.5.3 | — | Timed tab suspension, multi-signal protection, estimated RAM popup | Free, PRO waitlist |
 | SuperchargeNavigation | v1.4.4 | — | Named workspaces, command bar, 50 session snapshots | Free |
 | Dark Reader | v4.9.129 | 7,000,000 | Per-site dark mode for page content | Free |
 | Bitwarden Password Manager | v2026.8.0 | 7,000,000 | Password vault beyond the browser edge | Free / paid |
@@ -9098,7 +9100,7 @@ On Brave, the four hosted MV2 extensions sidestep the store purge because they r
 
 ## SuperchargePerformance: Suspension Control Brave's Memory Saver Lacks
 
-Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.5.2, free core) uses the same Chromium mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
+Brave's Memory Saver offers preset modes but has no user-set inactivity timer. [SuperchargePerformance](https://chromewebstore.google.com/detail/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf) (v1.5.3, free core) uses the same Chromium mechanism, `chrome.tabs.discard()`, and wraps it in the control layer Brave leaves out:
 
 - **Timers you choose.** 15 minutes or 5 minutes of inactivity on the free tier. PRO is waitlist-only and unlocks custom values down to seconds.
 - **Protection signals.** Tabs playing audio, pinned tabs, and tabs with unsaved form input are never discarded. 34 web apps are auto-protected out of the box, including Figma, Notion, Slack, Google Docs, Discord, Zoom, and WhatsApp Web, where a discard would drop a call or kill a queue.
@@ -9548,7 +9550,7 @@ Run a malware or unwanted-app scan if the machine feels wrong even with a fresh 
 
 Chrome's Memory Saver deactivates on its own schedule. You cannot set the interval, and the exclusion list is limited to the built-in protection rules plus site entries you add manually. When the diagnosis points at background tabs holding memory and processor that other applications need, a timer-based saver is the direct branch.
 
-SuperchargePerformance calls `chrome.tabs.discard()` on idle tabs after a user-set interval: 15 minutes on the low tier, 5 on the medium, user-set in seconds on PRO. 34 web-app domains are auto-protected so your work tools stay responsive while idle tabs suspend. Its 195K+ DNR rules across 15 rule files block third-party scripts on the pages you do load, so fewer of them execute. Live store version is 1.5.2 as of October 2026.
+SuperchargePerformance calls `chrome.tabs.discard()` on idle tabs after a user-set interval: 15 minutes on the low tier, 5 on the medium, user-set in seconds on PRO. 34 web-app domains are auto-protected so your work tools stay responsive while idle tabs suspend. Its 195K+ DNR rules across 15 rule files block third-party scripts on the pages you do load, so fewer of them execute. Live store version is 1.5.3 as of November 2026.
 
 The conditional branch from the diagnosis above determines which path fits. Background tabs holding memory confirmed: the timer-and-exclusions route is the fix. Driver, one bad extension, malware, or a RAM ceiling confirmed: a tab manager will not help; use the driver, extension, or hardware path. Modest tab count, enough RAM, Memory Saver at Balanced resolved the stutter: you are done. No extension needed.
 
@@ -9779,7 +9781,7 @@ A screenshot watermark is a sales device. The extension could export a clean ima
 
 | Extension | Users (Aug 2026) | Watermark | What the free tier withholds |
 |---|---|---|---|
-| SuperchargeCapture | New (v1.2.4) | None | Nothing: all modes, editor, export free |
+| SuperchargeCapture | New (v1.2.5) | None | Nothing: all modes, editor, export free |
 | GoFullPage | 11,000,000 | None | Exporting *annotated* images (Premium, ~$1/mo) |
 | Lightshot | 2,000,000 | None | Full-page capture doesn't exist; uploads are public links |
 | Scrnli | 1,000,000 | None | Nothing significant on screenshots |
@@ -9863,7 +9865,7 @@ The use case is the same everywhere: a tutorial, a Loom-style async update, a bu
 
 ## SuperchargeCapture: a Local Bubble, No Account
 
-[SuperchargeCapture](/capture/) (v1.2.4) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
+[SuperchargeCapture](/capture/) (v1.2.5) records the current tab through `chrome.tabCapture`, so recording starts without a "choose what to share" picker. Turn on the camera and a **live bubble appears on the page itself: draggable and resizable mid-take**, so you can pull it off a button it is covering, and it is baked into the video exactly where you placed it. A device picker handles external cameras, and an on-device blur softens your background without sending a frame anywhere.
 
 Mic and tab audio record alongside. Export goes to MP4, WebM, or [GIF](/library/screen-recording-to-gif-slack-discord-2026/), written to local storage: no account, no watermark, no recording cap, nothing uploaded.
 
@@ -9877,7 +9879,7 @@ Screenity (v4.6.4, ~200,000 users) is the open-source pick, and its free tier is
 
 | Extension | Webcam PiP | Free-tier limits (checked Aug 7, 2026) | Account | Video lives |
 |---|---|---|---|---|
-| SuperchargeCapture v1.2.4 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
+| SuperchargeCapture v1.2.5 | Draggable, resizable bubble (tab) | No cap, no watermark | No | Your device |
 | Screenity v4.6.4 | Movable overlay | No cap, no watermark | No | Your device |
 | Loom v5.5.203 | Circular bubble | 25 videos total, 5 min each | Yes | Loom cloud |
 | Screencastify | Bubble overlay | 10 videos, 30 min each, watermark | Yes (Google) | Cloud |
@@ -10059,7 +10061,7 @@ The most common casualty by far. Full uBlock Origin is Manifest V2 and has been 
 
 **AdGuard AdBlocker** (~16 million users, 4.4 stars as of October 29, 2026) is the other heavyweight. Its MV3 build layers a dynamic "Quick Fixes" system on top of Chrome's declarativeNetRequest engine, which lets it patch broken filters between extension updates.
 
-**[SuperchargePerformance](/performance/)** (v1.5.2) takes a different angle: 195K+ blocking rules, evaluated natively by Chrome's DNR engine, bundled with the tab suspension covered next. If the MV2 shutdown killed both your ad blocker and your tab suspender, it replaces the pair with one extension. Dedicated blockers go deeper on cosmetic and dynamic filtering; the bundle wins on covering two dead extensions at once, with zero telemetry and no account.
+**[SuperchargePerformance](/performance/)** (v1.5.3) takes a different angle: 195K+ blocking rules, evaluated natively by Chrome's DNR engine, bundled with the tab suspension covered next. If the MV2 shutdown killed both your ad blocker and your tab suspender, it replaces the pair with one extension. Dedicated blockers go deeper on cosmetic and dynamic filtering; the bundle wins on covering two dead extensions at once, with zero telemetry and no account.
 
 And the fear that MV3 blockers barely work? A PoPETs 2026 study tested four popular blockers against their MV3 versions and found no statistically significant drop in overall blocking effectiveness.
 
@@ -10081,7 +10083,7 @@ Approaching the same need from the workspace side, [SuperchargeNavigation](/navi
 
 **Tampermonkey** made the MV3 jump at version 5.0 and shipped its latest stable release in May 2026, so if your userscript manager went grey, you were likely on the frozen Legacy (MV2) listing. Install the current version, then flip on **Developer mode** at the top right of `chrome://extensions` — Chrome requires it for userscript injection under MV3, and scripts silently refuse to run without it.
 
-Volume boosters were hit harder. The category was full of set-and-forget MV2 extensions whose developers had moved on years before the shutdown. **[SuperchargeAudio](/audio/)** (v1.1.2) is an MV3-native replacement that goes past the old single-slider tools: boost up to 600%, a 10-band equalizer, and per-site profiles that remember settings for each domain. No account, and audio processing stays on your machine.
+Volume boosters were hit harder. The category was full of set-and-forget MV2 extensions whose developers had moved on years before the shutdown. **[SuperchargeAudio](/audio/)** (v1.1.3) is an MV3-native replacement that goes past the old single-slider tools: boost up to 600%, a 10-band equalizer, and per-site profiles that remember settings for each domain. No account, and audio processing stays on your machine.
 
 ## Why the Old Extension Won't Come Back
 
@@ -10135,7 +10137,7 @@ Scribe ranks well for "Chrome screen recorder" searches, but its own tool page s
 
 Scribe is a documentation tool, and a popular one: its Chrome Web Store listing shows 1,000,000 users as of August 7, 2026. You click Start Capture, work through a process, click Complete Capture, and Scribe assembles an illustrated how-to. One screenshot per click, instructions written for you, published as a web page you share by link or embed. That is the whole product, and the reason it markets to recorder searches is that people documenting a process often think they need a video first.
 
-SuperchargeCapture (v1.2.4 as of October 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
+SuperchargeCapture (v1.2.5 as of November 2026) sits on the other side of the term. It records video and takes screenshots, then hands you the files.
 
 | | Scribe | SuperchargeCapture |
 |---|---|---|
@@ -10999,7 +11001,7 @@ Every option below runs on current stable Chrome and survives both remaining 202
 | uBlock Origin Lite | Active; gorhill's DNR-only rebuild | No custom filters or list imports; filter lists update only with extension updates; generic cosmetic filtering off by default (on in Complete mode); default ruleset ~17K rules |
 | AdGuard (MV3) | Main Chrome listing since Sep 2024; v5.4.3 | No automatic filter updates; 5,000 dynamic rule cap; max 50 enabled filters |
 | Ghostery | MV3 + DNR; v10.5.51 (July 2026) | Tracker-focused rather than full filter-list coverage |
-| SuperchargePerformance | MV3-native from launch; v1.5.2 | Nothing lost to the transition — built on DNR from day one |
+| SuperchargePerformance | MV3-native from launch; v1.5.3 | Nothing lost to the transition — built on DNR from day one |
 
 A common misreading is that uBO Lite "has no cosmetic filtering." It does: generic cosmetic filtering ships in the extension but is off by default, and raising a site's blocking mode to Complete turns it on. What Lite lacks is the dynamic layer — custom rules, list imports, per-site scripting switches — which declarativeNetRequest cannot express.
 
@@ -11040,7 +11042,7 @@ URL: https://www.superchargebrowser.com/library/superchargeaudio-no-difference-f
 Category: troubleshooting | Extension: audio | Updated: 2026-07-13
 Description: SuperchargeAudio making no difference is rarely a broken install: a muted tab, saved site profile, or DRM stream explains most cases. Fastest fix: 10 seconds.
 
-SuperchargeAudio 1.1.2 boosts each Chrome tab up to 600%. When the slider seems to do nothing, one of five conditions is in the way: no audio playing when you adjusted, a saved per-site profile overriding the slider, a DRM-protected stream, a tab muted in Chrome itself, or a source already at full loudness. Each check takes under a minute.
+SuperchargeAudio 1.1.3 boosts each Chrome tab up to 600%. When the slider seems to do nothing, one of five conditions is in the way: no audio playing when you adjusted, a saved per-site profile overriding the slider, a DRM-protected stream, a tab muted in Chrome itself, or a source already at full loudness. Each check takes under a minute.
 
 ## Match the Symptom Before Changing Settings
 
@@ -11103,7 +11105,7 @@ Q: Does the boost work if the tab is muted in Chrome?
 A: No. Chrome's own tab and site mute sits after all extension processing in the browser's audio mixer, so 600% gain on a muted tab is still silence. As of July 2026, check the tab's right-click menu for 'Unmute site' and the site list at chrome://settings/content/sound before adjusting any extension setting.
 
 Q: What is the maximum volume boost in SuperchargeAudio 1.0.4?
-A: As of July 2026, SuperchargeAudio 1.1.2 boosts each tab up to 600% of the original signal (a gain multiplier of 6.0), applied per tab. A dynamics compressor after the gain stage reduces clipping distortion at high boost levels. The boost affects only Chrome tab audio, never system volume or other apps.
+A: As of November 2026, SuperchargeAudio 1.1.3 boosts each tab up to 600% of the original signal (a gain multiplier of 6.0), applied per tab. A dynamics compressor after the gain stage reduces clipping distortion at high boost levels. The boost affects only Chrome tab audio, never system volume or other apps.
 
 Q: Why do I need to press play before the boost does anything?
 A: Chrome's autoplay policy blocks Web Audio processing on a page until you have interacted with it. As of July 2026, SuperchargeAudio queues the audio graph and attaches it on your first click or key press on the page. Press play, interact with the page once, then adjust the slider. The toolbar icon shows an amber percentage badge once a non-100% gain is active.
@@ -11420,7 +11422,7 @@ Every Chrome Web Store listing has a Privacy practices section. The developer mu
 
 Open each installed extension's listing and compare the declared categories against what the tool does. A screenshot tool declaring "website content" is coherent. A volume booster declaring "browsing history" is the mismatch the new Limited Use rule targets.
 
-Declarations are self-reported, so treat a clean panel as necessary rather than sufficient. The strongest claim an extension can make is collecting nothing at all, because it is independently verifiable: open DevTools on the extension's service worker and watch the Network tab. SuperchargePerformance (v1.5.2, as of October 2026) makes zero outbound requests and stores everything locally, which is why the new rules require nothing from it.
+Declarations are self-reported, so treat a clean panel as necessary rather than sufficient. The strongest claim an extension can make is collecting nothing at all, because it is independently verifiable: open DevTools on the extension's service worker and watch the Network tab. SuperchargePerformance (v1.5.3, as of October 2026) makes zero outbound requests and stores everything locally, which is why the new rules require nothing from it.
 
 ## Check 2: Match Permissions Against the Stated Purpose
 
@@ -16001,7 +16003,7 @@ So "Need 3043MB" is not a claim about your machine. It is the size of the contig
 
 The manual version of Fix 1 is discarding tabs by hand every time you open a large file. SuperchargePerformance does it on a timer: idle tabs suspend with `chrome.tabs.discard()` after a set interval, releasing their memory back to the pool so Photopea's tab can claim the contiguous block it needs.
 
-Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of October 2026 the live version is v1.5.2.
+Whitelist `photopea.com` so it is never suspended mid-edit, while everything else discards aggressively in the background. The badge shows a running estimate of the RAM recovered. It runs 100% locally, keeps no account, and the core suspension is free. As of October 2026 the live version is v1.5.3.
 
 If Photopea is the only heavy tab you ever have open, the extension will not change much — at that point the answer is Fix 3 (shrink the file) or Fix 6 (split it). Suspension helps when Photopea competes with a wall of other tabs for the same block.
 
@@ -16905,7 +16907,7 @@ Smaller user base (~2M) than the others, but a loyal one. If your primary motiva
 
 ## SuperchargePerformance — When Ads Are Only Half the Problem
 
-v1.5.2. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
+v1.5.3. This is not a traditional ad blocker. It is a browser optimization suite that happens to include ad blocking as one of six layers.
 
 **Layer 1: Ad and tracker blocking.** 195K+ rules compiled from 18 curated sources, all free and enabled by default — no paywall. Coverage stacks in layers: 100K ad and tracker domains, 72K privacy and telemetry domains, 22K malware, phishing, and fraud domains. The rules are ranked by real-world traffic data, so the ad networks responsible for the most page-load damage get blocked first.
 
@@ -16951,7 +16953,7 @@ If you searched for "Loon" expecting an ad blocker: [Loon](/library/loon-chrome-
 
 #### FAQ
 Q: Is uBlock Origin still the best ad blocker for Chrome in 2026?
-A: As of August 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.72.2) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.5.2) covers all four — plus tab suspension and a session RAM-saved counter — in a single MV3 extension with 195K+ rules from 18 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
+A: As of August 2026, it depends what you need — and on Chrome the answer has changed. Full uBlock Origin (v1.72.2) still has the deepest general filter coverage for website ads, but it is MV2 and no longer runs on Chrome (only Firefox); on Chrome you get uBlock Origin Lite instead. Neither uBO build blocks YouTube or Twitch video ads, popup windows, or cookie consent banners. SuperchargePerformance (v1.5.3) covers all four — plus tab suspension and a session RAM-saved counter — in a single MV3 extension with 195K+ rules from 18 curated sources. For the deepest pure website ad blocking, uBlock Origin Lite leads on Chrome. For the full picture including video ads and browser optimization, SuperchargePerformance covers more ground.
 
 Q: What is the best ad blocker for Chrome in 2026?
 A: As of August 2026, the major Chrome ad blockers are all Manifest V3 — AdGuard, Ghostery, Adblock Plus, and uBlock Origin Lite. Full uBlock Origin (v1.72.2) still has the deepest filter coverage of any blocker, but it is MV2 and no longer runs on Chrome, only on Firefox. On Chrome, uBlock Origin Lite is the zero-overhead option, AdGuard adds DNS-level protection in its paid apps, and SuperchargePerformance combines ad blocking (195K+ DNR rules) with tab suspension in a single extension.
@@ -20086,7 +20088,7 @@ The last three are named specifically as what to avoid, or use only on 8GB+ hard
 
 ## SuperchargePerformance: Tab Suspension + Ad Blocking Combined
 
-**CWS version: v1.5.2 (2026-11-01). We built this extension.**
+**CWS version: v1.5.3 (2026-11-04). We built this extension.**
 
 On a Chromebook, the two biggest RAM drains are idle tab renderers and ad iframes. SuperchargePerformance addresses both.
 
@@ -20171,10 +20173,10 @@ If you use Google Docs, Gmail, and YouTube regularly: SuperchargePerformance aut
 
 #### FAQ
 Q: What Chrome extensions are safe to install on a 4GB Chromebook?
-A: As of August 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.5.2) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
+A: As of August 2026, the safest extensions for 4GB Chromebooks are those with no persistent background workers or minimal background overhead. uBlock Origin Lite runs with zero background process (Chrome handles its rules natively). SuperchargePerformance (v1.5.3) has a small background worker but returns more RAM than it costs through tab suspension. Avoid extensions with heavy background syncing, cloud backup, or real-time scripting — each background worker on ChromeOS consumes RAM that the OS cannot easily reclaim.
 
 Q: Does SuperchargePerformance work on ChromeOS?
-A: As of August 2026, yes. SuperchargePerformance (v1.5.2) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
+A: As of August 2026, yes. SuperchargePerformance (v1.5.3) runs on any Chromium-based browser including Chrome on ChromeOS. The tab suspension feature is particularly effective on Chromebooks because ChromeOS does not aggressively swap memory to disk the way Windows does — meaning RAM pressure from too many tabs causes direct lag rather than just slowdown. On a 4GB Chromebook, suspending idle tabs after 5-15 minutes keeps active tab memory within ChromeOS's working set.
 
 Q: How many Chrome extensions should I have on a Chromebook?
 A: As of June 2026, 5-8 well-built extensions usually cause no noticeable Chrome overhead on Chromebook. Beyond 10, audit each one individually. On a 4GB Chromebook, each background-active extension adds 5-30 MB of memory overhead and some CPU. The practical limit depends on what each extension does — a declarative-only extension like uBlock Origin Lite costs near zero; a tab manager that syncs cloud state costs meaningfully more.
@@ -20888,7 +20890,7 @@ Chrome's `chrome.tabs.discard()` API works differently. The tab's renderer proce
 | Feature | Marvellous Suspender | SuperchargePerformance |
 |---------|---------------------|----------------------|
 | Suspension method | Custom suspension page | `chrome.tabs.discard()` (invisible) |
-| MV3 compatible | Yes (v9.0.3) | Yes (v1.5.2, CWS-live since 2026-11-01) |
+| MV3 compatible | Yes (v9.0.3) | Yes (v1.5.3, CWS-live since 2026-11-04) |
 | Memory reclaimed per tab | 90-95% | 90-95% |
 | Back button affected | Possible (history entry) | No |
 | Suspension screen | Yes | None |
@@ -21908,7 +21910,7 @@ This timing matters. The script doing the removal has to run before the player d
 
 Pre-rolls are handled at page load. Mid-rolls are a second problem: YouTube fetches additional ad batches through network calls as you watch. A complete fix also monitors this ongoing traffic and strips ad data from each subsequent response before the player processes it.
 
-SuperchargePerformance (v1.5.2) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
+SuperchargePerformance (v1.5.3) handles both layers. Because the ad data is gone before the player touches it, YouTube's anti-adblock detection finds no evidence of interference — no ad slots that loaded but weren't played, which is what the detection normally looks for. A click-skip fallback handles the rare case where a placement slips through.
 
 ## How SuperchargePerformance Does It
 
@@ -21983,7 +21985,7 @@ Q: Does uBlock Origin block YouTube ads on Chrome in 2026?
 A: As of July 2026, no — not on stable Chrome. Chrome disabled all Manifest V2 extensions, including uBlock Origin, with Chrome 138 in July 2025, and the last re-enable flags are gone in Chrome 150 and 151. The Chrome Web Store listing is still live (v1.72.2) until Google removes remaining MV2 extensions on August 31, 2026, but installing it on current Chrome gets you a disabled extension. On Firefox, uBlock Origin still runs fully and blocks YouTube ads with scriptlets. On Chrome, the working options are MV3 blockers: uBlock Origin Lite, AdGuard's MV3 extension, or Ghostery.
 
 Q: What is the most reliable way to block YouTube ads on Chrome in 2026?
-A: As of September 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.5.2) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
+A: As of September 2026, extensions that remove ad data from YouTube's player configuration before the player starts work better than reactive patching. SuperchargePerformance (v1.5.3) strips ad slots from the page's instruction sheet before YouTube's player ever reads it, then monitors ongoing API traffic to catch mid-rolls. Because the ad data is removed before YouTube's player code runs, there's nothing for anti-adblock detection to trigger on.
 
 Q: Will YouTube's anti-adblock detection catch this fix?
 A: As of June 2026, SuperchargePerformance bypasses YouTube's anti-adblock detection by removing ad data before the player initializes — the player sees a clean configuration with no ad slots, so the detection logic has nothing to find. A click-skip fallback handles rare cases where a placement slips through.
@@ -30316,7 +30318,8 @@ Available on Chrome Web Store · Microsoft Edge
 * [ Chrome Web Store Free ](https://chromewebstore.google.com/detail/volume-booster-audio-equa/cbjglaijgolamegjnaiabgdojmghalbe)
 * [ Microsoft Edge Free ](https://microsoftedge.microsoft.com/addons/detail/superchargeaudio-volume-/iknpdbfmeiefmfofkfkbcakpnmlbncia)
 * [ Firefox Free ](https://addons.mozilla.org/en-US/firefox/addon/supercharge-audio/)
-* Version 1.1.2
+* 5.0★ rating 20 ratings
+* Version 1.1.3
 
 Per-site memory
 
@@ -30480,7 +30483,8 @@ No account · No watermark · Stays on your machine
 * [ Chrome Web Store Free ](https://chromewebstore.google.com/detail/full-page-screenshot-scre/gebkchfkcnjdflkfdimabihllibgcdhp)
 * [ Microsoft Edge Free ](https://microsoftedge.microsoft.com/addons/detail/epkfcbbnmlbofjkcdbdiancjbdpgpkdk)
 * [ Firefox Free ](https://addons.mozilla.org/en-US/firefox/addon/supercharge-capture/)
-* Version 1.2.4
+* 5.0★ rating 10 ratings
+* Version 1.2.5
 
 Zero-friction recording
 
@@ -30613,7 +30617,7 @@ Recent
 
 ·
 
-v1.2.4
+v1.2.5
 
 shop.example.com/product  25%
 
@@ -30725,74 +30729,78 @@ Suspends idle tabs, blocks ads, and tames sites. Each suspended tab frees 90 to 
 
 ## Past releases
 
-1. [Performancev1.5.3Sites turned off list now fills the popupPending](/changelog/performance/1.5.3/)
-2. [Focusv1.0.2Smoother Dark Theme on Chart-Heavy PagesNov 2, 2026](/changelog/focus/1.0.2/)
-3. [Focusv1.0.1Faster Dark Theme and Six More LanguagesNov 1, 2026](/changelog/focus/1.0.1/)
-4. [Performancev1.5.2SuperchargePerformance in Six More LanguagesNov 1, 2026](/changelog/performance/1.5.2/)
-5. [Audiov1.1.2SuperchargeAudio in Six More LanguagesOct 30, 2026](/changelog/audio/1.1.2/)
-6. [Capturev1.2.4SuperchargeCapture in Six More LanguagesOct 30, 2026](/changelog/capture/1.2.4/)
-7. [Inspectv1.0.2SuperchargeInspect in Six More LanguagesOct 30, 2026](/changelog/inspect/1.0.2/)
-8. [Navigationv1.4.4SuperchargeNavigation in Six More LanguagesOct 30, 2026](/changelog/navigation/1.4.4/)
-9. [Audiov1.1.1Boost Keeps Working on Spotify and Similar SitesOct 26, 2026](/changelog/audio/1.1.1/)
-10. [Focusv1.0.0Block the Sites That Pull You AwayOct 26, 2026](/changelog/focus/1.0.0/)
-11. [Navigationv1.4.3Big Workspaces Open in a SecondOct 21, 2026](/changelog/navigation/1.4.3/)
-12. [Capturev1.2.3Drag an Area Works Where It Used to FailOct 17, 2026](/changelog/capture/1.2.3/)
-13. [Performancev1.5.1Blocklists and cookie banner rules refreshedOct 16, 2026](/changelog/performance/1.5.1/)
-14. [Navigationv1.4.2Your Bookmarks Bar Returns to the New Tab PageOct 13, 2026](/changelog/navigation/1.4.2/)
-15. [Inspectv1.0.1Arrows Now Move SidewaysOct 10, 2026](/changelog/inspect/1.0.1/)
-16. [Inspectv1.0.0Pick Any Element, Take It With YouOct 9, 2026](/changelog/inspect/1.0.0/)
-17. [Capturev1.2.2Your Selection Holds Even When You PauseOct 8, 2026](/changelog/capture/1.2.2/)
-18. [Capturev1.2.1Screenshots That Get the Whole ThingOct 6, 2026](/changelog/capture/1.2.1/)
-19. [Navigationv1.4.1Your Keys Stay in NavOct 6, 2026](/changelog/navigation/1.4.1/)
-20. [Navigationv1.4.0Nav, Redesigned From the Side Panel OutOct 3, 2026](/changelog/navigation/1.4.0/)
-21. [Performancev1.5.0Redesigned From the Popup to the PageOct 3, 2026](/changelog/performance/1.5.0/)
-22. [Audiov1.1.0The Audio Popup, RedesignedOct 2, 2026](/changelog/audio/1.1.0/)
-23. [Capturev1.2.0Every Screen of Capture, RedesignedOct 2, 2026](/changelog/capture/1.2.0/)
-24. [Audiov1.0.8Capture Mode Stays On Between TracksSep 25, 2026](/changelog/audio/1.0.8/)
-25. [Navigationv1.3.5Safer Sync, Gentler Workspaces & a Calmer First RunSep 23, 2026](/changelog/navigation/1.3.5/)
-26. [Performancev1.4.9Changes apply right awaySep 23, 2026](/changelog/performance/1.4.9/)
-27. [Audiov1.0.7Spotify Works With the Normal ControlsSep 22, 2026](/changelog/audio/1.0.7/)
-28. [Capturev1.1.3Full-page screenshots stay true to the pageSep 18, 2026](/changelog/capture/1.1.3/)
-29. [Performancev1.4.8Autoplay stays off after a clickSep 18, 2026](/changelog/performance/1.4.8/)
-30. [Performancev1.4.7Video Calls Stay AliveAug 26, 2026](/changelog/performance/1.4.7/)
-31. [Audiov1.0.6Boost What the Normal Boost Can't ReachAug 25, 2026](/changelog/audio/1.0.6/)
-32. [Capturev1.1.2Routine maintenanceAug 25, 2026](/changelog/capture/1.1.2/)
-33. [Capturev1.1.1A rebuilt editor — timeline editing, offline captions & moreAug 14, 2026](/changelog/capture/1.1.1/)
-34. [Navigationv1.3.4Learn Nav, Workspace Undo & an Opt-In New Tab PageAug 10, 2026](/changelog/navigation/1.3.4/)
-35. [Performancev1.4.6Ad Blocking That Repairs ItselfAug 7, 2026](/changelog/performance/1.4.6/)
-36. [Audiov1.0.5Save Your Own EQ PresetsAug 6, 2026](/changelog/audio/1.0.5/)
-37. [Navigationv1.3.3Search Goes to Your Default EngineJun 29, 2026](/changelog/navigation/1.3.3/)
-38. [Audiov1.0.4Glitch-Free EQ While You Drag the SlidersJun 25, 2026](/changelog/audio/1.0.4/)
-39. [Capturev1.0.2Smoother auto-zoom & calmer permission asksJun 25, 2026](/changelog/capture/1.0.2/)
-40. [Navigationv1.3.2Your Open Tabs Are Backed Up Before a Sync RestoreJun 25, 2026](/changelog/navigation/1.3.2/)
-41. [Performancev1.4.5Refreshed Blocklists & Popup PolishJun 25, 2026](/changelog/performance/1.4.5/)
-42. [Audiov1.0.3Smoother Channel Switching and Consistent 8D Spatial ToneJun 22, 2026](/changelog/audio/1.0.3/)
-43. [Capturev1.0.0Screenshots, Screen Recording & Annotation, All LocalJun 22, 2026](/changelog/capture/1.0.0/)
-44. [Capturev1.0.1Reliable Drive sharing & a tidier editorJun 22, 2026](/changelog/capture/1.0.1/)
-45. [Navigationv1.3.1Discoverable Rename, a Best-Match Palette & a Type-to-Select HUDJun 19, 2026](/changelog/navigation/1.3.1/)
-46. [Performancev1.4.4Auto-Reject Cookie Banners On by DefaultJun 19, 2026](/changelog/performance/1.4.4/)
-47. [Performancev1.4.3Whitelist Wildcard Fix & Smarter Per-Site DefaultsJun 15, 2026](/changelog/performance/1.4.3/)
-48. [Navigationv1.3.0The In-Page Sidebar — Nav Lives Inside the Page NowJun 11, 2026](/changelog/navigation/1.3.0/)
-49. [Performancev1.4.2Instant Whitelisting, Fewer False Hides & Stop Autoplay RebuiltJun 11, 2026](/changelog/performance/1.4.2/)
-50. [Audiov1.0.2SuperchargeAudio — Live on the Chrome Web StoreJun 10, 2026](/changelog/audio/1.0.2/)
-51. [Audiov1.0.1SuperchargeAudio — Clean High Boost and Protected-Audio SupportJun 8, 2026](/changelog/audio/1.0.1/)
-52. [Audiov1.0.0SuperchargeAudio — Volume, EQ, and Spatial Controls for Every TabMay 28, 2026](/changelog/audio/1.0.0/)
-53. [Performancev1.4.1Scroll Restore, Smarter Media Detection & Overlay Scroll FixMay 28, 2026](/changelog/performance/1.4.1/)
-54. [Navigationv1.2.2Auto-Open Workspace on Launch & Two Bug FixesMay 25, 2026](/changelog/navigation/1.2.2/)
-55. [Performancev1.4.0Adaptive Suspension, Ambient Feedback & Popup RedesignMay 24, 2026](/changelog/performance/1.4.0/)
-56. [Navigationv1.2.1Edge Support, NTP Restore Button & Per-Site Pause RebindMay 21, 2026](/changelog/navigation/1.2.1/)
-57. [Navigationv1.2.0Hint Mode, Type-to-Select & a Real Keyboard LayerMay 10, 2026](/changelog/navigation/1.2.0/)
-58. [Performancev1.3.259 Locales & Listing RewriteApr 30, 2026](/changelog/performance/1.3.2/)
-59. [Navigationv1.1.0Cross-Device Sync, New Tab Page & Multi-Window WorkspacesApr 24, 2026](/changelog/navigation/1.1.0/)
-60. [Performancev1.3.1Stability, Speed & Stronger Ad BlockingApr 17, 2026](/changelog/performance/1.3.1/)
-61. [Performancev1.3.0Video Ad Blocking, Popup Blocker & Cookie Consent UpgradeApr 16, 2026](/changelog/performance/1.3.0/)
-62. [Performancev1.2.2Theme-Aware Icons, Cross-Promo & Fresh BlocklistsMar 17, 2026](/changelog/performance/1.2.2/)
-63. [Navigationv1.0.0Initial Release — Vertical Tabs, Workspaces & Instant SearchMar 13, 2026](/changelog/navigation/1.0.0/)
-64. [Performancev1.2.1Rebrand, Refreshed Blocklists & Stability FixesMar 12, 2026](/changelog/performance/1.2.1/)
-65. [Performancev1.2.0WXT Migration, Cookie Autopilot & Zero-Latency NavigationFeb 28, 2026](/changelog/performance/1.2.0/)
-66. [Performancev1.1.0Performance Dashboard, Global Controls & 27 LanguagesJan 15, 2026](/changelog/performance/1.1.0/)
+1. [Capturev1.2.5Firefox Recordings Open at Full Length in the EditorNov 11, 2026](/changelog/capture/1.2.5/)
+2. [Focusv1.0.4Dark Theme While Slow Pages Load in Firefox ESRNov 11, 2026](/changelog/focus/1.0.4/)
+3. [Audiov1.1.3A Boost That Tells the TruthNov 10, 2026](/changelog/audio/1.1.3/)
+4. [Performancev1.5.4Shorts Play Again and Tabs Sleep on TimePending](/changelog/performance/1.5.4/)
+5. [Performancev1.5.3Sites turned off list now fills the popupNov 4, 2026](/changelog/performance/1.5.3/)
+6. [Focusv1.0.2Smoother Dark Theme on Chart-Heavy PagesNov 2, 2026](/changelog/focus/1.0.2/)
+7. [Focusv1.0.1Faster Dark Theme and Six More LanguagesNov 1, 2026](/changelog/focus/1.0.1/)
+8. [Performancev1.5.2SuperchargePerformance in Six More LanguagesNov 1, 2026](/changelog/performance/1.5.2/)
+9. [Audiov1.1.2SuperchargeAudio in Six More LanguagesOct 30, 2026](/changelog/audio/1.1.2/)
+10. [Capturev1.2.4SuperchargeCapture in Six More LanguagesOct 30, 2026](/changelog/capture/1.2.4/)
+11. [Inspectv1.0.2SuperchargeInspect in Six More LanguagesOct 30, 2026](/changelog/inspect/1.0.2/)
+12. [Navigationv1.4.4SuperchargeNavigation in Six More LanguagesOct 30, 2026](/changelog/navigation/1.4.4/)
+13. [Audiov1.1.1Boost Keeps Working on Spotify and Similar SitesOct 26, 2026](/changelog/audio/1.1.1/)
+14. [Focusv1.0.0Block the Sites That Pull You AwayOct 26, 2026](/changelog/focus/1.0.0/)
+15. [Navigationv1.4.3Big Workspaces Open in a SecondOct 21, 2026](/changelog/navigation/1.4.3/)
+16. [Capturev1.2.3Drag an Area Works Where It Used to FailOct 17, 2026](/changelog/capture/1.2.3/)
+17. [Performancev1.5.1Blocklists and cookie banner rules refreshedOct 16, 2026](/changelog/performance/1.5.1/)
+18. [Navigationv1.4.2Your Bookmarks Bar Returns to the New Tab PageOct 13, 2026](/changelog/navigation/1.4.2/)
+19. [Inspectv1.0.1Arrows Now Move SidewaysOct 10, 2026](/changelog/inspect/1.0.1/)
+20. [Inspectv1.0.0Pick Any Element, Take It With YouOct 9, 2026](/changelog/inspect/1.0.0/)
+21. [Capturev1.2.2Your Selection Holds Even When You PauseOct 8, 2026](/changelog/capture/1.2.2/)
+22. [Capturev1.2.1Screenshots That Get the Whole ThingOct 6, 2026](/changelog/capture/1.2.1/)
+23. [Navigationv1.4.1Your Keys Stay in NavOct 6, 2026](/changelog/navigation/1.4.1/)
+24. [Navigationv1.4.0Nav, Redesigned From the Side Panel OutOct 3, 2026](/changelog/navigation/1.4.0/)
+25. [Performancev1.5.0Redesigned From the Popup to the PageOct 3, 2026](/changelog/performance/1.5.0/)
+26. [Audiov1.1.0The Audio Popup, RedesignedOct 2, 2026](/changelog/audio/1.1.0/)
+27. [Capturev1.2.0Every Screen of Capture, RedesignedOct 2, 2026](/changelog/capture/1.2.0/)
+28. [Audiov1.0.8Capture Mode Stays On Between TracksSep 25, 2026](/changelog/audio/1.0.8/)
+29. [Navigationv1.3.5Safer Sync, Gentler Workspaces & a Calmer First RunSep 23, 2026](/changelog/navigation/1.3.5/)
+30. [Performancev1.4.9Changes apply right awaySep 23, 2026](/changelog/performance/1.4.9/)
+31. [Audiov1.0.7Spotify Works With the Normal ControlsSep 22, 2026](/changelog/audio/1.0.7/)
+32. [Capturev1.1.3Full-page screenshots stay true to the pageSep 18, 2026](/changelog/capture/1.1.3/)
+33. [Performancev1.4.8Autoplay stays off after a clickSep 18, 2026](/changelog/performance/1.4.8/)
+34. [Performancev1.4.7Video Calls Stay AliveAug 26, 2026](/changelog/performance/1.4.7/)
+35. [Audiov1.0.6Boost What the Normal Boost Can't ReachAug 25, 2026](/changelog/audio/1.0.6/)
+36. [Capturev1.1.2Routine maintenanceAug 25, 2026](/changelog/capture/1.1.2/)
+37. [Capturev1.1.1A rebuilt editor — timeline editing, offline captions & moreAug 14, 2026](/changelog/capture/1.1.1/)
+38. [Navigationv1.3.4Learn Nav, Workspace Undo & an Opt-In New Tab PageAug 10, 2026](/changelog/navigation/1.3.4/)
+39. [Performancev1.4.6Ad Blocking That Repairs ItselfAug 7, 2026](/changelog/performance/1.4.6/)
+40. [Audiov1.0.5Save Your Own EQ PresetsAug 6, 2026](/changelog/audio/1.0.5/)
+41. [Navigationv1.3.3Search Goes to Your Default EngineJun 29, 2026](/changelog/navigation/1.3.3/)
+42. [Audiov1.0.4Glitch-Free EQ While You Drag the SlidersJun 25, 2026](/changelog/audio/1.0.4/)
+43. [Capturev1.0.2Smoother auto-zoom & calmer permission asksJun 25, 2026](/changelog/capture/1.0.2/)
+44. [Navigationv1.3.2Your Open Tabs Are Backed Up Before a Sync RestoreJun 25, 2026](/changelog/navigation/1.3.2/)
+45. [Performancev1.4.5Refreshed Blocklists & Popup PolishJun 25, 2026](/changelog/performance/1.4.5/)
+46. [Audiov1.0.3Smoother Channel Switching and Consistent 8D Spatial ToneJun 22, 2026](/changelog/audio/1.0.3/)
+47. [Capturev1.0.0Screenshots, Screen Recording & Annotation, All LocalJun 22, 2026](/changelog/capture/1.0.0/)
+48. [Capturev1.0.1Reliable Drive sharing & a tidier editorJun 22, 2026](/changelog/capture/1.0.1/)
+49. [Navigationv1.3.1Discoverable Rename, a Best-Match Palette & a Type-to-Select HUDJun 19, 2026](/changelog/navigation/1.3.1/)
+50. [Performancev1.4.4Auto-Reject Cookie Banners On by DefaultJun 19, 2026](/changelog/performance/1.4.4/)
+51. [Performancev1.4.3Whitelist Wildcard Fix & Smarter Per-Site DefaultsJun 15, 2026](/changelog/performance/1.4.3/)
+52. [Navigationv1.3.0The In-Page Sidebar — Nav Lives Inside the Page NowJun 11, 2026](/changelog/navigation/1.3.0/)
+53. [Performancev1.4.2Instant Whitelisting, Fewer False Hides & Stop Autoplay RebuiltJun 11, 2026](/changelog/performance/1.4.2/)
+54. [Audiov1.0.2SuperchargeAudio — Live on the Chrome Web StoreJun 10, 2026](/changelog/audio/1.0.2/)
+55. [Audiov1.0.1SuperchargeAudio — Clean High Boost and Protected-Audio SupportJun 8, 2026](/changelog/audio/1.0.1/)
+56. [Audiov1.0.0SuperchargeAudio — Volume, EQ, and Spatial Controls for Every TabMay 28, 2026](/changelog/audio/1.0.0/)
+57. [Performancev1.4.1Scroll Restore, Smarter Media Detection & Overlay Scroll FixMay 28, 2026](/changelog/performance/1.4.1/)
+58. [Navigationv1.2.2Auto-Open Workspace on Launch & Two Bug FixesMay 25, 2026](/changelog/navigation/1.2.2/)
+59. [Performancev1.4.0Adaptive Suspension, Ambient Feedback & Popup RedesignMay 24, 2026](/changelog/performance/1.4.0/)
+60. [Navigationv1.2.1Edge Support, NTP Restore Button & Per-Site Pause RebindMay 21, 2026](/changelog/navigation/1.2.1/)
+61. [Navigationv1.2.0Hint Mode, Type-to-Select & a Real Keyboard LayerMay 10, 2026](/changelog/navigation/1.2.0/)
+62. [Performancev1.3.259 Locales & Listing RewriteApr 30, 2026](/changelog/performance/1.3.2/)
+63. [Navigationv1.1.0Cross-Device Sync, New Tab Page & Multi-Window WorkspacesApr 24, 2026](/changelog/navigation/1.1.0/)
+64. [Performancev1.3.1Stability, Speed & Stronger Ad BlockingApr 17, 2026](/changelog/performance/1.3.1/)
+65. [Performancev1.3.0Video Ad Blocking, Popup Blocker & Cookie Consent UpgradeApr 16, 2026](/changelog/performance/1.3.0/)
+66. [Performancev1.2.2Theme-Aware Icons, Cross-Promo & Fresh BlocklistsMar 17, 2026](/changelog/performance/1.2.2/)
+67. [Navigationv1.0.0Initial Release — Vertical Tabs, Workspaces & Instant SearchMar 13, 2026](/changelog/navigation/1.0.0/)
+68. [Performancev1.2.1Rebrand, Refreshed Blocklists & Stability FixesMar 12, 2026](/changelog/performance/1.2.1/)
+69. [Performancev1.2.0WXT Migration, Cookie Autopilot & Zero-Latency NavigationFeb 28, 2026](/changelog/performance/1.2.0/)
+70. [Performancev1.1.0Performance Dashboard, Global Controls & 27 LanguagesJan 15, 2026](/changelog/performance/1.1.0/)
 
-67 releases since launch
+71 releases since launch
 
 Found a bug or have feedback? <support@superchargebrowser.com>
 
@@ -34312,15 +34320,15 @@ Featured on the Chrome Web Store
 
 The only Chrome extension combining tab suspension, ad blocking, and script control in one lightweight package. 14 features. Zero data collected.
 
-4.5 on the Chrome Web Store · Verified Publisher · Zero data collected
+4.6 on the Chrome Web Store · Verified Publisher · Zero data collected
 
 [ Add to Chrome — free  ](https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 
 * [ Chrome Web Store Free ](https://chromewebstore.google.com/detail/tab-suspender-memory-save/pafkkbjmpnfkdkkhldbbnggnmpbbhkmf)
 * [ Microsoft Edge Free ](https://microsoftedge.microsoft.com/addons/detail/superchargeperformance-t/heappihlcojbpofeigdcggabhblmdjol)
 * [ Firefox 140+ Free ](https://addons.mozilla.org/en-US/firefox/addon/supercharge-performance/)
-* 4.5★ rating 77 reviews
-* Version 1.5.2 Updated November 2026
+* 4.6★ rating 83 ratings
+* Version 1.5.3 Updated November 2026
 
 Per-site control
 
@@ -34500,49 +34508,61 @@ Canonical URL: https://www.superchargebrowser.com/performance/
 - Canonical: https://www.superchargebrowser.com/privacy/
 - Source: SuperchargeBrowser (https://www.superchargebrowser.com)
 
-Last updated: October 29, 2026
+Last updated: November 10, 2026
 
 ## 1. Our Core Privacy Commitment
 
-Privacy is not an afterthought — it is a core principle of every SuperchargeBrowser extension. We believe your browsing data belongs to you. All our extensions are engineered so your data never reaches our servers.
+Your browsing belongs to you. Every SuperchargeBrowser extension does its work inside your browser. We built them so that we do not receive your browsing history, your open tabs, or the content of the pages you visit.
 
-We do not collect, store, sell, or share your browsing history, searches, or website content on our own servers or with third parties.
+We do not sell your data, and you do not need an account with us to use the extensions.
 
 ## 2. Data We Collect (and Why)
 
-We limit data collection to the absolute minimum required to operate our website and services.
+We limit data collection to the minimum needed to run our website and services.
 
-### A. Extensions: Your Browsing Data (None Sent to Us)
+### A. Extensions: Your Browsing Data Is Not Sent to Us
 
-Our extensions do not transmit your browsing history, open tabs, page content, or any browsing activity to our servers or any third-party analytics service. All extension logic — including content blocking, tab management, and interface features — runs locally on your machine.
+Our extensions run on your device. Content blocking, tab management, audio processing, recording and page changes all happen in your browser. The extensions do not send your browsing history, open tabs or page content to us or to any analytics service.
 
-The following behaviors cause requests to our website:
+The extensions open a page on our website in the following situations. Each one is an ordinary visit to our website, covered by the cookie-free analytics described in Section 4.
 
-* **The welcome page.** After you install some of our extensions, including SuperchargeFocus, the extension opens a welcome page on our website. That is an ordinary visit to our website, covered by the website analytics described in Section 4. The SuperchargeFocus welcome page also reports through those analytics whether it detected Focus, how far setup got, which of its buttons you clicked and how long the page stayed open.
-* **The in-page sidebar on restricted pages.** On pages Chrome reserves for itself — `chrome://` pages, the Chrome Web Store, and PDF files — no extension can run in the page. When you open SuperchargeNavigation's in-page sidebar on one of those, it opens a tab on our website to host the sidebar there instead. That is an ordinary visit to our website, covered by the anonymous, cookie-free analytics described in Section 4 — the extension still sends none of your browsing data to us, and it never reports which page you were on. SuperchargeFocus does the same with its panel and opens our Focus page; when your browser reports that it is offline, it opens a page inside the extension instead.
-* **Uninstalling.** When you remove one of our extensions, Chrome opens a short feedback page on our website. This is a standard browser feature (`chrome.runtime.setUninstallURL`) and it happens automatically, without any action from you. The request tells us only which extension was removed, plus the ordinary information any web request carries — it contains no browsing data, no settings, and nothing that identifies you. Answering the survey on that page is entirely optional; if you close the tab we keep nothing beyond the anonymous page visit described in Section 4.
+* **Welcome and release notes.** After you install an extension, it opens a welcome page. SuperchargePerformance, SuperchargeNavigation, SuperchargeAudio and SuperchargeCapture can also open a release notes page after certain feature updates. The welcome address includes the installed version number, and the release notes address includes the release version. Both include campaign tags that name the extension as the source. The SuperchargeFocus welcome page also reports through those analytics whether it detected Focus, how far setup got, which of its buttons you clicked and how long the page stayed open.
+* **Uninstalling.** When you remove an extension, your browser opens a short feedback page. The address tells us which extension was removed and its version number, and includes campaign tags. It contains no browsing data and no settings. Answering the survey is optional. If you close the tab, we keep only the page visit described in Section 4.
+* **Panels on restricted pages.** Some pages do not support in-page panels, such as browser settings pages, the extension store and PDF files. When you open SuperchargeNavigation's in-page sidebar on one of those, it opens a tab on our website to host the sidebar there instead. It does not report which page you were on. SuperchargeFocus opens our Focus page in the same situation. When your browser reports that it is offline, it opens a page inside the extension instead.
 
-### B. Extension Settings
+On Firefox, the welcome, release notes and feedback pages open only if you have allowed the extension to share technical and interaction data. SuperchargeNavigation does not open release notes automatically on Firefox.
 
-Your preferences and extension data (such as feature toggles, saved workspaces, or whitelisted domains) are stored locally in your browser's storage (`chrome.storage.local`). They are never sent to our servers.
+### B. What Stays on Your Device
 
-**SuperchargeInspect.** SuperchargeInspect works on a single element you pick. It reads the style of that element only on the tab where you start it, using activeTab. It remembers your last picked element per tab and page in `chrome.storage.session`, and the browser clears that when it closes. It saves your panel theme choice, Auto, Light or Dark, in `chrome.storage.local`. It also saves, in `chrome.storage.local`, the date you first used it, a count of your successful copies, whether you rated it or closed the rating request, and which product tips you closed. These are used only to time the rating request and the tips. They stay on your device and are never sent anywhere. It makes no network requests. It has no account and no sign-in. Nothing is sent to SuperchargeBrowser or anyone else. Copied text and screenshots go only to your own clipboard.
+Your settings and extension data, such as feature toggles, saved workspaces and allowed sites, are saved in your browser's own extension storage on your device. They are not sent to our servers. Some extensions also save small records, such as when you first used them and which tips you closed. These are used to time rating requests and tips.
 
-**SuperchargeFocus.** SuperchargeFocus saves its settings and records in `chrome.storage.local` on your device. That covers your focus rules, sessions, schedules and daily allowances, your page appearance settings, and any location you type in yourself to schedule themes by sunrise and sunset. It never asks your browser for your location. When you pick a page element to hide, it may save the page address, a short label and text from that element so it can find the element again. To run daily allowances, it records how long each website is in use per day, by host name only (such as `www.youtube.com`), whether or not Activity history is on. It counts the site in the active tab, stops after two minutes without activity unless that tab is playing sound, and also counts other tabs playing sound if you turn that option on. It keeps these counts for the 32 most recent days on which it counted anything. A short-lived sample of the sites being counted is held in `chrome.storage.session`, which the browser clears when it closes.
+**SuperchargeInspect.** SuperchargeInspect reads the style of the single element you pick, on the tab where you start it. It remembers your last picked element until the browser closes, and saves your panel theme. Copied text and screenshots go to your own clipboard. It has no account and no sign-in. It opens the pages described in Section 2.A and includes links you can click to our website, browser stores and email.
 
-Activity history in SuperchargeFocus is off by default. If you turn it on, it saves the host name and time of the pages you view. Only if you tick each option does it also save the page address (up to 2,000 characters), the page title (up to 300 characters) and up to 2,000 characters of the page's visible text. Text capture skips form fields and editable areas, but text a site shows elsewhere on the page can still be saved. You choose to keep history for 7, 30 or 90 days, older entries are removed at the next cleanup, and it keeps at most 2,000 entries. In the panel you can exclude sites, pause history for 24 hours, search it, or delete all of it. Deleting history does not delete the daily time counts. Exporting your setup saves a file to your computer with your rules, schedules and page changes, including any saved page addresses and element text. The export never includes Activity history or its settings.
+**SuperchargeCapture.** SuperchargeCapture records and edits on your device. Recordings and screenshots, including camera and microphone if you turn them on, are saved in your browser's storage or to your computer. The extension does not upload them unless you choose to share one to Google Drive (see Section 2.C).
 
-SuperchargeFocus makes a few requests of its own. To show a page in the theme you picked, it may download again the stylesheets and images that page links to, without cookies. Those requests go to the sites that host the files, may follow redirects, and carry the ordinary information any web request carries. When its panel loads, it sends a message inside your browser to other SuperchargeBrowser extensions to check whether they are installed, so it does not suggest one you already have. On our website it marks the page to show that Focus is installed and whether setup is finished, so the site can open the panel for you; the welcome page reports setup progress with the website analytics described in Section 2.A and Section 4. It also saves when you first opened the panel, on how many days you opened it, whether you opened the rating page or closed the rating request, and which tips you closed. These are used only to time those prompts. SuperchargeFocus has no account and no sign-in, and it does not upload your rules, time counts, page changes or Activity history to SuperchargeBrowser or anyone else.
+**SuperchargeFocus.** SuperchargeFocus saves your focus rules, sessions, schedules, daily allowances and page appearance settings on your device. If you type in a location to schedule themes by sunrise and sunset, it saves that too. It does not ask your browser for your location. When you pick a page element to hide, it may save the page address, a short label and text from that element so it can find the element again.
 
-### C. Cross-Device Sync (SuperchargeNavigation only)
+To run daily allowances, SuperchargeFocus counts how long each website is in use per day, by host name only (such as `www.youtube.com`), whether or not Activity history is on. It stops counting after two minutes without activity, unless the tab is playing sound. It keeps these counts for the 32 most recent days on which it counted anything.
 
-SuperchargeNavigation stores your workspaces on your device. It can also sync them through your browser's built-in sync, using `chrome.storage.sync`: your Google account on Chrome, or your Microsoft account on Edge. Workspace sync is on by default. The extension does not upload your workspaces until first-time setup is resolved. If your browser sync already holds workspace data from another device, the extension can resolve setup on its own. Otherwise it asks you a setup question. Choosing Skip leaves sync on. The extension saves its sync on/off setting in sync storage before setup is resolved. Your browser account decides whether sync storage moves between devices. If browser sync is off, the data stays in your browser and can sync later when you turn browser sync on.
+Activity history is off by default. If you turn it on, it saves the host name and time of the pages you view. Only if you tick each option does it also save the page address, the page title and up to 2,000 characters of the page's visible text. Text capture skips form fields and editable areas, but text a site shows elsewhere on the page can still be saved. You choose to keep history for 7, 30 or 90 days. Older entries are removed at the next cleanup, and it keeps at most 2,000 entries. In the panel you can exclude sites, pause history, search it, or delete all of it. Deleting history does not delete the daily time counts. An export of your setup includes your rules, schedules and page changes, with any saved page addresses and element text. It does not include Activity history.
 
-What syncs: workspace names and icons, tab URLs, page titles (up to 200 characters), which tabs are pinned, tab group identifiers and membership, group names and colors, the name of the active workspace, a device identifier and device name, the sync on/off setting, and technical data (a timestamp, format version, chunk count and checksum). What does not sync: the time-travel snapshots and tab favicons. Automatic Saved Tabs backups do not sync while they keep their generated "Saved Tabs" name. If you rename a backup, its contents can sync. A backup's name can sync while it is your active workspace.
+SuperchargeFocus does not upload your rules, time counts, page changes or Activity history to SuperchargeBrowser or anyone else. When its panel loads, it checks inside your browser whether other SuperchargeBrowser extensions are installed, so it does not suggest one you already have. On our website it marks the page to show that Focus is installed and whether setup is finished, so the site can open the panel for you.
 
-Workspace sync uses your browser provider's sync service. It does not send your workspace data to SuperchargeBrowser servers. You can turn workspace sync off on each device. This stops new automatic uploads from that device. An upload already in progress can still finish, and a first-time setup check that is still pending can still import workspaces from sync. Turning sync off does not delete your local workspaces or the copy already in browser sync. The settings option that replaces the synced copy with this device's workspaces does not delete the synced copy either.
+### C. Features That Work With Other Services
 
-To delete synced data, use your browser's own controls for [Chrome](https://support.google.com/chrome/answer/185277) or [Edge](https://learn.microsoft.com/en-us/deployedge/edge-learnmore-reset-data-in-cloud). These controls also affect your other synced browser data. Uninstalling the extension does not by itself guarantee that the cloud copy is deleted. No other SuperchargeBrowser extension uses `chrome.storage.sync`.
+A few features connect to another service to do their job. These connections go straight from your browser to that service. They do not pass through SuperchargeBrowser servers. As with any web request, the service receives ordinary connection information, such as your IP address.
+
+**Workspace sync (SuperchargeNavigation).** SuperchargeNavigation keeps your workspaces on your device. It can also sync them between your devices through your browser's built-in sync: your Google account on Chrome, or your Microsoft account on Edge. Workspace sync is on by default, and you can turn it off on each device. Before the first workspace upload, the extension checks whether your browser sync already holds workspaces from another device. If it does not, the extension asks you a setup question. Choosing Skip leaves sync on. The sync on/off setting itself is saved in browser sync before setup finishes. If browser sync is off, the data stays in your browser and can sync later when you turn browser sync on.
+
+What syncs: workspace names and icons, tab addresses, page titles, which tabs are pinned, tab groups with their names and colors, the name of the active workspace, a device identifier and device name, the sync on/off setting, and technical data such as a timestamp and checksum. Time-travel snapshots and tab icons do not sync. Automatic Saved Tabs backups do not sync while they keep their generated name. If you rename a backup, its contents can sync. A backup's name can sync while it is your active workspace.
+
+Turning workspace sync off stops new automatic uploads from that device. An upload already in progress can still finish, and a setup check already underway can still import workspaces. Turning sync off does not delete your local workspaces or the copy already in browser sync. To delete synced data, use your browser's own controls for [Chrome](https://support.google.com/chrome/answer/185277) or [Edge](https://learn.microsoft.com/en-us/deployedge/edge-learnmore-reset-data-in-cloud). These controls also affect your other synced browser data. Uninstalling the extension does not guarantee that the synced copy is deleted. No other SuperchargeBrowser extension uses browser sync.
+
+**Sharing to Google Drive (SuperchargeCapture).** When you choose to share a recording to Google Drive, SuperchargeCapture asks you to sign in with Google, uploads that recording to your own Drive and creates a link that anyone with the link can view. The Google permission covers files created with SuperchargeCapture and files you explicitly allow it to access. Drive sharing is available on Chrome and Firefox.
+
+**Twitch (SuperchargePerformance).** While you watch Twitch, SuperchargePerformance contacts Twitch to skip video ads.
+
+**Website icons and page themes.** SuperchargeNavigation and SuperchargeAudio download website icons for the tabs and sites they list. To show a page in the theme you picked, SuperchargeFocus may download again the stylesheets and images that page links to, without cookies, from the sites that host them.
 
 ### D. Website: Communication
 
@@ -34579,23 +34599,20 @@ Our website stores a small number of values in your browser's `localStorage` and
 
 ## 3. Browser Permissions Explained
 
-Our extensions request only the permissions necessary for their features. Not every extension uses every permission listed below. These permissions support the features and data handling described below.
+Our extensions request only the permissions their features need. Not every extension uses every permission listed below.
 
-* **`host_permissions (<all_urls>)`:** Allows our extensions to run their features across all websites you visit, including injecting content scripts for performance optimization, tab navigation overlays, inline page previews, audio volume and equalizer processing, and focus pause screens and page themes. All processing happens locally. We do not transmit page content. SuperchargeFocus reads page content to change how pages look and to find elements you chose to hide, and stores page text only for page changes you save and, if you turn it on, Activity history (see Section 2.B). SuperchargeCapture does *not* require this permission at install time — see the Capture section below.
-* **`tabs`:** Used to manage your browser tabs — detecting active and inactive tabs, switching between tabs, and providing tab search functionality. Tab metadata is processed locally. SuperchargeNavigation can sync tab URLs and titles through your browser's own sync. Workspace sync is on by default and can be turned off, as described in Section 2.C. SuperchargeFocus keeps the local time counts and optional Activity history described in Section 2.B.
-* **`tabGroups`:** Used to organize tabs into groups, manage group colors and names, and support workspace features. All group data stays in your browser.
-* **`sidePanel`:** Used to display an in-browser panel for tab management and navigation. The panel runs locally with no external communication.
-* **`storage / unlimitedStorage`:** Used to save your preferences, workspaces, and extension state locally on your device via `chrome.storage.local`. SuperchargeNavigation also uses `chrome.storage.sync` when you enable cross-device sync — data flows through your own browser account's built-in sync, not our servers. All other extensions use local storage only.
-* **`storage` (SuperchargeInspect):** Used to save your panel theme choice, Auto, Light or Dark, in `chrome.storage.local`, and to remember your last picked element per tab and page in `chrome.storage.session`, which the browser clears when it closes. It also saves the date you first used SuperchargeInspect, a count of your successful copies, whether you rated it or closed the rating request, and which product tips you closed in `chrome.storage.local`. These values are used only to time the rating request and the tips. All these values stay on your device and are never sent anywhere.
-* **`clipboardWrite` (SuperchargeInspect only):** Used to copy CSS values, notes, style references, and element screenshots to your clipboard when you click a copy button or press the shortcut. It never reads your clipboard and nothing is sent anywhere.
-* **`tabCapture` (SuperchargeAudio only):** Opt-in, per-tab. Dormant until you click "Turn on Protected boost" on a DRM-protected tab; then captures only that specific tab so its protected audio stream can be boosted and equalized. All processing happens locally on your device — audio is never recorded, stored, or transmitted. No microphone or camera access.
-* **`offscreen` (SuperchargeAudio only):** MV3 service workers cannot process audio directly, so when tab capture is enabled an offscreen document hosts the local audio-processing graph. Runs entirely on device with no external communication.
-* **`declarativeNetRequest`:** Used to apply content-blocking rules and to modify network request headers when needed for features like inline page previews. This is a privacy-preserving method — the browser applies the rules directly without the extension reading your network traffic.
-* **`declarativeNetRequestWithHostAccess` (SuperchargeFocus only):** When you force Light or Dark for all sites or for one site, SuperchargeFocus adds rules that set the `Sec-CH-Prefers-Color-Scheme` request header on page and frame loads, so sites that honor the header can send the matching version. When a site is set back to Auto, an allow rule keeps a forced global theme from applying there. These rules set no other header and block or redirect nothing, and the browser applies them without the extension reading your traffic.
-* **`idle` (SuperchargeFocus only):** Uses the idle and lock state your browser reports to pause time counting when you step away: after two minutes without activity, unless the active tab is playing sound, and while your screen is locked. The idle state is checked locally and is not stored.
-* **`scripting / activeTab`:** Used to inject lightweight content scripts that power features like content blocking, page overlays, mouse gestures, and visual indicators. These scripts run locally on the page and do not report data back to us. SuperchargeFocus also registers its own packaged theme scripts to run as a page starts loading, to reduce flashes of the original theme.
-* **`alarms`:** Used to manage internal timers for scheduled tasks such as tab suspension timeouts, periodic data snapshots, focus time counting and Activity history cleanup. Timers run locally.
-* **`optional host_permissions (SuperchargeCapture only)`:** SuperchargeCapture declares `<all_urls>` as an optional permission — not required at install time, so installing it triggers no host-access warning. By default the recording overlay (camera bubble and cursor effects) works only on the current page, because a cross-origin navigation mid-recording revokes the extension's access. Enabling the "Keep going on other sites" toggle in the recording interface prompts Chrome to grant this permission so the overlay can follow you across domains. Be aware that this is a broad grant: while the toggle is on, Capture holds access to every site you visit, which is precisely what lets the overlay survive navigation. That breadth is used solely to keep the recording overlay running — everything is still processed locally on your device, and no page content is read, stored, or transmitted. You stay in control: it is off by default, requested only when you opt in, and revocable from Chrome's extension settings at any time, which immediately removes the access.
+* **Access to websites (`host_permissions`):** Lets the extensions run their features on the pages you visit: content blocking, tab overlays and page previews, volume and equalizer, focus screens and page themes. The work happens on your device. SuperchargeFocus reads page content to change how pages look and to find elements you chose to hide, and saves page text only as described in Section 2.B. SuperchargeCapture does *not* ask for this at install time. See the last item in this list.
+* **`tabs` and `tabGroups`:** Used to switch, search, suspend and group your tabs. Tab and group data stays in your browser, except what SuperchargeNavigation's workspace sync shares through your browser account (Section 2.C). SuperchargeFocus keeps the local time counts and optional Activity history described in Section 2.B.
+* **`sidePanel`:** Used to show the in-browser panel for tab management and navigation.
+* **`storage` and `unlimitedStorage`:** Used to save your settings, workspaces, recordings and extension state on your device. SuperchargeNavigation also uses browser sync for workspaces, as described in Section 2.C.
+* **`clipboardWrite` (SuperchargeInspect only):** Used to copy CSS values, notes and element screenshots to your clipboard when you click a copy button or press the shortcut. It does not read your clipboard.
+* **`tabCapture` and `offscreen` (SuperchargeAudio and SuperchargeCapture):** SuperchargeAudio uses them only when you turn on Protected boost on a protected tab. It then processes that tab's sound on your device and does not record or store it. SuperchargeCapture uses them to record the tab you choose.
+* **`identity` (SuperchargeCapture only):** Used for the Google sign-in when you choose to share a recording to Google Drive (Section 2.C).
+* **Network rules (`declarativeNetRequest` and `declarativeNetRequestWithHostAccess`):** Used to apply content-blocking rules, and to adjust request headers for features like inline page previews. The browser applies the rules itself, without the extension reading your network traffic. When you force Light or Dark, SuperchargeFocus also tells websites which theme you chose, so they can send the matching version. Those rules block or redirect nothing.
+* **`idle` (SuperchargeFocus only):** Uses the idle and lock state your browser reports to pause time counting when you step away, with the exception for playing sound described in Section 2.B. The state is not stored.
+* **`scripting` and `activeTab`:** Used to run the extension's own scripts on a page for features like content blocking, page overlays, mouse gestures and page themes. SuperchargeInspect and SuperchargeCapture use `activeTab` to work on the tab where you start them.
+* **`alarms`:** Used for timers, such as tab suspension, periodic snapshots, focus time counting and Activity history cleanup.
+* **Optional access to all sites (SuperchargeCapture only):** By default the recording overlay (camera bubble and cursor effects) works on the current page. If you turn on "Keep going on other sites", your browser asks you to grant access to all sites, so the overlay can follow you from one site to the next. This is a broad grant: while it is on, SuperchargeCapture has access to every site you visit. It uses that access to keep the overlay running across sites. Recording and optional sharing are described in Sections 2.B and 2.C. It is off by default, and you can remove it in your browser's extension settings at any time.
 
 ## 4. Third-Party Services
 
@@ -34653,7 +34670,7 @@ Everything in the free extension, plus Lighter background tabs, Block images, Fa
 
 No payment required today · 30-day refund policy
 
-4.5★ rating77 reviews  Zero telemetryNo account
+4.6★ rating83 ratings  Zero telemetryNo account
 
 * Verified publisher superchargebrowser.com
 * Featured on the Chrome Web Store Performance · Navigation · Audio
