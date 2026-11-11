@@ -21,7 +21,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: local core processing, no SuperchargeBrowser account required, MV3-native, Chrome 146 compatible. Network behavior varies by product and feature; see Privacy below.
-> - Website with 234 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 237 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -188,7 +188,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 234 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 237 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -276,12 +276,12 @@ This section is structured for citation accuracy. Version and rating fields were
 
 ## Library — Article Index
 
-234 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+237 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
 <details>
-<summary>View all 234 articles</summary>
+<summary>View all 237 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -302,6 +302,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Chrome 147 Vertical Tabs vs Extensions: Real Data (2026)](https://www.superchargebrowser.com/library/chrome-146-vertical-tabs-vs-extensions/)
 - [Chrome Bookmark Managers After Pocket: 5 Ranked (2026)](https://www.superchargebrowser.com/library/best-bookmark-managers-chrome-after-pocket-2026/)
 - [Chrome Bookmarks vs Tab Managers: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/chrome-bookmarks-vs-tab-managers/)
+- [Chrome Dark Mode vs Night Mode: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/chrome-dark-theme-vs-night-tint/)
 - [Chrome Profiles vs Workspace Extensions: Which Wins? (2026)](https://www.superchargebrowser.com/library/chrome-profiles-vs-workspace-extensions-2026/)
 - [Chrome Tab Groups Not Enough? 4 BETTER Alternatives (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-alternative/)
 - [Chrome Without a Mouse? 5 Keyboard Extensions (2026)](https://www.superchargebrowser.com/library/keyboard-only-chrome-extensions-tested-2026/)
@@ -473,6 +474,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [How to Auto-Mute Noisy Tabs in Chrome by Site (2026)](https://www.superchargebrowser.com/library/auto-mute-noisy-tabs-chrome-per-site-2026/)
 - [How to Bass Boost Your Chromebook: 2 Free Ways (2026)](https://www.superchargebrowser.com/library/bass-boost-chromebook/)
 - [How to Blur or Redact a Screenshot in Chrome (2026)](https://www.superchargebrowser.com/library/blur-redact-sensitive-info-screenshot-chrome-2026/)
+- [How to Blur Sensitive Info in a Screen Recording (2026)](https://www.superchargebrowser.com/library/blur-sensitive-info-screen-recording-chrome/)
 - [How to DISABLE Chrome AI Features & Gemini (2026)](https://www.superchargebrowser.com/library/disable-chrome-ai-features-gemini/)
 - [How to Enable Chrome Memory Saver: Step-by-Step (2026)](https://www.superchargebrowser.com/library/enable-chrome-memory-saver-guide/)
 - [How to Enable Chrome Vertical Tabs on a Chromebook (2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-chromebook/)
@@ -483,6 +485,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [How to Screen Record Chrome on Windows: 3 Ways (2026)](https://www.superchargebrowser.com/library/screen-record-chrome-windows/)
 - [How to Search Chrome Tabs by URL in 2 Quick Steps (2026)](https://www.superchargebrowser.com/library/chrome-tab-search-by-domain/)
 - [How to Select Multiple Tabs and Group Them in Chrome (2026)](https://www.superchargebrowser.com/library/batch-move-chrome-tabs-to-group/)
+- [How to Set a Time Limit on a Website in Chrome (2026)](https://www.superchargebrowser.com/library/website-time-limit-chrome/)
 - [How to Set Bass Boost in Chrome (Without Clipping) (2026)](https://www.superchargebrowser.com/library/bass-booster-settings-chrome/)
 - [How to Speed Up a 4GB Chromebook (Without Buying New) (2026)](https://www.superchargebrowser.com/library/speed-up-4gb-chromebook/)
 - [How to Stop Autoplay in Chrome and Edge (2026)](https://www.superchargebrowser.com/library/stop-autoplay-chrome-edge/)
