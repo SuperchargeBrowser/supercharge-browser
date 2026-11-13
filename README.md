@@ -21,7 +21,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: local core processing, no SuperchargeBrowser account required, MV3-native, Chrome 146 compatible. Network behavior varies by product and feature; see Privacy below.
-> - Website with 237 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 239 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -188,7 +188,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 237 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 239 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -276,12 +276,12 @@ This section is structured for citation accuracy. Version and rating fields were
 
 ## Library — Article Index
 
-237 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+239 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
 <details>
-<summary>View all 237 articles</summary>
+<summary>View all 239 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -494,12 +494,14 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [How to Stop YouTube Autoplay in Chrome: 1 Switch (2026)](https://www.superchargebrowser.com/library/youtube-autoplay-stopper-chrome/)
 - [How to Sync Chrome Tabs and Tab Groups Across Devices (2026)](https://www.superchargebrowser.com/library/sync-tabs-workspaces-across-devices-chrome-2026/)
 - [How to Take a Full-Page Screenshot in Chrome FAST (2026)](https://www.superchargebrowser.com/library/full-page-screenshot-chrome/)
+- [How to Track Time Spent on Websites in Chrome (2026)](https://www.superchargebrowser.com/library/chrome-activity-log-time-tracking/)
 - [How to Ungroup Chrome Tab Groups (3 Ways, 1 Keypress, 2026)](https://www.superchargebrowser.com/library/chrome-vertical-tabs-degroup-shortcut/)
 - [Is That Chrome Extension Safe? 7 Checks Before Install (2026)](https://www.superchargebrowser.com/library/chrome-extension-security-audit-checklist-2026/)
 - [Loon Chrome Extension: Status, Safety & What It Does (2026)](https://www.superchargebrowser.com/library/loon-chrome-extension-explained/)
 - [Manifest V2 vs V3: What Actually Dies in August 2026](https://www.superchargebrowser.com/library/chrome-manifest-v2-vs-v3-extensions/)
 - [Missing Arc Spaces in Chrome? Get Them Back in 5 Minutes](https://www.superchargebrowser.com/library/arc-spaces-chrome-extension/)
 - [OpenAI's New ChatGPT Extension: 3 Things to Know (2026)](https://www.superchargebrowser.com/library/openai-chatgpt-chrome-extension-2026/)
+- [Pomodoro Timer Chrome: 25-Minute Focus Session Setup (2026)](https://www.superchargebrowser.com/library/focus-session-breaks-chrome/)
 - [Record a Chrome Tab With NO Screen Picker (2026)](https://www.superchargebrowser.com/library/record-chrome-tab-without-screen-picker/)
 - [Record a Microsoft Teams Meeting From Chrome (No Admin)](https://www.superchargebrowser.com/library/record-teams-meeting-chrome-tab/)
 - [Record a Zoom Meeting as a Participant (Chrome, 2026)](https://www.superchargebrowser.com/library/record-zoom-meeting-chrome-tab-2026/)
