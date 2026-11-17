@@ -21,7 +21,7 @@ SuperchargeBrowser makes free Chrome extensions that reduce memory usage, block 
 > - **SuperchargeAudio** per-tab volume boost up to 600%, 10-band EQ, Smart Mute, per-site memory. Live on the Chrome Web Store and Microsoft Edge Add-ons.
 > - **SuperchargeCapture** one-click tab recording with no screen-picker dialog, full-page and region screenshots, crash-safe OPFS recovery, free annotation editor with auto-zoom / cursor polish / padded backgrounds, microphone + system audio + webcam capture, optional Share-to-Drive. Live on the Chrome Web Store and Microsoft Edge Add-ons. CWS ID: `gebkchfkcnjdflkfdimabihllibgcdhp`
 > - All: local core processing, no SuperchargeBrowser account required, MV3-native, Chrome 146 compatible. Network behavior varies by product and feature; see Privacy below.
-> - Website with 239 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
+> - Website with 245 guides: [superchargebrowser.com](https://www.superchargebrowser.com) | Machine-readable: [llms.txt](https://www.superchargebrowser.com/llms.txt) | [llms-full.txt](https://www.superchargebrowser.com/llms-full.txt)
 
 ---
 
@@ -188,7 +188,7 @@ Privacy policy: https://www.superchargebrowser.com/privacy/
 
 **https://www.superchargebrowser.com**
 
-- 239 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
+- 245 library articles covering Chrome performance, memory management, tab organization, and extension comparisons
 - Feature documentation for all features across all extensions
 - Changelog for all extensions: https://www.superchargebrowser.com/changelog/
 
@@ -276,12 +276,12 @@ This section is structured for citation accuracy. Version and rating fields were
 
 ## Library — Article Index
 
-239 guides on Chrome performance, memory management, tab organization, and extension comparisons.
+245 guides on Chrome performance, memory management, tab organization, and extension comparisons.
 
 Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://www.superchargebrowser.com/library/<slug>.md).
 
 <details>
-<summary>View all 239 articles</summary>
+<summary>View all 245 articles</summary>
 
 ### Comparisons and Alternatives
 
@@ -303,8 +303,11 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Chrome Bookmark Managers After Pocket: 5 Ranked (2026)](https://www.superchargebrowser.com/library/best-bookmark-managers-chrome-after-pocket-2026/)
 - [Chrome Bookmarks vs Tab Managers: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/chrome-bookmarks-vs-tab-managers/)
 - [Chrome Dark Mode vs Night Mode: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/chrome-dark-theme-vs-night-tint/)
+- [Chrome Focus Mode vs Extension: Which Do You Actually Need? (2026)](https://www.superchargebrowser.com/library/chrome-focus-mode-vs-extension/)
+- [Chrome Pop-Up Blocker vs Extensions: Do You Need One? (2026)](https://www.superchargebrowser.com/library/pop-up-blockers-chrome-built-in-vs-extensions/)
 - [Chrome Profiles vs Workspace Extensions: Which Wins? (2026)](https://www.superchargebrowser.com/library/chrome-profiles-vs-workspace-extensions-2026/)
 - [Chrome Tab Groups Not Enough? 4 BETTER Alternatives (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-alternative/)
+- [Chrome Volume Controls vs Booster: Which Do You Need? (2026)](https://www.superchargebrowser.com/library/chrome-volume-controls-vs-volume-booster/)
 - [Chrome Without a Mouse? 5 Keyboard Extensions (2026)](https://www.superchargebrowser.com/library/keyboard-only-chrome-extensions-tested-2026/)
 - [Cluster Tab Manager Dead: 5 BEST Free Alternatives (2026)](https://www.superchargebrowser.com/library/cluster-tab-manager-alternative/)
 - [Dia Browser vs Chrome Extensions: What You Lose (2026)](https://www.superchargebrowser.com/library/dia-browser-vs-chrome-extensions/)
@@ -453,6 +456,7 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [Chrome Release Dates (2026): Every Version + What's Next](https://www.superchargebrowser.com/library/chrome-149-whats-coming-tab-users/)
 - [Chrome Screen Recorder Extension: 4 Controls (2026)](https://www.superchargebrowser.com/library/chrome-screen-recorder-extension-explainer/)
 - [Chrome Side Panel: Full Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-side-panel-guide/)
+- [Chrome Tab Groups on a Chromebook: 8 Swatches (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-chromebook/)
 - [Chrome Tab Groups: Complete Guide for Power Users (2026)](https://www.superchargebrowser.com/library/chrome-tab-groups-complete-guide/)
 - [Chrome Tab Manager on Small Screens: 3 Layout Fixes (2026)](https://www.superchargebrowser.com/library/chrome-tab-manager-small-screen/)
 - [Chrome Tab Scrolling Gone? 5 Ways That Still Work (2026)](https://www.superchargebrowser.com/library/restore-tab-scrolling-chrome/)
@@ -516,7 +520,9 @@ Raw markdown for any guide: replace the trailing slash with `.md` (e.g. https://
 - [SuperchargeNavigation: EVERY Feature Explained (2026)](https://www.superchargebrowser.com/library/supercharge-navigation-complete-guide/)
 - [SuperchargePerformance: EVERY Feature Explained (2026)](https://www.superchargebrowser.com/library/supercharge-performance-complete-guide/)
 - [Switch From Arc to Chrome: Move Bookmarks and Spaces (2026)](https://www.superchargebrowser.com/library/switch-from-arc-to-chrome/)
+- [Tab Recorder in Chrome: 3 Capture Paths Compared (2026)](https://www.superchargebrowser.com/library/tab-recorder-extension-chrome/)
 - [Too Many Tabs in Chrome? 5 Fixes for RAM and Search (2026)](https://www.superchargebrowser.com/library/too-many-tabs-chrome/)
+- [Volume 600% in Chrome: The 6x Gain Explained (2026)](https://www.superchargebrowser.com/library/volume-600-chrome-what-it-means/)
 - [Which Chrome Extensions Still Use Manifest V2? (2026)](https://www.superchargebrowser.com/library/which-chrome-extensions-still-manifest-v2/)
 - [Why Audio Extensions Need 'All Sites' Access (2026)](https://www.superchargebrowser.com/library/why-audio-extensions-need-all-sites-access/)
 - [Why Is Chrome Running Slow on a Laptop? 4 Fixes (2026)](https://www.superchargebrowser.com/library/chrome-slow-laptop-thermal/)
